@@ -1,0 +1,21 @@
+# CODEOWNERS — who GitHub auto-requests to review changes in each area.
+# In a real 100-engineer org these are team handles (@org/query-engine,
+# @org/data-platform). Here they map to you; the mechanism is identical:
+# a PR touching these paths needs the owner's approval before it can merge
+# (when branch protection has "require code owner reviews" on).
+
+# Default owner
+*                            @Dhanashekar-k
+
+# Hand-owned engine modules (mirrors .claude/hooks/protect-paths.sh)
+/app/engine/plan/            @Dhanashekar-k
+/app/engine/verify/          @Dhanashekar-k
+/app/engine/router/          @Dhanashekar-k
+/app/engine/sql_guard/       @Dhanashekar-k
+/pipelines/spark/fiscal.py   @Dhanashekar-k
+/pipelines/common/fiscal_ref.py  @Dhanashekar-k
+
+# Gold eval data and infra deserve an extra set of eyes in a real org
+/eval/sets/                  @Dhanashekar-k
+/infra/terraform/            @Dhanashekar-k
+/.github/                    @Dhanashekar-k

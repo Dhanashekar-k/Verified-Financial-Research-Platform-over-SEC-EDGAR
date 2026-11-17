@@ -1,5 +1,31 @@
-# Byte-compiled / optimized / DLL files
+# --- edgar-verified-qa project rules ---
+.env
+.env.local
+CLAUDE.local.md
+.venv/
 __pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+data/
+warehouse/
+spark-warehouse/
+metastore_db/
+ml/router/mlruns/
+artifacts/
+node_modules/
+web/.next/
+web/out/
+.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfplan
+load/results/*.html
+.DS_Store
+
+# --- GitHub Python template ---
+# Byte-compiled / optimized / DLL files
 *.py[codz]
 *$py.class
 
@@ -49,7 +75,6 @@ coverage.xml
 *.py.cover
 *.lcov
 .hypothesis/
-.pytest_cache/
 cover/
 
 # Translations
@@ -150,7 +175,6 @@ activemq-data/
 *.sage.py
 
 # Environments
-.env
 .envrc
 .venv
 env/
@@ -173,7 +197,6 @@ conda-meta/
 /site
 
 # mypy
-.mypy_cache/
 .dmypy.json
 dmypy.json
 
@@ -209,7 +232,6 @@ cython_debug/
 tempCodeRunnerFile.py
 
 # Ruff stuff:
-.ruff_cache/
 
 # PyPI configuration file
 .pypirc
