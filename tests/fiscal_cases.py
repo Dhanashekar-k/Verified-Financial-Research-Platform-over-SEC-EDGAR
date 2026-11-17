@@ -653,10 +653,12 @@ _q4_retailer = scenario(
 
 # Provenance tiers (decision of 2026-11-17): Q4 is derived per tier within
 # (cik, tag, taxonomy, uom, fiscal_year), from RETAINED parents only (the rows `curated.facts`
-# keeps: the latest and the original version of each parent; one row, carrying the latest
-# accession, when they have equal values). The original tier subtracts the original 9M from the
-# original FY, the latest tier the latest from the latest. Each derived row carries its FY parent's
-# form and accession. Ties between parent candidates go to the latest filed.
+# keeps: the latest and the original version of each parent; one row, the ORIGINAL version, when
+# they have equal values). The original tier subtracts the original 9M from the original FY, the
+# latest tier the latest from the latest. Each derived row carries its FY parent's form and
+# accession. Tiers that land on the same fact_id (only the 9M restated) collapse to the row whose
+# 9M parent was filed latest. Ties between parent candidates go to the latest filed. A directly
+# reported Q4 for the same (cik, tag, taxonomy, uom, fiscal_year), in any accession, blocks it all.
 
 REV_FY23_RESTATED = "380000000000.0000"  # FY2023 as restated in the FY2024 10-K
 REV_Q4_23_LATEST = "86213000000.0000"  # 380000000000 - 293787000000
@@ -701,11 +703,12 @@ _q4_restated_fy = scenario(
 )
 
 _q4_comparatives = scenario(
-    "q4_equal_comparatives_derive_once_from_the_latest_accessions",
+    "q4_equal_comparatives_derive_once_from_the_native_filings",
     [
         # FY2023 and its 9M are repeated unchanged as comparatives in the FY2024 10-K and the Q3
-        # FY2024 10-Q. Equal values keep ONE retained row per parent (the latest accession), so
-        # exactly one Q4 is derived, from those two rows; the older parents are not referenced.
+        # FY2024 10-Q. Equal values collapse to ONE retained row per parent: the ORIGINAL version
+        # (the native filing, what the answer cites). So exactly one Q4 is derived, from the 2023
+        # 10-K and the 2023 10-Q, and it carries the 2023 10-K's accession, form and filed date.
         row(K23, "Revenues", FY23_END, 4, 2023, "FY", None, value=REV_FY23),
         row(K24, "Revenues", FY23_END, 4, 2023, "FY", None, value=REV_FY23),
         row(Q3_23, "Revenues", date(2023, 7, 1), 3, 2023, "9M", None, value=REV_9M23),
@@ -713,7 +716,7 @@ _q4_comparatives = scenario(
     ],
     derived=[
         ex(
-            K24,
+            K23,
             "Revenues",
             FY23_END,
             1,
@@ -722,7 +725,60 @@ _q4_comparatives = scenario(
             "CY2023Q3",
             flags=["q4_derived"],
             value=Decimal(REV_Q4_23),
-            derived_from=((FY23_END, 4, K24_ADSH), (date(2023, 7, 1), 3, Q3_24_ADSH)),
+            derived_from=((FY23_END, 4, X), (date(2023, 7, 1), 3, Y)),
+        ),
+    ],
+)
+
+_q4_only_9m_restated = scenario(
+    "q4_only_9m_restated_keeps_one_row_with_the_latest_9m",
+    [
+        # FY2023 has one version; the 9M was restated in the Q3 FY2024 10-Q (293000M vs 293787M).
+        # Both 9M versions are retained, so both tiers derive from the same FY row and land on
+        # the same fact_id (same fact_key, same FY accession). The row whose 9M parent was filed
+        # latest survives: 383285M - 293000M = 90285M, from the 2024 10-Q; the other is dropped.
+        row(K23, "Revenues", FY23_END, 4, 2023, "FY", None, value=REV_FY23),
+        row(Q3_23, "Revenues", date(2023, 7, 1), 3, 2023, "9M", None, value=REV_9M23),
+        row(Q3_24, "Revenues", date(2023, 7, 1), 3, 2023, "9M", None, value="293000000000.0000"),
+    ],
+    derived=[
+        ex(
+            K23,
+            "Revenues",
+            FY23_END,
+            1,
+            2023,
+            "Q4",
+            "CY2023Q3",
+            flags=["q4_derived"],
+            value=Decimal("90285000000.0000"),
+            derived_from=((FY23_END, 4, X), (date(2023, 7, 1), 3, Q3_24_ADSH)),
+        ),
+    ],
+)
+
+_q4_direct_blocks_only_its_year = scenario(
+    "q4_direct_row_blocks_only_its_own_fiscal_year",
+    [
+        # FY2022 has a directly reported Q4 (no FY - 9M for it); FY2023 does not and still derives.
+        row(K23, "Revenues", FY23_END, 4, 2023, "FY", None, value=REV_FY23),
+        row(Q3_23, "Revenues", date(2023, 7, 1), 3, 2023, "9M", None, value=REV_9M23),
+        row(K23, "Revenues", FY22_END, 4, 2022, "FY", None, value=REV_FY22),
+        row(Q3_23, "Revenues", date(2022, 6, 25), 3, 2022, "9M", None, value=REV_9M22),
+        row(K23, "Revenues", FY22_END, 1, 2022, "Q4", "CY2022Q3", value="90000000000.0000"),
+    ],
+    derived=[
+        ex(
+            K23,
+            "Revenues",
+            FY23_END,
+            1,
+            2023,
+            "Q4",
+            "CY2023Q3",
+            flags=["q4_derived"],
+            value=Decimal(REV_Q4_23),
+            derived_from=((FY23_END, 4, X), (date(2023, 7, 1), 3, Y)),
         ),
     ],
 )
@@ -804,6 +860,8 @@ Q4_SCENARIOS = [
     _q4_comparatives,
     _q4_tie,
     _q4_middle_version,
+    _q4_only_9m_restated,
+    _q4_direct_blocks_only_its_year,
 ]
 
 # --------------------------------------------------------------------------------------
@@ -902,6 +960,46 @@ NO_DERIVE_SCENARIOS = [
             row(K23, "Revenues", FY23_END, 1, 2023, "Q4", "CY2023Q3", value="89500000000.0000"),
         ],
     ),
+    scenario(
+        "direct_q4_in_another_accession_wins",
+        [
+            row(K23, "Revenues", FY23_END, 4, 2023, "FY", None, value=REV_FY23),
+            row(Q3_23, "Revenues", date(2023, 7, 1), 3, 2023, "9M", None, value=REV_9M23),
+            # The direct Q4 only appears in the NEXT 10-K (as a comparative): still the same
+            # (cik, tag, taxonomy, uom, fiscal_year), so nothing is derived for fiscal 2023.
+            row(K24, "Revenues", FY23_END, 1, 2023, "Q4", "CY2023Q3", value="89500000000.0000"),
+        ],
+    ),
+    scenario(
+        "direct_q4_blocks_the_latest_tier_of_a_restated_fy_too",
+        [
+            row(K23, "Revenues", FY23_END, 4, 2023, "FY", None, value=REV_FY23),
+            row(K23, "Revenues", FY23_END, 1, 2023, "Q4", "CY2023Q3", value="89500000000.0000"),
+            # FY2023 restated in the 2024 10-K: that would be a second tier, but a direct Q4
+            # exists for the fiscal year, so no tier derives.
+            row(K24, "Revenues", FY23_END, 4, 2023, "FY", None, value="380000000000.0000"),
+            row(Q3_23, "Revenues", date(2023, 7, 1), 3, 2023, "9M", None, value=REV_9M23),
+        ],
+    ),
+    scenario(
+        "direct_q4_with_another_period_end_spelling_wins",
+        [
+            row(K23, "Revenues", FY23_END, 4, 2023, "FY", None, value=REV_FY23),
+            row(Q3_23, "Revenues", date(2023, 7, 1), 3, 2023, "9M", None, value=REV_9M23),
+            # Keyed by fiscal year, not by an equal period_end: a Q4 ending 2023-09-24 is the same
+            # fiscal 2023 Q4 as the FY ending 2023-09-30.
+            row(
+                K23,
+                "Revenues",
+                date(2023, 9, 24),
+                1,
+                2023,
+                "Q4",
+                "CY2023Q3",
+                value="89400000000.0000",
+            ),
+        ],
+    ),
 ]
 
 # --------------------------------------------------------------------------------------
@@ -967,7 +1065,7 @@ def ver(
 
 
 def one_row(key: int, v: FactVersion, n: int, restated: bool) -> ExpVersion:
-    """The single row carrying both flags."""
+    """The single row carrying both flags: always the ORIGINAL version `v` (the native filing)."""
     assert v.value is not None
     return ExpVersion(key, v.accession, v.value, True, True, n, restated)
 
@@ -1031,8 +1129,8 @@ VERSION_SCENARIOS = [
         "same_value_reported_again_as_comparative",
         [_v2a, _v2b],
         # latest = the 2023 10-K (later filed), original = the 2022 10-K (filing_period ==
-        # period_end); equal values => ONE row with the latest accession.
-        [one_row(2, _v2b, 2, False)],
+        # period_end); equal values => ONE row, carrying the ORIGINAL (native) filing's accession.
+        [one_row(2, _v2a, 2, False)],
     ),
     _vscenario(
         "restated_100_to_90",
@@ -1048,7 +1146,9 @@ VERSION_SCENARIOS = [
     _vscenario(
         "ten_k_then_ten_k_a_with_same_value",
         [_v5a, _v5b],
-        [one_row(5, _v5b, 2, False)],  # same value => one row, carrying the 10-K/A accession
+        [
+            one_row(5, _v5a, 2, False)
+        ],  # same value => one row, carrying the original 10-K's accession
     ),
     _vscenario(
         "no_filing_period_matches_original_is_earliest_filed",
@@ -1059,8 +1159,9 @@ VERSION_SCENARIOS = [
         "matching_filing_period_beats_an_earlier_filed_non_match",
         [_v7a, _v7b, _v7c],
         # original = _v7b (filing_period == period_end) = 100, NOT the earlier-filed _v7a (80).
-        # latest = _v7c = 100, equal to the original => one row; 80 vs 100 => restated.
-        [one_row(7, _v7c, 3, True)],
+        # latest = _v7c = 100, equal to the original => one row, carrying the original's (_v7b)
+        # accession; 80 vs 100 => restated.
+        [one_row(7, _v7b, 3, True)],
     ),
     _vscenario(
         "latest_tie_on_filed_takes_max_accession",
@@ -1085,8 +1186,9 @@ VERSION_SCENARIOS = [
     _vscenario(
         "restated_then_restored_100_90_100",
         [_v11a, _v11b, _v11c],
-        # original value 100 == latest value 100 => one row; three versions, two distinct values.
-        [one_row(11, _v11c, 3, True)],
+        # original value 100 == latest value 100 => one row, carrying the original's (_v11a)
+        # accession; three versions, two distinct values.
+        [one_row(11, _v11a, 3, True)],
     ),
 ]
 

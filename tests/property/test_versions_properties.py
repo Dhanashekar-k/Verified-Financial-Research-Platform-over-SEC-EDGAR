@@ -56,8 +56,9 @@ def version_inputs(draw: st.DrawFn) -> list[FactVersion]:
 def test_version_selection_invariants_property(versions: list[FactVersion]) -> None:
     """(9) Per fact_key: exactly one is_latest row and exactly one is_original row; 1 or 2 rows;
     n_versions == the group's input size; is_restated == (more than one distinct value); the
-    latest row is the max (filed, accession); the original is the min (filed, accession) among
-    filing_period == period_end versions (or among all if none); one row <=> same value.
+    latest row is the max (filed, accession) (when two rows); the original is the min (filed,
+    accession) among filing_period == period_end versions (or among all if none); one row <=>
+    same value, and that one row is the ORIGINAL version.
     """
     out = select_versions_ref(versions)
     assert all(r.version in versions for r in out)
@@ -75,15 +76,20 @@ def test_version_selection_invariants_property(versions: list[FactVersion]) -> N
         original = min(eligible, key=lambda v: (v.filed, v.accession))
         latest_row = next(r for r in rows if r.is_latest)
         original_row = next(r for r in rows if r.is_original)
-        assert (latest_row.version.filed, latest_row.version.accession) == (
-            latest.filed,
-            latest.accession,
-        )
         assert original_row.version.value == original.value
         if latest.value == original.value:
             assert len(rows) == 1
             assert latest_row is original_row
+            # The single collapsed row cites the native filing: the ORIGINAL version.
+            assert (original_row.version.filed, original_row.version.accession) == (
+                original.filed,
+                original.accession,
+            )
         else:
+            assert (latest_row.version.filed, latest_row.version.accession) == (
+                latest.filed,
+                latest.accession,
+            )
             assert len(rows) == 2
             assert latest_row is not original_row
             assert not latest_row.is_original and not original_row.is_latest

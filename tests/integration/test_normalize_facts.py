@@ -338,3 +338,56 @@ def test_run_builds_the_three_curated_tables_from_raw(spark: SparkSession, lake_
             for r in spark.sql(f"SHOW TABLES IN {ns}").collect():
                 spark.sql(f"DROP TABLE IF EXISTS {ns}.{r.tableName} PURGE")
             spark.sql(f"DROP NAMESPACE IF EXISTS {ns}")
+
+
+def test_run_only_9m_restated_leaves_one_derived_q4_with_a_single_version(
+    spark: SparkSession, lake_namespace: str
+):
+    """Decision 2026-11-17 (A): FY2023 has one version, the 9M was restated in a later 10-Q. Both
+    tiers derive from the same FY row (same fact_id); the row whose 9M parent was filed latest
+    survives, as a single version. RED until Shekar's fiscal/version functions exist.
+    """
+    raw_ns, cur_ns = f"{lake_namespace}_raw", f"{lake_namespace}_cur"
+    spark.sql(f"CREATE NAMESPACE IF NOT EXISTS {raw_ns}")
+    spark.sql(f"CREATE NAMESPACE IF NOT EXISTS {cur_ns}")
+    a_q_next = "0000320193-24-000081"  # the Q3 FY2024 10-Q, which restates the 9M comparative
+    try:
+        num = num_df(
+            spark,
+            [
+                {"tag": "Revenues", "value": Decimal("383285000000.0000")},
+                {"adsh": A_Q, "tag": "Revenues", "qtrs": 3, "ddate": 20230630,
+                 "value": Decimal("293787000000.0000"), "src_quarter": "2023q3"},
+                {"adsh": a_q_next, "tag": "Revenues", "qtrs": 3, "ddate": 20230630,
+                 "value": Decimal("293000000000.0000"), "src_quarter": "2024q3"},
+            ],
+        )  # fmt: skip
+        subs = sub_df(
+            spark,
+            [
+                {},
+                {"adsh": A_Q, "form": "10-Q", "fp": "Q3", "period": 20230630,
+                 "filed": 20230804, "src_quarter": "2023q3"},
+                {"adsh": a_q_next, "form": "10-Q", "fp": "Q3", "fy": 2024, "period": 20240630,
+                 "filed": 20240802, "src_quarter": "2024q3"},
+            ],
+        )  # fmt: skip
+        num.writeTo(f"{raw_ns}.fsds_num").using("iceberg").create()
+        subs.writeTo(f"{raw_ns}.fsds_sub").using("iceberg").create()
+
+        run(spark, raw_ns, cur_ns)
+
+        q4 = spark.table(f"{cur_ns}.facts").where(
+            (F.col("tag") == "Revenues") & F.array_contains("dq_flags", "q4_derived")
+        )
+        (row,) = q4.collect()
+        assert row["value"] == Decimal("90285000000.0000")  # 383285M - 293000M, the latest 9M
+        assert row["accession"] == A_K  # the FY parent's filing
+        assert (row["is_latest"], row["is_original"]) == (True, True)
+        assert (row["is_restated"], row["n_versions"]) == (False, 1)
+        assert row["derived_from"] is not None and len(row["derived_from"]) == 2
+    finally:
+        for ns in (raw_ns, cur_ns):
+            for r in spark.sql(f"SHOW TABLES IN {ns}").collect():
+                spark.sql(f"DROP TABLE IF EXISTS {ns}.{r.tableName} PURGE")
+            spark.sql(f"DROP NAMESPACE IF EXISTS {ns}")

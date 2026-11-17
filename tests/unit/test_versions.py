@@ -52,10 +52,11 @@ def test_single_version_is_one_row_latest_and_original_not_restated() -> None:
     run_scenario("single_version")
 
 
-def test_same_value_reported_again_collapses_to_one_row_with_latest_accession() -> None:
+def test_same_value_reported_again_collapses_to_one_row_with_the_original_accession() -> None:
     """(2) A value re-reported unchanged as a comparative in the next 10-K: latest = the later
     filing, original = the first filing (filing_period == period_end), same value -> ONE row
-    carrying the LATEST accession, both flags true, n_versions 2, is_restated False.
+    carrying the ORIGINAL accession (the native filing the answer cites), both flags true,
+    n_versions 2, is_restated False.
     """
     run_scenario("same_value_reported_again_as_comparative")
 
@@ -117,7 +118,7 @@ def test_all_versions_filed_same_day_latest_max_original_min_accession() -> None
 
 def test_restated_then_restored_value_is_one_row_but_restated() -> None:
     """(7) 100 -> 90 -> 100: original value == latest value, so ONE row with both flags and the
-    latest accession, yet n_versions 3 and is_restated True (two distinct values were reported).
+    ORIGINAL accession, yet n_versions 3 and is_restated True (two distinct values were reported).
     """
     run_scenario("restated_then_restored_100_90_100")
 
