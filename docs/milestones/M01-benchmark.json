@@ -1,0 +1,145 @@
+{
+  "comparisons": {
+    "2q": {
+      "facts": {
+        "only_a": 21,
+        "only_b": 23,
+        "rows_a": 2857418,
+        "rows_b": 2857420
+      },
+      "facts_dimensional": {
+        "only_a": 1,
+        "only_b": 1,
+        "rows_a": 2852059,
+        "rows_b": 2852059
+      },
+      "facts_history": {
+        "only_a": 24,
+        "only_b": 26,
+        "rows_a": 3330848,
+        "rows_b": 3330850
+      }
+    },
+    "7q": {
+      "facts": {
+        "only_a": 1982,
+        "only_b": 1973,
+        "rows_a": 8250114,
+        "rows_b": 8250105
+      },
+      "facts_dimensional": {
+        "only_a": 632,
+        "only_b": 632,
+        "rows_a": 7801086,
+        "rows_b": 7801086
+      },
+      "facts_history": {
+        "only_a": 2570,
+        "only_b": 2560,
+        "rows_a": 12221771,
+        "rows_b": 12221761
+      }
+    }
+  },
+  "generated_at": "2026-11-17T20:15:10+00:00",
+  "git_sha": "26b509d",
+  "machine": {
+    "cpu": "Apple M4 Pro",
+    "cpu_count": 12,
+    "duckdb": "2.0.0",
+    "memory_bytes": 25769803776,
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "pyspark": "3.5.9",
+    "python": "3.12.12"
+  },
+  "note": "One run per cell. Memory is the peak sum of RSS over the process tree, sampled: indicative (a missed peak understates, shared pages overstate). Spark path = fsds_to_iceberg (sub, num, tag, pre) + normalize_facts; DuckDB reads sub and num only.",
+  "runs": [
+    {
+      "engine": "duckdb",
+      "exit_code": 0,
+      "label": "2q",
+      "peak_rss_mb": 12016.5,
+      "quarters": [
+        "2023q3",
+        "2023q4"
+      ],
+      "step": "normalize",
+      "wall_seconds": 7.21
+    },
+    {
+      "engine": "spark_local",
+      "exit_code": 0,
+      "label": "2q",
+      "peak_rss_mb": 1090.3,
+      "quarters": [
+        "2023q3",
+        "2023q4"
+      ],
+      "step": "raw_load",
+      "wall_seconds": 38.36
+    },
+    {
+      "engine": "spark_local",
+      "exit_code": 0,
+      "label": "2q",
+      "peak_rss_mb": 10792.3,
+      "quarters": [
+        "2023q3",
+        "2023q4"
+      ],
+      "step": "normalize",
+      "wall_seconds": 101.93
+    },
+    {
+      "engine": "duckdb",
+      "exit_code": 0,
+      "label": "7q",
+      "peak_rss_mb": 11979.5,
+      "quarters": [
+        "2022q1",
+        "2022q3",
+        "2022q4",
+        "2023q1",
+        "2023q3",
+        "2023q4",
+        "2024q1"
+      ],
+      "step": "normalize",
+      "wall_seconds": 140.6
+    },
+    {
+      "engine": "spark_local",
+      "exit_code": 0,
+      "label": "7q",
+      "peak_rss_mb": 1192.6,
+      "quarters": [
+        "2022q1",
+        "2022q3",
+        "2022q4",
+        "2023q1",
+        "2023q3",
+        "2023q4",
+        "2024q1"
+      ],
+      "step": "raw_load",
+      "wall_seconds": 122.94
+    },
+    {
+      "engine": "spark_local",
+      "exit_code": 0,
+      "label": "7q",
+      "peak_rss_mb": 11596.6,
+      "quarters": [
+        "2022q1",
+        "2022q3",
+        "2022q4",
+        "2023q1",
+        "2023q3",
+        "2023q4",
+        "2024q1"
+      ],
+      "step": "normalize",
+      "wall_seconds": 274.19
+    }
+  ]
+}

@@ -40,7 +40,7 @@ Planned ADRs (fill in as you reach them): 005 one EC2 box vs Lambda + Aurora (M9
 
 ## ADR-020: `fact_key` excludes the taxonomy year (2026-11-17)
 **Status:** proposed (stub: Shekar fills in the body)
-**Context:** TODO(Shekar). Prompts: what `fact_key` has to do (group every reported version of one fact across filings); what changes in `version` between an original filing and a later restatement (`us-gaap/2022` vs `us-gaap/2023`); what happens to `facts_history` and `n_versions` if the year is part of the key.
+**Context:** TODO(Shekar). Prompts: what `fact_key` has to do (group every reported version of one fact across filings); what changes in `version` between an original filing and a later restatement (`us-gaap/2022` vs `us-gaap/2023`); what happens to `facts_history` and `n_versions` if the year is part of the key. Measured on the 7 local quarters (`docs/milestones/M01-dq-report.md`, section Curated facts): 8,071,662 distinct facts (`fact_key`) in 8,250,114 rows; 5,436,692 of them have one version, 1,797,588 have two; 183,653 are restated. These counts are with the year stripped; they were not recomputed with the year in the key, so how many facts the year would have split is NOT MEASURED.
 **Options considered:** TODO(Shekar). (a) key over the full `version` string; (b) key over the year-stripped taxonomy family (`us-gaap`, `dei`, `custom`); (c) key over a normalized concept ID from a standard-taxonomy mapping.
 **Decision:** TODO(Shekar). Current contract: `fact_key = xxhash64(cik, tag, taxonomy, period_end, qtrs, uom)` with `taxonomy` year-stripped (`docs/plan/05_data_contracts.md` §2.2).
 **Consequences:** TODO(Shekar). Prompts: a tag whose meaning changes between taxonomy years now shares a key; custom tags are keyed by `custom` plus the tag and CIK; the Spark and DuckDB twins must derive `taxonomy` identically.
@@ -55,3 +55,19 @@ Planned ADRs (fill in as you reach them): 005 one EC2 box vs Lambda + Aurora (M9
 **Decision:** (c). `versions.py` is native window functions, an independent check of the rules. `fiscal.py` calls `derive_fiscal` per cik; `fact_key`, `fact_id`, `derived_from` and pass-through columns stay native (`xxhash64`). Only `fiscal_ref.py` stays Shekar-owned and hook-protected.
 **Consequences:** TODO(Shekar): write this in my own words. Prompts: what the differential test proves for each twin; one company's facts must fit one pandas group (skew on large filers: NOT MEASURED until the first EMR run); the `label_offsets` mode tie follows input order in the reference (known, no data hit).
 **How to revisit:** if a company's pandas group exceeds executor memory on EMR, or the `applyInPandas` stage dominates the T2 run time, port `fiscal.py` to native Spark and keep the reference as the oracle.
+
+## ADR-007: DuckDB vs Spark for XBRL normalization (2026-11-17)
+**Status:** proposed (stub: Shekar writes the conclusion)
+**Context:** Same rules, two engines, run on Apple M4 Pro (12 cores, 24 GiB), one run per cell, benchmark at commit `26b509d` (`docs/milestones/M01-benchmark.json`), difference analysis at `f4daa7e`. Spark = `fsds_to_iceberg` (sub, num, tag, pre) then `normalize_facts`; DuckDB reads sub and num from the gzipped TSVs. Memory is the sampled peak over the process tree: indicative, not exact.
+
+| Quarters | `facts_history` rows | DuckDB | Spark local: raw load | Spark local: normalize | EMR Serverless |
+|---|---:|---|---|---|---|
+| 2 (2023q3, 2023q4) | 3,330,848 | 7.21 s / 12,016 MB | 38.36 s / 1,090 MB | 101.93 s / 10,792 MB | pending — cloud phase |
+| 7 (2022q1 to 2024q1, gaps) | 12,221,771 | 140.6 s / 11,980 MB | 122.94 s / 1,193 MB | 274.19 s / 11,597 MB | pending — cloud phase |
+| 20 quarters, all quarters | NOT MEASURED | NOT MEASURED | NOT MEASURED | NOT MEASURED | pending — cloud phase |
+
+DuckDB's time grows faster than the data (2 to 7 quarters); not investigated. Agreement on real data (`docs/milestones/M01-differential-analysis.json`, both sides counted): on 2 quarters the engines differ in facts_history 50; facts 44; facts_dimensional 2 rows; on 7 quarters in facts_history 5,130; facts 3,955; facts_dimensional 1,264 rows. Differing rows are attributed to causes by rules in `pipelines/duckdb/explain_differences.py` (evidence per row, not proof for every row). Summed over the three tables: 2 quarters identity_collision 6, fy_tie 90; 7 quarters identity_collision 6, label_offset_tie 9,792, fy_tie 494, fy_tie_knock_on 51, unexplained 6. The causes are cases the reference leaves undefined (ties it breaks by input order) or gets wrong (a derived Q4 that takes the same `fact_id` as a real quarter row). The 6 rows the rules could not attribute belong to 3 dimensional series; for each, the reference itself gives 2 different outputs depending on input order, and both Spark's and DuckDB's outputs are among them. Two Spark runs of the same 7 quarters differ in 0 rows in all three tables. Both engines order colliding rows deterministically (real row first, NULLs last).
+**Options considered:** TODO(Shekar). (a) Spark only; (b) DuckDB only; (c) Spark as the pipeline, DuckDB as the benchmark twin and local check.
+**Decision:** TODO(Shekar).
+**Consequences:** TODO(Shekar): write this in my own words. Prompts: what the numbers say about when a cluster pays off; what the 175 `fact_id`s shared by several rows in the 7-quarter Spark `facts_history` mean for trusting either engine's output.
+**How to revisit:** TODO(Shekar). The EMR column and the 20-quarter and all-quarter rows are filled in the cloud phase.
