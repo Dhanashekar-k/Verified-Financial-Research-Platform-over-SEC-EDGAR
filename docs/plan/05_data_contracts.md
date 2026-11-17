@@ -31,6 +31,19 @@ adsh                  tag                                              version  
 ```
 Note the second row: the FY2023 10-K also reports **FY2022** (a comparative). Your fiscal-period logic must assign that row to FY2022, not FY2023.
 
+**On-disk layout written by `pipelines/fetch/download_fsds.py`** (local `--dest`, default `data/raw/fsds`; S3 is not supported yet):
+```
+{dest}/{q}/sub.txt.gz  num.txt.gz  tag.txt.gz  pre.txt.gz  readme.htm
+{dest}/_manifest.json
+```
+The `.gz` files are deterministic (no name or mtime in the header). `_manifest.json` has one key per quarter, and the keys are sorted:
+```json
+{"2023q3": {"source_url": "https://www.sec.gov/files/dera/data/financial-statement-data-sets/2023q3.zip",
+            "zip_bytes": 0, "zip_sha256": "<hex>", "downloaded_at": "<ISO-8601 UTC>",
+            "files": {"sub": {"bytes": 0, "sha256": "<hex>"}, "num": {...}, "tag": {...}, "pre": {...}}}}
+```
+`bytes` and `sha256` under `files` describe the **gzipped** file on disk. A quarter is "complete" (and skipped on rerun) when its entry is well-formed and all four `.gz` files exist with the recorded `bytes`. `downloaded_at` is the only non-deterministic field. A manifest that cannot be parsed is moved aside to `_manifest.json.corrupt-<timestamp>`, never overwritten.
+
 ### 1.2 Company Facts (cross-check and daily refresh)
 
 - **Per company:** `https://data.sec.gov/api/xbrl/companyfacts/CIK##########.json` (CIK zero-padded to 10 digits) [Likely]. Bulk: `companyfacts.zip` from the EDGAR APIs page.
