@@ -49,6 +49,10 @@ spark-raw: ## Load FSDS quarters into raw Iceberg tables locally (M1)
 	$(PY) python -m pipelines.spark.fsds_to_iceberg --env local --quarters $(Q)
 spark-facts: ## Normalize facts locally (M1)
 	$(PY) python -m pipelines.spark.normalize_facts --env local
+fetch-reference: ## Freeze the SEC ticker map and the S&P 500 CSV under data/ (M1; network)
+	$(PY) python -m pipelines.fetch.reference_data
+spark-companies: ## Build curated.companies from raw.fsds_sub + the frozen reference files (M1)
+	$(PY) python -m pipelines.spark.build_companies --env local
 dq: ## Data-quality report (M1)
 	$(PY) python -m pipelines.spark.dq_checks --env local
 emr-package: ## Zip pipelines/ to S3 artifacts (M1)

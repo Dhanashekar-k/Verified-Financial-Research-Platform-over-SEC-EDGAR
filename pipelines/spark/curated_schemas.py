@@ -58,3 +58,10 @@ FACTS_DIMENSIONAL = _schema(
     ("is_latest", _B), ("is_original", _B), ("n_versions", _I), ("is_restated", _B),
     ("dq_flags", _FLAGS),
 )  # fmt: skip
+
+# `docs/plan/05_data_contracts.md` section 2.2. `in_financebench` stays NULL until the FinanceBench
+# documents are loaded (M2/M4): a guess would claim a company is not in the benchmark.
+COMPANIES = _schema(
+    ("cik", _I), ("name", _S), ("ticker", _S), ("sic", _I), ("fye_mmdd", _S),
+    ("in_sp500", _B), ("in_financebench", _B), ("aliases", ArrayType(_S)),
+)  # fmt: skip
