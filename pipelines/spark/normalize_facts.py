@@ -2,13 +2,11 @@
 
     uv run python -m pipelines.spark.normalize_facts --env local
 
-This module is the ORCHESTRATION only: read, join, clean, split, call the two Shekar-owned
-functions, write. The interview-critical logic lives elsewhere and is not implemented here:
+This module is the ORCHESTRATION only: read, join, clean, split, call the two fiscal functions,
+write. The interview-critical logic lives elsewhere and is not implemented here:
 
 * `pipelines.spark.fiscal.derive_fiscal_columns`  (fiscal year/period, label offset, Q4)
 * `pipelines.spark.versions.select_versions`      (latest and original versions)
-
-Until those exist the job stops with `NotImplementedError` at the first call.
 
 Always a full rebuild from all of `raw.fsds_*`: a fact's fiscal year can differ from the quarter
 it was filed in, and `overwritePartitions()` replaces whole `fiscal_year` partitions, so a
@@ -19,6 +17,7 @@ What it does to the rows before the fiscal step:
 
 * joins `num` to `sub` on `adsh` (fye, form, period, fy and filed come from the SAME submission);
 * drops rows with a NULL `value` or an unparseable `ddate` (kept in `raw.*`);
+* drops rows whose submission has no `fye` (S-1, F-1, 8-K and the like; kept in `raw.*`);
 * `taxonomy` = year-stripped family of `version` (`us-gaap/2023` -> `us-gaap`), or `custom` when
   `version == adsh`;
 * splits: consolidated (`coreg` and `segments` empty) -> `facts`; `segments` set and `coreg`
@@ -90,6 +89,9 @@ def prepare_facts(num: DataFrame, sub: DataFrame) -> Prepared:
             F.col("fy").alias("sub_fy"),
             yyyymmdd("period").alias("sub_period"),
         )
+        # Rule 1 needs the submission's fye. Registration statements and 8-Ks can have none; their
+        # facts stay in raw.* rather than reaching the fiscal step, which cannot place them.
+        .where(~blank("fye_mmdd"))
     )
 
     rows = (

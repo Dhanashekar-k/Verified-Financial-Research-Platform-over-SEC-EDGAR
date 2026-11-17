@@ -158,6 +158,23 @@ def test_null_values_and_unparseable_dates_are_dropped(spark: SparkSession):
     assert [r["tag"] for r in collect(prepared.consolidated)] == ["Good"]
 
 
+@pytest.mark.parametrize("fye", [None, ""])
+def test_rows_of_a_submission_without_a_fiscal_year_end_are_dropped(
+    spark: SparkSession, fye: str | None
+):
+    """Rule 1 needs sub.fye. Registration statements and 8-Ks can have none (7,873 of 7.27M num
+    rows in 2023q3+q4, none from a 10-K or 10-Q); they stay in raw.* and must not reach the fiscal
+    step, where the reference would raise on the missing fye.
+    """
+    no_fye = "0000000000-23-000009"
+    num = num_df(spark, [{"tag": "Kept"}, {"tag": "NoFye", "adsh": no_fye}])
+    subs = sub_df(spark, [{}, {"adsh": no_fye, "form": "S-1", "fye": fye}])
+
+    prepared = prepare_facts(num, subs)
+
+    assert [r["tag"] for r in collect(prepared.consolidated)] == ["Kept"]
+
+
 def test_rows_without_a_submission_are_dropped(spark: SparkSession):
     num = num_df(spark, [{"tag": "Orphan", "adsh": "0000000000-23-000001"}, {"tag": "Kept"}])
 
