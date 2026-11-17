@@ -71,6 +71,11 @@ extend-exclude = ["warehouse", "data", "web", "docs"]
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B", "W"]
 
+[tool.ruff.lint.per-file-ignores]
+# Interface-spec docstring tables in a stub Shekar will rewrite (edits to it are hook-blocked).
+# Remove this line once the module is implemented.
+"pipelines/spark/fiscal.py" = ["E501"]
+
 [tool.mypy]
 python_version = "3.12"
 strict = true
