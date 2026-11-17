@@ -32,8 +32,9 @@ Causes, checked in this order:
   year change). The rule picks one by input order, which differs between the engines.
 * `fy_tie_knock_on`: an ordinary (not derived) row at a fact where either engine's history
   holds a derived Q4, in a group with a fiscal-year tie, whose counterpart differs only in
-  the version flags (`is_latest`, `is_original`, `n_versions`, `is_restated`). The tie changed
-  which derived rows exist, so the version count of the real row differs.
+  the version flags (`is_latest`, `is_original`, `n_versions`, `is_restated`), or which exists on
+  one side only because the other side's history holds a derived Q4 at its fact key. The tie
+  changed which derived rows exist, so the version count (or the kept row) of the real row differs.
 * `unexplained`: neither. A non-zero count here is a bug to chase.
 """
 
@@ -192,9 +193,17 @@ SELECT d.*,
       AND (EXISTS (SELECT 1 FROM tie_a t WHERE {_same(group_key, "t", "d")})
            OR EXISTS (SELECT 1 FROM tie_b t WHERE {_same(group_key, "t", "d")}))
       AND {"TRUE" if flag_cols else "FALSE"}
-      AND EXISTS (SELECT 1 FROM diffs o WHERE o.side <> d.side
-                  AND {_same(counterpart_keys, "o", "d")}
-                  AND {_equal_except(compared, flag_cols, "o", "d")})
+      AND (EXISTS (SELECT 1 FROM diffs o WHERE o.side <> d.side
+                   AND {_same(counterpart_keys, "o", "d")}
+                   AND {_equal_except(compared, flag_cols, "o", "d")})
+           -- or the row is kept by one engine only, because the OTHER engine's history holds a
+           -- derived Q4 at its fact key, which took the slot
+           OR (NOT EXISTS (SELECT 1 FROM diffs o WHERE o.side <> d.side
+                           AND {_same(counterpart_keys, "o", "d")})
+               AND ((d.side = 'a' AND EXISTS (SELECT 1 FROM derived_b x
+                                              WHERE {_same(fact_key, "x", "d")}))
+                    OR (d.side = 'b' AND EXISTS (SELECT 1 FROM derived_a x
+                                                 WHERE {_same(fact_key, "x", "d")})))))
       THEN 'fy_tie_knock_on'
     ELSE 'unexplained'
   END AS cause

@@ -452,3 +452,39 @@ def test_derived_signature_lists_the_derived_rows_of_one_series(tmp_path: Path):
     assert derived_signature(tmp_path / "d", 5, "Revenues", "S=A;") == (
         ("2022-12-31", "K-22", "150.0000"),
     )
+
+
+def one_sided_tables(tmp_path: Path, derived_in_a: bool):
+    """A fiscal-year tie group. Engine b keeps a real quarter row; engine a does not, because (when
+    `derived_in_a`) its history holds a derived Q4 at the same fact key, which took the slot."""
+    fy_old = row(1, qtrs=4, period_end="2021-09-30", fiscal_year=2022)
+    fy_new = row(2, qtrs=4, period_end="2022-06-30", fiscal_year=2022, value="16131.0000")
+    nine_m = row(3, qtrs=3, period_end="2022-06-30", fiscal_period="9M", fiscal_year=2022,
+                 value="15763.0000")  # fmt: skip
+    derived = row(4, qtrs=1, period_end="2021-09-30", fiscal_period="Q4", fiscal_year=2022,
+                  value="-14019.0000", flags=("q4_derived",), parents=(1, 3))  # fmt: skip
+    base = [fy_old, fy_new, nine_m]
+    a_hist = [*base, derived] if derived_in_a else base
+    a = write(tmp_path / "a", {"facts_history": a_hist, "facts": [derived] if derived_in_a else []})
+    b = write(tmp_path / "b", {"facts_history": [*base, real_q1()], "facts": [real_q1()]})
+    return a, b
+
+
+def test_a_row_kept_by_one_engine_only_is_a_knock_on_if_the_other_holds_a_derived_row(
+    tmp_path: Path,
+):
+    a, b = one_sided_tables(tmp_path, derived_in_a=True)
+
+    result = classify_differences(a, b)["facts"]
+
+    assert result == counts(fy_tie=1, fy_tie_knock_on=1)
+
+
+def test_a_row_kept_by_one_engine_only_is_unexplained_without_a_derived_row(
+    tmp_path: Path,
+):
+    a, b = one_sided_tables(tmp_path, derived_in_a=False)
+
+    result = classify_differences(a, b)["facts"]
+
+    assert result == counts(unexplained=1)
