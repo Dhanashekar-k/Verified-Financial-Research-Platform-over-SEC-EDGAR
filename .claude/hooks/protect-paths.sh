@@ -31,8 +31,6 @@ esac
 
 # 3: Shekar-owned modules (allowed only if the file doesn't exist yet, or with the override)
 OWNED=(
-  "pipelines/spark/fiscal.py"
-  "pipelines/spark/versions.py"
   "pipelines/common/fiscal_ref.py"
   "app/engine/plan/compiler.py"
   "app/engine/plan/periods.py"
