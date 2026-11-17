@@ -25,12 +25,15 @@ dependencies = [
   "pymupdf>=1.24",
   "anthropic>=0.40",
   "numpy>=1.26",
-  "pandas>=2.2",
+  # <3: PySpark 3.5.x (pinned to match EMR Serverless) predates pandas 3; applyInPandas needs it.
+  "pandas>=2.2,<3",
 ]
 
 [dependency-groups]
 # PySpark pinned to 3.5.x to match the EMR Serverless release (§2, ADR-pin).
-spark = ["pyspark>=3.5,<3.6"]
+# pyarrow: applyInPandas (pipelines/spark/fiscal.py). setuptools: PySpark 3.5's pandas_udf imports
+# `distutils`, which Python 3.12 removed; setuptools supplies the shim.
+spark = ["pyspark>=3.5,<3.6", "pyarrow>=14", "setuptools"]
 api = [
   "fastapi>=0.115",
   "uvicorn[standard]>=0.30",
