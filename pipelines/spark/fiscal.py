@@ -17,6 +17,7 @@ watch on EMR (M1 section 3.8).
 
 from __future__ import annotations
 
+import importlib
 from collections.abc import Sequence
 from typing import Any
 
@@ -36,6 +37,20 @@ from pyspark.sql.types import (
 )
 
 from pipelines.common.fiscal_ref import FactInput, derive_fiscal
+
+
+def _ensure_distutils() -> None:
+    """PySpark 3.5's `pandas_udf` imports `distutils`, which Python 3.12 removed. `setuptools`
+    supplies a shim, normally via `distutils-precedence.pth`; if `site` skipped that file (a macOS
+    `hidden` flag does this) importing `setuptools` installs the shim itself. Runs on the workers
+    too, because they import this module to unpickle `_derive_company`."""
+    try:
+        importlib.import_module("distutils")
+    except ModuleNotFoundError:
+        importlib.import_module("setuptools")
+
+
+_ensure_distutils()
 
 # Columns the reference reads (`FactInput`), in order; plus `fact_id` (row identity) and
 # `_series` (the `extra_key_cols` values) which only the pandas step sees.
