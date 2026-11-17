@@ -313,6 +313,7 @@ revenue:
     - Revenues
     - SalesRevenueNet
     - RevenueFromContractWithCustomerIncludingAssessedTax
+    - RevenuesNetOfInterestExpense   # bank revenue (no Revenues tag)
   synonyms: [sales, net sales, total revenue, top line, turnover]
 operating_income:
   label: Operating income
@@ -337,6 +338,8 @@ total_assets:
   period_type: instant
   tags: [Assets]
 ```
+
+The `RevenuesNetOfInterestExpense` fallback comes from the M1 second-source spot check: JPMorgan's two 10-Ks (FY2022, FY2023) tag total net revenue that way and carry no `Revenues` tag, so those two comparisons are `missing_in_curated` by tag name while the amounts are in `curated.facts` (`docs/milestones/M01-spotcheck.json`). Classifying them is M5's job; the spot-check's own tag list is deliberately not widened.
 
 ### 4.3 Answer and Claim (composer output, verifier input)
 
