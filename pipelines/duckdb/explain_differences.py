@@ -63,6 +63,7 @@ from pipelines.duckdb.benchmark import (
     export_spark,
 )
 from pipelines.duckdb.normalize_facts_duckdb import build_inputs
+from pipelines.duckdb.oracle import reference_with_proposed_rules
 
 log = logging.getLogger(__name__)
 
@@ -381,6 +382,77 @@ def check_unexplained_series(
     return results
 
 
+def reference_agreement(
+    src: Path, quarters: Sequence[str], duck_dir: Path, batch: int = 200
+) -> dict[str, Any]:
+    """Run the REFERENCE (with the ADR-022 sort and eligibility around it, `oracle`) directly over
+    every company's consolidated facts in the FSDS files, and compare it row for row with the
+    DuckDB twin's `facts_history`: fiscal columns, dq flags, value and the natural keys of the
+    parents of derived rows. Independent of Spark and of the twin's SQL."""
+    con = duckdb.connect()
+    differences, rows_compared, companies = 0, 0, 0
+    examples: list[dict[str, Any]] = []
+    try:
+        build_inputs(con, src, quarters)
+        history = f"read_parquet('{_parquet(duck_dir, 'facts_history')}')"
+        ciks = [
+            r[0]
+            for r in con.execute("SELECT DISTINCT cik FROM consolidated ORDER BY cik").fetchall()
+        ]
+        for start in range(0, len(ciks), batch):
+            chunk = ciks[start : start + batch]
+            marks = ", ".join("?" for _ in chunk)
+            rows = con.execute(
+                "SELECT cik, adsh, tag, taxonomy, uom, qtrs, period_end, value, form, filed, "
+                f"fye_mmdd, sub_fy, sub_period FROM consolidated WHERE cik IN ({marks})",
+                chunk,
+            ).fetchall()
+            facts = [FactInput(*r) for r in rows]
+            want = Counter(
+                (
+                    ff.fact.cik, ff.fact.adsh, ff.fact.tag, ff.fact.taxonomy, ff.fact.uom,
+                    ff.fact.qtrs, str(ff.fact.period_end), str(ff.fact.value),
+                    str(ff.period_start), ff.fiscal_year, ff.fiscal_period, ff.calendar_frame,
+                    tuple(sorted(ff.dq_flags)),
+                    None if ff.derived_from is None
+                    else tuple((str(pe), q, a) for pe, q, a in ff.derived_from),
+                )
+                for ff in reference_with_proposed_rules(facts)
+            )  # fmt: skip
+            got_rows = con.execute(
+                "SELECT fact_id, cik, accession, tag, taxonomy, uom, qtrs, period_end, value, "
+                f"period_start, fiscal_year, fiscal_period, calendar_frame, dq_flags, derived_from "
+                f"FROM {history} WHERE cik IN ({marks})",
+                chunk,
+            ).fetchall()
+            natural = {r[0]: (str(r[7]), r[6], r[2]) for r in got_rows}
+            got = Counter(
+                (
+                    r[1], r[2], r[3], r[4], r[5], r[6], str(r[7]), str(r[8]), str(r[9]), r[10],
+                    r[11], r[12], tuple(sorted(r[13])),
+                    None if r[14] is None else tuple(natural.get(i) for i in r[14]),
+                )
+                for r in got_rows
+            )  # fmt: skip
+            diff = (want - got) + (got - want)
+            differences += sum(diff.values())
+            rows_compared += sum(got.values())
+            companies += len(chunk)
+            for key in list((want - got).elements())[:3] + list((got - want).elements())[:3]:
+                if len(examples) < 10:
+                    examples.append(
+                        {"side": "reference" if key in want - got else "duckdb", "row": list(key)}
+                    )
+    finally:
+        con.close()
+    return {
+        "companies": companies,
+        "rows_compared": rows_compared,
+        "differences": differences,
+        "examples": examples,
+    }
+
+
 def identity_collisions(directory: Path) -> dict[str, Any]:
     """How often `facts_history` gives one `fact_id` to several rows, and where derived Q4
     rows come from (their form is the FY parent's form)."""
@@ -428,6 +500,11 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--src", type=Path, default=Path("data/raw/fsds"))
     parser.add_argument("--benchmark", type=Path, default=DEFAULT_BENCHMARK)
     parser.add_argument(
+        "--check-reference",
+        action="store_true",
+        help="also run the reference directly over every company and compare with DuckDB",
+    )
+    parser.add_argument(
         "--repeat-against",
         default=None,
         metavar="NAMESPACE",
@@ -468,6 +545,8 @@ def main(argv: list[str] | None = None) -> int:
             ),
             "differences": compare_outputs(spark_dir, other),
         }
+    if args.check_reference:
+        cell["reference_agreement"] = reference_agreement(args.src, quarters, duck_dir)
     cell["unexplained_rows"] = {t: rows for t, rows in samples.items() if rows}
     cell["unexplained_order_check"] = check_unexplained_series(
         args.src, quarters, spark_dir, duck_dir, samples.get("facts_dimensional", [])

@@ -47,6 +47,7 @@ import pytest
 from pyspark.sql import SparkSession
 from pyspark.sql.types import ArrayType, DataType, StructType
 
+from pipelines.duckdb.explain_differences import reference_agreement
 from pipelines.duckdb.normalize_facts_duckdb import run as duckdb_run
 from pipelines.spark.curated_schemas import FACTS, FACTS_DIMENSIONAL, FACTS_HISTORY
 from pipelines.spark.fsds_to_iceberg import load_quarter
@@ -866,3 +867,38 @@ def test_quarter_names_are_case_insensitive_like_the_spark_loader(
     got = sorted(read_parquet(out / "facts.parquet")[1], key=lambda r: r["fact_id"])
     want = sorted(duck_result.tables["facts"], key=lambda r: r["fact_id"])
     assert got == want
+
+
+def test_duckdb_history_agrees_with_the_reference_run_directly_on_every_company(
+    fsds_dir: Path, tmp_path: Path
+) -> None:
+    """Not through Spark: the reference (with the ADR-022 sort and eligibility around it) is run
+    over every company of the same FSDS files and compared row for row with DuckDB's history."""
+    out = tmp_path / "ref_check"
+    out.mkdir()
+    counts = duckdb_run(fsds_dir, QUARTERS, out)
+
+    result = reference_agreement(fsds_dir, QUARTERS, out)
+
+    assert result["rows_compared"] == counts["facts_history"]
+    assert result["differences"] == 0
+    assert result["companies"] >= 3
+
+
+def test_the_reference_check_reports_a_tampered_output(fsds_dir: Path, tmp_path: Path) -> None:
+    out = tmp_path / "tampered"
+    out.mkdir()
+    duckdb_run(fsds_dir, QUARTERS, out)
+    con = duckdb.connect()
+    source = out / "facts_history.parquet"
+    con.execute(
+        "COPY (SELECT * REPLACE (CASE WHEN tag = 'Revenues' AND qtrs = 4 AND cik = 1001 "
+        f"THEN value + 1 ELSE value END AS value) FROM read_parquet('{source}')) "
+        f"TO '{out / 'changed.parquet'}' (FORMAT parquet)"
+    )
+    (out / "facts_history.parquet").unlink()
+    (out / "changed.parquet").rename(out / "facts_history.parquet")
+
+    result = reference_agreement(fsds_dir, QUARTERS, out)
+
+    assert result["differences"] > 0 and result["examples"]
