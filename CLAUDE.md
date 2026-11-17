@@ -21,11 +21,13 @@ Plans and contracts live in `docs/plan/`:
 9. **SEC access:** always go through `sec_client` (User-Agent from `SEC_USER_AGENT`, ≤ 8 req/s, retries with backoff).
 
 ## Shekar-owned modules (create the stub once if missing; otherwise read/test/review only)
-- `pipelines/spark/fiscal.py`, `pipelines/spark/versions.py`, `pipelines/common/fiscal_ref.py`
+- `pipelines/common/fiscal_ref.py`
 - `app/engine/plan/compiler.py`, `app/engine/plan/periods.py`, `app/engine/plan/metric_catalog.yaml`
 - `app/engine/verify/numeric.py`, `app/engine/verify/quotes.py`, `app/engine/verify/policy.py`
 - `app/engine/sql_guard/guard.py`, `app/engine/router/cascade.py`
 - `ml/router/model_fns.py`, `eval/metrics.py`
+
+`pipelines/spark/fiscal.py` and `pipelines/spark/versions.py` are **not** Shekar-owned: Shekar authorized Claude to implement them (2026-11-17, see ADR-021), written against `tests/integration/test_differential.py` with `fiscal_ref.py` as the oracle. `fiscal.py` runs the reference per company (`applyInPandas`), so its differential test checks the plumbing, not the rules. `fiscal_ref.py` stays hook-protected.
 
 ## Conventions
 - Python 3.12 (check the EMR Python version for code under `pipelines/spark` and `pipelines/parsing`), managed with **uv**. Formatting and linting via **ruff**; **mypy --strict** on `app/engine`.

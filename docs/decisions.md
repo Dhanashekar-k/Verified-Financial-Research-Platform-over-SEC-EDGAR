@@ -47,3 +47,11 @@ Planned ADRs (fill in as you reach them): 005 one EC2 box vs Lambda + Aurora (M9
 **How to revisit:** TODO(Shekar).
 
 > Numbering note: ADR-005 is already reserved for "one EC2 box vs Lambda + Aurora" (`docs/plan/03_architecture_and_stack.md`, planned list above), so this one is ADR-020. Renumber if you prefer; the only other reference is the `taxonomy` bullet in `docs/plan/M01_xbrl_lakehouse.md` §3.5.
+
+## ADR-021: The Spark fiscal and version twins are Claude-implemented against the differential test (2026-11-17)
+**Status:** proposed (stub: Shekar writes the Consequences)
+**Context:** M1 planned `pipelines/spark/fiscal.py` and `versions.py` as Shekar-owned (CLAUDE.md rule 3, hook-protected). Shekar wrote the reference `pipelines/common/fiscal_ref.py` (180 unit and property tests, commit `6b5fa07`), then authorized Claude to implement the twins. Gate: `tests/integration/test_differential.py` asserts Spark == reference on seeded synthetic data. Result: 141 integration and 440 unit and property tests passed.
+**Options considered:** (a) Shekar writes both: most ownership, slowest. (b) Claude writes both natively: independent implementations, but more code. (c) `select_versions` native; `derive_fiscal_columns` runs the reference per company via `applyInPandas`: rules cannot diverge, but its differential test only checks the plumbing, and executors need `pyarrow`, `setuptools` and `pandas<3`.
+**Decision:** (c). `versions.py` is native window functions, an independent check of the rules. `fiscal.py` calls `derive_fiscal` per cik; `fact_key`, `fact_id`, `derived_from` and pass-through columns stay native (`xxhash64`). Only `fiscal_ref.py` stays Shekar-owned and hook-protected.
+**Consequences:** TODO(Shekar): write this in my own words. Prompts: what the differential test proves for each twin; one company's facts must fit one pandas group (skew on large filers: NOT MEASURED until the first EMR run); the `label_offsets` mode tie follows input order in the reference (known, no data hit).
+**How to revisit:** if a company's pandas group exceeds executor memory on EMR, or the `applyInPandas` stage dominates the T2 run time, port `fiscal.py` to native Spark and keep the reference as the oracle.
