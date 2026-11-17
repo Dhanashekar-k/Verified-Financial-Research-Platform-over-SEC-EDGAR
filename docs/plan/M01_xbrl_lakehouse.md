@@ -11,7 +11,7 @@ Every XBRL fact since 2009, in clean Iceberg tables with correct fiscal periods,
 | Inputs | Outputs |
 |---|---|
 | FSDS ZIPs 2009q2 → latest (`05_data_contracts.md` §1.1) | `raw.fsds_{sub,num,tag,pre}` partitioned by `src_quarter` |
-| companyfacts JSON for 10 spot-check companies | `curated.companies`, `curated.facts_history`, `curated.facts` |
+| companyfacts JSON for 10 spot-check companies (cross-check only; never written to `facts_history` in M1) | `curated.companies`, `curated.facts_history`, `curated.facts`, `curated.facts_dimensional` |
 | `company_tickers.json`, S&P 500 snapshot CSV | `docs/milestones/M01-dq-report.md` (row counts, null rates, unit mix, custom-tag share, fiscal-derivation flags, spot checks) |
 | — | ADR-007 (DuckDB vs Spark) with a benchmark table |
 | — | T1 and T2 recorded: exact rows and GB; EMR minutes and $ |
@@ -29,6 +29,7 @@ Every XBRL fact since 2009, in clean Iceberg tables with correct fiscal periods,
 `pipelines/fetch/download_fsds.py --from 2009q2 --to latest --dest data/raw/fsds`:
 - Skip files that exist with a matching size, and record SHA-256 in `data/raw/fsds/_manifest.json`.
 - Extract each ZIP to `data/raw/fsds/{q}/{sub,num,tag,pre}.txt`, then gzip each `.txt`. Spark reads gzip directly; files aren't splittable, but parallelism comes from about 70 quarters × 4 files.
+- **S3 destination: deferred.** The downloader supports local destinations only (`boto3` is not a dependency yet); it is needed before the EMR run (§3.8).
 - For AWS, the same script runs on a temporary EC2 instance (or the serving box later) with `--dest s3://<lake>/raw/fsds/`. Data transfer into AWS is free and much faster than uploading from home [Likely].
 
 ### 3.3 Spark session factory (0.5 h)
@@ -57,10 +58,10 @@ spark.jars                           = <Iceberg runtime jar bundled with the EMR
 
 ### 3.5 `normalize_facts` (6 h; **you write the fiscal/dedup core**)
 
-**Filters for company-level consolidated facts:** `coreg IS NULL` and (`segments` IS NULL or empty). Dimensional facts go to `curated.facts_dimensional` (keep them; S1 and future work may use them).
+**Filters for company-level consolidated facts:** `coreg IS NULL` and (`segments` IS NULL or empty). Dimensional facts (`segments` non-empty, `coreg IS NULL`) go to `curated.facts_dimensional` (keep them; S1 and future work may use them). Co-registrant rows (`coreg IS NOT NULL`) are not curated and stay in `raw.fsds_num`. In `raw.fsds_num` an absent `segments`/`coreg` may load as NULL or `''`; treat both as empty.
 
 **Derived columns:**
-- `taxonomy` = prefix of `version` (`us-gaap`, `dei`, `srt`, `ifrs-full`, …), or `custom` when `version == adsh`; `is_custom`.
+- `taxonomy` = the **year-stripped** family of `version` (`us-gaap/2023` → `us-gaap`; also `dei`, `srt`, `ifrs-full`, …), or `custom` when `version == adsh`; `is_custom`. The year is dropped on purpose: a restatement filed under a newer taxonomy year must land on the same `fact_key` as the original (ADR-020).
 - `period_end = to_date(ddate)`; `period_start` ≈ `period_end − qtrs quarters + 1 day` (approximate; companyfacts has exact `start` dates, so note this in the DQ report).
 
 **Fiscal-period rules (the part interviewers probe):**
@@ -68,11 +69,11 @@ spark.jars                           = <Iceberg runtime jar bundled with the EMR
 2. `y_end(E)` = the smallest year `y` such that `E ≤ date(y, fye_mm, fye_dd) + 7 days`. The 7-day tolerance absorbs 52/53-week years. Apple's FY2022 ended 2022-09-24 and FY2023 ended 2023-09-30, both inside the window [Certain].
 3. **Label offset per company.** Companies name fiscal years differently. Some name a year by the calendar year it ends in, others by the year it begins in (common among retailers whose year ends in late January or early February) [Likely]. So compute `label_offset(cik) = mode(sub.fy − y_end(sub.period))` over that company's 10-K submissions, and set `fiscal_year = y_end(E) + label_offset`. Flag companies whose offset isn't constant.
 4. `fiscal_period`: `qtrs=4 → FY`; `qtrs=0 → INSTANT` (store the quarter index too); `qtrs=1 → Q{n}`, where `n` = the number of whole quarters from fiscal-year start to `E` (with a tolerance); `qtrs=2 → H1`; `qtrs=3 → 9M`.
-5. **Q4 is often never reported directly.** Derive `Q4 = FY − 9M` for **flow** concepts (same tag/uom) and mark it `dq_flags += 'q4_derived'` with fact provenance. **Never derive** Q4 for instants or per-share and ratio concepts (EPS isn't additive).
+5. **Q4 is often never reported directly.** Derive `Q4 = FY − 9M` for **flow** concepts (same tag/uom) and mark it `dq_flags += 'q4_derived'`. Derive only when no directly reported `qtrs = 1` fact exists for that series and period end in the same accession (a direct row wins, which also keeps `(fact_key, accession)` unique). The derived row has `source = 'fsds'`, the form and accession of the 10-K-family filing that supplies the FY figure (normally `10-K`), `qtrs = 1`, `period_end` = the FY end, and `derived_from = [FY fact_id, 9M fact_id]` so the verifier (M6) can re-execute FY − 9M. **Never derive** Q4 for instants or per-share and ratio concepts (EPS isn't additive).
 6. `calendar_frame`: `CY{yyyy}` for about 12-month periods ending within ±30 days of Dec 31; `CY{yyyy}Q{n}` for quarters by calendar quarter of `E`; suffix `I` for instants. Cross-check against companyfacts `frame` on the spot-check companies.
 
 **Dedup and restatements:**
-- `fact_key = xxhash64(cik, tag, taxonomy, period_end, qtrs, uom)`. Use Spark's built-in `xxhash64` (no Python dependency, which matters on EMR).
+- `fact_key = xxhash64(cik, tag, taxonomy, period_end, qtrs, uom)` (`facts_dimensional` also hashes `segments`), with `taxonomy` as defined above. Use Spark's built-in `xxhash64` (no Python dependency, which matters on EMR). DuckDB has no equivalent, so the Spark-vs-DuckDB differential test (§3.7) compares on the natural key and leaves the hash columns out; `derived_from` is compared by resolving each id back to its natural key.
 - `facts_history`: every (fact_key, accession) row with `filed`, `form`, `is_amendment`.
 - **Latest** version = max(`filed`), then max(`accession`). **Original** version = the version from the filing whose own reporting period covers the fact's fiscal period (or the earliest `filed` if none matches).
 - `curated.facts` holds one row per fact_key **plus** a second row when the original value differs from the latest, with flags `is_latest` and `is_original`. `n_versions`; `is_restated` = more than one distinct value.
@@ -145,7 +146,7 @@ End with `/dod M1`, `/adr "DuckDB vs Spark for XBRL normalization"`, `/adr "As-o
 
 ## 7. Definition of done
 
-- [ ] `raw.*` and `curated.*` exist locally (2 quarters) and in Glue/S3 (full history).
+- [ ] `raw.*` and `curated.*` (including `facts_dimensional`) exist locally (2 quarters) and in Glue/S3 (full history).
 - [ ] T1 recorded: exact `raw.fsds_num` rows, `curated.facts` rows, bytes in S3.
 - [ ] T2 recorded: EMR minutes and $ for the full rebuild (from job metrics, not guessed).
 - [ ] Second-source spot check: 60/60, or every mismatch explained in the DQ report.

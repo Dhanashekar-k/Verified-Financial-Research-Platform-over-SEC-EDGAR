@@ -121,26 +121,55 @@ CREATE TABLE lake.curated.companies (
 ) USING iceberg;
 
 CREATE TABLE lake.curated.facts_history (       -- every reported version of every fact
-  fact_key bigint,            -- xxhash64(cik, tag, version_std, period_end, qtrs, uom)
+  fact_id bigint,             -- xxhash64(fact_key, accession): unique per version (same as facts.fact_id)
+  fact_key bigint,            -- xxhash64(cik, tag, taxonomy, period_end, qtrs, uom); taxonomy is the year-stripped family (see below)
   cik int, tag string, taxonomy string, is_custom boolean, uom string, qtrs int,
   period_start date, period_end date,
   fiscal_year int, fiscal_period string,       -- FY | Q1..Q4 | H1 | 9M | INSTANT
   calendar_frame string,                       -- e.g. CY2023, CY2023Q3, CY2023Q3I
   value decimal(28,4),
-  accession string, form string, filed date, is_amendment boolean, source string
+  accession string, form string, filed date, is_amendment boolean,
+  dq_flags array<string>,     -- same meaning as in facts; carried here so rebuilding facts from history keeps them
+  source string,              -- 'fsds' in M1. 'companyfacts' is reserved for the M10 incremental path; M1 uses companyfacts only as a cross-check
+  derived_from array<bigint>  -- null unless this row is a derived Q4: then [fact_id of the FY fact, fact_id of the 9M fact]
 ) USING iceberg PARTITIONED BY (fiscal_year);
+-- Consolidated facts only (coreg IS NULL and segments null/empty). Segmented rows go to facts_dimensional.
+-- taxonomy = the prefix of FSDS `version` with the year stripped: 'us-gaap/2023' -> 'us-gaap', 'dei/2023' -> 'dei';
+-- 'custom' when version == adsh. The year is NOT part of fact_key: restating a filing under a newer taxonomy year
+-- must land on the same fact_key as the original, otherwise a fact and its restatement would never be grouped.
+-- Derived Q4 rows (M01 §3.5 rule 5; flow concepts only, never instants or per-share/ratio concepts):
+--   source = 'fsds', form and accession = those of the 10-K-family filing that supplies the FY figure (normally '10-K'),
+--   qtrs = 1, period_end = the FY end, fiscal_period = 'Q4', dq_flags contains 'q4_derived',
+--   derived_from = [FY fact_id, 9M fact_id] so M6 can re-execute FY - 9M.
+--   Their fact_key differs from the FY fact's (qtrs 1 vs 4). A directly reported Q4 (qtrs = 1, same period_end) in the same
+--   accession would collide on (fact_key, accession), so a direct row always wins and Q4 is derived only when none exists.
 
 CREATE TABLE lake.curated.facts (               -- latest version per fact_key, plus the original when it differs (M1 §3.5)
   fact_id bigint,             -- xxhash64(fact_key, accession): unique per version
-  fact_key bigint,            -- groups versions of the same fact
+  fact_key bigint,            -- groups versions of the same fact; same definition as facts_history.fact_key
   cik int, tag string, taxonomy string, is_custom boolean, uom string, qtrs int,
   period_start date, period_end date, fiscal_year int, fiscal_period string, calendar_frame string,
   value decimal(28,4), accession string, form string, filed date,
   is_latest boolean, is_original boolean,      -- both true when the value was never restated
   n_versions int, is_restated boolean,         -- restated = more than one distinct value across versions
   dq_flags array<string>,                      -- e.g. ['fy_mismatch_companyfacts','q4_derived']
+  derived_from array<bigint>,                  -- same meaning as in facts_history (derived Q4 only)
   anomaly_score float                          -- filled by S1 (null until then)
 ) USING iceberg PARTITIONED BY (fiscal_year);
+-- Consolidated facts only: coreg IS NULL and segments null/empty. This is the table the plan compiler reads.
+
+CREATE TABLE lake.curated.facts_dimensional (   -- segmented (dimensional) rows, kept out of facts so they can't leak into company totals
+  fact_id bigint,             -- xxhash64(fact_key, accession)
+  fact_key bigint,            -- xxhash64(cik, tag, taxonomy, period_end, qtrs, uom, segments)
+  cik int, tag string, taxonomy string, is_custom boolean, uom string, qtrs int,
+  segments string,            -- FSDS `segments` value, non-empty by definition
+  period_start date, period_end date, fiscal_year int, fiscal_period string, calendar_frame string,
+  value decimal(28,4), accession string, form string, filed date,
+  is_latest boolean, is_original boolean, n_versions int, is_restated boolean,   -- same semantics as facts
+  dq_flags array<string>
+) USING iceberg PARTITIONED BY (fiscal_year);
+-- Rows with segments non-empty and coreg IS NULL. Not loaded into Postgres (M3) until a milestone needs them.
+-- Co-registrant rows (coreg IS NOT NULL) are not curated; they stay in raw.fsds_num.
 
 CREATE TABLE lake.curated.filings (
   accession string, cik int, form string, filed date, accepted_at timestamp, period_of_report date,
@@ -190,7 +219,8 @@ CREATE TABLE facts_v7 (
   fiscal_year smallint NOT NULL, fiscal_period text NOT NULL, calendar_frame text,
   value numeric NOT NULL, accession text NOT NULL, form text NOT NULL, filed date NOT NULL,
   is_latest boolean NOT NULL, is_original boolean NOT NULL,
-  is_restated boolean NOT NULL DEFAULT false, anomaly_score real
+  is_restated boolean NOT NULL DEFAULT false, anomaly_score real,
+  derived_from bigint[]                                           -- derived Q4 only; the verifier (M6) re-executes FY - 9M from these
 );
 CREATE INDEX ON facts_v7 (cik, tag, fiscal_year, fiscal_period, uom) WHERE is_original;   -- default answer path
 CREATE INDEX ON facts_v7 (fact_key);

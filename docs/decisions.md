@@ -37,3 +37,13 @@ Planned ADRs (fill in as you reach them): 005 one EC2 box vs Lambda + Aurora (M9
 **Decision:** (b). Streaming is shown in Project 2.
 **Consequences:** DRAFT (Claude; rewrite in your own words): The design stays simple: one scheduler, SQS fan-out with a DLQ, and one consumer, which is cheap and easy to explain. The cost is no replayable event log and no sub-hour freshness, so reprocessing means re-running from the lake and the DLQ needs monitoring. If requirements change (many consumers, tighter freshness), this ADR has to be revisited, and the earnings-season volume estimate should be replaced with the M10 measurement.
 **How to revisit:** sub-hour freshness requirements, many independent consumers, or a need for replayable event history.
+
+## ADR-020: `fact_key` excludes the taxonomy year (2026-11-17)
+**Status:** proposed (stub: Shekar fills in the body)
+**Context:** TODO(Shekar). Prompts: what `fact_key` has to do (group every reported version of one fact across filings); what changes in `version` between an original filing and a later restatement (`us-gaap/2022` vs `us-gaap/2023`); what happens to `facts_history` and `n_versions` if the year is part of the key.
+**Options considered:** TODO(Shekar). (a) key over the full `version` string; (b) key over the year-stripped taxonomy family (`us-gaap`, `dei`, `custom`); (c) key over a normalized concept ID from a standard-taxonomy mapping.
+**Decision:** TODO(Shekar). Current contract: `fact_key = xxhash64(cik, tag, taxonomy, period_end, qtrs, uom)` with `taxonomy` year-stripped (`docs/plan/05_data_contracts.md` §2.2).
+**Consequences:** TODO(Shekar). Prompts: a tag whose meaning changes between taxonomy years now shares a key; custom tags are keyed by `custom` plus the tag and CIK; the Spark and DuckDB twins must derive `taxonomy` identically.
+**How to revisit:** TODO(Shekar).
+
+> Numbering note: ADR-005 is already reserved for "one EC2 box vs Lambda + Aurora" (`docs/plan/03_architecture_and_stack.md`, planned list above), so this one is ADR-020. Renumber if you prefer; the only other reference is the `taxonomy` bullet in `docs/plan/M01_xbrl_lakehouse.md` §3.5.
