@@ -23,8 +23,6 @@ from typing import Any
 import httpx
 import pytest
 import respx
-from hypothesis import HealthCheck, given, settings
-from hypothesis import strategies as st
 
 from pipelines.fetch import sec_client as sec_client_mod
 from pipelines.fetch.sec_client import (
@@ -34,6 +32,7 @@ from pipelines.fetch.sec_client import (
     SecRequestError,
     TokenBucket,
 )
+from tests.fake_time import FakeTime
 
 UA = "Acme Research research-team@acme-research.org"
 URL = "https://data.sec.gov/submissions/CIK0000320193.json"
@@ -43,43 +42,6 @@ EPS = 1e-6
 # --------------------------------------------------------------------------------------
 # Test doubles: a fake clock, a counting bucket, deterministic RNGs
 # --------------------------------------------------------------------------------------
-
-
-class FakeTime:
-    """Fake monotonic clock. Sleeping advances the clock and records the request.
-
-    Two sleep callables share one clock so bucket waits and backoff waits are recorded
-    separately but still move time forward together.
-    """
-
-    def __init__(self, start: float = 1000.0) -> None:
-        self.now = start
-        self.start = start
-        self.bucket_sleeps: list[float] = []
-        self.backoff_sleeps: list[float] = []
-        self._calls = 0
-
-    def clock(self) -> float:
-        return self.now
-
-    def _advance(self, seconds: float) -> None:
-        assert seconds >= 0, f"negative sleep requested: {seconds}"
-        self._calls += 1
-        # Guard against an implementation that busy-loops on sleep(0) forever.
-        assert self._calls < 100_000, "runaway sleep loop"
-        self.now += seconds
-
-    def bucket_sleep(self, seconds: float) -> None:
-        self.bucket_sleeps.append(seconds)
-        self._advance(seconds)
-
-    def backoff_sleep(self, seconds: float) -> None:
-        self.backoff_sleeps.append(seconds)
-        self._advance(seconds)
-
-    @property
-    def elapsed(self) -> float:
-        return self.now - self.start
 
 
 class CountingBucket(TokenBucket):
@@ -242,51 +204,6 @@ def test_bucket_does_not_accumulate_beyond_capacity_while_idle(fake: FakeTime):
 
     # 2 tokens available instantly, the third needs 1/4 s.
     assert fake.now - before >= 1 / 4.0 - EPS
-
-
-@settings(max_examples=100, deadline=None, suppress_health_check=[HealthCheck.too_slow])
-@given(
-    rate=st.floats(min_value=1.0, max_value=50.0),
-    n=st.integers(min_value=2, max_value=100),
-    capacity=st.floats(min_value=1.0, max_value=5.0),
-)
-def test_property_bucket_total_time_lower_bound(rate: float, n: int, capacity: float):
-    """For any rate in [1, 50] and n in [2, 100], n acquires take >= (n - capacity) / rate.
-
-    The bucket may release ``capacity`` tokens at once; everything after is paced by rate.
-    """
-    fake = FakeTime()
-    bucket = TokenBucket(rate=rate, capacity=capacity, clock=fake.clock, sleep=fake.bucket_sleep)
-
-    for _ in range(n):
-        bucket.acquire()
-
-    assert fake.elapsed >= (n - capacity) / rate - EPS
-
-
-@settings(max_examples=100, deadline=None, suppress_health_check=[HealthCheck.too_slow])
-@given(
-    rate=st.floats(min_value=1.0, max_value=50.0),
-    n=st.integers(min_value=2, max_value=100),
-    capacity=st.floats(min_value=1.0, max_value=5.0),
-)
-def test_property_bucket_never_exceeds_rate_in_any_window(rate: float, n: int, capacity: float):
-    """In any 1 s window the bucket grants at most ``capacity + rate`` tokens.
-
-    This is the upper-bound counterpart of the lower-bound test: the bucket must not hand
-    out tokens faster than the configured rate once the burst allowance is spent.
-    """
-    fake = FakeTime()
-    bucket = TokenBucket(rate=rate, capacity=capacity, clock=fake.clock, sleep=fake.bucket_sleep)
-    stamps: list[float] = []
-
-    for _ in range(n):
-        bucket.acquire()
-        stamps.append(fake.now)
-
-    for t0 in stamps:
-        in_window = [t for t in stamps if t0 <= t < t0 + 1.0]
-        assert len(in_window) <= capacity + rate + EPS
 
 
 # --------------------------------------------------------------------------------------

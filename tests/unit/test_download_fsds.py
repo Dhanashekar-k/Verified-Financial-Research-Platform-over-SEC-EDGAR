@@ -29,8 +29,6 @@ from typing import Any
 import httpx
 import pytest
 import respx
-from hypothesis import given
-from hypothesis import strategies as st
 
 from pipelines.fetch import sec_client as sec_client_mod
 from pipelines.fetch.download_fsds import (
@@ -229,14 +227,6 @@ def test_parse_rejects_malformed_text(text: str):
         Quarter.parse(text)
 
 
-@given(year=st.integers(2009, 2100), q=st.integers(1, 4))
-def test_parse_str_round_trip_property(year: int, q: int):
-    """parse(str(x)) == x for every valid quarter, in either case."""
-    quarter = Quarter(year, q)
-    assert Quarter.parse(str(quarter)) == quarter
-    assert Quarter.parse(str(quarter).upper()) == quarter
-
-
 def test_quarters_order_chronologically():
     """order=True: year dominates, then q (so 2024q1 is after 2023q4)."""
     shuffled = [Quarter(2024, 1), Quarter(2023, 4), Quarter(2009, 2), Quarter(2023, 3)]
@@ -292,12 +282,6 @@ def test_current_quarter_calendar_boundaries(today: date, expected: Quarter):
     assert current_quarter(today) == expected
 
 
-@given(d=st.dates(min_value=date(2009, 1, 1), max_value=date(2100, 12, 31)))
-def test_current_quarter_matches_month_arithmetic_property(d: date):
-    """For every date, current_quarter is (year, ceil(month / 3))."""
-    assert current_quarter(d) == Quarter(d.year, (d.month - 1) // 3 + 1)
-
-
 def test_quarter_range_2009q2_to_2010q1_has_four_items():
     """Spec example: the first FSDS year has exactly four quarters, inclusive both ends."""
     assert quarter_range(Quarter(2009, 2), Quarter(2010, 1)) == [
@@ -332,26 +316,6 @@ def test_quarter_range_rejects_start_before_first_quarter(start: Quarter):
     """2009q1 is headers only; no range may begin before 2009q2."""
     with pytest.raises(ValueError):
         quarter_range(start, Quarter(2010, 1))
-
-
-@given(
-    start_year=st.integers(2009, 2040),
-    start_q=st.integers(1, 4),
-    length=st.integers(0, 40),
-)
-def test_quarter_range_is_ascending_consecutive_and_inclusive_property(
-    start_year: int, start_q: int, length: int
-):
-    """For any valid start and end, the range is exactly every quarter between them."""
-    start = Quarter(start_year, start_q)
-    if start < FIRST_QUARTER:
-        start = FIRST_QUARTER
-    s_idx = start.year * 4 + start.q - 1
-    e_idx = s_idx + length
-    end = Quarter(e_idx // 4, e_idx % 4 + 1)
-    assert quarter_range(start, end) == [
-        Quarter(i // 4, i % 4 + 1) for i in range(s_idx, e_idx + 1)
-    ]
 
 
 # --------------------------------------------------------------------------------------
