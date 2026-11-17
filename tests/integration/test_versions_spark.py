@@ -16,6 +16,7 @@ from typing import Any
 import pytest
 from pyspark.sql import DataFrame, SparkSession
 from pyspark.sql.types import (
+    ArrayType,
     BooleanType,
     DateType,
     DecimalType,
@@ -167,3 +168,48 @@ def test_spark_output_rows_are_selected_input_rows(spark: SparkSession) -> None:
         )
         assert (r["period_end"], r["filing_period"]) == (v.period_end, v.filing_period)
     assert date(2023, 4, 20) in {r["filed"] for r in out.collect()}
+
+
+def test_a_derived_row_sharing_the_identity_of_a_real_row_never_displaces_it(
+    spark: SparkSession,
+):
+    """A derived Q4 takes its FY parent's accession, so it can share (fact_key, accession,
+    fact_id) with a real quarter row. Whatever the row order or partitioning, the real row wins.
+    """
+    schema = StructType(
+        [*VERSION_SCHEMA.fields, StructField("derived_from", ArrayType(LongType()))]
+    )
+    real = (1, 77, date(2023, 9, 30), Decimal("12131.0000"), "0001-23-000018", "10-Q",
+            date(2023, 10, 27), False, date(2023, 9, 30), None)  # fmt: skip
+    seen = set()
+    for derived_value in ("100.0000", "12685.0000"):  # lower and higher than the real row
+        derived = (1, 77, date(2023, 9, 30), Decimal(derived_value), "0001-23-000018", "10-Q",
+                   date(2023, 10, 27), False, date(2023, 9, 30), [8, 9])  # fmt: skip
+        _check_derived_never_displaces_real(spark, schema, real, derived, seen)
+
+    assert len(seen) == 1
+
+
+def _check_derived_never_displaces_real(spark, schema, real, derived, seen):  # type: ignore[no-untyped-def]
+    for rows, partitions in (([real, derived], 1), ([derived, real], 1), ([derived, real], 2),
+                             ([real, derived], 2)):  # fmt: skip
+        df = spark.createDataFrame(rows, schema).repartition(partitions)
+        out = select_versions(df).collect()
+        assert len(out) == 1
+        assert out[0]["derived_from"] is None and out[0]["value"] == Decimal("12131.0000")
+        assert (out[0]["is_latest"], out[0]["is_original"], out[0]["n_versions"]) == (True, True, 2)
+        seen.add((out[0]["value"], out[0]["n_versions"]))
+
+
+def test_rows_tied_on_every_key_resolve_to_the_non_null_value_first(spark: SparkSession):
+    """NULLS LAST in the tie-break, the same as the DuckDB twin: a NULL value never wins a tie."""
+    schema = StructType(
+        [*VERSION_SCHEMA.fields, StructField("derived_from", ArrayType(LongType()))]
+    )
+    real = (1, 77, date(2023, 9, 30), Decimal("12131.0000"), "0001-23-000018", "10-Q",
+            date(2023, 10, 27), False, date(2023, 9, 30), None)  # fmt: skip
+    with_null = (*real[:3], None, *real[4:])
+    for rows in ([real, with_null], [with_null, real]):
+        out = select_versions(spark.createDataFrame(rows, schema)).collect()
+
+        assert any(r["is_latest"] and r["value"] == Decimal("12131.0000") for r in out)

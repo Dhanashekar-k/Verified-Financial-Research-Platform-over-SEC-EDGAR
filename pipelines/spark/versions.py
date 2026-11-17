@@ -54,8 +54,15 @@ def select_versions(df: DataFrame) -> DataFrame:
     )
 
     # Latest: newest filed, ties -> largest accession. fact_id only makes the order total.
+    # A derived Q4 takes its FY parent's accession, so it can share (fact_key, accession, fact_id)
+    # with a real quarter row. The order must still be total, or reruns differ: the real row (no
+    # `derived_from`) comes first, then the value. This makes the choice repeatable; it does not
+    # fix the collision itself.
+    tie = [F.col("value").asc_nulls_last()]
+    if "derived_from" in df.columns:
+        tie = [F.col("derived_from").isNotNull().asc(), *tie]
     latest_order = by_key.orderBy(
-        F.col("filed").desc(), F.col("accession").desc(), F.col("fact_id").desc()
+        F.col("filed").desc(), F.col("accession").desc(), F.col("fact_id").desc(), *tie
     )
     # Original: native rows first (only if the group has any), then oldest filed, then smallest
     # accession.
@@ -64,6 +71,7 @@ def select_versions(df: DataFrame) -> DataFrame:
         F.col("filed").asc(),
         F.col("accession").asc(),
         F.col("fact_id").asc(),
+        *tie,
     )
 
     ranked = (
