@@ -127,8 +127,8 @@ CREATE TABLE lake.curated.facts_history (       -- every reported version of eve
   fact_key bigint,            -- xxhash64(cik, tag, taxonomy, period_end, qtrs, uom); taxonomy is the year-stripped family (see below)
   cik int, tag string, taxonomy string, is_custom boolean, uom string, qtrs int,
   period_start date, period_end date,
-  fiscal_year int, fiscal_period string,       -- FY | Q1..Q4 | H1 | 9M | INSTANT
-  calendar_frame string,                       -- e.g. CY2023, CY2023Q3, CY2023Q3I
+  fiscal_year int, fiscal_period string,       -- FY | Q1..Q4 | H1 | 9M; an instant (qtrs = 0) is FY at the year end, else Q1..Q3
+  calendar_frame string,                       -- e.g. CY2023, CY2023Q3, CY2023Q3I; the trailing I (with qtrs = 0) marks an instant
   value decimal(28,4),
   accession string, form string, filed date, is_amendment boolean,
   dq_flags array<string>,     -- same meaning as in facts; carried here so rebuilding facts from history keeps them
@@ -139,10 +139,14 @@ CREATE TABLE lake.curated.facts_history (       -- every reported version of eve
 -- taxonomy = the prefix of FSDS `version` with the year stripped: 'us-gaap/2023' -> 'us-gaap', 'dei/2023' -> 'dei';
 -- 'custom' when version == adsh. The year is NOT part of fact_key: restating a filing under a newer taxonomy year
 -- must land on the same fact_key as the original, otherwise a fact and its restatement would never be grouped.
--- Derived Q4 rows (M01 §3.5 rule 5; flow concepts only, never instants or per-share/ratio concepts):
---   source = 'fsds', form and accession = those of the 10-K-family filing that supplies the FY figure (normally '10-K'),
+-- Derived Q4 rows (M01 §3.5 rule 5; flow concepts only, never instants, nor per-share ('/'), 'pure' or 'shares' units):
+--   source = 'fsds', form and accession = those of the FY parent row (normally a '10-K'; never hard-coded),
 --   qtrs = 1, period_end = the FY end, fiscal_period = 'Q4', dq_flags contains 'q4_derived',
 --   derived_from = [FY fact_id, 9M fact_id] so M6 can re-execute FY - 9M.
+--   Derived per provenance tier within (cik, tag, taxonomy, uom, fiscal_year): the original Q4 from the original FY and 9M,
+--   the latest Q4 from the latest FY and 9M. derived_from points only at parent rows that `facts` retains (when a parent's
+--   latest and original values are equal, the single retained row carries the latest accession). Ties between candidate
+--   parents go to the latest filed. Same Q4 value in both tiers collapses to one row, like any other fact.
 --   Their fact_key differs from the FY fact's (qtrs 1 vs 4). A directly reported Q4 (qtrs = 1, same period_end) in the same
 --   accession would collide on (fact_key, accession), so a direct row always wins and Q4 is derived only when none exists.
 
