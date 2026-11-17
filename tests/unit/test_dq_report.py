@@ -48,6 +48,8 @@ def full_metrics() -> dict[str, Any]:
             "null_value": 3,
             "unparseable_ddate": 0,
             "no_matching_sub": 2,
+            "no_fye": 6,
+            "dropped_any": 9,
         },
         "curated_facts": {
             "rows": 1000,
@@ -185,3 +187,13 @@ def test_drop_counts_section_lists_every_cause():
 
     assert "no `sub` row for the accession | 2 |" in text
     assert "`value` is NULL | 3 |" in text
+    assert "`ddate` is not a valid yyyymmdd date | 0 |" in text
+    assert "no fiscal year end (`sub.fye` NULL or empty) | 6 |" in text
+
+
+def test_drop_counts_section_shows_the_distinct_total_and_what_is_kept():
+    """The causes overlap, so the section must also give the distinct total: 9 of 120 rows."""
+    text = render_report(full_metrics())
+
+    assert "dropped for at least one cause** (each row once) | 9 |" in text
+    assert "Of 120 raw rows" in text

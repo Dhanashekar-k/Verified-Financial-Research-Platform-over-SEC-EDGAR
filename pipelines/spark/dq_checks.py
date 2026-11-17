@@ -263,23 +263,49 @@ def apple_revenue_curated(spark: SparkSession, curated_ns: str) -> dict[str, Any
 
 
 def drop_counts(spark: SparkSession, raw_ns: str) -> dict[str, Any]:
-    """Raw `num` rows that `normalize_facts.prepare_facts` drops, by cause (not exclusive)."""
+    """Raw `num` rows that `normalize_facts.prepare_facts` drops, by cause (not exclusive).
+
+    `dropped_any` counts each dropped row once, whatever its causes. `no_fye` follows
+    `prepare_facts`: the fye of the LATEST `sub` row of the accession (src_quarter, ingested_at),
+    NULL or empty. A row with no `sub` row at all is `no_matching_sub`, not `no_fye`.
+    """
     num = spark.table(f"{raw_ns}.fsds_num")
-    sub = spark.table(f"{raw_ns}.fsds_sub").select("adsh").distinct()
-    total = num.count()
-    row = num.agg(
-        F.sum(F.col("value").isNull().cast("int")).alias("null_value"),
-        F.sum(F.to_date(F.col("ddate").cast("string"), "yyyyMMdd").isNull().cast("int")).alias(
-            "bad_date"
-        ),
+    latest = Window.partitionBy("adsh").orderBy(
+        F.col("src_quarter").desc(), F.col("ingested_at").desc()
+    )
+    subs = (
+        spark.table(f"{raw_ns}.fsds_sub")
+        .withColumn("_rn", F.row_number().over(latest))
+        .where(F.col("_rn") == 1)
+        .select("adsh", blank("fye").alias("_sub_has_no_fye"))
+    )
+    # left join: a row without a `sub` row gets NULL here; with one, a non-null true/false
+    flagged = (
+        num.join(subs, "adsh", "left")
+        .select(
+            F.col("value").isNull().alias("null_value"),
+            F.to_date(F.col("ddate").cast("string"), "yyyyMMdd").isNull().alias("bad_date"),
+            F.col("_sub_has_no_fye").isNull().alias("no_sub"),
+            F.coalesce(F.col("_sub_has_no_fye"), F.lit(False)).alias("no_fye"),
+        )
+        .withColumn(
+            "any", F.col("null_value") | F.col("bad_date") | F.col("no_sub") | F.col("no_fye")
+        )
+    )
+    row = flagged.agg(
+        F.count(F.lit(1)).alias("rows"),
+        *[F.sum(F.col(c).cast("int")).alias(c) for c in ("null_value", "bad_date", "no_sub")],
+        F.sum(F.col("no_fye").cast("int")).alias("no_fye"),
+        F.sum(F.col("any").cast("int")).alias("dropped_any"),
     ).first()
     assert row is not None
-    no_sub = num.join(sub, "adsh", "left_anti").count()
     return {
-        "rows": total,
-        "null_value": row["null_value"],
-        "unparseable_ddate": row["bad_date"],
-        "no_matching_sub": no_sub,
+        "rows": row["rows"],
+        "null_value": row["null_value"] or 0,
+        "unparseable_ddate": row["bad_date"] or 0,
+        "no_matching_sub": row["no_sub"] or 0,
+        "no_fye": row["no_fye"] or 0,
+        "dropped_any": row["dropped_any"] or 0,
     }
 
 
@@ -431,6 +457,8 @@ def render_report(m: dict[str, Any]) -> str:
             ("null_value", "`value` is NULL"),
             ("unparseable_ddate", "`ddate` is not a valid yyyymmdd date"),
             ("no_matching_sub", "no `sub` row for the accession"),
+            ("no_fye", "no fiscal year end (`sub.fye` NULL or empty)"),
+            ("dropped_any", "**dropped for at least one cause** (each row once)"),
         ):
             add(f"| {label} | {d[key]:,} | {pct(d[key] / d['rows'] if d['rows'] else None)} |")
         add(f"\nOf {d['rows']:,} raw rows.")

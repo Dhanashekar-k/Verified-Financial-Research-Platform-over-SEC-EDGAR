@@ -21,6 +21,9 @@ from pipelines.spark.dq_checks import (
 from pipelines.spark.raw_schemas import PRE_SOURCE, TAG_SOURCE
 from tests.raw_builders import A_K, A_Q, INGESTED, num_df, sub_df
 
+NO_FYE = "0000000000-23-000009"  # a submission whose sub.fye is NULL
+EMPTY_FYE = "0000000000-23-000008"  # a submission whose sub.fye is ''
+
 
 def make_raw(spark: SparkSession, ns: str) -> str:
     """Raw tables: num/sub in quarters 2023q3 and 2024q1 (a gap at 2023q4); tag/pre empty."""
@@ -181,20 +184,73 @@ def test_drop_counts_and_blank_equivalence_on_raw(spark: SparkSession, lake_name
                 {"tag": "BadDate", "ddate": 20231399},
                 {"tag": "Orphan", "adsh": "0000000000-23-000001"},
                 {"tag": "EmptySeg", "segments": ""},  # '' counts as absent, like NULL
+                {"tag": "NoFye", "adsh": NO_FYE},  # S-1: its sub row has no fye
+                {"tag": "EmptyFye", "adsh": EMPTY_FYE},  # '' counts as absent, like NULL
+                {"tag": "Both", "adsh": NO_FYE, "value": None},  # two causes: counted in each
             ],
         )
         num.writeTo(f"{ns}.fsds_num").using("iceberg").create()
-        sub_df(spark).writeTo(f"{ns}.fsds_sub").using("iceberg").create()
+        subs = sub_df(
+            spark,
+            [
+                {},
+                {"adsh": NO_FYE, "form": "S-1", "fye": None},
+                {"adsh": EMPTY_FYE, "form": "8-K", "fye": ""},
+            ],
+        )
+        subs.writeTo(f"{ns}.fsds_sub").using("iceberg").create()
 
         d = drop_counts(spark, ns)
         shares = raw_shares(spark.table(f"{ns}.fsds_num"))
 
         assert d == {
-            "rows": 5,
-            "null_value": 1,
+            "rows": 8,
+            "null_value": 2,
             "unparseable_ddate": 1,
             "no_matching_sub": 1,
+            "no_fye": 3,
+            # distinct rows: NoValue, BadDate, Orphan, NoFye, EmptyFye, Both (not 2+1+1+3 = 7)
+            "dropped_any": 6,
         }
         assert shares["segmented"]["rows"] == 0  # '' is not 'segmented'
+    finally:
+        drop_all(spark, ns)
+
+
+def test_drop_counts_account_for_every_raw_row_the_job_sees(
+    spark: SparkSession, lake_namespace: str
+):
+    """The DQ query and `prepare_facts` are two implementations of one filter. Every raw row is
+    either dropped (dropped_any), a co-registrant row (not curated), or reaches the fiscal step.
+    """
+    from pipelines.spark.dq_checks import drop_counts
+    from pipelines.spark.normalize_facts import prepare_facts
+
+    ns = f"{lake_namespace}_raw"
+    spark.sql(f"CREATE NAMESPACE IF NOT EXISTS {ns}")
+    try:
+        num = num_df(
+            spark,
+            [
+                {"tag": "Ok"},
+                {"tag": "Seg", "segments": "A=B"},
+                {"tag": "Coreg", "coreg": "Sub Inc"},
+                {"tag": "NoValue", "value": None},
+                {"tag": "BadDate", "ddate": 20231399},
+                {"tag": "Orphan", "adsh": "0000000000-23-000001"},
+                {"tag": "NoFye", "adsh": NO_FYE},
+            ],
+        )
+        subs = sub_df(spark, [{}, {"adsh": NO_FYE, "form": "S-1", "fye": None}])
+        num.writeTo(f"{ns}.fsds_num").using("iceberg").create()
+        subs.writeTo(f"{ns}.fsds_sub").using("iceberg").create()
+
+        d = drop_counts(spark, ns)
+        prepared = prepare_facts(spark.table(f"{ns}.fsds_num"), spark.table(f"{ns}.fsds_sub"))
+        reached = prepared.consolidated.count() + prepared.dimensional.count()
+        coreg_rows = spark.table(f"{ns}.fsds_num").where("tag = 'Coreg'").count()
+
+        assert (d["rows"], d["dropped_any"], reached, coreg_rows) == (7, 4, 2, 1)
+        assert d["rows"] == d["dropped_any"] + reached + coreg_rows
     finally:
         drop_all(spark, ns)
