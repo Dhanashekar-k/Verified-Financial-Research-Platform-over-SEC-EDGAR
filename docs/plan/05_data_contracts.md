@@ -123,7 +123,7 @@ CREATE TABLE lake.curated.companies (
 ) USING iceberg;
 
 CREATE TABLE lake.curated.facts_history (       -- every reported version of every fact
-  fact_id bigint,             -- xxhash64(fact_key, accession): unique per version (same as facts.fact_id)
+  fact_id bigint,             -- xxhash64(fact_key, accession): unique per version (same as facts.fact_id). A derived Q4 (derived_from not null) uses xxhash64(fact_key, accession, nine_month_accession) instead, so it can never equal a real fact's fact_id (ADR-022)
   fact_key bigint,            -- xxhash64(cik, tag, taxonomy, period_end, qtrs, uom); taxonomy is the year-stripped family (see below)
   cik int, tag string, taxonomy string, is_custom boolean, uom string, qtrs int,
   period_start date, period_end date,
@@ -140,13 +140,18 @@ CREATE TABLE lake.curated.facts_history (       -- every reported version of eve
 -- 'custom' when version == adsh. The year is NOT part of fact_key: restating a filing under a newer taxonomy year
 -- must land on the same fact_key as the original, otherwise a fact and its restatement would never be grouped.
 -- Derived Q4 rows (M01 §3.5 rule 5; flow concepts only, never instants, nor per-share ('/'), 'pure' or 'shares' units):
---   source = 'fsds', form and accession = those of the FY parent row (normally a '10-K'; never hard-coded),
+--   source = 'fsds', form and accession = those of the FY parent row, which must come from a 10-K-family filing
+--   (form in '10-K', '10-KT', '10-K/A'; ADR-022): an FY (qtrs = 4) row of any other form, such as a 10-Q's
+--   trailing-twelve-month figure or a registration statement, is never a parent. The 9M parent may have any form.
+--   fact_id = xxhash64(fact_key, accession, nine_month_accession): a derived row can never equal a real fact's fact_id.
 --   qtrs = 1, period_end = the FY end, fiscal_period = 'Q4', dq_flags contains 'q4_derived',
 --   derived_from = [FY fact_id, 9M fact_id] so M6 can re-execute FY - 9M.
 --   Derived per provenance tier within (cik, tag, taxonomy, uom, fiscal_year): the original Q4 from the original FY and 9M,
 --   the latest Q4 from the latest FY and 9M. derived_from points only at parent rows that `facts` retains (a parent whose
 --   versions all carry one value is retained as its ORIGINAL version, see `facts`). Ties between candidate parents go to the
---   latest filed.
+--   latest filed (the original tier: earliest filed); a tie on (filed, accession) goes to the row that sorts first by (value
+--   ascending, NULLs last, period_end, qtrs), and 9M period-end groups that still tie go to the group whose first row sorts
+--   first (ADR-022: the reference sorts its input by accession, value, period_end, ... before any tie-sensitive step).
 --   Tiers that land on the same fact_id (same FY parent accession, i.e. only the 9M was restated) are deduplicated: the row
 --   whose 9M parent was filed latest survives, with is_latest = is_original = true, is_restated = false, n_versions = 1.
 --   When the FY itself was restated the tiers have different FY accessions: both rows are kept (latest and original).
@@ -155,7 +160,7 @@ CREATE TABLE lake.curated.facts_history (       -- every reported version of eve
 --   direct row does not get 'q4_derived'.
 
 CREATE TABLE lake.curated.facts (               -- latest version per fact_key, plus the original when it differs (M1 §3.5); one row, the ORIGINAL version (the native filing), when all versions share a value
-  fact_id bigint,             -- xxhash64(fact_key, accession): unique per version
+  fact_id bigint,             -- xxhash64(fact_key, accession): unique per version; a derived Q4 uses xxhash64(fact_key, accession, nine_month_accession), see facts_history
   fact_key bigint,            -- groups versions of the same fact; same definition as facts_history.fact_key
   cik int, tag string, taxonomy string, is_custom boolean, uom string, qtrs int,
   period_start date, period_end date, fiscal_year int, fiscal_period string, calendar_frame string,
@@ -169,7 +174,7 @@ CREATE TABLE lake.curated.facts (               -- latest version per fact_key, 
 -- Consolidated facts only: coreg IS NULL and segments null/empty. This is the table the plan compiler reads.
 
 CREATE TABLE lake.curated.facts_dimensional (   -- segmented (dimensional) rows, kept out of facts so they can't leak into company totals
-  fact_id bigint,             -- xxhash64(fact_key, accession)
+  fact_id bigint,             -- xxhash64(fact_key, accession); a derived Q4 uses xxhash64(fact_key, accession, nine_month_accession)
   fact_key bigint,            -- xxhash64(cik, tag, taxonomy, period_end, qtrs, uom, segments)
   cik int, tag string, taxonomy string, is_custom boolean, uom string, qtrs int,
   segments string,            -- FSDS `segments` value, non-empty by definition
