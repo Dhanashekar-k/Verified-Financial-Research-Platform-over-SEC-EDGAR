@@ -3,7 +3,7 @@
 The same hand-derived scenarios (`tests/fiscal_cases.py::VERSION_SCENARIOS`) are run through
 Spark and compared with the same expected rows as the pure-Python reference.
 
-Needs a JVM (see tests/integration/conftest.py; the `spark` fixture skips without one).
+Needs a JVM (tests/integration/conftest.py): the `spark` fixture fails without one, never skips.
 """
 
 from __future__ import annotations

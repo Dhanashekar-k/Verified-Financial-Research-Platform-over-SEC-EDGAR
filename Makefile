@@ -11,6 +11,15 @@ MODE ?= replay
 SETS ?= numeric,financebench,narrative,unanswerable
 TF_DIR := infra/terraform/envs/dev
 
+# Spark (local Iceberg, the integration and differential tests) needs a JDK 17. The caller's JAVA_HOME wins;
+# otherwise use Homebrew's openjdk@17 or a Debian-style JDK if one exists. The tests fail loudly when no JDK
+# works (tests/integration/conftest.py); they never skip.
+JAVA_HOME ?= $(firstword $(wildcard /opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home /usr/lib/jvm/java-17-openjdk-amd64))
+ifneq ($(JAVA_HOME),)
+export JAVA_HOME
+export PATH := $(JAVA_HOME)/bin:$(PATH)
+endif
+
 .PHONY: help
 help: ## List targets
 	@grep -E '^[a-zA-Z0-9_-]+:.*?## ' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "  %-18s %s\n", $$1, $$2}'
@@ -20,9 +29,9 @@ up: ## Start Postgres+pgvector, Redis, Jaeger
 	docker compose up -d && docker compose ps
 down: ## Stop the local stack (keeps volumes)
 	docker compose down
-test: ## Unit + property tests (no live services)
+test: ## Unit + property tests (no live services); JAVA_HOME is set for Spark-backed tests
 	$(PY) pytest tests/unit tests/property -m "not live" -q
-test-integration: ## Integration tests (Testcontainers)
+test-integration: ## Integration tests (local Spark/Iceberg, Testcontainers); needs a JDK 17, fails without one
 	$(PY) pytest tests/integration -m "not live" -q
 lint: ## Lint + type check
 	$(PY) ruff check . && $(PY) ruff format --check . && $(PY) mypy app/engine

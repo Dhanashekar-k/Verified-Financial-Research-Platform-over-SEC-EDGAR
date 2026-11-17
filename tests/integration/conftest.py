@@ -2,14 +2,46 @@
 
 from __future__ import annotations
 
-import shutil
+import os
 import subprocess
 from collections.abc import Iterator
+from pathlib import Path
 
 import pytest
 from pyspark.sql import SparkSession
 
 from pipelines.common.spark_session import spark_session
+
+# Where Homebrew's `brew install openjdk@17` puts the JDK. Used only when JAVA_HOME is unset.
+_BREW_JDK17 = "/opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home"
+
+
+def resolve_java() -> str:
+    """The `java` binary Spark will use; raises `pytest.fail` (never a skip) when there is none.
+
+    JAVA_HOME wins; when unset, Homebrew's openjdk@17 is used if present and exported so the
+    PySpark launcher finds it too. A skipped Spark test is a silent hole in the suite (the
+    fiscal and version tests run through Spark), so a missing JDK is a failure.
+    """
+    home = os.environ.get("JAVA_HOME")
+    if not home and Path(_BREW_JDK17).is_dir():
+        home = os.environ["JAVA_HOME"] = _BREW_JDK17
+    if not home:
+        pytest.fail(
+            "JAVA_HOME is not set and no JDK 17 was found at "
+            f"{_BREW_JDK17}. Install one (brew install openjdk@17) and export JAVA_HOME, or run "
+            "through `make test-integration`. Spark tests are never skipped.",
+            pytrace=False,
+        )
+    java = Path(home) / "bin" / "java"
+    try:
+        ok = subprocess.run([str(java), "-version"], capture_output=True).returncode == 0
+    except OSError:
+        ok = False
+    if not ok:
+        pytest.fail(f"JAVA_HOME={home} does not contain a working bin/java.", pytrace=False)
+    os.environ["PATH"] = f"{java.parent}{os.pathsep}{os.environ.get('PATH', '')}"
+    return str(java)
 
 
 @pytest.fixture(scope="session")
@@ -17,15 +49,10 @@ def spark(tmp_path_factory: pytest.TempPathFactory) -> Iterator[SparkSession]:
     """One local SparkSession per test run, with its own empty warehouse.
 
     The first run downloads the Iceberg runtime jar from Maven Central (cached afterwards under
-    ~/.ivy2); that is dependency resolution, not a test of any external service. Skipped when no
-    JVM is available so `make test` still works on a machine without Java.
+    ~/.ivy2); that is dependency resolution, not a test of any external service. Without a
+    working JDK this fixture fails (see `resolve_java`); it does not skip.
     """
-    # /usr/bin/java on macOS is a stub that exists but fails, so run it rather than look it up.
-    java = shutil.which("java")
-    if java is None or subprocess.run([java, "-version"], capture_output=True).returncode != 0:
-        pytest.skip(
-            "no working java; install JDK 17 (and set JAVA_HOME) for Spark integration tests"
-        )
+    resolve_java()
     warehouse = tmp_path_factory.mktemp("warehouse")
     session = spark_session(
         "local",
