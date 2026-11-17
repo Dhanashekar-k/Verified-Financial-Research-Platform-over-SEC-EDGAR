@@ -52,7 +52,7 @@ from typing import Any
 
 import duckdb
 
-from pipelines.common.fiscal_ref import FactInput, derive_fiscal, y_end
+from pipelines.common.fiscal_ref import FactInput, FiscalFact, derive_fiscal, y_end
 from pipelines.duckdb.benchmark import (
     HASH_COLUMNS,
     TABLES,
@@ -278,8 +278,10 @@ def reference_outputs_under_shuffles(
     in_series: Callable[[FactInput], bool],
     n: int = 60,
     seed: int = 1,
+    derive: Callable[[Sequence[FactInput]], list[FiscalFact]] = derive_fiscal,
 ) -> Counter[Signature]:
-    """The derived Q4 rows the REFERENCE gives for one series, over `n` random orders of `inputs`.
+    """The derived Q4 rows `derive` (the REFERENCE by default) gives for one series, over `n`
+    random orders of `inputs`.
 
     One distinct signature means the reference's answer does not depend on the row order; several
     mean it does (a tie it breaks by position), and each engine's own answer may legitimately be
@@ -293,7 +295,7 @@ def reference_outputs_under_shuffles(
         signature = tuple(
             sorted(
                 (str(f.fact.period_end), f.fact.adsh, str(f.fact.value))
-                for f in derive_fiscal(order)
+                for f in derive(order)
                 if f.derived_from is not None and in_series(f.fact)
             )
         )

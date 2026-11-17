@@ -31,6 +31,7 @@ import duckdb
 log = logging.getLogger(__name__)
 
 _MASK = "CAST(9223372036854775807 AS UBIGINT)"  # keep 63 bits: DuckDB's hash is a UBIGINT
+ANNUAL_FORMS = ("10-K", "10-KT", "10-K/A")  # ADR-022: the only forms an FY parent may come from
 
 HISTORY_COLUMNS: list[tuple[str, str]] = [
     ("fact_id", "BIGINT"), ("fact_key", "BIGINT"),
@@ -161,7 +162,9 @@ def _derive_fiscal_sql(columns: Sequence[str], source: str, extra: Sequence[str]
     sub_y = _y_end("sub_period", "fye_mmdd")
     additive = "NOT (uom LIKE '%/%' OR uom IN ('pure', 'shares'))"
     native = "coalesce(sub_period = period_end, false)"
-    orig_order = "CASE WHEN _hn AND NOT _nat THEN 1 ELSE 0 END, filed, adsh, fact_id"
+    tie = "value ASC NULLS LAST, period_end ASC, qtrs ASC, fact_id ASC"
+    orig_order = f"CASE WHEN _hn AND NOT _nat THEN 1 ELSE 0 END, filed, adsh, {tie}"
+    annual = ", ".join(_lit(f) for f in ANNUAL_FORMS)
     join_on = _null_safe_eq("a", "b", group)
 
     return f"""
@@ -175,14 +178,14 @@ subs AS (
   SELECT DISTINCT cik, adsh, form, sub_fy, sub_period, fye_mmdd FROM {src}
 ),
 offs AS (
-  SELECT cik, sub_fy - ({sub_y}) AS off
+  SELECT cik, adsh, sub_fy - ({sub_y}) AS off
   FROM subs WHERE form IN ('10-K', '10-KT') AND sub_fy IS NOT NULL
 ),
-off_count AS (SELECT cik, off, count(*) AS c FROM offs GROUP BY cik, off),
+off_count AS (SELECT cik, off, count(*) AS c, min(adsh) AS first_adsh FROM offs GROUP BY cik, off),
 off_pick AS (
   SELECT cik, off AS _off, k = 1 AS _const FROM (
     SELECT cik, off, count(*) OVER (PARTITION BY cik) AS k,
-           row_number() OVER (PARTITION BY cik ORDER BY c DESC, off ASC) AS rn
+           row_number() OVER (PARTITION BY cik ORDER BY c DESC, first_adsh ASC) AS rn
     FROM off_count
   ) WHERE rn = 1
 ),
@@ -208,17 +211,17 @@ e AS MATERIALIZED (
   SELECT * EXCLUDE (_direct, _hasfy, _has9) FROM (
     SELECT m2.*,
       bool_or(qtrs = 1 AND fiscal_period = 'Q4') OVER w AS _direct,
-      bool_or(qtrs = 4) OVER w AS _hasfy,
+      bool_or(qtrs = 4 AND form IN ({annual})) OVER w AS _hasfy,
       bool_or(qtrs = 3) OVER w AS _has9
     FROM m2 WHERE {additive}
     WINDOW w AS (PARTITION BY {g})
   ) WHERE NOT _direct AND _hasfy AND _has9
 ),
-fy1 AS (SELECT e.*, {native} AS _nat FROM e WHERE qtrs = 4),
+fy1 AS (SELECT e.*, {native} AS _nat FROM e WHERE qtrs = 4 AND form IN ({annual})),
 fy2 AS (SELECT *, bool_or(_nat) OVER (PARTITION BY {g}) AS _hn FROM fy1),
 fy3 AS (
   SELECT *,
-    row_number() OVER (PARTITION BY {g} ORDER BY filed DESC, adsh DESC, fact_id DESC) AS _rl,
+    row_number() OVER (PARTITION BY {g} ORDER BY filed DESC, adsh DESC, {tie}) AS _rl,
     row_number() OVER (PARTITION BY {g} ORDER BY {orig_order}) AS _ro
   FROM fy2
 ),
@@ -240,7 +243,7 @@ nm1 AS (SELECT e.*, {native} AS _nat FROM e WHERE qtrs = 3),
 nm2 AS (SELECT *, bool_or(_nat) OVER (PARTITION BY {g_pe}) AS _hn FROM nm1),
 nm3 AS (
   SELECT *,
-    row_number() OVER (PARTITION BY {g_pe} ORDER BY filed DESC, adsh DESC, fact_id DESC) AS _rl,
+    row_number() OVER (PARTITION BY {g_pe} ORDER BY filed DESC, adsh DESC, {tie}) AS _rl,
     row_number() OVER (PARTITION BY {g_pe} ORDER BY {orig_order}) AS _ro
   FROM nm2
 ),
@@ -249,23 +252,33 @@ nm_pe AS (
     max(fact_id) FILTER (WHERE _ro = 1) AS o_id, max(filed) FILTER (WHERE _ro = 1) AS o_filed,
     max(adsh) FILTER (WHERE _ro = 1) AS o_adsh, max(value) FILTER (WHERE _ro = 1) AS o_value,
     max(fact_id) FILTER (WHERE _rl = 1) AS l_id0, max(filed) FILTER (WHERE _rl = 1) AS l_filed0,
-    max(adsh) FILTER (WHERE _rl = 1) AS l_adsh0, max(value) FILTER (WHERE _rl = 1) AS l_value
+    max(adsh) FILTER (WHERE _rl = 1) AS l_adsh0, max(value) FILTER (WHERE _rl = 1) AS l_value,
+    min(struct_pack(a := adsh, vn := (value IS NULL), v := coalesce(value, 0), p := period_end))
+      AS first_key
   FROM nm3 GROUP BY {g_pe}
 ),
 nm_pe2 AS (
-  SELECT {g}, o_id, o_filed, o_adsh,
+  SELECT {g}, first_key, o_id, o_filed, o_adsh,
     CASE WHEN l_value = o_value THEN o_id ELSE l_id0 END AS l_id,
     CASE WHEN l_value = o_value THEN o_filed ELSE l_filed0 END AS l_filed,
     CASE WHEN l_value = o_value THEN o_adsh ELSE l_adsh0 END AS l_adsh
   FROM nm_pe
 ),
+nm_rank AS (
+  SELECT *,
+    row_number() OVER (PARTITION BY {g} ORDER BY o_filed ASC, o_adsh ASC, first_key ASC) AS _ro,
+    row_number() OVER (PARTITION BY {g} ORDER BY l_filed DESC, l_adsh DESC, first_key ASC) AS _rl
+  FROM nm_pe2
+),
 nm_pick AS (
   SELECT {g},
-    arg_min(struct_pack(id := o_id, filed := o_filed, adsh := o_adsh),
-            struct_pack(f := o_filed, a := o_adsh, i := o_id)) AS nmo,
-    arg_max(struct_pack(id := l_id, filed := l_filed, adsh := l_adsh),
-            struct_pack(f := l_filed, a := l_adsh, i := l_id)) AS nml
-  FROM nm_pe2 GROUP BY {g}
+    struct_pack(id := max(o_id) FILTER (WHERE _ro = 1),
+                filed := max(o_filed) FILTER (WHERE _ro = 1),
+                adsh := max(o_adsh) FILTER (WHERE _ro = 1)) AS nmo,
+    struct_pack(id := max(l_id) FILTER (WHERE _rl = 1),
+                filed := max(l_filed) FILTER (WHERE _rl = 1),
+                adsh := max(l_adsh) FILTER (WHERE _rl = 1)) AS nml
+  FROM nm_rank GROUP BY {g}
 ),
 pairs AS (
   SELECT {", ".join("a." + _id(c) for c in group)},
@@ -291,14 +304,14 @@ d0 AS (
       list_append(fyr.dq_flags, 'q4_derived') AS dq_flags,
       {_hash63(*d_keys)} AS fact_key
     ),
-    fyr.fact_id AS _fy_id, nmr.fact_id AS _nm_id
+    fyr.fact_id AS _fy_id, nmr.fact_id AS _nm_id, nmr.adsh AS _nm_adsh
   FROM chosen c
   JOIN m2 fyr ON fyr.fact_id = c.fy_id
   JOIN m2 nmr ON nmr.fact_id = c.nm_id
 ),
 derived AS (
-  SELECT d0.* EXCLUDE (_fy_id, _nm_id) REPLACE (
-      {_hash63("fact_key", "adsh")} AS fact_id,
+  SELECT d0.* EXCLUDE (_fy_id, _nm_id, _nm_adsh) REPLACE (
+      {_hash63("fact_key", "adsh", "_nm_adsh")} AS fact_id,
       [_fy_id, _nm_id] AS derived_from)
   FROM d0
 )
@@ -328,10 +341,9 @@ def derive_fiscal(
 def _select_versions_sql(columns: Sequence[str], source: str) -> str:
     src = _id(source)
     cols = ", ".join(_id(c) for c in columns)
-    # A derived Q4 takes its FY parent's accession, so it can share (fact_key, accession, fact_id)
-    # with a real quarter row. The order must still be total, or reruns differ: the real row
-    # (no `derived_from`) comes first, then the value. This makes the choice repeatable; it does
-    # not fix the collision itself (see pipelines/duckdb/explain_differences.py).
+    # Keep the order total so reruns cannot differ: the real row (no `derived_from`) comes first,
+    # then the value. Since ADR-022 a derived Q4's fact_id includes the 9M accession, so it no
+    # longer collides with a real row; this is defence in depth for any input that still ties.
     tie = (
         ", (derived_from IS NOT NULL), value NULLS LAST"
         if "derived_from" in columns

@@ -9,12 +9,13 @@ Parquet tables.
 from __future__ import annotations
 
 import gzip
+from dataclasses import replace
 from pathlib import Path
 from typing import Any
 
 import duckdb
 
-from pipelines.common.fiscal_ref import FactInput
+from pipelines.common.fiscal_ref import FactInput, FiscalFact
 from pipelines.duckdb.explain_differences import (
     classify_differences,
     derived_signature,
@@ -405,16 +406,28 @@ def is_revenues(f: FactInput) -> bool:
     return f.tag == "Revenues"
 
 
-def test_two_fy_rows_of_one_filing_make_the_reference_output_depend_on_input_order():
-    """Two FY rows, one accession, one filing date, different period ends, neither native: the
-    reference keeps whichever comes first, so the derived Q4 is 100 - 50 or 200 - 50."""
+def first_fy_derive(facts: Any) -> list[FiscalFact]:
+    """A stand-in for a reference that breaks a tie by list position: it derives a Q4 from the
+    FIRST FY row it sees, whichever that is."""
+    fy = next(f for f in facts if f.qtrs == 4)
+    nine = next(f for f in facts if f.qtrs == 3)
+    q4 = replace(fy, qtrs=1, value=fy.value - nine.value)
+    parents = ((fy.period_end, 4, fy.adsh), (nine.period_end, 3, nine.adsh))
+    return [FiscalFact(q4, None, 2022, "Q4", None, ("q4_derived",), parents)]
+
+
+def test_a_derive_function_that_breaks_ties_by_position_shows_several_outputs():
+    """Two FY rows of one filing, one filing date, different period ends: the stand-in keeps
+    whichever comes first, so the derived Q4 is 100 - 50 or 200 - 50."""
     inputs = [
         fact(4, "2022-06-30", "100.0000", "K-22", "2023-03-01", "2023-03-31"),
         fact(4, "2022-12-31", "200.0000", "K-22", "2023-03-01", "2023-03-31"),
         fact(3, "2022-09-30", "50.0000", "Q-22", "2022-11-09", "2022-09-30"),
     ]
 
-    outputs = reference_outputs_under_shuffles(inputs, is_revenues, n=40, seed=1)
+    outputs = reference_outputs_under_shuffles(
+        inputs, is_revenues, n=40, seed=1, derive=first_fy_derive
+    )
 
     values = {sig[0][2] for sig in outputs}
     assert len(outputs) == 2 and values == {"50.0000", "150.0000"}

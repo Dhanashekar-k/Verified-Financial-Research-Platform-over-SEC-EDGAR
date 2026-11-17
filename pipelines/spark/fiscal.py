@@ -19,6 +19,7 @@ from __future__ import annotations
 
 import importlib
 from collections.abc import Sequence
+from decimal import Decimal
 from typing import Any
 
 import pandas as pd
@@ -70,6 +71,8 @@ _REF_COLUMNS = [
     "sub_period",
 ]
 _SEP = "\x1f"  # joins tag and series so the reference pairs FY/9M rows only within one series
+# ADR-022: a Q4 is derived only from an FY row of a 10-K-family filing
+_ANNUAL_FORMS = ("10-K", "10-KT", "10-K/A")
 
 _RESULT_SCHEMA = StructType(
     [
@@ -77,6 +80,7 @@ _RESULT_SCHEMA = StructType(
         StructField("fact_id", LongType()),
         StructField("is_derived", BooleanType()),
         StructField("nm_fact_id", LongType()),  # derived rows only: the 9M parent's fact_id
+        StructField("nm_adsh", StringType()),  # derived rows only: the 9M parent's accession
         StructField("derived_value", DecimalType(28, 4)),  # derived rows only: FY - 9M
         StructField("period_start", DateType()),
         StructField("fiscal_year", IntegerType()),
@@ -89,6 +93,24 @@ _RESULT_SCHEMA = StructType(
 
 def _none_if_na(v: Any) -> Any:
     return None if v is None or v is pd.NA or (isinstance(v, float) and v != v) else v
+
+
+def _stable_key(f: FactInput, fact_id: int) -> tuple[Any, ...]:
+    """A total order over a company's facts: accession, then value ascending with NULLs last, then
+    period end, quarters and the series identity (ADR-022). `fact_id` only breaks a tie between
+    duplicate natural keys."""
+    return (
+        f.adsh,
+        f.value is None,
+        f.value if f.value is not None else Decimal(0),
+        f.period_end,
+        f.qtrs,
+        f.cik,
+        f.tag,
+        f.taxonomy,
+        f.uom,
+        fact_id,
+    )
 
 
 def _derive_company(pdf: pd.DataFrame) -> pd.DataFrame:
@@ -117,6 +139,12 @@ def _derive_company(pdf: pd.DataFrame) -> pd.DataFrame:
         )
         ids.append(int(r["fact_id"]))
 
+    # ADR-022 rule 1: the reference breaks ties by list position, so give it a stable total order
+    # (accession, value NULLs last, period end, ...), whatever order Spark delivered the rows in.
+    order = sorted(range(len(facts)), key=lambda i: _stable_key(facts[i], ids[i]))
+    facts = [facts[i] for i in order]
+    ids = [ids[i] for i in order]
+
     position = {id(f): i for i, f in enumerate(facts)}
     # a parent is found by its natural key within the series (the tag carries the series)
     by_natural = {
@@ -124,22 +152,44 @@ def _derive_company(pdf: pd.DataFrame) -> pd.DataFrame:
         for i, f in enumerate(facts)
     }
 
+    full = derive_fiscal(facts)
+    # ADR-022 rule 2: an FY row of any other form (a 10-Q's trailing-twelve-month figure, a
+    # registration statement) is never a parent. Derive from the eligible facts only; the row-level
+    # columns of every fact come from the full run, which this does not change.
+    if any(f.qtrs == 4 and f.form not in _ANNUAL_FORMS for f in facts):
+        eligible = [f for f in facts if not (f.qtrs == 4 and f.form not in _ANNUAL_FORMS)]
+        derived_rows = [ff for ff in derive_fiscal(eligible) if ff.derived_from is not None]
+    else:
+        derived_rows = [ff for ff in full if ff.derived_from is not None]
+
     out: list[tuple[Any, ...]] = []
-    for ff in derive_fiscal(facts):
+    for ff in full:
         if ff.derived_from is None:
-            fact_id, is_derived, nm_id, value = ids[position[id(ff.fact)]], False, None, None
-        else:
-            (fy_end, fy_qtrs, fy_adsh), (nm_end, nm_qtrs, nm_adsh) = ff.derived_from
-            f = ff.fact
-            fact_id = by_natural[(f.tag, f.taxonomy, f.uom, fy_end, fy_qtrs, fy_adsh)]
-            nm_id = by_natural[(f.tag, f.taxonomy, f.uom, nm_end, nm_qtrs, nm_adsh)]
-            is_derived, value = True, f.value
+            out.append(
+                (
+                    ids[position[id(ff.fact)]],
+                    False,
+                    None,
+                    None,
+                    None,
+                    ff.period_start,
+                    ff.fiscal_year,
+                    ff.fiscal_period,
+                    ff.calendar_frame,
+                    list(ff.dq_flags),
+                )
+            )
+    for ff in derived_rows:
+        assert ff.derived_from is not None
+        (fy_end, fy_qtrs, fy_adsh), (nm_end, nm_qtrs, nm_adsh) = ff.derived_from
+        f = ff.fact
         out.append(
             (
-                fact_id,
-                is_derived,
-                nm_id,
-                value,
+                by_natural[(f.tag, f.taxonomy, f.uom, fy_end, fy_qtrs, fy_adsh)],
+                True,
+                by_natural[(f.tag, f.taxonomy, f.uom, nm_end, nm_qtrs, nm_adsh)],
+                nm_adsh,
+                f.value,
                 ff.period_start,
                 ff.fiscal_year,
                 ff.fiscal_period,
@@ -168,14 +218,21 @@ def derive_fiscal_columns(df: DataFrame, extra_key_cols: Sequence[str] = ()) -> 
         calendar_frame string      -- CY2023 | CY2023Q3 | CY2023Q3I | null              (rule 6)
         dq_flags array<string>     -- empty array (not null) when there are no flags
         fact_key bigint            -- xxhash64(cik, tag, taxonomy, period_end, qtrs, uom, *extra_key_cols)
-        fact_id bigint             -- xxhash64(fact_key, adsh)
+        fact_id bigint             -- xxhash64(fact_key, adsh); derived Q4: xxhash64(fact_key, adsh, 9M adsh)
         derived_from array<bigint> -- null, except on derived Q4 rows: [FY fact_id, 9M fact_id]
 
     Rule 5 appends one row per derivable Q4 (flow concepts only; never instants or per-share and
-    ratio concepts): fiscal_period 'Q4', qtrs 1, period_end = the FY end, form '10-K', the FY
-    row's adsh, value = FY - 9M, dq_flags containing 'q4_derived'. A derived row is its FY
-    parent's row carried through whole (pass-through columns included) with `qtrs` and `value`
-    replaced.
+    ratio concepts): fiscal_period 'Q4', qtrs 1, period_end = the FY end, the FY parent's form and
+    adsh, value = FY - 9M, dq_flags containing 'q4_derived'. The FY parent must come from a
+    10-K-family filing (10-K, 10-KT, 10-K/A); an FY row of another form is never a parent. The
+    derived row's `fact_id` is xxhash64(fact_key, adsh, 9M adsh), so it cannot equal a real fact's.
+
+    The output does not depend on the order of the input rows: each company's rows are sorted by
+    a stable total key (accession, value NULLs last, period end, ...) before the reference sees
+    them, so every tie the reference breaks by position has one answer (ADR-022).
+
+    A derived row is its FY parent's row carried through whole (pass-through columns included) with
+    `qtrs` and `value` replaced.
 
     `extra_key_cols` names extra columns that identify a series and enter fact_key and the Q4
     pairing (for example ['segments'] for facts_dimensional). The default is the consolidated
@@ -223,6 +280,7 @@ def derive_fiscal_columns(df: DataFrame, extra_key_cols: Sequence[str] = ()) -> 
         .select(
             F.col("fact_id").alias("_fy_fact_id"),
             F.col("nm_fact_id").alias("_nm_fact_id"),
+            F.col("nm_adsh").alias("_nm_adsh"),
             F.col("derived_value").alias("_q4_value"),
             *fiscal,
         )
@@ -231,6 +289,8 @@ def derive_fiscal_columns(df: DataFrame, extra_key_cols: Sequence[str] = ()) -> 
         .withColumn("qtrs", F.lit(1).cast(df.schema["qtrs"].dataType))
         .withColumn("value", F.col("_q4_value"))
         .withColumn("fact_key", fact_key(F.col("qtrs")))
-        .withColumn("fact_id", F.xxhash64("fact_key", "adsh"))
+        # ADR-022 rule 3: the 9M accession is part of a derived row's identity, so it can never
+        # equal the fact_id of a real fact with the same fact_key and accession
+        .withColumn("fact_id", F.xxhash64("fact_key", "adsh", "_nm_adsh"))
     )
     return originals.select(out_cols).unionByName(q4_rows.select(out_cols))
