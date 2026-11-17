@@ -59,7 +59,7 @@ def to_df(
     return spark.createDataFrame(rows, StructType(fields))
 
 
-def as_tuples(out: DataFrame) -> list[tuple[int, str, Decimal, bool, bool, int, bool]]:
+def as_tuples(out: DataFrame) -> list[tuple[int, str, Decimal | None, bool, bool, int, bool]]:
     return sorted_version_tuples(
         [
             (
@@ -84,6 +84,31 @@ def test_spark_version_selection_matches_hand_derived_rows(
     restatement, 10-K then 10-K/A, no filing_period match, a non-match filed earlier, the
     accession tie-breaks on both sides, and 100 -> 90 -> 100. Each yields exactly the expected
     rows with the expected flags, n_versions and is_restated.
+    """
+    out = select_versions(to_df(spark, list(scenario.versions)))
+    assert as_tuples(out) == sorted_version_tuples([e.as_tuple() for e in scenario.expect])
+
+
+NULL_SCENARIOS = [
+    s for s in VERSION_SCENARIOS if s.name.startswith(("null_", "all_filing_periods_null"))
+]
+
+
+def test_null_scenarios_are_present() -> None:
+    """Guard: the NULL-value / NULL-filing_period scenarios exist, so the Spark test below can
+    never pass vacuously over an empty parameter list.
+    """
+    assert len(NULL_SCENARIOS) == 5
+
+
+@pytest.mark.parametrize("scenario", NULL_SCENARIOS, ids=repr)
+def test_spark_null_value_and_null_filing_period_follow_python_semantics(
+    spark: SparkSession, scenario: VersionScenario
+) -> None:
+    """NULL handling matches the reference: a NULL value is a distinct value for is_restated
+    (Spark's count(distinct) ignores NULLs) and NULL == NULL collapses latest/original (SQL `=`
+    yields NULL, so a null-safe comparison is needed); a NULL filing_period is never native and
+    does not poison the original selection. Rows keep their NULL value through the selection.
     """
     out = select_versions(to_df(spark, list(scenario.versions)))
     assert as_tuples(out) == sorted_version_tuples([e.as_tuple() for e in scenario.expect])

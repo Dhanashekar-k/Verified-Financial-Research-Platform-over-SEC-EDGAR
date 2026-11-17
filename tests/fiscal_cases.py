@@ -1013,13 +1013,13 @@ class ExpVersion:
 
     fact_key: int
     accession: str
-    value: Decimal
+    value: Decimal | None  # None: a version reported with a NULL value
     is_latest: bool
     is_original: bool
     n_versions: int
     is_restated: bool
 
-    def as_tuple(self) -> tuple[int, str, Decimal, bool, bool, int, bool]:
+    def as_tuple(self) -> tuple[int, str, Decimal | None, bool, bool, int, bool]:
         return (
             self.fact_key,
             self.accession,
@@ -1046,37 +1046,35 @@ def ver(
     n: int,
     accession: str,
     filed: date,
-    filing_period: date,
-    value: str,
+    filing_period: date | None,
+    value: str | None,
     period_end: date,
     form: str = "10-K",
 ) -> FactVersion:
+    """`value` None gives a NULL value; `filing_period` None a NULL sub.period (never native)."""
     return FactVersion(
         fact_key=key,
         fact_id=key * 100 + n,
         period_end=period_end,
-        value=Decimal(value),
+        value=None if value is None else Decimal(value),
         accession=accession,
         form=form,
         filed=filed,
         is_amendment=form.endswith("/A"),
-        filing_period=filing_period,
+        filing_period=filing_period,  # type: ignore[arg-type]
     )
 
 
 def one_row(key: int, v: FactVersion, n: int, restated: bool) -> ExpVersion:
     """The single row carrying both flags: always the ORIGINAL version `v` (the native filing)."""
-    assert v.value is not None
     return ExpVersion(key, v.accession, v.value, True, True, n, restated)
 
 
 def latest_row(key: int, v: FactVersion, n: int, restated: bool) -> ExpVersion:
-    assert v.value is not None
     return ExpVersion(key, v.accession, v.value, True, False, n, restated)
 
 
 def original_row(key: int, v: FactVersion, n: int, restated: bool) -> ExpVersion:
-    assert v.value is not None
     return ExpVersion(key, v.accession, v.value, False, True, n, restated)
 
 
@@ -1118,6 +1116,19 @@ _v10b = ver(10, 2, acc(CAL, 23, 3), date(2023, 2, 15), date(2022, 12, 31), "2.00
 _v11a = ver(11, 1, acc(CAL, 23, 1), date(2023, 2, 15), _pe4, "100.0000", _pe4)
 _v11b = ver(11, 2, acc(CAL, 23, 2), date(2023, 8, 1), date(2023, 6, 30), "90.0000", _pe4, "10-Q")
 _v11c = ver(11, 3, acc(CAL, 24, 3), date(2024, 2, 15), date(2023, 12, 31), "100.0000", _pe4)
+# NULL values (Python semantics: None is a value; None == None, None != Decimal)
+_v12a = ver(12, 1, acc(CAL, 23, 1), date(2023, 2, 15), _pe4, None, _pe4)
+_v12b = ver(12, 2, acc(CAL, 23, 3), date(2023, 5, 1), date(2023, 3, 31), "5.0000", _pe4, "10-Q")
+_v13a = ver(13, 1, acc(CAL, 23, 1), date(2023, 2, 15), _pe4, None, _pe4)
+_v13b = ver(13, 2, acc(CAL, 23, 3), date(2023, 5, 1), date(2023, 3, 31), None, _pe4, "10-Q")
+_v14a = ver(14, 1, acc(CAL, 23, 1), date(2023, 2, 15), _pe4, None, _pe4)
+_v14b = ver(14, 2, acc(CAL, 23, 3), date(2023, 5, 1), date(2023, 3, 31), "5.0000", _pe4, "10-Q")
+_v14c = ver(14, 3, acc(CAL, 24, 3), date(2024, 2, 15), date(2023, 12, 31), None, _pe4)
+# NULL filing_period (never 'native')
+_v15a = ver(15, 1, acc(CAL, 23, 1), date(2023, 2, 1), None, "10.0000", _pe4, "10-Q")
+_v15b = ver(15, 2, acc(CAL, 23, 3), date(2023, 5, 5), _pe4, "12.0000", _pe4)
+_v16a = ver(16, 1, acc(CAL, 23, 1), date(2023, 2, 1), None, "10.0000", _pe4, "10-Q")
+_v16b = ver(16, 2, acc(CAL, 23, 3), date(2023, 5, 5), None, "12.0000", _pe4, "10-Q")
 
 VERSION_SCENARIOS = [
     _vscenario(
@@ -1189,6 +1200,42 @@ VERSION_SCENARIOS = [
         # original value 100 == latest value 100 => one row, carrying the original's (_v11a)
         # accession; three versions, two distinct values.
         [one_row(11, _v11a, 3, True)],
+    ),
+    _vscenario(
+        "null_value_then_value_is_restated_and_not_collapsed",
+        [_v12a, _v12b],
+        # original = _v12a (native, value None), latest = _v12b (5.0000). None != 5 => TWO rows.
+        # Distinct values {None, 5} => is_restated True (None counts as a value).
+        [latest_row(12, _v12b, 2, True), original_row(12, _v12a, 2, True)],
+    ),
+    _vscenario(
+        "null_value_twice_collapses_and_is_not_restated",
+        [_v13a, _v13b],
+        # latest _v13b (None) == original _v13a (None) => ONE row, original accession, both
+        # flags. One distinct value {None} => is_restated False.
+        [one_row(13, _v13a, 2, False)],
+    ),
+    _vscenario(
+        "null_then_value_then_null_collapses_but_is_restated",
+        [_v14a, _v14b, _v14c],
+        # original _v14a (None) and latest _v14c (None) are equal => ONE row (original's
+        # accession); the middle 5.0000 makes two distinct values {None, 5} => is_restated True.
+        [one_row(14, _v14a, 3, True)],
+    ),
+    _vscenario(
+        "null_filing_period_is_never_native",
+        [_v15a, _v15b],
+        # _v15a (filed first) has filing_period NULL: not native. The only native is _v15b, so
+        # original = latest = _v15b (12.0000) => ONE row; 10 vs 12 => restated. A NULL treated
+        # as native would pick _v15a as original and yield two rows.
+        [one_row(15, _v15b, 2, True)],
+    ),
+    _vscenario(
+        "all_filing_periods_null_original_is_earliest_filed",
+        [_v16b, _v16a],
+        # No native version (both NULL): fall back to the earliest filed overall (_v16a); latest
+        # is _v16b. 10 != 12 => two rows.
+        [latest_row(16, _v16b, 2, True), original_row(16, _v16a, 2, True)],
     ),
 ]
 
@@ -1283,6 +1330,6 @@ def check_no_derivation(rows: list[dict[str, Any]], n_input: int) -> None:
 
 
 def sorted_version_tuples(
-    rows: Sequence[tuple[int, str, Decimal, bool, bool, int, bool]],
-) -> list[tuple[int, str, Decimal, bool, bool, int, bool]]:
+    rows: Sequence[tuple[int, str, Decimal | None, bool, bool, int, bool]],
+) -> list[tuple[int, str, Decimal | None, bool, bool, int, bool]]:
     return sorted(rows, key=lambda t: (t[0], t[1], t[3], t[4]))

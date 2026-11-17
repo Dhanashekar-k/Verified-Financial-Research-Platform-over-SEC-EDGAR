@@ -123,6 +123,42 @@ def test_restated_then_restored_value_is_one_row_but_restated() -> None:
     run_scenario("restated_then_restored_100_90_100")
 
 
+def test_null_then_value_is_restated_and_not_collapsed() -> None:
+    """(10a) Versions None then 5.0000: None counts as a distinct value (is_restated True) and
+    None != 5, so TWO rows (latest 5.0000, original None), not one.
+    """
+    run_scenario("null_value_then_value_is_restated_and_not_collapsed")
+
+
+def test_two_null_values_collapse_and_are_not_restated() -> None:
+    """(10b) Versions None, None: one distinct value (None), None == None, so ONE row with the
+    original accession, both flags, is_restated False.
+    """
+    run_scenario("null_value_twice_collapses_and_is_not_restated")
+
+
+def test_null_value_restored_after_a_value_collapses_but_is_restated() -> None:
+    """(10c) None, 5.0000, None: original and latest are both None => ONE row (original
+    accession), yet the middle 5.0000 makes is_restated True and n_versions 3.
+    """
+    run_scenario("null_then_value_then_null_collapses_but_is_restated")
+
+
+def test_null_filing_period_is_never_native_and_does_not_crash() -> None:
+    """(11a) An earlier-filed version with filing_period None must not win the original
+    selection over the later-filed native version (filing_period == period_end): original =
+    latest = the native one, ONE row. Pins that NULL never compares equal to period_end.
+    """
+    run_scenario("null_filing_period_is_never_native")
+
+
+def test_all_null_filing_periods_fall_back_to_earliest_filed() -> None:
+    """(11b) No version is native because every filing_period is None: original = the earliest
+    filed overall (same as when no filing_period matches), latest = the latest filed.
+    """
+    run_scenario("all_filing_periods_null_original_is_earliest_filed")
+
+
 @pytest.mark.parametrize("seed", [None, 1, 2, 3])
 def test_independent_fact_keys_do_not_interact_and_input_order_is_irrelevant(
     seed: int | None,
