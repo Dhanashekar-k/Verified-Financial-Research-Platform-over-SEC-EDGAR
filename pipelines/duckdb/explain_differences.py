@@ -52,7 +52,15 @@ from typing import Any
 import duckdb
 
 from pipelines.common.fiscal_ref import FactInput, derive_fiscal, y_end
-from pipelines.duckdb.benchmark import HASH_COLUMNS, TABLES, _git_sha, _normalized_sql, _parquet
+from pipelines.duckdb.benchmark import (
+    HASH_COLUMNS,
+    TABLES,
+    _git_sha,
+    _normalized_sql,
+    _parquet,
+    compare_outputs,
+    export_spark,
+)
 from pipelines.duckdb.normalize_facts_duckdb import build_inputs
 
 log = logging.getLogger(__name__)
@@ -408,6 +416,13 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--results", type=Path, default=DEFAULT_RESULTS)
     parser.add_argument("--src", type=Path, default=Path("data/raw/fsds"))
     parser.add_argument("--benchmark", type=Path, default=DEFAULT_BENCHMARK)
+    parser.add_argument(
+        "--repeat-against",
+        default=None,
+        metavar="NAMESPACE",
+        help="also compare the Spark run of this cell with another Spark run of the same quarters "
+        "(Iceberg namespace, e.g. lake.curated) to measure Spark's repeatability",
+    )
     args = parser.parse_args(argv)
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
 
@@ -432,6 +447,16 @@ def main(argv: list[str] | None = None) -> int:
             "duckdb": identity_collisions(duck_dir),
         },
     }
+    if args.repeat_against:
+        other = base / "repeat"
+        export_spark("lake.raw", args.repeat_against, other, drop=False)
+        cell["spark_repeatability"] = {
+            "this_run": f"the Spark run of benchmark cell {args.label}",
+            "other_run": (
+                f"Iceberg namespace {args.repeat_against}, built earlier from the same raw quarters"
+            ),
+            "differences": compare_outputs(spark_dir, other),
+        }
     cell["unexplained_rows"] = {t: rows for t, rows in samples.items() if rows}
     cell["unexplained_order_check"] = check_unexplained_series(
         args.src, quarters, spark_dir, duck_dir, samples.get("facts_dimensional", [])
