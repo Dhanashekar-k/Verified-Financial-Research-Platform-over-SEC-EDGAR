@@ -3,89 +3,53 @@
     "2q": {
       "classification": {
         "facts": {
-          "fy_tie": 44,
+          "fy_tie": 0,
           "fy_tie_knock_on": 0,
           "identity_collision": 0,
           "identity_collision_knock_on": 0,
           "label_offset_tie": 0,
-          "total": 44,
+          "total": 0,
           "unexplained": 0
         },
         "facts_dimensional": {
-          "fy_tie": 2,
+          "fy_tie": 0,
           "fy_tie_knock_on": 0,
           "identity_collision": 0,
           "identity_collision_knock_on": 0,
           "label_offset_tie": 0,
-          "total": 2,
+          "total": 0,
           "unexplained": 0
         },
         "facts_history": {
-          "fy_tie": 44,
+          "fy_tie": 0,
           "fy_tie_knock_on": 0,
-          "identity_collision": 6,
+          "identity_collision": 0,
           "identity_collision_knock_on": 0,
           "label_offset_tie": 0,
-          "total": 50,
+          "total": 0,
           "unexplained": 0
         }
       },
       "identity_collisions": {
         "duckdb": {
-          "derived_q4_rows": 39969,
+          "derived_q4_rows": 30034,
           "derived_q4_rows_by_form": {
-            "10-K": 26127,
-            "10-K/A": 3613,
-            "10-Q": 1205,
-            "10-Q/A": 7,
-            "20-F": 48,
-            "20-F/A": 40,
-            "40-F": 1281,
-            "6-K": 140,
-            "8-K": 1127,
-            "F-1/A": 39,
-            "F-4": 54,
-            "F-4/A": 38,
-            "N-2": 55,
-            "POS AM": 287,
-            "S-1": 2555,
-            "S-1/A": 1775,
-            "S-11": 46,
-            "S-11/A": 9,
-            "S-4": 873,
-            "S-4/A": 650
+            "10-K": 26422,
+            "10-K/A": 3612
           },
-          "derived_q4_rows_from_other_than_10_k_forms": 10229,
-          "fact_ids_shared_by_several_rows": 248,
-          "rows_with_a_shared_fact_id": 496
+          "derived_q4_rows_from_other_than_10_k_forms": 0,
+          "fact_ids_shared_by_several_rows": 0,
+          "rows_with_a_shared_fact_id": 0
         },
         "spark": {
-          "derived_q4_rows": 39967,
+          "derived_q4_rows": 30034,
           "derived_q4_rows_by_form": {
-            "10-K": 26127,
-            "10-K/A": 3613,
-            "10-Q": 1205,
-            "10-Q/A": 7,
-            "20-F": 48,
-            "20-F/A": 40,
-            "40-F": 1281,
-            "6-K": 140,
-            "8-K": 1127,
-            "F-1/A": 39,
-            "F-4": 54,
-            "F-4/A": 38,
-            "N-2": 55,
-            "POS AM": 287,
-            "S-1": 2555,
-            "S-1/A": 1775,
-            "S-11": 46,
-            "S-11/A": 9,
-            "S-4": 873,
-            "S-4/A": 648
+            "10-K": 26422,
+            "10-K/A": 3612
           },
-          "derived_q4_rows_from_other_than_10_k_forms": 10227,
-          "fact_ids_shared_by_several_rows": 248,
-          "rows_with_a_shared_fact_id": 496
+          "derived_q4_rows_from_other_than_10_k_forms": 0,
+          "fact_ids_shared_by_several_rows": 0,
+          "rows_with_a_shared_fact_id": 0
         }
       },
       "label_offset_tie_ciks": {
@@ -97,115 +61,67 @@
         "2023q3",
         "2023q4"
       ],
+      "reference_agreement": {
+        "companies": 6721,
+        "differences": 0,
+        "examples": [],
+        "rows_compared": 3320915
+      },
       "unexplained_order_check": [],
       "unexplained_rows": {}
     },
     "7q": {
       "classification": {
         "facts": {
-          "fy_tie": 242,
-          "fy_tie_knock_on": 47,
+          "fy_tie": 0,
+          "fy_tie_knock_on": 0,
           "identity_collision": 0,
           "identity_collision_knock_on": 0,
-          "label_offset_tie": 3666,
-          "total": 3955,
+          "label_offset_tie": 0,
+          "total": 0,
           "unexplained": 0
         },
         "facts_dimensional": {
-          "fy_tie": 14,
-          "fy_tie_knock_on": 4,
+          "fy_tie": 0,
+          "fy_tie_knock_on": 0,
           "identity_collision": 0,
           "identity_collision_knock_on": 0,
-          "label_offset_tie": 1240,
-          "total": 1264,
-          "unexplained": 6
+          "label_offset_tie": 0,
+          "total": 0,
+          "unexplained": 0
         },
         "facts_history": {
-          "fy_tie": 238,
+          "fy_tie": 0,
           "fy_tie_knock_on": 0,
-          "identity_collision": 6,
+          "identity_collision": 0,
           "identity_collision_knock_on": 0,
-          "label_offset_tie": 4886,
-          "total": 5130,
+          "label_offset_tie": 0,
+          "total": 0,
           "unexplained": 0
         }
       },
       "identity_collisions": {
         "duckdb": {
-          "derived_q4_rows": 784924,
+          "derived_q4_rows": 764324,
           "derived_q4_rows_by_form": {
-            "10-12G": 37,
-            "10-12G/A": 40,
-            "10-K": 750951,
-            "10-K/A": 5021,
-            "10-KT": 765,
-            "10-KT/A": 4,
-            "10-Q": 848,
-            "10-Q/A": 46,
-            "20-F": 6335,
-            "20-F/A": 295,
-            "40-F": 1982,
-            "40-F/A": 66,
-            "6-K": 307,
-            "6-K/A": 1,
-            "8-K": 697,
-            "8-K/A": 143,
-            "F-1": 102,
-            "F-1/A": 14,
-            "F-3/A": 58,
-            "F-4": 124,
-            "F-4/A": 20,
-            "N-2": 55,
-            "POS AM": 1552,
-            "S-1": 8434,
-            "S-1/A": 4995,
-            "S-11": 97,
-            "S-11/A": 130,
-            "S-3": 7,
-            "S-4": 1148,
-            "S-4/A": 650
+            "10-K": 758333,
+            "10-K/A": 5173,
+            "10-KT": 818
           },
-          "derived_q4_rows_from_other_than_10_k_forms": 28187,
-          "fact_ids_shared_by_several_rows": 175,
-          "rows_with_a_shared_fact_id": 350
+          "derived_q4_rows_from_other_than_10_k_forms": 0,
+          "fact_ids_shared_by_several_rows": 0,
+          "rows_with_a_shared_fact_id": 0
         },
         "spark": {
-          "derived_q4_rows": 784934,
+          "derived_q4_rows": 764324,
           "derived_q4_rows_by_form": {
-            "10-12G": 37,
-            "10-12G/A": 40,
-            "10-K": 750963,
-            "10-K/A": 5021,
-            "10-KT": 765,
-            "10-KT/A": 4,
-            "10-Q": 848,
-            "10-Q/A": 46,
-            "20-F": 6335,
-            "20-F/A": 295,
-            "40-F": 1982,
-            "40-F/A": 66,
-            "6-K": 307,
-            "6-K/A": 1,
-            "8-K": 697,
-            "8-K/A": 143,
-            "F-1": 102,
-            "F-1/A": 14,
-            "F-3/A": 58,
-            "F-4": 124,
-            "F-4/A": 20,
-            "N-2": 55,
-            "POS AM": 1552,
-            "S-1": 8434,
-            "S-1/A": 4995,
-            "S-11": 97,
-            "S-11/A": 130,
-            "S-3": 7,
-            "S-4": 1148,
-            "S-4/A": 648
+            "10-K": 758333,
+            "10-K/A": 5173,
+            "10-KT": 818
           },
-          "derived_q4_rows_from_other_than_10_k_forms": 28185,
-          "fact_ids_shared_by_several_rows": 175,
-          "rows_with_a_shared_fact_id": 350
+          "derived_q4_rows_from_other_than_10_k_forms": 0,
+          "fact_ids_shared_by_several_rows": 0,
+          "rows_with_a_shared_fact_id": 0
         }
       },
       "label_offset_tie_ciks": {
@@ -234,274 +150,41 @@
         "2023q4",
         "2024q1"
       ],
+      "reference_agreement": {
+        "companies": 8193,
+        "differences": 0,
+        "examples": [],
+        "rows_compared": 12201161
+      },
       "spark_repeatability": {
         "differences": {
           "facts": {
             "only_a": 0,
             "only_b": 0,
-            "rows_a": 8250114,
-            "rows_b": 8250114
+            "rows_a": 8229693,
+            "rows_b": 8229693
           },
           "facts_dimensional": {
             "only_a": 0,
             "only_b": 0,
-            "rows_a": 7801086,
-            "rows_b": 7801086
+            "rows_a": 7790722,
+            "rows_b": 7790722
           },
           "facts_history": {
             "only_a": 0,
             "only_b": 0,
-            "rows_a": 12221771,
-            "rows_b": 12221771
+            "rows_a": 12201161,
+            "rows_b": 12201161
           }
         },
         "other_run": "Iceberg namespace lake.curated, built earlier from the same raw quarters",
         "this_run": "the Spark run of benchmark cell 7q"
       },
-      "unexplained_order_check": [
-        {
-          "a_output": [
-            [
-              "2021-12-31",
-              "0001130310-22-000023",
-              "81000000.0000"
-            ]
-          ],
-          "a_output_is_a_reference_output": true,
-          "b_output": [
-            [
-              "2021-11-30",
-              "0001130310-24-000010",
-              "761000000.0000"
-            ],
-            [
-              "2021-12-31",
-              "0001130310-22-000023",
-              "81000000.0000"
-            ]
-          ],
-          "b_output_is_a_reference_output": true,
-          "cik": 1130310,
-          "distinct_reference_outputs": 2,
-          "segments": "DisposalGroupClassification=SegmentDiscontinuedOperations;IncomeStatementBalanceSheetAndAdditionalDisclosuresByDisposalGroupsIncludingDiscontinuedOperations=EnableMidstreamPartners;",
-          "shuffles": 60,
-          "tag": "IncomeLossFromEquityMethodInvestments"
-        },
-        {
-          "a_output": [
-            [
-              "2022-09-30",
-              "0001367644-22-000144",
-              "0.0000"
-            ],
-            [
-              "2022-12-31",
-              "0001367644-24-000033",
-              "0.0000"
-            ]
-          ],
-          "a_output_is_a_reference_output": true,
-          "b_output": [
-            [
-              "2022-09-30",
-              "0001367644-22-000144",
-              "112400000.0000"
-            ]
-          ],
-          "b_output_is_a_reference_output": true,
-          "cik": 1367644,
-          "distinct_reference_outputs": 2,
-          "segments": "EquityComponents=TreasuryStockCommon;",
-          "shuffles": 60,
-          "tag": "StockRepurchasedDuringPeriodValue"
-        },
-        {
-          "a_output": [
-            [
-              "2022-03-31",
-              "0001104659-23-102909",
-              "0.0000"
-            ]
-          ],
-          "a_output_is_a_reference_output": true,
-          "b_output": [
-            [
-              "2021-12-31",
-              "0001104659-23-102909",
-              "0.0000"
-            ]
-          ],
-          "b_output_is_a_reference_output": true,
-          "cik": 1854275,
-          "distinct_reference_outputs": 2,
-          "segments": "ClassOfStock=CommonClassaSubjectToRedemption;",
-          "shuffles": 60,
-          "tag": "AdjustmentsToAdditionalPaidInCapitalProceedsAllocatedToPublicWarrants"
-        }
-      ],
-      "unexplained_rows": {
-        "facts_dimensional": [
-          {
-            "accession": "0001130310-24-000010",
-            "calendar_frame": "CY2021Q4",
-            "cik": 1130310,
-            "dq_flags": [
-              "q4_derived"
-            ],
-            "filed": "2024-02-20",
-            "fiscal_period": "Q4",
-            "fiscal_year": 2021,
-            "form": "10-K",
-            "is_custom": false,
-            "is_latest": true,
-            "is_original": true,
-            "is_restated": false,
-            "n_versions": 1,
-            "period_end": "2021-11-30",
-            "period_start": "2021-09-01",
-            "qtrs": 1,
-            "segments": "DisposalGroupClassification=SegmentDiscontinuedOperations;IncomeStatementBalanceSheetAndAdditionalDisclosuresByDisposalGroupsIncludingDiscontinuedOperations=EnableMidstreamPartners;",
-            "side": "b",
-            "tag": "IncomeLossFromEquityMethodInvestments",
-            "taxonomy": "us-gaap",
-            "uom": "USD",
-            "value": "761000000.0000"
-          },
-          {
-            "accession": "0001367644-22-000144",
-            "calendar_frame": "CY2022Q3",
-            "cik": 1367644,
-            "dq_flags": [
-              "q4_derived"
-            ],
-            "filed": "2022-11-09",
-            "fiscal_period": "Q4",
-            "fiscal_year": 2022,
-            "form": "10-Q",
-            "is_custom": false,
-            "is_latest": true,
-            "is_original": true,
-            "is_restated": false,
-            "n_versions": 1,
-            "period_end": "2022-09-30",
-            "period_start": "2022-07-01",
-            "qtrs": 1,
-            "segments": "EquityComponents=TreasuryStockCommon;",
-            "side": "a",
-            "tag": "StockRepurchasedDuringPeriodValue",
-            "taxonomy": "us-gaap",
-            "uom": "USD",
-            "value": "0.0000"
-          },
-          {
-            "accession": "0001367644-22-000144",
-            "calendar_frame": "CY2022Q3",
-            "cik": 1367644,
-            "dq_flags": [
-              "q4_derived"
-            ],
-            "filed": "2022-11-09",
-            "fiscal_period": "Q4",
-            "fiscal_year": 2022,
-            "form": "10-Q",
-            "is_custom": false,
-            "is_latest": true,
-            "is_original": true,
-            "is_restated": false,
-            "n_versions": 1,
-            "period_end": "2022-09-30",
-            "period_start": "2022-07-01",
-            "qtrs": 1,
-            "segments": "EquityComponents=TreasuryStockCommon;",
-            "side": "b",
-            "tag": "StockRepurchasedDuringPeriodValue",
-            "taxonomy": "us-gaap",
-            "uom": "USD",
-            "value": "112400000.0000"
-          },
-          {
-            "accession": "0001367644-24-000033",
-            "calendar_frame": "CY2022Q4",
-            "cik": 1367644,
-            "dq_flags": [
-              "q4_derived"
-            ],
-            "filed": "2024-03-08",
-            "fiscal_period": "Q4",
-            "fiscal_year": 2022,
-            "form": "10-K",
-            "is_custom": false,
-            "is_latest": true,
-            "is_original": true,
-            "is_restated": false,
-            "n_versions": 1,
-            "period_end": "2022-12-31",
-            "period_start": "2022-10-01",
-            "qtrs": 1,
-            "segments": "EquityComponents=TreasuryStockCommon;",
-            "side": "a",
-            "tag": "StockRepurchasedDuringPeriodValue",
-            "taxonomy": "us-gaap",
-            "uom": "USD",
-            "value": "0.0000"
-          },
-          {
-            "accession": "0001104659-23-102909",
-            "calendar_frame": "CY2021Q4",
-            "cik": 1854275,
-            "dq_flags": [
-              "q4_derived"
-            ],
-            "filed": "2023-09-22",
-            "fiscal_period": "Q4",
-            "fiscal_year": 2022,
-            "form": "S-4/A",
-            "is_custom": true,
-            "is_latest": true,
-            "is_original": true,
-            "is_restated": false,
-            "n_versions": 1,
-            "period_end": "2021-12-31",
-            "period_start": "2021-10-01",
-            "qtrs": 1,
-            "segments": "ClassOfStock=CommonClassaSubjectToRedemption;",
-            "side": "b",
-            "tag": "AdjustmentsToAdditionalPaidInCapitalProceedsAllocatedToPublicWarrants",
-            "taxonomy": "custom",
-            "uom": "USD",
-            "value": "0.0000"
-          },
-          {
-            "accession": "0001104659-23-102909",
-            "calendar_frame": "CY2022Q1",
-            "cik": 1854275,
-            "dq_flags": [
-              "q4_derived"
-            ],
-            "filed": "2023-09-22",
-            "fiscal_period": "Q4",
-            "fiscal_year": 2022,
-            "form": "S-4/A",
-            "is_custom": true,
-            "is_latest": true,
-            "is_original": true,
-            "is_restated": false,
-            "n_versions": 1,
-            "period_end": "2022-03-31",
-            "period_start": "2022-01-01",
-            "qtrs": 1,
-            "segments": "ClassOfStock=CommonClassaSubjectToRedemption;",
-            "side": "a",
-            "tag": "AdjustmentsToAdditionalPaidInCapitalProceedsAllocatedToPublicWarrants",
-            "taxonomy": "custom",
-            "uom": "USD",
-            "value": "0.0000"
-          }
-        ]
-      }
+      "unexplained_order_check": [],
+      "unexplained_rows": {}
     }
   },
-  "generated_at": "2026-11-17T20:20:48+00:00",
-  "git_sha": "f4daa7e",
+  "generated_at": "2026-11-17T21:53:45+00:00",
+  "git_sha": "f86aaf6",
   "note": "a = Spark, b = DuckDB. See the module docstring for the causes."
 }

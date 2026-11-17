@@ -2,47 +2,47 @@
   "comparisons": {
     "2q": {
       "facts": {
-        "only_a": 21,
-        "only_b": 23,
-        "rows_a": 2857418,
-        "rows_b": 2857420
+        "only_a": 0,
+        "only_b": 0,
+        "rows_a": 2847735,
+        "rows_b": 2847735
       },
       "facts_dimensional": {
-        "only_a": 1,
-        "only_b": 1,
-        "rows_a": 2852059,
-        "rows_b": 2852059
+        "only_a": 0,
+        "only_b": 0,
+        "rows_a": 2848442,
+        "rows_b": 2848442
       },
       "facts_history": {
-        "only_a": 24,
-        "only_b": 26,
-        "rows_a": 3330848,
-        "rows_b": 3330850
+        "only_a": 0,
+        "only_b": 0,
+        "rows_a": 3320915,
+        "rows_b": 3320915
       }
     },
     "7q": {
       "facts": {
-        "only_a": 1982,
-        "only_b": 1973,
-        "rows_a": 8250114,
-        "rows_b": 8250105
+        "only_a": 0,
+        "only_b": 0,
+        "rows_a": 8229693,
+        "rows_b": 8229693
       },
       "facts_dimensional": {
-        "only_a": 632,
-        "only_b": 632,
-        "rows_a": 7801086,
-        "rows_b": 7801086
+        "only_a": 0,
+        "only_b": 0,
+        "rows_a": 7790722,
+        "rows_b": 7790722
       },
       "facts_history": {
-        "only_a": 2570,
-        "only_b": 2560,
-        "rows_a": 12221771,
-        "rows_b": 12221761
+        "only_a": 0,
+        "only_b": 0,
+        "rows_a": 12201161,
+        "rows_b": 12201161
       }
     }
   },
-  "generated_at": "2026-11-17T20:15:10+00:00",
-  "git_sha": "26b509d",
+  "generated_at": "2026-11-17T21:36:36+00:00",
+  "git_sha": "546c0a8",
   "machine": {
     "cpu": "Apple M4 Pro",
     "cpu_count": 12,
@@ -58,43 +58,43 @@
       "engine": "duckdb",
       "exit_code": 0,
       "label": "2q",
-      "peak_rss_mb": 12016.5,
+      "peak_rss_mb": 9832.8,
       "quarters": [
         "2023q3",
         "2023q4"
       ],
       "step": "normalize",
-      "wall_seconds": 7.21
+      "wall_seconds": 7.98
     },
     {
       "engine": "spark_local",
       "exit_code": 0,
       "label": "2q",
-      "peak_rss_mb": 1090.3,
+      "peak_rss_mb": 1071.8,
       "quarters": [
         "2023q3",
         "2023q4"
       ],
       "step": "raw_load",
-      "wall_seconds": 38.36
+      "wall_seconds": 38.19
     },
     {
       "engine": "spark_local",
       "exit_code": 0,
       "label": "2q",
-      "peak_rss_mb": 10792.3,
+      "peak_rss_mb": 10194.5,
       "quarters": [
         "2023q3",
         "2023q4"
       ],
       "step": "normalize",
-      "wall_seconds": 101.93
+      "wall_seconds": 112.07
     },
     {
       "engine": "duckdb",
       "exit_code": 0,
       "label": "7q",
-      "peak_rss_mb": 11979.5,
+      "peak_rss_mb": 9929.5,
       "quarters": [
         "2022q1",
         "2022q3",
@@ -105,13 +105,13 @@
         "2024q1"
       ],
       "step": "normalize",
-      "wall_seconds": 140.6
+      "wall_seconds": 113.25
     },
     {
       "engine": "spark_local",
       "exit_code": 0,
       "label": "7q",
-      "peak_rss_mb": 1192.6,
+      "peak_rss_mb": 1157.9,
       "quarters": [
         "2022q1",
         "2022q3",
@@ -122,13 +122,13 @@
         "2024q1"
       ],
       "step": "raw_load",
-      "wall_seconds": 122.94
+      "wall_seconds": 125.21
     },
     {
       "engine": "spark_local",
       "exit_code": 0,
       "label": "7q",
-      "peak_rss_mb": 11596.6,
+      "peak_rss_mb": 11734.5,
       "quarters": [
         "2022q1",
         "2022q3",
@@ -139,7 +139,7 @@
         "2024q1"
       ],
       "step": "normalize",
-      "wall_seconds": 274.19
+      "wall_seconds": 277.07
     }
   ]
 }

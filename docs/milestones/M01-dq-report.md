@@ -1,8 +1,8 @@
 # M1 data-quality report
 
-Generated 2026-11-17T18:38:32+00:00 at git `ec6ff43`. Every number below comes from a query run by `pipelines/spark/dq_checks.py` (or from `M01-spotcheck.json`); `NOT MEASURED` means it could not be computed yet, and the reason is given.
+Generated 2026-11-17T21:54:13+00:00 at git `f86aaf6`. Every number below comes from a query run by `pipelines/spark/dq_checks.py` (or from `M01-spotcheck.json`); `NOT MEASURED` means it could not be computed yet, and the reason is given.
 
-Iceberg snapshot ids (latest): `lake.raw.fsds_num` = 3480242806109852370, `lake.curated.facts` = 2440871186715124453, `lake.curated.facts_history` = 330196427142494808
+Iceberg snapshot ids (latest): `lake.raw.fsds_num` = 3480242806109852370, `lake.curated.facts` = 3355594346342027933, `lake.curated.facts_history` = 1185208612929040201
 
 ## Rows per source quarter (`raw.fsds_*`)
 
@@ -111,12 +111,12 @@ Of 24,166,097 raw rows.
 
 ## Curated facts (`curated.facts`)
 
-8,250,114 rows covering 8,071,662 distinct facts (fact_key). Custom: 10.81% of rows. With dq flags: 9.59% of rows (790,827). Derived Q4 rows: 784,359.
+8,229,693 rows covering 8,053,335 distinct facts (fact_key). Custom: 10.79% of rows. With dq flags: 9.36% of rows (770,404). Derived Q4 rows: 763,936.
 
-Flag counts (rows): {'label_offset_varies': 7010, 'q4_derived': 784359}.
-Restated facts: 183,653. Versions per fact (`n_versions`, counted once per fact): {1: 5436692, 2: 1797588, 3: 386682, 4: 343823, 5: 53470, 6: 21666, 7: 16550, 8: 6025, 9: 4474, 10: 1883, 11: 1336, 12: 744, 13: 309, 14: 170, 15: 89, 16: 83, 17: 46, 18: 10, 19: 17, 20: 3, 22: 2}.
+Flag counts (rows): {'label_offset_varies': 7010, 'q4_derived': 763936}.
+Restated facts: 181,400. Versions per fact (`n_versions`, counted once per fact): {1: 5420567, 2: 1795462, 3: 386610, 4: 343819, 5: 53470, 6: 21667, 7: 16549, 8: 6025, 9: 4474, 10: 1883, 11: 1336, 12: 744, 13: 309, 14: 170, 15: 89, 16: 83, 17: 46, 18: 10, 19: 17, 20: 3, 22: 2}.
 
-Rows by fiscal year: 1932: 2, 1988: 1, 1993: 1, 1994: 3, 1996: 2, 1997: 3, 1998: 3, 1999: 2, 2002: 6, 2003: 8, 2004: 7, 2005: 4, 2006: 13, 2007: 16, 2008: 31, 2009: 22, 2010: 34, 2011: 107, 2012: 230, 2013: 207, 2014: 183, 2015: 530, 2016: 703, 2017: 1,050, 2018: 12,050, 2019: 253,553, 2020: 655,959, 2021: 2,147,553, 2022: 2,750,809, 2023: 2,250,520, 2024: 176,468, 2025: 8, 2026: 3, 2027: 5, 2028: 8, 2029: 2, 2032: 1, 2033: 1, 2034: 1, 2923: 5.
+Rows by fiscal year: 1932: 2, 1988: 1, 1993: 1, 1994: 3, 1996: 2, 1997: 3, 1998: 3, 1999: 2, 2002: 6, 2003: 8, 2004: 7, 2005: 4, 2006: 13, 2007: 16, 2008: 31, 2009: 22, 2010: 34, 2011: 107, 2012: 230, 2013: 200, 2014: 183, 2015: 530, 2016: 703, 2017: 1,050, 2018: 12,050, 2019: 253,524, 2020: 654,002, 2021: 2,139,892, 2022: 2,742,795, 2023: 2,247,768, 2024: 176,467, 2025: 8, 2026: 3, 2027: 5, 2028: 8, 2029: 2, 2032: 1, 2033: 1, 2034: 1, 2923: 5.
 
 Null rates:
 
@@ -130,11 +130,11 @@ Null rates:
 | `is_custom` | 0.00% |
 | `uom` | 0.00% |
 | `qtrs` | 0.00% |
-| `period_start` | 26.03% |
+| `period_start` | 26.09% |
 | `period_end` | 0.00% |
 | `fiscal_year` | 0.00% |
 | `fiscal_period` | 0.00% |
-| `calendar_frame` | 28.86% |
+| `calendar_frame` | 28.93% |
 | `value` | 0.00% |
 | `accession` | 0.00% |
 | `form` | 0.00% |
@@ -144,14 +144,14 @@ Null rates:
 | `n_versions` | 0.00% |
 | `is_restated` | 0.00% |
 | `dq_flags` | 0.00% |
-| `derived_from` | 90.49% |
+| `derived_from` | 90.72% |
 | `anomaly_score` | 100.00% |
 
 ## Second-source spot check (companyfacts)
 
 Compared: the 10-Ks of fiscal years 2023, 2022 (each company's own fy label).
 
-58/60 match (outcomes {'match': 58, 'missing_in_curated': 2}). Frames agree: 1/1. Non-matches without a classification: 2. Run at 2026-11-17T13:18:53-05:00; details in `M01-spotcheck.json`.
+58/60 match (outcomes {'match': 58, 'missing_in_curated': 2}). Frames agree: 1/1. Non-matches without a classification: 2. Run at 2026-11-17T16:54:12-05:00; details in `M01-spotcheck.json`.
 
 ## Apple FY2023 revenue (manual check against the 10-K income statement)
 
