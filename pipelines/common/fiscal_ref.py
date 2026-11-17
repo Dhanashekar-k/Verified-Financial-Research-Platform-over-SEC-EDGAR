@@ -22,10 +22,13 @@ Rule numbers refer to M01 section 3.5 "Fiscal-period rules". Column names match
 
 from __future__ import annotations
 
+import calendar
+from collections import Counter, defaultdict
 from collections.abc import Iterable, Sequence
 from dataclasses import dataclass
-from datetime import date
+from datetime import date, timedelta
 from decimal import Decimal
+from typing import Any
 
 # --------------------------------------------------------------------------------------
 # Inputs and outputs
@@ -93,7 +96,78 @@ class FiscalFact:
 
 def fye_date(year: int, fye_mmdd: str) -> date:
     """The fiscal-year-end date falling in calendar `year` (rule 1). Feb 29 becomes Feb 28."""
-    raise NotImplementedError
+    month, day = int(fye_mmdd[:2]), int(fye_mmdd[2:])
+    if (month, day) == (2, 29):
+        day = 28
+    return date(year, month, day)
+
+
+def _add_months(d: date, months: int) -> date:
+    m = d.month - 1 + months
+    y = d.year + m // 12
+    m = m % 12 + 1
+    day = min(d.day, calendar.monthrange(y, m)[1])
+    return date(y, m, day)
+
+
+def _period_start(period_end: date, qtrs: int) -> date | None:
+    """Start of a qtrs-quarter period ending at period_end; None for an instant."""
+    if qtrs == 0:
+        return None
+    return _add_months(period_end + timedelta(days=1), -3 * qtrs)
+
+
+def _retained(facts: Sequence[FactInput]) -> tuple[FactInput, FactInput]:
+    """Version selection over one fact_key: (original, latest).
+    latest = max(filed, accession); original = among sub_period == period_end the earliest filed
+    (ties: smallest accession), else earliest overall. Equal values collapse to the original
+    (so the derived Q4 cites the native filing — decision 2026-11-17)."""
+    latest = max(facts, key=lambda f: (f.filed, f.adsh))
+    native = [f for f in facts if f.sub_period == f.period_end]
+    original = min(native or list(facts), key=lambda f: (f.filed, f.adsh))
+    return (original, original) if latest.value == original.value else (original, latest)
+
+
+def _retained_nine_months(facts: Sequence[FactInput]) -> tuple[FactInput, FactInput]:
+    """Across all 9M candidates (possibly several period-end spellings), the original-most and
+    the latest-filed retained rows; ties go to the latest/earliest filed, then accession."""
+    by_pe: dict[date, list[FactInput]] = defaultdict(list)
+    for f in facts:
+        by_pe[f.period_end].append(f)
+    origs, latests = zip(*(_retained(g) for g in by_pe.values()), strict=True)
+    nm_orig = min(origs, key=lambda f: (f.filed, f.adsh))
+    nm_latest = max(latests, key=lambda f: (f.filed, f.adsh))
+    return nm_orig, nm_latest
+
+
+def _derived_q4(
+    fy: FactInput, nine_m: FactInput, fiscal_year: int, base_flags: tuple[str, ...]
+) -> FiscalFact:
+    assert fy.value is not None and nine_m.value is not None
+    q4 = FactInput(
+        cik=fy.cik,
+        adsh=fy.adsh,
+        tag=fy.tag,
+        taxonomy=fy.taxonomy,
+        uom=fy.uom,
+        qtrs=1,
+        period_end=fy.period_end,
+        value=fy.value - nine_m.value,
+        form=fy.form,
+        filed=fy.filed,
+        fye_mmdd=fy.fye_mmdd,
+        sub_fy=fy.sub_fy,
+        sub_period=fy.sub_period,
+    )
+    return FiscalFact(
+        fact=q4,
+        period_start=_period_start(fy.period_end, 1),
+        fiscal_year=fiscal_year,
+        fiscal_period="Q4",
+        calendar_frame=calendar_frame(fy.period_end, 1),
+        dq_flags=base_flags + ("q4_derived",),
+        derived_from=((fy.period_end, 4, fy.adsh), (nine_m.period_end, 3, nine_m.adsh)),
+    )
 
 
 def y_end(period_end: date, fye_mmdd: str) -> int:
@@ -102,7 +176,10 @@ def y_end(period_end: date, fye_mmdd: str) -> int:
     The 7-day tolerance absorbs 52/53-week years (Apple's FY2022 ended 2022-09-24 and FY2023
     ended 2023-09-30, both inside the window of a '0930' year end).
     """
-    raise NotImplementedError
+    for y in (period_end.year - 1, period_end.year, period_end.year + 1):
+        if period_end <= fye_date(y, fye_mmdd) + timedelta(days=7):
+            return y
+    raise ValueError(f"no fiscal year for {period_end!r} with FYE {fye_mmdd!r}")
 
 
 def label_offsets(subs: Iterable[SubmissionPeriod]) -> dict[int, LabelOffset]:
@@ -110,7 +187,14 @@ def label_offsets(subs: Iterable[SubmissionPeriod]) -> dict[int, LabelOffset]:
     submissions (forms '10-K' and '10-KT'). `is_constant` is False if more than one distinct
     offset occurs. A cik with no usable 10-K submission is absent from the result.
     """
-    raise NotImplementedError
+    by_cik: dict[int, list[int]] = defaultdict(list)
+    for s in subs:
+        if s.form in ("10-K", "10-KT") and s.sub_fy is not None:
+            by_cik[s.cik].append(s.sub_fy - y_end(s.sub_period, s.fye_mmdd))
+    return {
+        cik: LabelOffset(Counter(offs).most_common(1)[0][0], len(set(offs)) == 1)
+        for cik, offs in by_cik.items()
+    }
 
 
 def quarter_index(period_end: date, fye_mmdd: str) -> int:
@@ -118,12 +202,29 @@ def quarter_index(period_end: date, fye_mmdd: str) -> int:
     `period_end`, with a tolerance for 52/53-week years. A period ending on the fiscal year end
     is quarter 4.
     """
-    raise NotImplementedError
+    y = y_end(period_end, fye_mmdd)
+    fy_end = fye_date(y, fye_mmdd)
+    for n in (1, 2, 3):
+        q_end = _add_months(fy_end, -3 * (4 - n))
+        if period_end <= q_end + timedelta(days=7):
+            return n
+    return 4
 
 
 def fiscal_period_label(period_end: date, qtrs: int, fye_mmdd: str) -> str:
-    """Rule 4: qtrs 4 -> 'FY'; 0 -> 'INSTANT'; 1 -> 'Q{n}'; 2 -> 'H1'; 3 -> '9M'."""
-    raise NotImplementedError
+    """Rule 4: qtrs 4 -> 'FY'; 1 -> 'Q{n}'; 2 -> 'H1'; 3 -> '9M'.
+    An instant (qtrs 0) is 'FY' when its quarter_index is 4, else 'Q{n}'.
+    """
+    if qtrs == 4:
+        return "FY"
+    if qtrs == 3:
+        return "9M"
+    if qtrs == 2:
+        return "H1"
+    n = quarter_index(period_end, fye_mmdd)
+    if qtrs == 0 and n == 4:
+        return "FY"  # an instant at the fiscal year-end (e.g. total assets)
+    return f"Q{n}"  # a quarter (incl. a direct Q4), or an instant at Q1–Q3
 
 
 def calendar_frame(period_end: date, qtrs: int) -> str | None:
@@ -132,7 +233,19 @@ def calendar_frame(period_end: date, qtrs: int) -> str | None:
     of `period_end`; a trailing 'I' for instants. None where no frame applies (for example H1
     and 9M, and annual periods not aligned to the calendar year).
     """
-    raise NotImplementedError
+    if qtrs == 4:  # annual: CY{year} only if it ends within ±30 days of a Dec 31
+        nearest = min(
+            (date(period_end.year - 1, 12, 31), date(period_end.year, 12, 31)),
+            key=lambda c: abs((period_end - c).days),
+        )
+        if abs((period_end - nearest).days) <= 30:
+            return f"CY{nearest.year}"
+        return None
+    if qtrs in (0, 1):  # quarter / instant: by the calendar quarter of period_end
+        q = (period_end.month - 1) // 3 + 1
+        frame = f"CY{period_end.year}Q{q}"
+        return frame + "I" if qtrs == 0 else frame
+    return None  # H1 (2) and 9M (3) never get a frame
 
 
 # --------------------------------------------------------------------------------------
@@ -152,7 +265,61 @@ def derive_fiscal(facts: Sequence[FactInput]) -> list[FiscalFact]:
     '/' (for example 'USD/shares') or equal to 'pure' is not derived.
     Input order does not matter; output order is unspecified.
     """
-    raise NotImplementedError
+    facts = list(facts)
+    subs = {
+        (f.cik, f.adsh): SubmissionPeriod(f.cik, f.adsh, f.form, f.sub_fy, f.sub_period, f.fye_mmdd)
+        for f in facts
+    }
+    offsets = label_offsets(subs.values())
+
+    def fiscal_year_of(f: FactInput) -> int:
+        off = offsets[f.cik].offset if f.cik in offsets else 0
+        return y_end(f.period_end, f.fye_mmdd) + off
+
+    def flags_of(f: FactInput) -> tuple[str, ...]:
+        lo = offsets.get(f.cik)
+        return ("label_offset_varies",) if lo is not None and not lo.is_constant else ()
+
+    out: list[FiscalFact] = [
+        FiscalFact(
+            fact=f,
+            period_start=_period_start(f.period_end, f.qtrs),
+            fiscal_year=fiscal_year_of(f),
+            fiscal_period=fiscal_period_label(f.period_end, f.qtrs, f.fye_mmdd),
+            calendar_frame=calendar_frame(f.period_end, f.qtrs),
+            dq_flags=flags_of(f),
+            derived_from=None,
+        )
+        for f in facts
+    ]
+
+    groups: dict[tuple[Any, ...], list[FactInput]] = defaultdict(list)
+    for f in facts:
+        groups[(f.cik, f.tag, f.taxonomy, f.uom, fiscal_year_of(f))].append(f)
+
+    for (_cik, _tag, _tax, uom, fy), members in groups.items():
+        if "/" in uom or uom in ("pure", "shares"):
+            continue  # per-share / ratio / share-count concepts are not additive
+        if any(
+            m.qtrs == 1 and fiscal_period_label(m.period_end, 1, m.fye_mmdd) == "Q4"
+            for m in members
+        ):
+            continue  # a directly reported Q4 wins: derive nothing for this fiscal year
+        fy_rows = [m for m in members if m.qtrs == 4]
+        nm_rows = [m for m in members if m.qtrs == 3]
+        if not fy_rows or not nm_rows:
+            continue
+        fy_orig, fy_latest = _retained(fy_rows)
+        nm_orig, nm_latest = _retained_nine_months(nm_rows)
+        base = flags_of(fy_orig)
+        # one Q4 per provenance tier; tiers sharing an FY accession collapse to the later 9M
+        chosen: dict[str, tuple[FactInput, FactInput]] = {}
+        for fyv, nmv in ((fy_orig, nm_orig), (fy_latest, nm_latest)):
+            kept = chosen.get(fyv.adsh)
+            if kept is None or (nmv.filed, nmv.adsh) > (kept[1].filed, kept[1].adsh):
+                chosen[fyv.adsh] = (fyv, nmv)
+        out.extend(_derived_q4(fyv, nmv, fy, base) for fyv, nmv in chosen.values())
+    return out
 
 
 # --------------------------------------------------------------------------------------
@@ -195,4 +362,18 @@ def select_versions_ref(versions: Sequence[FactVersion]) -> list[SelectedVersion
     value (never restated); otherwise two rows, the latest (is_latest only) and the original
     (is_original only). Every output row carries n_versions and is_restated of its group.
     """
-    raise NotImplementedError
+    groups: dict[int, list[FactVersion]] = defaultdict(list)
+    for v in versions:
+        groups[v.fact_key].append(v)
+    out: list[SelectedVersion] = []
+    for group in groups.values():
+        latest = max(group, key=lambda v: (v.filed, v.accession))
+        native = [v for v in group if v.filing_period == v.period_end]
+        original = min(native or group, key=lambda v: (v.filed, v.accession))
+        n, restated = len(group), len({v.value for v in group}) > 1
+        if latest.value == original.value:
+            out.append(SelectedVersion(original, True, True, n, restated))
+        else:
+            out.append(SelectedVersion(latest, True, False, n, restated))
+            out.append(SelectedVersion(original, False, True, n, restated))
+    return out
