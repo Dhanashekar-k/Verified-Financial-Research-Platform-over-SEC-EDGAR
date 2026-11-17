@@ -144,19 +144,23 @@ CREATE TABLE lake.curated.facts_history (       -- every reported version of eve
 --   qtrs = 1, period_end = the FY end, fiscal_period = 'Q4', dq_flags contains 'q4_derived',
 --   derived_from = [FY fact_id, 9M fact_id] so M6 can re-execute FY - 9M.
 --   Derived per provenance tier within (cik, tag, taxonomy, uom, fiscal_year): the original Q4 from the original FY and 9M,
---   the latest Q4 from the latest FY and 9M. derived_from points only at parent rows that `facts` retains (when a parent's
---   latest and original values are equal, the single retained row carries the latest accession). Ties between candidate
---   parents go to the latest filed. Same Q4 value in both tiers collapses to one row, like any other fact.
---   Their fact_key differs from the FY fact's (qtrs 1 vs 4). A directly reported Q4 (qtrs = 1, same period_end) in the same
---   accession would collide on (fact_key, accession), so a direct row always wins and Q4 is derived only when none exists.
+--   the latest Q4 from the latest FY and 9M. derived_from points only at parent rows that `facts` retains (a parent whose
+--   versions all carry one value is retained as its ORIGINAL version, see `facts`). Ties between candidate parents go to the
+--   latest filed.
+--   Tiers that land on the same fact_id (same FY parent accession, i.e. only the 9M was restated) are deduplicated: the row
+--   whose 9M parent was filed latest survives, with is_latest = is_original = true, is_restated = false, n_versions = 1.
+--   When the FY itself was restated the tiers have different FY accessions: both rows are kept (latest and original).
+--   Their fact_key differs from the FY fact's (qtrs 1 vs 4). A directly reported Q4 (qtrs = 1, fiscal_period Q4) for the same
+--   (cik, tag, taxonomy, uom, fiscal_year), in ANY accession, always wins: nothing is derived for that fiscal year, and the
+--   direct row does not get 'q4_derived'.
 
-CREATE TABLE lake.curated.facts (               -- latest version per fact_key, plus the original when it differs (M1 §3.5)
+CREATE TABLE lake.curated.facts (               -- latest version per fact_key, plus the original when it differs (M1 §3.5); one row, the ORIGINAL version (the native filing), when all versions share a value
   fact_id bigint,             -- xxhash64(fact_key, accession): unique per version
   fact_key bigint,            -- groups versions of the same fact; same definition as facts_history.fact_key
   cik int, tag string, taxonomy string, is_custom boolean, uom string, qtrs int,
   period_start date, period_end date, fiscal_year int, fiscal_period string, calendar_frame string,
   value decimal(28,4), accession string, form string, filed date,
-  is_latest boolean, is_original boolean,      -- both true when the value was never restated
+  is_latest boolean, is_original boolean,      -- both true on the single collapsed row; that row carries the ORIGINAL version's accession, form and filed, so the default answer cites the native filing
   n_versions int, is_restated boolean,         -- restated = more than one distinct value across versions
   dq_flags array<string>,                      -- e.g. ['fy_mismatch_companyfacts','q4_derived']
   derived_from array<bigint>,                  -- same meaning as in facts_history (derived Q4 only)
