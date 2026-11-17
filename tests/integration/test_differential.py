@@ -5,8 +5,10 @@ seeded synthetic data set of about 10,000 fact rows. The data is sampled by WHOL
 by row: label offsets are a per-company statistic, and Q4 derivation needs a fact's FY and 9M
 rows together, so row sampling would break exactly the logic under test.
 
-These stay RED until Shekar implements the three owned modules. The generator itself is tested
-(and green) so a red run means the implementations disagree, not that the data is empty.
+The generator itself is tested so a red run means the implementations disagree, not that the data
+is empty. `derive_fiscal_columns` runs the reference per company, so its agreement checks the
+plumbing (row mapping, Q4 row construction, hashing); `select_versions` is an independent
+implementation, so its agreement checks the rules.
 Spark-vs-DuckDB (M01 section 3.7) is a separate test, written with the DuckDB twin.
 """
 
