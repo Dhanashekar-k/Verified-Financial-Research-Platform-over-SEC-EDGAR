@@ -18,7 +18,7 @@ from datetime import date
 from decimal import Decimal
 from typing import Any
 
-from pipelines.common.fiscal_ref import FactInput, FactVersion
+from pipelines.common.fiscal_ref import FactInput, FactVersion, FiscalFact, SubmissionPeriod
 
 
 class _Any:
@@ -114,6 +114,33 @@ class Expect:
         return (self.sub.cik, self.sub.adsh, self.tag, self.period_end, self.qtrs)
 
 
+def to_rows(out: Sequence[FiscalFact]) -> list[dict[str, Any]]:
+    """Normalise reference output to the row-dict shape the checkers use."""
+    rows = []
+    for ff in out:
+        r: dict[str, Any] = {k: getattr(ff.fact, k) for k in INPUT_FIELDS}
+        r.update(
+            period_start=ff.period_start,
+            fiscal_year=ff.fiscal_year,
+            fiscal_period=ff.fiscal_period,
+            calendar_frame=ff.calendar_frame,
+            dq_flags=frozenset(ff.dq_flags),
+            derived_from=ff.derived_from,
+        )
+        rows.append(r)
+    return rows
+
+
+_adsh_counter = iter(range(1, 10**6))
+
+
+def submission(
+    cik: int, form: str, sub_fy: int | None, period: date, fye: str = "1231"
+) -> SubmissionPeriod:
+    """A `SubmissionPeriod` with a fresh accession, for the label-offset tests."""
+    return SubmissionPeriod(cik, f"adsh-{next(_adsh_counter):06d}", form, sub_fy, period, fye)
+
+
 def ex(
     sub: Sub,
     tag: str,
@@ -200,11 +227,18 @@ X = "0000320193-23-000106"  # Apple 10-K FY2023, filed 2023-11-03
 Y = "0000320193-23-000077"  # Apple 10-Q for the quarter ended 2023-07-01, filed 2023-08-04
 Q1_23_ADSH = "0000320193-23-000006"
 Q2_23_ADSH = "0000320193-23-000064"
+K24_ADSH = "0000320193-24-000123"  # Apple 10-K FY2024, filed 2024-11-01
+Q3_24_ADSH = "0000320193-24-000081"  # Apple 10-Q for the quarter ended 2024-06-29
+Q3_23A_ADSH = "0000320193-23-000090"  # an amended 10-Q/A for the quarter ended 2023-07-01
 
 K23 = Sub(APPLE, X, "10-K", date(2023, 11, 3), "0930", 2023, date(2023, 9, 30))
 Q3_23 = Sub(APPLE, Y, "10-Q", date(2023, 8, 4), "0930", 2023, date(2023, 7, 1))
 Q1_23 = Sub(APPLE, Q1_23_ADSH, "10-Q", date(2023, 2, 3), "0930", 2023, date(2022, 12, 31))
 Q2_23 = Sub(APPLE, Q2_23_ADSH, "10-Q", date(2023, 5, 5), "0930", 2023, date(2023, 4, 1))
+
+K24 = Sub(APPLE, K24_ADSH, "10-K", date(2024, 11, 1), "0930", 2024, date(2024, 9, 28))
+Q3_24 = Sub(APPLE, Q3_24_ADSH, "10-Q", date(2024, 8, 2), "0930", 2024, date(2024, 6, 29))
+Q3_23A = Sub(APPLE, Q3_23A_ADSH, "10-Q/A", date(2023, 9, 15), "0930", 2023, date(2023, 7, 1))
 
 FY23_END = date(2023, 9, 30)
 FY22_END = date(2022, 9, 24)
@@ -290,9 +324,10 @@ _apple_periods = scenario(
         row(K23, "Revenues", FY23_END, 4, 2023, "FY", None),
         # The FY2023 10-K also carries FY2022 as a comparative: it must be FY2022, not FY2023.
         row(K23, "Revenues", FY22_END, 4, 2022, "FY", None),
-        # Instants: INSTANT; frame by calendar quarter of the date with a trailing I (Sep => Q3).
-        row(K23, "Assets", FY23_END, 0, 2023, "INSTANT", "CY2023Q3I"),
-        row(K23, "Assets", FY22_END, 0, 2022, "INSTANT", "CY2022Q3I"),
+        # Instants (qtrs 0) get a real period label: FY when the date is the year end (quarter
+        # index 4), else Q1-Q3. The frame is the calendar quarter with a trailing I (Sep => Q3).
+        row(K23, "Assets", FY23_END, 0, 2023, "FY", "CY2023Q3I"),
+        row(K23, "Assets", FY22_END, 0, 2022, "FY", "CY2022Q3I"),
         # 2022-12-31 is one quarter after FYE 2022-09-30 -> Q1 of fiscal 2023; Dec => CY Q4.
         row(Q1_23, "Revenues", date(2022, 12, 31), 1, 2023, "Q1", "CY2022Q4"),
         # 2021-12-25 is 6 days before the nominal Q1 end of fiscal 2022 -> Q1, fiscal 2022.
@@ -303,6 +338,10 @@ _apple_periods = scenario(
         row(Q3_23, "GrossProfit", date(2023, 7, 1), 3, 2023, "9M", None),  # qtrs 3 => 9M, no frame
         # 2023-07-01: one day past the nominal Q3 end (Jun 30) -> Q3; July => CY Q3.
         row(Q3_23, "Revenues", date(2023, 7, 1), 1, 2023, "Q3", "CY2023Q3"),
+        # Mid-year balance sheets: Q1-Q3 by quarter index; qtrs 0 and the I frame mark the instant.
+        row(Q1_23, "Assets", date(2022, 12, 31), 0, 2023, "Q1", "CY2022Q4I"),
+        row(Q2_23, "Assets", date(2023, 4, 1), 0, 2023, "Q2", "CY2023Q2I"),
+        row(Q3_23, "Assets", date(2023, 7, 1), 0, 2023, "Q3", "CY2023Q3I"),
     ],
 )
 
@@ -328,7 +367,19 @@ _msft = scenario(
         row(MS_Q3, "NetIncomeLoss", date(2023, 3, 31), 3, 2023, "9M", None),
         # A Jun 30 FY is 183 days from Dec 31: no calendar frame (rule 6).
         row(MS_K, "OperatingIncomeLoss", date(2023, 6, 30), 4, 2023, "FY", None),
-        row(MS_K, "Assets", date(2023, 6, 30), 0, 2023, "INSTANT", "CY2023Q2I"),
+        row(MS_K, "Assets", date(2023, 6, 30), 0, 2023, "FY", "CY2023Q2I"),
+    ],
+)
+
+_msft_instants = scenario(
+    "msft_instants_have_real_period_labels",
+    [
+        # One fiscal year of balance sheets (FYE 0630) is four distinct (fiscal_year, period)
+        # labels, so "total assets, Q2 FY2023" and "total assets, FY2023" cannot collide.
+        row(MS_Q1, "Assets", date(2022, 9, 30), 0, 2023, "Q1", "CY2022Q3I"),
+        row(MS_Q2, "Assets", date(2022, 12, 31), 0, 2023, "Q2", "CY2022Q4I"),
+        row(MS_Q3, "Assets", date(2023, 3, 31), 0, 2023, "Q3", "CY2023Q1I"),
+        row(MS_K, "Assets", date(2023, 6, 30), 0, 2023, "FY", "CY2023Q2I"),
     ],
 )
 
@@ -336,7 +387,7 @@ _cal = scenario(
     "calendar_year_company_frames",
     [
         row(CAL_K, "Revenues", date(2023, 12, 31), 4, 2023, "FY", "CY2023"),  # rule 6 annual
-        row(CAL_K, "Assets", date(2023, 12, 31), 0, 2023, "INSTANT", "CY2023Q4I"),
+        row(CAL_K, "Assets", date(2023, 12, 31), 0, 2023, "FY", "CY2023Q4I"),
         row(CAL_Q, "Revenues", date(2023, 3, 31), 1, 2023, "Q1", "CY2023Q1"),
     ],
 )
@@ -345,9 +396,9 @@ _ret_a = scenario(
     "retailer_label_offset_0",
     [
         # Rule 3: sub.fy - y_end(sub.period) = 0 for all three 10-Ks, so fiscal_year = y_end.
-        row(A_K[0], "Assets", date(2021, 1, 31), 0, 2021, "INSTANT"),
-        row(A_K[1], "Assets", date(2022, 1, 30), 0, 2022, "INSTANT"),
-        row(A_K[2], "Assets", date(2023, 1, 29), 0, 2023, "INSTANT"),
+        row(A_K[0], "Assets", date(2021, 1, 31), 0, 2021, "FY"),
+        row(A_K[1], "Assets", date(2022, 1, 30), 0, 2022, "FY"),
+        row(A_K[2], "Assets", date(2023, 1, 29), 0, 2023, "FY"),
         # y_end(2023-01-28) = 2023 (inside the FYE 2023-01-31 window); offset 0 => 2023.
         row(A_K[2], "Revenues", date(2023, 1, 28), 4, 2023, "FY"),
         # y_end(2022-04-30) = 2023 (after FYE 2022-01-31); 3 months in => Q1 of fiscal 2023.
@@ -359,9 +410,9 @@ _ret_b = scenario(
     "retailer_label_offset_minus_1",
     [
         # Rule 3: sub.fy - y_end(sub.period) = 2020-2021 = -1 etc., constant => offset -1.
-        row(B_K[0], "Assets", date(2021, 1, 31), 0, 2020, "INSTANT"),
-        row(B_K[1], "Assets", date(2022, 1, 30), 0, 2021, "INSTANT"),
-        row(B_K[2], "Assets", date(2023, 1, 29), 0, 2022, "INSTANT"),
+        row(B_K[0], "Assets", date(2021, 1, 31), 0, 2020, "FY"),
+        row(B_K[1], "Assets", date(2022, 1, 30), 0, 2021, "FY"),
+        row(B_K[2], "Assets", date(2023, 1, 29), 0, 2022, "FY"),
         row(B_K[2], "Revenues", date(2023, 1, 28), 4, 2022, "FY"),  # y_end 2023 + (-1)
         row(B_Q, "Revenues", date(2022, 4, 30), 1, 2022, "Q1"),  # y_end 2023 + (-1), Q1
     ],
@@ -378,7 +429,7 @@ _vary = scenario(
             date(2019, 12, 31),
             0,
             2019,
-            "INSTANT",
+            "FY",
             "CY2019Q4I",
             flags=["label_offset_varies"],
         ),
@@ -388,7 +439,7 @@ _vary = scenario(
             date(2020, 12, 31),
             0,
             2020,
-            "INSTANT",
+            "FY",
             "CY2020Q4I",
             flags=["label_offset_varies"],
         ),
@@ -398,7 +449,7 @@ _vary = scenario(
             date(2021, 12, 31),
             0,
             2021,
-            "INSTANT",
+            "FY",
             "CY2021Q4I",
             flags=["label_offset_varies"],
         ),
@@ -408,7 +459,7 @@ _vary = scenario(
             date(2022, 12, 31),
             0,
             2022,
-            "INSTANT",
+            "FY",
             "CY2022Q4I",
             flags=["label_offset_varies"],
         ),
@@ -431,16 +482,14 @@ _mode_over_subs = scenario(
         # Submission offsets: MD_K[0] 2020-2020 = 0 (five facts); MD_K[1] 2020-2021 = -1 and
         # MD_K[2] 2021-2022 = -1 (one fact each). Mode over SUBMISSIONS is -1 (2 of 3); a mode
         # over facts would be 0 (5 of 7). Not constant either way => flagged.
-        row(
-            MD_K[0], "Assets", date(2020, 12, 31), 0, 2019, "INSTANT", flags=["label_offset_varies"]
-        ),
+        row(MD_K[0], "Assets", date(2020, 12, 31), 0, 2019, "FY", flags=["label_offset_varies"]),
         row(
             MD_K[0],
             "Liabilities",
             date(2020, 12, 31),
             0,
             2019,
-            "INSTANT",
+            "FY",
             flags=["label_offset_varies"],
         ),
         row(
@@ -449,25 +498,21 @@ _mode_over_subs = scenario(
             date(2020, 12, 31),
             0,
             2019,
-            "INSTANT",
+            "FY",
             flags=["label_offset_varies"],
         ),
-        row(MD_K[0], "Cash", date(2020, 12, 31), 0, 2019, "INSTANT", flags=["label_offset_varies"]),
+        row(MD_K[0], "Cash", date(2020, 12, 31), 0, 2019, "FY", flags=["label_offset_varies"]),
         row(
             MD_K[0],
             "Inventory",
             date(2020, 12, 31),
             0,
             2019,
-            "INSTANT",
+            "FY",
             flags=["label_offset_varies"],
         ),
-        row(
-            MD_K[1], "Assets", date(2021, 12, 31), 0, 2020, "INSTANT", flags=["label_offset_varies"]
-        ),
-        row(
-            MD_K[2], "Assets", date(2022, 12, 31), 0, 2021, "INSTANT", flags=["label_offset_varies"]
-        ),
+        row(MD_K[1], "Assets", date(2021, 12, 31), 0, 2020, "FY", flags=["label_offset_varies"]),
+        row(MD_K[2], "Assets", date(2022, 12, 31), 0, 2021, "FY", flags=["label_offset_varies"]),
     ],
 )
 
@@ -476,8 +521,8 @@ _ten_q_ignored = scenario(
     [
         # 10-K offsets: 0, 0. Three 10-Qs have sub.fy one lower (offset -1 each); if they were
         # counted the mode would flip to -1. Only 10-K/10-KT submissions feed rule 3.
-        row(QK[0], "Assets", date(2021, 12, 31), 0, 2021, "INSTANT"),
-        row(QK[1], "Assets", date(2022, 12, 31), 0, 2022, "INSTANT"),
+        row(QK[0], "Assets", date(2021, 12, 31), 0, 2021, "FY"),
+        row(QK[1], "Assets", date(2022, 12, 31), 0, 2022, "FY"),
         row(QQ[0], "Revenues", date(2022, 3, 31), 1, 2022, "Q1"),
         row(QQ[1], "Revenues", date(2022, 6, 30), 1, 2022, "Q2"),
         row(QQ[2], "Revenues", date(2022, 9, 30), 1, 2022, "Q3"),
@@ -499,6 +544,7 @@ FISCAL_YEAR_SCENARIOS = [
     _apple_periods,
     _apple_fsds_rounded,
     _msft,
+    _msft_instants,
     _cal,
     _ret_a,
     _ret_b,
@@ -582,9 +628,9 @@ _q4_two_years = scenario(
 _q4_retailer = scenario(
     "q4_retailer_label_offset_minus_1",
     [
-        row(B_K[0], "Assets", date(2021, 1, 31), 0, 2020, "INSTANT"),
-        row(B_K[1], "Assets", date(2022, 1, 30), 0, 2021, "INSTANT"),
-        row(B_K[2], "Assets", date(2023, 1, 29), 0, 2022, "INSTANT"),
+        row(B_K[0], "Assets", date(2021, 1, 31), 0, 2020, "FY"),
+        row(B_K[1], "Assets", date(2022, 1, 30), 0, 2021, "FY"),
+        row(B_K[2], "Assets", date(2023, 1, 29), 0, 2022, "FY"),
         row(B_K[2], "Revenues", date(2023, 1, 28), 4, 2022, "FY", value="157000000.0000"),
         row(B_Q3, "Revenues", date(2022, 10, 29), 3, 2022, "9M", value="100250000.0000"),
     ],
@@ -605,7 +651,160 @@ _q4_retailer = scenario(
     ],
 )
 
-Q4_SCENARIOS = [_q4_exact, _q4_rounded, _q4_two_years, _q4_retailer]
+# Provenance tiers (decision of 2026-11-17): Q4 is derived per tier within
+# (cik, tag, taxonomy, uom, fiscal_year), from RETAINED parents only (the rows `curated.facts`
+# keeps: the latest and the original version of each parent; one row, carrying the latest
+# accession, when they have equal values). The original tier subtracts the original 9M from the
+# original FY, the latest tier the latest from the latest. Each derived row carries its FY parent's
+# form and accession. Ties between parent candidates go to the latest filed.
+
+REV_FY23_RESTATED = "380000000000.0000"  # FY2023 as restated in the FY2024 10-K
+REV_Q4_23_LATEST = "86213000000.0000"  # 380000000000 - 293787000000
+
+_q4_restated_fy = scenario(
+    "q4_restated_fy_gets_one_q4_per_tier",
+    [
+        # FY2023 was reported in the 2023 10-K (original: filed in its own period) and restated in
+        # the 2024 10-K (latest); the 9M has a single version, which is both original and latest.
+        row(K23, "Revenues", FY23_END, 4, 2023, "FY", None, value=REV_FY23),
+        row(K24, "Revenues", FY23_END, 4, 2023, "FY", None, value=REV_FY23_RESTATED),
+        row(Q3_23, "Revenues", date(2023, 7, 1), 3, 2023, "9M", None, value=REV_9M23),
+    ],
+    derived=[
+        # original tier: original FY (2023 10-K) - the 9M; carries the 2023 10-K's accession.
+        ex(
+            K23,
+            "Revenues",
+            FY23_END,
+            1,
+            2023,
+            "Q4",
+            "CY2023Q3",
+            flags=["q4_derived"],
+            value=Decimal(REV_Q4_23),
+            derived_from=((FY23_END, 4, X), (date(2023, 7, 1), 3, Y)),
+        ),
+        # latest tier: latest FY (2024 10-K) - the same 9M; carries the 2024 10-K's accession.
+        ex(
+            K24,
+            "Revenues",
+            FY23_END,
+            1,
+            2023,
+            "Q4",
+            "CY2023Q3",
+            flags=["q4_derived"],
+            value=Decimal(REV_Q4_23_LATEST),
+            derived_from=((FY23_END, 4, K24_ADSH), (date(2023, 7, 1), 3, Y)),
+        ),
+    ],
+)
+
+_q4_comparatives = scenario(
+    "q4_equal_comparatives_derive_once_from_the_latest_accessions",
+    [
+        # FY2023 and its 9M are repeated unchanged as comparatives in the FY2024 10-K and the Q3
+        # FY2024 10-Q. Equal values keep ONE retained row per parent (the latest accession), so
+        # exactly one Q4 is derived, from those two rows; the older parents are not referenced.
+        row(K23, "Revenues", FY23_END, 4, 2023, "FY", None, value=REV_FY23),
+        row(K24, "Revenues", FY23_END, 4, 2023, "FY", None, value=REV_FY23),
+        row(Q3_23, "Revenues", date(2023, 7, 1), 3, 2023, "9M", None, value=REV_9M23),
+        row(Q3_24, "Revenues", date(2023, 7, 1), 3, 2023, "9M", None, value=REV_9M23),
+    ],
+    derived=[
+        ex(
+            K24,
+            "Revenues",
+            FY23_END,
+            1,
+            2023,
+            "Q4",
+            "CY2023Q3",
+            flags=["q4_derived"],
+            value=Decimal(REV_Q4_23),
+            derived_from=((FY23_END, 4, K24_ADSH), (date(2023, 7, 1), 3, Q3_24_ADSH)),
+        ),
+    ],
+)
+
+_q4_tie = scenario(
+    "q4_tie_between_9m_candidates_goes_to_the_latest_filed",
+    [
+        # Two 9M facts qualify for the same FY (91 and 92 days before it): one ends 2023-07-01
+        # (10-Q, filed 2023-08-04), one 2023-06-30 (10-Q/A, filed 2023-09-15, value restated).
+        # They are different fact_keys, both retained; the tie goes to the latest filed.
+        row(K23, "Revenues", FY23_END, 4, 2023, "FY", None, value=REV_FY23),
+        row(Q3_23, "Revenues", date(2023, 7, 1), 3, 2023, "9M", None, value=REV_9M23),
+        row(Q3_23A, "Revenues", date(2023, 6, 30), 3, 2023, "9M", None, value="293800000000.0000"),
+    ],
+    derived=[
+        ex(
+            K23,
+            "Revenues",
+            FY23_END,
+            1,
+            2023,
+            "Q4",
+            "CY2023Q3",
+            flags=["q4_derived"],
+            value=Decimal("89485000000.0000"),  # 383285000000 - 293800000000
+            derived_from=((FY23_END, 4, X), (date(2023, 6, 30), 3, Q3_23A_ADSH)),
+        ),
+    ],
+)
+
+K23A_ADSH = "0000320193-24-000010"  # a 10-K/A for FY2023, filed between the two 10-Ks
+K23A = Sub(APPLE, K23A_ADSH, "10-K/A", date(2024, 2, 1), "0930", 2023, date(2023, 9, 30))
+
+_q4_middle_version = scenario(
+    "q4_non_retained_middle_version_is_never_a_parent",
+    [
+        # Three versions of FY2023: the 10-K (original), a 10-K/A in between (381000M) and the 2024
+        # 10-K (latest). `facts` keeps only the original and the latest, so the middle one is not
+        # a retained parent: exactly two Q4 rows, none from the 10-K/A or pointing at it.
+        row(K23, "Revenues", FY23_END, 4, 2023, "FY", None, value=REV_FY23),
+        row(K23A, "Revenues", FY23_END, 4, 2023, "FY", None, value="381000000000.0000"),
+        row(K24, "Revenues", FY23_END, 4, 2023, "FY", None, value=REV_FY23_RESTATED),
+        row(Q3_23, "Revenues", date(2023, 7, 1), 3, 2023, "9M", None, value=REV_9M23),
+    ],
+    derived=[
+        ex(
+            K23,
+            "Revenues",
+            FY23_END,
+            1,
+            2023,
+            "Q4",
+            "CY2023Q3",
+            flags=["q4_derived"],
+            value=Decimal(REV_Q4_23),
+            derived_from=((FY23_END, 4, X), (date(2023, 7, 1), 3, Y)),
+        ),
+        ex(
+            K24,
+            "Revenues",
+            FY23_END,
+            1,
+            2023,
+            "Q4",
+            "CY2023Q3",
+            flags=["q4_derived"],
+            value=Decimal(REV_Q4_23_LATEST),
+            derived_from=((FY23_END, 4, K24_ADSH), (date(2023, 7, 1), 3, Y)),
+        ),
+    ],
+)
+
+Q4_SCENARIOS = [
+    _q4_exact,
+    _q4_rounded,
+    _q4_two_years,
+    _q4_retailer,
+    _q4_restated_fy,
+    _q4_comparatives,
+    _q4_tie,
+    _q4_middle_version,
+]
 
 # --------------------------------------------------------------------------------------
 # Scenarios: rule 5, NO derivation
@@ -621,6 +820,25 @@ NO_DERIVE_SCENARIOS = [
             K23.fact("EarningsPerShareDiluted", FY23_END, 4, "6.1300", uom="USD/shares"),
             Q3_23.fact("EarningsPerShareDiluted", date(2023, 7, 1), 3, "4.6200", uom="USD/shares"),
         ],
+    ),
+    scenario(
+        "no_q4_for_shares_uom",
+        [  # weighted-average share counts are not additive: FY != sum of the quarters
+            K23.fact(
+                "WeightedAverageNumberOfSharesOutstandingBasic",
+                FY23_END,
+                4,
+                "100.0000",
+                uom="shares",
+            ),
+            Q3_23.fact(
+                "WeightedAverageNumberOfSharesOutstandingBasic",
+                date(2023, 7, 1),
+                3,
+                "98.0000",
+                uom="shares",
+            ),
+        ],  # fmt: skip
     ),
     scenario(
         "no_q4_for_instants",
@@ -911,6 +1129,17 @@ def check_fiscal_scenario(sc: FiscalScenario, rows: list[dict[str, Any]]) -> Non
             == (r["cik"], r["adsh"], r["tag"], r["uom"], r["period_end"], 4)
         }
         assert fy_forms == {r["form"]}, f"{sc.name}: derived form {r['form']} != FY form {fy_forms}"
+        # The accession names one filing, so filed and sub_period must be that filing's too: version
+        # selection ranks versions by filed and by sub_period == period_end.
+        fy_stamp = {
+            (o["filed"], o["sub_period"], o["sub_fy"], o["fye_mmdd"])
+            for o in originals
+            if (o["cik"], o["adsh"], o["tag"], o["uom"], o["period_end"], o["qtrs"])
+            == (r["cik"], r["adsh"], r["tag"], r["uom"], r["period_end"], 4)
+        }
+        assert fy_stamp == {(r["filed"], r["sub_period"], r["sub_fy"], r["fye_mmdd"])}, (
+            f"{sc.name}: derived row is not stamped with its FY parent's filing: {fy_stamp}"
+        )
         assert "q4_derived" in r["dq_flags"], f"{sc.name}: derived row lacks q4_derived"
         assert len(r["derived_from"]) == 2
 

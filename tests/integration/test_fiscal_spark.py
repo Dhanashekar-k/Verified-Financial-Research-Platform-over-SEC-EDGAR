@@ -4,7 +4,7 @@ The same hand-derived scenarios (`tests/fiscal_cases.py`) are run through Spark 
 same checker as the pure-Python reference. `derived_from` ids are resolved back to natural keys by
 looking them up in the output's own `fact_id` column; no xxhash is recomputed in Python.
 
-Needs a JVM (see tests/integration/conftest.py; the `spark` fixture skips without one).
+Needs a JVM (tests/integration/conftest.py): the `spark` fixture fails without one, never skips.
 """
 
 from __future__ import annotations
@@ -132,9 +132,10 @@ def test_spark_fiscal_year_period_and_frame(spark: SparkSession, scenario: Fisca
 
 @pytest.mark.parametrize("scenario", Q4_SCENARIOS, ids=repr)
 def test_spark_derives_q4_as_fy_minus_9m(spark: SparkSession, scenario: FiscalScenario) -> None:
-    """Rule 5 in Spark: one derived Q4 row per FY/9M pair (exact 91-day and FSDS-rounded 92-day
-    pairings, two fiscal years, an offset -1 retailer); derived_from ids resolve to the parents'
-    natural keys (FY first, then 9M); the parents survive unchanged.
+    """Rule 5 in Spark: one derived Q4 row per provenance tier (exact 91-day and FSDS-rounded
+    92-day pairings, two fiscal years, an offset -1 retailer, a restated FY, equal comparatives, a
+    tie between 9M candidates); each row carries its FY parent's form and accession; derived_from
+    ids resolve to the retained parents' natural keys (FY first, then 9M); parents survive.
     """
     check_fiscal_scenario(scenario, run(spark, list(scenario.facts)))
 
@@ -143,8 +144,9 @@ def test_spark_derives_q4_as_fy_minus_9m(spark: SparkSession, scenario: FiscalSc
 def test_spark_does_not_derive_q4_when_it_would_be_wrong(
     spark: SparkSession, scenario: FiscalScenario
 ) -> None:
-    """Rule 5 negatives in Spark: EPS and 'pure' uoms, instants, unpaired FY or 9M, mismatched
-    uom/tag/taxonomy/cik, a 9M from another year, and a direct Q4 in the same accession.
+    """Rule 5 negatives in Spark: per-share, 'pure' and 'shares' uoms, instants, unpaired FY or
+    9M, mismatched uom/tag/taxonomy/cik, a 9M from another year, and a direct Q4 in the same
+    accession.
     """
     rows = run(spark, list(scenario.facts))
     check_no_derivation(rows, len(scenario.facts))

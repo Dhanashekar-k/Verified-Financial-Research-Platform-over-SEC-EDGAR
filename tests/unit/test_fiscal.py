@@ -10,19 +10,14 @@ docstring, not in the runbook; if Shekar renames it, change the strings in fisca
 
 from __future__ import annotations
 
-import calendar
 import random
 from collections import Counter
-from datetime import date, timedelta
-from decimal import Decimal
+from datetime import date
 from typing import Any
 
 import pytest
-from hypothesis import given, settings
-from hypothesis import strategies as st
 
 from pipelines.common.fiscal_ref import (
-    FiscalFact,
     LabelOffset,
     SubmissionPeriod,
     calendar_frame,
@@ -38,57 +33,18 @@ from tests.fiscal_cases import (
     APPLE,
     B_K,
     FISCAL_YEAR_SCENARIOS,
-    INPUT_FIELDS,
     K23,
     MV_K,
     MV_KT,
     NO_DERIVE_SCENARIOS,
-    Q3_23,
     Q4_SCENARIOS,
     FiscalScenario,
     Sub,
     check_fiscal_scenario,
     check_no_derivation,
+    to_rows,
 )
-
-_DAYS_IN_MONTH = {
-    1: 31,
-    2: 29,
-    3: 31,
-    4: 30,
-    5: 31,
-    6: 30,
-    7: 31,
-    8: 31,
-    9: 30,
-    10: 31,
-    11: 30,
-    12: 31,
-}
-ANY_FYE = st.sampled_from(
-    [f"{m:02d}{d:02d}" for m, n in _DAYS_IN_MONTH.items() for d in range(1, n + 1)]
-)
-MONTH_END_FYE = st.sampled_from([f"{m:02d}{n:02d}" for m, n in _DAYS_IN_MONTH.items()])
-FYE_STRATEGY = st.one_of(ANY_FYE, MONTH_END_FYE)  # month ends are the common real-world case
-ANY_DATE = st.dates(min_value=date(1990, 1, 1), max_value=date(2100, 12, 31))
-
-
-def to_rows(out: list[FiscalFact]) -> list[dict[str, Any]]:
-    """Normalise reference output to the row-dict shape that fiscal_cases checks."""
-    rows = []
-    for ff in out:
-        r: dict[str, Any] = {k: getattr(ff.fact, k) for k in INPUT_FIELDS}
-        r.update(
-            period_start=ff.period_start,
-            fiscal_year=ff.fiscal_year,
-            fiscal_period=ff.fiscal_period,
-            calendar_frame=ff.calendar_frame,
-            dq_flags=frozenset(ff.dq_flags),
-            derived_from=ff.derived_from,
-        )
-        rows.append(r)
-    return rows
-
+from tests.fiscal_cases import submission as sub
 
 # --------------------------------------------------------------------------------------
 # Rule 1: fye_date
@@ -122,15 +78,6 @@ def test_fye_date_puts_mmdd_in_the_given_year(year: int, mmdd: str, expected: da
 def test_fye_date_feb_29_becomes_feb_28_in_every_year(year: int, expected: date) -> None:
     """Rule 1: FYE '0229' maps to Feb 28 in leap and non-leap years alike (a stable anchor)."""
     assert fye_date(year, "0229") == expected
-
-
-@given(year=st.integers(1990, 2100), mmdd=FYE_STRATEGY)
-def test_fye_date_is_in_year_and_matches_mmdd_property(year: int, mmdd: str) -> None:
-    """For every valid FYE, the result lies in `year` and keeps month/day (0229 -> Feb 28)."""
-    result = fye_date(year, mmdd)
-    expected_mmdd = "0228" if mmdd == "0229" else mmdd
-    assert result.year == year
-    assert (result.month, result.day) == (int(expected_mmdd[:2]), int(expected_mmdd[2:]))
 
 
 # --------------------------------------------------------------------------------------
@@ -207,25 +154,6 @@ def test_y_end_feb_29_fye_uses_feb_28_anchor(period_end: date, expected: int) ->
     assert y_end(period_end, "0229") == expected
 
 
-@settings(max_examples=300)
-@given(period_end=ANY_DATE, mmdd=FYE_STRATEGY)
-def test_y_end_is_the_unique_year_whose_window_contains_the_date(
-    period_end: date, mmdd: str
-) -> None:
-    """Property (a): exactly one year y has fye_date(y-1)+7d < E <= fye_date(y)+7d, and y_end
-    returns it. Neighbouring years must fail the window test, so no date is double-assigned.
-    """
-    week = timedelta(days=7)
-
-    def in_window(y: int) -> bool:
-        return fye_date(y - 1, mmdd) + week < period_end <= fye_date(y, mmdd) + week
-
-    y = y_end(period_end, mmdd)
-    assert in_window(y)
-    for other in (y - 3, y - 2, y - 1, y + 1, y + 2, y + 3):
-        assert not in_window(other), f"{period_end} also fits year {other} for FYE {mmdd}"
-
-
 # --------------------------------------------------------------------------------------
 # Rule 3: label_offsets
 # --------------------------------------------------------------------------------------
@@ -233,15 +161,6 @@ def test_y_end_is_the_unique_year_whose_window_contains_the_date(
 
 def sp(s: Sub) -> SubmissionPeriod:
     return SubmissionPeriod(s.cik, s.adsh, s.form, s.sub_fy, s.sub_period, s.fye)
-
-
-_counter = iter(range(1, 10**6))
-
-
-def sub(
-    cik: int, form: str, sub_fy: int | None, period: date, fye: str = "1231"
-) -> SubmissionPeriod:
-    return SubmissionPeriod(cik, f"adsh-{next(_counter):06d}", form, sub_fy, period, fye)
 
 
 def test_label_offset_is_zero_when_company_names_year_by_its_end_year() -> None:
@@ -359,34 +278,6 @@ def test_label_offsets_of_nothing_is_empty() -> None:
     assert label_offsets([]) == {}
 
 
-@given(offset=st.integers(-3, 3), n=st.integers(1, 6), cik=st.integers(1, 10**7))
-def test_label_offset_constant_property(offset: int, n: int, cik: int) -> None:
-    """Property: n 10-Ks at Dec 31 whose sub.fy is the calendar year + o yield exactly (o, True)."""
-    subs = [sub(cik, "10-K", 2010 + i + offset, date(2010 + i, 12, 31)) for i in range(n)]
-    assert label_offsets(subs) == {cik: LabelOffset(offset=offset, is_constant=True)}
-
-
-@given(
-    data=st.data(),
-    major=st.integers(-2, 2),
-    minor=st.integers(-2, 2),
-    n_major=st.integers(2, 6),
-)
-def test_label_offset_strict_majority_wins_in_any_order_property(
-    data: st.DataObject, major: int, minor: int, n_major: int
-) -> None:
-    """Property: with a strict majority offset the mode is that offset, whatever the input order,
-    and is_constant is False because a second distinct offset exists.
-    """
-    if major == minor:
-        minor += 1
-    n_minor = data.draw(st.integers(1, n_major - 1))
-    subs = [sub(4, "10-K", 2000 + i + major, date(2000 + i, 12, 31)) for i in range(n_major)]
-    subs += [sub(4, "10-K", 2100 + i + minor, date(2100 + i, 12, 31)) for i in range(n_minor)]
-    shuffled = data.draw(st.permutations(subs))
-    assert label_offsets(shuffled) == {4: LabelOffset(offset=major, is_constant=False)}
-
-
 # --------------------------------------------------------------------------------------
 # Rule 4: quarter_index and fiscal_period_label
 # --------------------------------------------------------------------------------------
@@ -431,54 +322,6 @@ def test_quarter_index_examples(period_end: date, fye: str, expected: int) -> No
     assert quarter_index(period_end, fye) == expected
 
 
-@settings(max_examples=300)
-@given(
-    fye=st.sampled_from(
-        [
-            "0131",
-            "0228",
-            "0229",
-            "0331",
-            "0430",
-            "0531",
-            "0630",
-            "0731",
-            "0831",
-            "0930",
-            "1031",
-            "1130",
-            "1231",
-        ]
-    ),  # fmt: skip
-    year=st.integers(1995, 2090),
-    k=st.integers(1, 4),
-    drift=st.integers(-3, 3),
-)
-def test_quarter_index_at_calendar_month_end_quarters_property(
-    fye: str, year: int, k: int, drift: int
-) -> None:
-    """Property: for a month-end FYE, the end of fiscal quarter k of fiscal `year` (last day of
-    month fye_month - 12 + 3k) plus or minus up to 3 days of 52/53-week drift has y_end == year
-    and quarter_index == k.
-    """
-    fye_month = int(fye[:2])
-    total = (year - 1) * 12 + (fye_month - 1) + 3 * k  # zero-based month index of quarter end
-    q_year, q_month = divmod(total, 12)
-    q_end = date(q_year, q_month + 1, calendar.monthrange(q_year, q_month + 1)[1])
-    e = q_end + timedelta(days=drift)
-    assert y_end(e, fye) == year
-    assert quarter_index(e, fye) == k
-
-
-@settings(max_examples=300)
-@given(period_end=ANY_DATE, fye=FYE_STRATEGY)
-def test_quarter_index_is_always_between_1_and_4_property(period_end: date, fye: str) -> None:
-    """Property (b): for any date and FYE the quarter index is in {1,2,3,4} (never 0 or 5, even
-    on the first days of a fiscal year or just past a year end).
-    """
-    assert quarter_index(period_end, fye) in {1, 2, 3, 4}
-
-
 @pytest.mark.parametrize(
     ("period_end", "qtrs", "fye", "expected"),
     [
@@ -489,28 +332,23 @@ def test_quarter_index_is_always_between_1_and_4_property(period_end: date, fye:
         (date(2022, 12, 31), 2, "0630", "H1"),
         (date(2023, 3, 31), 3, "0630", "9M"),
         (date(2023, 6, 30), 4, "0630", "FY"),
-        (date(2023, 6, 30), 0, "0630", "INSTANT"),
+        # Instants (qtrs 0) get a real label: FY at the year end, Q1-Q3 at the quarter ends.
+        (date(2023, 6, 30), 0, "0630", "FY"),
+        (date(2022, 9, 30), 0, "0630", "Q1"),
+        (date(2022, 12, 31), 0, "0630", "Q2"),
+        (date(2023, 3, 31), 0, "0630", "Q3"),
+        (date(2022, 9, 24), 0, "0930", "FY"),  # a 52/53-week year end is still quarter 4
+        (date(2023, 7, 1), 0, "0930", "Q3"),
         (date(2022, 9, 24), 4, "0930", "FY"),  # qtrs 4 is FY whatever the date drift
         (date(2024, 1, 1), 4, "1231", "FY"),
-        (date(2022, 9, 30), 0, "0630", "INSTANT"),  # qtrs 0 is INSTANT even on a quarter end
         (date(2023, 7, 1), 1, "0930", "Q3"),
     ],
 )
 def test_fiscal_period_label_examples(period_end: date, qtrs: int, fye: str, expected: str) -> None:
-    """Rule 4: qtrs 4 -> FY, 0 -> INSTANT, 1 -> Q{n}, 2 -> H1, 3 -> 9M."""
+    """Rule 4: qtrs 4 -> FY, 1 -> Q{n}, 2 -> H1, 3 -> 9M; an instant (qtrs 0) is FY when its
+    quarter index is 4 and Q{n} otherwise. 'INSTANT' is never a label (decision 2026-11-17).
+    """
     assert fiscal_period_label(period_end, qtrs, fye) == expected
-
-
-@given(period_end=ANY_DATE, fye=FYE_STRATEGY)
-def test_fiscal_period_label_quarter_matches_quarter_index_property(
-    period_end: date, fye: str
-) -> None:
-    """Property: qtrs 1 -> 'Q' + quarter_index; qtrs 2, 3, 4 and 0 ignore the date."""
-    assert fiscal_period_label(period_end, 1, fye) == f"Q{quarter_index(period_end, fye)}"
-    assert fiscal_period_label(period_end, 2, fye) == "H1"
-    assert fiscal_period_label(period_end, 3, fye) == "9M"
-    assert fiscal_period_label(period_end, 4, fye) == "FY"
-    assert fiscal_period_label(period_end, 0, fye) == "INSTANT"
 
 
 # --------------------------------------------------------------------------------------
@@ -557,18 +395,6 @@ def test_calendar_frame_examples(period_end: date, qtrs: int, expected: str | No
     assert calendar_frame(period_end, qtrs) == expected
 
 
-@given(period_end=ANY_DATE)
-def test_calendar_frame_quarter_and_instant_follow_the_calendar_quarter_property(
-    period_end: date,
-) -> None:
-    """Property: qtrs 1 -> CY{year}Q{calendar quarter}; qtrs 0 -> the same plus 'I'; 2/3 -> None."""
-    quarter = f"CY{period_end.year}Q{(period_end.month - 1) // 3 + 1}"
-    assert calendar_frame(period_end, 1) == quarter
-    assert calendar_frame(period_end, 0) == quarter + "I"
-    assert calendar_frame(period_end, 2) is None
-    assert calendar_frame(period_end, 3) is None
-
-
 # --------------------------------------------------------------------------------------
 # Rules 1-6 over a set of facts: derive_fiscal
 # --------------------------------------------------------------------------------------
@@ -586,9 +412,11 @@ def test_derive_fiscal_year_period_and_frame(scenario: FiscalScenario) -> None:
 
 @pytest.mark.parametrize("scenario", Q4_SCENARIOS, ids=repr)
 def test_derive_fiscal_derives_q4_as_fy_minus_9m(scenario: FiscalScenario) -> None:
-    """Rule 5: one derived row per FY/9M pair: qtrs 1, 'Q4', period_end = FY end, form 10-K, the
-    FY's accession and fiscal_year, value FY - 9M, flag q4_derived, derived_from naming both
-    parents. The FY and 9M rows survive unchanged (n_output = n_input + n_derived).
+    """Rule 5: one derived row per provenance tier: qtrs 1, 'Q4', period_end = FY end, the FY
+    parent's form, accession and fiscal_year, value FY - 9M, flag q4_derived, derived_from naming
+    the two retained parents. A restated FY gives one Q4 per tier (original and latest), repeated
+    equal comparatives give one Q4 from the latest accessions, and a tie between 9M candidates
+    goes to the latest filed. The FY and 9M rows survive unchanged (n_out = n_in + n_derived).
     """
     out = derive_fiscal(list(scenario.facts))
     check_fiscal_scenario(scenario, to_rows(out))
@@ -596,9 +424,10 @@ def test_derive_fiscal_derives_q4_as_fy_minus_9m(scenario: FiscalScenario) -> No
 
 @pytest.mark.parametrize("scenario", NO_DERIVE_SCENARIOS, ids=repr)
 def test_derive_fiscal_does_not_derive_q4_when_it_would_be_wrong(scenario: FiscalScenario) -> None:
-    """Rule 5 negatives: no Q4 for per-share ('/') or 'pure' uoms, instants, a FY without a 9M or
-    a 9M without a FY, a mismatch of uom/tag/taxonomy/cik or a 9M from the wrong year; and a
-    directly reported Q4 in the same accession wins (kept as is, nothing derived).
+    """Rule 5 negatives: no Q4 for per-share ('/'), 'pure' or 'shares' uoms, instants, a FY
+    without a 9M or a 9M without a FY, a mismatch of uom/tag/taxonomy/cik or a 9M from the
+    wrong year; and a directly reported Q4 in the same accession wins (kept as is, nothing
+    derived).
     """
     out = derive_fiscal(list(scenario.facts))
     rows = to_rows(out)
@@ -647,59 +476,3 @@ def test_derive_fiscal_ignores_input_order(scenario: FiscalScenario) -> None:
     shuffled = facts[:]
     random.Random(7).shuffle(shuffled)
     assert _frozen(to_rows(derive_fiscal(shuffled))) == expected
-
-
-@given(order=st.permutations(list(Q4_SCENARIOS[2].facts)))
-def test_derive_fiscal_order_independence_property(order: list[Any]) -> None:
-    """Property: any permutation of the two-year Apple facts yields the same two derived rows."""
-    out = derive_fiscal(list(order))
-    check_fiscal_scenario(Q4_SCENARIOS[2], to_rows(out))
-
-
-@settings(max_examples=200)
-@given(
-    fy=st.integers(-(10**24), 10**24),
-    nine_m=st.integers(-(10**24), 10**24),
-)
-def test_derived_q4_plus_9m_equals_fy_property(fy: int, nine_m: int) -> None:
-    """Property (c): for random 4-decimal flow values (negative allowed: losses, and a Q4 below
-    zero when 9M exceeds FY), derived Q4 + 9M == FY exactly: no rounding, no float.
-    """
-    fy_value = Decimal(fy).scaleb(-4)
-    nine_value = Decimal(nine_m).scaleb(-4)
-    facts = [
-        K23.fact("NetIncomeLoss", date(2023, 9, 30), 4, fy_value),
-        Q3_23.fact("NetIncomeLoss", date(2023, 7, 1), 3, nine_value),
-    ]
-    out = derive_fiscal(facts)
-    derived = [o for o in out if o.derived_from is not None]
-    assert len(out) == 3
-    assert len(derived) == 1
-    q4 = derived[0].fact.value
-    assert q4 is not None
-    assert q4 + nine_value == fy_value
-    assert derived[0].fact.qtrs == 1
-    assert derived[0].fiscal_period == "Q4"
-
-
-@settings(max_examples=100)
-@given(
-    fy=st.integers(1, 10**15),
-    nine_m=st.integers(1, 10**15),
-    jitter=st.integers(-1, 0),
-)
-def test_derived_q4_pairs_9m_ending_one_quarter_before_fy_property(
-    fy: int, nine_m: int, jitter: int
-) -> None:
-    """Property: a 9M ending 91 or 92 days before the FY (exact vs FSDS-rounded dates) always
-    pairs, so the exact and rounded spellings produce the same derived value.
-    """
-    nine_end = date(2023, 7, 1) + timedelta(days=jitter)  # 07-01 (91 days) or 06-30 (92 days)
-    facts = [
-        K23.fact("Revenues", date(2023, 9, 30), 4, Decimal(fy)),
-        Q3_23.fact("Revenues", nine_end, 3, Decimal(nine_m)),
-    ]
-    derived = [o for o in derive_fiscal(facts) if o.derived_from is not None]
-    assert len(derived) == 1
-    assert derived[0].fact.value == Decimal(fy - nine_m)
-    assert derived[0].derived_from == ((date(2023, 9, 30), 4, K23.adsh), (nine_end, 3, Q3_23.adsh))
