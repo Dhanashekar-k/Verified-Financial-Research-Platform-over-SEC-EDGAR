@@ -23,6 +23,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import hashlib
 import json
 import logging
 import re
@@ -147,7 +148,10 @@ def run(
 
     companies = build_companies(spark.table(f"{raw_ns}.fsds_sub"), tickers, sp500)
     spark.sql(f"CREATE NAMESPACE IF NOT EXISTS {curated_ns}")
-    companies.writeTo(f"{curated_ns}.companies").using("iceberg").createOrReplace()
+    writer = companies.writeTo(f"{curated_ns}.companies").using("iceberg")
+    for key, value in snapshot_properties(tickers_path, sp500_path).items():
+        writer = writer.tableProperty(key, value)
+    writer.createOrReplace()
 
     table = spark.table(f"{curated_ns}.companies")
     unmatched = unmatched_sp500(tickers, sp500).collect()
@@ -161,14 +165,32 @@ def run(
     }
 
 
+def snapshot_date(path: Path) -> str:
+    """The ISO date in a frozen snapshot's file name (`sp500_2026-11-17.csv`), else `unknown`."""
+    match = _SNAPSHOT_DATE.search(path.name)
+    return match.group() if match else "unknown"
+
+
+def snapshot_properties(tickers_path: Path, sp500_path: Path) -> dict[str, str]:
+    """Table properties naming the dated snapshots `curated.companies` was built from.
+
+    S&P 500 membership changes over time, so the table says which day it reflects; the SHA-256
+    of each file identifies the exact bytes (the files live in the gitignored `data/`).
+    """
+    return {
+        "edgarqa.sp500_snapshot_date": snapshot_date(sp500_path),
+        "edgarqa.sp500_sha256": hashlib.sha256(sp500_path.read_bytes()).hexdigest(),
+        "edgarqa.ticker_map_snapshot_date": snapshot_date(tickers_path),
+        "edgarqa.ticker_map_sha256": hashlib.sha256(tickers_path.read_bytes()).hexdigest(),
+    }
+
+
 def warn_if_snapshot_dates_differ(tickers_path: Path, sp500_path: Path) -> None:
     """Warn when the two frozen files carry different dates: membership and tickers then come
     from different days (for example after a `--refresh` where one fetch failed)."""
-    a, b = _SNAPSHOT_DATE.search(tickers_path.name), _SNAPSHOT_DATE.search(sp500_path.name)
-    if a and b and a.group() != b.group():
-        log.warning(
-            "the ticker map is from %s but the S&P 500 CSV is from %s", a.group(), b.group()
-        )
+    a, b = snapshot_date(tickers_path), snapshot_date(sp500_path)
+    if "unknown" not in (a, b) and a != b:
+        log.warning("the ticker map is from %s but the S&P 500 CSV is from %s", a, b)
 
 
 def _newest(directory: Path, pattern: str) -> Path:

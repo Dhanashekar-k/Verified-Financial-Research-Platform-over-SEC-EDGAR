@@ -2,7 +2,7 @@
 
     uv run python -m pipelines.spark.spotcheck_companyfacts --env local
 
-For 10 companies x 3 metrics x the 2 most recent 10-K filings (60 comparisons), find the
+For 10 companies x 3 metrics x 2 annual filings (60 comparisons), find the
 companyfacts value of the annual (or year-end instant) fact and look for the same fact in
 `curated.facts` by **accession + tag + period end + duration**. FSDS rounds dates to month end
 while companyfacts has exact dates (Apple's FY2022 ends 2022-09-24 vs 20220930), so period ends
@@ -12,7 +12,15 @@ Outcomes per comparison: `match`, `value_mismatch`, `missing_in_curated`, `missi
 Every non-match is left with `classification: null`: classifying a mismatch (restatement, tag
 fallback, rounding, bug, ...) is Shekar's job (M01 section 5). The result is written to
 `docs/milestones/M01-spotcheck.json`; it is the only source of the spot-check numbers in the DQ
-report. The companyfacts `frame` is also compared with the curated `calendar_frame` (rule 6).
+report.
+
+Which two filings: by default the two most recent 10-Ks (so a full-history run needs no flag).
+`--fiscal-years 2022,2023` pins them instead, for a lake that holds only some quarters. A fiscal
+year is the company's own label (the `fy` of the filing, the same definition as
+`curated.facts.fiscal_year`), not the year the period ends in: Target's year ending 2023-01-28 is
+fiscal 2022. The selection is recorded in the output file.
+
+The companyfacts `frame` is also compared with the curated `calendar_frame` (rule 6).
 
 The 10 CIKs below are a convenience pick across fiscal-year ends (Sep, Jun, May, Jan x3, Dec x4)
 and are checked at run time against the `entityName` the API returns; replace any you disagree
@@ -25,6 +33,8 @@ import argparse
 import json
 import logging
 import sys
+from collections import Counter
+from collections.abc import Sequence
 from dataclasses import asdict, dataclass
 from datetime import date, datetime
 from decimal import Decimal
@@ -97,16 +107,76 @@ def companyfacts_url(cik: int) -> str:
     return f"https://data.sec.gov/api/xbrl/companyfacts/CIK{cik:010d}.json"
 
 
-def latest_annual_filings(cf: dict[str, Any], n: int = 2) -> list[tuple[str, str]]:
-    """The `n` most recent distinct (accession, form) of annual filings, newest first."""
-    seen: dict[str, tuple[str, str]] = {}
+def _majority_fy(counts: Counter[int]) -> int:
+    """The most common fiscal year; a tie goes to the later year, so the result never depends on
+    the order the API happens to list entries in."""
+    return max(counts.items(), key=lambda kv: (kv[1], kv[0]))[0]
+
+
+def annual_filings(cf: dict[str, Any]) -> dict[str, tuple[str, str, int | None]]:
+    """Every annual filing in the document: accession -> (filed, form, fiscal year).
+
+    The fiscal year is the most common integer `fy` among the filing's entries (every entry of
+    one filing carries the filing's own label, comparatives included); None when it has none.
+    """
+    filed_form: dict[str, tuple[str, str]] = {}
+    fys: dict[str, Counter[int]] = {}
     for concept in cf.get("facts", {}).get("us-gaap", {}).values():
         for entries in concept.get("units", {}).values():
             for e in entries:
                 if e.get("form") in ANNUAL_FORMS and e.get("accn"):
-                    seen[e["accn"]] = (e["filed"], e["form"])
-    ranked = sorted(seen.items(), key=lambda kv: kv[1][0], reverse=True)
-    return [(accn, form) for accn, (_, form) in ranked[:n]]
+                    filed_form[e["accn"]] = (e["filed"], e["form"])
+                    fy = e.get("fy")
+                    if isinstance(fy, int) and not isinstance(fy, bool):
+                        fys.setdefault(e["accn"], Counter())[fy] += 1
+    return {
+        accn: (filed, form, _majority_fy(fys[accn]) if accn in fys else None)
+        for accn, (filed, form) in filed_form.items()
+    }
+
+
+def latest_annual_filings(cf: dict[str, Any], n: int = 2) -> list[tuple[str, str]]:
+    """The `n` most recent distinct (accession, form) of annual filings, newest first."""
+    ranked = sorted(annual_filings(cf).items(), key=lambda kv: kv[1][0], reverse=True)
+    return [(accn, form) for accn, (_, form, _) in ranked[:n]]
+
+
+def select_filings(
+    cf: dict[str, Any],
+    fiscal_years: Sequence[int] | None = None,
+    n: int = FILINGS_PER_COMPANY,
+) -> list[tuple[str, str]]:
+    """The annual filings to compare, newest first: the latest `n` by default, or, when
+    `fiscal_years` is given, the filing of each of those fiscal years (the company's own `fy`
+    label). A year with two annual filings (a 10-K and a 10-KT) resolves to the later filed; a
+    year with none is an error, never a silently smaller check.
+    """
+    if fiscal_years is None:
+        return latest_annual_filings(cf, n)
+    filings = annual_filings(cf)
+    out: list[tuple[str, str]] = []
+    for fy in sorted(set(fiscal_years), reverse=True):
+        candidates = [(filed, accn, form) for accn, (filed, form, y) in filings.items() if y == fy]
+        if not candidates:
+            lacking = sum(1 for _, _, y in filings.values() if y is None)
+            raise ValueError(
+                f"companyfacts for {cf.get('entityName', '?')!r} has no 10-K for fiscal year {fy} "
+                f"({len(filings)} annual filings found, {lacking} without fy)"
+            )
+        _, accn, form = max(candidates)
+        out.append((accn, form))
+    return out
+
+
+def parse_fiscal_years(text: str) -> tuple[int, ...]:
+    """`--fiscal-years 2022,2023` -> (2022, 2023); XBRL-era years only, no repeats."""
+    try:
+        years = tuple(int(part) for part in text.split(","))
+    except ValueError:
+        raise argparse.ArgumentTypeError(f"not a comma-separated list of years: {text!r}") from None
+    if any(not 2009 <= y <= 2100 for y in years) or len(set(years)) != len(years):
+        raise argparse.ArgumentTypeError(f"years must be distinct and within 2009-2100: {text!r}")
+    return years
 
 
 def filing_period_end(cf: dict[str, Any], accession: str) -> str | None:
@@ -153,6 +223,7 @@ def compare(
     companyfacts: dict[int, dict[str, Any]],
     curated: list[dict[str, Any]],
     filings_per_company: int = FILINGS_PER_COMPANY,
+    fiscal_years: Sequence[int] | None = None,
 ) -> list[Comparison]:
     """All comparisons. `curated` rows need: cik, accession, tag, period_end (date), qtrs, value
     (Decimal), calendar_frame."""
@@ -165,7 +236,7 @@ def compare(
     out: list[Comparison] = []
     for cik in ciks:
         cf = companyfacts[cik]
-        for accession, form in latest_annual_filings(cf, filings_per_company):
+        for accession, form in select_filings(cf, fiscal_years, filings_per_company):
             for metric, tags in METRICS.items():
                 found = expected_fact(cf, accession, tags)
                 if found is None:
@@ -209,14 +280,14 @@ def compare(
     return out
 
 
-def summarize(comparisons: list[Comparison]) -> dict[str, Any]:
+def summarize(comparisons: list[Comparison], expected: int | None = None) -> dict[str, Any]:
     outcomes: dict[str, int] = {}
     for c in comparisons:
         outcomes[c.outcome] = outcomes.get(c.outcome, 0) + 1
     framed = [c for c in comparisons if c.frame_agrees is not None]
     return {
         "n_comparisons": len(comparisons),
-        "expected_comparisons": EXPECTED_COMPARISONS,
+        "expected_comparisons": EXPECTED_COMPARISONS if expected is None else expected,
         "outcomes": dict(sorted(outcomes.items())),
         "matched": outcomes.get("match", 0),
         "frames_compared": len(framed),
@@ -251,6 +322,14 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--env", choices=["local", "emr"], default="local")
     parser.add_argument("--table", default="lake.curated.facts")
     parser.add_argument("--out", default=str(DEFAULT_OUT))
+    parser.add_argument(
+        "--fiscal-years",
+        type=parse_fiscal_years,
+        default=None,
+        metavar="YYYY,YYYY",
+        help="compare the 10-Ks of these fiscal years (the company's own label) instead of "
+        "each company's two most recent",
+    )
     args = parser.parse_args(argv)
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
 
@@ -271,13 +350,24 @@ def main(argv: list[str] | None = None) -> int:
     finally:
         spark.stop()
 
-    comparisons = compare(ciks, cfs, rows)
+    try:
+        comparisons = compare(ciks, cfs, rows, fiscal_years=args.fiscal_years)
+    except ValueError as exc:
+        print(f"error: {exc}", file=sys.stderr)
+        return 1
+    n_filings = len(args.fiscal_years) if args.fiscal_years else FILINGS_PER_COMPANY
+    selection: dict[str, Any] = (
+        {"mode": "fiscal_years", "fiscal_years": sorted(args.fiscal_years, reverse=True)}
+        if args.fiscal_years
+        else {"mode": "latest", "n": FILINGS_PER_COMPANY}
+    )
     result = {
         "generated_at": datetime.now().astimezone().isoformat(timespec="seconds"),
         "table": args.table,
         "facts_snapshot_id": facts_snapshot,
         "date_tolerance_days": DATE_TOLERANCE_DAYS,
-        "summary": summarize(comparisons),
+        "selection": selection,
+        "summary": summarize(comparisons, expected=len(SPOT_COMPANIES) * len(METRICS) * n_filings),
         "comparisons": [asdict(c) for c in comparisons],
     }
     out = Path(args.out)

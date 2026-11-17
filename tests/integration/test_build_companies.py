@@ -10,6 +10,7 @@ Iceberg hadoop catalog (see ``tests/integration/conftest.py``); inputs are tiny 
 from __future__ import annotations
 
 import csv
+import hashlib
 import json
 from collections.abc import Iterator
 from pathlib import Path
@@ -686,3 +687,57 @@ def test_undated_snapshot_names_are_not_an_error(caplog: pytest.LogCaptureFixtur
     warn_if_snapshot_dates_differ(Path("tickers.json"), Path("sp500.csv"))
 
     assert caplog.text == ""
+
+
+# --------------------------------------------------------------------------------------
+# the table records which dated snapshots it was built from (S&P membership changes over time)
+# --------------------------------------------------------------------------------------
+
+
+def table_properties(spark: SparkSession, table: str) -> dict[str, str]:
+    return {r.key: r.value for r in spark.sql(f"SHOW TBLPROPERTIES {table}").collect()}
+
+
+def test_run_records_the_snapshot_dates_and_checksums_on_the_table(
+    spark: SparkSession, lake_namespace: str, frozen: tuple[Path, Path]
+):
+    ns = lake_namespace
+    make_raw_sub(spark, ns, RUN_SUB)
+
+    run(spark, *frozen, raw_ns=ns, curated_ns=ns)
+
+    props = table_properties(spark, f"{ns}.companies")
+    assert props["edgarqa.sp500_snapshot_date"] == "2026-11-16"
+    assert props["edgarqa.ticker_map_snapshot_date"] == "2026-11-16"
+    assert props["edgarqa.sp500_sha256"] == hashlib.sha256(frozen[1].read_bytes()).hexdigest()
+    assert props["edgarqa.ticker_map_sha256"] == hashlib.sha256(frozen[0].read_bytes()).hexdigest()
+
+
+def test_run_records_unknown_for_a_snapshot_file_name_without_a_date(
+    spark: SparkSession, lake_namespace: str, tmp_path: Path
+):
+    ns = lake_namespace
+    make_raw_sub(spark, ns, RUN_SUB)
+    tickers = write_tickers(tmp_path / "tickers.json", TICKER_DOC)
+    sp500 = write_sp500(tmp_path / "sp500.csv", SP500_ROWS)
+
+    run(spark, tickers, sp500, raw_ns=ns, curated_ns=ns)
+
+    props = table_properties(spark, f"{ns}.companies")
+    assert props["edgarqa.sp500_snapshot_date"] == "unknown"
+    assert props["edgarqa.ticker_map_snapshot_date"] == "unknown"
+
+
+def test_a_rerun_with_a_newer_ticker_map_updates_only_that_date(
+    spark: SparkSession, lake_namespace: str, tmp_path: Path, frozen: tuple[Path, Path]
+):
+    ns = lake_namespace
+    make_raw_sub(spark, ns, RUN_SUB)
+    run(spark, *frozen, raw_ns=ns, curated_ns=ns)
+    tickers2 = write_tickers(tmp_path / "company_tickers_2026-11-17.json", TICKER_DOC)
+
+    run(spark, tickers2, frozen[1], raw_ns=ns, curated_ns=ns)
+
+    props = table_properties(spark, f"{ns}.companies")
+    assert props["edgarqa.ticker_map_snapshot_date"] == "2026-11-17"
+    assert props["edgarqa.sp500_snapshot_date"] == "2026-11-16"
