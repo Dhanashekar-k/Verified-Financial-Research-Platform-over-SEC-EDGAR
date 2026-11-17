@@ -21,6 +21,8 @@ web/out/
 *.tfstate
 *.tfstate.backup
 *.tfplan
+tfplan
+*.tfvars
 load/results/*.html
 .DS_Store
 
