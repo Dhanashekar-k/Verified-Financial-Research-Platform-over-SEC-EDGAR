@@ -19,7 +19,6 @@ from __future__ import annotations
 
 import importlib
 from collections.abc import Sequence
-from decimal import Decimal
 from typing import Any
 
 import pandas as pd
@@ -71,8 +70,6 @@ _REF_COLUMNS = [
     "sub_period",
 ]
 _SEP = "\x1f"  # joins tag and series so the reference pairs FY/9M rows only within one series
-# ADR-022: a Q4 is derived only from an FY row of a 10-K-family filing
-_ANNUAL_FORMS = ("10-K", "10-KT", "10-K/A")
 
 _RESULT_SCHEMA = StructType(
     [
@@ -93,24 +90,6 @@ _RESULT_SCHEMA = StructType(
 
 def _none_if_na(v: Any) -> Any:
     return None if v is None or v is pd.NA or (isinstance(v, float) and v != v) else v
-
-
-def _stable_key(f: FactInput, fact_id: int) -> tuple[Any, ...]:
-    """A total order over a company's facts: accession, then value ascending with NULLs last, then
-    period end, quarters and the series identity (ADR-022). `fact_id` only breaks a tie between
-    duplicate natural keys."""
-    return (
-        f.adsh,
-        f.value is None,
-        f.value if f.value is not None else Decimal(0),
-        f.period_end,
-        f.qtrs,
-        f.cik,
-        f.tag,
-        f.taxonomy,
-        f.uom,
-        fact_id,
-    )
 
 
 def _derive_company(pdf: pd.DataFrame) -> pd.DataFrame:
@@ -139,9 +118,10 @@ def _derive_company(pdf: pd.DataFrame) -> pd.DataFrame:
         )
         ids.append(int(r["fact_id"]))
 
-    # ADR-022 rule 1: the reference breaks ties by list position, so give it a stable total order
-    # (accession, value NULLs last, period end, ...), whatever order Spark delivered the rows in.
-    order = sorted(range(len(facts)), key=lambda i: _stable_key(facts[i], ids[i]))
+    # The reference sorts its own input (ADR-022), so Spark's delivery order does not matter to the
+    # rules. Ordering by fact_id only makes the natural-key lookup below deterministic when two
+    # input rows share a natural key.
+    order = sorted(range(len(facts)), key=ids.__getitem__)
     facts = [facts[i] for i in order]
     ids = [ids[i] for i in order]
 
@@ -153,14 +133,7 @@ def _derive_company(pdf: pd.DataFrame) -> pd.DataFrame:
     }
 
     full = derive_fiscal(facts)
-    # ADR-022 rule 2: an FY row of any other form (a 10-Q's trailing-twelve-month figure, a
-    # registration statement) is never a parent. Derive from the eligible facts only; the row-level
-    # columns of every fact come from the full run, which this does not change.
-    if any(f.qtrs == 4 and f.form not in _ANNUAL_FORMS for f in facts):
-        eligible = [f for f in facts if not (f.qtrs == 4 and f.form not in _ANNUAL_FORMS)]
-        derived_rows = [ff for ff in derive_fiscal(eligible) if ff.derived_from is not None]
-    else:
-        derived_rows = [ff for ff in full if ff.derived_from is not None]
+    derived_rows = [ff for ff in full if ff.derived_from is not None]
 
     out: list[tuple[Any, ...]] = []
     for ff in full:

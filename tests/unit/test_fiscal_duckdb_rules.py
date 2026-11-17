@@ -1,15 +1,14 @@
 """ADR-022 rules against the DuckDB twin: determinism, Q4 eligibility and fact_id uniqueness.
 
 The hand-derived scenarios S1 to S5 and the seeded `tie_heavy` generator live in
-`tests/tie_cases.py`; the oracle for the random data is
-`tests.proposed_rules.reference_with_proposed_rules`. Every scenario is run with the rows inserted
-in five orders (as given, reversed, three seeded shuffles) and must give the same, hand-derived
+`tests/tie_cases.py`; the oracle for the random data is the reference,
+`pipelines.common.fiscal_ref.derive_fiscal`. Every scenario is run with the rows inserted in
+five orders (as given, reversed, three seeded shuffles) and must give the same, hand-derived
 answer in all of them. `derived_from` ids are resolved back to natural keys through the output's
 own `fact_id`; hash VALUES are never compared with any other engine.
 
 No JVM and no network: an in-memory DuckDB connection per run. The first group of tests checks
-the test data itself (the generator and the oracle) and passes today; the rest fail until the
-twin implements the rules.
+the test data itself (the generator and the reference); the rest check the twin against it.
 """
 
 from __future__ import annotations
@@ -21,6 +20,7 @@ import duckdb
 import pytest
 
 from pipelines.common.fiscal_ref import FactInput
+from pipelines.common.fiscal_ref import derive_fiscal as reference_fiscal
 from pipelines.duckdb.normalize_facts_duckdb import derive_fiscal
 from tests.fiscal_cases import (
     INPUT_FIELDS,
@@ -28,7 +28,6 @@ from tests.fiscal_cases import (
     check_fiscal_scenario,
     check_no_derivation,
 )
-from tests.proposed_rules import reference_with_proposed_rules
 from tests.tie_cases import (
     ALL_SCENARIOS,
     FLOW_TAGS,
@@ -105,7 +104,7 @@ def test_tie_heavy_contains_the_ties_and_ineligible_rows_the_rules_are_about(see
     """Each seed has FY and 9M rows tied on (accession) with equal and with different values,
     FY rows from non-annual forms, 10-K/10-KT submissions whose label offsets tie, NULL values,
     all four annual and quarterly form families, and enough derivable Q4s. (That the reference
-    gives another answer on reversed input is checked in test_fiscal_reference_proposed.py.)
+    gives one answer on reversed input is checked in test_fiscal_reference_adr022.py.)
     """
     facts = tie_heavy(seed)
     by_series: dict[tuple[Any, ...], list[FactInput]] = {}
@@ -122,19 +121,19 @@ def test_tie_heavy_contains_the_ties_and_ineligible_rows_the_rules_are_about(see
     assert any(f.uom == "USD/shares" for f in facts) and any(f.qtrs == 0 for f in facts)
     assert offsets_tie(facts), "no company has two label offsets in equal numbers"
     assert len({f.filed for f in facts}) < len({f.adsh for f in facts}), "filing dates do not tie"
-    expected = reference_with_proposed_rules(facts)
+    expected = reference_fiscal(facts)
     assert sum(1 for ff in expected if ff.derived_from is not None) >= 10
     assert set(FLOW_TAGS) == {ff.fact.tag for ff in expected if ff.derived_from is not None}
 
 
 @pytest.mark.parametrize("seed", SEEDS)
 def test_oracle_is_independent_of_input_order(seed: int) -> None:
-    """`reference_with_proposed_rules` gives one answer for every input order (otherwise the
-    twins could not be held to it): the oracle itself is sound on the generated data."""
+    """`derive_fiscal` gives one answer for every input order (otherwise the
+    twins could not be held to it): the reference is sound on the generated data."""
     facts = tie_heavy(seed)
-    want = signature(reference_with_proposed_rules(facts))
+    want = signature(reference_fiscal(facts))
     for order in ORDERS:
-        assert signature(reference_with_proposed_rules(reorder(facts, order))) == want, order
+        assert signature(reference_fiscal(reorder(facts, order))) == want, order
 
 
 # --------------------------------------------------------------------------------------
@@ -236,9 +235,7 @@ def test_duckdb_derived_q4_fact_id_incorporates_the_nine_month_accession() -> No
 
 @pytest.mark.parametrize("order", ["given", "reversed", "shuffle_1"])
 @pytest.mark.parametrize("seed", SEEDS)
-def test_duckdb_agrees_with_the_proposed_rules_reference_on_tie_heavy_data(
-    seed: int, order: str
-) -> None:
+def test_duckdb_agrees_with_the_reference_on_tie_heavy_data(seed: int, order: str) -> None:
     """Over roughly 700 generated rows per seed (ties on (filed, accession) and on value, 2-3
     period-end spellings, FY rows in 10-Qs, 9M rows in 10-Ks, label-offset ties, NULLs): the
     twin has exactly the oracle's rows, and for each row the same period_start, fiscal_year,
@@ -247,7 +244,7 @@ def test_duckdb_agrees_with_the_proposed_rules_reference_on_tie_heavy_data(
     """
     facts = tie_heavy(seed)
     rows = run(reorder(facts, order), full_keys=True)
-    problems = compare_to_reference(rows, reference_with_proposed_rules(facts))
+    problems = compare_to_reference(rows, reference_fiscal(facts))
     assert not problems, f"{len(problems)}+ mismatches, first ones:\n" + "\n".join(problems)
 
 

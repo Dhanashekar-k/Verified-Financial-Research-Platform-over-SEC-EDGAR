@@ -1,20 +1,20 @@
-# M1 Definition-of-Done report (local half)
+# M1 Definition-of-Done report (local half: complete; cloud half: deferred)
 
 Generated 2026-11-17 by following the `/dod` steps by hand, from the result files named below.
 Numbers are copied from files only (the DQ numbers are parsed from `M01-dq-report.md` by the
 generator); where no file holds a number it says `NOT MEASURED`, and where a number comes from a
-command run for this report the command is shown. Provenance: benchmark at commit `546c0a8`,
-difference analysis at `f86aaf6`; the results were regenerated after ADR-022 and the lake,
-the DQ report and the spot check were rebuilt on the same code.
+command run for this report the command is shown. Provenance: benchmark timings at commit
+`546c0a8` (the figures ADR-007 cites); difference analysis recorded as `b4761cc+dirty` (commit b4761cc plus the working-tree
+changes committed right after it: `fiscal_ref.py` took the ADR-022 rules and the twins were pointed at
+`derive_fiscal`).
 
 ## Verdict
 
-**The local half of M1 is done, and Spark, DuckDB and the reference now agree on real data with
-0 differing rows and 0 unexplained differences. M1 as a whole is NOT complete.** Deferred to the
-cloud phase, and not started: the full-history ingest to S3/Glue, the EMR run and its T2 numbers,
-the EMR column of the benchmark, and the demo link. One thing is pending on Shekar: the proposed
-`fiscal_ref.py` diff (`docs/proposals/ADR-022-fiscal_ref.diff`) has not been applied, so "the
-reference" below means `derive_fiscal` with the ADR-022 sort and eligibility applied around it.
+**The LOCAL half of M1 is complete.** Spark, DuckDB and the reference (`derive_fiscal` itself, now
+carrying the ADR-022 sort and 10-K-family check) agree on real data with 0 differing rows and
+0 unexplained differences. **M1 as a whole is NOT complete.** Deferred to the cloud phase and not
+started: the full-history Glue/S3 ingest, the EMR run, T1 (bytes in S3) and T2 (EMR minutes and
+dollars), the EMR column of the ADR-007 benchmark, and the demo link.
 
 ## Checklist (M01 runbook section 7)
 
@@ -26,9 +26,10 @@ reference" below means `derive_fiscal` with the ADR-022 sort and eligibility app
 | 3 | T2 recorded: EMR minutes and $ | DEFERRED (cloud phase) | `NOT MEASURED`. |
 | 4 | Second-source spot check: 60/60 or every mismatch explained | PASS (accepted by Shekar) | **58/60 exact; the 2 non-matches are JPMorgan revenue, correctly stored under RevenuesNetOfInterestExpense (banks omit the Revenues tag) — a metric-catalog item for M5, not an ingestion error.** Rerun on the rebuilt lake: still 58/60, the same two rows, `classification: null` (M5's job). Note in `docs/plan/05_data_contracts.md` section 4.2. |
 | 5 | Apple FY2023 revenue matches the 10-K | PARTIAL | `curated.facts` holds 383285000000.0000 USD for accession 0000320193-23-000106 (DQ report) and it matches companyfacts exactly (spot check). A hand comparison with the 10-K income statement itself was NOT RUN. |
-| 6a | ADR-007 benchmark table filled in | PARTIAL | DuckDB and local-Spark columns filled for 2 and 7 quarters; EMR column `pending — cloud phase`; 20-quarter and all-quarter rows `NOT MEASURED`. ADR-007's decision and consequences are Shekar's TODO stub. |
-| 6b | Differential test green | PASS | Tests (command output, this session): `make test-integration` 334 passed; `make test` 845 passed and 17 xfailed (the strict-xfail tests that state the proposed reference change); `make lint` clean. Real data: Spark == DuckDB with 0 differing rows in all three tables on 2 and 7 quarters; the reference run directly differs from DuckDB's `facts_history` in 0 of 12,201,161 rows. |
+| 6a | ADR-007 benchmark table filled in | PARTIAL | DuckDB and local-Spark columns filled for 2 and 7 quarters; EMR column `pending — cloud phase`; 20-quarter and all-quarter rows `NOT MEASURED`. ADR-007 is drafted for Shekar's review. |
+| 6b | Differential test green | PASS | Tests (command output, this session): `make test-integration` 334 passed; `make test` 862 passed; `make lint` clean. The 17 strict-xfail tests of the proposed reference change were un-marked once Shekar applied the diff, and they pass. Real data: Spark == DuckDB with 0 differing rows in all three tables on 2 and 7 quarters; the reference run directly differs from DuckDB's `facts_history` in 0 of 12,201,161 rows. |
 | 7 | `/dod M1` report written | PASS | This file. |
+| 8 | ADRs 007, 017, 020, 021, 022 | DRAFTED | `docs/decisions.md`: concise drafts from the decisions on record; Shekar reviews and finalizes the wording. |
 
 ## Numbers
 
@@ -52,7 +53,7 @@ reference" below means `derive_fiscal` with the ADR-022 sort and eligibility app
 | local Spark, 2 quarters: raw load ; normalize | 38.19 s / 1,072 MB ; 112.07 s / 10,194 MB | same | `runs[label=2q, engine=spark_local]` |
 | DuckDB, 7 quarters | 113.25 s / 9,930 MB | same | `runs[label=7q, engine=duckdb]` |
 | local Spark, 7 quarters: raw load ; normalize | 125.21 s / 1,158 MB ; 277.07 s / 11,734 MB | same | `runs[label=7q, engine=spark_local]` |
-| Spark vs DuckDB differing rows, 2 and 7 quarters, all three tables | 0 | `docs/milestones/M01-benchmark.json` | `comparisons.*.*.only_a`, `only_b` |
+| Spark vs DuckDB differing rows, 2 and 7 quarters, all three tables (final code) | 0 | `docs/milestones/M01-differential-analysis.json` | `cells.*.classification.*.total` |
 | unexplained differences (classifier), 2 and 7 quarters | 0 | `docs/milestones/M01-differential-analysis.json` | `cells.*.classification.*.unexplained` |
 | reference run directly vs DuckDB `facts_history`: companies / rows / differences, 2 quarters | 6,721 / 3,320,915 / 0 | same | `cells.2q.reference_agreement` |
 | same, 7 quarters | 8,193 / 12,201,161 / 0 | same | `cells.7q.reference_agreement` |
@@ -65,15 +66,11 @@ reference" below means `derive_fiscal` with the ADR-022 sort and eligibility app
 
 ## Open issues
 
-1. **The reference file is not changed yet.** `fiscal_ref.py` still breaks ties by list position and
-   derives Q4 from FY rows of any form. The twins implement the ADR-022 rules around it
-   (`pipelines/spark/fiscal.py`, the DuckDB SQL), so every number above holds, but the three
-   implementations agree only because the twins add the sort and the eligibility check themselves.
-   To finish: apply `docs/proposals/ADR-022-fiscal_ref.diff` (verified on a scratch copy: it applies
-   cleanly, and afterwards only the 17 strict-xfail tests in
-   `tests/unit/test_fiscal_reference_proposed.py` turn red, the signal to delete their markers; all
-   unit and property tests pass with `--runxfail`). Then `pipelines/duckdb/oracle.py` and
-   `tests/proposed_rules.py` equal `derive_fiscal` and can be deleted.
+1. **`fiscal_ref.py` carries the ADR-022 rules** (Shekar applied `docs/proposals/ADR-022-fiscal_ref.diff`).
+   The 17 strict-xfail tests were un-marked, `pipelines/duckdb/oracle.py` and
+   `tests/proposed_rules.py` were deleted, and the twins and tooling call `derive_fiscal` directly.
+   `pipelines/spark/fiscal.py` no longer sorts or filters the reference's input itself; the DuckDB
+   SQL still reproduces the sort and the eligibility rule in SQL.
 2. **The tie rules are stable, not necessarily right.** A label-offset tie goes to the submission
    with the smallest accession; two FY rows of one filing after a fiscal-year change go to the
    smaller value. Either is an arbitrary but repeatable choice; the business rule is Shekar's.
@@ -97,8 +94,7 @@ reference" below means `derive_fiscal` with the ADR-022 sort and eligibility app
 
 ## Decisions that need an ADR
 
-- ADR-022 (this change: deterministic ties, annual-form Q4 parents, unique derived `fact_id`) is
-  written as a stub with measured numbers; its body is Shekar's.
-- ADR-017 (as-originally-reported vs restated values) is on the runbook's end-of-milestone list
-  and is not written.
-- Existing stubs for Shekar's wording: ADR-007, ADR-020, ADR-021, ADR-022.
+- ADR-007, ADR-017, ADR-020, ADR-021 and ADR-022 are drafted in `docs/decisions.md` from the
+  decisions on record, with measured numbers only, for Shekar to review and finalize.
+- ADR-007's EMR column and the 20-quarter and all-quarter rows stay `NOT MEASURED` / pending until
+  the cloud phase. 20-F and 40-F are a deliberate scope exclusion (ADR-022).

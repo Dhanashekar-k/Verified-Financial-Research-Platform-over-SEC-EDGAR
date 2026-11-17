@@ -1,6 +1,6 @@
 """Shared scenarios and a tie-heavy generator for the two rules of ADR-022.
 
-The rules (oracle: `tests.proposed_rules.reference_with_proposed_rules`):
+The rules (oracle: `pipelines.common.fiscal_ref.derive_fiscal`):
 
 1. DETERMINISM. Every tie the reference breaks by list position is resolved as if the input were
    sorted by `stable_key` (accession, value ascending NULLs last, period_end, qtrs, cik, tag,

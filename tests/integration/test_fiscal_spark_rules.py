@@ -2,7 +2,7 @@
 
 Spark twin of `tests/unit/test_fiscal_duckdb_rules.py`, over the same hand-derived scenarios S1 to
 S5 and the same seeded `tie_heavy` data (`tests/tie_cases.py`), compared with the oracle
-`tests.proposed_rules.reference_with_proposed_rules`. Rows are given in several orders and the
+`pipelines.common.fiscal_ref.derive_fiscal`. Rows are given in several orders and the
 DataFrame is repartitioned for some of them, so a tie broken by scan position or by partition
 placement changes the answer. `derived_from` ids are resolved back to natural keys through the
 output's own `fact_id`; no xxhash is recomputed in Python.
@@ -26,7 +26,7 @@ from pyspark.sql.types import (
     StructType,
 )
 
-from pipelines.common.fiscal_ref import FactInput
+from pipelines.common.fiscal_ref import FactInput, derive_fiscal
 from pipelines.spark.fiscal import derive_fiscal_columns
 from tests.fiscal_cases import (
     INPUT_FIELDS,
@@ -34,7 +34,6 @@ from tests.fiscal_cases import (
     check_fiscal_scenario,
     check_no_derivation,
 )
-from tests.proposed_rules import reference_with_proposed_rules
 from tests.tie_cases import (
     ALL_SCENARIOS,
     REV,
@@ -189,7 +188,7 @@ def test_spark_derived_q4_fact_id_incorporates_the_nine_month_accession(
     ("order", "partitions"), [("given", 1), ("shuffle_2", 4)], ids=["given-p1", "shuffle_2-p4"]
 )
 @pytest.mark.parametrize("seed", [1, 2, 3, 4])
-def test_spark_agrees_with_the_proposed_rules_reference_on_tie_heavy_data(
+def test_spark_agrees_with_the_reference_on_tie_heavy_data(
     spark: SparkSession, seed: int, order: str, partitions: int
 ) -> None:
     """Over roughly 700 generated rows per seed (ties on (filed, accession) and on value, 2-3
@@ -200,5 +199,5 @@ def test_spark_agrees_with_the_proposed_rules_reference_on_tie_heavy_data(
     """
     facts = tie_heavy(seed)
     rows = run(spark, reorder(facts, order), partitions, full_keys=True)
-    problems = compare_to_reference(rows, reference_with_proposed_rules(facts))
+    problems = compare_to_reference(rows, derive_fiscal(facts))
     assert not problems, f"{len(problems)}+ mismatches, first ones:\n" + "\n".join(problems)

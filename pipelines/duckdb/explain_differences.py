@@ -63,7 +63,6 @@ from pipelines.duckdb.benchmark import (
     export_spark,
 )
 from pipelines.duckdb.normalize_facts_duckdb import build_inputs
-from pipelines.duckdb.oracle import reference_with_proposed_rules
 
 log = logging.getLogger(__name__)
 
@@ -417,7 +416,7 @@ def reference_agreement(
                     None if ff.derived_from is None
                     else tuple((str(pe), q, a) for pe, q, a in ff.derived_from),
                 )
-                for ff in reference_with_proposed_rules(facts)
+                for ff in derive_fiscal(facts)
             )  # fmt: skip
             got_rows = con.execute(
                 "SELECT fact_id, cik, accession, tag, taxonomy, uom, qtrs, period_end, value, "

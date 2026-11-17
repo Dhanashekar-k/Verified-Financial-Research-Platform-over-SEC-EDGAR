@@ -1,12 +1,8 @@
-"""The desired behaviour of the UNMODIFIED `pipelines.common.fiscal_ref.derive_fiscal` (ADR-022).
+"""The ADR-022 behaviour of `pipelines.common.fiscal_ref.derive_fiscal`.
 
-`fiscal_ref.py` is Shekar's file. These tests state what it must do after the proposed diff (sort
-the input by a stable key; derive Q4 only from FY rows of 10-K, 10-KT and 10-K/A filings), using
-the hand-derived scenarios of `tests/tie_cases.py`. They fail today and are marked
-`xfail(strict=True)`: once the diff is applied they pass, strict xfail turns the XPASS into a red
-run, and the marker (and `tests/proposed_rules.py`) is deleted.
-
-`pytest --runxfail tests/unit/test_fiscal_reference_proposed.py` shows the real failures.
+`fiscal_ref.py` is Shekar's file (ADR-022 added the sort of its input by a stable key and the
+rule that derives Q4 only from FY rows of 10-K, 10-KT and 10-K/A filings). These tests state the
+behaviour with the hand-derived scenarios of `tests/tie_cases.py`.
 """
 
 from __future__ import annotations
@@ -22,7 +18,6 @@ from tests.fiscal_cases import (
     check_no_derivation,
     to_rows,
 )
-from tests.proposed_rules import reference_with_proposed_rules
 from tests.tie_cases import (
     S1_INELIGIBLE,
     S1_MIXED,
@@ -35,11 +30,6 @@ from tests.tie_cases import (
     tie_heavy,
 )
 
-ADR_022 = pytest.mark.xfail(
-    strict=True,
-    reason="ADR-022: needs the proposed fiscal_ref.py diff (sort the input; annual-form FY "
-    "parents only)",
-)
 TWO_ORDERS = ("given", "reversed")
 
 
@@ -62,7 +52,6 @@ def assert_same_in_both_orders_and_hand_derived(scenario: FiscalScenario) -> Non
     check_fiscal_scenario(scenario, reversed_)
 
 
-@ADR_022
 @pytest.mark.parametrize("order", TWO_ORDERS)
 @pytest.mark.parametrize("scenario", S1_INELIGIBLE, ids=repr)
 def test_ref_fy_row_from_a_non_annual_form_is_never_a_parent(
@@ -74,7 +63,6 @@ def test_ref_fy_row_from_a_non_annual_form_is_never_a_parent(
     check_no_derivation(run(scenario, order), len(scenario.facts))
 
 
-@ADR_022
 @pytest.mark.parametrize("order", TWO_ORDERS)
 def test_ref_ten_q_fy_row_next_to_a_ten_k_fy_row_derives_exactly_one_q4(order: str) -> None:
     """S1 mixed: a 10-Q FY row (999) filed after the 10-K FY row (100), plus a 9M (60): exactly
@@ -84,7 +72,6 @@ def test_ref_ten_q_fy_row_next_to_a_ten_k_fy_row_derives_exactly_one_q4(order: s
     check_fiscal_scenario(S1_MIXED, run(S1_MIXED, order))
 
 
-@ADR_022
 def test_ref_fiscal_year_change_takes_the_smaller_fy_value_in_every_order() -> None:
     """S2: one 10-K, one filing date, two FY rows (2022-06-30 value 100, 2022-12-31 value 200),
     neither native, and a 9M of 50: the row that sorts first wins, so Q4 = 100 - 50 = 50 at
@@ -93,7 +80,6 @@ def test_ref_fiscal_year_change_takes_the_smaller_fy_value_in_every_order() -> N
     assert_same_in_both_orders_and_hand_derived(S2)
 
 
-@ADR_022
 @pytest.mark.parametrize("scenario", [S3_SMALLEST_IS_ZERO, S3_SMALLEST_IS_MINUS_ONE], ids=repr)
 def test_ref_label_offset_tie_goes_to_the_smallest_accession_in_every_order(
     scenario: FiscalScenario,
@@ -105,7 +91,6 @@ def test_ref_label_offset_tie_goes_to_the_smallest_accession_in_every_order(
     assert_same_in_both_orders_and_hand_derived(scenario)
 
 
-@ADR_022
 def test_ref_nine_month_tie_across_period_ends_takes_the_smaller_value_in_every_order() -> None:
     """S4: two 9M rows of one accession (2022-09-30 value 70, 2022-06-30 value 90) tie on
     (filed, accession): the group whose first row sorts first wins, so Q4 = 200 - 70 = 130 in
@@ -114,13 +99,12 @@ def test_ref_nine_month_tie_across_period_ends_takes_the_smaller_value_in_every_
     assert_same_in_both_orders_and_hand_derived(S4)
 
 
-@ADR_022
 @pytest.mark.parametrize("seed", [1, 2, 3])
-def test_ref_gives_the_oracle_answer_on_tie_heavy_data_in_either_order(seed: int) -> None:
-    """On data full of ties and ineligible FY rows the reference must give one answer, and it must
-    be the oracle's, whatever the order of the rows."""
+def test_ref_gives_one_answer_on_tie_heavy_data_in_either_order(seed: int) -> None:
+    """On data full of ties and ineligible FY rows the reference gives one answer, whatever the
+    order of the rows (the hand-derived scenarios above check the eligibility rule itself)."""
     facts = tie_heavy(seed)
-    want = signature(reference_with_proposed_rules(facts))
+    want = signature(derive_fiscal(facts))
 
-    assert signature(derive_fiscal(facts)) == want
     assert signature(derive_fiscal(facts[::-1])) == want
+    assert signature(derive_fiscal(reorder(facts, "shuffle_1"))) == want
