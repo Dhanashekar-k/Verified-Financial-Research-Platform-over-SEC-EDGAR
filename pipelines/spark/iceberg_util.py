@@ -31,3 +31,14 @@ def ensure_table(spark: SparkSession, table: str, df: DataFrame, partition_colum
         log.info("%s was created concurrently; continuing", table)
     finally:
         spark.catalog.dropTempView(view)
+
+
+def latest_snapshot_id(spark: SparkSession, table: str) -> int | None:
+    """The newest Iceberg snapshot id of `table`, or None if it does not exist or is empty."""
+    try:
+        row = spark.sql(
+            f"SELECT snapshot_id FROM {table}.snapshots ORDER BY committed_at DESC LIMIT 1"
+        ).first()
+    except Exception:  # noqa: BLE001 - a missing table simply has no snapshot
+        return None
+    return int(row.snapshot_id) if row else None
