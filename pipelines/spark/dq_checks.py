@@ -328,6 +328,7 @@ def collect_metrics(
         current = latest_snapshot_id(spark, f"{curated_ns}.facts")
         return {
             "summary": data["summary"],
+            "selection": data.get("selection"),
             "generated_at": data["generated_at"],
             "facts_snapshot_at_check": data.get("facts_snapshot_id"),
             "facts_snapshot_now": current,
@@ -376,6 +377,16 @@ def pct(x: float | None) -> str:
 
 def _nm(section: Section) -> str | None:
     return f"**NOT MEASURED**: {section.reason}" if isinstance(section, NotMeasured) else None
+
+
+def _selection_text(selection: dict[str, Any] | None) -> str:
+    """Which filings the spot check compared (recorded in M01-spotcheck.json)."""
+    if not selection:
+        return "the selection is not recorded in the result file"
+    if selection.get("mode") == "fiscal_years":
+        years = ", ".join(str(y) for y in selection["fiscal_years"])
+        return f"the 10-Ks of fiscal years {years} (each company's own fy label)"
+    return f"each company's {selection.get('n', '?')} most recent 10-Ks"
 
 
 def render_report(m: dict[str, Any]) -> str:
@@ -534,6 +545,7 @@ def render_report(m: dict[str, Any]) -> str:
                 f"{sm['expected_comparisons']} were expected "
                 "(a company had fewer than 2 annual filings)."
             )
+        add(f"\nCompared: {_selection_text(sc.get('selection'))}.")
         add(
             f"\n{sm['matched']}/{sm['n_comparisons']} match (outcomes {sm['outcomes']}). "
             f"Frames agree: {sm['frames_agree']}/{sm['frames_compared']}. "

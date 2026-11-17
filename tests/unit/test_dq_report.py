@@ -73,6 +73,7 @@ def full_metrics() -> dict[str, Any]:
                 "frames_compared": 55,
                 "unclassified_non_matches": 2,
             },
+            "selection": {"mode": "fiscal_years", "fiscal_years": [2023, 2022]},
             "generated_at": "2026-11-17T01:00:00+00:00",
             "facts_snapshot_at_check": 5,
             "facts_snapshot_now": 5,
@@ -197,3 +198,27 @@ def test_drop_counts_section_shows_the_distinct_total_and_what_is_kept():
 
     assert "dropped for at least one cause** (each row once) | 9 |" in text
     assert "Of 120 raw rows" in text
+
+
+def test_spotcheck_section_says_which_filings_were_compared_when_years_are_pinned():
+    text = render_report(full_metrics())
+
+    assert "Compared: the 10-Ks of fiscal years 2023, 2022 (each company's own fy label)" in text
+
+
+def test_spotcheck_section_says_latest_filings_for_the_default_selection():
+    m = full_metrics()
+    m["spotcheck"]["selection"] = {"mode": "latest", "n": 2}
+
+    text = render_report(m)
+
+    assert "Compared: each company's 2 most recent 10-Ks" in text
+
+
+def test_spotcheck_section_says_when_the_result_file_does_not_record_the_selection():
+    m = full_metrics()
+    m["spotcheck"]["selection"] = None
+
+    text = render_report(m)
+
+    assert "Compared: the selection is not recorded in the result file" in text
