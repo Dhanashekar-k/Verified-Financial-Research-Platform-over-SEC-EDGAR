@@ -105,6 +105,8 @@ CREATE TABLE lake.raw.fsds_num (
   src_quarter string, ingested_at timestamp
 ) USING iceberg PARTITIONED BY (src_quarter);
 -- fsds_tag and fsds_pre: mirror the source columns + src_quarter, ingested_at
+-- fsds_sub keeps 16 of the file's 36 columns. `accepted` is US Eastern wall-clock time as EDGAR writes it,
+-- stored as-is (not converted to UTC); `period`, `filed`, `ddate` are yyyymmdd ints, month-end rounded for ddate/period.
 
 CREATE TABLE lake.raw.filings_html (          -- metadata only; the HTML itself lives in S3
   accession string, cik int, form string, filed date, url string,

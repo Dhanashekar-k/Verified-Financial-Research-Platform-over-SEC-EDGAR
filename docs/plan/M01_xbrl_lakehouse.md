@@ -51,9 +51,9 @@ spark.jars                           = <Iceberg runtime jar bundled with the EMR
 ```
 
 ### 3.4 `fsds_to_iceberg` (2 h)
-- Read with an **explicit schema** (no inference), `sep="\t"`, `header=True`, and quote handling disabled (`quote="\u0000"`). Text fields can contain quote characters [Likely].
+- Read with an **explicit schema** (no inference), `sep="\t"`, `header=True`, `quote='"'`, `escape='"'`, `mode=FAILFAST`, and header validation (`enforceSchema=False`). **Measured on 2023q3/q4:** the files are RFC-4180-style, so a field containing a quote or a tab is wrapped in `"` with inner quotes doubled (`"Vacation ownership interest (""VOI"") inventory"`). Disabling quote handling (this runbook's first guess) keeps the quotes in the text and splits the 12 `num` rows whose quoted `segments` contains a tab.
 - Add `src_quarter`, `ingested_at`. Convert `value` to `decimal(28,4)`.
-- Write with dynamic partition overwrite (`writeTo(...).overwritePartitions()`), so rerunning a quarter replaces it: **idempotent**.
+- Validate all four files of a quarter first (present, whole header line, every row and column parses, row count = lines minus header), then write with an atomic partition-scoped overwrite (`writeTo(...).overwrite(src_quarter == q)`), so rerunning a quarter replaces exactly it and a header-only file really empties it: **idempotent**. (`overwritePartitions()` cannot clear a partition when the new data is empty.)
 - Local first: `make spark-raw Q=2023q3,2023q4`.
 
 ### 3.5 `normalize_facts` (6 h; **you write the fiscal/dedup core**)

@@ -245,3 +245,6 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+# JVM crash dumps written to the working directory
+hs_err_pid*.log
+replay_pid*.log
