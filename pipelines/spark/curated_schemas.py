@@ -17,6 +17,7 @@ from pyspark.sql.types import (
     StringType,
     StructField,
     StructType,
+    TimestampType,
 )
 
 _S, _I, _L, _B, _D = StringType(), IntegerType(), LongType(), BooleanType(), DateType()
@@ -64,4 +65,21 @@ FACTS_DIMENSIONAL = _schema(
 COMPANIES = _schema(
     ("cik", _I), ("name", _S), ("ticker", _S), ("sic", _I), ("fye_mmdd", _S),
     ("in_sp500", _B), ("in_financebench", _B), ("aliases", ArrayType(_S)),
+)  # fmt: skip
+
+
+# `curated.filings` and `curated.chunks` (contract section 2.2), in contract column order. The row
+# models in `pipelines/parsing/document.py` carry the same fields; the schema test pins both.
+FILINGS = _schema(
+    ("accession", _S), ("cik", _I), ("form", _S), ("filed", _D), ("accepted_at", TimestampType()),
+    ("period_of_report", _D), ("fiscal_year", _I), ("fiscal_period", _S),
+    ("primary_doc_url", _S), ("html_s3_uri", _S), ("parse_status", _S), ("parse_error", _S),
+    ("n_sections", _I), ("n_chunks", _I), ("doc_source", _S), ("dq_flags", _FLAGS),
+)  # fmt: skip
+
+CHUNKS = _schema(
+    ("chunk_id", _S), ("cik", _I), ("accession", _S), ("form", _S),
+    ("fiscal_year", _I), ("fiscal_period", _S), ("section", _S), ("section_title", _S),
+    ("chunk_index", _I), ("text", _S), ("n_tokens", _I), ("is_table", _B),
+    ("source_url", _S), ("anchor", _S), ("page", _I), ("doc_source", _S), ("corpus_version", _I),
 )  # fmt: skip
