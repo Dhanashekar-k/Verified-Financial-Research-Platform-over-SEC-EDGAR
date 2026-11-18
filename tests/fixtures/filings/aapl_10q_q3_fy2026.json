@@ -1,0 +1,24 @@
+{
+  "form": "10-Q",
+  "accession": "0000320193-26-000020",
+  "cik": 320193,
+  "filed": "2026-07-31",
+  "period_of_report": "2026-06-27",
+  "fye_mmdd": "0930",
+  "label_offset": 0,
+  "label_offset_is_constant": true,
+  "expected_fiscal_year": 2026,
+  "expected_fiscal_period": "Q3",
+  "toc": {
+    "anchor_linked": true,
+    "id_style": "opaque"
+  },
+  "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000020/aapl-20260627.htm",
+  "company": "Apple Inc.",
+  "verified_against": {
+    "period_of_report": "equals the submissions API reportDate (data/targets/filings.csv) and the filing's own dei:DocumentPeriodEndDate",
+    "fye_mmdd": "equals fsds_sub.fye and curated.companies.fye_mmdd in the local lake; the filing's dei:CurrentFiscalYearEndDate is within the 7-day tolerance of fiscal_ref.y_end",
+    "label_offset": "label_offsets over the lake's 10-K submissions that have facts (pipelines.spark.parse_filings.label_offset_frame)",
+    "expected_fiscal_year/period": "equal the filing's own dei:DocumentFiscalYearFocus and dei:DocumentFiscalPeriodFocus"
+  }
+}

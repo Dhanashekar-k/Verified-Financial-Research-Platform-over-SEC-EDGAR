@@ -1,0 +1,24 @@
+{
+  "form": "10-K",
+  "accession": "0001558370-25-003810",
+  "cik": 1403568,
+  "filed": "2025-03-27",
+  "period_of_report": "2025-02-01",
+  "fye_mmdd": "0131",
+  "label_offset": -1,
+  "label_offset_is_constant": true,
+  "expected_fiscal_year": 2024,
+  "expected_fiscal_period": "FY",
+  "toc": {
+    "anchor_linked": true,
+    "id_style": "named"
+  },
+  "source_url": "https://www.sec.gov/Archives/edgar/data/1403568/000155837025003810/ulta-20250201x10k.htm",
+  "company": "Ulta Beauty (fiscal year ends the Saturday nearest 31 January and is named for the year it BEGAN, so the label offset is -1)",
+  "verified_against": {
+    "period_of_report": "equals the submissions API reportDate (data/targets/filings.csv) and the filing's own dei:DocumentPeriodEndDate",
+    "fye_mmdd": "equals fsds_sub.fye and curated.companies.fye_mmdd in the local lake; the filing's dei:CurrentFiscalYearEndDate is within the 7-day tolerance of fiscal_ref.y_end",
+    "label_offset": "label_offsets over the lake's 10-K submissions that have facts (pipelines.spark.parse_filings.label_offset_frame)",
+    "expected_fiscal_year/period": "equal the filing's own dei:DocumentFiscalYearFocus and dei:DocumentFiscalPeriodFocus"
+  }
+}
