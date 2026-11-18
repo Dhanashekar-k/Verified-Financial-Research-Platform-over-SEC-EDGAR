@@ -758,7 +758,7 @@
     "partial": 2
   },
   "partial_causes": {
-    "NEMCL FY2021 0001164727-22-000007": "missing sections: 7 (a combined multi-registrant filing)",
+    "NEMCL FY2021 0001164727-22-000007": "missing sections: 7 (Newmont Corp, a single registrant; one Item 7 heading candidate exists and the chain skipped it). Corrected 2026-11-17: an earlier version of this note called it a multi-registrant filing without checking.",
     "PHM FY2020 0000822416-21-000007": "missing sections: 1"
   },
   "pre_2020_candidates": [
