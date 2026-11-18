@@ -103,3 +103,11 @@ DuckDB's time grows faster than the data (2 to 7 quarters); not investigated. Ag
 **Decision:** (c). `infra/emr/Dockerfile` starts from the base image digest above, installs `python3.12` and `infra/emr/requirements-emr.txt` (pins equal to `uv.lock`, checked by a test); driver and executors both use `/usr/bin/python3.12`, because a minor mismatch fails with `PYTHON_VERSION_MISMATCH`. The application's release label must match the image's.
 **Consequences:** TODO(Shekar): write this in my own words
 **How to revisit:** if a later EMR release ships Python 3.12 by default, drop the image; if the digest is withdrawn or Spark 3.5.8 behaves differently from local 3.5.9 in the first EMR run, rebuild on the new base and record it here.
+
+## ADR-025: Pre-2020 SGML-wrapped primary documents are out of scope (2026-11-17)
+**Status:** proposed
+**Context:** The HTML corpus is S&P 500 10-K and 10-Q filings with report dates FY2020-2025; FinanceBench is the PDF path. Three 2011-2012 10-Ks (Apple, Walmart, 3M) parse to `no_sections` with 0 chunks (`docs/milestones/M02-fixture-survey.json`, `pre_2020_candidates`). Their primary documents start with an SGML wrapper (`<DOCUMENT><TYPE>10-K<SEQUENCE>...<TEXT><HTML>`); the unclosed wrapper tags nest the whole document, so `html_to_blocks` returns one block and no heading is seen. In the ingest window the same survey found 0 of 50 sampled S&P 500 10-Ks SGML-wrapped (`sgml_wrapped`) and 48 of 50 parsed `ok` (`parse_status`).
+**Options considered:** (a) strip the wrapper or treat unknown block-containing tags as containers now: small, but code and a fixture for filings no question will cite. (b) scope it out and record the failure. (c) keep a 2011 filing as a permanently failing fixture: noise in CI.
+**Decision:** (b). Known failure on pre-2020 SGML-wrapped primary documents; out of the FY2020-2025 ingest window; no fixture and no parser change. The three 2011-2012 candidates were not promoted to `tests/fixtures/`.
+**Consequences:** TODO(Shekar): write this in my own words
+**How to revisit:** if the corpus window is extended before about 2013, or any in-window filing parses to `no_sections` and starts with `<DOCUMENT>`; the fix is to strip the SGML header and trailer before parsing.
