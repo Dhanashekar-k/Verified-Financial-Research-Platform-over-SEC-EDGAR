@@ -53,6 +53,10 @@ fetch-reference: ## Freeze the SEC ticker map and the S&P 500 CSV under data/ (M
 	$(PY) python -m pipelines.fetch.reference_data
 spark-companies: ## Build curated.companies from raw.fsds_sub + the frozen reference files (M1)
 	$(PY) python -m pipelines.spark.build_companies --env local
+export-companies: ## Export the S&P 500 CIKs from curated.companies to data/targets/tracked_ciks.csv (M2)
+	$(PY) python -m pipelines.spark.export_companies --env local
+list-filings: ## List 10-K/10-Q targets to data/targets/filings.csv; sec.gov network (M2)
+	$(PY) python -m pipelines.fetch.list_filings
 bench-m1: ## DuckDB vs local Spark on FSDS quarters, e.g. make bench-m1 Q=2023q3,2023q4 LABEL=2q (M1)
 	$(PY) python -m pipelines.duckdb.benchmark run --quarters $(Q) --label $(LABEL)
 dq: ## Data-quality report (M1)
