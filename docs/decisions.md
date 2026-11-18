@@ -111,3 +111,11 @@ DuckDB's time grows faster than the data (2 to 7 quarters); not investigated. Ag
 **Decision:** (b). Known failure on pre-2020 SGML-wrapped primary documents; out of the FY2020-2025 ingest window; no fixture and no parser change. The three 2011-2012 candidates were not promoted to `tests/fixtures/`.
 **Consequences:** TODO(Shekar): write this in my own words
 **How to revisit:** if the corpus window is extended before about 2013, or any in-window filing parses to `no_sections` and starts with `<DOCUMENT>`; the fix is to strip the SGML header and trailer before parsing.
+
+## ADR-026: Title-only and cross-reference heading formats are scoped out of M2 (2026-11-17)
+**Status:** proposed
+**Context:** The section chain needs an `Item N` heading in the body. In the 150-filing sample (`docs/milestones/M02-blast-radius.json`) 13 filings still miss a required item after the two cheap fixes (14 before: `M02-blast-radius-before-fix.json`): financials 6 of 43 (7 before the Allstate fix), utilities 2 of 26, other 5 of 79; the 18 multi-registrant covers never fail. Causes (`summary.by_cause`): 11 only a TOC or index row, 5 mentioned only, 13 never written. Text before the first detected heading is not chunked: for the 11 filings missing Item 1 or 1A it is 8.1% to 29.8% of the document in nine, 100% for Citigroup, 1.0% for Synchrony (a complete filing: median 2.5%).
+**Options considered:** (a) a title-based detector in M2: recovers some, risks false positives on the 138 working filings, unmeasurable without labels. (b) Scope out: these filings already parse `partial` or `no_sections`. (c) Chunk pre-heading text unlabeled: cheap, loses the section label.
+**Decision:** (b). Title-only and cross-reference formats stay unsupported. Those filings' Item 1 and 1A text is NOT retrievable: it precedes the first detected heading and is not indexed (Citigroup: all of it). A missed later item is indexed under the previous section's label.
+**Consequences:** TODO(Shekar): write this in my own words
+**How to revisit:** a later heading-detector improvement, not an M2 blocker; sooner if the M4 question-level eval misses on these filings.
