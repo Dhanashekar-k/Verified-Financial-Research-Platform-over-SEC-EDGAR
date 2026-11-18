@@ -1,7 +1,27 @@
 {
- "what": "Known section-detection defects of the parser as of 2026-11-17: filings in the 150-filing blast-radius sample that miss a required item (1, 1A, 7, 7A, 8). tests/unit/parsing/test_known_defects.py asserts each expected_found item with strict xfail, so a parser fix makes the test XPASS and fails until the marker is removed. Items in needs_gold_label are not asserted: nobody has shown where they start.",
- "source": "docs/milestones/M02-blast-radius.json (python -m eval.blast_radius, seed 20261118)",
- "how_to_run": "the filings are cached by `python -m eval.blast_radius` under data/fixture_candidates/blast/; the test skips when a filing is not cached",
+ "what": "Known section-detection defects of the parser as of the 150-filing blast-radius sample (docs/milestones/M02-blast-radius.json): filings that miss a required item (1, 1A, 7, 7A, 8). `fixed` lists the two cases the parser was changed for; tests/unit/parsing/test_known_defects.py keeps them fixed. Every item in `cases` is `needs_gold_label`: nobody has shown where it starts, so none is asserted. To assert one, add it to expected_found with its evidence and a strict-xfail test.",
+ "source": "docs/milestones/M02-blast-radius.json (python -m eval.blast_radius, seed 20261118); the before-fix measurement is docs/milestones/M02-blast-radius-before-fix.json",
+ "how_to_run": "the filings are cached by `python -m eval.blast_radius` under data/fixture_candidates/blast/; the tests skip when a filing is not cached",
+ "fixed": [
+  {
+   "accession": "0000899051-26-000031",
+   "ticker": "ALL-PB",
+   "cik": 899051,
+   "item": "1",
+   "was": "Item 1 missed: the heading is fused with the section's first sentence ('Part I Item 1. Business The Allstate Corporation was incorporated ...'), too long to be a heading",
+   "fix": "pipelines/parsing/sections.py: a known item title followed by a new sentence is a fused heading; the sentence becomes the section's first text",
+   "url": "https://www.sec.gov/Archives/edgar/data/899051/000089905126000031/all-20251231.htm"
+  },
+  {
+   "accession": "0001095073-23-000007",
+   "ticker": "EG",
+   "cik": 1095073,
+   "item": "7A",
+   "was": "Item 7A displaced: 'ITEM 8,' (the first fragment of a cross-reference inside Item 7) was taken as the Item 8 heading and, sitting before the real Item 7A, won the section order",
+   "fix": "pipelines/parsing/sections.py: 'ITEM N,' with no title is a cross-reference fragment, not a heading (a title that wraps and ends in a comma is still a heading)",
+   "url": "https://www.sec.gov/Archives/edgar/data/1095073/000109507323000007/re-20221231.htm"
+  }
+ ],
  "cases": [
   {
    "accession": "0000005272-24-000023",
@@ -157,29 +177,6 @@
    "note": "no recognisable 'Item N' heading for 1/7/7A/8: the body uses title-only headings or a cross-reference index (or merges items); the truth needs a hand label before it can be asserted"
   },
   {
-   "accession": "0000899051-26-000031",
-   "ticker": "ALL-PB",
-   "cik": 899051,
-   "report_year": 2025,
-   "group": "financials",
-   "url": "https://www.sec.gov/Archives/edgar/data/899051/000089905126000031/all-20251231.htm",
-   "parse_status_today": "partial",
-   "missing_required_today": [
-    "1"
-   ],
-   "miss_causes": {
-    "1": "toc_or_index_only"
-   },
-   "expected_found": [
-    "1"
-   ],
-   "evidence": {
-    "1": "the first body paragraph starts 'Part I Item 1. Business The Allstate Corporation was incorporated': the heading is fused with the section's first sentence, so it is not recognised as a heading"
-   },
-   "needs_gold_label": [],
-   "note": null
-  },
-  {
    "accession": "0001035002-24-000007",
    "ticker": "VLO",
    "cik": 1035002,
@@ -211,24 +208,21 @@
    "missing_required_today": [
     "1",
     "7",
-    "7A"
+    "8"
    ],
    "miss_causes": {
     "1": "mention_only",
     "7": "mention_only",
-    "7A": "heading_paragraph_not_chosen"
+    "8": "mention_only"
    },
-   "expected_found": [
-    "7A"
-   ],
-   "evidence": {
-    "7A": "an unlinked paragraph reading like this item's heading exists and the section chain skipped it"
-   },
+   "expected_found": [],
+   "evidence": {},
    "needs_gold_label": [
     "1",
-    "7"
+    "7",
+    "8"
    ],
-   "note": "no recognisable 'Item N' heading for 1/7: the body uses title-only headings or a cross-reference index (or merges items); the truth needs a hand label before it can be asserted"
+   "note": "no recognisable 'Item N' heading for 1/7/8: the body uses title-only headings or a cross-reference index (or merges items); the truth needs a hand label before it can be asserted"
   },
   {
    "accession": "0001111711-25-000008",

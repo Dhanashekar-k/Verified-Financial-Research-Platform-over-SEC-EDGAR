@@ -1,11 +1,11 @@
 """Known section-detection defects (registry: tests/fixtures/known_defects/section_failures.json).
 
 Each case is a real S&P 500 10-K, FY2020-2025, that the CURRENT parser misses a required item on.
-For items where a heading-like block exists in the text (so the item is certainly present), the
-test asserts the parser FINDS it, marked `xfail(strict=True)`: today it fails as expected, and the
-fix that makes it pass turns the test into an XPASS failure until the marker is removed. Items
-where the filing never writes "Item X" are listed under `needs_gold_label` and not asserted: their
-truth needs a hand label first.
+Two cases were fixed (Allstate's fused Item 1 heading, Everest's Item 7A displaced by a
+cross-reference fragment) and are now ordinary regression tests. Every other item is listed under
+`needs_gold_label` and not asserted: no body heading says where it starts, so its truth needs a
+hand label first. Once a label confirms an item, add it to the registry's `expected_found` with its
+evidence and mark its test `xfail(strict=True)` until the parser finds it.
 
 The filings are not committed (several MB each). `python -m eval.blast_radius` caches them under
 `data/fixture_candidates/blast/`; without the cache these tests skip.
@@ -28,7 +28,7 @@ REGISTRY = json.loads((REPO / "tests/fixtures/known_defects/section_failures.jso
 CASES: list[dict[str, Any]] = REGISTRY["cases"]
 CACHE = REPO / "data/fixture_candidates/blast"
 REQUIRED = {"1", "1A", "7", "7A", "8"}
-PAIRS = [(c, item) for c in CASES for item in c["expected_found"]]
+FIXED: list[dict[str, Any]] = REGISTRY["fixed"]
 
 
 def cached(case: dict[str, Any]) -> Path:
@@ -52,6 +52,15 @@ def test_the_registry_is_consistent_with_the_blast_radius_measurement():
         )
 
 
+def test_the_two_fixed_cases_are_recorded_with_what_was_wrong_and_what_fixed_it():
+    assert [(f["ticker"], f["item"]) for f in FIXED] == [("ALL-PB", "1"), ("EG", "7A")]
+    for f in FIXED:
+        assert f["was"] and f["fix"].startswith("pipelines/parsing/sections.py")
+    assert not {f["accession"] for f in FIXED} & {c["accession"] for c in CASES} - {
+        "0001095073-23-000007"
+    }
+
+
 def test_the_two_failures_found_before_the_survey_are_registered_but_not_asserted():
     by_ticker = {c["ticker"]: c for c in CASES}
 
@@ -72,17 +81,27 @@ def test_every_registered_case_says_what_is_missing_and_why():
             assert c["note"], f"{c['accession']} needs a note on why it is not asserted"
 
 
-@pytest.mark.xfail(
-    strict=True, reason="known defect: a heading that is in the filing is not detected"
-)
-@pytest.mark.parametrize(
-    ("case", "item"), PAIRS, ids=lambda v: v if isinstance(v, str) else v["ticker"]
-)
-def test_the_parser_finds_the_item(case: dict[str, Any], item: str):
-    path = cached(case)
+@pytest.mark.parametrize("fix", FIXED, ids=lambda f: f"{f['ticker']}-{f['item']}")
+def test_a_fixed_defect_stays_fixed_on_the_real_filing(fix: dict[str, Any]):
+    path = cached(fix)
     if not path.is_file():
         pytest.skip(f"not cached: run `python -m eval.blast_radius` ({path.name})")
-    raw = gzip.decompress(path.read_bytes())
-    found = {s.code for s in detect_sections(html_to_blocks(raw), "10-K")}
 
-    assert item in found
+    found = {
+        s.code for s in detect_sections(html_to_blocks(gzip.decompress(path.read_bytes())), "10-K")
+    }
+
+    assert fix["item"] in found
+
+
+def test_the_everest_fragment_is_no_longer_taken_for_item_8():
+    """The old detection of Everest's Item 8 was the cross-reference fragment 'ITEM 8,'."""
+    fix = next(f for f in FIXED if f["ticker"] == "EG")
+    path = cached(fix)
+    if not path.is_file():
+        pytest.skip(f"not cached: run `python -m eval.blast_radius` ({path.name})")
+    blocks = html_to_blocks(gzip.decompress(path.read_bytes()))
+
+    sections = detect_sections(blocks, "10-K")
+
+    assert all(blocks[s.heading_index].text.strip() != "ITEM 8," for s in sections)
