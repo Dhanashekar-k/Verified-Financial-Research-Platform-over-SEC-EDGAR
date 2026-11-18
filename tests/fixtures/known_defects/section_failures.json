@@ -1,0 +1,354 @@
+{
+ "what": "Known section-detection defects of the parser as of 2026-11-17: filings in the 150-filing blast-radius sample that miss a required item (1, 1A, 7, 7A, 8). tests/unit/parsing/test_known_defects.py asserts each expected_found item with strict xfail, so a parser fix makes the test XPASS and fails until the marker is removed. Items in needs_gold_label are not asserted: nobody has shown where they start.",
+ "source": "docs/milestones/M02-blast-radius.json (python -m eval.blast_radius, seed 20261118)",
+ "how_to_run": "the filings are cached by `python -m eval.blast_radius` under data/fixture_candidates/blast/; the test skips when a filing is not cached",
+ "cases": [
+  {
+   "accession": "0000005272-24-000023",
+   "ticker": "AIG",
+   "cik": 5272,
+   "report_year": 2023,
+   "group": "financials",
+   "url": "https://www.sec.gov/Archives/edgar/data/5272/000000527224000023/aig-20231231.htm",
+   "parse_status_today": "partial",
+   "missing_required_today": [
+    "1",
+    "1A"
+   ],
+   "miss_causes": {
+    "1": "toc_or_index_only",
+    "1A": "toc_or_index_only"
+   },
+   "expected_found": [],
+   "evidence": {},
+   "needs_gold_label": [
+    "1",
+    "1A"
+   ],
+   "note": "no recognisable 'Item N' heading for 1/1A: the body uses title-only headings or a cross-reference index (or merges items); the truth needs a hand label before it can be asserted"
+  },
+  {
+   "accession": "0000045012-23-000011",
+   "ticker": "HAL",
+   "cik": 45012,
+   "report_year": 2022,
+   "group": "other",
+   "url": "https://www.sec.gov/Archives/edgar/data/45012/000004501223000011/hal-20221231.htm",
+   "parse_status_today": "partial",
+   "missing_required_today": [
+    "1A",
+    "7A"
+   ],
+   "miss_causes": {
+    "1A": "no_mention",
+    "7A": "no_mention"
+   },
+   "expected_found": [],
+   "evidence": {},
+   "needs_gold_label": [
+    "1A",
+    "7A"
+   ],
+   "note": "no recognisable 'Item N' heading for 1A/7A: the body uses title-only headings or a cross-reference index (or merges items); the truth needs a hand label before it can be asserted"
+  },
+  {
+   "accession": "0000092230-25-000020",
+   "ticker": "TFC-PR",
+   "cik": 92230,
+   "report_year": 2024,
+   "group": "financials",
+   "url": "https://www.sec.gov/Archives/edgar/data/92230/000009223025000020/tfc-20241231.htm",
+   "parse_status_today": "ok",
+   "missing_required_today": [
+    "7A"
+   ],
+   "miss_causes": {
+    "7A": "toc_or_index_only"
+   },
+   "expected_found": [],
+   "evidence": {},
+   "needs_gold_label": [
+    "7A"
+   ],
+   "note": "no recognisable 'Item N' heading for 7A: the body uses title-only headings or a cross-reference index (or merges items); the truth needs a hand label before it can be asserted"
+  },
+  {
+   "accession": "0000822416-21-000007",
+   "ticker": "PHM",
+   "cik": 822416,
+   "report_year": 2020,
+   "group": "other",
+   "url": "https://www.sec.gov/Archives/edgar/data/822416/000082241621000007/phm-20201231.htm",
+   "parse_status_today": "partial",
+   "missing_required_today": [
+    "1"
+   ],
+   "miss_causes": {
+    "1": "no_mention"
+   },
+   "expected_found": [],
+   "evidence": {},
+   "needs_gold_label": [
+    "1"
+   ],
+   "note": "no recognisable 'Item N' heading for 1: the body uses title-only headings or a cross-reference index (or merges items); the truth needs a hand label before it can be asserted"
+  },
+  {
+   "accession": "0000831001-22-000036",
+   "ticker": "C-PR",
+   "cik": 831001,
+   "report_year": 2021,
+   "group": "financials",
+   "url": "https://www.sec.gov/Archives/edgar/data/831001/000083100122000036/c-20211231.htm",
+   "parse_status_today": "no_sections",
+   "missing_required_today": [
+    "1",
+    "1A",
+    "7",
+    "7A",
+    "8"
+   ],
+   "miss_causes": {
+    "1": "no_mention",
+    "1A": "no_mention",
+    "7": "no_mention",
+    "7A": "no_mention",
+    "8": "no_mention"
+   },
+   "expected_found": [],
+   "evidence": {},
+   "needs_gold_label": [
+    "1",
+    "1A",
+    "7",
+    "7A",
+    "8"
+   ],
+   "note": "no recognisable 'Item N' heading for 1/1A/7/7A/8: the body uses title-only headings or a cross-reference index (or merges items); the truth needs a hand label before it can be asserted"
+  },
+  {
+   "accession": "0000874766-25-000023",
+   "ticker": "HIG-PG",
+   "cik": 874766,
+   "report_year": 2024,
+   "group": "financials",
+   "url": "https://www.sec.gov/Archives/edgar/data/874766/000087476625000023/hig-20241231.htm",
+   "parse_status_today": "partial",
+   "missing_required_today": [
+    "1",
+    "7",
+    "7A",
+    "8"
+   ],
+   "miss_causes": {
+    "1": "mention_only",
+    "7": "mention_only",
+    "7A": "no_mention",
+    "8": "no_mention"
+   },
+   "expected_found": [],
+   "evidence": {},
+   "needs_gold_label": [
+    "1",
+    "7",
+    "7A",
+    "8"
+   ],
+   "note": "no recognisable 'Item N' heading for 1/7/7A/8: the body uses title-only headings or a cross-reference index (or merges items); the truth needs a hand label before it can be asserted"
+  },
+  {
+   "accession": "0000899051-26-000031",
+   "ticker": "ALL-PB",
+   "cik": 899051,
+   "report_year": 2025,
+   "group": "financials",
+   "url": "https://www.sec.gov/Archives/edgar/data/899051/000089905126000031/all-20251231.htm",
+   "parse_status_today": "partial",
+   "missing_required_today": [
+    "1"
+   ],
+   "miss_causes": {
+    "1": "toc_or_index_only"
+   },
+   "expected_found": [
+    "1"
+   ],
+   "evidence": {
+    "1": "the first body paragraph starts 'Part I Item 1. Business The Allstate Corporation was incorporated': the heading is fused with the section's first sentence, so it is not recognised as a heading"
+   },
+   "needs_gold_label": [],
+   "note": null
+  },
+  {
+   "accession": "0001035002-24-000007",
+   "ticker": "VLO",
+   "cik": 1035002,
+   "report_year": 2023,
+   "group": "other",
+   "url": "https://www.sec.gov/Archives/edgar/data/1035002/000103500224000007/vlo-20231231.htm",
+   "parse_status_today": "partial",
+   "missing_required_today": [
+    "1"
+   ],
+   "miss_causes": {
+    "1": "no_mention"
+   },
+   "expected_found": [],
+   "evidence": {},
+   "needs_gold_label": [
+    "1"
+   ],
+   "note": "no recognisable 'Item N' heading for 1: the body uses title-only headings or a cross-reference index (or merges items); the truth needs a hand label before it can be asserted"
+  },
+  {
+   "accession": "0001095073-23-000007",
+   "ticker": "EG",
+   "cik": 1095073,
+   "report_year": 2022,
+   "group": "financials",
+   "url": "https://www.sec.gov/Archives/edgar/data/1095073/000109507323000007/re-20221231.htm",
+   "parse_status_today": "partial",
+   "missing_required_today": [
+    "1",
+    "7",
+    "7A"
+   ],
+   "miss_causes": {
+    "1": "mention_only",
+    "7": "mention_only",
+    "7A": "heading_paragraph_not_chosen"
+   },
+   "expected_found": [
+    "7A"
+   ],
+   "evidence": {
+    "7A": "an unlinked paragraph reading like this item's heading exists and the section chain skipped it"
+   },
+   "needs_gold_label": [
+    "1",
+    "7"
+   ],
+   "note": "no recognisable 'Item N' heading for 1/7: the body uses title-only headings or a cross-reference index (or merges items); the truth needs a hand label before it can be asserted"
+  },
+  {
+   "accession": "0001111711-25-000008",
+   "ticker": "NI",
+   "cik": 1111711,
+   "report_year": 2024,
+   "group": "utilities",
+   "url": "https://www.sec.gov/Archives/edgar/data/1111711/000111171125000008/nix-20241231.htm",
+   "parse_status_today": "partial",
+   "missing_required_today": [
+    "1",
+    "1A"
+   ],
+   "miss_causes": {
+    "1": "toc_or_index_only",
+    "1A": "toc_or_index_only"
+   },
+   "expected_found": [],
+   "evidence": {},
+   "needs_gold_label": [
+    "1",
+    "1A"
+   ],
+   "note": "no recognisable 'Item N' heading for 1/1A: the body uses title-only headings or a cross-reference index (or merges items); the truth needs a hand label before it can be asserted"
+  },
+  {
+   "accession": "0001164727-22-000007",
+   "ticker": "NEMCL",
+   "cik": 1164727,
+   "report_year": 2021,
+   "group": "other",
+   "url": "https://www.sec.gov/Archives/edgar/data/1164727/000116472722000007/nem-20211231.htm",
+   "parse_status_today": "partial",
+   "missing_required_today": [
+    "7"
+   ],
+   "miss_causes": {
+    "7": "toc_or_index_only"
+   },
+   "expected_found": [],
+   "evidence": {},
+   "needs_gold_label": [
+    "7"
+   ],
+   "note": "no recognisable 'Item N' heading for 7: the body uses title-only headings or a cross-reference index (or merges items); the truth needs a hand label before it can be asserted"
+  },
+  {
+   "accession": "0001171200-21-000076",
+   "ticker": "ROL",
+   "cik": 84839,
+   "report_year": 2020,
+   "group": "other",
+   "url": "https://www.sec.gov/Archives/edgar/data/84839/000117120021000076/i21062_rol-10k.htm",
+   "parse_status_today": "partial",
+   "missing_required_today": [
+    "1A"
+   ],
+   "miss_causes": {
+    "1A": "no_mention"
+   },
+   "expected_found": [],
+   "evidence": {},
+   "needs_gold_label": [
+    "1A"
+   ],
+   "note": "no recognisable 'Item N' heading for 1A: the body uses title-only headings or a cross-reference index (or merges items); the truth needs a hand label before it can be asserted"
+  },
+  {
+   "accession": "0001506307-23-000023",
+   "ticker": "EP-PC",
+   "cik": 1506307,
+   "report_year": 2022,
+   "group": "utilities",
+   "url": "https://www.sec.gov/Archives/edgar/data/1506307/000150630723000023/kmi-20221231.htm",
+   "parse_status_today": "partial",
+   "missing_required_today": [
+    "1"
+   ],
+   "miss_causes": {
+    "1": "no_mention"
+   },
+   "expected_found": [],
+   "evidence": {},
+   "needs_gold_label": [
+    "1"
+   ],
+   "note": "no recognisable 'Item N' heading for 1: the body uses title-only headings or a cross-reference index (or merges items); the truth needs a hand label before it can be asserted"
+  },
+  {
+   "accession": "0001601712-21-000057",
+   "ticker": "SYF-PB",
+   "cik": 1601712,
+   "report_year": 2020,
+   "group": "financials",
+   "url": "https://www.sec.gov/Archives/edgar/data/1601712/000160171221000057/syf-20201231.htm",
+   "parse_status_today": "partial",
+   "missing_required_today": [
+    "1",
+    "1A",
+    "7",
+    "7A",
+    "8"
+   ],
+   "miss_causes": {
+    "1": "toc_or_index_only",
+    "1A": "toc_or_index_only",
+    "7": "toc_or_index_only",
+    "7A": "toc_or_index_only",
+    "8": "toc_or_index_only"
+   },
+   "expected_found": [],
+   "evidence": {},
+   "needs_gold_label": [
+    "1",
+    "1A",
+    "7",
+    "7A",
+    "8"
+   ],
+   "note": "no recognisable 'Item N' heading for 1/1A/7/7A/8: the body uses title-only headings or a cross-reference index (or merges items); the truth needs a hand label before it can be asserted"
+  }
+ ]
+}
