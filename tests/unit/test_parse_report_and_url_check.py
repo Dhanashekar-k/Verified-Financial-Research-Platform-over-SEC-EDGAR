@@ -136,6 +136,13 @@ def test_render_quotes_the_measured_numbers_and_says_the_full_run_is_not_measure
 # -- URL check ----------------------------------------------------------------------------
 
 
+@pytest.fixture(autouse=True)
+def _isolated_env(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
+    """`main()` calls load_dotenv: never load the developer's .env into this process."""
+    monkeypatch.delenv("SEC_USER_AGENT", raising=False)
+    monkeypatch.setenv("PYTHON_DOTENV_DISABLED", "1")
+
+
 def make_client(fake: FakeTime) -> SecClient:
     bucket = TokenBucket(rate=2, clock=fake.clock, sleep=fake.bucket_sleep)
     return SecClient(
