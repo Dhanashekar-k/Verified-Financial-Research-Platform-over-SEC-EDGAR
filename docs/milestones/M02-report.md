@@ -8,11 +8,13 @@ target list, and the 84 FinanceBench PDFs.
 
 ## Verdict
 
-**M2 is NOT done.** Four items FAIL or cannot be run, for reasons that are not code defects:
+**M2 is NOT done.** Three items FAIL or cannot be run, for reasons that are not code defects:
 
 1. The section-boundary accuracy (≥ 90% on 100 labels) is `NOT MEASURED`: `eval/sets/sections_gold.jsonl` is
    Shekar's file and does not exist.
-2. The three real fixture filings (`tests/fixtures/filings/`) do not exist, so the real-filing tests skip.
+2. ~~The three real fixture filings do not exist~~ Resolved: three real filings are in `tests/fixtures/filings/` and
+   `tests/unit/parsing/test_real_fixtures.py` runs on them (10 passed): core sections found, chunks clean, sidecars equal the
+   filings' own `dei` tags, and the parsed fiscal labels equal the company's own (Ulta needs offset -1).
 3. The FinanceBench rows in `curated.chunks` were not produced: `data/financebench_companies.csv` (company → CIK)
    is Shekar's file and does not exist. Extraction itself was measured (84/84 PDFs).
 4. The full fetch and parse of the 13,239 targets is the cloud sprint (nothing was applied, pushed or run in AWS).
@@ -30,7 +32,7 @@ random chunks did not all read cleanly. Causes are listed under "Open issues".
 | 2a | Parse success ≥ 95% (or documented) | **FAIL** (documented) | 93 `ok` + 42 `partial` of 135, 0 `error`, 0 `no_sections` (`html.status_by_form`). All 42 `partial` are 10-Qs of two companies; causes under Open issues. The 32 10-Ks all parsed `ok`. |
 | 2b | Section-boundary accuracy ≥ 90% on the 100 labels | NOT RUN | `python -m eval.sections_eval` → "NOT MEASURED (eval/sets/sections_gold.jsonl does not exist yet)". The tool is tested with a synthetic gold file only (`tests/unit/test_sections_eval.py`, 9 passed). |
 | 3a | Chunk count and token histogram recorded | PASS | `html.n_chunks`, `html.token_histogram`, `html.max_tokens` in `M02-parse-metrics.json`; the Spark job's table agrees: `lake.curated.chunks` 38922 rows (command output). |
-| 3b | Property tests green | PASS | `pytest tests/unit/parsing/test_chunker.py` → 19 passed (no chunk over 400 tokens, overlap ≤ 80, chunks reproduce the text, every chunk adds text). `make test` → 1199 passed, 1 skipped. |
+| 3b | Property tests green | PASS | `pytest tests/unit/parsing/test_chunker.py` → 19 passed (no chunk over 400 tokens, overlap ≤ 80, chunks reproduce the text, every chunk adds text). `make test` → 1215 passed, 0 skipped (the fixtures now run). |
 | 4 | 20 random chunks read cleanly (notes in the parse report) | **FAIL** | Read by Claude, not Shekar (seed 20261117, `html.random_chunks`). No hidden XBRL, no repeated page headers, tables keep their header and rows. But 7 of 20 sit under a section label that does not describe them, and 3 more have noise. Details under Open issues; Shekar should re-read. |
 | 5 | 50/50 source URLs return 200 | PASS (documents) / NOT RUN (anchors) | `python -m eval.check_source_urls --rate 2` → "32/32 documents returned 200 (50 sampled chunk URLs)". The fragment (`#id` or `#:~:text=`) is never seen by a server: the 5-in-a-browser spot check is **NOT RUN** (Shekar). |
 | 6a | All FinanceBench PDFs parsed with page numbers (extraction) | PASS | `financebench.parse_status` `{"ok": 84}`, `pages_with_text` 11948, every chunk has `page` (measured with a placeholder CIK of -1; extraction only). |
@@ -42,7 +44,7 @@ random chunks did not all read cleanly. Causes are listed under "Open issues".
 |---|---|---|
 | Spark vs pure-Python equivalence (mandatory) | PASS | `pytest tests/integration/test_parse_filings.py …` → 14 passed. Mutating the Spark join (`period_of_report` without the `sub.period` fallback) made `test_the_spark_output_equals_the_pure_python_parse_for_every_filing` fail; restoring it passed. On the real data both paths give 38922 chunks (`html.n_chunks`; `lake.curated.chunks`). |
 | Text and facts agree on fiscal labels (ADR-023) | PASS (35 of 135 comparable) | `docs/milestones/M02-fiscal-agreement.json`: `with_facts_compared` 35, `agree` 35, `mismatches` `[]`. 100 filings have no facts in the lake (only 7 FSDS quarters are loaded), so they are not compared. |
-| `make test` / `make test-integration` / `make lint` | PASS | `make test` 1199 passed, 1 skipped (this run); `make test-integration` 351 passed (earlier this session, after the last change to integration-tested code); lint: "All checks passed", mypy clean. |
+| `make test` / `make test-integration` / `make lint` | PASS | `make test` 1215 passed (this run); `make test-integration` 351 passed (earlier this session, after the last change to integration-tested code); lint: "All checks passed", mypy clean. |
 | `make check-gold` | PASS (skip) | "check-gold: skipped, no gold files exist yet". |
 | EMR image builds and runs the parse job | PASS (local) | `docker build --platform linux/arm64 infra/emr` (not pushed); the parse job on that image ran from the built `pipelines.zip` alone: Python 3.12.15, Spark 3.5.8-amzn-0, three real filings `ok`. This is a local container, not EMR. |
 | Terraform | PASS (fmt, validate only) | `terraform fmt -check -recursive` OK; `terraform validate` in `envs/dev`: "The configuration is valid". Nothing was planned or applied. |
@@ -105,6 +107,19 @@ random chunks did not all read cleanly. Causes are listed under "Open issues".
    names only `PutObject`). That instance profile is not in the Terraform yet (`modules/emr` covers the EMR job
    role only), so it is part of the cloud sprint.
 
+**Fixture survey (50 sampled S&P 500 10-Ks, FY2020-2025; `docs/milestones/M02-fixture-survey.json`)**
+
+10. `sgml_wrapped` 0 of `n_sampled` 50, so the SGML-wrapper limitation (ADR-025) does not touch the ingest window;
+    the three 2011-2012 candidates do parse to `no_sections` (`pre_2020_candidates`). `without_anchor_toc` lists 3
+    (INVH, STZ, USB): essentially every in-window filing has an anchor TOC. Of the 3, USB (FY2025, 1.0 MB) has no
+    internal links at all; INVH and STZ link the page numbers of their TOC rows, not the item text. All three still
+    parse `ok`, so the heading-text path works on them; nothing here needs a fixture, and one synthetic unit test
+    already covers an unlinked TOC (`test_an_unlinked_paragraph_toc_is_skipped_by_text_weight_alone`). USB is saved in
+    `data/fixture_candidates/sample/` (gitignored) if you want a real one.
+11. **2 of 50 sampled filings parse `partial`** (`partial_causes`): PHM FY2020 is missing Item 1; NEMCL FY2021 (a combined
+    multi-registrant filing) is missing Item 7. Both are in-scope parser failures, not fixed.
+12. Id styles of the item TOC links in the sample: 38 opaque, 9 named, 3 none (`toc_id_style`).
+
 **M1 full history (your cloud-sprint request)**
 
 9. Verified in code: nothing in the FSDS download, raw load, normalize or DQ code filters fiscal years; the downloader
@@ -120,11 +135,9 @@ random chunks did not all read cleanly. Causes are listed under "Open issues".
 
 ## What I need from you (nothing was fabricated)
 
-1. **Three real fixture filings** in `tests/fixtures/filings/`: one 10-K with a hyperlinked TOC, one older 10-K without
-   element ids, one 10-Q. For each `<name>.htm` add `<name>.json`:
-   `{"form": "10-K", "accession": "…", "cik": 0, "period_of_report": "YYYY-MM-DD", "fye_mmdd": "MMDD"}`. Candidates for
-   the first and third are in `data/raw/filings/<cik>/<accession>.htm.gz` (gunzip them); the local store starts in 2020,
-   so the older no-id filing has to come from elsewhere. `tests/unit/parsing/test_real_fixtures.py` then runs.
+1. ~~Three real fixture filings~~ **Done** (chosen by you, promoted 2026-11-17): Apple 10-K FY2024 (opaque-id anchor
+   TOC), Ulta 10-K FY2024 (named-id anchor TOC, label offset -1) and Apple 10-Q Q3 FY2026, each with a verified sidecar.
+   Still open: a fixture for the in-scope case where the TOC is not linked on the item text (see Open issues 10).
 2. **`eval/sets/sections_gold.jsonl`** (100 labels): rows
    `{"accession","section","first_sentence","labeled_by"}`, `section` as a code (`1`, `1A`, `7`, `7A`, `8`; for 10-Qs
    `P1-2`, `P2-1A`), then `make gold-checksums`. Run `python -m eval.sections_eval --min-accuracy 0.9`.
