@@ -872,5 +872,337 @@
     }
    ]
   }
- ]
+ ],
+ "recheck": {
+  "method": "uv run python -m eval.financebench_recheck [--companies Block Amcor \"Foot Locker\"]\n        [--fb data/raw/financebench] [--evidence docs/milestones/M02-financebench-cik-check.json]",
+  "results": [
+   {
+    "company": "Block",
+    "cik": 1512673,
+    "sec_name_now": "Block, Inc.",
+    "sec_names": [
+     {
+      "name": "Block, Inc.",
+      "from": "",
+      "to": ""
+     },
+     {
+      "name": "Square, Inc.",
+      "from": "2011-03-02T05:00:00.000Z",
+      "to": "2021-12-08T05:00:00.000Z"
+     }
+    ],
+    "documents": [
+     {
+      "document": "BLOCK_2016_10K",
+      "cover": {
+       "registrant": "SQUARE, INC.",
+       "file_number": "001-37622",
+       "period_end": "2016-12-31",
+       "date_of_report": null
+      },
+      "sec_filing": {
+       "accessionNumber": "0001628280-17-001754",
+       "form": "10-K",
+       "filingDate": "2017-02-27",
+       "reportDate": "2016-12-31",
+       "fileNumber": "001-37622",
+       "primaryDocument": "a10-kfilingsquareinc2016.htm"
+      },
+      "checks": {
+       "filing_found_by_exact_date": true,
+       "registrant_is_the_name_in_force_on_the_filing_date": true,
+       "file_number_matches_sec_metadata": true
+      },
+      "status": "confirmed"
+     },
+     {
+      "document": "BLOCK_2020_10K",
+      "cover": {
+       "registrant": "SQUARE, INC.",
+       "file_number": "001-37622",
+       "period_end": "2020-12-31",
+       "date_of_report": null
+      },
+      "sec_filing": {
+       "accessionNumber": "0001512673-21-000008",
+       "form": "10-K",
+       "filingDate": "2021-02-23",
+       "reportDate": "2020-12-31",
+       "fileNumber": "001-37622",
+       "primaryDocument": "sq-20201231.htm"
+      },
+      "checks": {
+       "filing_found_by_exact_date": true,
+       "registrant_is_the_name_in_force_on_the_filing_date": true,
+       "file_number_matches_sec_metadata": true
+      },
+      "status": "confirmed"
+     }
+    ],
+    "10k_report_dates": [
+     "2015-12-31",
+     "2016-12-31",
+     "2017-12-31",
+     "2018-12-31",
+     "2019-12-31",
+     "2020-12-31",
+     "2021-12-31",
+     "2022-12-31",
+     "2023-12-31",
+     "2024-12-31",
+     "2025-12-31"
+    ],
+    "all_confirmed": true
+   },
+   {
+    "company": "Amcor",
+    "cik": 1748790,
+    "sec_name_now": "Amcor plc",
+    "sec_names": [
+     {
+      "name": "Amcor plc",
+      "from": "",
+      "to": ""
+     },
+     {
+      "name": "ARCTIC JERSEY Ltd",
+      "from": "2018-08-06T04:00:00.000Z",
+      "to": "2018-10-12T04:00:00.000Z"
+     }
+    ],
+    "documents": [
+     {
+      "document": "AMCOR_2020_10K",
+      "cover": {
+       "registrant": "AMCOR PLC",
+       "file_number": "001-36786",
+       "period_end": "2020-06-30",
+       "date_of_report": null
+      },
+      "sec_filing": {
+       "accessionNumber": "0001748790-20-000025",
+       "form": "10-K",
+       "filingDate": "2020-08-27",
+       "reportDate": "2020-06-30",
+       "fileNumber": "001-38932",
+       "primaryDocument": "amcr-20200630.htm"
+      },
+      "checks": {
+       "filing_found_by_exact_date": true,
+       "registrant_is_the_name_in_force_on_the_filing_date": true,
+       "file_number_matches_sec_metadata": false
+      },
+      "status": "confirmed_pdf_matches_original_filing",
+      "original_cover": {
+       "url": "https://www.sec.gov/Archives/edgar/data/1748790/000174879020000025/amcr-20200630.htm",
+       "registrant": "AMCOR PLC",
+       "file_number": "001-36786",
+       "period_end": "2020-06-30",
+       "date_of_report": null
+      },
+      "pdf_cover_equals_original_cover": {
+       "file_number": true,
+       "registrant": true,
+       "period_end": true
+      },
+      "note": "the SEC metadata fileNumber differs from the file number printed on the filing itself; the PDF prints the same as the original filing"
+     },
+     {
+      "document": "AMCOR_2022_8K_dated-2022-07-01",
+      "cover": {
+       "registrant": "AMCOR PLC",
+       "file_number": "001-38932",
+       "period_end": null,
+       "date_of_report": "2022-07-01"
+      },
+      "sec_filing": {
+       "accessionNumber": "0001104659-22-076855",
+       "form": "8-K",
+       "filingDate": "2022-07-01",
+       "reportDate": "2022-06-30",
+       "fileNumber": "001-38932",
+       "primaryDocument": "tm2220195d1_8k.htm"
+      },
+      "checks": {
+       "filing_found_by_exact_date": true,
+       "registrant_is_the_name_in_force_on_the_filing_date": true,
+       "file_number_matches_sec_metadata": true
+      },
+      "status": "confirmed"
+     },
+     {
+      "document": "AMCOR_2023Q2_10Q",
+      "cover": {
+       "registrant": "AMCOR PLC",
+       "file_number": "001-38932",
+       "period_end": "2022-12-31",
+       "date_of_report": null
+      },
+      "sec_filing": {
+       "accessionNumber": "0001748790-23-000007",
+       "form": "10-Q",
+       "filingDate": "2023-02-08",
+       "reportDate": "2022-12-31",
+       "fileNumber": "001-38932",
+       "primaryDocument": "amcr-20221231.htm"
+      },
+      "checks": {
+       "filing_found_by_exact_date": true,
+       "registrant_is_the_name_in_force_on_the_filing_date": true,
+       "file_number_matches_sec_metadata": true
+      },
+      "status": "confirmed"
+     },
+     {
+      "document": "AMCOR_2023Q4_EARNINGS",
+      "cover": {
+       "registrant": null,
+       "file_number": null,
+       "period_end": null,
+       "date_of_report": null
+      },
+      "status": "unchecked",
+      "reason": "an earnings release has no filing date of its own on its cover"
+     },
+     {
+      "document": "AMCOR_2023_10K",
+      "cover": {
+       "registrant": "AMCOR PLC",
+       "file_number": "001-38932",
+       "period_end": "2023-06-30",
+       "date_of_report": null
+      },
+      "sec_filing": {
+       "accessionNumber": "0001748790-23-000030",
+       "form": "10-K",
+       "filingDate": "2023-08-17",
+       "reportDate": "2023-06-30",
+       "fileNumber": "001-38932",
+       "primaryDocument": "amcr-20230630.htm"
+      },
+      "checks": {
+       "filing_found_by_exact_date": true,
+       "registrant_is_the_name_in_force_on_the_filing_date": true,
+       "file_number_matches_sec_metadata": true
+      },
+      "status": "confirmed"
+     }
+    ],
+    "10k_report_dates": [
+     "2019-06-30",
+     "2020-06-30",
+     "2021-06-30",
+     "2022-06-30",
+     "2023-06-30",
+     "2024-06-30",
+     "2025-06-30",
+     "2026-06-30"
+    ],
+    "all_confirmed": true
+   },
+   {
+    "company": "Foot Locker",
+    "cik": 850209,
+    "sec_name_now": "FOOT LOCKER, INC.",
+    "sec_names": [
+     {
+      "name": "FOOT LOCKER, INC.",
+      "from": "",
+      "to": ""
+     },
+     {
+      "name": "FOOT LOCKER INC",
+      "from": "2001-11-02T00:00:00.000Z",
+      "to": "2016-04-04T00:00:00.000Z"
+     },
+     {
+      "name": "VENATOR GROUP INC",
+      "from": "1998-07-07T00:00:00.000Z",
+      "to": "2001-10-19T00:00:00.000Z"
+     },
+     {
+      "name": "WOOLWORTH CORPORATION",
+      "from": "1995-02-08T00:00:00.000Z",
+      "to": "1998-04-07T00:00:00.000Z"
+     }
+    ],
+    "documents": [
+     {
+      "document": "FOOTLOCKER_2022_8K_dated-2022-05-20",
+      "cover": {
+       "registrant": "Foot Locker, Inc.",
+       "file_number": "1-10299",
+       "period_end": null,
+       "date_of_report": "2022-05-20"
+      },
+      "sec_filing": {
+       "accessionNumber": "0001539497-22-001037",
+       "form": "8-K",
+       "filingDate": "2022-05-20",
+       "reportDate": "2022-05-20",
+       "fileNumber": "001-10299",
+       "primaryDocument": "n3051-x5_8k.htm"
+      },
+      "checks": {
+       "filing_found_by_exact_date": true,
+       "registrant_is_the_name_in_force_on_the_filing_date": true,
+       "file_number_matches_sec_metadata": true
+      },
+      "status": "confirmed"
+     },
+     {
+      "document": "FOOTLOCKER_2022_8K_dated_2022-08-19",
+      "cover": {
+       "registrant": "Foot Locker, Inc.",
+       "file_number": "1-10299",
+       "period_end": null,
+       "date_of_report": "2022-08-19"
+      },
+      "sec_filing": {
+       "accessionNumber": "0001539497-22-001461",
+       "form": "8-K",
+       "filingDate": "2022-08-19",
+       "reportDate": "2022-08-19",
+       "fileNumber": "001-10299",
+       "primaryDocument": "n2655_x13-8k.htm"
+      },
+      "checks": {
+       "filing_found_by_exact_date": true,
+       "registrant_is_the_name_in_force_on_the_filing_date": true,
+       "file_number_matches_sec_metadata": true
+      },
+      "status": "confirmed"
+     }
+    ],
+    "10k_report_dates": [
+     "2002-02-02",
+     "2003-02-01",
+     "2004-01-31",
+     "2005-01-29",
+     "2005-12-30",
+     "2007-02-03",
+     "2008-02-02",
+     "2009-01-31",
+     "2010-01-30",
+     "2011-01-29",
+     "2012-01-28",
+     "2013-02-02",
+     "2014-02-01",
+     "2015-01-31",
+     "2016-01-30",
+     "2017-01-28",
+     "2018-02-03",
+     "2019-02-02",
+     "2020-02-01",
+     "2021-01-30",
+     "2022-01-29",
+     "2023-01-28",
+     "2024-02-03",
+     "2025-02-01"
+    ],
+    "all_confirmed": true
+   }
+  ]
+ }
 }
