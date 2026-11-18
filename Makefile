@@ -61,10 +61,30 @@ bench-m1: ## DuckDB vs local Spark on FSDS quarters, e.g. make bench-m1 Q=2023q3
 	$(PY) python -m pipelines.duckdb.benchmark run --quarters $(Q) --label $(LABEL)
 dq: ## Data-quality report (M1)
 	$(PY) python -m pipelines.spark.dq_checks --env local
-emr-package: ## Zip pipelines/ to S3 artifacts (M1)
-	@echo "TODO(M1): implement"
-emr-run: ## Run a job on EMR Serverless, e.g. make emr-run JOB=normalize_facts (M1; asks first)
-	@echo "TODO(M1): implement"
+emr-package: ## Build dist/pipelines-<sha>.zip; UPLOAD=s3://<lake>/artifacts publishes it (a cloud write: you run it)
+	$(PY) python -m pipelines.cloud.package $(if $(UPLOAD),--upload $(UPLOAD),)
+emr-image-build: ## Build the custom arm64 EMR image locally (ADR-024); does not push
+	docker build --platform linux/arm64 -t edgarqa-emr:$$(git rev-parse --short=12 HEAD) infra/emr
+emr-image-push: ## Push the image to ECR: ECR_URL=<acct>.dkr.ecr.<region>.amazonaws.com/edgarqa-emr YES=1 (a cloud write: you run it)
+	@test -n "$(ECR_URL)" || { echo "set ECR_URL (terraform output ecr_repository_url)"; exit 2; }
+	@sha=$$(git rev-parse --short=12 HEAD); registry="$(firstword $(subst /, ,$(ECR_URL)))"; \
+	region=$$(echo "$$registry" | cut -d. -f4); \
+	if [ "$(YES)" != "1" ]; then echo "dry run: would push edgarqa-emr:$$sha to $(ECR_URL) (region $$region); add YES=1"; exit 0; fi; \
+	if [ -n "$$(git status --porcelain --untracked-files=no)" ]; then echo "error: uncommitted changes: tag $$sha would not name this build (ECR tags are immutable)"; exit 2; fi; \
+	set -e; \
+	aws ecr get-login-password --region "$$region" | docker login --username AWS --password-stdin "$$registry"; \
+	docker tag edgarqa-emr:$$sha $(ECR_URL):$$sha; \
+	docker push $(ECR_URL):$$sha
+emr-run: ## Show the EMR run for JOB=normalize_facts; YES=1 starts it and spends money (you run it); EMR_ARGS="--facts-rows N --arg=--x"
+	$(PY) python -m pipelines.cloud.emr_run --job $(JOB) --git-sha $$(git rev-parse --short=12 HEAD) $(EMR_ARGS) $(if $(filter 1,$(YES)),--yes,)
+parse-filings: ## Parse filings + chunks locally (M2); FB=1 adds FinanceBench PDFs (needs data/financebench_companies.csv)
+	$(PY) python -m pipelines.spark.parse_filings --env local --html-glob data/raw/filings $(if $(FB),--financebench-dir data/raw/financebench --financebench-companies data/financebench_companies.csv,)
+load-filings-html: ## Load the fetch manifest into raw.filings_html (M2)
+	$(PY) python -m pipelines.spark.load_filings_html --env local
+fetch-filings: ## Fetch filing HTML for data/targets/filings.csv; sec.gov network (M2; the full list belongs on an AWS box)
+	$(PY) python -m pipelines.fetch.fetch_filings $(if $(DEST),--dest $(DEST),)
+fetch-financebench: ## Download FinanceBench questions + cited PDFs from GitHub (M2)
+	$(PY) python -m pipelines.fetch.fetch_financebench
 export: ## Export serving snapshot, e.g. make export VERSION=1 (M3)
 	$(PY) python -m pipelines.spark.export_serving --env local --version $(VERSION)
 load: ## Load a snapshot into local Postgres and swap (M3)

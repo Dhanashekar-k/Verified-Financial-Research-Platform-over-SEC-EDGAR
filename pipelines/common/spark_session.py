@@ -20,8 +20,9 @@ Env = Literal["local", "emr"]
 
 CATALOG = "lake"
 # Iceberg runtime for Spark 3.5 / Scala 2.12. This is the LOCAL pin. For EMR the bundled jar is
-# used instead, so before the first EMR run confirm the release's Iceberg version is compatible
-# with the tables written locally (M01 section 3.8). NOT yet verified against an EMR release.
+# used instead: the emr-7.14.0 image ships iceberg-spark-runtime-3.5_2.12-1.10.1-amzn-1 on the
+# driver and executor classpath (read from the image, ADR-024). Reading tables written locally
+# with 1.6.1 is expected to work; that is NOT yet verified by an EMR run (M01 section 3.8).
 ICEBERG_VERSION = "1.6.1"
 ICEBERG_PACKAGE = f"org.apache.iceberg:iceberg-spark-runtime-3.5_2.12:{ICEBERG_VERSION}"
 
