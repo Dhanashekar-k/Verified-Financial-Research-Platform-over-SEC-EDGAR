@@ -1,0 +1,169 @@
+{
+  "distinct_documents": 32,
+  "failed": [],
+  "ok": 32,
+  "rate_per_second": 2.0,
+  "results": [
+    {
+      "bytes": 1835033,
+      "status": 200,
+      "url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872422000019/amzn-20220630.htm"
+    },
+    {
+      "bytes": 1390371,
+      "status": 200,
+      "url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872423000018/amzn-20230930.htm"
+    },
+    {
+      "bytes": 6917403,
+      "status": 200,
+      "url": "https://www.sec.gov/Archives/edgar/data/1067983/000095017023058993/brka-20230930.htm"
+    },
+    {
+      "bytes": 4837596,
+      "status": 200,
+      "url": "https://www.sec.gov/Archives/edgar/data/1067983/000095017024090305/brka-20240630.htm"
+    },
+    {
+      "bytes": 10744204,
+      "status": 200,
+      "url": "https://www.sec.gov/Archives/edgar/data/1067983/000095017025025210/brka-20241231.htm"
+    },
+    {
+      "bytes": 5011483,
+      "status": 200,
+      "url": "https://www.sec.gov/Archives/edgar/data/1067983/000095017025063112/brka-20250331.htm"
+    },
+    {
+      "bytes": 12645496,
+      "status": 200,
+      "url": "https://www.sec.gov/Archives/edgar/data/1067983/000156459021009611/brka-10k_20201231.htm"
+    },
+    {
+      "bytes": 6574871,
+      "status": 200,
+      "url": "https://www.sec.gov/Archives/edgar/data/1067983/000156459021055032/brka-10q_20210930.htm"
+    },
+    {
+      "bytes": 12201866,
+      "status": 200,
+      "url": "https://www.sec.gov/Archives/edgar/data/1067983/000156459022007322/brka-10k_20211231.htm"
+    },
+    {
+      "bytes": 14687262,
+      "status": 200,
+      "url": "https://www.sec.gov/Archives/edgar/data/19617/000001961720000438/jpm-20200930.htm"
+    },
+    {
+      "bytes": 11479231,
+      "status": 200,
+      "url": "https://www.sec.gov/Archives/edgar/data/19617/000001961722000319/jpm-20220331.htm"
+    },
+    {
+      "bytes": 14297814,
+      "status": 200,
+      "url": "https://www.sec.gov/Archives/edgar/data/19617/000001961722000422/jpm-20220630.htm"
+    },
+    {
+      "bytes": 14227932,
+      "status": 200,
+      "url": "https://www.sec.gov/Archives/edgar/data/19617/000001961722000492/jpm-20220930.htm"
+    },
+    {
+      "bytes": 15883012,
+      "status": 200,
+      "url": "https://www.sec.gov/Archives/edgar/data/19617/000001961723000231/jpm-20221231.htm"
+    },
+    {
+      "bytes": 11523233,
+      "status": 200,
+      "url": "https://www.sec.gov/Archives/edgar/data/19617/000001961723000310/jpm-20230331.htm"
+    },
+    {
+      "bytes": 12541728,
+      "status": 200,
+      "url": "https://www.sec.gov/Archives/edgar/data/19617/000001961723000432/jpm-20230630.htm"
+    },
+    {
+      "bytes": 12690036,
+      "status": 200,
+      "url": "https://www.sec.gov/Archives/edgar/data/19617/000001961723000524/jpm-20230930.htm"
+    },
+    {
+      "bytes": 9571169,
+      "status": 200,
+      "url": "https://www.sec.gov/Archives/edgar/data/19617/000001961724000326/jpm-20240331.htm"
+    },
+    {
+      "bytes": 11698296,
+      "status": 200,
+      "url": "https://www.sec.gov/Archives/edgar/data/19617/000001961724000453/jpm-20240630.htm"
+    },
+    {
+      "bytes": 12849295,
+      "status": 200,
+      "url": "https://www.sec.gov/Archives/edgar/data/19617/000001961725000270/jpm-20241231.htm"
+    },
+    {
+      "bytes": 11495380,
+      "status": 200,
+      "url": "https://www.sec.gov/Archives/edgar/data/19617/000162828025048859/jpm-20250930.htm"
+    },
+    {
+      "bytes": 12927440,
+      "status": 200,
+      "url": "https://www.sec.gov/Archives/edgar/data/19617/000162828026008131/jpm-20251231.htm"
+    },
+    {
+      "bytes": 9164725,
+      "status": 200,
+      "url": "https://www.sec.gov/Archives/edgar/data/19617/000162828026029344/jpm-20260331.htm"
+    },
+    {
+      "bytes": 11513989,
+      "status": 200,
+      "url": "https://www.sec.gov/Archives/edgar/data/19617/000162828026054343/jpm-20260630.htm"
+    },
+    {
+      "bytes": 11540734,
+      "status": 200,
+      "url": "https://www.sec.gov/Archives/edgar/data/19617/000162828026069523/jpm-20260930.htm"
+    },
+    {
+      "bytes": 2467421,
+      "status": 200,
+      "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019320000096/aapl-20200926.htm"
+    },
+    {
+      "bytes": 1279605,
+      "status": 200,
+      "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019323000064/aapl-20230401.htm"
+    },
+    {
+      "bytes": 9963706,
+      "status": 200,
+      "url": "https://www.sec.gov/Archives/edgar/data/789019/000095017023035122/msft-20230630.htm"
+    },
+    {
+      "bytes": 4966866,
+      "status": 200,
+      "url": "https://www.sec.gov/Archives/edgar/data/789019/000095017023054855/msft-20230930.htm"
+    },
+    {
+      "bytes": 5673415,
+      "status": 200,
+      "url": "https://www.sec.gov/Archives/edgar/data/789019/000095017024008814/msft-20231231.htm"
+    },
+    {
+      "bytes": 6995557,
+      "status": 200,
+      "url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025061046/msft-20250331.htm"
+    },
+    {
+      "bytes": 5328708,
+      "status": 200,
+      "url": "https://www.sec.gov/Archives/edgar/data/789019/000156459023000733/msft-10q_20221231.htm"
+    }
+  ],
+  "sampled_chunk_urls": 50
+}

@@ -1,0 +1,587 @@
+{
+  "financebench": {
+    "cik": "placeholder -1 (extraction only; real CIKs: data/financebench_companies.csv)",
+    "evidence_page_convention": {
+      "evidence_page_num_is_0_based_index": 189
+    },
+    "max_tokens": 400,
+    "n_chunks": 29620,
+    "n_documents": 84,
+    "n_questions": 150,
+    "pages_with_text": 11948,
+    "parse_status": {
+      "ok": 84
+    }
+  },
+  "html": {
+    "chunks_over_400": 0,
+    "chunks_per_section": {
+      "1": 934,
+      "10": 43,
+      "11": 26,
+      "12": 38,
+      "13": 26,
+      "14": 26,
+      "15": 5923,
+      "16": 20,
+      "1A": 1180,
+      "1B": 36,
+      "1C": 33,
+      "2": 105,
+      "3": 40,
+      "4": 50,
+      "5": 99,
+      "6": 19,
+      "7": 1290,
+      "7A": 87,
+      "8": 3654,
+      "9": 32,
+      "9A": 91,
+      "9B": 42,
+      "9C": 24,
+      "P1-1": 8504,
+      "P1-2": 1876,
+      "P1-3": 144,
+      "P1-4": 82,
+      "P2-1": 104,
+      "P2-1A": 3688,
+      "P2-2": 206,
+      "P2-3": 68,
+      "P2-4": 90,
+      "P2-5": 88,
+      "P2-6": 10254
+    },
+    "max_tokens": 400,
+    "n_chunks": 38922,
+    "n_chunks_with_anchor": 12971,
+    "n_filings": 135,
+    "n_table_chunks": 15062,
+    "non_ok": [
+      {
+        "accession": "0000019617-20-000299",
+        "cik": 19617,
+        "error": "missing sections: P1-1, P1-2",
+        "form": "10-Q",
+        "status": "partial"
+      },
+      {
+        "accession": "0000019617-20-000372",
+        "cik": 19617,
+        "error": "missing sections: P1-1, P1-2",
+        "form": "10-Q",
+        "status": "partial"
+      },
+      {
+        "accession": "0000019617-20-000438",
+        "cik": 19617,
+        "error": "missing sections: P1-1, P1-2",
+        "form": "10-Q",
+        "status": "partial"
+      },
+      {
+        "accession": "0000019617-21-000292",
+        "cik": 19617,
+        "error": "missing sections: P1-1, P1-2",
+        "form": "10-Q",
+        "status": "partial"
+      },
+      {
+        "accession": "0000019617-21-000373",
+        "cik": 19617,
+        "error": "missing sections: P1-1, P1-2",
+        "form": "10-Q",
+        "status": "partial"
+      },
+      {
+        "accession": "0000019617-21-000458",
+        "cik": 19617,
+        "error": "missing sections: P1-1, P1-2",
+        "form": "10-Q",
+        "status": "partial"
+      },
+      {
+        "accession": "0000019617-22-000319",
+        "cik": 19617,
+        "error": "missing sections: P1-1, P1-2",
+        "form": "10-Q",
+        "status": "partial"
+      },
+      {
+        "accession": "0000019617-22-000422",
+        "cik": 19617,
+        "error": "missing sections: P1-1, P1-2",
+        "form": "10-Q",
+        "status": "partial"
+      },
+      {
+        "accession": "0000019617-22-000492",
+        "cik": 19617,
+        "error": "missing sections: P1-1, P1-2",
+        "form": "10-Q",
+        "status": "partial"
+      },
+      {
+        "accession": "0000019617-23-000310",
+        "cik": 19617,
+        "error": "missing sections: P1-1, P1-2",
+        "form": "10-Q",
+        "status": "partial"
+      },
+      {
+        "accession": "0000019617-23-000432",
+        "cik": 19617,
+        "error": "missing sections: P1-1, P1-2",
+        "form": "10-Q",
+        "status": "partial"
+      },
+      {
+        "accession": "0000019617-23-000524",
+        "cik": 19617,
+        "error": "missing sections: P1-1, P1-2",
+        "form": "10-Q",
+        "status": "partial"
+      },
+      {
+        "accession": "0000019617-24-000326",
+        "cik": 19617,
+        "error": "missing sections: P1-1, P1-2",
+        "form": "10-Q",
+        "status": "partial"
+      },
+      {
+        "accession": "0000019617-24-000453",
+        "cik": 19617,
+        "error": "missing sections: P1-1, P1-2",
+        "form": "10-Q",
+        "status": "partial"
+      },
+      {
+        "accession": "0000019617-24-000611",
+        "cik": 19617,
+        "error": "missing sections: P1-1, P1-2",
+        "form": "10-Q",
+        "status": "partial"
+      },
+      {
+        "accession": "0000019617-25-000421",
+        "cik": 19617,
+        "error": "missing sections: P1-1, P1-2",
+        "form": "10-Q",
+        "status": "partial"
+      },
+      {
+        "accession": "0000019617-25-000615",
+        "cik": 19617,
+        "error": "missing sections: P1-1, P1-2",
+        "form": "10-Q",
+        "status": "partial"
+      },
+      {
+        "accession": "0000950170-22-022287",
+        "cik": 1067983,
+        "error": "missing sections: P1-2",
+        "form": "10-Q",
+        "status": "partial"
+      },
+      {
+        "accession": "0000950170-23-018438",
+        "cik": 1067983,
+        "error": "missing sections: P1-2",
+        "form": "10-Q",
+        "status": "partial"
+      },
+      {
+        "accession": "0000950170-23-038705",
+        "cik": 1067983,
+        "error": "missing sections: P1-2",
+        "form": "10-Q",
+        "status": "partial"
+      },
+      {
+        "accession": "0000950170-23-058993",
+        "cik": 1067983,
+        "error": "missing sections: P1-2",
+        "form": "10-Q",
+        "status": "partial"
+      },
+      {
+        "accession": "0000950170-24-053185",
+        "cik": 1067983,
+        "error": "missing sections: P1-2",
+        "form": "10-Q",
+        "status": "partial"
+      },
+      {
+        "accession": "0000950170-24-090305",
+        "cik": 1067983,
+        "error": "missing sections: P1-2",
+        "form": "10-Q",
+        "status": "partial"
+      },
+      {
+        "accession": "0000950170-24-120241",
+        "cik": 1067983,
+        "error": "missing sections: P1-2",
+        "form": "10-Q",
+        "status": "partial"
+      },
+      {
+        "accession": "0000950170-25-063112",
+        "cik": 1067983,
+        "error": "missing sections: P1-2",
+        "form": "10-Q",
+        "status": "partial"
+      },
+      {
+        "accession": "0000950170-25-101578",
+        "cik": 1067983,
+        "error": "missing sections: P1-2",
+        "form": "10-Q",
+        "status": "partial"
+      },
+      {
+        "accession": "0001193125-25-261548",
+        "cik": 1067983,
+        "error": "missing sections: P1-2",
+        "form": "10-Q",
+        "status": "partial"
+      },
+      {
+        "accession": "0001193125-26-202243",
+        "cik": 1067983,
+        "error": "missing sections: P1-2",
+        "form": "10-Q",
+        "status": "partial"
+      },
+      {
+        "accession": "0001193125-26-341032",
+        "cik": 1067983,
+        "error": "missing sections: P1-2",
+        "form": "10-Q",
+        "status": "partial"
+      },
+      {
+        "accession": "0001193125-26-452412",
+        "cik": 1067983,
+        "error": "missing sections: P1-2",
+        "form": "10-Q",
+        "status": "partial"
+      },
+      {
+        "accession": "0001564590-20-020599",
+        "cik": 1067983,
+        "error": "missing sections: P1-2",
+        "form": "10-Q",
+        "status": "partial"
+      },
+      {
+        "accession": "0001564590-20-038544",
+        "cik": 1067983,
+        "error": "missing sections: P1-2",
+        "form": "10-Q",
+        "status": "partial"
+      },
+      {
+        "accession": "0001564590-20-052144",
+        "cik": 1067983,
+        "error": "missing sections: P1-2",
+        "form": "10-Q",
+        "status": "partial"
+      },
+      {
+        "accession": "0001564590-21-022703",
+        "cik": 1067983,
+        "error": "missing sections: P1-2",
+        "form": "10-Q",
+        "status": "partial"
+      },
+      {
+        "accession": "0001564590-21-042312",
+        "cik": 1067983,
+        "error": "missing sections: P1-2",
+        "form": "10-Q",
+        "status": "partial"
+      },
+      {
+        "accession": "0001564590-21-055032",
+        "cik": 1067983,
+        "error": "missing sections: P1-2",
+        "form": "10-Q",
+        "status": "partial"
+      },
+      {
+        "accession": "0001564590-22-016907",
+        "cik": 1067983,
+        "error": "missing sections: P1-2",
+        "form": "10-Q",
+        "status": "partial"
+      },
+      {
+        "accession": "0001564590-22-028282",
+        "cik": 1067983,
+        "error": "missing sections: P1-2",
+        "form": "10-Q",
+        "status": "partial"
+      },
+      {
+        "accession": "0001628280-25-048859",
+        "cik": 19617,
+        "error": "missing sections: P1-1, P1-2",
+        "form": "10-Q",
+        "status": "partial"
+      },
+      {
+        "accession": "0001628280-26-029344",
+        "cik": 19617,
+        "error": "missing sections: P1-1, P1-2",
+        "form": "10-Q",
+        "status": "partial"
+      },
+      {
+        "accession": "0001628280-26-054343",
+        "cik": 19617,
+        "error": "missing sections: P1-1, P1-2",
+        "form": "10-Q",
+        "status": "partial"
+      },
+      {
+        "accession": "0001628280-26-069523",
+        "cik": 19617,
+        "error": "missing sections: P1-1, P1-2",
+        "form": "10-Q",
+        "status": "partial"
+      }
+    ],
+    "random_chunks": [
+      {
+        "chunk_id": "0000019617-24-000225#1A#0025",
+        "is_table": false,
+        "n_tokens": 352,
+        "section": "1A",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/19617/000001961724000225/jpm-20231231.htm#:~:text=If%20a%20client%20for%20which%20JPMorgan%20Chase%20provides",
+        "text": "If a client for which JPMorgan Chase provides these services becomes bankrupt or insolvent, JPMorgan Chase may incur losses, become involved in disputes and litigation with one or more CCPs, the client\u2019s bankruptcy estate and other creditors, or be subject to regulatory investigations. All of the foregoing events can increase JPMorgan Chase\u2019s operational and litigation costs, and JPMorgan Chase may suffer losses to the extent that any collateral that it has received is insufficient to cover thos"
+      },
+      {
+        "chunk_id": "0000019617-21-000236#15#0296",
+        "is_table": true,
+        "n_tokens": 110,
+        "section": "15",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/19617/000001961721000236/jpm-20201231.htm#:~:text=Ratings%20profile%20of%20derivative%20receivables",
+        "text": "Ratings profile of derivative receivables\n2020(a) | 2019(a)\nDecember 31, (in millions, except ratios) | Exposure net of collateral | % of exposure net of collateral | Exposure net of collateral | % of exposure net of collateral\nInvestment-grade | $37,013 | 63% | $27,851 | 80%\nNoninvestment-grade | 21,789 | 37 | 7,026 | 20\nTotal | $58,802 | 100% | $34,877 | 100%"
+      },
+      {
+        "chunk_id": "0000320193-20-000096#8#0032",
+        "is_table": true,
+        "n_tokens": 67,
+        "section": "8",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019320000096/aapl-20200926.htm#id3VybDovL2RvY3MudjEvZG9jOmVmNzgxYWI1OGU0ZjRmY2FhODcyZGRiZDMwZGE0MGUxL3NlYzplZjc4MWFiNThlNGY0ZmNhYTg3MmRkYmQzMGRhNDBlMV8xMTgvZnJhZzo1NTZkZjI1NWJlM2Q0YTczOWEzYzA3ODJhZTNlYmQ1Mi90YWJsZTo2NjEwYTRlY2IyMTM0ODY1YmUxNzk2NTYzMmQ1MDFlOC90YWJsZXJhbmdlOjY2MTBhNGVjYjIxMzQ4NjViZTE3OTY1NjMyZDUwMWU4XzEtMS0xLTEtMA_199d7efd-7f88-499e-bafa-9742545b53d4",
+        "text": "2020 | 2019\nCash and cash equivalents | $38,016 | $48,844\nRestricted cash included in other current assets | 36 | 23\nRestricted cash included in other non-current assets | 1,737 | 1,357\nCash, cash equivalents and restricted cash | $39,789 | $50,224"
+      },
+      {
+        "chunk_id": "0000019617-25-000270#15#0502",
+        "is_table": true,
+        "n_tokens": 338,
+        "section": "15",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/19617/000001961725000270/jpm-20241231.htm#f-2916",
+        "text": "Free-standing derivative receivables and payables(a)\nGross derivative receivables | Gross derivative payables\nDecember 31, 2024 (in millions) | Not designated as hedges | Designated as hedges | Total derivative receivables | Net derivative receivables(b) | Not designated as hedges | Designated as hedges | Total derivative payables | Net derivative payables(b)\nTrading assets and liabilities\nInterest rate | $290,734 | $\u2014 | $290,734 | $24,945 | $274,226 | $2 | $274,228 | $9,239\nCredit | 11,087 | \u2014 "
+      },
+      {
+        "chunk_id": "0000019617-25-000421#P2-6#0399",
+        "is_table": true,
+        "n_tokens": 196,
+        "section": "P2-6",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/19617/000001961725000421/jpm-20250331.htm#f-3362-2",
+        "text": "March 31, 2025\n(in millions) | Gross amounts | Amounts netted on the Consolidated balance sheets | Amounts presented on the Consolidated balance sheets | Amounts not nettable on the Consolidated balance sheets(b) | Net amounts(c)\nAssets\nSecurities purchased under resale agreements | $701,851 | $(272,345) | $429,506 | $(419,849) | $9,657\nSecurities borrowed | 285,230 | (46,528) | 238,702 | (187,332) | 51,370\nLiabilities\nSecurities sold under repurchase agreements | $797,949 | $(272,345) | $525,60"
+      },
+      {
+        "chunk_id": "0000950170-25-025210#8#0075",
+        "is_table": true,
+        "n_tokens": 117,
+        "section": "8",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1067983/000095017025025210/brka-20241231.htm#F_e47678b7-708e-4735-90fb-67a44fd5e87a_1",
+        "text": "Origination Year\n2024 | 2023 | 2022 | 2021 | 2020 | Prior | Total\nPerforming | $6,578 | $4,969 | $3,651 | $3,052 | $2,358 | $8,172 | $28,780\nNon-performing | 13 | 22 | 16 | 11 | 10 | 45 | 117\n$6,591 | $4,991 | $3,667 | $3,063 | $2,368 | $8,217 | $28,897"
+      },
+      {
+        "chunk_id": "0000950170-23-054855#P1-1#0046",
+        "is_table": false,
+        "n_tokens": 74,
+        "section": "P1-1",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017023054855/msft-20230930.htm#F_b02c7040-8002-4708-86e3-109a321741e0",
+        "text": "Gains (losses), net of tax, on derivative instruments recognized in our consolidated comprehensive income statements were as follows:\n(In millions)\nThree Months Ended September 30, 2023 2022\nDesignated as Cash Flow Hedging Instruments\nForeign exchange contracts\nIncluded in effectiveness assessment $(15) $(40)\nNOTE 6 \u2014 INVENTORIES\nThe components of inventories were as follows:"
+      },
+      {
+        "chunk_id": "0000019617-25-000421#P2-6#0497",
+        "is_table": false,
+        "n_tokens": 352,
+        "section": "P2-6",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/19617/000001961725000421/jpm-20250331.htm#:~:text=%28a%29Includes%20securities%20from%20U.S.%20GSEs%20and%20Ginnie%20Mae",
+        "text": "(a)Includes securities from U.S. GSEs and Ginnie Mae that are generally sold shortly after receipt or retained as part of the Firm\u2019s investment securities portfolio.\n(b)Included in level 2 assets.\n(c)Excludes the value of MSRs retained upon the sale of loans.\n(d)Gains/(losses) on loan sales include the value of MSRs.\n(e)The carrying value of the loans accounted for at fair value approximated the proceeds received upon loan sale.\nOptions to repurchase delinquent loans\nIn addition to the Firm\u2019s ob"
+      },
+      {
+        "chunk_id": "0000950170-25-025210#8#0158",
+        "is_table": false,
+        "n_tokens": 399,
+        "section": "8",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1067983/000095017025025210/brka-20241231.htm#FNT_ea365a7c-a323-4f98-8bfb-25173cbb3812",
+        "text": "* U.S. income tax credits derive primarily from production tax credits associated with wind-energy generation of BHE and tax credits arising from affordable housing investments.\nWe file income tax returns in the U.S. and in state, local and foreign jurisdictions. We have settled income tax liabilities with the U.S. federal taxing authority (\u201cIRS\u201d) for tax years through 2013, and the IRS is currently auditing tax years 2014 through 2019. We are also under audit or subject to audit with respect to"
+      },
+      {
+        "chunk_id": "0001564590-20-019706#P2-1A#0029",
+        "is_table": false,
+        "n_tokens": 365,
+        "section": "P2-1A",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000156459020019706/msft-10q_20200331.htm#:~:text=Our%20product%20distribution%20system%20relies%20on%20an%20extensive",
+        "text": "Our product distribution system relies on an extensive partner and retail network. OEMs building devices that run our software have also been a significant means of distribution. The impact of economic conditions on our partners, such as the bankruptcy of a major distributor, OEM, or retailer, could cause sales channel disruption.\nChallenging economic conditions also may impair the ability of our customers to pay for products and services they have purchased. As a result, allowances for doubtful"
+      },
+      {
+        "chunk_id": "0000019617-22-000272#15#0475",
+        "is_table": false,
+        "n_tokens": 398,
+        "section": "15",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/19617/000001961722000272/jpm-20211231.htm#:~:text=%28a%29Excludes%20the%20current%20carrying%20values%20of%20the%20guarantee",
+        "text": "(a)Excludes the current carrying values of the guarantee liability and the offsetting asset, each of which is recognized at fair value at the inception of the guarantees.\n(b)Includes the wholesale allowance for lending-related commitments.\nThe Firm does not estimate the fair value of consumer off-balance sheet lending-related commitments. In many cases, the Firm can reduce or cancel these commitments by providing the borrower notice or, in some cases as permitted by law, without notice. Refer to"
+      },
+      {
+        "chunk_id": "0000019617-20-000372#P2-1A#0342",
+        "is_table": true,
+        "n_tokens": 68,
+        "section": "P2-1A",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/19617/000001961720000372/corpq22020.htm#d40634419e2146-wk-Fact-C4939AB31A615B3FB0030DE32871EA51",
+        "text": "(in billions) | June 30, 2020 | December 31, 2019\nCollateral permitted to be sold or repledged, delivered, or otherwise used | $1,282.3 | $1,282.5\nCollateral sold, repledged, delivered or otherwise used(a) | 985.3 | 1,000.5"
+      },
+      {
+        "chunk_id": "0000950170-25-100235#7#0027",
+        "is_table": false,
+        "n_tokens": 115,
+        "section": "7",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm#:~:text=If%20our%20customers%20choose%20to%20license%20cloud%2Dbased%20versions",
+        "text": "If our customers choose to license cloud-based versions of our products and services rather than licensing transaction-based products and services, the associated revenue will shift from being recognized at the time of the transaction to being recognized over the subscription period or upon consumption, as applicable. Refer to Note 12 \u2013 Unearned Revenue of the Notes to Financial Statements (Part II, Item 8 of this Form 10-K).\nMaterial Cash Requirements and Other Obligations\nContractual Obligatio"
+      },
+      {
+        "chunk_id": "0000950170-23-035122#7#0010",
+        "is_table": false,
+        "n_tokens": 344,
+        "section": "7",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017023035122/msft-20230630.htm#:~:text=%E2%80%A2",
+        "text": "\u2022\nGross margin percentage increased slightly. Excluding the impact of the change in accounting estimate, gross margin percentage decreased 1 point driven by declines in Intelligent Cloud and More Personal Computing, offset in part by sales mix shift between our segments.\n\u2022\nMicrosoft Cloud gross margin percentage increased 2 points to 72%. Excluding the impact of the change in accounting estimate, Microsoft Cloud gross margin percentage decreased slightly driven by a decline in Azure and other cl"
+      },
+      {
+        "chunk_id": "0000950170-23-004451#8#0134",
+        "is_table": true,
+        "n_tokens": 209,
+        "section": "8",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1067983/000095017023004451/brka-20221231.htm#F_2adc2845-a139-4e72-8fd9-e81a6f6b4baa",
+        "text": "Average Annual Percentage Payout of Incurred Losses by Age, Net of Reinsurance\nIn Year | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10\nGEICO Physical Damage | 97% | 3%\nGEICO Auto Liability | 41% | 31% | 13% | 8% | 4%\nBH Primary Medical Professional Liability | 2% | 7% | 12% | 14% | 13% | 11% | 8% | 6% | 4% | 3%\nBH Primary Workers\u2019 Compensation and Other Casualty | 15% | 19% | 15% | 13% | 9% | 5% | 4% | 3% | 1% | 1%\nBHRG Property | 22% | 36% | 15% | 8% | 4% | 4% | 2% | 1% | 1% | 0%\nBHRG Casualty | 14% |"
+      },
+      {
+        "chunk_id": "0001564590-21-002316#P1-1#0032",
+        "is_table": true,
+        "n_tokens": 184,
+        "section": "P1-1",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000156459021002316/msft-10q_20201231.htm#:~:text=%28In%20millions%29",
+        "text": "(In millions) | Fair Value Level | Adjusted Cost Basis | Unrealized Gains | Unrealized Losses | Recorded Basis | Cash and Cash Equivalents | Short-term Investments | Equity Investments\nDecember 31, 2020\nChanges in Fair Value Recorded in Other Comprehensive Income\nChanges in Fair Value Recorded in Net Income\nEquity investments | Level 1 | $1,655 | $897 | $0 | $758\nEquity investments | Other | 3,036 | 0 | 0 | 3,036\nTotal equity investments | $4,691 | $897 | $0 | $3,794\nCash | $5,565 | $5,565 | $0 "
+      },
+      {
+        "chunk_id": "0000019617-23-000310#P2-6#0401",
+        "is_table": false,
+        "n_tokens": 383,
+        "section": "P2-6",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/19617/000001961723000310/jpm-20230331.htm#:~:text=%28a%29Represents%20the%20amount%20of%20portfolio%20layer%20method%20basis",
+        "text": "(a)Represents the amount of portfolio layer method basis adjustments related to AFS securities hedged in a closed portfolio. Under U.S. GAAP portfolio layer method basis adjustments are not allocated to individual securities, however the amounts impact the unrealized gains or losses for the individual securities being hedged. Refer to Note 1 and Note 4 for additional information.\n(b)The Firm purchased $3.6 billion and $13.2 billion of HTM securities for the three months ended March 31, 2023 and "
+      },
+      {
+        "chunk_id": "0001564590-22-002324#P1-1#0033",
+        "is_table": true,
+        "n_tokens": 174,
+        "section": "P1-1",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000156459022002324/msft-10q_20211231.htm#:~:text=%28In%20millions%29",
+        "text": "(In millions) | Fair Value Level | Adjusted Cost Basis | Unrealized Gains | Unrealized Losses | Recorded Basis | Cash and Cash Equivalents | Short-term Investments | Equity Investments\nJune 30, 2021\nChanges in Fair Value Recorded in Other Comprehensive Income\nChanges in Fair Value Recorded in Net Income\nEquity investments | Level 1 | $1,582 | $976 | $0 | $606\nEquity investments | Other | 5,378 | 0 | 0 | 5,378\nTotal equity investments | $6,960 | $976 | $0 | $5,984\nCash | $7,272 | $7,272 | $0 | $0"
+      },
+      {
+        "chunk_id": "0001018724-24-000083#P1-1#0006",
+        "is_table": false,
+        "n_tokens": 28,
+        "section": "P1-1",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872424000083/amzn-20240331.htm#:~:text=See%20accompanying%20notes%20to%20consolidated%20financial%20statements.",
+        "text": "See accompanying notes to consolidated financial statements.\nAMAZON.COM, INC.\nCONSOLIDATED STATEMENTS OF COMPREHENSIVE INCOME\n(in millions)\n(unaudited)"
+      },
+      {
+        "chunk_id": "0001564590-20-034944#8#0073",
+        "is_table": true,
+        "n_tokens": 172,
+        "section": "8",
+        "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000156459020034944/msft-10k_20200630.htm#F_001048",
+        "text": "(In millions) | June 30, 2018 | Acquisitions | Other | June 30, 2019 | Acquisitions | Other | June 30, 2020\nProductivity and Business Processes | $23,823 | $514 | $(60) | $24,277 | $7 | $(94) | $24,190\nIntelligent Cloud | 5,703 | 5,605 | (a) | 43 | (a) | 11,351 | 1,351 | (5) | 12,697\nMore Personal Computing | 6,157 | 289 | (48) | 6,398 | 96 | (30) | 6,464\nTotal | $35,683 | $6,408 | $(65) | $42,026 | $1,454 | $(129) | $43,351"
+      }
+    ],
+    "seed": 20261117,
+    "status_by_form": {
+      "10-K|ok": 32,
+      "10-Q|ok": 61,
+      "10-Q|partial": 42
+    },
+    "store": "data/raw/filings",
+    "token_histogram": {
+      "1-50": 3324,
+      "101-150": 3939,
+      "151-200": 3141,
+      "201-250": 2812,
+      "251-300": 2057,
+      "301-350": 2717,
+      "351-400": 16133,
+      "51-100": 4799
+    },
+    "url_sample": [
+      "https://www.sec.gov/Archives/edgar/data/19617/000001961724000453/jpm-20240630.htm#:~:text=%28a%29Represents%20long%2Dterm%20debt%20and%20loan%20syndications.",
+      "https://www.sec.gov/Archives/edgar/data/19617/000001961723000432/jpm-20230630.htm#f-3648",
+      "https://www.sec.gov/Archives/edgar/data/789019/000095017023054855/msft-20230930.htm#:~:text=We%20use%20derivative%20instruments%20to%20manage%20risks%20related",
+      "https://www.sec.gov/Archives/edgar/data/19617/000162828025048859/jpm-20250930.htm#:~:text=%E2%80%A2Lending%20revenue%20was%20%241.9%20billion%2C%20down%201%25.",
+      "https://www.sec.gov/Archives/edgar/data/19617/000162828026069523/jpm-20260930.htm#:~:text=Each%20of%20the%20Firm%20and%20JPMorgan%20Chase%20Bank%2C",
+      "https://www.sec.gov/Archives/edgar/data/19617/000162828025048859/jpm-20250930.htm#:~:text=Fair%20value%20measurements%20using%20significant%20unobservable%20inputs",
+      "https://www.sec.gov/Archives/edgar/data/19617/000001961723000524/jpm-20230930.htm#:~:text=Three%20months%20ended%20September%2030%2C",
+      "https://www.sec.gov/Archives/edgar/data/320193/000032019320000096/aapl-20200926.htm#id3VybDovL2RvY3MudjEvZG9jOmVmNzgxYWI1OGU0ZjRmY2FhODcyZGRiZDMwZGE0MGUxL3NlYzplZjc4MWFiNThlNGY0ZmNhYTg3MmRkYmQzMGRhNDBlMV8xNTEvZnJhZzowODBjNTdmNjE2OGU0M2Q2ODA2NTA1NWNlZDU1YzAxYi90YWJsZTphOWI3MTMwZDNjMmE0ZWJkYTlmZDI0MGE5MjA3YmUyNC90YWJsZXJhbmdlOmE5YjcxMzBkM2MyYTRlYmRhOWZkMjQwYTkyMDdiZTI0XzEtMS0xLTEtMA_22ac36c2-698b-4a53-8f72-53eaff0f036b",
+      "https://www.sec.gov/Archives/edgar/data/19617/000162828026008131/jpm-20251231.htm#:~:text=%28a%29Represents%20the%20amount%20of%20portfolio%20layer%20method%20basis",
+      "https://www.sec.gov/Archives/edgar/data/19617/000001961724000326/jpm-20240331.htm#:~:text=%E2%80%A2Adequacy%20of%20the%20Firm%E2%80%99s%20risk%20management%20framework%2C%20disclosure",
+      "https://www.sec.gov/Archives/edgar/data/19617/000162828026054343/jpm-20260630.htm#id4a989f16cde416699cc90482e29b090_334",
+      "https://www.sec.gov/Archives/edgar/data/19617/000001961725000270/jpm-20241231.htm#:~:text=Conduct%20risk%20management%20is%20also%20an%20integral%20component",
+      "https://www.sec.gov/Archives/edgar/data/789019/000156459023000733/msft-10q_20221231.htm#:~:text=PART%20I",
+      "https://www.sec.gov/Archives/edgar/data/19617/000001961723000231/jpm-20221231.htm#:~:text=OCC%20Heightened%20Standards.%20The%20OCC%20has%20established%20guidelines",
+      "https://www.sec.gov/Archives/edgar/data/19617/000001961723000432/jpm-20230630.htm#:~:text=%28a%29%20As%20of%20June%2030%2C%202023%20included%20%241.1",
+      "https://www.sec.gov/Archives/edgar/data/19617/000001961722000319/jpm-20220331.htm#:~:text=The%20increase%20was%20largely%20commodities%2C%20predominantly%20oil%20and",
+      "https://www.sec.gov/Archives/edgar/data/19617/000001961722000422/jpm-20220630.htm#:~:text=%28a%29In%20the%20first%20quarter%20of%202022%2C%20the%20Firm",
+      "https://www.sec.gov/Archives/edgar/data/19617/000001961722000492/jpm-20220930.htm#:~:text=Selected%20metrics",
+      "https://www.sec.gov/Archives/edgar/data/19617/000001961723000310/jpm-20230331.htm#id3VybDovL2RvY3MudjEvZG9jOmU2ZGQ3OTk0MmJkYzQyMTA4M2FmNGZlZjI1NTQ2NTE1L3NlYzplNmRkNzk5NDJiZGM0MjEwODNhZjRmZWYyNTU0NjUxNV8yNTMvZnJhZzo2NDU1ZGI4Mjk3NmI0NzFkYjc2MDllZTRkNTdhNzk5ZS90YWJsZTpjZWY4ZmU2Nzk2MjE0NWNkOTg1YWMyYzg4MjA2NjNiNC90YWJsZXJhbmdlOmNlZjhmZTY3OTYyMTQ1Y2Q5ODVhYzJjODgyMDY2M2I0XzMtMS0xLTEtMTE4NDU2NA_715fd38f-5773-4ead-abd4-c425c7a97f97",
+      "https://www.sec.gov/Archives/edgar/data/19617/000001961723000432/jpm-20230630.htm#:~:text=Managed%20basis%3A%20A%20non%2DGAAP%20presentation%20of%20Firmwide%20financial",
+      "https://www.sec.gov/Archives/edgar/data/1067983/000156459021055032/brka-10q_20210930.htm#F_001039",
+      "https://www.sec.gov/Archives/edgar/data/19617/000001961724000453/jpm-20240630.htm#:~:text=Six%20months%20ended%20June%2030%2C",
+      "https://www.sec.gov/Archives/edgar/data/19617/000001961723000310/jpm-20230331.htm#:~:text=2023",
+      "https://www.sec.gov/Archives/edgar/data/19617/000162828026008131/jpm-20251231.htm#:~:text=%E2%80%A2the%20bid%2Doffer%20spread%2C%20which%20is%20the%20difference%20between",
+      "https://www.sec.gov/Archives/edgar/data/789019/000095017023035122/msft-20230630.htm#:~:text=PART%20II",
+      "https://www.sec.gov/Archives/edgar/data/19617/000162828026008131/jpm-20251231.htm#:~:text=Because%20of%20these%20mitigating%20factors%2C%20these%20receivables%20generally",
+      "https://www.sec.gov/Archives/edgar/data/19617/000001961724000326/jpm-20240331.htm#:~:text=Gain%2F%28loss%29%20%28in%20millions%29",
+      "https://www.sec.gov/Archives/edgar/data/1067983/000095017023058993/brka-20230930.htm#:~:text=%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94",
+      "https://www.sec.gov/Archives/edgar/data/1067983/000095017024090305/brka-20240630.htm#:~:text=Notes%20to%20Consolidated%20Financial%20Statements",
+      "https://www.sec.gov/Archives/edgar/data/19617/000001961722000319/jpm-20220331.htm#id3VybDovL2RvY3MudjEvZG9jOjcxOTE1MjZmNzBmZDRmOTZhZGE2MWIwNTUyOWFkODgxL3NlYzo3MTkxNTI2ZjcwZmQ0Zjk2YWRhNjFiMDU1MjlhZDg4MV8zMDQvZnJhZzpiNmYzMjExZDgwODU0YmY1YjY0MDZlNjFmY2NhMTViNC90YWJsZTowZGY4ODM0N2FjYTM0OGQ3YTA2MmY2MTk1YTgzMTU0YS90YWJsZXJhbmdlOjBkZjg4MzQ3YWNhMzQ4ZDdhMDYyZjYxOTVhODMxNTRhXzMtMS0xLTEtNDQxNjAy_35a73ef2-4f43-4817-8c57-cae0ad6d995d",
+      "https://www.sec.gov/Archives/edgar/data/19617/000001961722000319/jpm-20220331.htm#id3VybDovL2RvY3MudjEvZG9jOjcxOTE1MjZmNzBmZDRmOTZhZGE2MWIwNTUyOWFkODgxL3NlYzo3MTkxNTI2ZjcwZmQ0Zjk2YWRhNjFiMDU1MjlhZDg4MV8yMzgvZnJhZzo1ZmU0ZDMxMTYwNzQ0MThjOTI5OTZhYmUxOTU3ZTVjOS90YWJsZTpjMTUxMjUzOWU4MGM0NGUwOGQzODFhMmI5NjQwNDQ1NC90YWJsZXJhbmdlOmMxNTEyNTM5ZTgwYzQ0ZTA4ZDM4MWEyYjk2NDA0NDU0XzMtMS0xLTEtNDQxNjAy_82f4e290-4b78-430e-b901-c64e7afb08bd",
+      "https://www.sec.gov/Archives/edgar/data/19617/000162828026029344/jpm-20260331.htm#:~:text=Fair%20value%20measurements%20using%20significant%20unobservable%20inputs",
+      "https://www.sec.gov/Archives/edgar/data/19617/000001961724000326/jpm-20240331.htm#:~:text=Fair%20value%20measurements%20using%20significant%20unobservable%20inputs",
+      "https://www.sec.gov/Archives/edgar/data/1067983/000095017025063112/brka-20250331.htm#F_b8bc759e-0eff-4777-88c2-a4d13ce82a73_1",
+      "https://www.sec.gov/Archives/edgar/data/789019/000095017025061046/msft-20250331.htm#:~:text=%28In%20millions%29%20%28Unaudited%29",
+      "https://www.sec.gov/Archives/edgar/data/19617/000001961723000524/jpm-20230930.htm#f-5419",
+      "https://www.sec.gov/Archives/edgar/data/320193/000032019323000064/aapl-20230401.htm#i5d123109404b4b88aab5883c5d27558e",
+      "https://www.sec.gov/Archives/edgar/data/1067983/000156459021009611/brka-10k_20201231.htm#:~:text=Property%20claims%20usually%20have%20relatively%20short%20claim%2Dtails%2C%20absent",
+      "https://www.sec.gov/Archives/edgar/data/1018724/000101872422000019/amzn-20220630.htm#:~:text=Total%20Number%20of%20Shares%20Purchased",
+      "https://www.sec.gov/Archives/edgar/data/19617/000001961723000310/jpm-20230331.htm#:~:text=%28a%29At%20March%2031%2C%202023%20and%202022%2C%20total%20loans",
+      "https://www.sec.gov/Archives/edgar/data/19617/000001961724000326/jpm-20240331.htm#f-2470",
+      "https://www.sec.gov/Archives/edgar/data/1018724/000101872423000018/amzn-20230930.htm#:~:text=___________________",
+      "https://www.sec.gov/Archives/edgar/data/1067983/000156459022007322/brka-10k_20211231.htm#:~:text=Union%20Tank%20Car%20Company%20%28%E2%80%9CUTLX%E2%80%9D%29%20is%20the%20largest",
+      "https://www.sec.gov/Archives/edgar/data/789019/000095017024008814/msft-20231231.htm#:~:text=%28In%20millions%2C%20except%20per%20share%20amounts%29%20%28Unaudited%29",
+      "https://www.sec.gov/Archives/edgar/data/1067983/000156459021009611/brka-10k_20201231.htm#F_000816",
+      "https://www.sec.gov/Archives/edgar/data/19617/000001961725000270/jpm-20241231.htm#:~:text=December%2031%2C%20%28in%20millions%29",
+      "https://www.sec.gov/Archives/edgar/data/1067983/000095017025025210/brka-20241231.htm#report_independent_registered_public_acc",
+      "https://www.sec.gov/Archives/edgar/data/19617/000162828026008131/jpm-20251231.htm#:~:text=Line%20of%20Business%20and%20Regional%20Risk%20Committees%20are",
+      "https://www.sec.gov/Archives/edgar/data/19617/000162828026029344/jpm-20260331.htm#:~:text=Allowance%20for%20credit%20losses%20and%20related%20information",
+      "https://www.sec.gov/Archives/edgar/data/19617/000001961720000438/jpm-20200930.htm#:~:text=Fees%20received%20and%20paid%20in%20connection%20with%20securities"
+    ]
+  }
+}
