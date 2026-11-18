@@ -10,8 +10,9 @@ target list, and the 84 FinanceBench PDFs.
 
 **M2 is NOT done.** Three items FAIL or cannot be run, for reasons that are not code defects:
 
-1. The section-boundary accuracy (≥ 90% on 100 labels) is `NOT MEASURED`: `eval/sets/sections_gold.jsonl` is
-   Shekar's file and does not exist.
+1. **Section-boundary accuracy is `NOT MEASURED`**, pending the n=50 hand labels (your task): `eval/sets/sections_gold.jsonl`
+   does not exist. **50 labels is half of the runbook's 100, a conscious speed-run deviation** (the template covers 10 filings, 5 items each); the
+   ≥ 90% target will be judged on n=50 with that stated, and the result will say so.
 2. ~~The three real fixture filings do not exist~~ Resolved: three real filings are in `tests/fixtures/filings/` and
    `tests/unit/parsing/test_real_fixtures.py` runs on them (10 passed): core sections found, chunks clean, sidecars equal the
    filings' own `dei` tags, and the parsed fiscal labels equal the company's own (Ulta needs offset -1).
@@ -31,9 +32,9 @@ random chunks did not all read cleanly. Causes are listed under "Open issues".
 | 1b | fetch complete | NOT RUN | Only 135 of 13,239 targets were fetched, locally, to test the fetcher (135 fetched, 0 failed; `docs/milestones/M02-parse-metrics.json` `html.n_filings`). The full fetch belongs on an AWS box (cloud sprint). |
 | 1c | `raw.filings_html` has one row per target | NOT RUN | 135 rows for the 135 fetched (command: Spark `count()` on `lake.raw.filings_html`, all HTTP 200). One row per fetched filing holds; for the 13,239 targets it is not run. |
 | 2a | Parse success ≥ 95% (or documented) | **FAIL** (documented) | 93 `ok` + 42 `partial` of 135, 0 `error`, 0 `no_sections` (`html.status_by_form`). All 42 `partial` are 10-Qs of two companies; causes under Open issues. The 32 10-Ks all parsed `ok`. |
-| 2b | Section-boundary accuracy ≥ 90% on the 100 labels | NOT RUN | `python -m eval.sections_eval` → "NOT MEASURED (eval/sets/sections_gold.jsonl does not exist yet)". The tool is tested with a synthetic gold file only (`tests/unit/test_sections_eval.py`, 9 passed). |
+| 2b | Section-boundary accuracy ≥ 90% on the 100 labels | **NOT MEASURED** | `python -m eval.sections_eval` → "NOT MEASURED (eval/sets/sections_gold.jsonl does not exist yet)". Pending **n=50** hand labels (your task): half the runbook's 100, a conscious speed-run deviation. The tool is tested with a synthetic gold file only. |
 | 3a | Chunk count and token histogram recorded | PASS | `html.n_chunks`, `html.token_histogram`, `html.max_tokens` in `M02-parse-metrics.json`; the Spark job's table agrees: `lake.curated.chunks` 38922 rows (command output). |
-| 3b | Property tests green | PASS | `pytest tests/unit/parsing/test_chunker.py` → 19 passed (no chunk over 400 tokens, overlap ≤ 80, chunks reproduce the text, every chunk adds text). `make test` → 1215 passed, 0 skipped (the fixtures now run). |
+| 3b | Property tests green | PASS | `pytest tests/unit/parsing/test_chunker.py` → 19 passed (no chunk over 400 tokens, overlap ≤ 80, chunks reproduce the text, every chunk adds text). `make test` → 1292 passed, 0 skipped. |
 | 4 | 20 random chunks read cleanly (notes in the parse report) | **FAIL** | Read by Claude, not Shekar (seed 20261117, `html.random_chunks`). No hidden XBRL, no repeated page headers, tables keep their header and rows. But 7 of 20 sit under a section label that does not describe them, and 3 more have noise. Details under Open issues; Shekar should re-read. |
 | 5 | 50/50 source URLs return 200 | PASS (documents) / NOT RUN (anchors) | `python -m eval.check_source_urls --rate 2` → "32/32 documents returned 200 (50 sampled chunk URLs)". The fragment (`#id` or `#:~:text=`) is never seen by a server: the 5-in-a-browser spot check is **NOT RUN** (Shekar). |
 | 6a | All FinanceBench PDFs parsed with page numbers (extraction) | PASS | `financebench.parse_status` `{"ok": 84}`, `pages_with_text` 11948, every chunk has `page` (`docs/milestones/M02-parse-metrics.json`, measured with a placeholder CIK; superseded by 6b). |
@@ -45,7 +46,7 @@ random chunks did not all read cleanly. Causes are listed under "Open issues".
 |---|---|---|
 | Spark vs pure-Python equivalence (mandatory) | PASS | `pytest tests/integration/test_parse_filings.py …` → 14 passed. Mutating the Spark join (`period_of_report` without the `sub.period` fallback) made `test_the_spark_output_equals_the_pure_python_parse_for_every_filing` fail; restoring it passed. On the real data both paths give 38922 chunks (`html.n_chunks`; `lake.curated.chunks`). |
 | Text and facts agree on fiscal labels (ADR-023) | PASS (35 of 135 comparable) | `docs/milestones/M02-fiscal-agreement.json`: `with_facts_compared` 35, `agree` 35, `mismatches` `[]`. 100 filings have no facts in the lake (only 7 FSDS quarters are loaded), so they are not compared. |
-| `make test` / `make test-integration` / `make lint` | PASS | `make test` 1215 passed (this run); `make test-integration` 351 passed (earlier this session, after the last change to integration-tested code); lint: "All checks passed", mypy clean. |
+| `make test` / `make test-integration` / `make lint` | PASS | `make test` 1292 passed; `make test-integration` 352 passed (both after the parser fixes); lint: "All checks passed", mypy clean. |
 | `make check-gold` | PASS (skip) | "check-gold: skipped, no gold files exist yet". |
 | EMR image builds and runs the parse job | PASS (local) | `docker build --platform linux/arm64 infra/emr` (not pushed); the parse job on that image ran from the built `pipelines.zip` alone: Python 3.12.15, Spark 3.5.8-amzn-0, three real filings `ok`. This is a local container, not EMR. |
 | Terraform | PASS (fmt, validate only) | `terraform fmt -check -recursive` OK; `terraform validate` in `envs/dev`: "The configuration is valid". Nothing was planned or applied. |
@@ -122,33 +123,35 @@ random chunks did not all read cleanly. Causes are listed under "Open issues".
     Item 7. Both are in-scope parser failures, not fixed. The 150-filing blast-radius pass below supersedes this sample.
 12. Id styles of the item TOC links in the sample: 38 opaque, 9 named, 3 none (`toc_id_style`).
 
-**Blast radius: 150 S&P 500 10-Ks, FY2020-2025 (`docs/milestones/M02-blast-radius.json`, `python -m eval.blast_radius`, read-only)**
+**Blast radius and the two parser fixes: 150 S&P 500 10-Ks, FY2020-2025 (`docs/milestones/M02-blast-radius.json` after, `M02-blast-radius-before-fix.json` before; `python -m eval.blast_radius`)**
 
-Sample: `summary.n` 150 filings (the 50 of the earlier fixture survey plus a stratified top-up; utilities `by_group.utilities.n` 26,
-financials `by_group.financials.n` 43, other 79, unknown 2). `sgml_wrapper`: 0 filings. Required items are 1, 1A, 7, 7A, 8.
+Sample: `summary.n` 150 filings (the 50 of the earlier survey plus a stratified top-up: utilities 26, financials 43, other 79, unknown 2); `sgml_wrapper` 0. Required items: 1, 1A, 7, 7A, 8.
 
-| What | Value | Key |
-|---|---:|---|
-| Filings missing at least one required item | 14 of 150 | `summary.n_missing_any_required` |
-| ...missing a core item (1, 1A, 7, 8) | 13 of 150 | `summary.n_missing_any_core` |
-| Missing items by code (1, 1A, 7, 7A, 8) | 10, 6, 5, 6, 3 (total 30 of 750 required items) | `summary.missing_by_item` |
-| Financials / utilities / other that miss | 7 of 43 / 2 of 26 / 5 of 79 | `summary.by_group` |
-| Multi-registrant covers (more than one `dei:EntityCentralIndexKey`) | 18 of 150 (utilities 13 of 26, financials 4, other 1) | `summary.n_multi_registrant` |
-| **Multi-registrant filings that miss a required item** | **0 of 18** | `summary.multi_registrant_that_miss` |
-| Failing filings that are multi-registrant | 0 of 14 | `summary.failing_that_are_multi_registrant` |
-| Combined "Items 1 and 2" headings | 1 | `summary.n_combined_heading` |
-| Missed items by cause | heading paragraph skipped by the chain 1; only a TOC or index row recognised 12; mentioned only 4; never written 13 | `summary.by_cause` |
-| Parse status | ok 137, partial 12, no_sections 1 | `summary.parse_status` |
-| Text before the first detected heading, complete filings: median / max | 2.5% / 29.5% | `summary.median_share_before_first_heading_complete`, `max_...` |
+| What | Before the fixes | After the fixes | Key |
+|---|---:|---:|---|
+| Filings missing at least one required item | 14 of 150 | **13 of 150** | `summary.n_missing_any_required` |
+| ...missing a core item (1, 1A, 7, 8) | 13 | 12 | `summary.n_missing_any_core` |
+| Missing by item 1 / 1A / 7 / 7A / 8 | 10 / 6 / 5 / 6 / 3 | 9 / 6 / 5 / 5 / 4 | `summary.missing_by_item` |
+| Financials / utilities / other that miss | 7 of 43 / 2 of 26 / 5 of 79 | 6 of 43 / 2 of 26 / 5 of 79 | `summary.by_group` |
+| Causes: heading paragraph skipped / TOC or index row only / mentioned only / never written | 1 / 12 / 4 / 13 | 0 / 11 / 5 / 13 | `summary.by_cause` |
+| Parse status ok / partial / no_sections | 137 / 12 / 1 | 138 / 11 / 1 | `summary.parse_status` |
+| Multi-registrant covers / of them that miss an item | 18 / 0 | 18 / 0 | `summary.n_multi_registrant`, `multi_registrant_that_miss` |
+| Text before the first heading, complete filings: median / max | 2.5% / 29.5% | 2.5% / 29.5% | `summary.median_share_before_first_heading_complete` |
 
-Per-failure list (all 14; the last column is the share of the document that is never chunked because it precedes the first detected heading):
+**The two fixes** (`pipelines/parsing/sections.py`, `document.py`; each has unit tests, a test on the real filing, and a mutation check that fails without the fix):
+
+1. **Allstate Item 1** (`0000899051-26-000031`): the heading is fused with the section's first sentence (`Part I Item 1. Business The Allstate Corporation was incorporated ...`). A known item title followed by a new sentence is now a heading, and the sentence becomes the section's first chunk text. The filing went from `partial` to `ok`.
+2. **Everest Item 7A** (`0001095073-23-000007`): **my earlier description ("an out-of-order heading") was wrong.** The filing has `ITEM 8,` as the first fragment of a cross-reference inside Item 7 (`ITEM 8, "Financial Statements and Supplementary Data" - Notes 1 and 3`). The parser took it as the Item 8 heading, and since it sits before the real Item 7A that heading lost the section order. A heading that is only `ITEM N,` is now a cross-reference fragment, not a heading. Everest's 7A is found. Its old "Item 8" was that fragment, so the earlier "Item 8 found" was a false positive: Everest still misses 1, 7 and 8 (the real Item 8 heading is not recognised).
+
+**A regression caught on the way:** the first version of the comma rule rejected every heading ending in a comma, which dropped PPL's Item 5 and Nasdaq's Item 13 (their titles wrap onto the next line, `ITEM 5. MARKET FOR THE REGISTRANT'S COMMON EQUITY,`). I found it by diffing the 150 filings before and after, narrowed the rule to "code and comma, no title", and added a test. After that, only Allstate and Everest changed in the whole sample, and the 135 local filings are identical in every number (`n_chunks` 38922, status counts, token histogram, chunks per section), so the committed parse metrics stay valid.
+
+**Not touched, as instructed:** the title-only and cross-reference formats. They are scoped out in **ADR-026** (drafted, consequences left to you): their Item 1 and 1A text is not retrievable. Of the 13 remaining filings, the share of the document before the first detected heading (never chunked) is in the last column:
 
 | ticker | FY | accession | missing | cause (per item) | text before the first heading |
 |---|---:|---|---|---|---:|
 | AIG | 2023 | 0000005272-24-000023 | 1, 1A | 1: toc_or_index_only, 1A: toc_or_index_only | 18.0% |
-| ALL-PB | 2025 | 0000899051-26-000031 | 1 | 1: toc_or_index_only | 9.8% |
 | C-PR | 2021 | 0000831001-22-000036 | 1, 1A, 7, 7A, 8 | 1: no_mention, 1A: no_mention, 7: no_mention, 7A: no_mention, 8: no_mention | 100.0% |
-| EG | 2022 | 0001095073-23-000007 | 1, 7, 7A | 1: mention_only, 7: mention_only, 7A: heading_paragraph_not_chosen | 21.9% |
+| EG | 2022 | 0001095073-23-000007 | 1, 7, 8 | 1: mention_only, 7: mention_only, 8: mention_only | 21.9% |
 | HIG-PG | 2024 | 0000874766-25-000023 | 1, 7, 7A, 8 | 1: mention_only, 7: mention_only, 7A: no_mention, 8: no_mention | 9.2% |
 | SYF-PB | 2020 | 0001601712-21-000057 | 1, 1A, 7, 7A, 8 | 1: toc_or_index_only, 1A: toc_or_index_only, 7: toc_or_index_only, 7A: toc_or_index_only, 8: toc_or_index_only | 1.0% |
 | TFC-PR | 2024 | 0000092230-25-000020 | 7A | 7A: toc_or_index_only | 3.7% |
@@ -160,34 +163,19 @@ Per-failure list (all 14; the last column is the share of the document that is n
 | EP-PC | 2022 | 0001506307-23-000023 | 1 | 1: no_mention | 17.7% |
 | NI | 2024 | 0001111711-25-000008 | 1, 1A | 1: toc_or_index_only, 1A: toc_or_index_only | 29.8% |
 
-What the numbers say (the first three are measured; the rest is my reading, flagged):
+Sector skew: financials 6 of 43 after the fixes (7 of 43 before), against utilities 2 of 26 and other 5 of 79. Citigroup (`C-PR`) is the wholesale case: `no_sections`, 100% of the document unindexed. Multi-registrant co-filings are not the problem (0 of 18 miss an item); an earlier note that called Newmont multi-registrant was wrong and is corrected.
 
-- **Multi-registrant co-filings are not the problem.** 18 of 150 filings have more than one cover-page registrant (half of the utilities), and
-  none of the 18 misses a required item. An earlier note in this report called Newmont (NEMCL) a multi-registrant filing; that was wrong
-  (one registrant) and is corrected. Recommendation: no parser work and no ADR for multi-registrant filings.
-- **Missing items are a financials story:** 7 of 43 financials miss an item against 5 of 79 others and 2 of 26 utilities.
-- **A missed Item 1 or 1A costs more than a label.** Text before the first detected heading is not chunked, so when Item 1 or 1A is missed
-  9.8% to 29.8% of the document (the business description or the risk factors) is absent from the index for NI, EG, AIG, EP, VLO, HAL, PHM and ALL, and 100% for Citigroup;
-  a complete filing loses a median of 2.5% (cover page and TOC).
-- Only 1 missed item is a heading paragraph the chain skipped (Everest 7A, written after Item 8). Most are filings with no
-  recognisable body `Item N` heading. I read four of them: Allstate's Item 1 heading is fused with the section's first sentence
-  (`Part I Item 1. Business The Allstate Corporation was incorporated...`, so the heading is not recognised); NiSource has a title-only `Business` heading;
-  AIG and Newmont show no `Item N` body heading at all. The others I did not read.
-- **Decision input (yours):** (a) multi-registrant: nothing to fix. (b) A heading fused with its first sentence and an out-of-order heading are
-  small, local fixes (two registered cases). (c) Title-only and cross-reference formats (13 of the 14 failing filings, so 13 of 150 in the sample;
-  every failing filing except Allstate misses at least one item with no recognisable body heading; concentrated in financials) need a title-based fallback or a scoped-out ADR; they already parse `partial`, so they are visible. If you scope (c) out, the ADR should say
-  that Item 1 and 1A text of those filings is not retrievable. My recommendation: fix (b) in M2 only if the labeling shows it is cheap, and scope (c) out with that sentence in the ADR.
-- **Regression cases:** `tests/fixtures/known_defects/section_failures.json` registers all 14 filings (accession, missing items, cause). Two items are asserted
-  with strict xfail (Allstate Item 1, Everest Item 7A); the other 13 filings' items are listed as `needs_gold_label`, because nobody has shown where they start.
-  The filings are cached by `python -m eval.blast_radius`, not committed, so those tests skip on a machine without the cache.
+**Regression cases:** `tests/fixtures/known_defects/section_failures.json` has `fixed` (Allstate Item 1, Everest 7A; strict-xfail markers removed, now ordinary tests that run when the filings are cached by `eval.blast_radius`) and `cases` (13 filings, every missing item `needs_gold_label`: nobody has shown where it starts, so none is asserted).
 
 **FinanceBench company CSV (`data/financebench_companies.csv`, evidence `docs/milestones/M02-financebench-cik-check.json`)**
 
-I did not have the earlier prompt you mentioned, so I did this the safe way: `python -m eval.financebench_ciks` finds candidate CIKs by name from SEC's own
-files (company_tickers.json and the filer names loaded into the lake), and accepts a CIK only if the submissions API shows, for every 10-K and 10-Q that FinanceBench
-cites for that company, a filing of that form reported in the cited year. Result: 32 of 32 companies. 31 are verified (72 cited 10-K/10-Q documents matched).
-**Foot Locker is the exception**: all its cited documents are 8-Ks, so it is accepted on an exact, unique name match (`resolved_name_only`, CIK 850209, FOOT LOCKER, INC.). The CSV is
-gitignored (it lives under `data/`, as the runbook says); please look it over, especially Foot Locker, Amcor (Amcor plc, CIK 1748790) and Block (formerly Square, CIK 1512673).
+I did not have the earlier prompt you mentioned, so I did this the safe way: `python -m eval.financebench_ciks` finds candidate CIKs by name from SEC's own files and accepts a CIK only if the submissions show, for every 10-K and 10-Q FinanceBench cites for that company, a filing of that form reported in the cited year. Result: `n_resolved` 32 of `n_companies` 32; 31 verified against 72 cited documents; Foot Locker accepted on an exact unique name (`resolved_name_only`) because it cites only 8-Ks. The CSV is gitignored (under `data/`, as the runbook says); the evidence is committed.
+
+**Re-verification of the three flagged companies** (`python -m eval.financebench_recheck`, results under `recheck` in the evidence file). For each cited PDF it reads the cover page and checks it against that CIK's full submissions (all forms): the filing by the cover's EXACT period-end or event date, the SEC file number, and the registrant name against the name in force on the filing date (current name and `formerNames` with their from/to dates).
+
+- **Block (CIK 1512673): confirmed.** Both cited 10-Ks (`0001628280-17-001754` filed 2017-02-27, `0001512673-21-000008` filed 2021-02-23) were filed under the name **Square, Inc.** (a former name in force 2011-03-02 to 2021-12-08; the entity is Block, Inc. since), exact period ends match, file number 001-37622 matches. The cover says SQUARE, INC., which is the correct name for those dates.
+- **Amcor (CIK 1748790, Amcor plc): confirmed.** The SEC entity's only former name is `ARCTIC JERSEY Ltd` (to 2018-10-12); this CIK has the cited FY2020 and FY2023 10-Ks, the Dec 2022 10-Q and the 2022-07-01 8-K, each matched by exact date. I did not find an "Amcor Limited" registrant under this CIK and did not search for one: the cited documents are Amcor plc's. `AMCOR_2023Q4_EARNINGS` is an earnings release with no date on its cover and stays unchecked. **One real discrepancy, explained:** the FY2020 10-K's cover prints commission file number **001-36786**, while SEC's metadata for that filing says 001-38932. I read the original filing on sec.gov: it prints 001-36786 too, and the PDF's registrant, period end and file number equal the original's, so the PDF is a faithful copy and the difference is in the filing's own cover, not a wrong match (status `confirmed_pdf_matches_original_filing`).
+- **Foot Locker (CIK 850209): confirmed, no longer name-only.** Both cited 8-Ks are found by exact filing date (`0001539497-22-001037` on 2022-05-20, `0001539497-22-001461` on 2022-08-19), the cover file number 1-10299 matches SEC's 001-10299, and the name in force is FOOT LOCKER, INC. The submissions also show 10-K filings for every fiscal year from `10k_report_dates` 2013-02-02 to 2025-02-01 (13 annual reports). The main evidence entry keeps its original `resolved_name_only` status; the `recheck` block is the upgrade.
 
 **Labeling the gold set (`eval/labeling_harness.py`, template `eval/sets/drafts/sections_gold_template.jsonl`)**
 
@@ -202,8 +190,7 @@ line-start regex hits of `Item N` with character offsets in the plain-text file 
 3. `python -m eval.labeling_harness check` lists rows that are not ready (unset `present`, bad offset, a sentence that is not in the text, a blank `labeled_by`).
 4. Drop rows with `present: false`, copy the file to `eval/sets/sections_gold.jsonl` yourself (a hook blocks me from writing there), then `make gold-checksums`, `python -m eval.sections_eval`, `/dod M2`.
 
-Heads-up for labeling: USB's Item 1A says it is incorporated by reference to the annual report (visible in its candidate context), so that section is one short sentence, which is still a valid label. IBM and BNY are also short documents (101,835 and 63,381 characters in `sections_gold_template.strata.json`); I did not check whether they do the same. 50 rows is half of the 100
-the runbook asks for; run `prepare` with other `--multi/--none/--named/--opaque` counts for more, or label 10-Qs separately. `sections_eval` now refuses a blank `first_sentence` (it would match every start).
+Heads-up for labeling: USB's Item 1A says it is incorporated by reference to the annual report (visible in its candidate context), so that section is one short sentence, which is still a valid label. IBM and BNY are also short documents (101,835 and 63,381 characters in `sections_gold_template.strata.json`); I did not check whether they do the same. **50 rows is half of the 100 the runbook asks for: a conscious speed-run deviation**, recorded here and in the DoD checklist so the result is reported as n=50; run `prepare` with other `--multi/--none/--named/--opaque` counts for more, or label 10-Qs separately. `sections_eval` now refuses a blank `first_sentence` (it would match every start).
 
 **M1 full history (your cloud-sprint request)**
 
@@ -223,7 +210,7 @@ the runbook asks for; run `prepare` with other `--multi/--none/--named/--opaque`
 1. ~~Three real fixture filings~~ **Done** (chosen by you, promoted 2026-11-17): Apple 10-K FY2024 (opaque-id anchor
    TOC), Ulta 10-K FY2024 (named-id anchor TOC, label offset -1) and Apple 10-Q Q3 FY2026, each with a verified sidecar.
    Still open: a fixture for the in-scope case where the TOC is not linked on the item text (see Open issues 10).
-2. **`eval/sets/sections_gold.jsonl`** (100 labels): a labeling template is ready, see "Labeling the gold set" below.
+2. **`eval/sets/sections_gold.jsonl`** (n=50, half the runbook's 100: a conscious deviation): a labeling template is ready, see "Labeling the gold set" below.
    Then `make gold-checksums`, `python -m eval.sections_eval --min-accuracy 0.9`, and `/dod M2`.
 3. ~~`data/financebench_companies.csv`~~ **Done, please review** (see "FinanceBench company CSV" below).
 4. **The 5-in-a-browser spot check** of citation fragments (items from `html.url_sample`).
@@ -234,7 +221,7 @@ the runbook asks for; run `prepare` with other `--multi/--none/--named/--opaque`
 
 ## Decisions that need an ADR (or your sign-off)
 
-- **ADR-023 and ADR-024 are drafted** (`docs/decisions.md`, status `proposed`, consequences left to you).
+- **ADR-023, ADR-024, ADR-025 and ADR-026 are drafted** (`docs/decisions.md`, status `proposed`, consequences left to you): fiscal labels, the EMR runtime, pre-2020 SGML filings out of scope, and title-only/cross-reference headings out of scope.
 - `curated.filings` is merged on `accession` instead of `overwritePartitions` by `fiscal_year` (a re-parse can move a
   filing between fiscal years and leave a stale row); the runbook text says overwrite.
 - `parse_status` values `ok / partial / no_sections / error` and the core-section definition (10-K 1, 1A, 7, 8; 10-Q P1-1,
