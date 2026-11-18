@@ -213,12 +213,14 @@ def build_pdf_inputs(
             ),
             corpus_version=corpus_version,
         )
-        rows.append((meta.model_dump_json(), (pdf_dir / "pdfs" / f"{doc_name}.pdf").as_uri()))
+        rows.append(
+            (meta.model_dump_json(), (pdf_dir / "pdfs" / f"{doc_name}.pdf").resolve().as_uri())
+        )
     meta_df = spark.createDataFrame(rows, "meta_json string, uri string")
     objects = (
         spark.read.format("binaryFile")
         .option("pathGlobFilter", "*.pdf")
-        .load(str(pdf_dir / "pdfs"))
+        .load(str((pdf_dir / "pdfs").resolve()))  # Spark resolves a relative path in its own cwd
         .select(normalized_path("path").alias("object_path"), "content")
     )
     return (

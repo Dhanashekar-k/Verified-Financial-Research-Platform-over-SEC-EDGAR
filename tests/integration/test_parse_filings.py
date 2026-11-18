@@ -388,6 +388,27 @@ def test_financebench_pdfs_equal_the_pure_python_parse_and_a_missing_cik_is_an_e
     assert {c["page"] for c in got_c.values() if c["doc_source"] == "financebench_pdf"} == {1, 2}
 
 
+def test_a_relative_financebench_directory_works_like_the_cli_default(
+    spark: SparkSession, lake, financebench, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+):
+    """`make parse-filings FB=1` passes a relative `data/raw/financebench`: both `Path.as_uri` and
+    Spark's own working directory need it made absolute."""
+    ns, root, _ = lake
+    base, _ = financebench
+    csv_path = tmp_path / "financebench_companies.csv"
+    csv_path.write_text("company,cik\n3M,66740\nAcme,1\n")
+    monkeypatch.chdir(base.parent)
+
+    run(spark, str(root), raw_ns=ns, curated_ns=ns, financebench_dir=Path(base.name),
+        financebench_companies=csv_path)  # fmt: skip
+
+    pdf_rows = spark.table(f"{ns}.filings").where("doc_source = 'financebench_pdf'").collect()
+    assert sorted((r.accession, r.parse_status) for r in pdf_rows) == [
+        ("fb:3M_2018_10K", "ok"),
+        ("fb:ACME_2022_10K", "ok"),
+    ]
+
+
 def test_without_the_owners_company_file_the_pdfs_are_reported_not_parsed(
     spark: SparkSession, lake, financebench, tmp_path: Path, caplog: pytest.LogCaptureFixture
 ):
