@@ -77,6 +77,7 @@ The `.gz` files are deterministic (no name or mtime in the header). `_manifest.j
 
 - Hugging Face `PatronusAI/financebench`: **150 annotated questions**, license **CC-BY-NC-4.0**; source PDFs in the GitHub repo `patronus-ai/financebench` under `pdfs/` [Certain].
 - Fields you'll use: `financebench_id, company, doc_name, question, answer, evidence[] (evidence_text, page), question_type, question_reasoning` [Likely; verify the JSONL keys].
+- Measured 2026-11-17 on all 150 questions (189 evidence items): the evidence keys are `evidence_text`, `evidence_page_num` and `evidence_text_full_page`, and `evidence_page_num` is the **0-based** PDF page index (189/189 found the text on that index). `curated.chunks.page` for PDFs is **1-based** (PyMuPDF index + 1, the number a PDF viewer shows and `#page=N` uses), so a gold `page` converts as `evidence_page_num + 1`.
 - The non-commercial license is fine for a portfolio. Attribute it in the README, and don't use it in anything sold.
 
 ### 1.7 SEC access rules (shared HTTP client, M1)
@@ -109,10 +110,11 @@ CREATE TABLE lake.raw.fsds_num (
 -- stored as-is (not converted to UTC); `period`, `filed`, `ddate` are yyyymmdd ints, month-end rounded for ddate/period.
 
 CREATE TABLE lake.raw.filings_html (          -- metadata only; the HTML itself lives in S3
-  accession string, cik int, form string, filed date, url string,
+  accession string, cik int, form string, filed date, report_date date, url string,
   s3_uri string, bytes bigint, sha256 string, http_status int, fetched_at timestamp
 ) USING iceberg PARTITIONED BY (form);
--- One row per target filing, merged on accession. `bytes` and `sha256` describe the STORED object
+-- One row per target filing, merged on accession. `report_date` is the submissions API's reportDate
+-- (curated.filings.period_of_report); NULL if the SEC gave none. `bytes` and `sha256` describe the STORED object
 -- (the gzip at s3_uri). A failed fetch is a row too: http_status set (NULL if no response) and
 -- s3_uri, bytes, sha256 NULL; it is retried on the next fetch run. Loaded from the fetcher's
 -- `_manifest.jsonl` by pipelines/spark/load_filings_html.py.
