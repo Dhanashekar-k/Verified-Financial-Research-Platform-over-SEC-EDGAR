@@ -1,0 +1,162 @@
+[
+ {
+  "accession": "0001111711-25-000008",
+  "ticker": "NI",
+  "report_year": 2024,
+  "url": "https://www.sec.gov/Archives/edgar/data/1111711/000111171125000008/nix-20241231.htm",
+  "stratum": "missing_item:toc_or_index_only",
+  "bytes": 4469041,
+  "text_chars": 474998,
+  "hits_per_required_item": {
+   "1": 10,
+   "1A": 15,
+   "7": 23,
+   "7A": 2,
+   "8": 66
+  }
+ },
+ {
+  "accession": "0001171200-21-000076",
+  "ticker": "ROL",
+  "report_year": 2020,
+  "url": "https://www.sec.gov/Archives/edgar/data/84839/000117120021000076/i21062_rol-10k.htm",
+  "stratum": "missing_item:no_mention",
+  "bytes": 1665441,
+  "text_chars": 251917,
+  "hits_per_required_item": {
+   "1": 6,
+   "1A": 0,
+   "7": 3,
+   "7A": 1,
+   "8": 2
+  }
+ },
+ {
+  "accession": "0000100517-26-000023",
+  "ticker": "UAL",
+  "report_year": 2025,
+  "url": "https://www.sec.gov/Archives/edgar/data/100517/000010051726000023/ual-20251231.htm",
+  "stratum": "multi_registrant",
+  "bytes": 2932992,
+  "text_chars": 443326,
+  "hits_per_required_item": {
+   "1": 2,
+   "1A": 2,
+   "7": 2,
+   "7A": 2,
+   "8": 2
+  }
+ },
+ {
+  "accession": "0000034903-26-000017",
+  "ticker": "FRT-PC",
+  "report_year": 2025,
+  "url": "https://www.sec.gov/Archives/edgar/data/34903/000003490326000017/frt-20251231.htm",
+  "stratum": "multi_registrant",
+  "bytes": 3868234,
+  "text_chars": 388718,
+  "hits_per_required_item": {
+   "1": 2,
+   "1A": 3,
+   "7": 2,
+   "7A": 2,
+   "8": 3
+  }
+ },
+ {
+  "accession": "0000036104-26-000011",
+  "ticker": "USB-PS",
+  "report_year": 2025,
+  "url": "https://www.sec.gov/Archives/edgar/data/36104/000003610426000011/usb-20251231.htm",
+  "stratum": "toc_none",
+  "bytes": 972721,
+  "text_chars": 138029,
+  "hits_per_required_item": {
+   "1": 1,
+   "1A": 1,
+   "7": 1,
+   "7A": 1,
+   "8": 1
+  }
+ },
+ {
+  "accession": "0000080661-26-000086",
+  "ticker": "PGR",
+  "report_year": 2025,
+  "url": "https://www.sec.gov/Archives/edgar/data/80661/000008066126000086/pgr-20251231.htm",
+  "stratum": "toc_none",
+  "bytes": 1313430,
+  "text_chars": 191662,
+  "hits_per_required_item": {
+   "1": 2,
+   "1A": 6,
+   "7": 1,
+   "7A": 1,
+   "8": 1
+  }
+ },
+ {
+  "accession": "0001558370-25-003810",
+  "ticker": "ULTA",
+  "report_year": 2025,
+  "url": "https://www.sec.gov/Archives/edgar/data/1403568/000155837025003810/ulta-20250201x10k.htm",
+  "stratum": "toc_named",
+  "bytes": 2914346,
+  "text_chars": 270496,
+  "hits_per_required_item": {
+   "1": 2,
+   "1A": 2,
+   "7": 2,
+   "7A": 2,
+   "8": 2
+  }
+ },
+ {
+  "accession": "0001437749-25-004353",
+  "ticker": "GNRC",
+  "report_year": 2024,
+  "url": "https://www.sec.gov/Archives/edgar/data/1474735/000143774925004353/gnrc20241231_10k.htm",
+  "stratum": "toc_named",
+  "bytes": 2994174,
+  "text_chars": 402358,
+  "hits_per_required_item": {
+   "1": 2,
+   "1A": 2,
+   "7": 2,
+   "7A": 2,
+   "8": 2
+  }
+ },
+ {
+  "accession": "0000051143-24-000012",
+  "ticker": "IBM",
+  "report_year": 2023,
+  "url": "https://www.sec.gov/Archives/edgar/data/51143/000005114324000012/ibm-20231231.htm",
+  "stratum": "toc_opaque",
+  "bytes": 1163635,
+  "text_chars": 101835,
+  "hits_per_required_item": {
+   "1": 2,
+   "1A": 2,
+   "7": 2,
+   "7A": 2,
+   "8": 2
+  }
+ },
+ {
+  "accession": "0001390777-26-000033",
+  "ticker": "BNY-PK",
+  "report_year": 2025,
+  "url": "https://www.sec.gov/Archives/edgar/data/1390777/000139077726000033/bk-20251231.htm",
+  "stratum": "toc_opaque",
+  "bytes": 1257004,
+  "text_chars": 63381,
+  "hits_per_required_item": {
+   "1": 2,
+   "1A": 2,
+   "7": 2,
+   "7A": 2,
+   "8": 2
+  }
+ }
+]

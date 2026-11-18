@@ -157,3 +157,14 @@ def test_main_writes_a_result_file_and_fails_below_the_threshold(store: Path, tm
 
     assert rc == 1
     assert json.loads(out.read_text())["accuracy"] == 0.5
+
+
+@pytest.mark.parametrize("blank", ["", "   ", "…", "\u00a0"])
+def test_a_blank_gold_first_sentence_is_rejected_not_matched_against_everything(
+    tmp_path: Path, blank: str
+):
+    g = tmp_path / "gold.jsonl"
+    g.write_text(json.dumps({"accession": ACC, "section": "1", "first_sentence": blank}) + "\n")
+
+    with pytest.raises(ValueError, match="line 1.*blank"):
+        load_gold(g)

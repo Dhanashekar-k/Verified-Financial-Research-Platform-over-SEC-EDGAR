@@ -53,6 +53,9 @@ def load_gold(path: Path) -> list[dict[str, str]]:
         missing = {"accession", "section", "first_sentence"} - row.keys()
         if missing:
             raise ValueError(f"{path} line {n}: missing {sorted(missing)}")
+        if not normalize_start(str(row["first_sentence"])):
+            # an empty label would normalise to "" and match EVERY parser start
+            raise ValueError(f"{path} line {n}: first_sentence is blank")
         rows.append(row)
     return rows
 
