@@ -1,0 +1,876 @@
+{
+ "n_companies": 32,
+ "n_resolved": 32,
+ "results": [
+  {
+   "company": "3M",
+   "documents": [
+    "3M_2018_10K",
+    "3M_2022_10K",
+    "3M_2023Q2_10Q"
+   ],
+   "cik": 66740,
+   "status": "resolved",
+   "candidates_tried": [
+    {
+     "cik": 66740,
+     "sec_name": "3M CO",
+     "listed_name": "3M CO",
+     "score": 100.0,
+     "matched": {
+      "3M_2018_10K": "0001558370-19-000470",
+      "3M_2022_10K": "0000066740-23-000014",
+      "3M_2023Q2_10Q": "0000066740-23-000092"
+     },
+     "missing": [],
+     "unchecked": [],
+     "ok": true
+    }
+   ]
+  },
+  {
+   "company": "AES Corporation",
+   "documents": [
+    "AES_2022_10K"
+   ],
+   "cik": 874761,
+   "status": "resolved",
+   "candidates_tried": [
+    {
+     "cik": 874761,
+     "sec_name": "AES CORP",
+     "listed_name": "AES CORP",
+     "score": 100.0,
+     "matched": {
+      "AES_2022_10K": "0000874761-23-000010"
+     },
+     "missing": [],
+     "unchecked": [],
+     "ok": true
+    }
+   ]
+  },
+  {
+   "company": "AMD",
+   "documents": [
+    "AMD_2015_10K",
+    "AMD_2022_10K"
+   ],
+   "cik": 2488,
+   "status": "resolved",
+   "candidates_tried": [
+    {
+     "cik": 2488,
+     "sec_name": "ADVANCED MICRO DEVICES INC",
+     "listed_name": "ADVANCED MICRO DEVICES INC",
+     "score": 100.0,
+     "matched": {
+      "AMD_2015_10K": "0000002488-16-000111",
+      "AMD_2022_10K": "0000002488-23-000047"
+     },
+     "missing": [],
+     "unchecked": [],
+     "ok": true
+    }
+   ]
+  },
+  {
+   "company": "Activision Blizzard",
+   "documents": [
+    "ACTIVISIONBLIZZARD_2019_10K"
+   ],
+   "cik": 718877,
+   "status": "resolved",
+   "candidates_tried": [
+    {
+     "cik": 718877,
+     "sec_name": "Activision Blizzard, Inc.",
+     "listed_name": "ACTIVISION BLIZZARD, INC.",
+     "score": 100.0,
+     "matched": {
+      "ACTIVISIONBLIZZARD_2019_10K": "0000718877-20-000003"
+     },
+     "missing": [],
+     "unchecked": [],
+     "ok": true
+    }
+   ]
+  },
+  {
+   "company": "Adobe",
+   "documents": [
+    "ADOBE_2015_10K",
+    "ADOBE_2016_10K",
+    "ADOBE_2017_10K",
+    "ADOBE_2022_10K"
+   ],
+   "cik": 796343,
+   "status": "resolved",
+   "candidates_tried": [
+    {
+     "cik": 796343,
+     "sec_name": "ADOBE INC.",
+     "listed_name": "ADOBE INC.",
+     "score": 100.0,
+     "matched": {
+      "ADOBE_2015_10K": "0000796343-16-000224",
+      "ADOBE_2016_10K": "0000796343-17-000031",
+      "ADOBE_2017_10K": "0000796343-18-000015",
+      "ADOBE_2022_10K": "0000796343-23-000007"
+     },
+     "missing": [],
+     "unchecked": [],
+     "ok": true
+    }
+   ]
+  },
+  {
+   "company": "Amazon",
+   "documents": [
+    "AMAZON_2017_10K",
+    "AMAZON_2019_10K"
+   ],
+   "cik": 1018724,
+   "status": "resolved",
+   "candidates_tried": [
+    {
+     "cik": 1018724,
+     "sec_name": "AMAZON COM INC",
+     "listed_name": "AMAZON COM INC",
+     "score": 95.0,
+     "matched": {
+      "AMAZON_2017_10K": "0001018724-18-000005",
+      "AMAZON_2019_10K": "0001018724-20-000004"
+     },
+     "missing": [],
+     "unchecked": [],
+     "ok": true
+    }
+   ]
+  },
+  {
+   "company": "Amcor",
+   "documents": [
+    "AMCOR_2020_10K",
+    "AMCOR_2022_8K_dated-2022-07-01",
+    "AMCOR_2023Q2_10Q",
+    "AMCOR_2023Q4_EARNINGS",
+    "AMCOR_2023_10K"
+   ],
+   "cik": 1748790,
+   "status": "resolved",
+   "candidates_tried": [
+    {
+     "cik": 1748790,
+     "sec_name": "Amcor plc",
+     "listed_name": "Amcor plc",
+     "score": 100.0,
+     "matched": {
+      "AMCOR_2020_10K": "0001748790-20-000025",
+      "AMCOR_2023Q2_10Q": "0001748790-24-000006",
+      "AMCOR_2023_10K": "0001748790-23-000030"
+     },
+     "missing": [],
+     "unchecked": [
+      "AMCOR_2022_8K_dated-2022-07-01",
+      "AMCOR_2023Q4_EARNINGS"
+     ],
+     "ok": true
+    }
+   ]
+  },
+  {
+   "company": "American Express",
+   "documents": [
+    "AMERICANEXPRESS_2022_10K"
+   ],
+   "cik": 4962,
+   "status": "resolved",
+   "candidates_tried": [
+    {
+     "cik": 4962,
+     "sec_name": "AMERICAN EXPRESS CO",
+     "listed_name": "AMERICAN EXPRESS CO",
+     "score": 100.0,
+     "matched": {
+      "AMERICANEXPRESS_2022_10K": "0000004962-23-000006"
+     },
+     "missing": [],
+     "unchecked": [],
+     "ok": true
+    }
+   ]
+  },
+  {
+   "company": "American Water Works",
+   "documents": [
+    "AMERICANWATERWORKS_2020_10K",
+    "AMERICANWATERWORKS_2021_10K",
+    "AMERICANWATERWORKS_2022_10K"
+   ],
+   "cik": 1410636,
+   "status": "resolved",
+   "candidates_tried": [
+    {
+     "cik": 1410636,
+     "sec_name": "American Water Works Company, Inc.",
+     "listed_name": "American Water Works Company, Inc.",
+     "score": 100.0,
+     "matched": {
+      "AMERICANWATERWORKS_2020_10K": "0001410636-21-000101",
+      "AMERICANWATERWORKS_2021_10K": "0001410636-22-000048",
+      "AMERICANWATERWORKS_2022_10K": "0001410636-23-000020"
+     },
+     "missing": [],
+     "unchecked": [],
+     "ok": true
+    }
+   ]
+  },
+  {
+   "company": "Best Buy",
+   "documents": [
+    "BESTBUY_2017_10K",
+    "BESTBUY_2019_10K",
+    "BESTBUY_2023_10K",
+    "BESTBUY_2024Q2_10Q"
+   ],
+   "cik": 764478,
+   "status": "resolved",
+   "candidates_tried": [
+    {
+     "cik": 764478,
+     "sec_name": "BEST BUY CO INC",
+     "listed_name": "BEST BUY CO INC",
+     "score": 100.0,
+     "matched": {
+      "BESTBUY_2017_10K": "0000764478-17-000008",
+      "BESTBUY_2019_10K": "0000764478-19-000009",
+      "BESTBUY_2023_10K": "0000764478-23-000006",
+      "BESTBUY_2024Q2_10Q": "0000764478-24-000041"
+     },
+     "missing": [],
+     "unchecked": [],
+     "ok": true
+    }
+   ]
+  },
+  {
+   "company": "Block",
+   "documents": [
+    "BLOCK_2016_10K",
+    "BLOCK_2020_10K"
+   ],
+   "cik": 1512673,
+   "status": "resolved",
+   "candidates_tried": [
+    {
+     "cik": 1512673,
+     "sec_name": "Block, Inc.",
+     "listed_name": "Block, Inc.",
+     "score": 100.0,
+     "matched": {
+      "BLOCK_2016_10K": "0001628280-17-001754",
+      "BLOCK_2020_10K": "0001512673-21-000008"
+     },
+     "missing": [],
+     "unchecked": [],
+     "ok": true
+    }
+   ]
+  },
+  {
+   "company": "Boeing",
+   "documents": [
+    "BOEING_2018_10K",
+    "BOEING_2022_10K"
+   ],
+   "cik": 12927,
+   "status": "resolved",
+   "candidates_tried": [
+    {
+     "cik": 12927,
+     "sec_name": "BOEING CO",
+     "listed_name": "BOEING CO",
+     "score": 100.0,
+     "matched": {
+      "BOEING_2018_10K": "0000012927-19-000010",
+      "BOEING_2022_10K": "0000012927-23-000007"
+     },
+     "missing": [],
+     "unchecked": [],
+     "ok": true
+    }
+   ]
+  },
+  {
+   "company": "CVS Health",
+   "documents": [
+    "CVSHEALTH_2018_10K",
+    "CVSHEALTH_2022_10K"
+   ],
+   "cik": 64803,
+   "status": "resolved",
+   "candidates_tried": [
+    {
+     "cik": 64803,
+     "sec_name": "CVS HEALTH Corp",
+     "listed_name": "CVS HEALTH Corp",
+     "score": 100.0,
+     "matched": {
+      "CVSHEALTH_2018_10K": "0000064803-19-000013",
+      "CVSHEALTH_2022_10K": "0000064803-23-000009"
+     },
+     "missing": [],
+     "unchecked": [],
+     "ok": true
+    }
+   ]
+  },
+  {
+   "company": "Coca-Cola",
+   "documents": [
+    "COCACOLA_2017_10K",
+    "COCACOLA_2021_10K",
+    "COCACOLA_2022_10K"
+   ],
+   "cik": 21344,
+   "status": "resolved",
+   "candidates_tried": [
+    {
+     "cik": 21344,
+     "sec_name": "COCA COLA CO",
+     "listed_name": "COCA COLA CO",
+     "score": 100.0,
+     "matched": {
+      "COCACOLA_2017_10K": "0000021344-18-000008",
+      "COCACOLA_2021_10K": "0000021344-22-000009",
+      "COCACOLA_2022_10K": "0000021344-23-000011"
+     },
+     "missing": [],
+     "unchecked": [],
+     "ok": true
+    },
+    {
+     "cik": 317540,
+     "sec_name": "Coca-Cola Consolidated, Inc.",
+     "listed_name": "Coca-Cola Consolidated, Inc.",
+     "score": 95.0,
+     "matched": {
+      "COCACOLA_2017_10K": "0001564590-18-003845",
+      "COCACOLA_2021_10K": "0000317540-22-000009",
+      "COCACOLA_2022_10K": "0000317540-23-000009"
+     },
+     "missing": [],
+     "unchecked": [],
+     "ok": true
+    },
+    {
+     "cik": 910631,
+     "sec_name": "COCA COLA FEMSA SAB DE CV",
+     "listed_name": "COCA COLA FEMSA SAB DE CV",
+     "score": 95.0,
+     "matched": {},
+     "missing": [
+      "COCACOLA_2017_10K",
+      "COCACOLA_2021_10K",
+      "COCACOLA_2022_10K"
+     ],
+     "unchecked": [],
+     "ok": false
+    },
+    {
+     "cik": 1650107,
+     "sec_name": "COCA-COLA EUROPACIFIC PARTNERS plc",
+     "listed_name": "COCA-COLA EUROPACIFIC PARTNERS plc",
+     "score": 95.0,
+     "matched": {},
+     "missing": [
+      "COCACOLA_2017_10K",
+      "COCACOLA_2021_10K",
+      "COCACOLA_2022_10K"
+     ],
+     "unchecked": [],
+     "ok": false
+    }
+   ]
+  },
+  {
+   "company": "Corning",
+   "documents": [
+    "CORNING_2020_10K",
+    "CORNING_2021_10K",
+    "CORNING_2022_10K"
+   ],
+   "cik": 24741,
+   "status": "resolved",
+   "candidates_tried": [
+    {
+     "cik": 24741,
+     "sec_name": "CORNING INC /NY",
+     "listed_name": "CORNING INC /NY",
+     "score": 100.0,
+     "matched": {
+      "CORNING_2020_10K": "0001562762-21-000023",
+      "CORNING_2021_10K": "0001437749-22-003247",
+      "CORNING_2022_10K": "0001437749-23-003123"
+     },
+     "missing": [],
+     "unchecked": [],
+     "ok": true
+    },
+    {
+     "cik": 1582244,
+     "sec_name": "Corning Natural Gas Holding Corp",
+     "listed_name": "CORNING NATURAL GAS HOLDING CORP",
+     "score": 95.0,
+     "matched": {
+      "CORNING_2020_10K": "0001174947-20-001229",
+      "CORNING_2021_10K": "0001174947-21-001128"
+     },
+     "missing": [
+      "CORNING_2022_10K"
+     ],
+     "unchecked": [],
+     "ok": false
+    }
+   ]
+  },
+  {
+   "company": "Costco",
+   "documents": [
+    "COSTCO_2021_10K"
+   ],
+   "cik": 909832,
+   "status": "resolved",
+   "candidates_tried": [
+    {
+     "cik": 909832,
+     "sec_name": "COSTCO WHOLESALE CORP /NEW",
+     "listed_name": "COSTCO WHOLESALE CORP /NEW",
+     "score": 95.0,
+     "matched": {
+      "COSTCO_2021_10K": "0000909832-21-000014"
+     },
+     "missing": [],
+     "unchecked": [],
+     "ok": true
+    }
+   ]
+  },
+  {
+   "company": "Foot Locker",
+   "documents": [
+    "FOOTLOCKER_2022_8K_dated-2022-05-20",
+    "FOOTLOCKER_2022_8K_dated_2022-08-19"
+   ],
+   "cik": 850209,
+   "status": "resolved_name_only",
+   "candidates_tried": [
+    {
+     "cik": 850209,
+     "sec_name": "FOOT LOCKER, INC.",
+     "listed_name": "FOOT LOCKER, INC.",
+     "score": 100.0,
+     "matched": {},
+     "missing": [],
+     "unchecked": [
+      "FOOTLOCKER_2022_8K_dated-2022-05-20",
+      "FOOTLOCKER_2022_8K_dated_2022-08-19"
+     ],
+     "ok": false
+    }
+   ]
+  },
+  {
+   "company": "General Mills",
+   "documents": [
+    "GENERALMILLS_2019_10K",
+    "GENERALMILLS_2020_10K",
+    "GENERALMILLS_2022_10K"
+   ],
+   "cik": 40704,
+   "status": "resolved",
+   "candidates_tried": [
+    {
+     "cik": 40704,
+     "sec_name": "GENERAL MILLS INC",
+     "listed_name": "GENERAL MILLS INC",
+     "score": 100.0,
+     "matched": {
+      "GENERALMILLS_2019_10K": "0001193125-19-184675",
+      "GENERALMILLS_2020_10K": "0001193125-20-186469",
+      "GENERALMILLS_2022_10K": "0001193125-22-185257"
+     },
+     "missing": [],
+     "unchecked": [],
+     "ok": true
+    }
+   ]
+  },
+  {
+   "company": "JPMorgan",
+   "documents": [
+    "JPMORGAN_2021Q1_10Q",
+    "JPMORGAN_2022Q2_10Q",
+    "JPMORGAN_2022_10K",
+    "JPMORGAN_2023Q2_10Q"
+   ],
+   "cik": 19617,
+   "status": "resolved",
+   "candidates_tried": [
+    {
+     "cik": 19617,
+     "sec_name": "JPMORGAN CHASE & CO",
+     "listed_name": "JPMORGAN CHASE & CO",
+     "score": 95.0,
+     "matched": {
+      "JPMORGAN_2021Q1_10Q": "0000019617-21-000458",
+      "JPMORGAN_2022Q2_10Q": "0000019617-22-000492",
+      "JPMORGAN_2022_10K": "0000019617-23-000231",
+      "JPMORGAN_2023Q2_10Q": "0000019617-23-000524"
+     },
+     "missing": [],
+     "unchecked": [],
+     "ok": true
+    }
+   ]
+  },
+  {
+   "company": "Johnson & Johnson",
+   "documents": [
+    "JOHNSON_JOHNSON_2022Q4_EARNINGS",
+    "JOHNSON_JOHNSON_2022_10K",
+    "JOHNSON_JOHNSON_2023Q2_EARNINGS",
+    "JOHNSON_JOHNSON_2023_8K_dated-2023-08-30"
+   ],
+   "cik": 200406,
+   "status": "resolved",
+   "candidates_tried": [
+    {
+     "cik": 200406,
+     "sec_name": "JOHNSON & JOHNSON",
+     "listed_name": "JOHNSON & JOHNSON",
+     "score": 100.0,
+     "matched": {
+      "JOHNSON_JOHNSON_2022_10K": "0000200406-22-000022"
+     },
+     "missing": [],
+     "unchecked": [
+      "JOHNSON_JOHNSON_2022Q4_EARNINGS",
+      "JOHNSON_JOHNSON_2023Q2_EARNINGS",
+      "JOHNSON_JOHNSON_2023_8K_dated-2023-08-30"
+     ],
+     "ok": true
+    }
+   ]
+  },
+  {
+   "company": "Kraft Heinz",
+   "documents": [
+    "KRAFTHEINZ_2019_10K"
+   ],
+   "cik": 1637459,
+   "status": "resolved",
+   "candidates_tried": [
+    {
+     "cik": 1637459,
+     "sec_name": "Kraft Heinz Co",
+     "listed_name": "Kraft Heinz Co",
+     "score": 100.0,
+     "matched": {
+      "KRAFTHEINZ_2019_10K": "0001637459-20-000027"
+     },
+     "missing": [],
+     "unchecked": [],
+     "ok": true
+    }
+   ]
+  },
+  {
+   "company": "Lockheed Martin",
+   "documents": [
+    "LOCKHEEDMARTIN_2020_10K",
+    "LOCKHEEDMARTIN_2021_10K",
+    "LOCKHEEDMARTIN_2022_10K"
+   ],
+   "cik": 936468,
+   "status": "resolved",
+   "candidates_tried": [
+    {
+     "cik": 936468,
+     "sec_name": "LOCKHEED MARTIN CORP",
+     "listed_name": "LOCKHEED MARTIN CORP",
+     "score": 100.0,
+     "matched": {
+      "LOCKHEEDMARTIN_2020_10K": "0000936468-21-000013",
+      "LOCKHEEDMARTIN_2021_10K": "0000936468-22-000008",
+      "LOCKHEEDMARTIN_2022_10K": "0000936468-23-000009"
+     },
+     "missing": [],
+     "unchecked": [],
+     "ok": true
+    }
+   ]
+  },
+  {
+   "company": "MGM Resorts",
+   "documents": [
+    "MGMRESORTS_2018_10K",
+    "MGMRESORTS_2020_10K",
+    "MGMRESORTS_2022Q4_EARNINGS",
+    "MGMRESORTS_2022_10K",
+    "MGMRESORTS_2023Q2_10Q"
+   ],
+   "cik": 789570,
+   "status": "resolved",
+   "candidates_tried": [
+    {
+     "cik": 789570,
+     "sec_name": "MGM Resorts International",
+     "listed_name": "MGM Resorts International",
+     "score": 95.0,
+     "matched": {
+      "MGMRESORTS_2018_10K": "0001564590-19-004807",
+      "MGMRESORTS_2020_10K": "0001564590-21-009205",
+      "MGMRESORTS_2022_10K": "0000789570-23-000008",
+      "MGMRESORTS_2023Q2_10Q": "0000789570-23-000024"
+     },
+     "missing": [],
+     "unchecked": [
+      "MGMRESORTS_2022Q4_EARNINGS"
+     ],
+     "ok": true
+    }
+   ]
+  },
+  {
+   "company": "Microsoft",
+   "documents": [
+    "MICROSOFT_2016_10K",
+    "MICROSOFT_2023_10K"
+   ],
+   "cik": 789019,
+   "status": "resolved",
+   "candidates_tried": [
+    {
+     "cik": 789019,
+     "sec_name": "MICROSOFT CORP",
+     "listed_name": "MICROSOFT CORP",
+     "score": 100.0,
+     "matched": {
+      "MICROSOFT_2016_10K": "0001193125-16-662209",
+      "MICROSOFT_2023_10K": "0000950170-23-035122"
+     },
+     "missing": [],
+     "unchecked": [],
+     "ok": true
+    }
+   ]
+  },
+  {
+   "company": "Netflix",
+   "documents": [
+    "NETFLIX_2015_10K",
+    "NETFLIX_2017_10K"
+   ],
+   "cik": 1065280,
+   "status": "resolved",
+   "candidates_tried": [
+    {
+     "cik": 1065280,
+     "sec_name": "NETFLIX INC",
+     "listed_name": "NETFLIX INC",
+     "score": 100.0,
+     "matched": {
+      "NETFLIX_2015_10K": "0001065280-16-000047",
+      "NETFLIX_2017_10K": "0001065280-18-000069"
+     },
+     "missing": [],
+     "unchecked": [],
+     "ok": true
+    }
+   ]
+  },
+  {
+   "company": "Nike",
+   "documents": [
+    "NIKE_2018_10K",
+    "NIKE_2019_10K",
+    "NIKE_2021_10K",
+    "NIKE_2023_10K"
+   ],
+   "cik": 320187,
+   "status": "resolved",
+   "candidates_tried": [
+    {
+     "cik": 320187,
+     "sec_name": "NIKE, Inc.",
+     "listed_name": "NIKE, Inc.",
+     "score": 100.0,
+     "matched": {
+      "NIKE_2018_10K": "0000320187-18-000142",
+      "NIKE_2019_10K": "0000320187-19-000051",
+      "NIKE_2021_10K": "0000320187-21-000028",
+      "NIKE_2023_10K": "0000320187-23-000039"
+     },
+     "missing": [],
+     "unchecked": [],
+     "ok": true
+    }
+   ]
+  },
+  {
+   "company": "Paypal",
+   "documents": [
+    "PAYPAL_2022_10K"
+   ],
+   "cik": 1633917,
+   "status": "resolved",
+   "candidates_tried": [
+    {
+     "cik": 1633917,
+     "sec_name": "PayPal Holdings, Inc.",
+     "listed_name": "PayPal Holdings, Inc.",
+     "score": 100.0,
+     "matched": {
+      "PAYPAL_2022_10K": "0001633917-23-000033"
+     },
+     "missing": [],
+     "unchecked": [],
+     "ok": true
+    }
+   ]
+  },
+  {
+   "company": "PepsiCo",
+   "documents": [
+    "PEPSICO_2021_10K",
+    "PEPSICO_2022_10K",
+    "PEPSICO_2023Q1_EARNINGS",
+    "PEPSICO_2023_8K_dated-2023-05-05",
+    "PEPSICO_2023_8K_dated-2023-05-30"
+   ],
+   "cik": 77476,
+   "status": "resolved",
+   "candidates_tried": [
+    {
+     "cik": 77476,
+     "sec_name": "PEPSICO INC",
+     "listed_name": "PEPSICO INC",
+     "score": 100.0,
+     "matched": {
+      "PEPSICO_2021_10K": "0000077476-22-000010",
+      "PEPSICO_2022_10K": "0000077476-23-000007"
+     },
+     "missing": [],
+     "unchecked": [
+      "PEPSICO_2023Q1_EARNINGS",
+      "PEPSICO_2023_8K_dated-2023-05-05",
+      "PEPSICO_2023_8K_dated-2023-05-30"
+     ],
+     "ok": true
+    }
+   ]
+  },
+  {
+   "company": "Pfizer",
+   "documents": [
+    "PFIZER_2021_10K",
+    "Pfizer_2023Q2_10Q"
+   ],
+   "cik": 78003,
+   "status": "resolved",
+   "candidates_tried": [
+    {
+     "cik": 78003,
+     "sec_name": "PFIZER INC",
+     "listed_name": "PFIZER INC",
+     "score": 100.0,
+     "matched": {
+      "PFIZER_2021_10K": "0000078003-22-000027",
+      "Pfizer_2023Q2_10Q": "0000078003-23-000115"
+     },
+     "missing": [],
+     "unchecked": [],
+     "ok": true
+    }
+   ]
+  },
+  {
+   "company": "Ulta Beauty",
+   "documents": [
+    "ULTABEAUTY_2023Q4_EARNINGS",
+    "ULTABEAUTY_2023_10K"
+   ],
+   "cik": 1403568,
+   "status": "resolved",
+   "candidates_tried": [
+    {
+     "cik": 1403568,
+     "sec_name": "Ulta Beauty, Inc.",
+     "listed_name": "Ulta Beauty, Inc.",
+     "score": 100.0,
+     "matched": {
+      "ULTABEAUTY_2023_10K": "0001558370-23-004581"
+     },
+     "missing": [],
+     "unchecked": [
+      "ULTABEAUTY_2023Q4_EARNINGS"
+     ],
+     "ok": true
+    }
+   ]
+  },
+  {
+   "company": "Verizon",
+   "documents": [
+    "VERIZON_2021_10K",
+    "VERIZON_2022_10K"
+   ],
+   "cik": 732712,
+   "status": "resolved",
+   "candidates_tried": [
+    {
+     "cik": 732712,
+     "sec_name": "VERIZON COMMUNICATIONS INC",
+     "listed_name": "VERIZON COMMUNICATIONS INC",
+     "score": 95.0,
+     "matched": {
+      "VERIZON_2021_10K": "0000732712-22-000008",
+      "VERIZON_2022_10K": "0000732712-23-000012"
+     },
+     "missing": [],
+     "unchecked": [],
+     "ok": true
+    }
+   ]
+  },
+  {
+   "company": "Walmart",
+   "documents": [
+    "WALMART_2018_10K",
+    "WALMART_2019_10K",
+    "WALMART_2020_10K"
+   ],
+   "cik": 104169,
+   "status": "resolved",
+   "candidates_tried": [
+    {
+     "cik": 104169,
+     "sec_name": "Walmart Inc.",
+     "listed_name": "Walmart Inc.",
+     "score": 100.0,
+     "matched": {
+      "WALMART_2018_10K": "0000104169-18-000028",
+      "WALMART_2019_10K": "0000104169-19-000016",
+      "WALMART_2020_10K": "0000104169-20-000011"
+     },
+     "missing": [],
+     "unchecked": [],
+     "ok": true
+    }
+   ]
+  }
+ ]
+}
