@@ -28,3 +28,9 @@ variable "github_repo" {
     error_message = "github_repo must look like owner/name."
   }
 }
+
+variable "emr_image_uri" {
+  description = "Custom EMR image URI with tag (<ecr repository_url>:<git-sha>); empty until the image is pushed."
+  type        = string
+  default     = ""
+}
