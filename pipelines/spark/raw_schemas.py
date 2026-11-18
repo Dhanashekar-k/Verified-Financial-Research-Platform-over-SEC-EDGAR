@@ -18,8 +18,10 @@ time as EDGAR writes it, stored as-is (Spark treats it as UTC; nothing converts 
 from __future__ import annotations
 
 from pyspark.sql.types import (
+    DateType,
     DecimalType,
     IntegerType,
+    LongType,
     StringType,
     StructField,
     StructType,
@@ -81,3 +83,12 @@ RAW_COLUMNS: dict[str, tuple[str, ...]] = {
     "tag": tuple(TAG_SOURCE.fieldNames()),
     "pre": tuple(PRE_SOURCE.fieldNames()),
 }
+
+
+# `raw.filings_html` (contract section 2.1): metadata only; the HTML lives in the object store.
+# One row per target filing; a failed fetch has http_status set and s3_uri/bytes/sha256 NULL.
+FILINGS_HTML = _fields(
+    ("accession", _S), ("cik", _I), ("form", _S), ("filed", DateType()), ("url", _S),
+    ("s3_uri", _S), ("bytes", LongType()), ("sha256", _S), ("http_status", _I),
+    ("fetched_at", TimestampType()),
+)  # fmt: skip

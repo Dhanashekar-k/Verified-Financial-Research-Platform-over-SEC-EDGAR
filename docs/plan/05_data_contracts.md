@@ -112,6 +112,10 @@ CREATE TABLE lake.raw.filings_html (          -- metadata only; the HTML itself 
   accession string, cik int, form string, filed date, url string,
   s3_uri string, bytes bigint, sha256 string, http_status int, fetched_at timestamp
 ) USING iceberg PARTITIONED BY (form);
+-- One row per target filing, merged on accession. `bytes` and `sha256` describe the STORED object
+-- (the gzip at s3_uri). A failed fetch is a row too: http_status set (NULL if no response) and
+-- s3_uri, bytes, sha256 NULL; it is retried on the next fetch run. Loaded from the fetcher's
+-- `_manifest.jsonl` by pipelines/spark/load_filings_html.py.
 ```
 
 ### 2.2 Curated
