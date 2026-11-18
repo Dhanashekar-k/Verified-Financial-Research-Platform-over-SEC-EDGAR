@@ -56,6 +56,7 @@ class FetchRecord(BaseModel):
     cik: int
     form: str
     filed: date
+    report_date: date | None = None  # added after the first manifests; older rows lack it
     url: str
     s3_uri: str | None
     bytes: int | None
@@ -125,8 +126,9 @@ def _utcnow() -> datetime:
 
 def _failure(t: FilingTarget, status: int | None, now: datetime) -> FetchRecord:
     return FetchRecord(
-        accession=t.accession, cik=t.cik, form=t.form, filed=t.filed, url=t.url,
-        s3_uri=None, bytes=None, sha256=None, http_status=status, fetched_at=now,
+        accession=t.accession, cik=t.cik, form=t.form, filed=t.filed,
+        report_date=t.report_date, url=t.url, s3_uri=None, bytes=None, sha256=None,
+        http_status=status, fetched_at=now,
     )  # fmt: skip
 
 
@@ -145,6 +147,8 @@ def _fetch_one(
         and previous.sha256 is not None
         and store.exists(key)
     ):
+        if previous.report_date != target.report_date:  # an older manifest row: refresh, no refetch
+            previous = previous.model_copy(update={"report_date": target.report_date})
         return previous, "skipped"
     try:
         raw = client.get(target.url)
@@ -158,7 +162,7 @@ def _fetch_one(
     store.put(key, stored)
     record = FetchRecord(
         accession=target.accession, cik=target.cik, form=target.form, filed=target.filed,
-        url=target.url, s3_uri=store.uri(key), bytes=len(stored),
+        report_date=target.report_date, url=target.url, s3_uri=store.uri(key), bytes=len(stored),
         sha256=hashlib.sha256(stored).hexdigest(), http_status=200, fetched_at=now(),
     )  # fmt: skip
     return record, "fetched"

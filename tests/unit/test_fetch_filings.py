@@ -149,6 +149,7 @@ def test_fetch_stores_gzipped_html_and_returns_a_complete_record(
         cik=t.cik,
         form="10-K",
         filed=date(2023, 11, 3),
+        report_date=date(2023, 9, 30),
         url=t.url,
         s3_uri=store.uri(object_key(t.cik, t.accession)),
         bytes=len(stored),
@@ -412,3 +413,21 @@ def test_main_cik_filter_restricts_the_fetch(
 
 def test_main_with_a_missing_targets_file_is_an_error(fake: FakeTime, tmp_path: Path):
     assert run_main(["--targets", str(tmp_path / "nope.csv"), "--dest", str(tmp_path)], fake) == 2
+
+
+def test_an_older_manifest_row_without_report_date_is_refreshed_without_a_refetch(
+    router: respx.MockRouter, fake: FakeTime, store: LocalStore
+):
+    t = target(1)
+    route = mock_ok(router, t, 1)
+    run([t], store, fake)
+    old = [json.loads(line) for line in store.get(MANIFEST_KEY).decode().splitlines()]
+    for row in old:
+        del row["report_date"]  # what a manifest written before the column existed looks like
+    store.put(MANIFEST_KEY, "".join(json.dumps(r) + "\n" for r in old).encode())
+
+    records, summary = run([t], store, fake)
+
+    assert route.call_count == 1 and summary.skipped == 1
+    assert records[0].report_date == date(2023, 9, 30)
+    assert read_manifest(store)[0].report_date == date(2023, 9, 30)

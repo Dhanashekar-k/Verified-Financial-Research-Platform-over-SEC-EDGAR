@@ -22,6 +22,7 @@ def row(accession: str, form: str = "10-K", status: int = 200, **kw: object) -> 
         "cik": 320193,
         "form": form,
         "filed": "2023-11-03",
+        "report_date": "2023-09-30",
         "url": f"https://www.sec.gov/Archives/edgar/data/320193/{accession}/x.htm",
         "s3_uri": f"s3://lake/raw/filings/320193/{accession}.htm.gz" if ok else None,
         "bytes": 1234 if ok else None,
