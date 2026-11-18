@@ -12,9 +12,11 @@ from eval.labeling_harness import (
     REQUIRED,
     check_rows,
     choose,
+    count_labeled,
     fill_rows,
     find_hits,
     first_sentence,
+    main,
     plain_text,
     read_jsonl,
     template_rows,
@@ -27,8 +29,9 @@ FIRST = "Our business designs and sells widgets to industrial customers worldwid
 LONG = f"{FIRST} More text follows."
 
 
-def test_the_harness_imports_nothing_from_the_parser_it_helps_to_grade():
-    tree = ast.parse(HARNESS.read_text())
+@pytest.mark.parametrize("module", [HARNESS, HARNESS.with_name("label_sections.py")])
+def test_the_labeling_tools_import_nothing_from_the_parser_they_help_to_grade(module: Path):
+    tree = ast.parse(module.read_text())
     imported = [
         n.module if isinstance(n, ast.ImportFrom) else a.name
         for n in ast.walk(tree)
@@ -40,9 +43,28 @@ def test_the_harness_imports_nothing_from_the_parser_it_helps_to_grade():
     forbidden = [
         m
         for m in imported
-        if m.startswith(("pipelines.parsing", "eval.sections_eval", "eval.blast_radius"))
+        if m.startswith(("pipelines", "eval.sections_eval", "eval.blast_radius", "app"))
     ]
     assert forbidden == []
+
+
+def test_prepare_refuses_to_overwrite_a_template_that_holds_labels(tmp_path: Path, capsys):
+    template = tmp_path / "t.jsonl"
+    write_jsonl(template, [{"present": True, "labeled_by": "shekar", "first_sentence": ""}])
+    before = template.read_text()
+
+    rc = main(["prepare", "--template", str(template), "--blast", str(tmp_path / "none.json")])
+
+    assert rc == 2 and template.read_text() == before
+    assert "already holds 1 labeled row" in capsys.readouterr().out
+
+
+def test_an_untouched_or_missing_template_counts_as_no_labels(tmp_path: Path):
+    template = tmp_path / "t.jsonl"
+    write_jsonl(template, [{"present": None, "labeled_by": "", "first_sentence": ""}])
+
+    assert count_labeled(template) == 0
+    assert count_labeled(tmp_path / "missing.jsonl") == 0
 
 
 def test_plain_text_drops_scripts_styles_the_ixbrl_header_and_hidden_elements():

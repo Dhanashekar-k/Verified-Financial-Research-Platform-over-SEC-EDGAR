@@ -274,7 +274,24 @@ def load_texts(rows: list[dict[str, Any]], out_dir: Path) -> dict[str, str]:
 # -- commands ---------------------------------------------------------------------------
 
 
+def count_labeled(path: Path) -> int:
+    """Rows of an existing template that hold any human work (an answer or a typed sentence)."""
+    if not path.is_file():
+        return 0
+    return sum(
+        r.get("present") is not None or bool(r.get("labeled_by")) or bool(r.get("first_sentence"))
+        for r in read_jsonl(path)
+    )
+
+
 def prepare(args: argparse.Namespace) -> int:
+    held = count_labeled(args.template)
+    if held and not args.force:
+        print(
+            f"{args.template} already holds {held} labeled row(s); prepare would overwrite them.\n"
+            "Use --template with another path, or --force if you really mean to start over."
+        )
+        return 2
     blast = json.loads(args.blast.read_text())
     rows = []
     for f in blast["filings"]:
@@ -352,6 +369,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--blast", type=Path, default=DEFAULT_BLAST)
     parser.add_argument("--out-dir", type=Path, default=DEFAULT_OUT)
     parser.add_argument("--template", type=Path, default=DEFAULT_TEMPLATE)
+    parser.add_argument("--force", action="store_true", help="prepare: overwrite labeled rows")
     parser.add_argument("--multi", type=int, default=2)
     parser.add_argument("--none", type=int, default=2)
     parser.add_argument("--named", type=int, default=2)

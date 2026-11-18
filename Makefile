@@ -39,6 +39,9 @@ fmt: ## Format
 	$(PY) ruff format . && $(PY) ruff check --fix .
 check-gold: ## Verify gold eval files match eval/sets/CHECKSUMS (M4; runs in CI)
 	$(PY) python -m eval.check_gold
+label-sections: ## YOU run this: pick section starts from candidates; resumes where you left off (M2)
+	$(PY) python -m eval.label_sections
+
 gold-checksums: ## YOU run this after curating gold files; writes eval/sets/CHECKSUMS (M4)
 	$(PY) python -m eval.check_gold --write
 
