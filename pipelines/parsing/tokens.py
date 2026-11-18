@@ -10,17 +10,20 @@ from __future__ import annotations
 
 import hashlib
 from functools import lru_cache
+from importlib.resources import files
 from pathlib import Path
 
 from tokenizers import Tokenizer as HfTokenizer
 
-DEFAULT_PATH = Path(__file__).parent / "assets" / "bge-small-en-v1.5.tokenizer.json"
+ASSET = "assets/bge-small-en-v1.5.tokenizer.json"
 TOKENIZER_SHA256 = "d241a60d5e8f04cc1b2b3e9ef7a4921b27bf526d9f6050ab90f9267a1f9e5c66"
 
 
 class Tokenizer:
-    def __init__(self, path: Path = DEFAULT_PATH, expected_sha256: str = TOKENIZER_SHA256) -> None:
-        raw = path.read_bytes()
+    def __init__(self, path: Path | None = None, expected_sha256: str = TOKENIZER_SHA256) -> None:
+        # On EMR the code arrives as `pipelines.zip` (--py-files), where `Path(__file__).parent`
+        # is not a directory: the bundled file is read through the import system instead.
+        raw = path.read_bytes() if path else files("pipelines.parsing").joinpath(ASSET).read_bytes()
         self.sha256 = hashlib.sha256(raw).hexdigest()
         if self.sha256 != expected_sha256:
             raise ValueError(f"tokenizer sha256 {self.sha256} != pinned {expected_sha256}")
