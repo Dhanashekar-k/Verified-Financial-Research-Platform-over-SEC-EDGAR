@@ -25,6 +25,7 @@ from __future__ import annotations
 import argparse
 import csv
 import io
+import json
 import logging
 import os
 import sys
@@ -245,6 +246,30 @@ def render_summary(counts: Mapping[tuple[str, int], int], *, n_ciks: int) -> str
 # -- command line ------------------------------------------------------------------------
 
 
+def write_summary(
+    path: Path,
+    result: ListResult,
+    counts: Mapping[tuple[str, int], int],
+    ciks: Sequence[int],
+    failed: Sequence[int],
+    args: argparse.Namespace,
+) -> None:
+    """The counts as JSON: the one source the M02 report quotes for the target list."""
+    summary = {
+        "n_ciks_requested": len(ciks),
+        "n_ciks_listed": len(ciks) - len(failed),
+        "failed_ciks": list(failed),
+        "n_targets": len(result.targets),
+        "skipped_no_primary_doc": result.skipped_no_primary_doc,
+        "from_date": args.from_date.isoformat(),
+        "to_date": args.to_date.isoformat() if args.to_date else None,
+        "by_form": dict(Counter(t.form for t in result.targets)),
+        "by_form_and_year": {f"{form}|{year}": n for (form, year), n in counts.items()},
+    }
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(summary, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
+
 def read_tracked(path: Path) -> list[int]:
     with path.open(newline="", encoding="utf-8") as fh:
         reader = csv.DictReader(fh)
@@ -261,6 +286,7 @@ def main(argv: list[str] | None = None, *, client: SecClient | None = None) -> i
     parser.add_argument("--from-date", type=date.fromisoformat, default=DEFAULT_FROM_DATE)
     parser.add_argument("--to-date", type=date.fromisoformat, default=None)
     parser.add_argument("--keep-going", action="store_true")
+    parser.add_argument("--summary-out", type=Path, default=None, help="write the counts as JSON")
     args = parser.parse_args(argv)
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
 
@@ -307,7 +333,10 @@ def main(argv: list[str] | None = None, *, client: SecClient | None = None) -> i
         return 1
 
     write_targets(args.dest, result.targets)
-    print(render_summary(summarize(result.targets), n_ciks=len(ciks) - len(failed)))
+    counts = summarize(result.targets)
+    print(render_summary(counts, n_ciks=len(ciks) - len(failed)))
+    if args.summary_out:
+        write_summary(args.summary_out, result, counts, ciks, failed, args)
     if result.skipped_no_primary_doc:
         log.warning("%d filings skipped: no primaryDocument", result.skipped_no_primary_doc)
     if failed:

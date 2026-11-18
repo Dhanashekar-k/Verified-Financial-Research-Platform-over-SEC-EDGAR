@@ -9,6 +9,7 @@ network (rule 4). The router fails any request to an unmocked URL.
 from __future__ import annotations
 
 import csv
+import json
 import random
 import socket
 from collections.abc import Iterator
@@ -549,3 +550,23 @@ def test_written_csv_is_world_readable(tmp_path: Path):
     write_targets(out, [target(1, "0000000001-23-000001", "2023-03-01")])
 
     assert out.stat().st_mode & 0o777 == 0o644
+
+
+def test_summary_out_writes_the_counts_the_report_quotes(
+    router: respx.MockRouter, fake: FakeTime, tmp_path: Path
+):
+    router.get("https://data.sec.gov/submissions/CIK0000320193.json").mock(
+        return_value=httpx.Response(200, json=submissions(block(AAPL_10K, AAPL_10Q)))
+    )
+    out = tmp_path / "summary.json"
+
+    rc = run_main(
+        ["--cik", "320193", "--dest", str(tmp_path / "f.csv"), "--summary-out", str(out)], fake
+    )
+
+    summary = json.loads(out.read_text())
+    assert rc == 0
+    assert summary["n_targets"] == 2 and summary["n_ciks_listed"] == 1
+    assert summary["by_form"] == {"10-K": 1, "10-Q": 1}
+    assert summary["by_form_and_year"] == {"10-K|2023": 1, "10-Q|2023": 1}
+    assert summary["from_date"] == "2020-01-01" and summary["to_date"] is None
