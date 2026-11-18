@@ -87,3 +87,15 @@ def test_a_malformed_manifest_row_fails_the_load_instead_of_loading_nulls(
     except Exception:  # noqa: BLE001 - any Spark/Py4J error type is acceptable here
         return
     raise AssertionError("a malformed row was loaded")
+
+
+def test_the_real_manifest_file_name_starting_with_an_underscore_is_read(
+    spark: SparkSession, lake_namespace: str, tmp_path: Path
+):
+    """Spark ignores files named `_*` and `.*`: `spark.read.json` would load zero rows here."""
+    manifest = write_manifest(tmp_path / "_manifest.jsonl", [row("0000320193-23-000001")])
+
+    n = load_filings_html(spark, manifest, f"{lake_namespace}.filings_html")
+
+    assert n == 1
+    assert spark.table(f"{lake_namespace}.filings_html").count() == 1

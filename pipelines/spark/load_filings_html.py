@@ -3,7 +3,7 @@
     uv run python -m pipelines.spark.load_filings_html --env local
         [--manifest data/raw/filings/_manifest.jsonl] [--namespace lake.raw]
 
-The JSONL is read with the explicit `FILINGS_HTML` schema in FAILFAST mode, so a malformed row
+The JSONL is parsed with the explicit `FILINGS_HTML` schema in FAILFAST mode, so a malformed row
 fails the load instead of loading NULLs. Rows are merged on `accession`: a rerun changes nothing,
 and a retried fetch replaces its earlier (failed) row.
 """
@@ -17,7 +17,9 @@ import uuid
 from pathlib import Path
 
 from pyspark.sql import SparkSession
+from pyspark.sql import functions as F
 
+from pipelines.common.object_store import open_store
 from pipelines.common.spark_session import Env, spark_session
 from pipelines.spark.iceberg_util import ensure_table
 from pipelines.spark.raw_schemas import FILINGS_HTML
@@ -28,10 +30,33 @@ RAW_NAMESPACE = "lake.raw"
 DEFAULT_MANIFEST = Path("data/raw/filings/_manifest.jsonl")
 
 
+def read_manifest_lines(manifest: Path | str) -> list[str]:
+    """The manifest's JSON lines, from a local path or an s3:// URI.
+
+    Read on the driver, not with `spark.read.json`: Spark treats a file whose name starts with `_`
+    as hidden and reads nothing from it, and the fetcher's manifest is `_manifest.jsonl` (so the
+    parse job's `*/*.htm.gz` glob never matches it).
+    """
+    location = str(manifest)
+    if location.startswith("s3://"):
+        parent, _, name = location.rpartition("/")
+        text = open_store(parent).get(name).decode("utf-8")
+    else:
+        text = Path(location).read_text(encoding="utf-8")
+    return [line for line in text.splitlines() if line.strip()]
+
+
 def load_filings_html(spark: SparkSession, manifest: Path | str, table: str) -> int:
     """Merge the manifest into `table` on accession; return the manifest's row count."""
-    df = spark.read.schema(FILINGS_HTML).option("mode", "FAILFAST").json(str(manifest))
-    n = df.count()  # forces the FAILFAST parse before anything is written
+    lines = read_manifest_lines(manifest)
+    raw = spark.createDataFrame([(line,) for line in lines], "value string")
+    # FAILFAST: a malformed line raises instead of becoming a row of NULLs.
+    df = raw.select(F.from_json("value", FILINGS_HTML, {"mode": "FAILFAST"}).alias("r")).select(
+        "r.*"
+    )
+    n = df.count()  # forces the parse before anything is written
+    if n != len(lines):
+        raise ValueError(f"{manifest}: {len(lines)} lines but {n} rows parsed")
     ensure_table(spark, table, df, "form")
     view = f"_manifest_{uuid.uuid4().hex}"
     df.createOrReplaceTempView(view)
