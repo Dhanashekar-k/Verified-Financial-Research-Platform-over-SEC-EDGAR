@@ -204,3 +204,25 @@ def test_main_prints_the_companies_the_owner_must_map_to_ciks(
     out = capsys.readouterr().out
     assert rc == 0
     assert "financebench_companies.csv" in out and "Nike" in out and "3M" in out
+
+
+def test_a_malformed_doc_name_is_a_failed_row_not_a_crash(
+    router: respx.MockRouter, store: LocalStore
+):
+    bad = [{"company": "X", "doc_name": "../evil", "question": "q"}, *QUESTIONS]
+    router.get(JSONL_URL).mock(return_value=httpx.Response(200, content=jsonl(bad)))
+    for d in ("3M_2018_10K", "NIKE_2022_10K"):
+        router.get(PDF_URL.format(doc_name=d)).mock(return_value=httpx.Response(200, content=PDF))
+
+    result = run(store)
+
+    assert (result.fetched, result.failed) == (2, 1)
+    assert store.exists("pdfs/3M_2018_10K.pdf")
+
+
+def test_main_reports_a_questions_file_that_is_not_json_without_a_traceback(
+    router: respx.MockRouter, tmp_path: Path
+):
+    router.get(JSONL_URL).mock(return_value=httpx.Response(200, content=b"<html>rate limit</html>"))
+
+    assert main(["--dest", str(tmp_path / "out")]) == 1

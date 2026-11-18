@@ -431,3 +431,62 @@ def test_an_older_manifest_row_without_report_date_is_refreshed_without_a_refetc
     assert route.call_count == 1 and summary.skipped == 1
     assert records[0].report_date == date(2023, 9, 30)
     assert read_manifest(store)[0].report_date == date(2023, 9, 30)
+
+
+class PutFails(LocalStore):
+    """A store that cannot write (S3 AccessDenied, a full disk) after `ok_puts` good writes."""
+
+    def __init__(self, root: Path, ok_puts: int) -> None:
+        super().__init__(root)
+        self.ok_puts, self.puts = ok_puts, 0
+
+    def put(self, key: str, data: bytes) -> None:
+        if key != MANIFEST_KEY:
+            self.puts += 1
+            if self.puts > self.ok_puts:
+                raise OSError("disk full")
+        super().put(key, data)
+
+
+def test_a_store_failure_stops_the_run_and_still_saves_the_manifest(
+    router: respx.MockRouter, fake: FakeTime, tmp_path: Path
+):
+    ts = [target(i) for i in range(1, 9)]
+    routes = [mock_ok(router, t, i) for i, t in enumerate(ts)]
+    store = PutFails(tmp_path / "s", ok_puts=2)
+
+    with pytest.raises(OSError, match="disk full"):
+        run(ts, store, fake, workers=1)
+
+    assert sum(r.call_count for r in routes) == 3  # two stored, the third failed: nothing more
+    saved = {r.accession for r in read_manifest(store)}
+    assert saved == {ts[0].accession, ts[1].accession}  # the two stored are not refetched later
+
+
+def test_a_store_failure_with_workers_cancels_the_queue_and_keeps_the_manifest(
+    router: respx.MockRouter, fake: FakeTime, tmp_path: Path
+):
+    ts = [target(i) for i in range(1, 41)]
+    routes = [mock_ok(router, t, i) for i, t in enumerate(ts)]
+    store = PutFails(tmp_path / "s", ok_puts=0)
+
+    with pytest.raises(OSError):
+        run(ts, store, fake, workers=2)
+
+    assert sum(r.call_count for r in routes) < len(ts)  # the queued downloads were cancelled
+    assert (tmp_path / "s" / MANIFEST_KEY).is_file()
+
+
+def test_one_accession_listed_under_two_ciks_is_fetched_once(
+    router: respx.MockRouter, fake: FakeTime, store: LocalStore
+):
+    a = target(1, cik=100)
+    b = a.model_copy(update={"cik": 200})  # same accession, a co-registrant CIK
+    route = mock_ok(router, a, 1)
+    router.get(b.url).mock(return_value=httpx.Response(200, content=body(1)))
+
+    records, summary = run([b, a], store, fake)
+
+    assert len(records) == 1 and summary.fetched == 1
+    assert records[0].cik == 100  # the lowest CIK wins, the same way on every run
+    assert route.call_count == 1

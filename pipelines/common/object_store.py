@@ -21,6 +21,7 @@ from typing import Any, Protocol
 from botocore.exceptions import ClientError
 
 _NOT_FOUND = {"404", "NoSuchKey", "NotFound"}
+_DENIED = {"403", "AccessDenied"}
 
 
 class ObjectStore(Protocol):
@@ -88,12 +89,24 @@ class S3Store:
         check_key(key)
         return f"{self.prefix}/{key}" if self.prefix else key
 
+    def _denied(self, key: str, exc: ClientError) -> PermissionError:
+        # Without s3:ListBucket, S3 answers 403 instead of 404 for a missing key, so a denied
+        # read and an absent object look the same. Say which permissions are needed.
+        return PermissionError(
+            f"access denied reading s3://{self.bucket}/{self._key(key)}: the role needs "
+            "s3:GetObject on the prefix and s3:ListBucket on the bucket (without ListBucket a "
+            f"missing key is a 403, not a 404): {exc}"
+        )
+
     def exists(self, key: str) -> bool:
         try:
             self._client.head_object(Bucket=self.bucket, Key=self._key(key))
         except ClientError as exc:
-            if str(exc.response.get("Error", {}).get("Code")) in _NOT_FOUND:
+            code = str(exc.response.get("Error", {}).get("Code"))
+            if code in _NOT_FOUND:
                 return False
+            if code in _DENIED:
+                raise self._denied(key, exc) from exc
             raise
         return True
 
@@ -104,8 +117,11 @@ class S3Store:
         try:
             body = self._client.get_object(Bucket=self.bucket, Key=self._key(key))["Body"]
         except ClientError as exc:
-            if str(exc.response.get("Error", {}).get("Code")) in _NOT_FOUND:
+            code = str(exc.response.get("Error", {}).get("Code"))
+            if code in _NOT_FOUND:
                 raise KeyError(key) from None
+            if code in _DENIED:
+                raise self._denied(key, exc) from exc
             raise
         data: bytes = body.read()
         return data

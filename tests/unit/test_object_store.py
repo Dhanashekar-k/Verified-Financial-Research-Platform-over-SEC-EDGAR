@@ -120,8 +120,23 @@ def test_s3_exists_reraises_errors_other_than_not_found():
 
     s3 = S3Store("lake", "p", client=Denied())
 
-    with pytest.raises(ClientError):
+    with pytest.raises(PermissionError, match="s3:ListBucket"):
         s3.exists("k")
+
+
+def test_s3_get_denied_says_which_permissions_are_missing_and_other_errors_pass_through():
+    class Denied:
+        def get_object(self, **kwargs: object) -> None:
+            raise ClientError({"Error": {"Code": "AccessDenied", "Message": "x"}}, "GetObject")
+
+    class Throttled:
+        def head_object(self, **kwargs: object) -> None:
+            raise ClientError({"Error": {"Code": "SlowDown", "Message": "x"}}, "HeadObject")
+
+    with pytest.raises(PermissionError, match="s3:GetObject"):
+        S3Store("lake", "p", client=Denied()).get("k")
+    with pytest.raises(ClientError):  # not a permission problem: left as it is
+        S3Store("lake", "p", client=Throttled()).exists("k")
 
 
 def test_open_store_picks_the_implementation_from_the_location(tmp_path: Path):

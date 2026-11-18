@@ -97,8 +97,13 @@ random chunks did not all read cleanly. Causes are listed under "Open issues".
    carrying those flags is NOT MEASURED on the full list. 35 of 35 comparable filings agreed.
 7. `list_filings` is open-ended on the right (to the latest filings, as the runbook says); 1504 of 13239 targets have a
    report year of 2026. Your note said FY2020–2025: cap it with `--to-date` if you want exactly that.
-8. The earlier fetch/loader commits got a reviewer pass only at the end of this session (see the review note below if
-   it arrived); the later steps were reviewed before commit.
+8. The earlier fetch/store/loader commits were reviewed only after the parse library. The review found, and
+   this session fixed (with tests that fail without the fix): a failed store write kept downloading the whole list
+   and skipped the manifest write; an S3 role without `s3:ListBucket` gets 403 (not 404) for a missing key, so the
+   first S3 run would crash; one accession under two CIKs collided in the manifest. **The fetch box's instance
+   profile needs `s3:PutObject` and `s3:GetObject` on the prefix and `s3:ListBucket` on the bucket** (the runbook
+   names only `PutObject`). That instance profile is not in the Terraform yet (`modules/emr` covers the EMR job
+   role only), so it is part of the cloud sprint.
 
 **M1 full history (your cloud-sprint request)**
 

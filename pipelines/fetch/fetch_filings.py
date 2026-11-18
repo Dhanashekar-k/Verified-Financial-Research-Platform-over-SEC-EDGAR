@@ -12,9 +12,13 @@ record per target is kept in `_manifest.jsonl` at the top of the destination (th
 * A failed fetch is a record too (`http_status`, no `s3_uri`/`bytes`/`sha256`) and is retried on
   the next run. A filing is skipped only when its record says 200 AND the object still exists, so
   a half-written or deleted object heals itself. Reruns are idempotent and byte-stable.
-* Run it from AWS for the full list (bandwidth), not from a home connection; with an `s3://`
-  destination it needs `s3:PutObject` and `s3:GetObject` on the prefix. Claude only runs it
-  locally on a few CIKs (CLAUDE.md rule 8).
+* Run it from AWS for the full list (bandwidth), not from a home connection. With an `s3://`
+  destination it needs `s3:PutObject` and `s3:GetObject` on the prefix AND `s3:ListBucket` on the
+  bucket: without ListBucket S3 answers 403, not 404, for a key that does not exist, so even the
+  first run (no manifest yet) fails. Claude only runs it locally on a few CIKs (CLAUDE.md rule 8).
+* A store failure (not a failed filing) or Ctrl-C stops the run immediately and still writes the
+  manifest, so completed filings are not fetched again. One accession listed under several CIKs
+  is fetched once (the lake is keyed on accession).
 """
 
 from __future__ import annotations
@@ -180,6 +184,14 @@ def fetch_all(
 ) -> tuple[list[FetchRecord], Summary]:
     """Fetch every target not already stored; return this run's records and the counts."""
     chosen = sorted(targets, key=_sort_key)
+    # `raw.filings_html` and the manifest are keyed on accession alone. A combined filing listed
+    # under several co-registrant CIKs would collide there, so only its first CIK is fetched.
+    unique = {t.accession: t for t in reversed(chosen)}
+    if len(unique) != len(chosen):
+        log.warning(
+            "%d targets share an accession with another CIK; keeping one", len(chosen) - len(unique)
+        )
+        chosen = sorted(unique.values(), key=_sort_key)
     if limit is not None:
         chosen = chosen[:limit]
     state = {r.accession: r for r in read_manifest(store)}
@@ -204,19 +216,27 @@ def fetch_all(
         if done % 500 == 0:
             log.info("%d/%d filings processed", done, len(chosen))
 
-    if workers <= 1:
-        for t in chosen:
-            finish(*_fetch_one(t, store, client, state.get(t.accession), now))
-    else:
-        with ThreadPoolExecutor(max_workers=workers) as pool:
-            futures = [
-                pool.submit(_fetch_one, t, store, client, state.get(t.accession), now)
-                for t in chosen
-            ]
-            for fut in as_completed(futures):
-                finish(*fut.result())
-
-    write_manifest(store, state.values())
+    # A failure of the store itself (S3 AccessDenied, a full disk) or Ctrl-C is not a failed
+    # filing: stop at once instead of downloading the rest of the list into the void, and still
+    # write the manifest so what WAS stored is not fetched again on the rerun.
+    try:
+        if workers <= 1:
+            for t in chosen:
+                finish(*_fetch_one(t, store, client, state.get(t.accession), now))
+        else:
+            with ThreadPoolExecutor(max_workers=workers) as pool:
+                futures = [
+                    pool.submit(_fetch_one, t, store, client, state.get(t.accession), now)
+                    for t in chosen
+                ]
+                try:
+                    for fut in as_completed(futures):
+                        finish(*fut.result())
+                except BaseException:
+                    pool.shutdown(wait=False, cancel_futures=True)
+                    raise
+    finally:
+        write_manifest(store, state.values())
     return sorted(mine.values(), key=lambda r: r.accession), summary
 
 

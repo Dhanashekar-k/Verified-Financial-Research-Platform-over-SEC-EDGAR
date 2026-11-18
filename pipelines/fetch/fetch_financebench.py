@@ -30,7 +30,7 @@ from urllib.parse import quote
 import httpx
 from pydantic import BaseModel, ConfigDict, ValidationError
 
-from pipelines.common.object_store import ObjectStore, open_store
+from pipelines.common.object_store import ObjectStore, check_key, open_store
 from pipelines.fetch.reference_data import GENERIC_USER_AGENT
 
 log = logging.getLogger(__name__)
@@ -115,6 +115,14 @@ def fetch_financebench(
         if prev and prev.get("http_status") == 200 and store.exists(key):
             result.skipped += 1
             continue
+        try:
+            check_key(key)  # a doc_name with `..` or `/` must not reach the store
+        except ValueError as exc:
+            log.warning("%s: skipped, %s", doc_name, exc)
+            rows[doc_name] = {"doc_name": doc_name, "url": url, "bytes": None, "sha256": None,
+                              "http_status": None}  # fmt: skip
+            result.failed += 1
+            continue
         status, content = _get(http, url, sleep)
         if status == 200 and content.startswith(b"%PDF"):
             store.put(key, content)
@@ -160,7 +168,7 @@ def main(argv: list[str] | None = None) -> int:
     with httpx.Client(timeout=60.0, follow_redirects=True) as http:
         try:
             result = fetch_financebench(http, store)
-        except RuntimeError as exc:
+        except (RuntimeError, ValueError) as exc:  # ValueError: a 200 that is not JSON lines
             log.error("%s", exc)
             return 1
     names = company_names(parse_questions(store.get(JSONL_KEY).decode("utf-8")))
