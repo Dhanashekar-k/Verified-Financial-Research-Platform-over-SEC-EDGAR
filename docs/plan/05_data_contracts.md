@@ -193,8 +193,22 @@ CREATE TABLE lake.curated.facts_dimensional (   -- segmented (dimensional) rows,
 CREATE TABLE lake.curated.filings (
   accession string, cik int, form string, filed date, accepted_at timestamp, period_of_report date,
   fiscal_year int, fiscal_period string, primary_doc_url string, html_s3_uri string,
-  parse_status string, parse_error string, n_sections int, n_chunks int, doc_source string
+  parse_status string, parse_error string, n_sections int, n_chunks int, doc_source string,
+  dq_flags array<string>
 ) USING iceberg PARTITIONED BY (fiscal_year);
+-- fiscal_year / fiscal_period use the SAME rules as curated.facts (ADR-023), so text and numbers agree:
+--   fiscal_year   = y_end(period_of_report, fye_mmdd) + label_offset(cik)    (fiscal_ref.y_end, label_offsets)
+--   fiscal_period = 'FY' for 10-K and 10-K/A; Q1..Q3 for 10-Q and 10-Q/A    (fiscal_ref.fiscal_period_label)
+-- fye_mmdd is the fsds_sub.fye of the same accession, else curated.companies.fye_mmdd.
+-- If period_of_report or fye_mmdd is missing, fiscal_year / fiscal_period fall back to fsds_sub.fy / fp
+-- of the same accession. If that is missing too they are NULL. dq_flags (empty array, never NULL):
+--   fiscal_from_fsds_sub          labels taken from fsds_sub (the derivation was impossible)
+--   fiscal_unresolved             no labels at all (both sources missing)
+--   fiscal_differs_from_fsds_sub  derived labels differ from fsds_sub.fy/fp (derived ones are kept)
+--   fye_from_companies            fye_mmdd came from curated.companies, not from this accession's sub row
+--   label_offset_default          the company has no 10-K in fsds_sub, so offset 0 was assumed (as in facts)
+--   label_offset_varies           the company's label offset is not constant (same flag as in facts)
+-- PDF documents (FinanceBench): fiscal_year / fiscal_period come from doc_name (e.g. 3M_2018_10K -> 2018, FY).
 
 CREATE TABLE lake.curated.chunks (
   chunk_id string,            -- {accession}#{section}#{chunk_index:04d}   (PDF: fb:{doc_name}#p{page}#{idx})
