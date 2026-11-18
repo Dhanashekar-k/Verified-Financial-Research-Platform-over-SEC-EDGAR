@@ -372,3 +372,99 @@ def test_a_cross_reference_to_a_part_one_item_inside_part_two_does_not_flip_the_
         "P2-2",
         "P2-6",
     ]
+
+
+# --------------------------------------------------------------------------------------
+# two narrow heading cases found by the 150-filing blast-radius survey
+# --------------------------------------------------------------------------------------
+
+FUSED = (
+    "Part I Item 1. Business The Allstate Corporation was incorporated under the laws of the State "
+    "of Delaware in 1992 and is a holding company for a number of insurance companies worldwide."
+)
+
+
+def test_a_heading_fused_with_the_first_sentence_is_a_heading_and_keeps_the_sentence():
+    parsed = parse_item_heading(FUSED)
+
+    assert parsed is not None
+    assert (parsed.item, parsed.part, parsed.title) == ("1", "I", "Business")
+    assert parsed.body.startswith("The Allstate Corporation was incorporated")
+
+
+@pytest.mark.parametrize(
+    "text",
+    [
+        "Item 7 of this report discusses our liquidity in more detail, including the matters "
+        "set out below and the risks that could affect our results of operations in the future.",
+        "Item 1. Business and other matters are discussed in this long sentence which is plainly "
+        "prose and not a heading because the title is followed by lowercase words only.",
+        "Item 2. Something else entirely that is far too long to be a heading and is not a known "
+        "title for that item, so it must not be mistaken for one by the fused-heading rule at all.",
+    ],
+)
+def test_long_prose_that_starts_like_an_item_reference_is_not_a_fused_heading(text: str):
+    assert parse_item_heading(text) is None
+
+
+def test_the_fused_sentence_becomes_the_first_text_of_the_section_not_lost():
+    blocks = [
+        P("PART I"),
+        P(FUSED, anchor="b1"),
+        body(2000),
+        P("Item 1A. Risk Factors"),
+        body(3000),
+    ]
+
+    [one, one_a] = detect_sections(blocks, "10-K")
+
+    assert (one.code, one.title, one.heading_index, one.anchor) == ("1", "Business", 1, "b1")
+    assert one.body_prefix.startswith("The Allstate Corporation")
+    assert one_a.body_prefix == ""
+
+
+@pytest.mark.parametrize("text", ["ITEM 8,", "Item 8,", "ITEM 7A,"])
+def test_a_heading_that_ends_in_a_comma_is_the_start_of_a_cross_reference_not_a_heading(text: str):
+    assert parse_item_heading(text) is None
+
+
+@pytest.mark.parametrize(
+    ("text", "item"),
+    [
+        ("ITEM 5. MARKET FOR THE REGISTRANT'S COMMON EQUITY,", "5"),
+        ("Item 13. Certain Relationships and Related Transactions,", "13"),
+    ],
+)
+def test_a_title_that_wraps_onto_the_next_line_still_ends_in_a_comma_and_is_a_heading(
+    text: str, item: str
+):
+    """Found by diffing the 150-filing survey before and after the comma rule: PPL and Nasdaq."""
+    parsed = parse_item_heading(text)
+
+    assert parsed is not None and parsed.item == item
+
+
+def test_a_comma_inside_a_heading_is_still_a_heading():
+    parsed = parse_item_heading("Item 7, Management's Discussion and Analysis")
+
+    assert parsed is not None and parsed.item == "7"
+
+
+def test_a_cross_reference_fragment_does_not_displace_the_real_item_7a():
+    """Everest: 'ITEM 8,' inside Item 7 sits before the real Item 7A, and used to win the order."""
+    blocks = [
+        P("Item 1A. Risk Factors"),
+        body(3000),
+        P("ITEM 8,"),
+        P("\u201cFinancial Statements"),
+        P("and"),
+        P("Supplementary Data\u201d - Notes 1 and 3"),
+        body(2000),
+        P("ITEM 7A."),
+        P("QUANTITATIVE"),
+        body(1500),
+        P("Item 9A. Controls and Procedures"),
+        body(500),
+    ]
+
+    assert codes(detect_sections(blocks, "10-K")) == ["1A", "7A", "9A"]

@@ -99,6 +99,9 @@ class ItemHeading:
     item: str  # '1A'
     part: str | None  # roman numeral as written, upper-cased, or None
     title: str
+    body: str = (
+        ""  # text fused onto the heading in the same block ("Item 1. Business The Company...")
+    )
 
 
 @dataclass(frozen=True, slots=True)
@@ -110,6 +113,9 @@ class Section:
     start: int  # first body block
     end: int  # exclusive
     anchor: str | None
+    body_prefix: str = (
+        ""  # text after a heading fused with its first sentence: the section's first text
+    )
 
 
 @dataclass(frozen=True, slots=True)
@@ -122,21 +128,51 @@ class _Candidate:
     is_link: bool
 
 
+def _known_titles(item: str) -> list[str]:
+    """The standard titles of an item in a 10-K and in a 10-Q (Part I/II), longest first."""
+    titles = {CANONICAL_TITLES_10K[item]}
+    titles |= {t for code, t in CANONICAL_TITLES_10Q.items() if code.split("-", 1)[1] == item}
+    return sorted(titles, key=len, reverse=True)
+
+
+def _fused(item: str, part: str | None, rest: str) -> ItemHeading | None:
+    """`Item 1. Business The Company was ...`: a standard title, then the section's first sentence.
+
+    Only for text too long to be a plain heading, and only when a known title for the item is
+    followed by a new sentence (upper case, a digit or a quote). Prose such as "Item 7 of this
+    report ..." has no title there and stays a non-heading.
+    """
+    for title in _known_titles(item):
+        if rest.lower().startswith(title.lower()):
+            body = rest[len(title) :]
+            if body[:1].isspace() and body.strip()[:1] and not body.strip()[0].islower():
+                return ItemHeading(item, part, rest[: len(title)], body.strip())
+    return None
+
+
 def parse_item_heading(text: str) -> ItemHeading | None:
     text = text.strip()
-    if not text or len(text) > MAX_HEADING_CHARS:
+    if not text:
         return None
     m = _ITEM.match(text)
     if not m:
         return None
     rest = m.group("rest").strip()
-    if len(rest) > MAX_TITLE_CHARS or (rest and rest[0].islower()):
+    if text.endswith(",") and not rest:
+        # "ITEM 8," with no title is the first fragment of a cross-reference ("ITEM 8,
+        # \u201cFinancial Statements...\u201d"), not a heading. A title that wraps onto the next
+        # line ("ITEM 5. MARKET FOR THE REGISTRANT'S COMMON EQUITY,") is a heading and is kept.
         return None
     item = m.group("num") + (m.group("let") or "").upper()
     if item not in CANONICAL_TITLES_10K:
         return None
-    part = m.group("part")
-    return ItemHeading(item, part.upper() if part else None, rest.rstrip(" .:;|-–—"))
+    part_text = m.group("part")
+    part = part_text.upper() if part_text else None
+    if len(text) > MAX_HEADING_CHARS or len(rest) > MAX_TITLE_CHARS:
+        return _fused(item, part, rest)
+    if rest and rest[0].islower():
+        return None
+    return ItemHeading(item, part, rest.rstrip(" .:;|-\u2013\u2014"))
 
 
 def _form_kind(form: str) -> str:
@@ -249,6 +285,7 @@ def detect_sections(blocks: Sequence[Block], form: str) -> list[Section]:
                 start=min(start, end),
                 end=end,
                 anchor=blocks[c.block].anchor,
+                body_prefix=c.heading.body,
             )
         )
     return sections

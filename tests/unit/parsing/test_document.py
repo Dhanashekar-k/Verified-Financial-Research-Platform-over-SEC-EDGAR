@@ -211,3 +211,24 @@ def test_an_unsupported_form_is_an_error_row_not_an_exception():
 
     assert filing.parse_status == "error" and "form" in (filing.parse_error or "")
     assert chunks == []
+
+
+def test_a_fused_heading_keeps_its_first_sentence_as_the_first_chunk_with_the_heading_anchor():
+    fused = (
+        "Part I Item 1. Business The Allstate Corporation was incorporated under the laws of the "
+        "State of Delaware in 1992 and is a holding company for several insurance companies."
+    )
+    html = (
+        f'<html><body><div id="h1">{fused}</div>{para(10, "Business")}'
+        "<div>Item 1A. Risk Factors</div>" + para(10, "Risk")
+        + "<div>Item 7. MD&amp;A</div>" + para(10, "Liquidity")
+        + "<div>Item 8. Financial Statements</div>" + para(10, "Notes") + "</body></html>"
+    )  # fmt: skip
+
+    filing, chunks = parse(html)
+
+    first = next(c for c in chunks if c.section == "1" and c.chunk_index == 0)
+    assert filing.parse_status == "ok"
+    assert first.text.startswith("The Allstate Corporation was incorporated")
+    assert "Part I Item 1. Business" not in first.text
+    assert (first.anchor, first.source_url) == ("h1", URL + "#h1")

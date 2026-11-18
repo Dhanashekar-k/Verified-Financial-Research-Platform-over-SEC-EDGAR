@@ -193,7 +193,10 @@ def _section_chunks(
             add(c.text, c.n_tokens, anchor, False)
         run.clear()
 
-    for block in blocks[section.start : section.end]:
+    body_blocks = blocks[section.start : section.end]
+    if section.body_prefix:  # a heading fused with its first sentence: that sentence is body text
+        body_blocks = [Block("paragraph", section.body_prefix, anchor=section.anchor), *body_blocks]
+    for block in body_blocks:
         if block.kind == "paragraph":
             run.append(block)
             continue
