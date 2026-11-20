@@ -80,3 +80,21 @@ def test_emr_without_a_bucket_or_warehouse_fails(monkeypatch: pytest.MonkeyPatch
 def test_unknown_env_is_rejected():
     with pytest.raises(ValueError):
         build_spark_conf("cloud")  # type: ignore[arg-type]
+
+
+def test_glue_uses_the_same_catalog_as_emr_and_no_jar_settings(monkeypatch: pytest.MonkeyPatch):
+    """Glue gets its Iceberg jar from `--datalake-formats iceberg`, so nothing here names one."""
+    monkeypatch.setenv("EDGARQA_LAKE_BUCKET", "my-lake")
+    conf = build_spark_conf("glue")
+
+    assert conf == build_spark_conf("emr")
+    assert conf[f"spark.sql.catalog.{CATALOG}.warehouse"] == "s3://my-lake/warehouse"
+    assert "spark.jars.packages" not in conf
+    assert "spark.jars" not in conf
+
+
+def test_glue_without_a_bucket_or_warehouse_fails(monkeypatch: pytest.MonkeyPatch):
+    monkeypatch.delenv("EDGARQA_LAKE_BUCKET", raising=False)
+
+    with pytest.raises(ValueError, match="EDGARQA_LAKE_BUCKET"):
+        build_spark_conf("glue")

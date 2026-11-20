@@ -66,6 +66,8 @@ dq: ## Data-quality report (M1)
 	$(PY) python -m pipelines.spark.dq_checks --env local
 emr-package: ## Build dist/pipelines-<sha>.zip; UPLOAD=s3://<lake>/artifacts publishes it (a cloud write: you run it)
 	$(PY) python -m pipelines.cloud.package $(if $(UPLOAD),--upload $(UPLOAD),)
+glue-deploy: ## Publish Glue scripts + code bundle to the lake bucket; YES=1 uploads (a cloud write)
+	scripts/glue_deploy.sh
 emr-image-build: ## Build the custom arm64 EMR image locally (ADR-024); does not push
 	docker build --platform linux/arm64 -t edgarqa-emr:$$(git rev-parse --short=12 HEAD) infra/emr
 emr-image-push: ## Push the image to ECR: ECR_URL=<acct>.dkr.ecr.<region>.amazonaws.com/edgarqa-emr YES=1 (a cloud write: you run it)

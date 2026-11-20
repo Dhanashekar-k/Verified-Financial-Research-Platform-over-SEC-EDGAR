@@ -10,7 +10,9 @@ import gzip
 from decimal import Decimal
 from pathlib import Path
 
+import boto3
 import pytest
+from moto import mock_aws
 from pyspark.sql import SparkSession
 from pyspark.sql import functions as F
 
@@ -19,7 +21,7 @@ from pipelines.spark.fsds_to_iceberg import (
     RowCountMismatch,
     count_source_rows,
     load_quarter,
-    main,
+    load_quarters,
 )
 from pipelines.spark.raw_schemas import RAW_SUB_COLUMNS, SOURCE_SCHEMAS
 
@@ -514,11 +516,22 @@ def test_a_file_without_a_trailing_newline_loads_and_counts_correctly(
     assert counts["tag"] == 2
 
 
-def test_s3_sources_are_rejected_with_a_clear_message(capsys: pytest.CaptureFixture[str]):
-    status = main(["--quarters", "2023q4", "--src", "s3://lake/raw/fsds"])
+def test_missing_s3_source_file_is_a_clear_error(
+    spark: SparkSession, lake_namespace: str, monkeypatch: pytest.MonkeyPatch
+):
+    """An `s3://` source is accepted now (Glue); an absent object fails like an absent file.
 
-    assert status == 2
-    assert "local" in capsys.readouterr().err
+    Local Spark has no S3 filesystem, so reading real S3 data is only exercised on Glue; this
+    covers the existence check that runs first (against moto, never real AWS).
+    """
+    for key in ("AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY"):
+        monkeypatch.setenv(key, "testing")
+    monkeypatch.setenv("AWS_DEFAULT_REGION", "us-east-1")
+    with mock_aws():
+        boto3.client("s3").create_bucket(Bucket="lake")
+
+        with pytest.raises(FileNotFoundError, match="make fsds"):
+            load_quarter(spark, "s3://lake/raw/fsds", "2023q4", lake_namespace)
 
 
 def test_missing_source_file_is_a_clear_error(spark: SparkSession, lake_namespace: str, src: Path):
@@ -609,3 +622,89 @@ def test_ensure_table_survives_concurrent_first_creation(spark: SparkSession, la
 
     assert errors == []
     assert spark.table(f"{lake_namespace}.race").count() == 0
+
+
+def test_ciks_subset_writes_only_those_companies_but_validates_the_whole_files(
+    spark: SparkSession, lake_namespace: str, src: Path
+):
+    """Smoke runs load one company from full quarter files; `tag` has no company and stays whole."""
+    other = "0000789019-23-000001"
+    rows = basic_rows()
+    rows["sub"].append(sub_row(other, cik="789019", name="Microsoft", fye="0630"))
+    rows["num"].append(num_row(other, tag="Revenues", qtrs="4"))
+    rows["pre"].append(pre_row(other))
+    write_quarter(src, "2023q4", rows)
+
+    counts = load_quarter(spark, src, "2023q4", lake_namespace, ciks=[320193])
+
+    assert counts == {"sub": 2, "num": 3, "tag": 2, "pre": 2}
+    assert {r.cik for r in spark.table(table(lake_namespace, "sub")).collect()} == {320193}
+    assert spark.table(table(lake_namespace, "num")).where(F.col("adsh") == other).count() == 0
+    assert spark.table(table(lake_namespace, "pre")).where(F.col("adsh") == other).count() == 0
+    assert spark.table(table(lake_namespace, "tag")).count() == 2
+
+
+def test_ciks_subset_still_fails_on_a_bad_file_outside_the_subset(
+    spark: SparkSession, lake_namespace: str, src: Path
+):
+    write_quarter(src, "2023q4", basic_rows())
+    bad = src / "2023q4" / "sub.txt.gz"
+    bad.write_bytes(gzip.compress(b"adsh\tcik\nx\t1\n"))
+
+    with pytest.raises(HeaderMismatch):
+        load_quarter(spark, src, "2023q4", lake_namespace, ciks=[999])
+
+
+def _quarter_rows(adsh: str, filed: str) -> dict[str, list[Row]]:
+    return {
+        "sub": [sub_row(adsh, filed=filed)],
+        "num": [num_row(adsh), num_row(adsh, tag="Revenues", qtrs="4")],
+        "tag": [tag_row()],
+        "pre": [pre_row(adsh)],
+    }
+
+
+def test_loading_quarters_in_parallel_gives_the_same_tables_as_one_at_a_time(
+    spark: SparkSession, lake_namespace: str, src: Path
+):
+    """Several quarters commit to the same four tables at once; none may be lost or doubled."""
+    quarters = ["2023q1", "2023q2", "2023q3", "2023q4"]
+    for i, q in enumerate(quarters):
+        write_quarter(src, q, _quarter_rows(f"0000320193-23-00000{i}", f"2023{(i + 1) * 3:02d}15"))
+
+    loaded = load_quarters(spark, src, quarters, lake_namespace, parallel=4, repartition=3)
+
+    assert list(loaded) == quarters
+    assert all(c == {"sub": 1, "num": 2, "tag": 1, "pre": 1} for c in loaded.values())
+    for name, per_quarter in (("sub", 1), ("num", 2), ("tag", 1), ("pre", 1)):
+        df = spark.table(table(lake_namespace, name))
+        assert df.count() == per_quarter * len(quarters)
+        by_q = {r.src_quarter: r["count"] for r in df.groupBy("src_quarter").count().collect()}
+        assert by_q == dict.fromkeys(quarters, per_quarter)
+
+
+def test_a_failing_quarter_raises_while_the_others_still_commit_and_a_rerun_heals(
+    spark: SparkSession, lake_namespace: str, src: Path
+):
+    for i, q in enumerate(["2023q1", "2023q2"]):
+        write_quarter(src, q, _quarter_rows(f"0000320193-23-00000{i}", "20230315"))
+    (src / "2023q2" / "num.txt.gz").write_bytes(gzip.compress(b"adsh\ttag\nx\ty\n"))
+
+    with pytest.raises(HeaderMismatch):
+        load_quarters(spark, src, ["2023q1", "2023q2"], lake_namespace, parallel=2)
+
+    write_quarter(src, "2023q2", _quarter_rows("0000320193-23-000001", "20230315"))
+    load_quarters(spark, src, ["2023q1", "2023q2"], lake_namespace, parallel=2)
+
+    assert spark.table(table(lake_namespace, "num")).count() == 4
+
+
+def test_new_raw_tables_carry_the_raised_commit_retry_property(
+    spark: SparkSession, lake_namespace: str, src: Path
+):
+    write_quarter(src, "2023q4", basic_rows())
+
+    load_quarter(spark, src, "2023q4", lake_namespace)
+
+    props = spark.sql(f"SHOW TBLPROPERTIES {table(lake_namespace, 'num')}").collect()
+    assert {r.key: r.value for r in props}["commit.retry.num-retries"] == "30"

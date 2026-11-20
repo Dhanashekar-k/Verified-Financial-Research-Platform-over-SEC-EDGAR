@@ -2,16 +2,19 @@
 
     uv run python -m pipelines.spark.normalize_facts --env local
 
+On AWS Glue the same `run()` is started by `pipelines/glue/normalize_facts.py` (`--env glue`).
+
 This module is the ORCHESTRATION only: read, join, clean, split, call the two fiscal functions,
 write. The interview-critical logic lives elsewhere and is not implemented here:
 
 * `pipelines.spark.fiscal.derive_fiscal_columns`  (fiscal year/period, label offset, Q4)
 * `pipelines.spark.versions.select_versions`      (latest and original versions)
 
-Always a full rebuild from all of `raw.fsds_*`: a fact's fiscal year can differ from the quarter
-it was filed in, and `overwritePartitions()` replaces whole `fiscal_year` partitions, so a
-partial input would silently drop facts from partitions it touches. Incremental updates are M10
-(MERGE), not this job.
+Always a full rebuild from all of the input it is given (all of `raw.fsds_*`, or the subset named
+by `--ciks`, `--limit-filings` and `--fiscal-years`; a subset belongs in its own namespaces, never
+in `lake.curated`): a fact's fiscal year can differ from the quarter it was filed in, and
+`overwritePartitions()` replaces whole `fiscal_year` partitions, so a partial input would silently
+drop facts from partitions it touches. Incremental updates are M10 (MERGE), not this job.
 
 What it does to the rows before the fiscal step:
 
@@ -31,6 +34,7 @@ from __future__ import annotations
 
 import argparse
 import logging
+from collections.abc import Sequence
 from dataclasses import dataclass
 
 from pyspark.sql import Column, DataFrame, SparkSession, Window
@@ -154,17 +158,58 @@ def write_curated(spark: SparkSession, df: DataFrame, table: str, schema: Struct
     return spark.table(table).count()
 
 
+def subset_input(
+    num: DataFrame,
+    sub: DataFrame,
+    ciks: Sequence[int] = (),
+    limit_filings: int | None = None,
+) -> tuple[DataFrame, DataFrame]:
+    """Restrict the raw input to some companies and/or the first N submissions (by accession).
+
+    Cutting at the INPUT keeps every fiscal rule intact for what remains: a company's facts are
+    all-or-nothing, so label offsets and Q4 derivation see the same rows they would in a full run.
+    """
+    if ciks:
+        sub = sub.where(F.col("cik").isin([int(c) for c in ciks]))
+    if limit_filings is not None:
+        first = sub.select("adsh").distinct().orderBy("adsh").limit(limit_filings)
+        sub = sub.join(first, "adsh", "left_semi")
+    return num.join(sub.select("adsh").distinct(), "adsh", "left_semi"), sub
+
+
+def only_fiscal_years(df: DataFrame, fiscal_years: Sequence[int]) -> DataFrame:
+    """Keep these fiscal years (after derivation, so comparatives are assigned first)."""
+    if not fiscal_years:
+        return df
+    return df.where(F.col("fiscal_year").isin([int(y) for y in fiscal_years]))
+
+
 def run(
     spark: SparkSession,
     raw_ns: str = RAW_NAMESPACE,
     curated_ns: str = CURATED_NAMESPACE,
+    ciks: Sequence[int] = (),
+    fiscal_years: Sequence[int] = (),
+    limit_filings: int | None = None,
 ) -> dict[str, int]:
-    """Rebuild facts_history, facts and facts_dimensional from all of raw.*; return row counts."""
-    prepared = prepare_facts(spark.table(f"{raw_ns}.fsds_num"), spark.table(f"{raw_ns}.fsds_sub"))
+    """Rebuild facts_history, facts and facts_dimensional from raw.*; return row counts.
+
+    `ciks`, `fiscal_years` and `limit_filings` make a smoke subset; leave them empty for the real
+    full rebuild.
+    """
+    num, sub = subset_input(
+        spark.table(f"{raw_ns}.fsds_num"),
+        spark.table(f"{raw_ns}.fsds_sub"),
+        ciks,
+        limit_filings,
+    )
+    prepared = prepare_facts(num, sub)
     spark.sql(f"CREATE NAMESPACE IF NOT EXISTS {curated_ns}")
 
     # Consolidated branch: fiscal columns -> history -> latest/original selection -> facts.
-    history = with_history_columns(derive_fiscal_columns(prepared.consolidated))
+    history = only_fiscal_years(
+        with_history_columns(derive_fiscal_columns(prepared.consolidated)), fiscal_years
+    )
     facts = select_versions(history).withColumn("anomaly_score", F.lit(None).cast("float"))
     counts = {
         "facts_history": write_curated(
@@ -174,8 +219,11 @@ def run(
     }
 
     # Dimensional branch: same steps, series identified by `segments` as well.
-    dim_history = with_history_columns(
-        derive_fiscal_columns(prepared.dimensional, extra_key_cols=["segments"])
+    dim_history = only_fiscal_years(
+        with_history_columns(
+            derive_fiscal_columns(prepared.dimensional, extra_key_cols=["segments"])
+        ),
+        fiscal_years,
     )
     counts["facts_dimensional"] = write_curated(
         spark,
@@ -188,18 +236,32 @@ def run(
     return counts
 
 
+def _ints(csv: str) -> list[int]:
+    return [int(x) for x in csv.split(",") if x.strip()]
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Rebuild curated facts from raw FSDS tables.")
-    parser.add_argument("--env", choices=["local", "emr"], default="local")
+    parser.add_argument("--env", choices=["local", "emr", "glue"], default="local")
     parser.add_argument("--raw-namespace", default=RAW_NAMESPACE)
     parser.add_argument("--curated-namespace", default=CURATED_NAMESPACE)
+    parser.add_argument("--ciks", default="", help="comma-separated CIKs (smoke subset)")
+    parser.add_argument("--fiscal-years", default="", help="comma-separated years (smoke subset)")
+    parser.add_argument("--limit-filings", type=int, default=None, help="first N submissions")
     args = parser.parse_args(argv)
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
 
     env: Env = args.env
     spark = spark_session(env, app_name="normalize_facts")
     try:
-        counts = run(spark, args.raw_namespace, args.curated_namespace)
+        counts = run(
+            spark,
+            args.raw_namespace,
+            args.curated_namespace,
+            ciks=_ints(args.ciks),
+            fiscal_years=_ints(args.fiscal_years),
+            limit_filings=args.limit_filings,
+        )
     finally:
         spark.stop()
     for name, n in counts.items():

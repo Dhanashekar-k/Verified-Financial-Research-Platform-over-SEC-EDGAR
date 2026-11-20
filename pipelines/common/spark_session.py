@@ -6,6 +6,10 @@ Spark from Maven on first use and cached under `~/.ivy2`.
 EMR Serverless (`env="emr"`): Glue catalog, S3 file IO, the Iceberg runtime jar that ships with
 the EMR release. `[Likely]` per the runbook: check the EMR Serverless Iceberg docs for the
 release you pick before the first cloud run.
+
+AWS Glue (`env="glue"`): the same Glue catalog and S3 file IO. The Iceberg runtime jar comes from
+the job parameter `--datalake-formats iceberg`, so nothing here points at a jar. This is the path
+used while an Organization policy denies EMR Serverless (ADR-027).
 """
 
 from __future__ import annotations
@@ -16,7 +20,7 @@ from typing import Literal
 
 from pyspark.sql import SparkSession
 
-Env = Literal["local", "emr"]
+Env = Literal["local", "emr", "glue"]
 
 CATALOG = "lake"
 # Iceberg runtime for Spark 3.5 / Scala 2.12. This is the LOCAL pin. For EMR the bundled jar is
@@ -35,7 +39,7 @@ def build_spark_conf(
     """The Spark configuration for `env`, as a plain dict (testable without a JVM).
 
     `warehouse` overrides the default: `./warehouse` locally, and
-    `s3://$EDGARQA_LAKE_BUCKET/warehouse` on EMR. `extra_conf` wins over everything.
+    `s3://$EDGARQA_LAKE_BUCKET/warehouse` on EMR and Glue. `extra_conf` wins over everything.
     """
     conf: dict[str, str] = {
         "spark.sql.extensions": "org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions",
@@ -63,11 +67,11 @@ def build_spark_conf(
             "spark.sql.shuffle.partitions": "64",
             "spark.ui.enabled": "false",
         }
-    elif env == "emr":
+    elif env in ("emr", "glue"):
         bucket = os.environ.get("EDGARQA_LAKE_BUCKET")
         if warehouse is None:
             if not bucket:
-                raise ValueError("set EDGARQA_LAKE_BUCKET (or pass warehouse=) for env='emr'")
+                raise ValueError(f"set EDGARQA_LAKE_BUCKET (or pass warehouse=) for env={env!r}")
             warehouse = f"s3://{bucket}/warehouse"
         conf |= {
             f"spark.sql.catalog.{CATALOG}.catalog-impl": "org.apache.iceberg.aws.glue.GlueCatalog",
@@ -75,7 +79,7 @@ def build_spark_conf(
             f"spark.sql.catalog.{CATALOG}.warehouse": warehouse,
         }
     else:
-        raise ValueError(f"unknown env {env!r}; expected 'local' or 'emr'")
+        raise ValueError(f"unknown env {env!r}; expected 'local', 'emr' or 'glue'")
     if extra_conf:
         conf |= dict(extra_conf)
     return conf

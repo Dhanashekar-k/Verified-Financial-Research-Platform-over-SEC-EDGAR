@@ -9,6 +9,8 @@ from pyspark.sql import DataFrame, SparkSession
 
 log = logging.getLogger(__name__)
 
+COMMIT_RETRIES = 30
+
 
 def ensure_table(spark: SparkSession, table: str, df: DataFrame, partition_column: str) -> None:
     """Create `table` with `df`'s schema, partitioned by `partition_column`, if it is missing.
@@ -23,7 +25,11 @@ def ensure_table(spark: SparkSession, table: str, df: DataFrame, partition_colum
     try:
         spark.sql(
             f"CREATE TABLE IF NOT EXISTS {table} USING iceberg "
-            f"PARTITIONED BY ({partition_column}) AS SELECT * FROM {view}"
+            f"PARTITIONED BY ({partition_column}) "
+            # Quarters can be loaded concurrently into one table; each commit that collides with
+            # another is retried, and the Iceberg default of 4 attempts is too few for that.
+            f"TBLPROPERTIES ('commit.retry.num-retries'='{COMMIT_RETRIES}') "
+            f"AS SELECT * FROM {view}"
         )
     except Exception:
         if not spark.catalog.tableExists(table):

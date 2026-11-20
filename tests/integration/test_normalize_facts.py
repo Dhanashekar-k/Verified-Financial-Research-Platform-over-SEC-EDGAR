@@ -21,8 +21,10 @@ from pipelines.spark.curated_schemas import FACTS, FACTS_DIMENSIONAL, FACTS_HIST
 from pipelines.spark.normalize_facts import (
     FISCAL_INPUT_COLUMNS,
     conform,
+    only_fiscal_years,
     prepare_facts,
     run,
+    subset_input,
     write_curated,
 )
 from tests.raw_builders import A_K, A_Q, num_df, sub_df
@@ -408,3 +410,49 @@ def test_run_only_9m_restated_leaves_one_derived_q4_with_a_single_version(
             for r in spark.sql(f"SHOW TABLES IN {ns}").collect():
                 spark.sql(f"DROP TABLE IF EXISTS {ns}.{r.tableName} PURGE")
             spark.sql(f"DROP NAMESPACE IF EXISTS {ns}")
+
+
+# --- subset parameters (smoke runs on Glue) -----------------------------------------------
+
+
+def _two_company_input(spark: SparkSession) -> tuple[DataFrame, DataFrame]:
+    num = num_df(
+        spark,
+        [{"tag": "Revenues"}, {"adsh": A_Q, "tag": "Revenues", "src_quarter": "2023q3"}],
+    )
+    subs = sub_df(spark, [{}, {"adsh": A_Q, "cik": 789019, "src_quarter": "2023q3"}])
+    return num, subs
+
+
+def test_subset_input_without_arguments_keeps_everything(spark: SparkSession):
+    num, subs = _two_company_input(spark)
+
+    n, s = subset_input(num, subs)
+
+    assert (n.count(), s.count()) == (2, 2)
+
+
+def test_subset_input_by_cik_keeps_that_companys_submissions_and_numbers(spark: SparkSession):
+    num, subs = _two_company_input(spark)
+
+    n, s = subset_input(num, subs, ciks=[789019])
+
+    assert [r.adsh for r in s.collect()] == [A_Q]
+    assert {r.adsh for r in n.collect()} == {A_Q}
+
+
+def test_subset_input_limit_takes_the_first_submissions_by_accession(spark: SparkSession):
+    num, subs = _two_company_input(spark)
+    first = min(A_K, A_Q)
+
+    n, s = subset_input(num, subs, limit_filings=1)
+
+    assert [r.adsh for r in s.collect()] == [first]
+    assert {r.adsh for r in n.collect()} == {first}
+
+
+def test_only_fiscal_years_filters_and_empty_means_all(spark: SparkSession):
+    df = spark.createDataFrame([(2022,), (2023,)], "fiscal_year int")
+
+    assert [r.fiscal_year for r in only_fiscal_years(df, [2023]).collect()] == [2023]
+    assert only_fiscal_years(df, []).count() == 2
