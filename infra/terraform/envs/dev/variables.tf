@@ -11,7 +11,7 @@ variable "account_id" {
 variable "region" {
   description = "AWS region."
   type        = string
-  default     = "us-east-1"
+  default     = "us-east-2"
 }
 
 variable "alert_email" {
@@ -33,4 +33,10 @@ variable "emr_image_uri" {
   description = "Custom EMR image URI with tag (<ecr repository_url>:<git-sha>); empty until the image is pushed."
   type        = string
   default     = ""
+}
+
+variable "create_emr_application" {
+  description = "Create the EMR Serverless application. Needs a Paid-plan account (EMR is not on the Free plan)."
+  type        = bool
+  default     = false
 }

@@ -7,6 +7,7 @@ locals {
 }
 
 resource "aws_emrserverless_application" "spark" {
+  count         = var.create_application ? 1 : 0
   name          = "edgarqa-spark"
   release_label = var.release_label
   type          = "spark"

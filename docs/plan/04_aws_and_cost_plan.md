@@ -1,6 +1,6 @@
 # 04: AWS account, cost plan and Claude API budget
 
-Prices are us-east-1 list prices checked 2026-11-16. Usage amounts are estimates [Guessing] until you measure them. Re-check prices on the AWS pricing pages before big runs.
+Prices are us-east-1 list prices checked 2026-11-16 (the project deploys in us-east-2; [Unclear: us-east-2 list prices for these services are usually the same, not re-checked]). Usage amounts are estimates [Guessing] until you measure them. Re-check prices on the AWS pricing pages before big runs.
 
 ---
 

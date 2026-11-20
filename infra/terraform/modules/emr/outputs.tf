@@ -1,6 +1,6 @@
 output "application_id" {
   description = "EMR Serverless application ID, for `make emr-run`."
-  value       = aws_emrserverless_application.spark.id
+  value       = try(aws_emrserverless_application.spark[0].id, null)
 }
 
 output "job_role_arn" {

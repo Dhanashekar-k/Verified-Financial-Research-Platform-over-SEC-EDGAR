@@ -33,7 +33,7 @@ A repo where every later step is one command, an AWS account that can't surprise
 2. **Python environment (uv).** Python 3.12; dependency groups `core`, `spark`, `api`, `ml`, `dev`. Pin PySpark 3.5.x and Java 17 (`brew install openjdk@17`, set `JAVA_HOME`).
 3. **docker-compose.yml** services: `postgres` (`pgvector/pgvector:pg17`, port 5432, volume), `redis` (`redis:7`, 6379), `jaeger` (all-in-one, UI on 16686, OTLP on 4317/4318). An `airflow` profile comes later (M10). **No MinIO**: local Iceberg uses a file-based catalog under `./warehouse` (ADR-016).
 4. **Makefile targets** (the skeleton in `repo_starter/Makefile`): `up, down, test, lint, fmt, bench, cost-today, status, tf-init, tf-plan, tf-apply` (the last asks for confirmation).
-5. **AWS CLI profile.** `aws configure sso` (IAM Identity Center) or access keys for an IAM user with MFA. Region `us-east-1`. Verify with `aws sts get-caller-identity --profile edgarqa`.
+5. **AWS CLI profile.** `aws configure sso` (IAM Identity Center) or access keys for an IAM user with MFA. Region `us-east-2`. Verify with `aws sts get-caller-identity --profile edgarqa`.
 6. **Terraform skeleton** (`infra/terraform/envs/dev`):
    - `backend.tf`: S3 backend in a bucket you create once by hand (`edgarqa-tfstate-<account-id>`), with `use_lockfile = true` [Likely: S3-native locking is in Terraform ≥ 1.10].
    - `providers.tf`: `default_tags { project = "edgarqa", env = "dev" }`.

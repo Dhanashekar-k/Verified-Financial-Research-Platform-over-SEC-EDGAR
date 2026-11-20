@@ -8,7 +8,13 @@ module "budgets" {
   alert_email = var.alert_email
 }
 
+module "cost_guardrails" {
+  source      = "../../modules/cost_guardrails"
+  alert_email = var.alert_email
+}
+
 module "github_oidc" {
+  count       = 0
   source      = "../../modules/github_oidc"
   github_repo = var.github_repo
 }
@@ -19,6 +25,14 @@ module "ecr" {
   region     = var.region
 }
 
+module "glue" {
+  source              = "../../modules/glue"
+  account_id          = var.account_id
+  region              = var.region
+  lake_bucket_name    = module.lake.bucket_name
+  glue_database_names = values(module.lake.glue_database_names)
+}
+
 module "emr" {
   source              = "../../modules/emr"
   account_id          = var.account_id
@@ -26,4 +40,5 @@ module "emr" {
   lake_bucket_name    = module.lake.bucket_name
   glue_database_names = values(module.lake.glue_database_names)
   image_uri           = var.emr_image_uri
+  create_application  = var.create_emr_application
 }

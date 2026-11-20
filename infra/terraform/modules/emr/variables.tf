@@ -53,3 +53,9 @@ variable "idle_timeout_minutes" {
   type        = number
   default     = 5
 }
+
+variable "create_application" {
+  description = "Whether to deploy the EMR Serverless application."
+  type        = bool
+  default     = false
+}
