@@ -96,3 +96,21 @@ def test_parallel_and_repartition_reach_the_fsds_job():
     assert args == [
         "--env", "glue", "--quarters", "2020q1", "--parallel", "4", "--repartition", "8",
     ]  # fmt: skip
+
+
+def test_parse_filings_defaults_its_input_to_the_lake_and_forwards_the_subset():
+    _, args = forwarded_args(
+        ["html-glob", "ciks", "filed-from", "filed-to", "output-namespace"],
+        [
+            "--lake-bucket", "my-lake", "--ciks", "320193", "--filed-from", "2023-02-01",
+            "--filed-to", "2023-11-30", "--output-namespace", "lake.corpus_smoke",
+            "--JOB_NAME", "x",
+        ],
+        defaults={"html-glob": "s3://{bucket}/raw/filings"},
+    )  # fmt: skip
+
+    assert args == [
+        "--env", "glue", "--html-glob", "s3://my-lake/raw/filings", "--ciks", "320193",
+        "--filed-from", "2023-02-01", "--filed-to", "2023-11-30",
+        "--output-namespace", "lake.corpus_smoke",
+    ]  # fmt: skip

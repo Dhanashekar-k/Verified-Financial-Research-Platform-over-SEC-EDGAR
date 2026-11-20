@@ -422,3 +422,116 @@ def test_without_the_owners_company_file_the_pdfs_are_reported_not_parsed(
     assert "FinanceBench PDFs NOT parsed" in caplog.text
     assert spark.table(f"{ns}.filings").count() == len(fixtures)
     assert spark.table(f"{ns}.chunks").where("doc_source = 'financebench_pdf'").count() == 0
+
+
+# --- smoke runs: separate output namespace, subsets, optional companies -----------------------
+
+
+def _drop_namespace(spark: SparkSession, ns: str) -> None:
+    for r in spark.sql(f"SHOW TABLES IN {ns}").collect():
+        spark.sql(f"DROP TABLE IF EXISTS {ns}.{r.tableName} PURGE")
+    spark.sql(f"DROP NAMESPACE IF EXISTS {ns}")
+
+
+def test_output_namespace_receives_the_tables_and_the_input_namespace_gets_none(
+    spark: SparkSession, lake
+):
+    ns, root, fixtures = lake
+    out = f"{ns}_out"
+    try:
+        counts = run(spark, str(root), raw_ns=ns, curated_ns=ns, output_ns=out)
+
+        assert counts["filings"] == len(fixtures)
+        assert not spark.catalog.tableExists(f"{ns}.filings")
+        assert not spark.catalog.tableExists(f"{ns}.chunks")
+        assert spark.table(f"{out}.filings").count() == len(fixtures)
+        # the rows are the same ones the in-place run produces
+        got_filings, got_chunks = spark_rows(spark, out)
+        want_filings, want_chunks = expected(fixtures)
+        assert got_filings.keys() == want_filings.keys()
+        assert got_chunks.keys() == want_chunks.keys()
+    finally:
+        _drop_namespace(spark, out)
+
+
+def test_ciks_and_filed_range_select_only_those_filings(spark: SparkSession, lake):
+    ns, root, _ = lake
+    out = f"{ns}_out"
+    try:
+        run(
+            spark, str(root), raw_ns=ns, curated_ns=ns, output_ns=out,
+            ciks=[1000002], filed_from=date(2023, 1, 1), filed_to=date(2023, 12, 31),
+        )  # fmt: skip
+
+        assert {r.accession for r in spark.table(f"{out}.filings").collect()} == {
+            "0001000002-24-000005"
+        }
+    finally:
+        _drop_namespace(spark, out)
+
+
+def test_limit_takes_the_first_accessions_and_none_means_all(spark: SparkSession, lake):
+    ns, root, fixtures = lake
+    out = f"{ns}_out"
+    try:
+        run(spark, str(root), raw_ns=ns, curated_ns=ns, output_ns=out, limit_filings=2)
+
+        first_two = sorted(f.accession for f in fixtures)[:2]
+        got = sorted(r.accession for r in spark.table(f"{out}.filings").collect())
+        assert got == first_two
+    finally:
+        _drop_namespace(spark, out)
+
+
+def test_a_separate_filings_html_namespace_is_read(spark: SparkSession, lake):
+    ns, root, fixtures = lake
+    html_ns, out = f"{ns}_html", f"{ns}_out"
+    spark.sql(f"CREATE NAMESPACE IF NOT EXISTS {html_ns}")
+    spark.sql(
+        f"CREATE TABLE {html_ns}.filings_html USING iceberg AS "
+        f"SELECT * FROM {ns}.filings_html WHERE cik = 1000003"
+    )
+    try:
+        run(
+            spark, str(root), raw_ns=ns, curated_ns=ns, output_ns=out, filings_html_ns=html_ns
+        )  # fmt: skip
+
+        assert [r.accession for r in spark.table(f"{out}.filings").collect()] == [
+            "0001000003-24-000001"
+        ]
+    finally:
+        _drop_namespace(spark, out)
+        _drop_namespace(spark, html_ns)
+
+
+def test_a_missing_companies_table_only_loses_the_fye_fallback(
+    spark: SparkSession, lake, caplog: pytest.LogCaptureFixture
+):
+    ns, root, _ = lake
+    spark.sql(f"DROP TABLE {ns}.companies PURGE")
+    out = f"{ns}_out"
+    try:
+        with caplog.at_level(logging.WARNING):
+            run(spark, str(root), raw_ns=ns, curated_ns=ns, output_ns=out)
+
+        assert "companies is missing" in caplog.text
+        filings, _ = spark_rows(spark, out)
+        assert filings["0001000004-22-000001"]["parse_status"] in {"ok", "partial", "no_sections"}
+        assert filings["0000320193-23-000106"]["fiscal_year"] == 2023  # from its own sub row
+    finally:
+        _drop_namespace(spark, out)
+
+
+def test_repartition_changes_nothing_about_the_rows(spark: SparkSession, lake):
+    ns, root, _ = lake
+    out = f"{ns}_out"
+    try:
+        run(spark, str(root), raw_ns=ns, curated_ns=ns)
+        base_filings, base_chunks = spark_rows(spark, ns)
+        run(spark, str(root), raw_ns=ns, curated_ns=ns, output_ns=out, repartition=3)
+
+        filings, chunks = spark_rows(spark, out)
+        assert filings == base_filings
+        assert chunks == base_chunks
+    finally:
+        _drop_namespace(spark, out)

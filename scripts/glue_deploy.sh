@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Publish the Glue job code: the two entry scripts to s3://<lake>/scripts/ and the code bundle
+# Publish the Glue job code: the entry scripts to s3://<lake>/scripts/ and the code bundle
 # (pipelines/**/*.py) to s3://<lake>/artifacts/glue/pipelines.zip, which every job lists in
 # --extra-py-files. A VERSION object records the git sha the bundle was built from.
 #
@@ -25,6 +25,8 @@ version="${sha}${dirty}"
 uploads=(
   "pipelines/glue/fsds_to_iceberg_job.py|s3://${bucket}/scripts/fsds_to_iceberg_job.py"
   "pipelines/glue/normalize_facts_job.py|s3://${bucket}/scripts/normalize_facts_job.py"
+  "pipelines/glue/load_filings_html_job.py|s3://${bucket}/scripts/load_filings_html_job.py"
+  "pipelines/glue/parse_filings_job.py|s3://${bucket}/scripts/parse_filings_job.py"
   "${zip}|s3://${bucket}/artifacts/glue/pipelines.zip"
 )
 

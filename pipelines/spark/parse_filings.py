@@ -20,6 +20,12 @@ fiscal_year, but a re-parse can move a filing to another fiscal_year and leave a
 `curated.chunks` is merged on `chunk_id` and then loses any chunk of a re-parsed document that the
 new parse no longer produces.
 
+Smoke runs (AWS Glue): `--output-namespace lake.corpus_smoke` writes `filings`/`chunks` there while
+the read-only inputs (`raw.fsds_sub`, `curated.facts_history`) still come from the real namespaces,
+`--filings-html-namespace` points at a smoke `filings_html`, and `--ciks`, `--filed-from`,
+`--filed-to`, `--limit-filings` pick a few filings. A missing `curated.companies` only drops the
+fye fallback (a warning), it does not stop the run.
+
 FinanceBench PDFs need the owner's `data/financebench_companies.csv` (company,cik). Without it that
 part is reported as not run; a CIK is never guessed.
 """
@@ -32,7 +38,8 @@ import json
 import logging
 import sys
 import uuid
-from collections.abc import Iterator
+from collections.abc import Iterator, Sequence
+from datetime import date
 from pathlib import Path
 
 import pandas as pd
@@ -109,6 +116,42 @@ def _latest_window():  # type: ignore[no-untyped-def]
 # -- inputs -----------------------------------------------------------------------------
 
 
+def select_filings(
+    html: DataFrame,
+    accessions: list[str] | None = None,
+    ciks: Sequence[int] = (),
+    filed_from: date | None = None,
+    filed_to: date | None = None,
+    limit: int | None = None,
+) -> DataFrame:
+    """Restrict `filings_html` rows. Every criterion narrows; none means everything."""
+    if accessions is not None:
+        html = html.where(F.col("accession").isin(accessions))
+    if ciks:
+        html = html.where(F.col("cik").isin([int(c) for c in ciks]))
+    if filed_from is not None:
+        html = html.where(F.col("filed") >= F.lit(filed_from))
+    if filed_to is not None:
+        html = html.where(F.col("filed") <= F.lit(filed_to))
+    if limit is not None:
+        first = html.select("accession").distinct().orderBy("accession").limit(limit)
+        html = html.join(first, "accession", "left_semi")
+    return html
+
+
+def companies_fye(spark: SparkSession, curated_ns: str) -> DataFrame:
+    """(cik, co_fye) from `curated.companies`; empty, with a warning, when that table is absent.
+
+    It only backs up a submission with no `fye` of its own, so its absence loses that fallback and
+    nothing else (rows that needed it have `fye_mmdd` NULL, as for any company without a row).
+    """
+    table = f"{curated_ns}.companies"
+    if spark.catalog.tableExists(table):
+        return spark.table(table).select("cik", F.col("fye_mmdd").alias("co_fye"))
+    log.warning("%s is missing: no company fiscal-year-end fallback", table)
+    return spark.createDataFrame([], "cik int, co_fye string")
+
+
 def build_html_inputs(
     spark: SparkSession,
     raw_ns: str,
@@ -116,13 +159,21 @@ def build_html_inputs(
     html_glob: str,
     corpus_version: int,
     accessions: list[str] | None = None,
+    filings_html_ns: str | None = None,
+    ciks: Sequence[int] = (),
+    filed_from: date | None = None,
+    filed_to: date | None = None,
+    limit_filings: int | None = None,
 ) -> DataFrame:
-    """One row per fetched filing: `meta_json` and the object's bytes (NULL if it is missing)."""
-    html = spark.table(f"{raw_ns}.filings_html").where(
+    """One row per fetched filing: `meta_json` and the object's bytes (NULL if it is missing).
+
+    `filings_html_ns` (default `raw_ns`) is where `filings_html` lives; the other selection
+    arguments restrict which fetched filings are parsed (all of them when empty).
+    """
+    html = spark.table(f"{filings_html_ns or raw_ns}.filings_html").where(
         (F.col("http_status") == 200) & F.col("s3_uri").isNotNull()
     )
-    if accessions is not None:
-        html = html.where(F.col("accession").isin(accessions))
+    html = select_filings(html, accessions, ciks, filed_from, filed_to, limit_filings)
     sub = (
         spark.table(f"{raw_ns}.fsds_sub")
         .withColumn("_rn", F.row_number().over(_latest_window()))
@@ -136,9 +187,7 @@ def build_html_inputs(
             F.col("accepted").alias("accepted_at"),
         )
     )
-    companies = spark.table(f"{curated_ns}.companies").select(
-        "cik", F.col("fye_mmdd").alias("co_fye")
-    )
+    companies = companies_fye(spark, curated_ns)
     offsets = label_offset_frame(spark, raw_ns, curated_ns)
     objects = (
         spark.read.format("binaryFile")
@@ -181,6 +230,16 @@ def build_html_inputs(
         )  # fmt: skip
     )
     return joined.select(meta.alias("meta_json"), "content")
+
+
+def spread_for_parsing(inputs: DataFrame, partitions: int | None) -> DataFrame:
+    """Spread documents over `partitions` tasks before the CPU-bound parse.
+
+    Spark packs `binaryFile` objects into partitions by BYTES (128 MB), and parse time depends on
+    document structure, not size, so a few big partitions leave most cores idle. A random
+    `repartition` evens that out; it costs one shuffle of the compressed bytes.
+    """
+    return inputs.repartition(partitions) if partitions else inputs
 
 
 def read_financebench_companies(path: Path) -> dict[str, int]:
@@ -313,11 +372,27 @@ def run(
     financebench_dir: Path | None = None,
     financebench_companies: Path | None = None,
     accessions: list[str] | None = None,
+    output_ns: str | None = None,
+    filings_html_ns: str | None = None,
+    ciks: Sequence[int] = (),
+    filed_from: date | None = None,
+    filed_to: date | None = None,
+    limit_filings: int | None = None,
+    repartition: int | None = None,
 ) -> dict[str, int]:
-    spark.sql(f"CREATE NAMESPACE IF NOT EXISTS {curated_ns}")
+    """Parse and merge. Reads come from `raw_ns`/`curated_ns`; writes go to `output_ns`
+    (default `curated_ns`), so a smoke run can read the real tables and write somewhere else."""
+    output_ns = output_ns or curated_ns
+    spark.sql(f"CREATE NAMESPACE IF NOT EXISTS {output_ns}")
     html_rows = parse_to_rows(
-        build_html_inputs(spark, raw_ns, curated_ns, html_glob, corpus_version, accessions)
-    )
+        spread_for_parsing(
+            build_html_inputs(
+                spark, raw_ns, curated_ns, html_glob, corpus_version, accessions,
+                filings_html_ns, ciks, filed_from, filed_to, limit_filings,
+            ),
+            repartition,
+        )
+    )  # fmt: skip
     counts: dict[str, int] = {}
     parsed = html_rows
     if financebench_dir is not None:
@@ -334,7 +409,7 @@ def run(
             parsed = html_rows.unionByName(pdf_rows)
     parsed = parsed.persist()
     try:
-        counts = merge_curated(spark, curated_ns, parsed)
+        counts = merge_curated(spark, output_ns, parsed)
     finally:
         parsed.unpersist()
     return counts
@@ -342,10 +417,17 @@ def run(
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Parse filings into curated.filings and chunks.")
-    parser.add_argument("--env", choices=["local", "emr"], default="local")
+    parser.add_argument("--env", choices=["local", "emr", "glue"], default="local")
     parser.add_argument("--html-glob", default="data/raw/filings")
     parser.add_argument("--raw-namespace", default=RAW_NAMESPACE)
     parser.add_argument("--curated-namespace", default=CURATED_NAMESPACE)
+    parser.add_argument("--output-namespace", default=None, help="write here (default: curated)")
+    parser.add_argument("--filings-html-namespace", default=None, help="default: raw namespace")
+    parser.add_argument("--ciks", default="", help="comma-separated CIKs (smoke subset)")
+    parser.add_argument("--filed-from", type=date.fromisoformat, default=None)
+    parser.add_argument("--filed-to", type=date.fromisoformat, default=None)
+    parser.add_argument("--limit-filings", type=int, default=None, help="first N accessions")
+    parser.add_argument("--repartition", type=int, default=0, help="spread documents over N tasks")
     parser.add_argument("--corpus-version", type=int, default=1)
     parser.add_argument("--financebench-dir", type=Path, default=None)
     parser.add_argument("--financebench-companies", type=Path, default=None)
@@ -358,6 +440,13 @@ def main(argv: list[str] | None = None) -> int:
         counts = run(
             spark, args.html_glob, args.raw_namespace, args.curated_namespace,
             args.corpus_version, args.financebench_dir, args.financebench_companies,
+            output_ns=args.output_namespace,
+            filings_html_ns=args.filings_html_namespace,
+            ciks=[int(c) for c in args.ciks.split(",") if c.strip()],
+            filed_from=args.filed_from,
+            filed_to=args.filed_to,
+            limit_filings=args.limit_filings,
+            repartition=args.repartition or None,
         )  # fmt: skip
     finally:
         spark.stop()

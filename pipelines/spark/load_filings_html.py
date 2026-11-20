@@ -72,7 +72,7 @@ def load_filings_html(spark: SparkSession, manifest: Path | str, table: str) -> 
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Load the filings manifest into raw.filings_html.")
-    parser.add_argument("--env", choices=["local", "emr"], default="local")
+    parser.add_argument("--env", choices=["local", "emr", "glue"], default="local")
     parser.add_argument("--manifest", default=str(DEFAULT_MANIFEST))
     parser.add_argument("--namespace", default=RAW_NAMESPACE)
     args = parser.parse_args(argv)
