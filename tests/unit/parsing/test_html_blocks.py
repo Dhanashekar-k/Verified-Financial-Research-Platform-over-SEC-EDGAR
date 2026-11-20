@@ -190,6 +190,50 @@ def test_a_running_page_header_repeated_on_every_page_is_dropped_even_with_chang
     assert texts(html_to_blocks(doc(pages))) == [f"{WORDS[n]} sentence." for n in range(1, 9)]
 
 
+MDA = (
+    "Item 2. Management\u2019s Discussion and Analysis "
+    "of Financial Condition and Results of Operations"
+)
+
+
+def test_an_item_heading_repeated_as_a_page_header_keeps_its_first_copy():
+    """Berkshire's 10-Q repeats the Item 2 heading on every MD&A page (18 copies in the real
+    filing): the first is the heading, the rest are page headers. Dropping all of them left the
+    filing without an Item 2 (so `parse_status` was `partial`)."""
+    pages = "".join(f"<div>{MDA}</div><div>{WORDS[n]} sentence.</div>" for n in range(1, 9))
+
+    assert texts(html_to_blocks(doc(pages))) == [
+        MDA,
+        *[f"{WORDS[n]} sentence." for n in range(1, 9)],
+    ]
+
+
+def test_the_kept_copy_is_the_first_one_in_the_document():
+    html = doc(
+        "<div>Before.</div>"
+        + "".join(f"<div>{MDA}</div><div>{WORDS[n]} sentence.</div>" for n in range(1, 8))
+    )
+
+    blocks = texts(html_to_blocks(html))
+
+    assert blocks[:2] == ["Before.", MDA]
+    assert blocks.count(MDA) == 1
+
+
+def test_a_bare_item_label_repeated_on_every_page_is_still_dropped():
+    """Microsoft's pages carry a bare "Item 1" navigation label (46+ copies per filing). It has no
+    title, so it is not a heading and must not become one."""
+    pages = "".join(f"<div>Item 1</div><div>{WORDS[n]} sentence.</div>" for n in range(1, 9))
+
+    assert texts(html_to_blocks(doc(pages))) == [f"{WORDS[n]} sentence." for n in range(1, 9)]
+
+
+def test_a_repeated_item_heading_below_the_threshold_is_untouched():
+    html = doc(f"<div>{MDA}</div><div>x.</div><div>{MDA}</div><div>y.</div>")
+
+    assert texts(html_to_blocks(html)) == [MDA, "x.", MDA, "y."]
+
+
 def test_short_repeated_paragraphs_below_the_threshold_are_kept():
     html = doc("<div>None.</div><div>None.</div><div>None.</div>")
 

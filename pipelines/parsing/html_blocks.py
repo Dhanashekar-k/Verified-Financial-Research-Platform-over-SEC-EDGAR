@@ -11,7 +11,10 @@
 * Tables with numbers (`tables.is_data_table`) become one `table` block with cleaned rows;
   other tables are read as paragraphs (a one-cell table is read through to its content).
 * Bare page numbers, "Table of Contents" back-links and running page headers (the same short
-  paragraph, digits aside, at least six times) are removed.
+  paragraph, digits aside, at least six times) are removed. When the repeated line is an item
+  heading with a title (Berkshire repeats "Item 2. Management's Discussion ..." on every MD&A
+  page), its first copy is kept: it is the heading, and dropping all of them would erase the
+  section. A bare repeated "Item 1" (a navigation label) is still dropped.
 
 Pure Python on selectolax's lexbor parser. A document that cannot be parsed raises; the caller
 (`parse_document`) records it as a per-document error.
@@ -46,6 +49,15 @@ _DIGITS = re.compile(r"\d+")
 _BLOCK_SELECTOR = "div,p,table,li,ul,ol,h1,h2,h3,h4,h5,h6,tr"
 REPEAT_MIN = 6
 REPEAT_MAX_LEN = 120
+# A repeated line that is an item heading WITH a title ("Item 2. Management's Discussion ..."): the
+# first copy is the real heading, the rest are running page headers. A bare "Item 1" repeated on
+# every page is a navigation label, not a heading, so a title (three letters) is required. Same
+# shape as sections._ITEM, but kept here because `sections` imports this module.
+_ITEM_HEADING = re.compile(
+    r"^(?:part\s+(?:iv|iii|ii|i|[1-4])\b[\s.,:;|\-\u2013\u2014]*)?"
+    r"item\s*\d{1,2}\s*[a-c]?(?![a-z0-9])[\s.,:;|\-\u2013\u2014]*[a-z]{3}",
+    re.IGNORECASE,
+)
 
 
 @dataclass(frozen=True, slots=True)
@@ -263,17 +275,21 @@ def _drop_noise(blocks: list[Block]) -> list[Block]:
         if b.kind == "paragraph" and len(b.text) <= REPEAT_MAX_LEN
     )
     out: list[Block] = []
+    kept_headings: set[str] = set()
     for b in blocks:
         if b.kind == "paragraph":
             low = b.text.lower()
             if _PAGE_NUMBER.match(b.text) or low == "table of contents":
                 continue
+            key = _DIGITS.sub("#", b.text)
             if (
                 len(b.text) <= REPEAT_MAX_LEN
                 and _DIGITS.search(b.text)
-                and shape[_DIGITS.sub("#", b.text)] >= REPEAT_MIN
+                and shape[key] >= REPEAT_MIN
             ):
-                continue
+                if not _ITEM_HEADING.match(b.text) or key in kept_headings:
+                    continue
+                kept_headings.add(key)
         out.append(b)
     return out
 

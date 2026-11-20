@@ -174,6 +174,29 @@ def test_a_10q_needs_part_one_items_one_and_two():
     assert {c.section for c in chunks} == {"P1-1", "P1-2"}
 
 
+def test_a_10q_whose_item_2_heading_is_repeated_as_a_page_header_still_finds_item_2():
+    """Berkshire-shaped 10-Q: the MD&A heading is also the running header of every MD&A page."""
+    mda = "Item 2. Management\u2019s Discussion and Analysis of Financial Condition and Results"
+    pages = "".join(f"<div>{mda}</div>{para(4, f'Page{n}')}" for n in range(1, 9))
+    html = (
+        "<html><body><div>PART I</div><div>Item 1. Financial Statements</div>"
+        + para(5, "Statements")
+        + pages
+        + "<div>Item 3. Quantitative and Qualitative Disclosures About Market Risk</div>"
+        + para(3, "Market")
+        + "</body></html>"
+    )
+
+    filing, chunks = parse(html, form="10-Q", period_of_report=date(2023, 7, 1))
+
+    assert (filing.parse_status, filing.parse_error) == ("ok", None)
+    assert {c.section for c in chunks} == {"P1-1", "P1-2", "P1-3"}
+    mda_text = " ".join(c.text for c in chunks if c.section == "P1-2")
+    assert "Page1 sentence" in mda_text and "Page8 sentence" in mda_text  # all eight pages
+    assert "Page1 sentence" not in " ".join(c.text for c in chunks if c.section == "P1-1")
+    assert all("Management" not in c.text for c in chunks)  # page-header copies are not text
+
+
 def test_an_exception_while_parsing_is_captured_not_raised(monkeypatch: pytest.MonkeyPatch):
     def boom(_: bytes):
         raise RuntimeError("selectolax exploded")
