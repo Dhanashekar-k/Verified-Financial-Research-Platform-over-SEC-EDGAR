@@ -26,15 +26,27 @@ locals {
     "spark.sql.csv.parser.columnPruning.enabled=false",
   ])
 
+  # Python libraries Glue installs from PyPI on the driver and every executor before the script
+  # runs. Glue 5.0 has none of them. The versions equal infra/emr/requirements-emr.txt (which
+  # equals uv.lock), so Glue parses with the same code the tests ran against.
+  parsing_modules = "selectolax==1.0.2,tokenizers==0.23.3,pymupdf==2.1,pydantic==2.14.3"
+
   jobs = {
-    "edgarqa-fsds-to-iceberg" = "fsds_to_iceberg_job.py"
-    "edgarqa-normalize-facts" = "normalize_facts_job.py"
+    "edgarqa-fsds-to-iceberg"   = { script = "fsds_to_iceberg_job.py", extra_args = {} }
+    "edgarqa-normalize-facts"   = { script = "normalize_facts_job.py", extra_args = {} }
+    "edgarqa-load-filings-html" = { script = "load_filings_html_job.py", extra_args = {} }
+    "edgarqa-parse-filings" = {
+      script     = "parse_filings_job.py"
+      extra_args = { "--additional-python-modules" = local.parsing_modules }
+    }
   }
 }
 
 # Smoke tests write here (--namespace lake.raw_smoke / lake.curated_smoke), never to raw/curated.
+# Off by default: set smoke_databases = ["raw_smoke", "curated_smoke"] for a smoke run, then
+# remove them again (dropping a database drops its tables; the S3 files are deleted separately).
 resource "aws_glue_catalog_database" "smoke" {
-  for_each    = toset(["raw_smoke", "curated_smoke"])
+  for_each    = toset(var.smoke_databases)
   name        = each.value
   description = "Throwaway tables from Glue smoke runs; safe to drop."
 }
@@ -53,14 +65,14 @@ resource "aws_glue_job" "this" {
 
   command {
     name            = "glueetl"
-    script_location = "${local.scripts_uri}/${each.value}"
+    script_location = "${local.scripts_uri}/${each.value.script}"
     python_version  = "3"
   }
 
   # Per-run arguments (company, year, limit, quarters) are passed to StartJobRun, e.g.
   #   --ciks 320193 --quarters 2023q3,2023q4 --namespace lake.raw_smoke
   # They are not defaults on purpose: a forgotten default would silently shrink a full run.
-  default_arguments = {
+  default_arguments = merge(each.value.extra_args, {
     "--datalake-formats"                 = "iceberg"
     "--conf"                             = local.iceberg_conf
     "--extra-py-files"                   = local.code_uri
@@ -70,7 +82,7 @@ resource "aws_glue_job" "this" {
     "--enable-metrics"                   = "true"
     "--enable-continuous-cloudwatch-log" = "true"
     "--enable-job-insights"              = "false"
-  }
+  })
 
   depends_on = [aws_cloudwatch_log_group.glue]
 }

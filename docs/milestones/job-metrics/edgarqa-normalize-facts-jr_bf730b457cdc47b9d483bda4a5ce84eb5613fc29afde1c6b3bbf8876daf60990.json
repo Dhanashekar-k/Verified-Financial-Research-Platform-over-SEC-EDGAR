@@ -1,0 +1,21 @@
+{
+  "job": "edgarqa-normalize-facts",
+  "job_run_id": "jr_bf730b457cdc47b9d483bda4a5ce84eb5613fc29afde1c6b3bbf8876daf60990",
+  "note": "smoke: Apple FY2023 -> lake.curated_smoke, code ac5db7db91aa-dirty",
+  "state": "SUCCEEDED",
+  "started_on": "2026-11-20T05:16:59.165000-05:00",
+  "completed_on": "2026-11-20T05:19:13.706000-05:00",
+  "execution_seconds": 124,
+  "dpu_seconds": 497.0,
+  "glue_version": "5.0",
+  "worker_type": "G.1X",
+  "number_of_workers": 4,
+  "timeout_minutes": 30,
+  "arguments": {
+    "--curated-namespace": "lake.curated_smoke",
+    "--fiscal-years": "2023",
+    "--ciks": "320193",
+    "--raw-namespace": "lake.raw_smoke"
+  },
+  "cost_usd": null
+}

@@ -40,3 +40,9 @@ variable "create_emr_application" {
   type        = bool
   default     = false
 }
+
+variable "smoke_databases" {
+  description = "Throwaway Glue databases for smoke runs (e.g. [\"corpus_smoke\"]); empty otherwise."
+  type        = list(string)
+  default     = []
+}

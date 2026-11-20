@@ -47,3 +47,9 @@ variable "timeout_minutes" {
   type        = number
   default     = 30
 }
+
+variable "smoke_databases" {
+  description = "Throwaway Glue databases for smoke runs. Empty when no smoke run is in progress."
+  type        = list(string)
+  default     = []
+}

@@ -1,0 +1,16 @@
+{
+  "job": "edgarqa-normalize-facts",
+  "job_run_id": "jr_0882a5887e8eb5455ba27811b8f9e8e3b89323a87f5a2a4f498a8d8a980f6c6e",
+  "note": "full: rebuild -> lake.curated, code 29019882c14f",
+  "state": "SUCCEEDED",
+  "started_on": "2026-11-20T06:10:38.638000-05:00",
+  "completed_on": "2026-11-20T06:29:12.276000-05:00",
+  "execution_seconds": 1107,
+  "dpu_seconds": 11071.0,
+  "glue_version": "5.0",
+  "worker_type": "G.1X",
+  "number_of_workers": 10,
+  "timeout_minutes": 90,
+  "arguments": {},
+  "cost_usd": null
+}

@@ -1,0 +1,20 @@
+{
+  "job": "edgarqa-fsds-to-iceberg",
+  "job_run_id": "jr_53d15c9a6d5f4780cf53c1181c2f7d42caa2014808ef05701393c87eaefd1627",
+  "note": "full: 25 quarters 2020q1-2026q1 -> lake.raw, code 29019882c14f",
+  "state": "SUCCEEDED",
+  "started_on": "2026-11-20T05:54:12.010000-05:00",
+  "completed_on": "2026-11-20T06:01:19.158000-05:00",
+  "execution_seconds": 420,
+  "dpu_seconds": 4209.0,
+  "glue_version": "5.0",
+  "worker_type": "G.1X",
+  "number_of_workers": 10,
+  "timeout_minutes": 90,
+  "arguments": {
+    "--parallel": "5",
+    "--quarters": "2020q1,2020q2,2020q3,2020q4,2021q1,2021q2,2021q3,2021q4,2022q1,2022q2,2022q3,2022q4,2023q1,2023q2,2023q3,2023q4,2024q1,2024q2,2024q3,2024q4,2025q1,2025q2,2025q3,2025q4,2026q1",
+    "--repartition": "8"
+  },
+  "cost_usd": null
+}

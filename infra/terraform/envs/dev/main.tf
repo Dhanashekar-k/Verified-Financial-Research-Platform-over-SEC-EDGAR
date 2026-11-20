@@ -31,6 +31,7 @@ module "glue" {
   region              = var.region
   lake_bucket_name    = module.lake.bucket_name
   glue_database_names = values(module.lake.glue_database_names)
+  smoke_databases     = var.smoke_databases
 }
 
 module "athena" {

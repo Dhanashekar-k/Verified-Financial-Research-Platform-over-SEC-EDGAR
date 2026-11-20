@@ -1,0 +1,20 @@
+{
+  "job": "edgarqa-fsds-to-iceberg",
+  "job_run_id": "jr_63a72cdc446ea620c983f90adb9071bc692d67fc33f007ac3794544e70836823",
+  "note": "smoke: Apple 2023q3-q4 -> lake.raw_smoke, code ac5db7db91aa-dirty",
+  "state": "SUCCEEDED",
+  "started_on": "2026-11-20T05:07:50.460000-05:00",
+  "completed_on": "2026-11-20T05:11:13.410000-05:00",
+  "execution_seconds": 195,
+  "dpu_seconds": 781.0,
+  "glue_version": "5.0",
+  "worker_type": "G.1X",
+  "number_of_workers": 4,
+  "timeout_minutes": 30,
+  "arguments": {
+    "--namespace": "lake.raw_smoke",
+    "--ciks": "320193",
+    "--quarters": "2023q3,2023q4"
+  },
+  "cost_usd": null
+}
