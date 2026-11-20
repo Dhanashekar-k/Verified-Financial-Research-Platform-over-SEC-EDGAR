@@ -39,8 +39,8 @@
       "9A": 91,
       "9B": 42,
       "9C": 24,
-      "P1-1": 8504,
-      "P1-2": 1876,
+      "P1-1": 6963,
+      "P1-2": 3417,
       "P1-3": 144,
       "P1-4": 82,
       "P2-1": 104,
@@ -53,7 +53,7 @@
     },
     "max_tokens": 400,
     "n_chunks": 38922,
-    "n_chunks_with_anchor": 12971,
+    "n_chunks_with_anchor": 12992,
     "n_filings": 135,
     "n_table_chunks": 15062,
     "non_ok": [
@@ -173,153 +173,6 @@
         "accession": "0000019617-25-000615",
         "cik": 19617,
         "error": "missing sections: P1-1, P1-2",
-        "form": "10-Q",
-        "status": "partial"
-      },
-      {
-        "accession": "0000950170-22-022287",
-        "cik": 1067983,
-        "error": "missing sections: P1-2",
-        "form": "10-Q",
-        "status": "partial"
-      },
-      {
-        "accession": "0000950170-23-018438",
-        "cik": 1067983,
-        "error": "missing sections: P1-2",
-        "form": "10-Q",
-        "status": "partial"
-      },
-      {
-        "accession": "0000950170-23-038705",
-        "cik": 1067983,
-        "error": "missing sections: P1-2",
-        "form": "10-Q",
-        "status": "partial"
-      },
-      {
-        "accession": "0000950170-23-058993",
-        "cik": 1067983,
-        "error": "missing sections: P1-2",
-        "form": "10-Q",
-        "status": "partial"
-      },
-      {
-        "accession": "0000950170-24-053185",
-        "cik": 1067983,
-        "error": "missing sections: P1-2",
-        "form": "10-Q",
-        "status": "partial"
-      },
-      {
-        "accession": "0000950170-24-090305",
-        "cik": 1067983,
-        "error": "missing sections: P1-2",
-        "form": "10-Q",
-        "status": "partial"
-      },
-      {
-        "accession": "0000950170-24-120241",
-        "cik": 1067983,
-        "error": "missing sections: P1-2",
-        "form": "10-Q",
-        "status": "partial"
-      },
-      {
-        "accession": "0000950170-25-063112",
-        "cik": 1067983,
-        "error": "missing sections: P1-2",
-        "form": "10-Q",
-        "status": "partial"
-      },
-      {
-        "accession": "0000950170-25-101578",
-        "cik": 1067983,
-        "error": "missing sections: P1-2",
-        "form": "10-Q",
-        "status": "partial"
-      },
-      {
-        "accession": "0001193125-25-261548",
-        "cik": 1067983,
-        "error": "missing sections: P1-2",
-        "form": "10-Q",
-        "status": "partial"
-      },
-      {
-        "accession": "0001193125-26-202243",
-        "cik": 1067983,
-        "error": "missing sections: P1-2",
-        "form": "10-Q",
-        "status": "partial"
-      },
-      {
-        "accession": "0001193125-26-341032",
-        "cik": 1067983,
-        "error": "missing sections: P1-2",
-        "form": "10-Q",
-        "status": "partial"
-      },
-      {
-        "accession": "0001193125-26-452412",
-        "cik": 1067983,
-        "error": "missing sections: P1-2",
-        "form": "10-Q",
-        "status": "partial"
-      },
-      {
-        "accession": "0001564590-20-020599",
-        "cik": 1067983,
-        "error": "missing sections: P1-2",
-        "form": "10-Q",
-        "status": "partial"
-      },
-      {
-        "accession": "0001564590-20-038544",
-        "cik": 1067983,
-        "error": "missing sections: P1-2",
-        "form": "10-Q",
-        "status": "partial"
-      },
-      {
-        "accession": "0001564590-20-052144",
-        "cik": 1067983,
-        "error": "missing sections: P1-2",
-        "form": "10-Q",
-        "status": "partial"
-      },
-      {
-        "accession": "0001564590-21-022703",
-        "cik": 1067983,
-        "error": "missing sections: P1-2",
-        "form": "10-Q",
-        "status": "partial"
-      },
-      {
-        "accession": "0001564590-21-042312",
-        "cik": 1067983,
-        "error": "missing sections: P1-2",
-        "form": "10-Q",
-        "status": "partial"
-      },
-      {
-        "accession": "0001564590-21-055032",
-        "cik": 1067983,
-        "error": "missing sections: P1-2",
-        "form": "10-Q",
-        "status": "partial"
-      },
-      {
-        "accession": "0001564590-22-016907",
-        "cik": 1067983,
-        "error": "missing sections: P1-2",
-        "form": "10-Q",
-        "status": "partial"
-      },
-      {
-        "accession": "0001564590-22-028282",
-        "cik": 1067983,
-        "error": "missing sections: P1-2",
         "form": "10-Q",
         "status": "partial"
       },
@@ -517,8 +370,8 @@
     "seed": 20261117,
     "status_by_form": {
       "10-K|ok": 32,
-      "10-Q|ok": 61,
-      "10-Q|partial": 42
+      "10-Q|ok": 82,
+      "10-Q|partial": 21
     },
     "store": "data/raw/filings",
     "token_histogram": {

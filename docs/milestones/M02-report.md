@@ -21,8 +21,8 @@ target list, and the 84 FinanceBench PDFs.
    Please review the CSV (it is gitignored under `data/`; the evidence is committed).
 4. The full fetch and parse of the 13,239 targets is the cloud sprint (nothing was applied, pushed or run in AWS).
 
-Two checks FAIL on what was measured: strict parse success is 93 of 135 filings `ok` (target ≥ 95%), and the 20
-random chunks did not all read cleanly. Causes are listed under "Open issues".
+Two checks FAIL on what was measured: strict parse success is 114 of 135 filings `ok` (84.4%; target ≥ 95%; it was 93 of 135, 68.9%,
+before the Berkshire fix), and the 20 random chunks did not all read cleanly. Causes are listed under "Open issues".
 
 ## Checklist (M02 runbook section 6)
 
@@ -31,7 +31,7 @@ random chunks did not all read cleanly. Causes are listed under "Open issues".
 | 1a | `filings.csv` counts recorded | PASS | `make list-filings` style run: `python -m pipelines.fetch.list_filings --keep-going --summary-out docs/milestones/M02-targets.json` → "wrote 13239 targets", 500 of 500 CIKs listed, 0 failed. Counts in the numbers table. |
 | 1b | fetch complete | NOT RUN | Only 135 of 13,239 targets were fetched, locally, to test the fetcher (135 fetched, 0 failed; `docs/milestones/M02-parse-metrics.json` `html.n_filings`). The full fetch belongs on an AWS box (cloud sprint). |
 | 1c | `raw.filings_html` has one row per target | NOT RUN | 135 rows for the 135 fetched (command: Spark `count()` on `lake.raw.filings_html`, all HTTP 200). One row per fetched filing holds; for the 13,239 targets it is not run. |
-| 2a | Parse success ≥ 95% (or documented) | **FAIL** (documented) | 93 `ok` + 42 `partial` of 135, 0 `error`, 0 `no_sections` (`html.status_by_form`). All 42 `partial` are 10-Qs of two companies; causes under Open issues. The 32 10-Ks all parsed `ok`. |
+| 2a | Parse success ≥ 95% (or documented) | **FAIL** (documented) | 114 `ok` + 21 `partial` of 135 = 84.4% strict, 0 `error`, 0 `no_sections` (`html.status_by_form`: 10-K ok 32, 10-Q ok 82, 10-Q partial 21). All 21 `partial` are JPMorgan 10-Qs (CIK 19617), a cross-reference format with no Item 1 or Item 2 heading in the body: ADR-028, not fixed. The 21 Berkshire 10-Qs that were `partial` (P1-2 missing) are fixed: the running-header filter dropped the repeated `Item 2. Management's Discussion ...` page header together with the real heading (`html_blocks._drop_noise`; regression tests in `tests/unit/parsing/test_berkshire_item2_regression.py`). The 32 10-Ks all parsed `ok`. 95% is not reachable on this 5-CIK set without the JPMorgan format: 21 of 135 (15.6%) are JPMorgan 10-Qs. |
 | 2b | Section-boundary accuracy ≥ 90% on the 100 labels | **NOT MEASURED** | `python -m eval.sections_eval` → "NOT MEASURED (eval/sets/sections_gold.jsonl does not exist yet)". Pending **n=50** hand labels (your task): half the runbook's 100, a conscious speed-run deviation. The tool is tested with a synthetic gold file only. |
 | 3a | Chunk count and token histogram recorded | PASS | `html.n_chunks`, `html.token_histogram`, `html.max_tokens` in `M02-parse-metrics.json`; the Spark job's table agrees: `lake.curated.chunks` 38922 rows (command output). |
 | 3b | Property tests green | PASS | `pytest tests/unit/parsing/test_chunker.py` → 19 passed (no chunk over 400 tokens, overlap ≤ 80, chunks reproduce the text, every chunk adds text). `make test` → 1292 passed, 0 skipped. |
@@ -61,7 +61,7 @@ random chunks did not all read cleanly. Causes are listed under "Open issues".
 | 10-Q / 10-Q/A | 10109 / 32 | same | `by_form["10-Q"]`, `by_form["10-Q/A"]` |
 | Targets with report year 2026 (10-K+10-K/A+10-Q+10-Q/A) | 101+1+1399+3 | same | `by_form_and_year["10-K\|2026"]` and the three others |
 | Filings fetched and parsed locally | 135 | `docs/milestones/M02-parse-metrics.json` | `html.n_filings` |
-| `ok` 10-K / `ok` 10-Q / `partial` 10-Q | 32 / 61 / 42 | same | `html.status_by_form` |
+| `ok` 10-K / `ok` 10-Q / `partial` 10-Q | 32 / 82 / 21 | same | `html.status_by_form` |
 | Chunks / table chunks | 38922 / 15062 | same | `html.n_chunks`, `html.n_table_chunks` |
 | Chunks cited by element id | 12971 | same | `html.n_chunks_with_anchor` |
 | Max tokens / chunks over 400 | 400 / 0 | same | `html.max_tokens`, `html.chunks_over_400` |
@@ -80,9 +80,11 @@ random chunks did not all read cleanly. Causes are listed under "Open issues".
 
 **Failures found in what was measured**
 
-1. **JPMorgan 10-Qs (21 filings) and Berkshire 10-Qs (21 filings) are `partial`** (`html.non_ok`): JPMorgan's 10-Q has no
-   `Item 1/2` headings in the body (cross-reference format), so `P1-1` and `P1-2` are missing; Berkshire's MD&A heading
-   has no `Item 2` text, so `P1-2` is missing. No company-specific rule was added. Consequence: JPMorgan's whole
+1. **JPMorgan 10-Qs (21 filings) are `partial`** (`html.non_ok`): JPMorgan's 10-Q has no
+   `Item 1/2` headings in the body (cross-reference format), so `P1-1` and `P1-2` are missing (ADR-028).
+   **Berkshire's 21 10-Qs were `partial` too and are fixed** (2026-11-20): the MD&A heading `Item 2. Management's Discussion ...`
+   is also the page header of every MD&A page (18 copies), and the repeated-line filter dropped all of them; the first copy of a
+   repeated item heading that has a title is now kept. No company-specific rule was added. Consequence for JPMorgan: its whole
    10-Q body lands in the last section found (`P2-6`: 10254 chunks), and its 10-K financial statements in `15` (5923).
    Section filters for these companies will be wrong until a title-based fallback exists.
 2. **The 20-chunk read** (`html.random_chunks`, chunk ids in the file): 7 JPMorgan chunks under a misleading section

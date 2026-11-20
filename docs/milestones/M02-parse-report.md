@@ -9,10 +9,10 @@ S&P 500 target list: the full fetch and parse are NOT MEASURED (cloud sprint).
 | form | status | filings |
 |---|---|---:|
 | 10-K | ok | 32 |
-| 10-Q | ok | 61 |
-| 10-Q | partial | 42 |
+| 10-Q | ok | 82 |
+| 10-Q | partial | 21 |
 
-Chunks: 38922 (15062 table chunks, 12971 cited by element id). Max tokens 400; chunks over 400: 0.
+Chunks: 38922 (15062 table chunks, 12992 cited by element id). Max tokens 400; chunks over 400: 0.
 
 | tokens | chunks |
 |---|---:|
@@ -30,7 +30,6 @@ Chunks: 38922 (15062 table chunks, 12971 cited by element id). Max tokens 400; c
 | cik | form | status | detail | filings |
 |---:|---|---|---|---:|
 | 19617 | 10-Q | partial | missing sections: P1-1, P1-2 | 21 |
-| 1067983 | 10-Q | partial | missing sections: P1-2 | 21 |
 
 ## FinanceBench PDFs
 
