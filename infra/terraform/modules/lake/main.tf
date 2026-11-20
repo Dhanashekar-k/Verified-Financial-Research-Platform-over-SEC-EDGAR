@@ -35,6 +35,20 @@ resource "aws_s3_bucket_lifecycle_configuration" "lake" {
       days_after_initiation = 7
     }
   }
+
+  # Athena query results (04_aws_and_cost_plan.md §2 item 8).
+  rule {
+    id     = "expire-athena-results"
+    status = "Enabled"
+
+    filter {
+      prefix = "athena-results/"
+    }
+
+    expiration {
+      days = 7
+    }
+  }
 }
 
 resource "aws_glue_catalog_database" "raw" {

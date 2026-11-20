@@ -1,9 +1,78 @@
-# Execution role and log groups for the Spark jobs that run on AWS Glue (the Free plan has no EMR Serverless).
-# No Glue job is created here: a role and log groups cost nothing, jobs are added in the next phase.
+# The Spark jobs run on AWS Glue because an Organization policy denies EMR Serverless (ADR-027).
+# Same PySpark as the laptop and EMR: the scripts in s3://<lake>/scripts/ are thin entry points
+# (pipelines/glue/*_job.py) over the shared jobs in pipelines/spark/, shipped as pipelines.zip.
+# Creating a job costs nothing; only a run is billed (DPU-seconds, 1-minute minimum).
 
 locals {
   lake_bucket_arn = "arn:aws:s3:::${var.lake_bucket_name}"
   glue_arn        = "arn:aws:glue:${var.region}:${var.account_id}"
+
+  # raw/curated plus the smoke databases, so a smoke run can never touch the real tables.
+  databases = concat(var.glue_database_names, [for db in aws_glue_catalog_database.smoke : db.name])
+
+  scripts_uri = "s3://${var.lake_bucket_name}/scripts"
+  code_uri    = "s3://${var.lake_bucket_name}/artifacts/glue/pipelines.zip"
+
+  # Glue reads several --conf settings from ONE argument: "a=b --conf c=d". These must equal
+  # pipelines/common/spark_session.py build_spark_conf("glue"); that function also sets them when
+  # the session is built, so a drift here would show up as a failed run, not a silent difference.
+  iceberg_conf = join(" --conf ", [
+    "spark.sql.extensions=org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions",
+    "spark.sql.catalog.lake=org.apache.iceberg.spark.SparkCatalog",
+    "spark.sql.catalog.lake.catalog-impl=org.apache.iceberg.aws.glue.GlueCatalog",
+    "spark.sql.catalog.lake.io-impl=org.apache.iceberg.aws.s3.S3FileIO",
+    "spark.sql.catalog.lake.warehouse=s3://${var.lake_bucket_name}/warehouse",
+    "spark.sql.session.timeZone=UTC",
+    "spark.sql.csv.parser.columnPruning.enabled=false",
+  ])
+
+  jobs = {
+    "edgarqa-fsds-to-iceberg" = "fsds_to_iceberg_job.py"
+    "edgarqa-normalize-facts" = "normalize_facts_job.py"
+  }
+}
+
+# Smoke tests write here (--namespace lake.raw_smoke / lake.curated_smoke), never to raw/curated.
+resource "aws_glue_catalog_database" "smoke" {
+  for_each    = toset(["raw_smoke", "curated_smoke"])
+  name        = each.value
+  description = "Throwaway tables from Glue smoke runs; safe to drop."
+}
+
+resource "aws_glue_job" "this" {
+  for_each = local.jobs
+
+  name              = each.key
+  role_arn          = aws_iam_role.job.arn
+  glue_version      = var.glue_version
+  worker_type       = var.worker_type
+  number_of_workers = var.number_of_workers
+  timeout           = var.timeout_minutes # minutes; a stuck job stops billing at this limit
+  max_retries       = 0                   # a retry would bill the failed work twice
+  execution_class   = "STANDARD"
+
+  command {
+    name            = "glueetl"
+    script_location = "${local.scripts_uri}/${each.value}"
+    python_version  = "3"
+  }
+
+  # Per-run arguments (company, year, limit, quarters) are passed to StartJobRun, e.g.
+  #   --ciks 320193 --quarters 2023q3,2023q4 --namespace lake.raw_smoke
+  # They are not defaults on purpose: a forgotten default would silently shrink a full run.
+  default_arguments = {
+    "--datalake-formats"                 = "iceberg"
+    "--conf"                             = local.iceberg_conf
+    "--extra-py-files"                   = local.code_uri
+    "--lake-bucket"                      = var.lake_bucket_name
+    "--job-language"                     = "python"
+    "--TempDir"                          = "s3://${var.lake_bucket_name}/tmp/glue/"
+    "--enable-metrics"                   = "true"
+    "--enable-continuous-cloudwatch-log" = "true"
+    "--enable-job-insights"              = "false"
+  }
+
+  depends_on = [aws_cloudwatch_log_group.glue]
 }
 
 data "aws_iam_policy_document" "trust" {
@@ -62,9 +131,23 @@ data "aws_iam_policy_document" "job" {
     ]
     resources = concat(
       ["${local.glue_arn}:catalog"],
-      [for db in var.glue_database_names : "${local.glue_arn}:database/${db}"],
-      [for db in var.glue_database_names : "${local.glue_arn}:table/${db}/*"],
+      [for db in local.databases : "${local.glue_arn}:database/${db}"],
+      [for db in local.databases : "${local.glue_arn}:table/${db}/*"],
     )
+  }
+
+  # `--enable-metrics` publishes job metrics; PutMetricData has no resource-level scoping.
+  statement {
+    sid       = "JobMetrics"
+    effect    = "Allow"
+    actions   = ["cloudwatch:PutMetricData"]
+    resources = ["*"]
+
+    condition {
+      test     = "StringEquals"
+      variable = "cloudwatch:namespace"
+      values   = ["Glue"]
+    }
   }
 
   # Glue writes driver and executor logs to these log groups only.

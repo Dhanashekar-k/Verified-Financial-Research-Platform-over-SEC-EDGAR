@@ -33,6 +33,11 @@ module "glue" {
   glue_database_names = values(module.lake.glue_database_names)
 }
 
+module "athena" {
+  source           = "../../modules/athena"
+  lake_bucket_name = module.lake.bucket_name
+}
+
 module "emr" {
   source              = "../../modules/emr"
   account_id          = var.account_id
