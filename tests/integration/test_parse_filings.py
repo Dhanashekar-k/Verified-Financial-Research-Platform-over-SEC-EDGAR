@@ -19,6 +19,7 @@ from typing import Any
 import pymupdf
 import pytest
 from pyspark.sql import SparkSession
+from pyspark.sql import functions as F
 
 from pipelines.common.fiscal_ref import LabelOffset
 from pipelines.parsing.document import FilingMeta, FilingRow, parse_document
@@ -288,6 +289,53 @@ def test_a_reparse_that_yields_fewer_chunks_leaves_no_orphans(spark: SparkSessio
         k: c for k, c in before.items() if k not in mine_before
     }
     assert {c["n_tokens"] for c in after.values()} <= set(range(1, 401))
+
+
+def _add_stale_chunk(spark: SparkSession, ns: str, accession: str) -> str:
+    """Append a copy of one of the filing's chunks under an old section label; returns its id."""
+    stale_id = f"{accession}#P2-6#9999"
+    (
+        spark.table(f"{ns}.chunks")
+        .where(f"accession = '{accession}'")
+        .limit(1)
+        .withColumn("chunk_id", F.lit(stale_id))
+        .withColumn("section", F.lit("P2-6"))
+        .writeTo(f"{ns}.chunks")
+        .append()
+    )
+    return stale_id
+
+
+def test_a_reparse_removes_chunks_with_an_old_section_label_and_a_second_run_changes_nothing(
+    spark: SparkSession, lake
+):
+    """The ADR-031 case: a section is relabelled, so the old `{accession}#P2-6#...` chunk ids are
+    no longer produced and must go; chunks of filings that were not re-parsed are left alone until
+    they are, and the cleanup is idempotent."""
+    ns, root, _ = lake
+    run(spark, str(root), raw_ns=ns, curated_ns=ns)
+    _, clean = spark_rows(spark, ns)
+    accessions = sorted({c["accession"] for c in clean.values()})
+    mine, other = accessions[0], accessions[1]
+    stale_mine = _add_stale_chunk(spark, ns, mine)
+    stale_other = _add_stale_chunk(spark, ns, other)
+    assert {stale_mine, stale_other} <= set(spark_rows(spark, ns)[1])
+
+    run(spark, str(root), raw_ns=ns, curated_ns=ns, accessions=[mine])
+
+    _, after_one = spark_rows(spark, ns)
+    assert stale_mine not in after_one  # the re-parsed filing's orphan is deleted
+    assert stale_other in after_one  # a filing that was not re-parsed is not touched
+    assert {k: c for k, c in after_one.items() if k != stale_other} == clean
+
+    run(spark, str(root), raw_ns=ns, curated_ns=ns, accessions=[mine])
+
+    assert spark_rows(spark, ns)[1] == after_one  # idempotent: a second identical run is a no-op
+
+    counts = run(spark, str(root), raw_ns=ns, curated_ns=ns)  # now `other` is re-parsed too
+
+    assert spark_rows(spark, ns)[1] == clean
+    assert counts["chunks"] == len(clean)
 
 
 def test_a_changed_fiscal_year_moves_the_filing_without_leaving_a_duplicate(

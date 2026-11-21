@@ -349,17 +349,37 @@ def parse_to_rows(inputs: DataFrame, pdf: bool = False) -> DataFrame:
 
 
 def merge_curated(spark: SparkSession, curated_ns: str, parsed: DataFrame) -> dict[str, int]:
-    """MERGE filings on accession and chunks on chunk_id; drop orphaned chunks of re-parsed docs."""
+    """MERGE filings on accession and chunks on chunk_id; drop orphaned chunks of re-parsed docs.
+
+    An orphan is a chunk of a re-parsed filing whose `chunk_id` the new parse does not produce (a
+    section was relabelled or the filing now has fewer chunks). They are found with a left-anti
+    join and removed with a MERGE ... WHEN MATCHED THEN DELETE. The earlier
+    `DELETE ... chunk_id NOT IN (SELECT ...)` was a null-aware anti-join, planned as a nested loop
+    over every chunk id: it ran for over 70 minutes on 2.8 million chunks and hit the job timeout
+    (M02 report, ADR-031).
+    """
     filings = parsed.select("filing.*")
     chunks = parsed.select(F.explode("chunks").alias("c")).select("c.*")
     filings_table, chunks_table = f"{curated_ns}.filings", f"{curated_ns}.chunks"
     ensure_table(spark, filings_table, filings, "fiscal_year")
     ensure_table(spark, chunks_table, chunks, "doc_source, fiscal_year")
     tag = uuid.uuid4().hex
-    f_view, c_view = f"_filings_{tag}", f"_chunks_{tag}"
+    f_view, c_view, o_view = f"_filings_{tag}", f"_chunks_{tag}", f"_orphans_{tag}"
     filings.createOrReplaceTempView(f_view)
     chunks.createOrReplaceTempView(c_view)
+    # Found BEFORE the chunk merge: the merge only adds or updates ids of the new parse, so the
+    # orphans are the same either way, and the table is not read while it is being rewritten.
+    orphans = (
+        spark.table(chunks_table)
+        .select("chunk_id", "accession")
+        .join(filings.select("accession").distinct(), "accession", "left_semi")
+        .join(chunks.select("chunk_id"), "chunk_id", "left_anti")
+        .select("chunk_id")
+        .persist()
+    )
     try:
+        n_orphans = orphans.count()
+        orphans.createOrReplaceTempView(o_view)
         spark.sql(
             f"MERGE INTO {filings_table} t USING {f_view} s ON t.accession = s.accession "
             "WHEN MATCHED THEN UPDATE SET * WHEN NOT MATCHED THEN INSERT *"
@@ -368,13 +388,16 @@ def merge_curated(spark: SparkSession, curated_ns: str, parsed: DataFrame) -> di
             f"MERGE INTO {chunks_table} t USING {c_view} s ON t.chunk_id = s.chunk_id "
             "WHEN MATCHED THEN UPDATE SET * WHEN NOT MATCHED THEN INSERT *"
         )
-        spark.sql(
-            f"DELETE FROM {chunks_table} WHERE accession IN (SELECT accession FROM {f_view}) "
-            f"AND chunk_id NOT IN (SELECT chunk_id FROM {c_view})"
-        )
+        if n_orphans:
+            spark.sql(
+                f"MERGE INTO {chunks_table} t USING {o_view} s ON t.chunk_id = s.chunk_id "
+                "WHEN MATCHED THEN DELETE"
+            )
     finally:
+        orphans.unpersist()
         spark.catalog.dropTempView(f_view)
         spark.catalog.dropTempView(c_view)
+        spark.catalog.dropTempView(o_view)
     return {
         "filings": spark.table(filings_table).count(),
         "chunks": spark.table(chunks_table).count(),
