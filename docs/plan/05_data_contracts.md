@@ -247,7 +247,8 @@ CREATE TABLE lake.curated.corpus_versions (     -- one row per serving export (M
 ```json
 {"corpus_version": 7, "created_at": "2026-12-04T03:12:00Z", "git_sha": "abc1234",
  "facts_rows": 0, "chunks_rows": 0, "embedding_model": "BAAI/bge-small-en-v1.5", "dim": 384,
- "embedding_artifact": {"hf_repo": "Qdrant/bge-small-en-v1.5-onnx-Q", "onnx_file": "model_optimized.onnx", "onnx_sha256": "<hex>"},
+ "embedding_artifact": {"hf_repo": "Qdrant/bge-small-en-v1.5-onnx-Q", "hf_revision": "<40-hex commit>",
+                        "onnx_file": "model_optimized.onnx", "onnx_sha256": "<hex>"},
  "chunk_exclusions": {"rule": "n_tokens <= 5", "count": 0},
  "iceberg_snapshots": {"curated.facts": 0, "curated.chunks": 0, "curated.chunk_embeddings": 0}}
 ```

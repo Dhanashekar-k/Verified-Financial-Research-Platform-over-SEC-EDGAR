@@ -66,6 +66,10 @@ dq: ## Data-quality report (M1)
 	$(PY) python -m pipelines.spark.dq_checks --env local
 emr-package: ## Build dist/pipelines-<sha>.zip; UPLOAD=s3://<lake>/artifacts publishes it (a cloud write: you run it)
 	$(PY) python -m pipelines.cloud.package $(if $(UPLOAD),--upload $(UPLOAD),)
+fetch-model: ## Download the quantized bge ONNX into data/models (needed by the embedding tests; a read from Hugging Face)
+	$(PY) python -m scripts.stage_model download
+stage-model: ## Upload data/models to the lake bucket for Glue; YES=1 uploads (a cloud write)
+	$(PY) python -m scripts.stage_model upload --to s3://edgarqa-lake-019593222039/artifacts/models/bge-small-en-v1.5 $(if $(YES),--yes,)
 glue-deploy: ## Publish Glue scripts + code bundle to the lake bucket; YES=1 uploads (a cloud write)
 	scripts/glue_deploy.sh
 emr-image-build: ## Build the custom arm64 EMR image locally (ADR-024); does not push

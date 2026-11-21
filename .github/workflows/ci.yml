@@ -27,5 +27,10 @@ jobs:
       - name: Mypy on app/engine (allow-fail until M5)
         run: uv run mypy app/engine || true
 
+      # The embedding tests run the real quantized bge ONNX from data/models (ADR-032): a one-time
+      # download from Hugging Face as setup, like `uv sync`; the tests themselves open no sockets.
+      - name: Fetch the embedding model
+        run: make fetch-model
+
       - name: Unit and property tests (no live services)
         run: uv run pytest tests/unit tests/property -m "not live" -q
