@@ -2,6 +2,8 @@
 
     uv run python -m pipelines.spark.build_companies --env local [--tickers F] [--sp500 F]
 
+On AWS Glue (`--env glue`) the two frozen files are read from `s3://<lake>/reference/`.
+
 One row per cik, for every cik that either files in `raw.fsds_sub` or appears in the SEC ticker
 map (a listed company with no filing in the loaded quarters is kept, with sic and fye NULL).
 
@@ -24,15 +26,17 @@ from __future__ import annotations
 import argparse
 import csv
 import hashlib
+import io
 import json
 import logging
 import re
-from pathlib import Path
 
 from pyspark.sql import Column, DataFrame, SparkSession
 from pyspark.sql import functions as F
 from pyspark.sql.types import IntegerType, StringType, StructField, StructType
 
+from pipelines.common import locations
+from pipelines.common.locations import Location
 from pipelines.common.spark_session import Env, spark_session
 from pipelines.fetch.reference_data import parse_company_tickers
 from pipelines.spark.curated_schemas import COMPANIES
@@ -131,20 +135,18 @@ def unmatched_sp500(tickers: DataFrame, sp500: DataFrame) -> DataFrame:
 
 def run(
     spark: SparkSession,
-    tickers_path: Path,
-    sp500_path: Path,
+    tickers_path: Location,
+    sp500_path: Location,
     raw_ns: str = RAW_NAMESPACE,
     curated_ns: str = CURATED_NAMESPACE,
 ) -> dict[str, int]:
     """Rebuild `{curated_ns}.companies` from `raw.fsds_sub` and the two frozen files."""
-    ticker_rows = parse_company_tickers(json.loads(tickers_path.read_text()))
+    ticker_rows = parse_company_tickers(json.loads(locations.read_text(tickers_path)))
     tickers = spark.createDataFrame(
         [(r.cik, r.ticker, r.name, r.rank) for r in ticker_rows], TICKERS_SCHEMA
     )
-    with sp500_path.open(newline="") as f:
-        sp500 = spark.createDataFrame(
-            [(r["ticker"], r["name"]) for r in csv.DictReader(f)], SP500_SCHEMA
-        )
+    sp500_rows = csv.DictReader(io.StringIO(locations.read_text(sp500_path), newline=""))
+    sp500 = spark.createDataFrame([(r["ticker"], r["name"]) for r in sp500_rows], SP500_SCHEMA)
 
     companies = build_companies(spark.table(f"{raw_ns}.fsds_sub"), tickers, sp500)
     spark.sql(f"CREATE NAMESPACE IF NOT EXISTS {curated_ns}")
@@ -165,13 +167,13 @@ def run(
     }
 
 
-def snapshot_date(path: Path) -> str:
+def snapshot_date(path: Location) -> str:
     """The ISO date in a frozen snapshot's file name (`sp500_2026-11-17.csv`), else `unknown`."""
-    match = _SNAPSHOT_DATE.search(path.name)
+    match = _SNAPSHOT_DATE.search(locations.basename(path))
     return match.group() if match else "unknown"
 
 
-def snapshot_properties(tickers_path: Path, sp500_path: Path) -> dict[str, str]:
+def snapshot_properties(tickers_path: Location, sp500_path: Location) -> dict[str, str]:
     """Table properties naming the dated snapshots `curated.companies` was built from.
 
     S&P 500 membership changes over time, so the table says which day it reflects; the SHA-256
@@ -179,13 +181,13 @@ def snapshot_properties(tickers_path: Path, sp500_path: Path) -> dict[str, str]:
     """
     return {
         "edgarqa.sp500_snapshot_date": snapshot_date(sp500_path),
-        "edgarqa.sp500_sha256": hashlib.sha256(sp500_path.read_bytes()).hexdigest(),
+        "edgarqa.sp500_sha256": hashlib.sha256(locations.read_bytes(sp500_path)).hexdigest(),
         "edgarqa.ticker_map_snapshot_date": snapshot_date(tickers_path),
-        "edgarqa.ticker_map_sha256": hashlib.sha256(tickers_path.read_bytes()).hexdigest(),
+        "edgarqa.ticker_map_sha256": hashlib.sha256(locations.read_bytes(tickers_path)).hexdigest(),
     }
 
 
-def warn_if_snapshot_dates_differ(tickers_path: Path, sp500_path: Path) -> None:
+def warn_if_snapshot_dates_differ(tickers_path: Location, sp500_path: Location) -> None:
     """Warn when the two frozen files carry different dates: membership and tickers then come
     from different days (for example after a `--refresh` where one fetch failed)."""
     a, b = snapshot_date(tickers_path), snapshot_date(sp500_path)
@@ -193,20 +195,20 @@ def warn_if_snapshot_dates_differ(tickers_path: Path, sp500_path: Path) -> None:
         log.warning("the ticker map is from %s but the S&P 500 CSV is from %s", a, b)
 
 
-def _newest(directory: Path, pattern: str) -> Path:
+def _newest(directory: Location, pattern: str) -> Location:
     """The newest frozen snapshot (names embed an ISO date, so the sorted last is newest)."""
-    found = sorted(directory.glob(pattern))
-    if not found:
-        raise FileNotFoundError(f"no {pattern} in {directory}; run pipelines.fetch.reference_data")
-    return found[-1]
+    try:
+        return locations.newest(directory, pattern)
+    except FileNotFoundError as exc:
+        raise FileNotFoundError(f"{exc}; run pipelines.fetch.reference_data") from exc
 
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Rebuild curated.companies.")
-    parser.add_argument("--env", choices=["local", "emr"], default="local")
-    parser.add_argument("--data-dir", type=Path, default=Path("data"))
-    parser.add_argument("--tickers", type=Path, default=None)
-    parser.add_argument("--sp500", type=Path, default=None)
+    parser.add_argument("--env", choices=["local", "emr", "glue"], default="local")
+    parser.add_argument("--data-dir", default="data", help="a directory or s3:// prefix")
+    parser.add_argument("--tickers", default=None)
+    parser.add_argument("--sp500", default=None)
     parser.add_argument("--raw-namespace", default=RAW_NAMESPACE)
     parser.add_argument("--curated-namespace", default=CURATED_NAMESPACE)
     args = parser.parse_args(argv)

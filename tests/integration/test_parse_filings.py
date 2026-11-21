@@ -535,3 +535,26 @@ def test_repartition_changes_nothing_about_the_rows(spark: SparkSession, lake):
         assert chunks == base_chunks
     finally:
         _drop_namespace(spark, out)
+
+
+def test_skip_html_parses_only_the_financebench_pdfs(
+    spark: SparkSession, lake, financebench, tmp_path: Path
+):
+    ns, root, _ = lake
+    base, _ = financebench
+    csv_path = tmp_path / "financebench_companies.csv"
+    csv_path.write_text("company,cik\n3M,66740\nAcme,1\n")
+
+    counts = run(spark, str(root), raw_ns=ns, curated_ns=ns, financebench_dir=base,
+                 financebench_companies=csv_path, skip_html=True)  # fmt: skip
+
+    docs = {r["doc_source"] for r in spark.table(f"{ns}.filings").collect()}
+    assert docs == {"financebench_pdf"}  # no HTML filing was parsed
+    assert counts["filings"] == 2
+
+
+def test_skip_html_without_a_financebench_directory_is_refused(spark: SparkSession, lake):
+    ns, root, _ = lake
+
+    with pytest.raises(ValueError, match="--skip-html needs --financebench-dir"):
+        run(spark, str(root), raw_ns=ns, curated_ns=ns, skip_html=True)

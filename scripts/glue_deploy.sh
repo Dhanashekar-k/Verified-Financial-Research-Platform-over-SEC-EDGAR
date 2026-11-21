@@ -26,6 +26,7 @@ uploads=(
   "pipelines/glue/fsds_to_iceberg_job.py|s3://${bucket}/scripts/fsds_to_iceberg_job.py"
   "pipelines/glue/normalize_facts_job.py|s3://${bucket}/scripts/normalize_facts_job.py"
   "pipelines/glue/load_filings_html_job.py|s3://${bucket}/scripts/load_filings_html_job.py"
+  "pipelines/glue/build_companies_job.py|s3://${bucket}/scripts/build_companies_job.py"
   "pipelines/glue/parse_filings_job.py|s3://${bucket}/scripts/parse_filings_job.py"
   "${zip}|s3://${bucket}/artifacts/glue/pipelines.zip"
 )

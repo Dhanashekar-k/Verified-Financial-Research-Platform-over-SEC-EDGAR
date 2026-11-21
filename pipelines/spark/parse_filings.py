@@ -34,6 +34,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import io
 import json
 import logging
 import sys
@@ -47,7 +48,9 @@ from pyspark.sql import DataFrame, SparkSession
 from pyspark.sql import functions as F
 from pyspark.sql.types import ArrayType, StringType, StructField, StructType
 
+from pipelines.common import locations
 from pipelines.common.fiscal_ref import SubmissionPeriod, label_offsets
+from pipelines.common.locations import Location
 from pipelines.common.spark_session import Env, spark_session
 from pipelines.parsing.document import FilingMeta, parse_gz_document
 from pipelines.parsing.pdf import PdfMeta, parse_pdf
@@ -242,22 +245,34 @@ def spread_for_parsing(inputs: DataFrame, partitions: int | None) -> DataFrame:
     return inputs.repartition(partitions) if partitions else inputs
 
 
-def read_financebench_companies(path: Path) -> dict[str, int]:
-    """company -> cik from the owner's CSV (columns `company,cik`)."""
-    with path.open(newline="", encoding="utf-8") as fh:
-        reader = csv.DictReader(fh)
-        if not reader.fieldnames or not {"company", "cik"} <= set(reader.fieldnames):
-            raise ValueError(f"{path} must have the columns company,cik; has {reader.fieldnames}")
-        return {r["company"].strip(): int(r["cik"]) for r in reader if r["cik"].strip()}
+def read_financebench_companies(path: Location) -> dict[str, int]:
+    """company -> cik from the owner's CSV (columns `company,cik`); a local path or `s3://`."""
+    reader = csv.DictReader(io.StringIO(locations.read_text(path), newline=""))
+    if not reader.fieldnames or not {"company", "cik"} <= set(reader.fieldnames):
+        raise ValueError(f"{path} must have the columns company,cik; has {reader.fieldnames}")
+    return {r["company"].strip(): int(r["cik"]) for r in reader if r["cik"].strip()}
+
+
+def _pdf_uri(pdf_dir: Location, doc_name: str) -> str:
+    """The object a PDF row will be joined to: a `file:` URI locally, the `s3://` URI on AWS."""
+    if locations.is_s3(pdf_dir):
+        return locations.join(pdf_dir, "pdfs", f"{doc_name}.pdf")
+    return (Path(pdf_dir) / "pdfs" / f"{doc_name}.pdf").resolve().as_uri()
 
 
 def build_pdf_inputs(
-    spark: SparkSession, pdf_dir: Path, companies: dict[str, int], corpus_version: int
+    spark: SparkSession, pdf_dir: Location, companies: dict[str, int], corpus_version: int
 ) -> DataFrame:
-    """One row per cited FinanceBench PDF; a company with no CIK gets `cik: null` (an error row)."""
+    """One row per cited FinanceBench PDF; a company with no CIK gets `cik: null` (an error row).
+
+    `pdf_dir` holds `financebench_open_source.jsonl` and `pdfs/`; it is a local directory or an
+    `s3://` prefix (the PDFs are read by Spark's `binaryFile` source either way).
+    """
     questions = [
         json.loads(line)
-        for line in (pdf_dir / "financebench_open_source.jsonl").read_text().splitlines()
+        for line in locations.read_text(
+            locations.join(pdf_dir, "financebench_open_source.jsonl")
+        ).splitlines()
         if line.strip()
     ]
     company_of = {q["doc_name"]: q["company"] for q in questions}
@@ -272,14 +287,17 @@ def build_pdf_inputs(
             ),
             corpus_version=corpus_version,
         )
-        rows.append(
-            (meta.model_dump_json(), (pdf_dir / "pdfs" / f"{doc_name}.pdf").resolve().as_uri())
-        )
+        rows.append((meta.model_dump_json(), _pdf_uri(pdf_dir, doc_name)))
     meta_df = spark.createDataFrame(rows, "meta_json string, uri string")
+    pdf_glob = (
+        locations.join(pdf_dir, "pdfs")
+        if locations.is_s3(pdf_dir)
+        else str((Path(pdf_dir) / "pdfs").resolve())  # Spark resolves a relative path in its cwd
+    )
     objects = (
         spark.read.format("binaryFile")
         .option("pathGlobFilter", "*.pdf")
-        .load(str((pdf_dir / "pdfs").resolve()))  # Spark resolves a relative path in its own cwd
+        .load(pdf_glob)
         .select(normalized_path("path").alias("object_path"), "content")
     )
     return (
@@ -379,34 +397,45 @@ def run(
     filed_to: date | None = None,
     limit_filings: int | None = None,
     repartition: int | None = None,
+    skip_html: bool = False,
 ) -> dict[str, int]:
     """Parse and merge. Reads come from `raw_ns`/`curated_ns`; writes go to `output_ns`
-    (default `curated_ns`), so a smoke run can read the real tables and write somewhere else."""
+    (default `curated_ns`), so a smoke run can read the real tables and write somewhere else.
+    `skip_html` parses only the FinanceBench PDFs (it needs `financebench_dir`)."""
     output_ns = output_ns or curated_ns
+    if skip_html and financebench_dir is None:
+        raise ValueError("--skip-html needs --financebench-dir: there would be nothing to parse")
     spark.sql(f"CREATE NAMESPACE IF NOT EXISTS {output_ns}")
-    html_rows = parse_to_rows(
-        spread_for_parsing(
-            build_html_inputs(
-                spark, raw_ns, curated_ns, html_glob, corpus_version, accessions,
-                filings_html_ns, ciks, filed_from, filed_to, limit_filings,
-            ),
-            repartition,
+    html_rows = (
+        None
+        if skip_html
+        else parse_to_rows(
+            spread_for_parsing(
+                build_html_inputs(
+                    spark, raw_ns, curated_ns, html_glob, corpus_version, accessions,
+                    filings_html_ns, ciks, filed_from, filed_to, limit_filings,
+                ),
+                repartition,
+            )
         )
     )  # fmt: skip
     counts: dict[str, int] = {}
     parsed = html_rows
     if financebench_dir is not None:
-        if financebench_companies is None or not financebench_companies.is_file():
+        if financebench_companies is None or not locations.exists(financebench_companies):
             log.warning(
                 "FinanceBench PDFs NOT parsed: %s is missing (the owner writes company,cik)",
                 financebench_companies,
             )
+            if skip_html:
+                raise FileNotFoundError(f"{financebench_companies} is missing; nothing to parse")
         else:
             companies = read_financebench_companies(financebench_companies)
             pdf_rows = parse_to_rows(
                 build_pdf_inputs(spark, financebench_dir, companies, corpus_version), pdf=True
             )
-            parsed = html_rows.unionByName(pdf_rows)
+            parsed = pdf_rows if html_rows is None else html_rows.unionByName(pdf_rows)
+    assert parsed is not None
     parsed = parsed.persist()
     try:
         counts = merge_curated(spark, output_ns, parsed)
@@ -429,8 +458,14 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--limit-filings", type=int, default=None, help="first N accessions")
     parser.add_argument("--repartition", type=int, default=0, help="spread documents over N tasks")
     parser.add_argument("--corpus-version", type=int, default=1)
-    parser.add_argument("--financebench-dir", type=Path, default=None)
-    parser.add_argument("--financebench-companies", type=Path, default=None)
+    parser.add_argument("--financebench-dir", default=None, help="a directory or s3:// prefix")
+    parser.add_argument("--financebench-companies", default=None, help="a file or s3:// URI")
+    parser.add_argument(
+        "--skip-html",
+        type=lambda v: v.lower() in ("1", "true", "yes"),
+        default=False,
+        help="true: parse only the FinanceBench PDFs",
+    )
     args = parser.parse_args(argv)
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
 
@@ -447,6 +482,7 @@ def main(argv: list[str] | None = None) -> int:
             filed_to=args.filed_to,
             limit_filings=args.limit_filings,
             repartition=args.repartition or None,
+            skip_html=args.skip_html,
         )  # fmt: skip
     finally:
         spark.stop()

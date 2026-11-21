@@ -30,11 +30,17 @@ locals {
   # runs. Glue 5.0 has none of them. The versions equal infra/emr/requirements-emr.txt (which
   # equals uv.lock), so Glue parses with the same code the tests ran against.
   parsing_modules = "selectolax==1.0.2,tokenizers==0.23.3,pymupdf==2.1,pydantic==2.14.3"
+  # build_companies imports the ticker-map parser, which imports the SEC client (httpx, dotenv)
+  reference_modules = "httpx==0.28.1,python-dotenv==1.2.4"
 
   jobs = {
     "edgarqa-fsds-to-iceberg"   = { script = "fsds_to_iceberg_job.py", extra_args = {} }
     "edgarqa-normalize-facts"   = { script = "normalize_facts_job.py", extra_args = {} }
     "edgarqa-load-filings-html" = { script = "load_filings_html_job.py", extra_args = {} }
+    "edgarqa-build-companies" = {
+      script     = "build_companies_job.py"
+      extra_args = { "--additional-python-modules" = local.reference_modules }
+    }
     "edgarqa-parse-filings" = {
       script     = "parse_filings_job.py"
       extra_args = { "--additional-python-modules" = local.parsing_modules }
