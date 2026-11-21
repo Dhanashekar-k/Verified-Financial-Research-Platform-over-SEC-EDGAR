@@ -3,8 +3,9 @@
 ``lake.curated.companies`` has one row per CIK: the universe is every CIK in the raw FSDS ``sub``
 table plus every CIK in the SEC ticker map. Ticker, name, SIC, fiscal-year-end and S&P 500
 membership are derived as the module's docstring in the runbook describes; ``in_financebench`` is
-always NULL until FinanceBench is loaded (never guessed). Runs on a local Spark session with an
-Iceberg hadoop catalog (see ``tests/integration/conftest.py``); inputs are tiny hand-built frames.
+NULL until FinanceBench documents are in curated.filings, then true or false (never guessed).
+Runs on a local Spark session with an Iceberg hadoop catalog (see
+``tests/integration/conftest.py``); inputs are tiny hand-built frames.
 """
 
 from __future__ import annotations
@@ -430,6 +431,45 @@ def test_in_financebench_is_null_for_every_row(spark: SparkSession):
     rows = out.collect()
     assert len(rows) == 3
     assert [r.in_financebench for r in rows] == [None, None, None]
+
+
+def test_in_financebench_is_true_or_false_once_financebench_ciks_are_given(spark: SparkSession):
+    """With FinanceBench loaded the column is known for every company: true for its ciks (once,
+    even for several documents), false for the rest, never NULL."""
+    sub = [S(AAPL, 1, 20231103), S(SUB_ONLY, 1, 20230901)]
+    tickers = [(AAPL, "AAPL", "Apple Inc.", 0), (TICKER_ONLY, "ZZZ", "Zed Corp", 500)]
+    fb = spark.createDataFrame([(AAPL,), (AAPL,)], "cik int")
+
+    out = build_companies(sub_df(spark, sub), tickers_df(spark, tickers), sp500_df(spark, []), fb)
+
+    rows = out.collect()
+    assert len(rows) == 3
+    assert {r.cik: r.in_financebench for r in rows} == {
+        AAPL: True,
+        SUB_ONLY: False,
+        TICKER_ONLY: False,
+    }
+
+
+def test_run_reads_financebench_ciks_from_curated_filings(
+    spark: SparkSession, lake_namespace: str, frozen: tuple[Path, Path]
+):
+    """`run` flags a company when `curated.filings` holds a financebench_pdf row for it; an
+    edgar_html row for another company does not count. No FinanceBench rows: NULL, as before."""
+    ns = lake_namespace
+    make_raw_sub(spark, ns, RUN_SUB)
+    spark.sql(f"CREATE TABLE {ns}.filings (cik int, doc_source string) USING iceberg")
+    spark.sql(f"INSERT INTO {ns}.filings VALUES ({BRK}, 'edgar_html')")
+    run(spark, *frozen, raw_ns=ns, curated_ns=ns)
+    assert {r[5] for r in table_rows(spark, f"{ns}.companies").values()} == {None}
+
+    spark.sql(f"INSERT INTO {ns}.filings VALUES ({AAPL}, 'financebench_pdf')")
+    run(spark, *frozen, raw_ns=ns, curated_ns=ns)
+
+    flags = {cik: row[5] for cik, row in table_rows(spark, f"{ns}.companies").items()}
+    assert flags[AAPL] is True
+    assert [cik for cik, v in flags.items() if v] == [AAPL]
+    assert None not in flags.values()
 
 
 # --------------------------------------------------------------------------------------

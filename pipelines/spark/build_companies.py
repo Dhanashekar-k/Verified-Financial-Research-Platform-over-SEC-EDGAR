@@ -16,7 +16,8 @@ map (a listed company with no filing in the loaded quarters is kept, with sic an
 * `in_sp500`: true when any ticker of the cik is in the frozen S&P 500 CSV (tickers compared
   with `.` as `-`, so `BRK.B` matches `BRK-B`), else false. S&P rows that match no ticker are
   returned by `unmatched_sp500` and logged, not dropped silently. Membership is one dated snapshot.
-* `in_financebench`: NULL until the FinanceBench documents are loaded (M2/M4).
+* `in_financebench`: NULL until FinanceBench documents are in `curated.filings` (`doc_source =
+  'financebench_pdf'`); after that true for their ciks and false for every other company.
 
 The whole table is replaced on every run (`createOrReplace`), so reruns are idempotent.
 """
@@ -78,8 +79,18 @@ def _latest_nonblank(col: str) -> Column:
     return F.max(F.when(~_blank(col), pick)).getField("v")
 
 
-def build_companies(sub: DataFrame, tickers: DataFrame, sp500: DataFrame) -> DataFrame:
-    """One row per cik with exactly the `COMPANIES` schema (see the module docstring)."""
+def build_companies(
+    sub: DataFrame,
+    tickers: DataFrame,
+    sp500: DataFrame,
+    financebench_ciks: DataFrame | None = None,
+) -> DataFrame:
+    """One row per cik with exactly the `COMPANIES` schema (see the module docstring).
+
+    `financebench_ciks` (a `cik` column) are the companies that have a FinanceBench document in
+    `curated.filings`. `None` means none are loaded yet, so `in_financebench` stays NULL; with it,
+    the column is true or false for every company.
+    """
     from_sub = sub.groupBy("cik").agg(
         _latest_nonblank("name").alias("sub_name"),
         _latest_nonblank("sic").alias("sic"),
@@ -110,6 +121,12 @@ def build_companies(sub: DataFrame, tickers: DataFrame, sp500: DataFrame) -> Dat
 
     universe = sub.select("cik").union(tickers.select("cik")).where(F.col("cik").isNotNull())
     joined = universe.distinct().join(from_sub, "cik", "left").join(from_tickers, "cik", "left")
+    if financebench_ciks is None:
+        in_fb = F.lit(None).cast("boolean")
+    else:
+        flagged = financebench_ciks.select("cik").distinct().withColumn("_fb", F.lit(True))
+        joined = joined.join(flagged, "cik", "left")
+        in_fb = F.coalesce(F.col("_fb"), F.lit(False))
     out = joined.select(
         "cik",
         F.coalesce("ticker_name", "sub_name").alias("name"),
@@ -117,7 +134,7 @@ def build_companies(sub: DataFrame, tickers: DataFrame, sp500: DataFrame) -> Dat
         "sic",
         "fye_mmdd",
         F.coalesce("in_sp500", F.lit(False)).alias("in_sp500"),
-        F.lit(None).cast("boolean").alias("in_financebench"),
+        in_fb.alias("in_financebench"),
         F.coalesce("aliases", F.array().cast("array<string>")).alias("aliases"),
     )
     return out.select(*[F.col(f.name).cast(f.dataType).alias(f.name) for f in COMPANIES.fields])
@@ -131,6 +148,14 @@ def unmatched_sp500(tickers: DataFrame, sp500: DataFrame) -> DataFrame:
         .join(known, "_n", "left_anti")
         .select("ticker", "name")
     )
+
+
+def _financebench_ciks(spark: SparkSession, curated_ns: str) -> DataFrame | None:
+    """The ciks of the FinanceBench documents in `curated.filings`; None if there are none yet."""
+    if not spark.catalog.tableExists(f"{curated_ns}.filings"):
+        return None
+    fb = spark.table(f"{curated_ns}.filings").where("doc_source = 'financebench_pdf'").select("cik")
+    return fb if fb.limit(1).count() > 0 else None
 
 
 def run(
@@ -148,7 +173,9 @@ def run(
     sp500_rows = csv.DictReader(io.StringIO(locations.read_text(sp500_path), newline=""))
     sp500 = spark.createDataFrame([(r["ticker"], r["name"]) for r in sp500_rows], SP500_SCHEMA)
 
-    companies = build_companies(spark.table(f"{raw_ns}.fsds_sub"), tickers, sp500)
+    companies = build_companies(
+        spark.table(f"{raw_ns}.fsds_sub"), tickers, sp500, _financebench_ciks(spark, curated_ns)
+    )
     spark.sql(f"CREATE NAMESPACE IF NOT EXISTS {curated_ns}")
     writer = companies.writeTo(f"{curated_ns}.companies").using("iceberg")
     for key, value in snapshot_properties(tickers_path, sp500_path).items():
