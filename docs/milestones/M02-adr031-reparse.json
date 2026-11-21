@@ -1,0 +1,71 @@
+{
+ "by_form_after": {
+  "10-K": {
+   "no_sections": 24,
+   "ok": 2806,
+   "partial": 182
+  },
+  "10-K/A": {
+   "no_sections": 1,
+   "ok": 8,
+   "partial": 77
+  },
+  "10-Q": {
+   "no_sections": 91,
+   "ok": 8891,
+   "partial": 1127
+  },
+  "10-Q/A": {
+   "no_sections": 9,
+   "ok": 15,
+   "partial": 8
+  }
+ },
+ "companies_with_both_missing_before": {
+  "n": 78,
+  "still_with_a_filing_missing_both": 60,
+  "with_at_least_one_filing_now_ok": 36,
+  "with_every_10q_ok_after": 12,
+  "with_every_affected_filing_now_ok": 14
+ },
+ "gate": {
+  "financebench_rows_changed": 0,
+  "form_10k_rows_changed": 0,
+  "previously_ok_changed": 0,
+  "previously_ok_not_ok": 0,
+  "status_downgrades": 0
+ },
+ "html": {
+  "lenient_after_ok_plus_partial": 0.9905581992597629,
+  "no_sections_after": 125,
+  "ok_after": 11720,
+  "ok_before": 11178,
+  "partial_after": 1394,
+  "strict_after": 0.8852632374046379,
+  "strict_before": 0.8443235893949694
+ },
+ "n_filings_html": 13239,
+ "residual_10q_partial_by_error": {
+  "missing sections: P1-1": 95,
+  "missing sections: P1-1, P1-2": 755,
+  "missing sections: P1-2": 285
+ },
+ "residual_10q_partial_companies": 83,
+ "same_accession_set": true,
+ "ten_q_missing_both_p1": {
+  "after": 755,
+  "before": 1226,
+  "recovered_to_ok": 421
+ },
+ "ten_q_partial": {
+  "after": 1135,
+  "before": 1676
+ },
+ "transitions": {
+  "no_sections->no_sections": 125,
+  "no_sections->partial": 1,
+  "ok->ok": 11262,
+  "partial->ok": 542,
+  "partial->partial": 1393
+ }
+}

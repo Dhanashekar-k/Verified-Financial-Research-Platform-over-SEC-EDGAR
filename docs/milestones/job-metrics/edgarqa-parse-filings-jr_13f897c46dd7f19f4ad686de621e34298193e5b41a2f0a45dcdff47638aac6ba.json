@@ -1,0 +1,20 @@
+{
+ "job": "edgarqa-parse-filings",
+ "job_run_id": "jr_13f897c46dd7f19f4ad686de621e34298193e5b41a2f0a45dcdff47638aac6ba",
+ "note": "TIMEOUT at the 90-minute cap, not retried. Re-parse after ADR-031 (code 6f528ea82a1a): parse and both MERGEs finished in ~13 min (11:40 UTC); the last statement of merge_curated, DELETE FROM chunks WHERE ... chunk_id NOT IN (subquery), ran as one stage (138, 26 tasks, ~70-75 min each) and was unfinished at the cap. curated.filings fully updated; curated.chunks holds 51,523 stale chunks in 440 filings.",
+ "state": "TIMEOUT",
+ "started_on": "2026-11-21T06:24:38.415000-05:00",
+ "completed_on": "2026-11-21T07:56:54.252000-05:00",
+ "execution_seconds": 5404,
+ "dpu_seconds": 54048.0,
+ "glue_version": "5.0",
+ "worker_type": "G.1X",
+ "number_of_workers": 10,
+ "timeout_minutes": 90,
+ "arguments": {
+  "--repartition": "80",
+  "--financebench-dir": "s3://edgarqa-lake-019593222039/financebench",
+  "--financebench-companies": "s3://edgarqa-lake-019593222039/financebench/financebench_companies.csv"
+ },
+ "cost_usd": null
+}
