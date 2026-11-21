@@ -16,7 +16,11 @@ Choosing the real headings (the heuristic posted to the owner before it was reli
 3. A section runs from its heading to the next chosen heading (the last: to SIGNATURES or the
    end). Unchosen candidates stay inside the text.
 4. 10-Q codes are `P<part>-<item>`; the part comes from the heading or the nearest preceding
-   `PART I/II` block.
+   `PART I/II` block. A contents table that names two Parts does not move the part for the body,
+   and before any Part line an item is read as Part I (ADR-031).
+5. A 10-Q whose first detected section is `P1-2` or later has no `Item 1` heading of its own (its
+   financial statements follow the contents table without one). `P1-1` is then taken to start at
+   the first block after the contents table and to run to that first heading (ADR-031).
 
 Known failure cases: combined headings ("Items 1 and 2"), a filing with no body headings at all
 (nothing to find), a title split across more than the next block, and a repeated body heading
@@ -83,6 +87,11 @@ MAX_HEADING_CHARS = 200
 MAX_TITLE_CHARS = 150
 MAX_FOLLOWING_TITLE_CHARS = 100
 LINK_WEIGHT = 0.01
+# Implied P1-1 (ADR-031): the contents table is the first run of candidates whose blocks are at most
+# TOC_GAP_BLOCKS apart; the implied section must hold at least MIN_IMPLIED_CHARS of text, so a stray
+# paragraph is not reported as the financial statements.
+TOC_GAP_BLOCKS = 20
+MIN_IMPLIED_CHARS = 5000
 _ROMAN = {"i": 1, "ii": 2, "iii": 3, "iv": 4, "1": 1, "2": 2, "3": 3, "4": 4}
 _SEP = r"[\s.,:;|\-–—]*"
 # "Item 1.A." (a dot before the letter, as Rollins writes it) is item 1A. The dot is allowed only
@@ -128,6 +137,7 @@ class _Candidate:
     block: int
     row: int
     is_link: bool
+    implied: bool = False  # P1-1 inferred from the position of the contents table (ADR-031)
 
 
 def _known_titles(item: str) -> list[str]:
@@ -195,6 +205,27 @@ def _code(kind: str, heading: ItemHeading, current_part: int | None) -> str | No
     return code if code in CODES_10Q else None
 
 
+def _is_contents_table(block: Block) -> bool:
+    """A table that names two or more different Parts is a table of contents, not a body heading.
+
+    Its `Part I` and `Part II` rows would leave the running part at II for the whole body
+    (ADR-031), so `_candidates` keeps the part set inside such a table inside it.
+    """
+    if block.kind == "paragraph":
+        return False
+    parts: set[int] = set()
+    for row in block.rows:
+        text = " ".join(" ".join(row).split())
+        heading = parse_item_heading(text)
+        if heading is not None and heading.part:
+            parts.add(_ROMAN[heading.part.lower()])
+            continue
+        pm = _PART.match(text) if len(text) <= 120 else None
+        if pm:
+            parts.add(_ROMAN[pm.group("part").lower()])
+    return len(parts) >= 2
+
+
 def _candidates(blocks: Sequence[Block], kind: str) -> list[_Candidate]:
     out: list[_Candidate] = []
     part: int | None = None
@@ -204,6 +235,7 @@ def _candidates(blocks: Sequence[Block], kind: str) -> list[_Candidate]:
             if block.kind == "paragraph"
             else [(r, " ".join(row), False) for r, row in enumerate(block.rows)]
         )
+        outer_part = part
         for r, text, is_link in lines:
             heading = parse_item_heading(text)
             if heading is None:
@@ -211,12 +243,49 @@ def _candidates(blocks: Sequence[Block], kind: str) -> list[_Candidate]:
                 if pm:
                     part = _ROMAN[pm.group("part").lower()]
                 continue
-            code = _code(kind, heading, part)
+            # A 10-Q starts in Part I: until a Part line is seen, an item with no Part of its own
+            # (the body of a filing whose contents table was the only place that said "Part I")
+            # is a Part I item, not an unknown one (ADR-031).
+            code = _code(kind, heading, part if part is not None else 1)
             if code is not None:
                 if heading.part:  # only a heading with a valid code may move the current part
                     part = _ROMAN[heading.part.lower()]
                 out.append(_Candidate(code, heading, text, i, r, is_link))
+        if _is_contents_table(block):
+            part = outer_part
     return out
+
+
+def _imply_part1(
+    blocks: Sequence[Block], cands: Sequence[_Candidate], chosen: list[_Candidate]
+) -> list[_Candidate]:
+    """Prepend an implied `P1-1` to a 10-Q chain that starts at `P1-2` or later (ADR-031).
+
+    Some 10-Qs print no `Item 1` heading in the body: the financial statements simply follow the
+    contents table. Their first detected heading is then `P1-2` and everything before it would be
+    dropped. The contents table is taken to be the first run of candidates (blocks at most
+    `TOC_GAP_BLOCKS` apart); `P1-1` starts at the block after it and runs to the first chosen
+    heading, if that is at least `MIN_IMPLIED_CHARS` of text. No contents table, or a first
+    heading inside it: nothing is implied.
+    """
+    if not chosen or not chosen[0].code.startswith("P1-") or chosen[0].code == "P1-1":
+        return chosen
+    first = chosen[0].block
+    toc_end: int | None = None
+    for c in cands:
+        if c.block >= first:
+            break
+        if toc_end is None or c.block - toc_end <= TOC_GAP_BLOCKS:
+            toc_end = c.block
+        else:
+            break
+    if toc_end is None or toc_end + 1 >= first:
+        return chosen
+    if sum(len(b.text) for b in blocks[toc_end + 1 : first]) < MIN_IMPLIED_CHARS:
+        return chosen
+    heading = ItemHeading("1", "I", CANONICAL_TITLES_10Q["P1-1"])
+    implied = _Candidate("P1-1", heading, "", toc_end, 0, False, implied=True)
+    return [implied, *chosen]
 
 
 def _end_marker(blocks: Sequence[Block], after: int) -> int:
@@ -264,6 +333,8 @@ def detect_sections(blocks: Sequence[Block], form: str) -> list[Section]:
 
     titles = CANONICAL_TITLES_10K if kind == "10-K" else CANONICAL_TITLES_10Q
     chosen = [cands[i] for i in chain]
+    if kind == "10-Q":
+        chosen = _imply_part1(blocks, cands, chosen)
     sections: list[Section] = []
     for n, c in enumerate(chosen):
         end = chosen[n + 1].block if n + 1 < len(chosen) else stop
@@ -286,7 +357,7 @@ def detect_sections(blocks: Sequence[Block], form: str) -> list[Section]:
                 heading_index=c.block,
                 start=min(start, end),
                 end=end,
-                anchor=blocks[c.block].anchor,
+                anchor=None if c.implied else blocks[c.block].anchor,
                 body_prefix=c.heading.body,
             )
         )
