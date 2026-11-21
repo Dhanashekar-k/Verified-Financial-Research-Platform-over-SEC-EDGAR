@@ -1,0 +1,23 @@
+{
+  "job": "edgarqa-parse-filings",
+  "job_run_id": "jr_ab3aa9383f7ab5566a8fbdca9d5133aa807e462b45c4d9af168dfeab2a80ae95",
+  "note": "smoke: Apple (CIK 320193) filed 2023-02-01..2023-11-30 -> lake.corpus_smoke, code 6b291e5a73ff",
+  "state": "SUCCEEDED",
+  "started_on": "2026-11-20T16:39:52.066000-05:00",
+  "completed_on": "2026-11-20T16:42:21.968000-05:00",
+  "execution_seconds": 146,
+  "dpu_seconds": 292.0,
+  "glue_version": "5.0",
+  "worker_type": "G.1X",
+  "number_of_workers": 2,
+  "timeout_minutes": 30,
+  "arguments": {
+    "--output-namespace": "lake.corpus_smoke",
+    "--filed-from": "2023-02-01",
+    "--filings-html-namespace": "lake.corpus_smoke",
+    "--repartition": "4",
+    "--ciks": "320193",
+    "--filed-to": "2023-11-30"
+  },
+  "cost_usd": null
+}

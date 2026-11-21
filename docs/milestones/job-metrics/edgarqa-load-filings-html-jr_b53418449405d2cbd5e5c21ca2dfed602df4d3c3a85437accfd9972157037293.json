@@ -1,0 +1,18 @@
+{
+  "job": "edgarqa-load-filings-html",
+  "job_run_id": "jr_b53418449405d2cbd5e5c21ca2dfed602df4d3c3a85437accfd9972157037293",
+  "note": "smoke: manifest of 135 local filings -> lake.corpus_smoke.filings_html, code 6b291e5a73ff",
+  "state": "SUCCEEDED",
+  "started_on": "2026-11-20T16:37:55.416000-05:00",
+  "completed_on": "2026-11-20T16:39:35.590000-05:00",
+  "execution_seconds": 91,
+  "dpu_seconds": 182.0,
+  "glue_version": "5.0",
+  "worker_type": "G.1X",
+  "number_of_workers": 2,
+  "timeout_minutes": 15,
+  "arguments": {
+    "--namespace": "lake.corpus_smoke"
+  },
+  "cost_usd": null
+}

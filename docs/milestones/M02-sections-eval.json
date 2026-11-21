@@ -1,19 +1,19 @@
 {
-  "accuracy": 0.94,
+  "accuracy": 0.98,
   "accuracy_by_section": {
-    "1": 0.9,
-    "1A": 0.9,
+    "1": 1.0,
+    "1A": 1.0,
     "7": 0.9,
     "7A": 1.0,
     "8": 1.0
   },
   "by_section": {
     "1": {
-      "correct": 9,
+      "correct": 10,
       "n": 10
     },
     "1A": {
-      "correct": 9,
+      "correct": 10,
       "n": 10
     },
     "7": {
@@ -30,20 +30,20 @@
     }
   },
   "ci95": [
-    0.86,
+    0.94,
     1.0
   ],
   "ci95_by_filing": [
-    0.86,
+    0.94,
     1.0
   ],
   "ci95_by_section": {
     "1": [
-      0.7,
+      1.0,
       1.0
     ],
     "1A": [
-      0.7,
+      1.0,
       1.0
     ],
     "7": [
@@ -59,7 +59,7 @@
       1.0
     ]
   },
-  "correct": 47,
+  "correct": 49,
   "failures": [
     {
       "accession": "0001111711-25-000008",
@@ -67,20 +67,6 @@
       "parser_start": "NISOURCE INC.\n(\"2018 Plan\") is well underway, and we are continually adjusting to the dynamic energy landscape. As of De",
       "reason": "start differs",
       "section": "7"
-    },
-    {
-      "accession": "0001171200-21-000076",
-      "gold_start": "Rollins, Inc. (the \u201cCompany\u201d) is an international service company with headquarters located in Atlanta, Georgia, providi",
-      "parser_start": "You should consider carefully the following risk factors before making an investment decision with respect to our securi",
-      "reason": "start differs",
-      "section": "1"
-    },
-    {
-      "accession": "0001171200-21-000076",
-      "gold_start": "You should consider carefully the following risk factors before making an investment decision with respect to our securi",
-      "parser_start": "",
-      "reason": "section not found",
-      "section": "1A"
     }
   ],
   "meets_target": true,
