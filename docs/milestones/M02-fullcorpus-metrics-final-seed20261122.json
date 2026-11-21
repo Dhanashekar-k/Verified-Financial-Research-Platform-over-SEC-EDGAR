@@ -1,0 +1,1253 @@
+{
+  "athena_scanned_bytes": 3702201416,
+  "chunks": [
+    {
+      "chunks": 29620,
+      "doc_source": "financebench_pdf",
+      "docs": 84,
+      "max_tokens": 400,
+      "null_source_url": 0,
+      "over_400": 0,
+      "table_chunks": 0,
+      "with_anchor": 0,
+      "with_page": 29620
+    },
+    {
+      "chunks": 2827066,
+      "doc_source": "edgar_html",
+      "docs": 13078,
+      "max_tokens": 400,
+      "null_source_url": 0,
+      "over_400": 0,
+      "table_chunks": 964576,
+      "with_anchor": 907694,
+      "with_page": 0
+    }
+  ],
+  "chunks_20": [
+    {
+      "accession": "0000038777-21-000205",
+      "chunk_id": "0000038777-21-000205#8#0046",
+      "form": "10-K",
+      "is_table": "false",
+      "n_tokens": 338,
+      "page": null,
+      "section": "8",
+      "section_title": "Financial Statements and Supplementary Data",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/38777/000003877721000205/ben-20210930.htm#:~:text=Interest%20on%20tax%20matters%20is%20recognized%20in%20interest",
+      "text": "Interest on tax matters is recognized in interest expense and penalties in other operating expenses.\nThe Company operates in numerous countries, states and other taxing jurisdictions. The income tax laws are complex and subject to different interpretations by the taxpayer and the relevant taxing authorities. Significant judgment is required in the determination of the Company\u2019s annual income tax provisions, which includes the assessment of deferred tax assets and uncertain tax positions, as well as the interpretation and application of existing and newly enacted tax laws, regulation changes, and new judicial rulings. The Company repatriates foreign earnings that are in excess of regulatory, capital or operational requirements of all of its non-U.S. subsidiaries.\nForeign Currency Translation and Transactions. Assets and liabilities of non-U.S. subsidiaries for which the local currency is the functional currency are translated at current exchange rates as of the end of the accounting period. The related revenues and expenses are translated at average exchange rates in effect during the period. Net exchange gains and losses resulting from translation are excluded from income and are recorded as part of accumulated other comprehensive income (loss). Transactions denominated in a foreign currency are revalued at the current exchange rate at the transaction date and any related gains and losses are recognized in earnings.\nNote 2 \u2013 New Accounting Guidance\nRecently Adopted Accounting Guidance\nOn October 1, 2020, the Company adopted new guidance issued by the Financial Accounting Standards Board (\u201cFASB\u201d) for credit losses. The new guidance requires the application of a current expected credit loss model for financial assets measured at amortized cost, including receivables, and an allowance for credit loss model for available-for-sale debt securities."
+    },
+    {
+      "accession": "0000065984-22-000185",
+      "chunk_id": "0000065984-22-000185#P2-6#0611",
+      "form": "10-Q",
+      "is_table": "false",
+      "n_tokens": 361,
+      "page": null,
+      "section": "P2-6",
+      "section_title": "Exhibits 222",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/65984/000006598422000185/etr-20220930.htm#:~:text=In%20addition%2C%20the%20Utility%20operating%20companies%20could%20be",
+      "text": "In addition, the Utility operating companies could be exposed to higher costs and market volatility, which could affect cash flow and cost recovery, should their respective regulators decline to approve the construction of the project or new generation needed to meet the reliability needs of customers at the lowest reasonable cost.\nFor further information regarding capital expenditure plans and other uses of capital in connection with capital projects, including the potential construction and/or purchase of additional generation supply sources within the Utility operating companies\u2019 service territory, see the \u201cLiquidity and Capital Resources - Capital Expenditure Plans and Other Uses of Capital\u201d section of Management\u2019s Financial Discussion and Analysis for Entergy herein and in the Form 10-K and the \u201cLiquidity and Capital Resources - Uses of Capital\u201d section of Management\u2019s Financial Discussion and Analysis in the Form 10-K and the \u201cLiquidity and Capital Resources - Uses and Sources of Capital\u201d section of Management\u2019s Financial Discussion and Analysis herein for each of the Registrant Subsidiaries.\nRecent U.S. tax legislation may materially adversely affect Entergy\u2019s financial condition, results of operations, and cash flows.\nThe Tax Cuts and Jobs Act of 2017, CARES Act of 2020, and the Inflation Reduction Act of 2022 significantly changed the U.S. Internal Revenue Code, including taxation of U.S. corporations, by, among other things, reducing the federal corporate income tax rate, limiting interest deductions, altering the expensing of capital expenditures, enacting a new corporate alternative minimum tax, and expanding federal tax credits for clean energy production. The interpretive guidance issued by the IRS and state tax authorities may be inconsistent with Entergy\u2019s own interpretation and the legislation could be subject to amendments, which could lessen or increase certain impacts of the legislation."
+    },
+    {
+      "accession": "0000066740-26-000246",
+      "chunk_id": "0000066740-26-000246#P1-1#0115",
+      "form": "10-Q",
+      "is_table": "false",
+      "n_tokens": 398,
+      "page": null,
+      "section": "P1-1",
+      "section_title": "Financial Statements",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/66740/000006674026000246/mmm-20260630.htm#:~:text=Motions%20to%20dismiss%20are%20fully%20briefed%2C%20and%20a",
+      "text": "Motions to dismiss are fully briefed, and a hearing on the motions to dismiss was held in July 2026. This case is one of several subject to a pending motion for transfer to a new multidistrict litigation for certain turnout gear claims, described above under Minnesota.\nNew Jersey\nThe Company and several co-defendants are defending numerous lawsuits filed in New Jersey federal court by individuals with private drinking water wells near certain DuPont and Solvay facilities that were allegedly supplied with PFAS manufactured by the Company. The Company settled for an immaterial amount with the plaintiffs in certain cases that sought property damages. Applicable court approval was granted in May 2025, and those cases against the Company have been dismissed. Plaintiffs in remaining individual lawsuits allege personal injuries to themselves or to their adult children. Discovery is proceeding in the personal injury cases.\nIn May 2025, a lawsuit was filed against the Company and several other defendants in New Jersey state court by individuals who resided near Solvay\u2019s facility alleging personal injuries to themselves or to their children from PFAS exposure. In August 2025, the Company removed the case to federal court. In December 2025, the Company's motion to transfer the case to the AFFF MDL was denied. In January 2026, the plaintiffs voluntarily dismissed their claims against the Company without prejudice. In June 2026, the plaintiffs in that action and a number of other individuals filed a new lawsuit against the Company in New Jersey federal court.\nIn June 2026, the estate of an individual who resided near certain DuPont and Solvay facilities filed a lawsuit against the Company and several other defendants in New Jersey state court alleging personal injuries and wrongful death from alleged PFAS exposure.\nIn March 2023, a lawsuit was filed against the Company and Middlesex Water Company by a Middlesex Water Company customer alleging personal injury from drinking water allegedly contaminated with PFAS. In May 2026, the case was settled for an immaterial amount."
+    },
+    {
+      "accession": "0000091419-22-000049",
+      "chunk_id": "0000091419-22-000049#8#0097",
+      "form": "10-K",
+      "is_table": "false",
+      "n_tokens": 259,
+      "page": null,
+      "section": "8",
+      "section_title": "Financial Statements and Supplementary Data",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/91419/000009141922000049/sjm-20220430.htm#id3VybDovL2RvY3MudjEvZG9jOmRlNTYyZTMyM2YxYjRjOTc5NjE0YmJhMTk0NmJhYjBhL3NlYzpkZTU2MmUzMjNmMWI0Yzk3OTYxNGJiYTE5NDZiYWIwYV8xMzMvZnJhZzo0N2RlYjE3YmVhY2I0MzJkYmUzYmM2OWMwM2MwYjA1MS90ZXh0cmVnaW9uOjQ3ZGViMTdiZWFjYjQzMmRiZTNiYzY5YzAzYzBiMDUxXzE4MzY_d5d2ef04-4739-4ceb-ad4e-b7e70a8f5918",
+      "text": "Foreign Currency Exchange Derivatives: We utilize foreign currency derivatives to manage the effect of foreign currency exchange fluctuations on future cash payments primarily related to purchases of certain raw materials and finished goods. The contracts generally have maturities of less than one year. We do not qualify instruments used to manage foreign currency exchange exposures for hedge accounting treatment.\nInterest Rate Derivatives: We utilize derivative instruments to manage interest rate risk associated with anticipated debt transactions, as well as to manage changes in the fair value of our long-term debt. At the inception of an interest rate contract, the instrument is evaluated and documented for qualifying hedge accounting treatment. If the contract is designated as a cash flow hedge, the mark-to-market gains or losses on the contract are typically deferred and included as a component of accumulated other comprehensive income (loss) and reclassified to interest expense in the period during which the hedged transaction affects earnings. If the contract is designated as a fair value hedge, the contract is recognized at fair value on the balance sheet and changes in the fair value are recognized in interest expense. Generally, changes in the fair value of the contract are equal to changes in the fair value of the underlying debt and have no net impact on earnings.\nThe following table presents the gross notional value of outstanding derivative contracts."
+    },
+    {
+      "accession": "0000097476-24-000007",
+      "chunk_id": "0000097476-24-000007#8#0063",
+      "form": "10-K",
+      "is_table": "false",
+      "n_tokens": 398,
+      "page": null,
+      "section": "8",
+      "section_title": "Financial statements and supplementary data",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/97476/000009747624000007/txn-20231231.htm#:~:text=Dividends%20paid%20on%20these%20shares%20in%202023%20and",
+      "text": "Dividends paid on these shares in 2023 and 2022 were $27 million and $28 million, respectively. Effective April 1, 2016, the TI common stock fund was frozen to new contributions or transfers into the fund.\nOur aggregate expense for the U.S. defined contribution plans was $75 million in 2023, $70 million in 2022 and $63 million in 2021.\nThe defined benefit pension plans include employees still accruing benefits, as well as employees and participants who no longer accrue service-related benefits, but instead, may participate in the enhanced defined contribution plan. Benefits under the qualified defined benefit pension plan are determined using a formula based on years of service and the highest five consecutive years of compensation. We intend to contribute amounts to this plan to meet the minimum funding requirements of applicable local laws and regulations, plus such additional amounts as we deem appropriate. The non-qualified defined benefit plans are unfunded and closed to new participants.\nU.S. retiree health care benefit plan\nU.S. employees who meet eligibility requirements are offered medical coverage during retirement. We make a contribution toward the cost of those retiree medical benefits for certain retirees and their dependents. The contribution rates are based upon various factors, the most important of which are an employee\u2019s date of hire, date of retirement, years of service and eligibility for Medicare benefits. The balance of the cost is borne by the plan\u2019s participants. Employees hired after January 1, 2001, are responsible for the full cost of their medical benefits during retirement.\nNon-U.S. retirement plans\nWe provide retirement coverage for non-U.S. employees, as required by local laws or to the extent we deem appropriate, through a number of defined benefit and defined contribution plans. Retirement benefits are generally based on an employee\u2019s years of service and compensation. Funding requirements are determined on an individual country and plan basis and are subject to local country practices and market circumstances."
+    },
+    {
+      "accession": "0000310158-25-000014",
+      "chunk_id": "0000310158-25-000014#P1-1#0076",
+      "form": "10-Q",
+      "is_table": "false",
+      "n_tokens": 342,
+      "page": null,
+      "section": "P1-1",
+      "section_title": "Financial Statements",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/310158/000031015825000014/mrk-20250630.htm#:~:text=The%20cases%20were%20consolidated%20in%20a%20federal%20multidistrict",
+      "text": "The cases were consolidated in a federal multidistrict litigation (Zetia MDL) before Judge Rebecca Beach Smith in the Eastern District of Virginia. In April 2023, the Merck Defendants reached settlements with the direct purchaser and retailer plaintiffs and a settlement with the indirect purchaser class that the court approved in October 2023.\nAs previously disclosed, in 2020 and 2021, United HealthCare Services, Inc. (United HealthCare), Humana Inc. (Humana), Centene Corporation and others (Centene), and Kaiser Foundation Health Plan, Inc. (Kaiser) (collectively, the Insurer Plaintiffs), each filed a lawsuit in a jurisdiction outside of the Eastern District of Virginia against the Merck Defendants and others, making similar allegations as those made in the Zetia MDL, as well as additional allegations about Vytorin. These cases were transferred to the Eastern District of Virginia to proceed with the Zetia MDL.\nIn December 2023, the U.S. Judicial Panel on Multidistrict Litigation remanded the four Insurer Plaintiff cases to the transferor courts in the Northern District of California (Kaiser), the District of Minnesota (United HealthCare), and the District of New Jersey (Humana and Centene). The Merck Defendants filed motions to dismiss in each of the Insurer Plaintiff cases.\nIn December 2024, the district court in the District of New Jersey granted in part and denied in part the motions to dismiss in the Humana and Centene cases and, on January 29, 2025, Humana and Centene filed amended complaints. On March 5, 2025, the Merck Defendants filed motions to dismiss the amended complaints."
+    },
+    {
+      "accession": "0000316709-24-000069",
+      "chunk_id": "0000316709-24-000069#P1-1#0095",
+      "form": "10-Q",
+      "is_table": "false",
+      "n_tokens": 88,
+      "page": null,
+      "section": "P1-1",
+      "section_title": "Condensed Consolidated Financial Statements",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/316709/000031670924000069/schw-20240930.htm#:~:text=%281%29%20Costs%20related%20to%20facility%20closures.%20These%20costs%2C",
+      "text": "(1) Costs related to facility closures. These costs, which are primarily comprised of accelerated amortization of ROU assets, relate to the impact of abandoning leased properties. Accelerated amortization of ROU assets are included in occupancy and equipment on the condensed consolidated statements of income.\nThe following table summarizes the restructuring exit and other related costs incurred from July 1, 2023 through September 30, 2024:"
+    },
+    {
+      "accession": "0000713676-20-000115",
+      "chunk_id": "0000713676-20-000115#P2-6#0355",
+      "form": "10-Q",
+      "is_table": "false",
+      "n_tokens": 400,
+      "page": null,
+      "section": "P2-6",
+      "section_title": "Exhibits. 114",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/713676/000071367620000115/pncq2202010-q.htm#:~:text=Following%20the%20sale%20and%20donation%2C%20PNC%20and%20its",
+      "text": "Following the sale and donation, PNC and its affiliates only hold shares of BlackRock stock in a fiduciary capacity for clients of PNC and its affiliates.\nTotal business segment financial results differ from total consolidated net income. These differences are reflected in the \u201cOther\u201d category in the business segment tables. \u201cOther\u201d includes residual activities that do not meet the criteria for disclosure as a separate reportable business, such as asset and liability management activities including net securities gains or losses, other-than-temporary impairment of investment securities, certain trading activities, certain runoff consumer loan portfolios, private equity investments, intercompany eliminations, certain corporate overhead, tax adjustments that are not allocated to business segments, exited businesses and differences between business segment performance reporting and financial statement reporting (GAAP), including the presentation of net income attributable to noncontrolling interests as the segments\u2019 results exclude their portion of net income attributable to noncontrolling interests. The \u201cOther\u201d category also includes our BlackRock held for sale asset. Assets, revenue and earnings attributable to foreign activities were not material in the period presented for comparison.\nFinancial results are presented, to the extent practicable, as if each business operated on a stand-alone basis. Additionally, we have aggregated the results for corporate support functions within \u201cOther\u201d for financial reporting purposes.\nNet interest income in business segment results reflects our internal funds transfer pricing methodology. Assets receive a funding charge and liabilities and capital receive a funding credit based on a transfer pricing methodology that incorporates product repricing characteristics, tenor and other factors.\nWe have allocated the ALLL and the allowance for unfunded lending related commitments based on the loan exposures within each business segment\u2019s portfolio. Key reserve assumptions and estimation processes react to and are influenced by observed changes in loan portfolio performance experience, the financial strength of the borrower and economic conditions. Key reserve assumptions are periodically updated.\nBusiness Segment Results"
+    },
+    {
+      "accession": "0000874761-22-000022",
+      "chunk_id": "0000874761-22-000022#8#0265",
+      "form": "10-K",
+      "is_table": "true",
+      "n_tokens": 52,
+      "page": null,
+      "section": "8",
+      "section_title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/874761/000087476122000022/aes-20211231.htm#id3VybDovL2RvY3MudjEvZG9jOmY3YjU1MmQwYzgyZTRkNzVhZjI2NzI0ZDcyNzZhY2MyL3NlYzpmN2I1NTJkMGM4MmU0ZDc1YWYyNjcyNGQ3Mjc2YWNjMl8zMzQvZnJhZzo2YzExMGU4MWM0ZDE0MWFiOGRlMTNhNzVlZGFkM2VmMi90YWJsZTpiMjNhYzhkMzk1NmI0ZmUzYjRjM2RhMWNlMWJiNGRlMC90YWJsZXJhbmdlOmIyM2FjOGQzOTU2YjRmZTNiNGMzZGExY2UxYmI0ZGUwXzEtMi0xLTEtNzQ2NjI_dc23dfe1-0beb-4567-a0a4-9ad53b75ba9d",
+      "text": "December 31, | 2021 | 2020 | 2019\nTotal benefit for interest related to unrecognized tax benefits | $1 | $\u2014 | $(2)\nTotal expense for penalties related to unrecognized tax benefits | 1 | \u2014 | \u2014"
+    },
+    {
+      "accession": "0000927628-26-000152",
+      "chunk_id": "0000927628-26-000152#P1-2#0270",
+      "form": "10-Q",
+      "is_table": "false",
+      "n_tokens": 40,
+      "page": null,
+      "section": "P1-2",
+      "section_title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations (\u201cMD&A\u201d)",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/927628/000092762826000152/cof-20260930.htm#:~:text=Goodwill",
+      "text": "Goodwill\nThe following table presents changes in the carrying amount of goodwill by each of our business segments for September 30, 2026 and December 31, 2025.\nTable 7.3: Goodwill by Business Segments"
+    },
+    {
+      "accession": "0001104659-26-013549",
+      "chunk_id": "0001104659-26-013549#15#0007",
+      "form": "10-K",
+      "is_table": "true",
+      "n_tokens": 378,
+      "page": null,
+      "section": "15",
+      "section_title": "Exhibits and Financial Statement Schedules",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/820313/000110465926013549/aph-20251231x10k.htm#:~:text=10.8",
+      "text": "10.8 | First Amendment to Pension Plan for Employees of Amphenol Corporation, as amended and restated effective January 1, 2016, dated November 10, 2016 (filed as Exhibit 10.7 to the December 31, 2016 Form 10-K).\u2020*\n10.9 | Second Amendment to Pension Plan for Employees of Amphenol Corporation, as amended and restated effective January 1, 2016, dated October 1, 2016 (filed as Exhibit 10.8 to the December 31, 2016 Form 10-K).\u2020*\n10.10 | Third Amendment to Pension Plan for Employees of Amphenol Corporation, as amended and restated effective January 1, 2016, dated December 13, 2016 (filed as Exhibit 10.9 to the December 31, 2016 Form 10-K).\u2020*\n10.11 | Fourth Amendment to Pension Plan for Employees of Amphenol Corporation, as amended and restated effective January 1, 2016, dated May 2, 2017 (filed as Exhibit 10.12 to the June 30, 2017 Form 10-Q).\u2020*\n10.12 | Fifth Amendment to Pension Plan for Employees of Amphenol Corporation, as amended and restated effective January 1, 2016, dated October 29, 2018 (filed as Exhibit 10.12 to the December 31, 2018 Form 10-K).\u2020*\n10.13 | Sixth Amendment to Pension Plan for Employees of Amphenol Corporation, as amended and restated effective January 1, 2016, dated October 4, 2019 (filed as Exhibit 10.13 to the December 31, 2019 Form 10-K).\u2020*\n10.14 | Seventh Amendment to Pension Plan for Employees of Amphenol Corporation, as amended and restated effective January 1, 2016, dated December 2, 2019 (filed as Exhibit 10.14 to the December 31, 2019 Form 10-K).\u2020*"
+    },
+    {
+      "accession": "0001113169-25-000023",
+      "chunk_id": "0001113169-25-000023#P1-1#0051",
+      "form": "10-Q",
+      "is_table": "false",
+      "n_tokens": 122,
+      "page": null,
+      "section": "P1-1",
+      "section_title": "Financial Statements",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1113169/000111316925000023/trow-20250630.htm#:~:text=We%20evaluate%20the%20carrying%20amount%20of%20goodwill%20and",
+      "text": "We evaluate the carrying amount of goodwill and indefinite-lived intangible assets for possible impairment on an annual basis in the fourth quarter or if triggering events occur that require us to evaluate for impairment earlier. No triggering event occurred for goodwill in 2025, while we recorded an immaterial impairment related to the indefinite-lived investment advisory agreement intangible asset for the three months ended June 30, 2025.\nNOTE 7 \u2013 LONG-TERM INCENTIVE COMPENSATION.\nSTOCK OPTIONS.\nThe following table summarizes the status of, and changes in, our stock options during the six months ended June 30, 2025."
+    },
+    {
+      "accession": "0001193125-26-436133",
+      "chunk_id": "0001193125-26-436133#P1-2#0007",
+      "form": "10-Q",
+      "is_table": "false",
+      "n_tokens": 100,
+      "page": null,
+      "section": "P1-2",
+      "section_title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526436133/msft-20260930.htm#:~:text=XBOX%20content%20and%20services%20revenue%20growth%20Revenue%20from",
+      "text": "XBOX content and services revenue growth Revenue from XBOX content and services, comprising first- and third-party content (including games and in-game content), XBOX Game Pass and other subscriptions, XBOX Cloud Gaming, advertising, and other cloud services\nWindows OEM and devices revenue growth Revenue from sales of Windows Pro and non-Pro licenses sold through the OEM channel, first-party devices (including Surface and PC accessories), and related Windows offerings beyond OEM licensing\nPART I\nSUMMARY RESULTS OF OPERATIONS"
+    },
+    {
+      "accession": "0001437749-21-003793",
+      "chunk_id": "0001437749-21-003793#8#0030",
+      "form": "10-K",
+      "is_table": "false",
+      "n_tokens": 392,
+      "page": null,
+      "section": "8",
+      "section_title": "Financial Statements and Supplementary Data",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1474735/000143774921003793/gnrc20201231_10k.htm#:~:text=If%20the%20fair%20value%20of%20the%20reporting%20unit",
+      "text": "If the fair value of the reporting unit is less than its book value, an impairment loss is recognized in an amount equal to that excess, limited to the total amount of goodwill allocated to that reporting unit.\nOther indefinite-lived intangible assets consist of certain tradenames. The Company tests the carrying value of these tradenames annually as of October 31, or more frequently when an event occurs or circumstances change that indicates the carrying value may not be recoverable, by comparing the assets\u2019 fair value to its carrying value. Fair value is measured using a relief-from-royalty approach, which assumes the fair value of the tradename is the discounted cash flows of the amount that would be paid had the Company not owned the tradename and instead licensed the tradename from another company.\nThe Company performed the required annual impairment tests for goodwill and other indefinite-lived intangible assets for the fiscal years 2020, 2019 and 2018, and found no impairment.\nImpairment of Long-Lived Assets\nThe Company periodically evaluates the carrying value of long-lived assets (excluding goodwill and indefinite-lived tradenames). Long-lived assets are reviewed for impairment whenever events or changes in circumstances indicate that the carrying amount may not be recoverable. If the sum of the expected future undiscounted cash flows is less than the carrying amount of an asset, a loss is recognized for the difference between the fair value and carrying value of the asset.\nDebt Issuance Costs\nDebt discounts and direct costs incurred in connection with the issuance or amendment of long-term debt are deferred and recorded as a reduction of outstanding debt and amortized to interest expense using the effective interest method over the terms of the related credit agreements. $2,598, $4,712, and $4,749 of deferred financing costs and original issue discount were amortized to interest expense during fiscal years 2020, 2019 and 2018, respectively."
+    },
+    {
+      "accession": "0001559720-24-000032",
+      "chunk_id": "0001559720-24-000032#P1-2#0033",
+      "form": "10-Q",
+      "is_table": "false",
+      "n_tokens": 87,
+      "page": null,
+      "section": "P1-2",
+      "section_title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972024000032/abnb-20240930.htm#:~:text=Three%20and%20Nine%20Months%20Ended%20September%2030%2C%202024",
+      "text": "Three and Nine Months Ended September 30, 2024 Compared with the Same Periods in 2023\nInterest income increased $15 million, or 8%, for the three months ended September 30, 2024, and $106 million, or 20%, for the nine months ended September 30, 2024, compared to the same periods in the prior year, primarily due to higher cash and investment balances.\nOther Income (Expense), Net"
+    },
+    {
+      "accession": "0001571996-21-000026",
+      "chunk_id": "0001571996-21-000026#P1-1#0102",
+      "form": "10-Q",
+      "is_table": "false",
+      "n_tokens": 175,
+      "page": null,
+      "section": "P1-1",
+      "section_title": "FINANCIAL STATEMENTS (UNAUDITED)",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1571996/000157199621000026/dell-20210430.htm#:~:text=DELL%20TECHNOLOGIES%20INC.",
+      "text": "DELL TECHNOLOGIES INC.\nNOTES TO THE CONDENSED CONSOLIDATED FINANCIAL STATEMENTS (Continued)\n(unaudited)\nNOTE 8 \u2014 DEFERRED REVENUE\nDeferred Revenue \u2014 Deferred revenue is recorded for support and deployment services, software maintenance, professional services, training, and software-as-a-service when the Company has a right to invoice or payments have been received for undelivered products or services where transfer of control has not occurred. Revenue is recognized on these items when the revenue recognition criteria are met, generally resulting in ratable recognition over the contract term. The Company also has deferred revenue related to undelivered hardware and professional services, consisting of installations and consulting engagements, which are recognized as the Company\u2019s performance obligations under the contract are completed.\nThe following table presents the changes in the Company\u2019s deferred revenue for the periods indicated:"
+    },
+    {
+      "accession": "0001628280-20-004385",
+      "chunk_id": "0001628280-20-004385#1A#0060",
+      "form": "10-K",
+      "is_table": "false",
+      "n_tokens": 300,
+      "page": null,
+      "section": "1A",
+      "section_title": "RISK FACTORS",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1393052/000162828020004385/veev-20200131x10k.htm#:~:text=In%20addition%2C%20Section%20203%20of%20the%20Delaware%20General",
+      "text": "In addition, Section 203 of the Delaware General Corporation Law may discourage, delay or prevent a change in control of our company. Section 203 imposes certain restrictions on merger, business combinations and other transactions between us and holders of 15% or more of our common stock.\nOur amended and restated certificate of incorporation provides that the Court of Chancery of the State of Delaware is the exclusive forum for substantially all disputes between us and our stockholders, which could limit our stockholders' ability to obtain a favorable judicial forum for disputes with us or our directors, officers or employees.\nOur amended and restated certificate of incorporation provides that the Court of Chancery of the State of Delaware is the exclusive forum for any derivative action or proceeding brought on our behalf, any action asserting a breach of fiduciary duty, any action asserting a claim against us arising pursuant to the Delaware General Corporation Law or any action asserting a claim against us that is governed by the internal affairs doctrine. This choice of forum provision may limit a stockholder's ability to bring a claim in a judicial forum that it finds favorable for disputes with us or our directors, officers or other employees and may discourage these types of lawsuits. Alternatively, if a court were to find the choice of forum provision contained in our certificate of incorporation to be inapplicable or unenforceable in an action, we may incur additional costs associated with resolving such action in other jurisdictions, which could harm our business, operating results, and financial condition."
+    },
+    {
+      "accession": "0001628280-26-049411",
+      "chunk_id": "0001628280-26-049411#P1-1#0034",
+      "form": "10-Q",
+      "is_table": "true",
+      "n_tokens": 96,
+      "page": null,
+      "section": "P1-1",
+      "section_title": "Financial Statements",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/936468/000162828026049411/lmt-20260628.htm#f-816",
+      "text": "June 28, 2026 | December 31, 2025\nAssets\nAeronautics | $15,840 | $14,673\nMFC | 8,164 | 6,304\nRMS | 16,602 | 16,576\nSpace | 7,998 | 7,755\nTotal business segment assets | 48,604 | 45,308\nCorporate assets (a) | 13,846 | 14,532\nTotal assets | $62,450 | $59,840"
+    },
+    {
+      "accession": "0001628280-26-052348",
+      "chunk_id": "0001628280-26-052348#P1-1#0015",
+      "form": "10-Q",
+      "is_table": "true",
+      "n_tokens": 351,
+      "page": null,
+      "section": "P1-1",
+      "section_title": "Financial Statements",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/55785/000162828026052348/kmb-20260630.htm#f-411",
+      "text": "Six Months Ended June 30\n(In millions) | 2026 | 2025\nOperating Activities\nNet income | $1,025 | $1,085\nDepreciation and amortization | 360 | 440\nStock-based compensation | 64 | 73\nDeferred income taxes | (83) | (30)\nNet (gains) losses on asset and business dispositions | (7) | 36\nEquity companies' earnings (in excess of) less than dividends paid | (65) | (50)\nOperating working capital | 399 | (471)\nPostretirement benefits | (2) | 9\nOther | (38) | 5\nCash Provided by Operations | 1,653 | 1,097\nInvesting Activities\nCapital spending | (776) | (401)\nProceeds from asset and business dispositions | 28 | 12\nInvestments in time deposits | (166) | (227)\nMaturities of time deposits | 132 | 282\nOther | 17 | 22\nCash Used for Investing | (765) | (312)\nFinancing Activities\nCash dividends paid | (843) | (824)\nChange in short-term debt | (252) | 51\nDebt proceeds | 1,329 | \u2014\nDebt repayments | (400) | (250)\nProceeds from exercise of stock options | \u2014 | 36\nRepurchases of common stock | \u2014 | (120)\nCash dividends paid to noncontrolling interests | (15) | (18)\nOther | (41) | (58)\nCash Used for Financing | (222) | (1,183)\nEffect of Exchange Rate Changes on Cash and Cash Equivalents | (4) | 34\nChange in Cash and Cash Equivalents | 662 | (364)"
+    },
+    {
+      "accession": "fb:PEPSICO_2022_10K",
+      "chunk_id": "fb:PEPSICO_2022_10K#p66#0000",
+      "form": "10-K",
+      "is_table": "false",
+      "n_tokens": 372,
+      "page": "66",
+      "section": "PDF",
+      "section_title": null,
+      "source_url": "https://raw.githubusercontent.com/patronus-ai/financebench/main/pdfs/PEPSICO_2022_10K.pdf#page=66",
+      "text": "Table of Contents\nConsolidated Balance Sheet PepsiCo, Inc. and Subsidiaries December\u00a031, 2022 and December\u00a025, 2021 (in millions except per share amounts)\n2022 | 2021\nASSETS Current Assets\nCash and cash equivalents | $ | 4,954 | $ | 5,596\nShort-term investments | 394 | 392\nAccounts and notes receivable, net | 10,163 | 8,680\nInventories | 5,222 | 4,347\nPrepaid expenses and other current assets | 806 | 980\nAssets held for sale | \u2014 | 1,788\nTotal Current Assets | 21,539 | 21,783\nProperty, Plant and Equipment, net | 24,291 | 22,407\nAmortizable Intangible Assets, net | 1,277 | 1,538\nGoodwill | 18,202 | 18,381\nOther Indefinite-Lived Intangible Assets | 14,309 | 17,127\nInvestments in Noncontrolled Affiliates | 3,073 | 2,350\nDeferred Income Taxes | 4,204 | 4,310\nOther Assets | 5,292 | 4,481\nTotal Assets | $ | 92,187 | $ | 92,377\nLIABILITIES AND EQUITY Current Liabilities\nShort-term debt obligations | $ | 3,414 | $ | 4,308\nAccounts payable and other current liabilities | 23,371 | 21,159\nLiabilities held for sale | \u2014 | 753\nTotal Current Liabilities | 26,785 | 26,220\nLong-Term Debt Obligations | 35,657 | 36,026\nDeferred Income Taxes | 4,133 | 4,826\nOther Liabilities | 8,339 | 9,154\nTotal Liabilities | 74,914 | 76,226\nCommitments and contingencies PepsiCo Common Shareholders\u2019 Equity"
+    }
+  ],
+  "cross_reference_10q_both_p1_missing": {
+    "companies": 60,
+    "filings": 755,
+    "per_company": [
+      {
+        "cik": 65984,
+        "first_bad": "2020-05-11",
+        "last_bad": "2026-11-02",
+        "n_10q": 21,
+        "n_both_missing": 21,
+        "name": "ENTERGY CORP /DE/",
+        "ticker": "ETR"
+      },
+      {
+        "cik": 72741,
+        "first_bad": "2020-05-08",
+        "last_bad": "2026-11-06",
+        "n_10q": 21,
+        "n_both_missing": 21,
+        "name": "EVERSOURCE ENERGY",
+        "ticker": "ES"
+      },
+      {
+        "cik": 1800,
+        "first_bad": "2020-04-29",
+        "last_bad": "2026-11-04",
+        "n_10q": 21,
+        "n_both_missing": 21,
+        "name": "ABBOTT LABORATORIES",
+        "ticker": "ABT"
+      },
+      {
+        "cik": 36104,
+        "first_bad": "2020-05-07",
+        "last_bad": "2026-11-05",
+        "n_10q": 21,
+        "n_both_missing": 21,
+        "name": "US BANCORP DE",
+        "ticker": "USB"
+      },
+      {
+        "cik": 21665,
+        "first_bad": "2020-05-01",
+        "last_bad": "2026-10-30",
+        "n_10q": 21,
+        "n_both_missing": 21,
+        "name": "COLGATE PALMOLIVE CO",
+        "ticker": "CL"
+      },
+      {
+        "cik": 788784,
+        "first_bad": "2020-05-05",
+        "last_bad": "2026-11-02",
+        "n_10q": 21,
+        "n_both_missing": 21,
+        "name": "PUBLIC SERVICE ENTERPRISE GROUP INC",
+        "ticker": "PEG"
+      },
+      {
+        "cik": 906107,
+        "first_bad": "2020-05-07",
+        "last_bad": "2026-11-09",
+        "n_10q": 21,
+        "n_both_missing": 21,
+        "name": "VIVMARK RESIDENTIAL",
+        "ticker": "VMRK"
+      },
+      {
+        "cik": 1022079,
+        "first_bad": "2020-05-04",
+        "last_bad": "2026-10-23",
+        "n_10q": 21,
+        "n_both_missing": 21,
+        "name": "QUEST DIAGNOSTICS INC",
+        "ticker": "DGX"
+      },
+      {
+        "cik": 1047862,
+        "first_bad": "2020-05-07",
+        "last_bad": "2026-11-05",
+        "n_10q": 21,
+        "n_both_missing": 21,
+        "name": "CONSOLIDATED EDISON INC",
+        "ticker": "ED"
+      },
+      {
+        "cik": 19617,
+        "first_bad": "2020-05-07",
+        "last_bad": "2026-11-03",
+        "n_10q": 21,
+        "n_both_missing": 21,
+        "name": "JPMORGAN CHASE & CO",
+        "ticker": "JPM"
+      },
+      {
+        "cik": 1396009,
+        "first_bad": "2020-05-06",
+        "last_bad": "2026-10-29",
+        "n_10q": 21,
+        "n_both_missing": 21,
+        "name": "Vulcan Materials CO",
+        "ticker": "VMC"
+      },
+      {
+        "cik": 72971,
+        "first_bad": "2020-05-05",
+        "last_bad": "2026-10-28",
+        "n_10q": 22,
+        "n_both_missing": 21,
+        "name": "WELLS FARGO & COMPANY/MN",
+        "ticker": "WFC"
+      },
+      {
+        "cik": 4904,
+        "first_bad": "2020-05-06",
+        "last_bad": "2026-10-28",
+        "n_10q": 21,
+        "n_both_missing": 21,
+        "name": "AMERICAN ELECTRIC POWER CO INC",
+        "ticker": "AEP"
+      },
+      {
+        "cik": 1707925,
+        "first_bad": "2020-05-07",
+        "last_bad": "2026-10-29",
+        "n_10q": 21,
+        "n_both_missing": 21,
+        "name": "LINDE PLC",
+        "ticker": "LIN"
+      },
+      {
+        "cik": 49071,
+        "first_bad": "2020-04-29",
+        "last_bad": "2026-11-06",
+        "n_10q": 21,
+        "n_both_missing": 21,
+        "name": "HUMANA INC",
+        "ticker": "HUM"
+      },
+      {
+        "cik": 1063761,
+        "first_bad": "2020-05-11",
+        "last_bad": "2026-11-06",
+        "n_10q": 21,
+        "n_both_missing": 21,
+        "name": "SIMON PROPERTY GROUP INC.",
+        "ticker": "SPG"
+      },
+      {
+        "cik": 721371,
+        "first_bad": "2020-05-11",
+        "last_bad": "2026-11-05",
+        "n_10q": 20,
+        "n_both_missing": 20,
+        "name": "CARDINAL HEALTH INC",
+        "ticker": "CAH"
+      },
+      {
+        "cik": 62996,
+        "first_bad": "2020-04-29",
+        "last_bad": "2026-10-28",
+        "n_10q": 21,
+        "n_both_missing": 20,
+        "name": "MASCO CORP /DE/",
+        "ticker": "MAS"
+      },
+      {
+        "cik": 713676,
+        "first_bad": "2020-05-05",
+        "last_bad": "2026-05-05",
+        "n_10q": 21,
+        "n_both_missing": 19,
+        "name": "PNC FINANCIAL SERVICES GROUP, INC.",
+        "ticker": "PNC"
+      },
+      {
+        "cik": 1297996,
+        "first_bad": "2020-05-11",
+        "last_bad": "2026-10-30",
+        "n_10q": 21,
+        "n_both_missing": 19,
+        "name": "DIGITAL REALTY TRUST, INC.",
+        "ticker": "DLR"
+      },
+      {
+        "cik": 879101,
+        "first_bad": "2020-05-08",
+        "last_bad": "2026-10-29",
+        "n_10q": 22,
+        "n_both_missing": 19,
+        "name": "KIMCO REALTY CORP",
+        "ticker": "KIM"
+      },
+      {
+        "cik": 1136893,
+        "first_bad": "2020-08-04",
+        "last_bad": "2026-11-04",
+        "n_10q": 21,
+        "n_both_missing": 18,
+        "name": "Fidelity National Information Services, Inc.",
+        "ticker": "FIS"
+      },
+      {
+        "cik": 27904,
+        "first_bad": "2021-04-15",
+        "last_bad": "2026-10-09",
+        "n_10q": 21,
+        "n_both_missing": 18,
+        "name": "DELTA AIR LINES, INC.",
+        "ticker": "DAL"
+      },
+      {
+        "cik": 1792044,
+        "first_bad": "2021-05-10",
+        "last_bad": "2026-11-05",
+        "n_10q": 21,
+        "n_both_missing": 18,
+        "name": "Viatris Inc",
+        "ticker": "VTRS"
+      },
+      {
+        "cik": 1690820,
+        "first_bad": "2020-05-06",
+        "last_bad": "2025-10-29",
+        "n_10q": 21,
+        "n_both_missing": 18,
+        "name": "CARVANA CO.",
+        "ticker": "CVNA"
+      },
+      {
+        "cik": 93751,
+        "first_bad": "2020-04-28",
+        "last_bad": "2025-10-30",
+        "n_10q": 21,
+        "n_both_missing": 18,
+        "name": "STATE STREET CORP",
+        "ticker": "STT"
+      },
+      {
+        "cik": 779152,
+        "first_bad": "2020-05-08",
+        "last_bad": "2026-02-06",
+        "n_10q": 20,
+        "n_both_missing": 17,
+        "name": "JACK HENRY & ASSOCIATES INC",
+        "ticker": "JKHY"
+      },
+      {
+        "cik": 1140859,
+        "first_bad": "2020-05-07",
+        "last_bad": "2026-05-06",
+        "n_10q": 20,
+        "n_both_missing": 17,
+        "name": "Cencora, Inc.",
+        "ticker": "COR"
+      },
+      {
+        "cik": 40545,
+        "first_bad": "2020-04-29",
+        "last_bad": "2026-10-20",
+        "n_10q": 21,
+        "n_both_missing": 17,
+        "name": "GENERAL ELECTRIC CO",
+        "ticker": "GE"
+      },
+      {
+        "cik": 723254,
+        "first_bad": "2021-10-07",
+        "last_bad": "2026-10-07",
+        "n_10q": 20,
+        "n_both_missing": 16,
+        "name": "CINTAS CORP",
+        "ticker": "CTAS"
+      },
+      {
+        "cik": 1000228,
+        "first_bad": "2021-05-04",
+        "last_bad": "2026-11-03",
+        "n_10q": 21,
+        "n_both_missing": 16,
+        "name": "HENRY SCHEIN INC",
+        "ticker": "HSIC"
+      },
+      {
+        "cik": 773840,
+        "first_bad": "2022-04-29",
+        "last_bad": "2026-10-22",
+        "n_10q": 22,
+        "n_both_missing": 15,
+        "name": "HONEYWELL INTERNATIONAL INC",
+        "ticker": "HON"
+      },
+      {
+        "cik": 1116132,
+        "first_bad": "2020-11-04",
+        "last_bad": "2026-11-05",
+        "n_10q": 20,
+        "n_both_missing": 13,
+        "name": "TAPESTRY, INC.",
+        "ticker": "TPR"
+      },
+      {
+        "cik": 1121788,
+        "first_bad": "2020-04-29",
+        "last_bad": "2026-04-29",
+        "n_10q": 22,
+        "n_both_missing": 13,
+        "name": "GARMIN LTD",
+        "ticker": "GRMN"
+      },
+      {
+        "cik": 1754301,
+        "first_bad": "2020-05-07",
+        "last_bad": "2026-11-02",
+        "n_10q": 20,
+        "n_both_missing": 12,
+        "name": "Fox Corp",
+        "ticker": "FOXA"
+      },
+      {
+        "cik": 1037038,
+        "first_bad": "2020-08-04",
+        "last_bad": "2026-08-06",
+        "n_10q": 20,
+        "n_both_missing": 11,
+        "name": "RALPH LAUREN CORP",
+        "ticker": "RL"
+      },
+      {
+        "cik": 1070750,
+        "first_bad": "2020-05-08",
+        "last_bad": "2023-08-04",
+        "n_10q": 21,
+        "n_both_missing": 11,
+        "name": "HOST HOTELS & RESORTS, INC.",
+        "ticker": "HST"
+      },
+      {
+        "cik": 1065280,
+        "first_bad": "2023-04-21",
+        "last_bad": "2026-10-21",
+        "n_10q": 21,
+        "n_both_missing": 10,
+        "name": "NETFLIX INC",
+        "ticker": "NFLX"
+      },
+      {
+        "cik": 1095073,
+        "first_bad": "2020-05-11",
+        "last_bad": "2023-05-04",
+        "n_10q": 21,
+        "n_both_missing": 10,
+        "name": "EVEREST GROUP, LTD.",
+        "ticker": "EG"
+      },
+      {
+        "cik": 1000697,
+        "first_bad": "2020-04-29",
+        "last_bad": "2021-11-04",
+        "n_10q": 21,
+        "n_both_missing": 6,
+        "name": "WATERS CORP /DE/",
+        "ticker": "WAT"
+      },
+      {
+        "cik": 766704,
+        "first_bad": "2025-04-29",
+        "last_bad": "2026-10-27",
+        "n_10q": 21,
+        "n_both_missing": 6,
+        "name": "WELLTOWER INC.",
+        "ticker": "WELL"
+      },
+      {
+        "cik": 927066,
+        "first_bad": "2020-05-05",
+        "last_bad": "2026-08-04",
+        "n_10q": 21,
+        "n_both_missing": 5,
+        "name": "DAVITA INC.",
+        "ticker": "DVA"
+      },
+      {
+        "cik": 74208,
+        "first_bad": "2020-05-07",
+        "last_bad": "2020-10-30",
+        "n_10q": 21,
+        "n_both_missing": 3,
+        "name": "UDR, Inc.",
+        "ticker": "UDR"
+      },
+      {
+        "cik": 1022671,
+        "first_bad": "2022-10-26",
+        "last_bad": "2023-11-09",
+        "n_10q": 22,
+        "n_both_missing": 3,
+        "name": "STEEL DYNAMICS INC",
+        "ticker": "STLD"
+      },
+      {
+        "cik": 68505,
+        "first_bad": "2020-05-08",
+        "last_bad": "2020-10-30",
+        "n_10q": 21,
+        "n_both_missing": 3,
+        "name": "Motorola Solutions, Inc.",
+        "ticker": "MSI"
+      },
+      {
+        "cik": 1996810,
+        "first_bad": "2024-04-30",
+        "last_bad": "2024-10-23",
+        "n_10q": 9,
+        "n_both_missing": 3,
+        "name": "GE Vernova Inc.",
+        "ticker": "GEV"
+      },
+      {
+        "cik": 765880,
+        "first_bad": "2020-11-03",
+        "last_bad": "2021-08-04",
+        "n_10q": 21,
+        "n_both_missing": 3,
+        "name": "HEALTHPEAK PROPERTIES, INC.",
+        "ticker": "DOC"
+      },
+      {
+        "cik": 1031296,
+        "first_bad": "2020-04-23",
+        "last_bad": "2026-04-28",
+        "n_10q": 21,
+        "n_both_missing": 3,
+        "name": "FIRSTENERGY CORP",
+        "ticker": "FE"
+      },
+      {
+        "cik": 719955,
+        "first_bad": "2020-06-08",
+        "last_bad": "2020-12-07",
+        "n_10q": 20,
+        "n_both_missing": 3,
+        "name": "WILLIAMS SONOMA INC",
+        "ticker": "WSM"
+      },
+      {
+        "cik": 24741,
+        "first_bad": "2021-04-30",
+        "last_bad": "2021-10-29",
+        "n_10q": 21,
+        "n_both_missing": 3,
+        "name": "CORNING INC /NY",
+        "ticker": "GLW"
+      },
+      {
+        "cik": 1390777,
+        "first_bad": "2020-11-05",
+        "last_bad": "2021-05-06",
+        "n_10q": 21,
+        "n_both_missing": 2,
+        "name": "Bank of New York Mellon Corp",
+        "ticker": "BNY"
+      },
+      {
+        "cik": 313616,
+        "first_bad": "2026-07-21",
+        "last_bad": "2026-10-21",
+        "n_10q": 21,
+        "n_both_missing": 2,
+        "name": "DANAHER CORP /DE/",
+        "ticker": "DHR"
+      },
+      {
+        "cik": 1163165,
+        "first_bad": "2020-05-05",
+        "last_bad": "2021-05-06",
+        "n_10q": 21,
+        "n_both_missing": 2,
+        "name": "CONOCOPHILLIPS",
+        "ticker": "COP"
+      },
+      {
+        "cik": 70858,
+        "first_bad": "2020-07-31",
+        "last_bad": "2020-07-31",
+        "n_10q": 21,
+        "n_both_missing": 1,
+        "name": "BANK OF AMERICA CORP /DE/",
+        "ticker": "BAC"
+      },
+      {
+        "cik": 1289490,
+        "first_bad": "2024-05-31",
+        "last_bad": "2024-05-31",
+        "n_10q": 22,
+        "n_both_missing": 1,
+        "name": "Extra Space Storage Inc.",
+        "ticker": "EXR"
+      },
+      {
+        "cik": 814547,
+        "first_bad": "2023-09-15",
+        "last_bad": "2023-09-15",
+        "n_10q": 21,
+        "n_both_missing": 1,
+        "name": "FAIR ISAAC CORP",
+        "ticker": "FICO"
+      },
+      {
+        "cik": 1260221,
+        "first_bad": "2020-05-05",
+        "last_bad": "2020-05-05",
+        "n_10q": 20,
+        "n_both_missing": 1,
+        "name": "TransDigm Group INC",
+        "ticker": "TDG"
+      },
+      {
+        "cik": 21344,
+        "first_bad": "2024-05-30",
+        "last_bad": "2024-05-30",
+        "n_10q": 22,
+        "n_both_missing": 1,
+        "name": "COCA COLA CO",
+        "ticker": "KO"
+      },
+      {
+        "cik": 1324424,
+        "first_bad": "2020-06-04",
+        "last_bad": "2020-06-04",
+        "n_10q": 22,
+        "n_both_missing": 1,
+        "name": "Expedia Group, Inc.",
+        "ticker": "EXPE"
+      },
+      {
+        "cik": 1393311,
+        "first_bad": "2026-10-26",
+        "last_bad": "2026-10-26",
+        "n_10q": 21,
+        "n_both_missing": 1,
+        "name": "Public Storage",
+        "ticker": "PSA"
+      }
+    ]
+  },
+  "html": {
+    "lenient_success_ok_plus_partial": 0.9905581992597629,
+    "n_companies": 500,
+    "n_filings": 13239,
+    "no_sections": 125,
+    "non_ok_errors": [
+      {
+        "n": 755,
+        "parse_error": "missing sections: P1-1, P1-2",
+        "parse_status": "partial"
+      },
+      {
+        "n": 285,
+        "parse_error": "missing sections: P1-2",
+        "parse_status": "partial"
+      },
+      {
+        "n": 125,
+        "parse_error": null,
+        "parse_status": "no_sections"
+      },
+      {
+        "n": 104,
+        "parse_error": "missing sections: 1, 1A, 7, 8",
+        "parse_status": "partial"
+      },
+      {
+        "n": 95,
+        "parse_error": "missing sections: P1-1",
+        "parse_status": "partial"
+      },
+      {
+        "n": 71,
+        "parse_error": "missing sections: 1",
+        "parse_status": "partial"
+      },
+      {
+        "n": 21,
+        "parse_error": "missing sections: 7",
+        "parse_status": "partial"
+      },
+      {
+        "n": 12,
+        "parse_error": "missing sections: 1, 7, 8",
+        "parse_status": "partial"
+      },
+      {
+        "n": 12,
+        "parse_error": "missing sections: 1A",
+        "parse_status": "partial"
+      },
+      {
+        "n": 8,
+        "parse_error": "missing sections: 1, 7",
+        "parse_status": "partial"
+      },
+      {
+        "n": 8,
+        "parse_error": "missing sections: 1, 1A, 7",
+        "parse_status": "partial"
+      },
+      {
+        "n": 7,
+        "parse_error": "missing sections: 1A, 7, 8",
+        "parse_status": "partial"
+      },
+      {
+        "n": 7,
+        "parse_error": "missing sections: 8",
+        "parse_status": "partial"
+      },
+      {
+        "n": 6,
+        "parse_error": "missing sections: 1A, 8",
+        "parse_status": "partial"
+      },
+      {
+        "n": 2,
+        "parse_error": "missing sections: 1, 1A",
+        "parse_status": "partial"
+      },
+      {
+        "n": 1,
+        "parse_error": "missing sections: 1, 1A, 8",
+        "parse_status": "partial"
+      }
+    ],
+    "ok": 11720,
+    "partial": 1394,
+    "status_by_form": [
+      {
+        "form": "10-K",
+        "n": 24,
+        "parse_status": "no_sections"
+      },
+      {
+        "form": "10-K",
+        "n": 2806,
+        "parse_status": "ok"
+      },
+      {
+        "form": "10-K",
+        "n": 182,
+        "parse_status": "partial"
+      },
+      {
+        "form": "10-K/A",
+        "n": 1,
+        "parse_status": "no_sections"
+      },
+      {
+        "form": "10-K/A",
+        "n": 8,
+        "parse_status": "ok"
+      },
+      {
+        "form": "10-K/A",
+        "n": 77,
+        "parse_status": "partial"
+      },
+      {
+        "form": "10-Q",
+        "n": 91,
+        "parse_status": "no_sections"
+      },
+      {
+        "form": "10-Q",
+        "n": 8891,
+        "parse_status": "ok"
+      },
+      {
+        "form": "10-Q",
+        "n": 1127,
+        "parse_status": "partial"
+      },
+      {
+        "form": "10-Q/A",
+        "n": 9,
+        "parse_status": "no_sections"
+      },
+      {
+        "form": "10-Q/A",
+        "n": 15,
+        "parse_status": "ok"
+      },
+      {
+        "form": "10-Q/A",
+        "n": 8,
+        "parse_status": "partial"
+      }
+    ],
+    "strict_success": 0.8852632374046379,
+    "url_sample": [
+      "https://www.sec.gov/Archives/edgar/data/1113169/000111316925000023/trow-20250630.htm#:~:text=We%20evaluate%20the%20carrying%20amount%20of%20goodwill%20and",
+      "https://www.sec.gov/Archives/edgar/data/1393052/000162828020004385/veev-20200131x10k.htm#:~:text=In%20addition%2C%20Section%20203%20of%20the%20Delaware%20General",
+      "https://www.sec.gov/Archives/edgar/data/97476/000009747624000007/txn-20231231.htm#:~:text=Dividends%20paid%20on%20these%20shares%20in%202023%20and",
+      "https://www.sec.gov/Archives/edgar/data/874761/000087476122000022/aes-20211231.htm#id3VybDovL2RvY3MudjEvZG9jOmY3YjU1MmQwYzgyZTRkNzVhZjI2NzI0ZDcyNzZhY2MyL3NlYzpmN2I1NTJkMGM4MmU0ZDc1YWYyNjcyNGQ3Mjc2YWNjMl8zMzQvZnJhZzo2YzExMGU4MWM0ZDE0MWFiOGRlMTNhNzVlZGFkM2VmMi90YWJsZTpiMjNhYzhkMzk1NmI0ZmUzYjRjM2RhMWNlMWJiNGRlMC90YWJsZXJhbmdlOmIyM2FjOGQzOTU2YjRmZTNiNGMzZGExY2UxYmI0ZGUwXzEtMi0xLTEtNzQ2NjI_dc23dfe1-0beb-4567-a0a4-9ad53b75ba9d",
+      "https://www.sec.gov/Archives/edgar/data/789019/000119312526436133/msft-20260930.htm#:~:text=XBOX%20content%20and%20services%20revenue%20growth%20Revenue%20from",
+      "https://www.sec.gov/Archives/edgar/data/55785/000162828026052348/kmb-20260630.htm#f-411",
+      "https://www.sec.gov/Archives/edgar/data/1571996/000157199621000026/dell-20210430.htm#:~:text=DELL%20TECHNOLOGIES%20INC.",
+      "https://www.sec.gov/Archives/edgar/data/820313/000110465926013549/aph-20251231x10k.htm#:~:text=10.8",
+      "https://www.sec.gov/Archives/edgar/data/310158/000031015825000014/mrk-20250630.htm#:~:text=The%20cases%20were%20consolidated%20in%20a%20federal%20multidistrict",
+      "https://www.sec.gov/Archives/edgar/data/316709/000031670924000069/schw-20240930.htm#:~:text=%281%29%20Costs%20related%20to%20facility%20closures.%20These%20costs%2C",
+      "https://www.sec.gov/Archives/edgar/data/38777/000003877721000205/ben-20210930.htm#:~:text=Interest%20on%20tax%20matters%20is%20recognized%20in%20interest",
+      "https://www.sec.gov/Archives/edgar/data/936468/000162828026049411/lmt-20260628.htm#f-816",
+      "https://www.sec.gov/Archives/edgar/data/91419/000009141922000049/sjm-20220430.htm#id3VybDovL2RvY3MudjEvZG9jOmRlNTYyZTMyM2YxYjRjOTc5NjE0YmJhMTk0NmJhYjBhL3NlYzpkZTU2MmUzMjNmMWI0Yzk3OTYxNGJiYTE5NDZiYWIwYV8xMzMvZnJhZzo0N2RlYjE3YmVhY2I0MzJkYmUzYmM2OWMwM2MwYjA1MS90ZXh0cmVnaW9uOjQ3ZGViMTdiZWFjYjQzMmRiZTNiYzY5YzAzYzBiMDUxXzE4MzY_d5d2ef04-4739-4ceb-ad4e-b7e70a8f5918",
+      "https://www.sec.gov/Archives/edgar/data/1559720/000155972024000032/abnb-20240930.htm#:~:text=Three%20and%20Nine%20Months%20Ended%20September%2030%2C%202024",
+      "https://www.sec.gov/Archives/edgar/data/927628/000092762826000152/cof-20260930.htm#:~:text=Goodwill",
+      "https://www.sec.gov/Archives/edgar/data/713676/000071367620000115/pncq2202010-q.htm#:~:text=Following%20the%20sale%20and%20donation%2C%20PNC%20and%20its",
+      "https://www.sec.gov/Archives/edgar/data/65984/000006598422000185/etr-20220930.htm#:~:text=In%20addition%2C%20the%20Utility%20operating%20companies%20could%20be",
+      "https://www.sec.gov/Archives/edgar/data/1474735/000143774921003793/gnrc20201231_10k.htm#:~:text=If%20the%20fair%20value%20of%20the%20reporting%20unit",
+      "https://www.sec.gov/Archives/edgar/data/66740/000006674026000246/mmm-20260630.htm#:~:text=Motions%20to%20dismiss%20are%20fully%20briefed%2C%20and%20a",
+      "https://www.sec.gov/Archives/edgar/data/1137774/000113777422000082/pru-20220630.htm#:~:text=The%20Company%20is%20also%20subject%20to%20other%20financial",
+      "https://www.sec.gov/Archives/edgar/data/1123360/000112336022000021/gpn-20220630.htm#id3VybDovL2RvY3MudjEvZG9jOjBjM2NlZDg2MzFhOTRlZGU4MWM3ZWU5NWYzOWY0ZGY5L3NlYzowYzNjZWQ4NjMxYTk0ZWRlODFjN2VlOTVmMzlmNGRmOV8xMDk5NTExNjI4NzA4L2ZyYWc6YzRjOGJkMGQ2ZDI3NDFlM2JmMWRhZTVkMDg5NTY3NjcvdGFibGU6MDJiNzA2Yjc4MmIzNDFmZTljNjQwM2NmNzRmYzFhNTcvdGFibGVyYW5nZTowMmI3MDZiNzgyYjM0MWZlOWM2NDAzY2Y3NGZjMWE1N18xLTEtMS0xLTU2MTcz_9561f905-f241-4fe0-b783-e8da07685c99",
+      "https://www.sec.gov/Archives/edgar/data/872589/000180422022000023/regn-20220630.htm#:~:text=Any%20approvals%20we%20may%20obtain%20may%20not%20cover",
+      "https://www.sec.gov/Archives/edgar/data/316709/000031670926000019/schw-20260331.htm#:~:text=Accumulated%20Other%20Comprehensive%20Income%20%28Loss%29",
+      "https://www.sec.gov/Archives/edgar/data/1336920/000133692022000007/ldos-20211231.htm#:~:text=PART%20I",
+      "https://www.sec.gov/Archives/edgar/data/874716/000087471623000034/idxx-20230331.htm#:~:text=We%20do%20not%20disclose%20information%20about%20remaining%20performance",
+      "https://www.sec.gov/Archives/edgar/data/217346/000021734621000060/txt-20211002.htm#:~:text=Textron%20Aviation%E2%80%99s%20revenues%20increased%20%24386%20million%2C%2049%25%2C%20in",
+      "https://www.sec.gov/Archives/edgar/data/822416/000082241621000029/phm-20210630.htm#id3VybDovL2RvY3MudjEvZG9jOmFhOWI3Yzk2YjBjNjQ2MmM4ZWE1Mzc3OWE3NDJlNTNiL3NlYzphYTliN2M5NmIwYzY0NjJjOGVhNTM3NzlhNzQyZTUzYl8yOC9mcmFnOjFhYjNhODlhODA0NjQ2ODViMDY2M2NlMTg4ZDI0ZDQ1L3RhYmxlOmI1MmQwMDk3ODExOTRjMWRhYjE3NWZlYzAxNDM1MjJhL3RhYmxlcmFuZ2U6YjUyZDAwOTc4MTE5NGMxZGFiMTc1ZmVjMDE0MzUyMmFfMTItMS0xLTEtMA_cfed5416-f8ee-41f4-a9ff-92664bd7ae06",
+      "https://www.sec.gov/Archives/edgar/data/18230/000001823024000053/cat-20240930.htm#:~:text=We%20recognize%20trade%20receivables%20from%20dealers%20and%20end",
+      "https://www.sec.gov/Archives/edgar/data/884887/000088488723000056/rcl-20230930.htm#f-1006-1",
+      "https://www.sec.gov/Archives/edgar/data/65984/000006598422000017/etr-20211231.htm#:~:text=Rate%20and%20Regulatory%20Matters%20%E2%80%94Entergy%20Louisiana%2C%20LLC%20and",
+      "https://www.sec.gov/Archives/edgar/data/77476/000007747623000007/pep-20221231.htm#:~:text=Some%20raw%20materials%20and%20supplies%2C%20including%20packaging%20materials%2C",
+      "https://www.sec.gov/Archives/edgar/data/29905/000002990521000020/dov-20210331.htm#id3VybDovL2RvY3MudjEvZG9jOjkxMzU4MjEwNjgxYjRjN2ViNWY1YTY0NTE4NzAzMTdlL3NlYzo5MTM1ODIxMDY4MWI0YzdlYjVmNWE2NDUxODcwMzE3ZV8xMTIvZnJhZzo3ZTRmNzhjY2Y2NzQ0NWQ3OGJiYThmZTVlOWZmNzZlYi90YWJsZTphZWI0ZTNiYzUxNTE0YWM4YTYzMWE2ZWFjYTFhMjJkOS90YWJsZXJhbmdlOmFlYjRlM2JjNTE1MTRhYzhhNjMxYTZlYWNhMWEyMmQ5XzMtMS0xLTEtMA_ad205d34-17f8-4180-99d6-338aa9d6a619",
+      "https://www.sec.gov/Archives/edgar/data/31462/000155837022012280/ecl-20220630x10q.htm#:~:text=For%20segment%20reporting%20purposes%2C%20special%20%28gains%29%20and%20charges",
+      "https://www.sec.gov/Archives/edgar/data/1754301/000162828025047354/fox-20250930.htm#f-558",
+      "https://www.sec.gov/Archives/edgar/data/4904/000000490420000046/aep20201q10q.htm#:~:text=Various%20parties%20challenged%20the%202015%20rule%20in%20different",
+      "https://www.sec.gov/Archives/edgar/data/97476/000009747622000009/txn-20211231.htm#:~:text=We%20care%20for%20our%20environment%20and%20work%20to",
+      "https://www.sec.gov/Archives/edgar/data/20286/000002028621000066/cinf-20210930.htm#id3VybDovL2RvY3MudjEvZG9jOmI1NDYzY2RkODg4NzRhNGU5MmM1Mzc2ZjRmYzhjMmEwL3NlYzpiNTQ2M2NkZDg4ODc0YTRlOTJjNTM3NmY0ZmM4YzJhMF80MC9mcmFnOjM0ZTRmMWE2ZDdlNzQ5NzJiOGNjYmFhYmJiNGU1NmE4L3RhYmxlOjVkYTA4YTgyMTY3NDRmMjk5Mjc2Nzk0MzM1MmZlYTVlL3RhYmxlcmFuZ2U6NWRhMDhhODIxNjc0NGYyOTkyNzY3OTQzMzUyZmVhNWVfMi0yLTEtMS0w_036bf337-1330-47b6-8dc2-6f761e8f5f10",
+      "https://www.sec.gov/Archives/edgar/data/79282/000156459021020957/bro-10q_20210331.htm#:~:text=3.1",
+      "https://www.sec.gov/Archives/edgar/data/1045609/000119312526323746/pld-20260630.htm#:~:text=Interest%20expense%20increased%20during%20the%20six%20months%20ended",
+      "https://www.sec.gov/Archives/edgar/data/1559720/000155972024000006/abnb-20231231.htm#:~:text=The%20diluted%20net%20income%20%28loss%29%20per%20share%20is",
+      "https://www.sec.gov/Archives/edgar/data/1413329/000162828026049493/pm-20260630.htm#:~:text=Currently%2C%20all%20EU%20Member%20States%20have%20transposed%20this",
+      "https://www.sec.gov/Archives/edgar/data/63754/000006375426000192/mkc-20260228.htm#:~:text=To%20present%20the%20percentage%20change%20in%20projected%202026",
+      "https://www.sec.gov/Archives/edgar/data/1579241/000157924121000020/alle-20201231.htm#:~:text=History%20and%20Developments",
+      "https://www.sec.gov/Archives/edgar/data/320193/000032019321000056/aapl-20210327.htm#:~:text=Cash%20Flow%20Hedges",
+      "https://www.sec.gov/Archives/edgar/data/1065088/000106508822000013/ebay-20220331.htm#:~:text=The%20positive%20effect%20of%20exchange%20rate%20movements%20on",
+      "https://www.sec.gov/Archives/edgar/data/884887/000088488723000044/rcl-20230630.htm#:~:text=The%20increase%20in%20income%20was%20primarily%20due%20to",
+      "https://www.sec.gov/Archives/edgar/data/898173/000089817323000029/orly-20230331x10q.htm#:~:text=Exhibit%20No.",
+      "https://www.sec.gov/Archives/edgar/data/1713445/000171344526000022/rddt-20251231.htm#f-584",
+      "https://www.sec.gov/Archives/edgar/data/8670/000000867021000007/adp-20201231.htm#:~:text=%281%29%20During%20the%20three%20months%20ended%20December%2031%2C",
+      "https://www.sec.gov/Archives/edgar/data/100517/000010051724000027/ual-20231231.htm#:~:text=The%20aircraft%20listed%20in%20the%20table%20above%20are"
+    ]
+  },
+  "item15_dominant_10k": {
+    "n_10k": 3062,
+    "n_over_50pct_item15": 54,
+    "n_over_80pct_item15": 41
+  },
+  "p2_6_dominant_10q": {
+    "companies": 50,
+    "n_10q_with_chunks": 10016,
+    "n_acc": 655,
+    "n_over_50pct_p2_6": 669,
+    "n_over_80pct_p2_6": 655
+  },
+  "sections_top": [
+    {
+      "chunks": 886259,
+      "section": "P1-1"
+    },
+    {
+      "chunks": 525022,
+      "section": "P1-2"
+    },
+    {
+      "chunks": 437565,
+      "section": "8"
+    },
+    {
+      "chunks": 197145,
+      "section": "7"
+    },
+    {
+      "chunks": 165605,
+      "section": "P2-6"
+    },
+    {
+      "chunks": 126137,
+      "section": "1A"
+    },
+    {
+      "chunks": 94672,
+      "section": "P2-1A"
+    },
+    {
+      "chunks": 93061,
+      "section": "1"
+    },
+    {
+      "chunks": 66215,
+      "section": "15"
+    },
+    {
+      "chunks": 34542,
+      "section": "16"
+    },
+    {
+      "chunks": 24046,
+      "section": "P2-2"
+    },
+    {
+      "chunks": 19607,
+      "section": "P1-3"
+    },
+    {
+      "chunks": 16981,
+      "section": "7A"
+    },
+    {
+      "chunks": 14958,
+      "section": "P1-4"
+    },
+    {
+      "chunks": 13954,
+      "section": "5"
+    },
+    {
+      "chunks": 12603,
+      "section": "P2-1"
+    },
+    {
+      "chunks": 12026,
+      "section": "2"
+    },
+    {
+      "chunks": 8368,
+      "section": "P2-5"
+    },
+    {
+      "chunks": 7944,
+      "section": "11"
+    },
+    {
+      "chunks": 7489,
+      "section": "9A"
+    },
+    {
+      "chunks": 7211,
+      "section": "1C"
+    },
+    {
+      "chunks": 5762,
+      "section": "14"
+    },
+    {
+      "chunks": 5666,
+      "section": "10"
+    },
+    {
+      "chunks": 5518,
+      "section": "12"
+    },
+    {
+      "chunks": 5263,
+      "section": "6"
+    },
+    {
+      "chunks": 4939,
+      "section": "4"
+    },
+    {
+      "chunks": 4560,
+      "section": "P2-4"
+    },
+    {
+      "chunks": 4203,
+      "section": "1B"
+    },
+    {
+      "chunks": 4111,
+      "section": "3"
+    },
+    {
+      "chunks": 3610,
+      "section": "P2-3"
+    },
+    {
+      "chunks": 3391,
+      "section": "9B"
+    },
+    {
+      "chunks": 3203,
+      "section": "13"
+    },
+    {
+      "chunks": 2905,
+      "section": "9"
+    },
+    {
+      "chunks": 2525,
+      "section": "9C"
+    }
+  ],
+  "seed": 20261122,
+  "token_histogram": [
+    {
+      "bin_start": 0,
+      "doc_source": "edgar_html",
+      "n": 311393
+    },
+    {
+      "bin_start": 50,
+      "doc_source": "edgar_html",
+      "n": 337733
+    },
+    {
+      "bin_start": 100,
+      "doc_source": "edgar_html",
+      "n": 272932
+    },
+    {
+      "bin_start": 150,
+      "doc_source": "edgar_html",
+      "n": 207007
+    },
+    {
+      "bin_start": 200,
+      "doc_source": "edgar_html",
+      "n": 163695
+    },
+    {
+      "bin_start": 250,
+      "doc_source": "edgar_html",
+      "n": 141129
+    },
+    {
+      "bin_start": 300,
+      "doc_source": "edgar_html",
+      "n": 205776
+    },
+    {
+      "bin_start": 350,
+      "doc_source": "edgar_html",
+      "n": 1187401
+    },
+    {
+      "bin_start": 0,
+      "doc_source": "financebench_pdf",
+      "n": 263
+    },
+    {
+      "bin_start": 50,
+      "doc_source": "financebench_pdf",
+      "n": 1302
+    },
+    {
+      "bin_start": 100,
+      "doc_source": "financebench_pdf",
+      "n": 1746
+    },
+    {
+      "bin_start": 150,
+      "doc_source": "financebench_pdf",
+      "n": 1619
+    },
+    {
+      "bin_start": 200,
+      "doc_source": "financebench_pdf",
+      "n": 1748
+    },
+    {
+      "bin_start": 250,
+      "doc_source": "financebench_pdf",
+      "n": 1958
+    },
+    {
+      "bin_start": 300,
+      "doc_source": "financebench_pdf",
+      "n": 3229
+    },
+    {
+      "bin_start": 350,
+      "doc_source": "financebench_pdf",
+      "n": 17755
+    }
+  ]
+}

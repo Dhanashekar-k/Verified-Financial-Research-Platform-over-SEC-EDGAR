@@ -1,0 +1,20 @@
+{
+ "job": "edgarqa-parse-filings",
+ "job_run_id": "jr_4f585c4b77d825679f724f6580f71736a6b98c1bf705ceac60364efcc327d1d7",
+ "note": "Re-parse after the merge_curated fix (NOT IN delete replaced by an anti-join MERGE ... THEN DELETE); code 4767f8878de1. 13,239 HTML filings + 84 FinanceBench PDFs into the real curated; removed the 51,523 stale chunks left by the timed-out run; curated.chunks 2,856,686 = 2,827,066 edgar_html + 29,620 financebench_pdf, 0 orphans.",
+ "state": "SUCCEEDED",
+ "started_on": "2026-11-21T13:53:28.687000-05:00",
+ "completed_on": "2026-11-21T14:08:06.097000-05:00",
+ "execution_seconds": 870,
+ "dpu_seconds": 8706.0,
+ "glue_version": "5.0",
+ "worker_type": "G.1X",
+ "number_of_workers": 10,
+ "timeout_minutes": 90,
+ "arguments": {
+  "--repartition": "80",
+  "--financebench-dir": "s3://edgarqa-lake-019593222039/financebench",
+  "--financebench-companies": "s3://edgarqa-lake-019593222039/financebench/financebench_companies.csv"
+ },
+ "cost_usd": null
+}
