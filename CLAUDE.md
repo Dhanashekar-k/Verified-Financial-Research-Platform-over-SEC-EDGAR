@@ -54,3 +54,19 @@ Kafka/Kinesis, Kubernetes, LangChain/LlamaIndex, a second vector database, ORMs 
 - Prefer the smallest change that satisfies the runbook. Ask when the runbook is ambiguous rather than guessing.
 - When reporting results, quote the file and key you took each number from.
 - Use the `reviewer` subagent on staged diffs before commits, and the `test-writer` subagent for test-first work.
+
+## Explain before consequential actions
+Before any command that mutates cloud state (AWS, `terraform apply`, Glue/EMR runs), deploys, spends money, deletes or overwrites data, or pushes to git: first write ONE short plain-English paragraph (what it does, what it changes, the risk), then run it. Do not explain read-only commands (ls, grep, cat, Athena SELECTs).
+
+## Current status (2026-11-21)
+- **Milestones:** M0, M1, M2 complete. M2 parse success 88.5% strict / 99.06% lenient, closed on the DoD "or documented" branch (residual in ADR-028/031); section accuracy 49/50 = 98% (n=50, in-sample). Next: M3 (embeddings + serving store).
+- **Cloud:** AWS Free plan, account 019593222039, us-east-2, in an Org whose SCP denies EMR Serverless, so ALL Spark runs on AWS Glue 5.0, never EMR. M3's distributed embedding is therefore Glue or local fastembed.
+- **Auth:** `aws login --profile edgarqa` (session expires ~hourly). Terraform/boto3 need exported creds + `botocore[crt]`; us-east-1 only for Budgets/Cost Explorer APIs.
+- **Conventions:** smoke namespaces (`lake.*_smoke`) for first cloud runs; Glue jobs `max_retries 0`; commit AND push each step; decisions go to `docs/decisions.md` ADRs; gold eval stays parser-independent and is never edited to raise a score after seeing it.
+- **Gotchas:** zsh does not word-split `$A` (use a shell function); merge deletes use an anti-join / `NOT EXISTS`, never `NOT IN` (O(n²) on the full table; it timed out the M2 re-parse).
+- **Open loose ends (Shekar):** ADR Consequences review (026-031), 5-in-browser fragment check, `corpus_smoke` DB + orphaned `warehouse/` prefixes, Aurora `database-1`, dollar cost NOT MEASURED.
+
+## Decision log + end-of-session commit
+- Keep a running dev log in `docs/devlog.md`. At the END of each working session append a dated entry: what was done, the key decisions and why, what's next. A few bullet lines, the narrative that complements the ADRs, not a transcript.
+- Weighty or architectural decisions still get a full ADR in `docs/decisions.md` (context + consequences); the devlog holds the lighter day-to-day calls and progress.
+- At the end of a session confirm nothing is left uncommitted, then commit AND push, so the day's decisions and changes land on GitHub.
