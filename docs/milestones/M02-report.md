@@ -1,45 +1,47 @@
-# M2 Definition-of-Done report (local half measured; owner inputs and cloud half outstanding)
+# M2 Definition-of-Done report (full corpus measured on AWS Glue, 2026-11-21; owner checks outstanding)
 
-Generated 2026-11-17 by following `.claude/skills/dod/SKILL.md`. Numbers are copied from the files named
-below; a number with no file is marked `NOT MEASURED`. Where a number comes from a command run for this
-report, the command is shown. Everything measured here describes the **135 real filings fetched
-locally** (5 CIKs: Apple, Microsoft, Amazon, JPMorgan, Berkshire; `data/raw/filings`), not the 13,239-filing
-target list, and the 84 FinanceBench PDFs.
+Updated 2026-11-21 by following `.claude/skills/dod/SKILL.md`. Numbers are copied from the files named below; a number
+with no file is marked `NOT MEASURED`. **Full-corpus results (13,239 filings, 500 companies, 84 FinanceBench PDFs) are in
+the section "Full corpus on AWS Glue" and in the checklist rows marked "full corpus".** The older measurements on the 135
+filings fetched locally (5 CIKs: Apple, Microsoft, Amazon, JPMorgan, Berkshire) stay in the text, labelled "local set".
 
 ## Verdict
 
-**M2 is NOT done.** Three items FAIL or cannot be run, for reasons that are not code defects:
+**M2 is NOT done.** What is complete: the fetch (13,239 of 13,239, 0 failed), the load (`raw.filings_html`, 13,239 rows), the
+parse of the whole corpus into the real `curated.filings` / `curated.chunks`, FinanceBench in the real `curated`, the 50/50 URL
+check, and `curated.companies.in_financebench`. What blocks "done":
 
-1. **Section-boundary accuracy is measured on n=50, not the runbook's 100 (a conscious speed-run deviation): 49/50 = 98.0% after the dotted-spelling parser fix
-   (ADR-029); 47/50 = 94.0% after correcting two gold-anchor errors; 45/50 = 90.0% as first scored.** All three numbers, the reasons and the CIs are in item 2b. The filing-level 95% CI of the 49/50 score is 94.0% to 100.0%, so at n=50 its lower bound clears 90%
-   (the earlier scores' lower bounds, 82.0% and 86.0%, did not). Read that with two caveats: the sample is stratified, not random, and the dotted-spelling fix was
-   written after seeing this set's misses (ROL 1 and 1A), so 98.0% is an in-sample score, not a held-out one. The one remaining miss is NI 7 (ADR-030).
-2. ~~The three real fixture filings do not exist~~ Resolved: three real filings are in `tests/fixtures/filings/` and
-   `tests/unit/parsing/test_real_fixtures.py` runs on them (10 passed): core sections found, chunks clean, sidecars equal the
-   filings' own `dei` tags, and the parsed fiscal labels equal the company's own (Ulta needs offset -1).
-3. ~~The FinanceBench rows were not produced~~ Resolved: `data/financebench_companies.csv` now exists (resolved and
-   verified against the SEC submissions, see below) and `make parse-filings FB=1` loaded the PDFs into the local lake.
-   Please review the CSV (it is gitignored under `data/`; the evidence is committed).
-4. The full fetch and parse of the 13,239 targets is the cloud sprint (nothing was applied, pushed or run in AWS).
+1. **Parse success FAILS the 95% target on the full corpus: 11,178 of 13,239 filings `ok` = 84.4% strict**
+   (99.0% if `partial` counts as parsed; 126 `no_sections`, 0 `error`). The local set gave 84.4% too (114 of 135), but there
+   it was one company; on the corpus the cause is much wider (next point). Documented, not fixed.
+2. **The "JPMorgan-style" blast radius is far bigger than JPMorgan: 78 of the 500 companies (15.6%) have at least one 10-Q
+   missing both `P1-1` and `P1-2` (1,226 filings; in 46 companies every 10-Q is affected), and 50 companies have 690 10-Qs
+   with more than 80% of their text under `P2-6` (Exhibits).** All 1,676 `partial` 10-Qs are Part I misses. Only part of this
+   is JPMorgan's own format: in the two filings I traced (Humana, Moderna) the cause is a different parser defect (the
+   contents table's `Part II` row leaves the parser in Part II). The split between mechanisms is NOT MEASURED. Details and
+   evidence under "Full corpus on AWS Glue".
+3. The section-boundary accuracy (item 2b) is n=50 and in-sample (see that row), and the 5-in-a-browser fragment check is NOT RUN (Shekar).
+4. Draft ADR Consequences (026-030) await your review; ADR-028's own revisit trigger ("count filings missing P1-1/P1-2 by CIK
+   after the full parse") has now fired, and a new ADR is proposed under "Decisions that need an ADR".
 
-Two checks FAIL on what was measured: strict parse success is 114 of 135 filings `ok` (84.4%; target ≥ 95%; it was 93 of 135, 68.9%,
-before the Berkshire fix), and the 20 random chunks did not all read cleanly. Causes are listed under "Open issues".
+Earlier points, kept: the three real fixture filings exist (`tests/fixtures/filings/`, `test_real_fixtures.py`, 10 passed);
+`data/financebench_companies.csv` exists (gitignored; evidence committed; please review).
 
 ## Checklist (M02 runbook section 6)
 
 | # | Item | Status | Evidence |
 |---|---|---|---|
 | 1a | `filings.csv` counts recorded | PASS | `make list-filings` style run: `python -m pipelines.fetch.list_filings --keep-going --summary-out docs/milestones/M02-targets.json` → "wrote 13239 targets", 500 of 500 CIKs listed, 0 failed. Counts in the numbers table. |
-| 1b | fetch complete | NOT RUN | Only 135 of 13,239 targets were fetched, locally, to test the fetcher (135 fetched, 0 failed; `docs/milestones/M02-parse-metrics.json` `html.n_filings`). The full fetch belongs on an AWS box (cloud sprint). |
-| 1c | `raw.filings_html` has one row per target | NOT RUN | 135 rows for the 135 fetched (command: Spark `count()` on `lake.raw.filings_html`, all HTTP 200). One row per fetched filing holds; for the 13,239 targets it is not run. |
-| 2a | Parse success ≥ 95% (or documented) | **FAIL** (documented) | 114 `ok` + 21 `partial` of 135 = 84.4% strict, 0 `error`, 0 `no_sections` (`html.status_by_form`: 10-K ok 32, 10-Q ok 82, 10-Q partial 21). All 21 `partial` are JPMorgan 10-Qs (CIK 19617), a cross-reference format with no Item 1 or Item 2 heading in the body: ADR-028, not fixed. The 21 Berkshire 10-Qs that were `partial` (P1-2 missing) are fixed: the running-header filter dropped the repeated `Item 2. Management's Discussion ...` page header together with the real heading (`html_blocks._drop_noise`; regression tests in `tests/unit/parsing/test_berkshire_item2_regression.py`). The 32 10-Ks all parsed `ok`. 95% is not reachable on this 5-CIK set without the JPMorgan format: 21 of 135 (15.6%) are JPMorgan 10-Qs. |
+| 1b | fetch complete | **PASS (full corpus)** | `python -m pipelines.fetch.fetch_filings --dest s3://edgarqa-lake-019593222039/raw/filings --workers 6` (local process, refreshable AWS credentials, SEC rate limit 8 req/s through `SecClient`): `fetched 13104, skipped 135, failed 0; 2695779692 bytes stored this run`. S3 listing of `raw/filings/`: 13,239 `.htm.gz` objects (plus `_manifest.jsonl`), 2,741,761,733 bytes; compared with `data/targets/filings.csv`: 13,239 targets, 0 missing, 0 extra. Manifest: 13,239 rows, all `http_status` 200, 0 with zero bytes. (Local set, 2026-11-17: 135 of 13,239.) |
+| 1c | `raw.filings_html` has one row per target | **PASS (full corpus)** | `edgarqa-load-filings-html` (Glue, SUCCEEDED). Athena: `select count(*), count(distinct accession), count_if(http_status=200), count(distinct cik) from raw.filings_html` -> 13239, 13239, 13239, 500. |
+| 2a | Parse success ≥ 95% (or documented) | **FAIL (documented), full corpus** | **Full corpus (`curated.filings`, `edgar_html`, `docs/milestones/M02-fullcorpus-metrics.json`): 11,178 `ok`, 1,935 `partial`, 126 `no_sections`, 0 `error` of 13,239 -> strict 84.4% (`html.strict_success` 0.8443), `ok`+`partial` 99.05%.** By form: 10-K+10-K/A 2,814 ok of 3,098 (90.8%); 10-Q+10-Q/A 8,364 ok of 10,141 (82.5%). `no_sections`: 24 10-K, 1 10-K/A, 91 10-Q, 10 10-Q/A; 162 filings have no chunk at all. 95% is not met and not fixed; the cause is the Part I miss on 1,676 10-Qs (all of them `partial`), see the full-corpus section. *Local set (135 filings, 2026-11-20): 114 ok + 21 partial = 84.4%; all 21 partial were JPMorgan 10-Qs (ADR-028); the 21 Berkshire 10-Qs fixed earlier (`html_blocks._drop_noise`, `test_berkshire_item2_regression.py`).* |
 | 2b | Section-boundary accuracy ≥ 90% on the 100 labels | **PASS at n=50 (49/50 = 98.0%, filing-level CI lower bound 94.0%); in-sample, because the parser fix that raised it targeted this set's misses** | `python -m eval.sections_eval --min-accuracy 0.9` (`docs/milestones/M02-sections-eval.json`). **n=50, half the runbook's 100: a deliberate deviation (speed run); read every number below as n=50.** **As first scored: 45/50 = 90.0%** (filing-level 95% CI 82.0% to 98.0%; label-level 80.0% to 98.0%; item 7 was 7/10). **After correcting two gold-anchor errors: 47/50 = 94.0%** (filing-level 95% CI 86.0% to 100.0%; label-level 86.0% to 100.0%; 10,000 resamples; items 1 9/10, 1A 9/10, 7 9/10, 7A 10/10, 8 10/10). The two corrections, made after the first score and from the raw text only (the parser's output was not consulted for the new anchors), both construction bugs in my anchors, not parser behaviour: PGR 7's anchor was a mid-sentence fragment (the raw text breaks `Incorporated by reference from / Management's Discussion and Analysis… / in our Annual Report.` across three text nodes); ULTA 7's anchor was the 85-character heading title `Management's Discussion and Analysis…`, which belongs to the `Item 7.` heading and should have been skipped. **After the dotted-spelling parser fix (ADR-029; gold unchanged, the score rose because the parser improved): 49/50 = 98.0%** (filing-level 95% CI 94.0% to 100.0%; label-level 94.0% to 100.0%; items 1, 1A, 7A, 8 at 10/10, item 7 at 9/10); both lower CI bounds of the earlier scores stay in the table above as first measured. The one remaining miss, NI 7, is ADR-030. Before the fix the 3 misses were genuine parser errors: NI 7 (the parser's first chunk starts about 4,850 characters after the labeled start, after a `(continued)` page header), ROL 1 (parser's Item 1 chunk starts at the risk-factor text) and ROL 1A (`section not found`); the last two are on Rollins' dotted `Item 1.A.` spelling (cause not verified). **At n=50 the first two scores could not confirm ≥ 90% (lower CI bounds 82.0% first scored, 86.0% corrected, both under the target). The 49/50 score's lower bound (94.0%) clears it, but only in-sample: the dotted-spelling fix (ADR-029) was written after seeing ROL 1 and ROL 1A fail on this set, and the sample is stratified, not random.** The sample is 10 filings x 5 items (1, 1A, 7, 7A, 8) from the blast-radius cache of S&P 500 10-Ks, not the 135 locally fetched filings: 2 opaque-id TOC (IBM, BNY-PK), 2 named-id TOC (ULTA, GNRC), 2 no-anchor TOC (USB-PS, PGR), 2 multi-registrant (UAL, FRT-PC) and 2 hard filings chosen because the parser misses an item (NI, ROL) (`eval/sets/drafts/sections_gold_template.strata.json`). It is a stratified sample, so its accuracy is NOT an estimate for the whole corpus, and 2 of the 10 filings were picked because the parser fails on them. The template held only regex hits, never parser output (`tests/unit/test_labeling_harness.py` enforces it); Rollins' `Item 1.A.` heading is not matched by that regex, so ROL 1A was labeled by hand at offset 20353. Labeled by hand by Shekar; I (Claude) displayed the raw text, rebuilt 7 line-wrapped first sentences from the raw text and, afterwards, the two corrections above. |
-| 3a | Chunk count and token histogram recorded | PASS | `html.n_chunks`, `html.token_histogram`, `html.max_tokens` in `M02-parse-metrics.json`; the Spark job's table agrees: `lake.curated.chunks` 38922 rows (command output). |
+| 3a | Chunk count and token histogram recorded | **PASS (full corpus)** | `chunks` in `M02-fullcorpus-metrics.json`: `edgar_html` 2,794,994 chunks in 13,077 filings (951,757 table chunks, 892,778 with an element anchor), `financebench_pdf` 29,620 in 84; `max_tokens` 400, `over_400` 0 for both. HTML histogram (bins 1-50 ... 351-400): 306677, 333529, 269585, 204364, 161506, 139437, 203262, 1176634 (`token_histogram`). Cross-check with Athena `select max(n_tokens), count_if(n_tokens>400) from curated.chunks` -> 400, 0. (Local set: 38922 chunks, `M02-parse-metrics.json`.) |
 | 3b | Property tests green | PASS | `pytest tests/unit/parsing/test_chunker.py` → 19 passed (no chunk over 400 tokens, overlap ≤ 80, chunks reproduce the text, every chunk adds text). `make test` → 1292 passed, 0 skipped. |
-| 4 | 20 random chunks read cleanly (notes in the parse report) | **FAIL** | Read by Claude, not Shekar (seed 20261117, `html.random_chunks`). No hidden XBRL, no repeated page headers, tables keep their header and rows. But 7 of 20 sit under a section label that does not describe them, and 3 more have noise. Details under Open issues; Shekar should re-read. |
-| 5 | 50/50 source URLs return 200 | PASS (documents) / NOT RUN (anchors) | `python -m eval.check_source_urls --rate 2` → "32/32 documents returned 200 (50 sampled chunk URLs)". The fragment (`#id` or `#:~:text=`) is never seen by a server: the 5-in-a-browser spot check is **NOT RUN** (Shekar). |
+| 4 | 20 random chunks read cleanly (notes in the parse report) | **PASS on garbling (0 of 20); 1 section mislabel and 4 minor notes** | Full corpus, seed 20261121, chunks ordered by md5(chunk_id+seed) (`chunks_20` in `M02-fullcorpus-metrics.json`), all 20 read in full by Claude, not Shekar. **No hidden XBRL / number soup, no broken tables (pipe rows keep header and values), no repeated page headers.** Notes: #12 (`0001396009-23-000042#P2-6#0056`, a 10-Q) is environmental-remediation text under `P2-6` (Exhibits): the whole filing, 164 chunks / 168,300 characters, is under `P2-6` (the Part I miss below); #7, #8, #13 are tables whose caption is in another chunk (no label for what they show); #20 ends with a sentence introducing a table that is in the next chunk; #2 ends with the next statement's title. #19 is JPMorgan exhibit text and is correctly under `P2-6`. Shekar should re-read. (Local set: 7 of 20 mislabelled; see Open issues.) |
+| 5 | 50/50 source URLs return 200 | **PASS (documents, full corpus) / NOT RUN (anchors)** | `python -m eval.check_source_urls --metrics docs/milestones/M02-fullcorpus-metrics.json --rate 2 --out docs/milestones/M02-fullcorpus-url-check.json` -> "50/50 documents returned 200 (50 sampled chunk URLs)" (`ok` 50, `failed` [], `rate_per_second` 2.0). The fragment (`#id` / `#:~:text=`) is never seen by a server: the 5-in-a-browser check is **NOT RUN** (Shekar). (Local set: 32/32.) |
 | 6a | All FinanceBench PDFs parsed with page numbers (extraction) | PASS | `financebench.parse_status` `{"ok": 84}`, `pages_with_text` 11948, every chunk has `page` (`docs/milestones/M02-parse-metrics.json`, measured with a placeholder CIK; superseded by 6b). |
-| 6b | FinanceBench rows in `curated.chunks` | PASS | `make parse-filings FB=1` (command output): `curated.filings` 219 rows = 135 `edgar_html` + 84 `financebench_pdf` (all `ok`, 32 distinct CIKs, none <= 0); `curated.chunks` 68542 rows = 38922 + 29620, the PDF chunks all with `page` (1 to 549) and at most 400 tokens. A real relative-path bug in `parse_filings` surfaced on this run and was fixed with a regression test. |
+| 6b | FinanceBench rows in `curated.chunks` | **PASS (real `curated`, Glue)** | Full-parse run `jr_af891577...` wrote the 84 PDFs into the real `curated` (not smoke). Athena: `curated.filings` `financebench_pdf` 84 `ok`; `curated.chunks` `financebench_pdf` 29,620 chunks, 84 docs, `with_page` 29,620 (no NULL), max 400 tokens, 0 over, 0 table chunks. Identical to the local result (`M02-parse-metrics.json` `financebench`). `curated.companies.in_financebench`: 32 true (= 32 distinct ciks of the FinanceBench documents), 0 NULL; 30 of them are in the S&P 500 (the other two, Foot Locker and Activision Blizzard, are not in the CSV). |
 
 ### Other checks run
 
@@ -47,8 +49,8 @@ before the Berkshire fix), and the 20 random chunks did not all read cleanly. Ca
 |---|---|---|
 | Spark vs pure-Python equivalence (mandatory) | PASS | `pytest tests/integration/test_parse_filings.py …` → 14 passed. Mutating the Spark join (`period_of_report` without the `sub.period` fallback) made `test_the_spark_output_equals_the_pure_python_parse_for_every_filing` fail; restoring it passed. On the real data both paths give 38922 chunks (`html.n_chunks`; `lake.curated.chunks`). |
 | Text and facts agree on fiscal labels (ADR-023) | PASS (35 of 135 comparable) | `docs/milestones/M02-fiscal-agreement.json`: `with_facts_compared` 35, `agree` 35, `mismatches` `[]`. 100 filings have no facts in the lake (only 7 FSDS quarters are loaded), so they are not compared. |
-| `make test` / `make test-integration` / `make lint` | PASS | `make test` 1292 passed; `make test-integration` 352 passed (both after the parser fixes); lint: "All checks passed", mypy clean. |
-| `make check-gold` | PASS (skip) | "check-gold: skipped, no gold files exist yet". |
+| `make test` / `make test-integration` / `make lint` | PASS (lint: 2 known) | 2026-11-21 at HEAD: `make test` 1418 passed; `make test-integration` 371 passed; `make lint`: 2 `I001` import-order errors in `tests/integration/test_differential_duckdb.py` and `tests/unit/test_fiscal_duckdb.py` (older files, not touched here). |
+| `make check-gold` | PASS | "check-gold: 1 gold file(s) match CHECKSUMS" (2026-11-21). |
 | EMR image builds and runs the parse job | PASS (local) | `docker build --platform linux/arm64 infra/emr` (not pushed); the parse job on that image ran from the built `pipelines.zip` alone: Python 3.12.15, Spark 3.5.8-amzn-0, three real filings `ok`. This is a local container, not EMR. |
 | Terraform | PASS (fmt, validate only) | `terraform fmt -check -recursive` OK; `terraform validate` in `envs/dev`: "The configuration is valid". Nothing was planned or applied. |
 
@@ -73,8 +75,22 @@ before the Berkshire fix), and the 20 random chunks did not all read cleanly. Ca
 | Evidence items whose `evidence_page_num` is the 0-based PDF page index | 189 (of 189 usable) | same | `financebench.evidence_page_convention.evidence_page_num_is_0_based_index` |
 | Source URLs: sampled chunk URLs / distinct documents / 200 | 50 / 32 / 32 | `docs/milestones/M02-url-check.json` | `sampled_chunk_urls`, `distinct_documents`, `ok` |
 | Filings compared with their facts / agreeing / not comparable | 35 / 35 / 100 | `docs/milestones/M02-fiscal-agreement.json` | `with_facts_compared`, `agree`, `without_facts_not_compared` |
-| Section-boundary accuracy | NOT MEASURED | n/a | no gold file |
-| Full fetch: bytes, minutes, cost; full parse: minutes, cost | NOT MEASURED | n/a | cloud sprint (`docs/milestones/job-metrics/` is where `emr_run` writes them) |
+| Section-boundary accuracy (n=50, in-sample) | 49/50 = 98.0% | `docs/milestones/M02-sections-eval.json` | see item 2b |
+| **Full corpus (2026-11-21)** | | | |
+| Fetched / skipped / failed; bytes stored this run | 13104 / 135 / 0; 2695779692 | fetch command output (log in the session scratchpad) | `fetched`, `skipped`, `failed` |
+| S3 `raw/filings` `.htm.gz` objects / targets / missing / extra | 13239 / 13239 / 0 / 0 | S3 listing vs `data/targets/filings.csv` | n/a (command output) |
+| `raw.filings_html` rows / distinct accession / HTTP 200 / ciks | 13239 / 13239 / 13239 / 500 | Athena | n/a (command output) |
+| HTML filings `ok` / `partial` / `no_sections` / `error` | 11178 / 1935 / 126 / 0 | `docs/milestones/M02-fullcorpus-metrics.json` | `html.ok`, `html.partial`, `html.no_sections` |
+| Strict parse success / `ok`+`partial` | 0.8443 / 0.9905 | same | `html.strict_success`, `html.lenient_success_ok_plus_partial` |
+| Chunks `edgar_html` / `financebench_pdf` | 2794994 / 29620 | same | `chunks[].chunks` |
+| Max tokens / chunks over 400 | 400 / 0 | same | `chunks[].max_tokens`, `over_400` |
+| 10-Qs missing both `P1-1` and `P1-2`: filings / companies / companies with every 10-Q affected | 1226 / 78 / 46 | same | `cross_reference_10q_both_p1_missing.filings`, `.companies`; 46 = count of `per_company` rows with `n_both_missing == n_10q` |
+| 10-Qs with >80% of text under `P2-6`: filings / companies | 690 / 50 | same | `p2_6_dominant_10q.n_over_80pct_p2_6`, `.companies` |
+| 10-Ks with >50% / >80% of text under Item 15 (of 3062 with chunks) | 54 / 41 | same | `item15_dominant_10k` |
+| Source URLs returning 200 | 50 of 50 | `docs/milestones/M02-fullcorpus-url-check.json` | `ok`, `distinct_documents` |
+| DPU-seconds: manifest load / full parse / stray parse (stopped) / companies reruns | 153 / 8178 / 9327 / 222 + 208 | `docs/milestones/job-metrics/*.json` (5 new files) | `dpu_seconds` |
+| Full parse execution time (10 x G.1X) | 817 s | `edgarqa-parse-filings-jr_af891577...json` | `execution_seconds` |
+| Cost in USD (fetch, parse, all runs) | NOT MEASURED | job-metrics `cost_usd` is null; Cost Explorer returned $0 unblended and a Glue usage figure with no stated unit | n/a |
 | Bytes stored for the 135 local filings (gzip), sum over rows | 40089905 | `data/raw/filings/_manifest.jsonl` (gitignored) | `bytes` |
 
 ## Open issues
@@ -216,7 +232,7 @@ Heads-up for labeling: USB's Item 1A says it is incorporated by reference to the
 2. ~~`eval/sets/sections_gold.jsonl`~~ **Done** (n=50, half the runbook's 100: a conscious deviation): 47/50 = 94.0% (45/50 = 90.0% as first scored), see item 2b.
 3. ~~`data/financebench_companies.csv`~~ **Done, please review** (see "FinanceBench company CSV" below).
 4. **The 5-in-a-browser spot check** of citation fragments (items from `html.url_sample`).
-5. **Cloud sprint, in order** (all yours; nothing was run): `terraform plan/apply` (new `ecr` and `emr` modules);
+5. **Cloud sprint, in order** (superseded 2026-11-21: the full fetch, load and parse were run on Glue, not EMR, which the SCP denies; see "Full corpus on AWS Glue"): `terraform plan/apply` (new `ecr` and `emr` modules);
    `make emr-image-build`, `make emr-image-push ECR_URL=… YES=1`; set `emr_image_uri` and apply again; `make emr-package
    UPLOAD=s3://<lake>/artifacts` (from a clean tree); fetch the 13,239 filings from an AWS box
    (`make fetch-filings DEST=s3://<lake>/raw/filings`); `make emr-run JOB=load_filings_html …` then `JOB=parse_filings`.
@@ -235,6 +251,53 @@ Heads-up for labeling: USB's Item 1A says it is incorporated by reference to the
   `raw.filings_html.report_date` (`docs/plan/05_data_contracts.md` sections 1.6, 2.1, 2.2).
 - The bundled bge-small tokenizer (`pipelines/parsing/assets/`, pinned by SHA-256) rather than a network download.
 - The fixture/gold-dependent steps were skipped, not stubbed with invented data.
+- **New (proposed): ADR-031, Part state in 10-Q section detection.** The full parse shows 1,226 10-Qs in 78 companies missing both Part I items, and in the two filings traced the cause is the contents table's `Part II` row leaving the current part at II, not JPMorgan's cross-reference format. Options: (a) reset the part at a contents-table `Part I` row / infer Part I when Items 1 and 2 precede the first body `Part II`; (b) the title-based detector of ADR-028(b); (c) accept. Decide after (a) is tried on the 78 companies' filings. ADR-028 should get a note that its revisit trigger has fired.
+- `eval/lake_parse_report.py` is new tooling (Athena-based, reproduces `M02-fullcorpus-metrics.json`); no ADR needed.
+
+## Full corpus on AWS Glue (2026-11-21)
+
+**What ran** (job-metrics files in `docs/milestones/job-metrics/`; all Glue 5.0, G.1X):
+
+| Step | Where | Result | Execution | DPU-seconds |
+|---|---|---|---:|---:|
+| Fetch 13,239 filings -> `s3://edgarqa-lake-019593222039/raw/filings` | local process, refreshable AWS credentials | 13,104 fetched + 135 already there, 0 failed, 0 warnings | not timed (rate-limited to 8 req/s, no DPU) | n/a |
+| `edgarqa-load-filings-html` (2 workers) | Glue | `raw.filings_html` 13,239 rows | 76 s | 153 |
+| `edgarqa-parse-filings` (10 workers, 90 min cap, 0 retries, `--repartition 80`, FinanceBench PDFs included) | Glue | real `curated.filings` 13,239 `edgar_html` + 84 `financebench_pdf`; `curated.chunks` 2,824,614 | 817 s | 8,178 |
+| `edgarqa-build-companies` rerun 1 (2 workers) | Glue | `in_financebench` still NULL: the column was hard-coded NULL | 111 s | 222 |
+| `edgarqa-build-companies` rerun 2, after `9c6d8c9` (2 workers) | Glue | `in_financebench` true for 32 ciks, 0 NULL | 104 s | 208 |
+
+**Mistake, disclosed.** I started a parse run (`jr_8b041efd...`) by mistake before the arguments were set: no `--repartition`, no
+FinanceBench inputs. I stopped it, but not for about 16 minutes (it had run 932 s, 9,327 DPU-seconds, more than the real parse).
+It left `curated.filings` and `curated.chunks` created and empty (0 rows, checked in Athena); the real run then filled them. Its
+cost is in the DPU total above (18,088 DPU-seconds over the five Glue runs) and in the `NOT MEASURED` dollar figure.
+
+**Gate, as you required.** The fetch authenticated (the `edgarqa` profile needs `botocore[crt]`; I ran `uv run --with
+"botocore[crt]"`, nothing added to the project), SEC returned no error and no retry warnings, and the S3 object count equalled the
+target count with nothing missing before anything was parsed.
+
+**Parse status by form** (Athena on `curated.filings`, `doc_source='edgar_html'`; `html.status_by_form`):
+
+| Form | ok | partial | no_sections |
+|---|---:|---:|---:|
+| 10-K | 2806 | 182 | 24 |
+| 10-K/A | 8 | 77 | 1 |
+| 10-Q | 8350 | 1668 | 91 |
+| 10-Q/A | 14 | 8 | 10 |
+
+The 10-Q `partial` rows are 1,226 missing `P1-1` and `P1-2`, 257 missing only `P1-2`, and 193 missing only `P1-1` (`html.non_ok_errors`): every `partial` 10-Q is a Part I miss. Of the 259 `partial` 10-K and 10-K/A filings, 206 are missing item 1 and 104 are missing 1, 1A, 7 and 8 together (`html.non_ok_errors`); why is NOT MEASURED (the 77 10-K/A are probably amendments without those items, not checked).
+
+**JPMorgan-style blast radius (ADR-028), measured as a symptom.** `cross_reference_10q_both_p1_missing` in the metrics file:
+
+- 1,226 10-Qs with both Part I items missing, in **78 of the 500 companies (15.6%)**; in **46 of those 78 every 10-Q the company filed is affected** (46 companies, 1,606 10-Qs in the 78 companies, 1,226 affected). JPMorgan (CIK 19617) is 21 of 21, 2020-05-07 to 2026-11-03, as in ADR-028. Others at or near 100% include Kimco (22 of 22), Colgate (21 of 21), Humana, Moderna, Delta, UDR, Public Storage, Netflix, FIS, PSEG, Vulcan (`per_company`).
+- The text is not lost, it sits under the wrong label: **690 10-Qs in 50 companies have more than 80% of their text under `P2-6`** (Exhibits) (`p2_6_dominant_10q`); for those, a Part I section filter returns nothing and an Item 6 filter returns the whole filing. For 10-Ks the same cross-reference symptom is smaller: 54 of 3,062 10-Ks have more than half of their text under Item 15 (41 more than 80%) (`item15_dominant_10k`).
+- **Only some of this is JPMorgan's format, and I cannot say how much.** I read the raw text of the latest affected 10-Q of six companies (JPM, Colgate, Humana, Moderna, Delta, Netflix): JPM and Colgate have no Part I `Item 1`/`Item 2` headings in the body (contents-table rows only, the ADR-028 format). For Humana and Moderna I ran the parser's own block and heading functions: the contents table has a `Part I` row and a `Part II` row (blocks 37 and 74), the body has no `Part I` line of its own, and the first `Part` line after the table is `Part II` (blocks 478 and 412). `_candidates` (`pipelines/parsing/sections.py`) takes the current part from those lines, so Part I's `Item 1.` / `Item 2.` headings are coded `P2-...` or dropped (Moderna's `Item 1. Financial Statements`, block 75, ends up as `P2-1`; its Part I text is under `P2-1`, 130,120 characters). This is consistent with the Part-state defect, **not verified on the other 70-odd companies**. Delta and Netflix have a body `Item 2` heading but no body `Item 1` heading: a third shape. I tried two automatic classifiers on the affected 10-Qs and both mis-classified JPMorgan itself (a contents-table position threshold, then a row-spacing rule), so I discarded them: **the share of the 78 companies that is truly JPMorgan's format is NOT MEASURED.**
+- What this means for ADR-028: its premise (5 of 500 CIKs fetched, so the corpus-wide share is unknown) is now measured as a symptom, and its "if JPMorgan-like filers are more than a handful, build the detector" trigger has fired. The cheapest fix is probably not the title-based detector but the Part state (reset it at a Part I heading in the contents table, or infer Part I when Item 1 and Item 2 appear before the first Part II): NOT tested.
+
+**Other counts.** 126 filings are `no_sections` (24 10-K, 1 10-K/A, 91 10-Q, 10 10-Q/A) and 162 filings have no chunk at all (`select count(*) from curated.filings where n_chunks = 0`). Whether 10-K `(continued)` headings (ADR-030) are common is NOT MEASURED in this pass.
+
+**`curated.companies`:** 12,321 rows, 500 `in_sp500`, 32 `in_financebench` (30 of them also in the S&P 500), 0 NULL. This needed a code change (`9c6d8c9`, test `test_run_reads_financebench_ciks_from_curated_filings`): the column was hard-coded NULL, so rerunning on the FinanceBench load could not populate it.
+
+**Not verified / still there.** The dated snapshot table properties of `curated.companies` cannot be read through Athena (NOT VERIFIED). The Glue database `corpus_smoke` and its FinanceBench tables still exist (no longer needed: the PDFs are in the real `curated`). Dollar cost is `NOT MEASURED`. The three orphaned smoke prefixes under `warehouse/` are still there. `eval/lake_parse_report.py` (new) reproduces every number in `M02-fullcorpus-metrics.json` from Athena.
 
 ## M2 on AWS Glue: build_companies and FinanceBench PDFs (2026-11-20, code `0d4799648c38`)
 
@@ -242,4 +305,4 @@ Job metrics: `docs/milestones/job-metrics/edgarqa-build-companies-*.json` and th
 
 - **`curated.companies` on Glue** (`edgarqa-build-companies`, reads `raw.fsds_sub` and the ticker map and S&P 500 CSV staged under `s3://<lake>/reference/`): Athena shows 12,321 rows, one per cik that files in `raw.fsds_sub` or is in the SEC ticker map (not only the S&P 500, by design), of which 500 have `in_sp500` (the CSV has 503 rows: share classes of one cik collapse), 7,996 a ticker, 10,313 a SIC and 10,520 a fiscal year end; `in_financebench` is NULL in every row (not yet loaded). Columns match `COMPANIES` (cik, name, ticker, sic, fye_mmdd, in_sp500, in_financebench, aliases). The dated snapshot properties on the table could not be read through Athena (`SHOW TBLPROPERTIES` lists only `write_compression`); NOT VERIFIED on Glue.
 - **FinanceBench PDFs on Glue** (`edgarqa-parse-filings --skip-html true`, PDFs, question file and company CSV read from `s3://<lake>/financebench/`, written to `lake.corpus_smoke`): Athena shows 84 `ok` documents (0 errors), 29,620 chunks, 11,948 distinct (document, page) pairs with a chunk, no chunk with a NULL or non-positive `page`, `max n_tokens` 400, 0 over 400, 0 table chunks (PDF tables are not detected), no NULL `cik`. This equals the local result (84 ok, 29,620 chunks, 11,948 pages with text, `docs/milestones/M02-parse-metrics.json` `financebench`). PyMuPDF 2.1 works on Glue 5.0.
-- Still open for "M2 cloud done": the full filing corpus fetch to S3 (13,239 filings), the full parse and the M2 DoD run on Glue, and writing these tables to the real `curated` namespace (the PDFs went to `corpus_smoke`, which still exists).
+- Superseded on 2026-11-21: the full fetch, the full parse and the real `curated` namespace are done (section "Full corpus on AWS Glue" above); the PDFs in `corpus_smoke` are now redundant.

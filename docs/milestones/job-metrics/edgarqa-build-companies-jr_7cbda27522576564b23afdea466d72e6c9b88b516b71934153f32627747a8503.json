@@ -1,0 +1,16 @@
+{
+ "job": "edgarqa-build-companies",
+ "job_run_id": "jr_7cbda27522576564b23afdea466d72e6c9b88b516b71934153f32627747a8503",
+ "note": "rerun after full parse; in_financebench still NULL because the column was hard-coded (fixed in 9c6d8c9); code 0d4799648c38",
+ "state": "SUCCEEDED",
+ "started_on": "2026-11-21T03:55:25.307000-05:00",
+ "completed_on": "2026-11-21T03:57:24.085000-05:00",
+ "execution_seconds": 111,
+ "dpu_seconds": 222.0,
+ "glue_version": "5.0",
+ "worker_type": "G.1X",
+ "number_of_workers": 2,
+ "timeout_minutes": 20,
+ "arguments": {},
+ "cost_usd": null
+}

@@ -1,0 +1,16 @@
+{
+ "job": "edgarqa-load-filings-html",
+ "job_run_id": "jr_db5bed49284a1b26204df13472810e1128682ed3a13318a991ec0b3f40b6755f",
+ "note": "full corpus: manifest of 13,239 filings -> raw.filings_html; code 0d4799648c38",
+ "state": "SUCCEEDED",
+ "started_on": "2026-11-21T02:58:39.895000-05:00",
+ "completed_on": "2026-11-21T03:00:02.952000-05:00",
+ "execution_seconds": 76,
+ "dpu_seconds": 153.0,
+ "glue_version": "5.0",
+ "worker_type": "G.1X",
+ "number_of_workers": 2,
+ "timeout_minutes": 20,
+ "arguments": {},
+ "cost_usd": null
+}

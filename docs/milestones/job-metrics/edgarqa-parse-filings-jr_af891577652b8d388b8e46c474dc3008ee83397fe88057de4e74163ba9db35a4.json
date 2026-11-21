@@ -1,0 +1,20 @@
+{
+ "job": "edgarqa-parse-filings",
+ "job_run_id": "jr_af891577652b8d388b8e46c474dc3008ee83397fe88057de4e74163ba9db35a4",
+ "note": "FULL PARSE: 13,239 HTML filings + 84 FinanceBench PDFs -> real curated.filings/chunks; 10 x G.1X, 90 min cap; code 0d4799648c38",
+ "state": "SUCCEEDED",
+ "started_on": "2026-11-21T03:29:10.379000-05:00",
+ "completed_on": "2026-11-21T03:42:59.422000-05:00",
+ "execution_seconds": 817,
+ "dpu_seconds": 8178.0,
+ "glue_version": "5.0",
+ "worker_type": "G.1X",
+ "number_of_workers": 10,
+ "timeout_minutes": 90,
+ "arguments": {
+  "--repartition": "80",
+  "--financebench-dir": "s3://edgarqa-lake-019593222039/financebench",
+  "--financebench-companies": "s3://edgarqa-lake-019593222039/financebench/financebench_companies.csv"
+ },
+ "cost_usd": null
+}

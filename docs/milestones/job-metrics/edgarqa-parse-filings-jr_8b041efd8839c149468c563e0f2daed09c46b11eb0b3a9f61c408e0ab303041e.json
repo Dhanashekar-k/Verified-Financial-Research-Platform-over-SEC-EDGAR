@@ -1,0 +1,16 @@
+{
+ "job": "edgarqa-parse-filings",
+ "job_run_id": "jr_8b041efd8839c149468c563e0f2daed09c46b11eb0b3a9f61c408e0ab303041e",
+ "note": "STRAY RUN, started by mistake with no arguments (no --repartition, no FinanceBench) and stopped by me after ~16 min; wrote empty curated.filings/chunks; wasted DPU-seconds; code 0d4799648c38",
+ "state": "STOPPED",
+ "started_on": "2026-11-21T03:01:55.839000-05:00",
+ "completed_on": "2026-11-21T03:18:22.420000-05:00",
+ "execution_seconds": 932,
+ "dpu_seconds": 9327.0,
+ "glue_version": "5.0",
+ "worker_type": "G.1X",
+ "number_of_workers": 10,
+ "timeout_minutes": 90,
+ "arguments": {},
+ "cost_usd": null
+}
