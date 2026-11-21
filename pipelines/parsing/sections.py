@@ -85,9 +85,11 @@ MAX_FOLLOWING_TITLE_CHARS = 100
 LINK_WEIGHT = 0.01
 _ROMAN = {"i": 1, "ii": 2, "iii": 3, "iv": 4, "1": 1, "2": 2, "3": 3, "4": 4}
 _SEP = r"[\s.,:;|\-–—]*"
+# "Item 1.A." (a dot before the letter, as Rollins writes it) is item 1A. The dot is allowed only
+# when the letter is itself followed by a dot, so "Item 1. A new ..." stays item 1 (ADR-029).
 _ITEM = re.compile(
     rf"^(?:part\s+(?P<part>iv|iii|ii|i|[1-4])\b{_SEP})?"
-    rf"item\s*(?P<num>\d{{1,2}})\s*(?P<let>[a-c])?(?![a-z0-9]){_SEP}(?P<rest>.*)$",
+    rf"item\s*(?P<num>\d{{1,2}})(?:\s*\.\s*(?=[a-c]\.))?\s*(?P<let>[a-c])?(?![a-z0-9]){_SEP}(?P<rest>.*)$",
     re.IGNORECASE | re.DOTALL,
 )
 _PART = re.compile(rf"^part\s+(?P<part>iv|iii|ii|i|[1-4])\b{_SEP}(?P<rest>.*)$", re.IGNORECASE)

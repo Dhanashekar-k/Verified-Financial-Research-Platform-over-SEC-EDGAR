@@ -55,7 +55,7 @@ REPEAT_MAX_LEN = 120
 # shape as sections._ITEM, but kept here because `sections` imports this module.
 _ITEM_HEADING = re.compile(
     r"^(?:part\s+(?:iv|iii|ii|i|[1-4])\b[\s.,:;|\-\u2013\u2014]*)?"
-    r"item\s*\d{1,2}\s*[a-c]?(?![a-z0-9])[\s.,:;|\-\u2013\u2014]*[a-z]{3}",
+    r"item\s*\d{1,2}(?:\s*\.\s*(?=[a-c]\.))?\s*[a-c]?(?![a-z0-9])[\s.,:;|\-\u2013\u2014]*[a-z]{3}",
     re.IGNORECASE,
 )
 

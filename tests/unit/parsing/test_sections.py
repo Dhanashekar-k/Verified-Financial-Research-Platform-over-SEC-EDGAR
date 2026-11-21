@@ -468,3 +468,94 @@ def test_a_cross_reference_fragment_does_not_displace_the_real_item_7a():
     ]
 
     assert codes(detect_sections(blocks, "10-K")) == ["1A", "7A", "9A"]
+
+
+# --------------------------------------------------------------------------------------
+# "Item 1.A." (a dot before the letter): ADR-029
+# --------------------------------------------------------------------------------------
+
+
+@pytest.mark.parametrize(
+    ("text", "item", "title"),
+    [
+        ("Item 1.A. Risk Factors", "1A", "Risk Factors"),
+        ("Item 1.B. Unresolved Staff Comments", "1B", "Unresolved Staff Comments"),
+        (
+            "Item 7.A. Quantitative and Qualitative Disclosures about Market Risk",
+            "7A",
+            "Quantitative and Qualitative Disclosures about Market Risk",
+        ),
+        ("ITEM 9.A. CONTROLS AND PROCEDURES", "9A", "CONTROLS AND PROCEDURES"),
+        ("Item 1 . A. Risk Factors", "1A", "Risk Factors"),
+        ("Item 1.A.", "1A", ""),
+    ],
+)
+def test_a_dot_before_the_item_letter_is_the_lettered_item(text: str, item: str, title: str):
+    parsed = parse_item_heading(text)
+
+    assert parsed is not None
+    assert (parsed.item, parsed.title) == (item, title)
+
+
+@pytest.mark.parametrize(
+    ("text", "item"),
+    [
+        (
+            "Item 1. A new risk factor summary",
+            "1",
+        ),  # the article "A" after "Item 1." is not a letter
+        ("Item 1.A Risk Factors", "1"),  # no dot after the letter: not the dotted form (ADR-029)
+        ("Item 1. Business", "1"),
+        ("Item 2. B2B services overview", "2"),
+    ],
+)
+def test_a_letter_after_item_n_dot_that_is_not_dotted_stays_the_plain_item(text: str, item: str):
+    parsed = parse_item_heading(text)
+
+    assert parsed is not None
+    assert parsed.item == item
+
+
+def test_a_dotted_toc_is_skipped_and_the_dotted_body_headings_are_the_sections():
+    """Rollins' layout: a stacked TOC of `Item 1.A.` rows, then the same headings in the body."""
+    blocks = [
+        P("Item 1."),
+        P("Business."),
+        P("Item 1.A."),
+        P("Risk Factors."),
+        P("Item 1.B."),
+        P("Unresolved Staff Comments."),
+        P("Item 7."),
+        P("Management's Discussion and Analysis."),
+        P("Item 7.A."),
+        P("Quantitative and Qualitative Disclosures about Market Risk."),
+        P("Item 8."),
+        P("Financial Statements and Supplementary Data."),
+        P("Item 1."),
+        P("Business"),
+        body(3000),
+        P("Item 1.A."),
+        P("Risk"),
+        P("Factors"),
+        body(3000),
+        P("Item 1.B."),
+        P("Unresolved Staff Comments"),
+        P("None."),
+        P("Item 7."),
+        P("Management's Discussion and Analysis of Financial Condition and Results of Operations."),
+        body(3000),
+        P("Item 7.A."),
+        P("Quantitative and Qualitative Disclosures about Market Risk"),
+        body(3000),
+        P("Item 8."),
+        P("Financial Statements and Supplementary Data"),
+        body(3000),
+    ]
+
+    sections = detect_sections(blocks, "10-K")
+
+    assert codes(sections) == ["1", "1A", "1B", "7", "7A", "8"]
+    by_code = {s.code: s for s in sections}
+    assert by_code["1"].heading_index == 12  # the body heading, not the TOC row at 0
+    assert by_code["1A"].heading_index == 15  # item 1A is no longer folded into item 1
+    assert by_code["7A"].heading_index == 25
