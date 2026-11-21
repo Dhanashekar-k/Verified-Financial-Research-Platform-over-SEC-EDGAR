@@ -235,3 +235,11 @@ Heads-up for labeling: USB's Item 1A says it is incorporated by reference to the
   `raw.filings_html.report_date` (`docs/plan/05_data_contracts.md` sections 1.6, 2.1, 2.2).
 - The bundled bge-small tokenizer (`pipelines/parsing/assets/`, pinned by SHA-256) rather than a network download.
 - The fixture/gold-dependent steps were skipped, not stubbed with invented data.
+
+## M2 on AWS Glue: build_companies and FinanceBench PDFs (2026-11-20, code `0d4799648c38`)
+
+Job metrics: `docs/milestones/job-metrics/edgarqa-build-companies-*.json` and the `edgarqa-parse-filings` run whose note says "FinanceBench only". Both ran with 2 G.1X workers; DPU-seconds are in those files, and the dollar cost is `NOT MEASURED` (no price recorded).
+
+- **`curated.companies` on Glue** (`edgarqa-build-companies`, reads `raw.fsds_sub` and the ticker map and S&P 500 CSV staged under `s3://<lake>/reference/`): Athena shows 12,321 rows, one per cik that files in `raw.fsds_sub` or is in the SEC ticker map (not only the S&P 500, by design), of which 500 have `in_sp500` (the CSV has 503 rows: share classes of one cik collapse), 7,996 a ticker, 10,313 a SIC and 10,520 a fiscal year end; `in_financebench` is NULL in every row (not yet loaded). Columns match `COMPANIES` (cik, name, ticker, sic, fye_mmdd, in_sp500, in_financebench, aliases). The dated snapshot properties on the table could not be read through Athena (`SHOW TBLPROPERTIES` lists only `write_compression`); NOT VERIFIED on Glue.
+- **FinanceBench PDFs on Glue** (`edgarqa-parse-filings --skip-html true`, PDFs, question file and company CSV read from `s3://<lake>/financebench/`, written to `lake.corpus_smoke`): Athena shows 84 `ok` documents (0 errors), 29,620 chunks, 11,948 distinct (document, page) pairs with a chunk, no chunk with a NULL or non-positive `page`, `max n_tokens` 400, 0 over 400, 0 table chunks (PDF tables are not detected), no NULL `cik`. This equals the local result (84 ok, 29,620 chunks, 11,948 pages with text, `docs/milestones/M02-parse-metrics.json` `financebench`). PyMuPDF 2.1 works on Glue 5.0.
+- Still open for "M2 cloud done": the full filing corpus fetch to S3 (13,239 filings), the full parse and the M2 DoD run on Glue, and writing these tables to the real `curated` namespace (the PDFs went to `corpus_smoke`, which still exists).

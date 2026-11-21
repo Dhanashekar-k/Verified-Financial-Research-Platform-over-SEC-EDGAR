@@ -1,0 +1,16 @@
+{
+ "job": "edgarqa-build-companies",
+ "job_run_id": "jr_2f365e2b159f467f2a88fed827e1ceb2af2c07fdca99b91cf76ba4b4f10b461b",
+ "note": "curated.companies from raw.fsds_sub + staged ticker map and S&P 500 CSV (2026-11-17 snapshots); code 0d4799648c38",
+ "state": "SUCCEEDED",
+ "started_on": "2026-11-20T22:29:37.379000-05:00",
+ "completed_on": "2026-11-20T22:31:30.967000-05:00",
+ "execution_seconds": 106,
+ "dpu_seconds": 212.0,
+ "glue_version": "5.0",
+ "worker_type": "G.1X",
+ "number_of_workers": 2,
+ "timeout_minutes": 20,
+ "arguments": {},
+ "cost_usd": null
+}
