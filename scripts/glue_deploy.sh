@@ -28,6 +28,7 @@ uploads=(
   "pipelines/glue/load_filings_html_job.py|s3://${bucket}/scripts/load_filings_html_job.py"
   "pipelines/glue/build_companies_job.py|s3://${bucket}/scripts/build_companies_job.py"
   "pipelines/glue/parse_filings_job.py|s3://${bucket}/scripts/parse_filings_job.py"
+  "pipelines/glue/embed_chunks_job.py|s3://${bucket}/scripts/embed_chunks_job.py"
   "${zip}|s3://${bucket}/artifacts/glue/pipelines.zip"
 )
 

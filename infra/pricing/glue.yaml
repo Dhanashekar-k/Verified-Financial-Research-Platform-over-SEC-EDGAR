@@ -1,5 +1,5 @@
 # AWS Glue ETL rate used to turn job-metrics `dpu_seconds` into dollars (T2b and every Glue run).
-# Will be read by scripts/glue_job_metrics.py (not written yet). Re-check against the Price List when AWS announces a change.
+# Read by pipelines/cloud/job_metrics.py. Re-check against the Price List when AWS announces a change.
 #
 # Why this SKU: Glue 5.0 runs bill under USE2-ETL-DPU-Hour ("ETL Job run"). USE2-ETL-DPU-Hour-Gen2
 # ($0.308) is "ETL Job Run Glue 6.0+" and does NOT apply to Glue 5.0. Cost Explorer (2026-11-21) shows

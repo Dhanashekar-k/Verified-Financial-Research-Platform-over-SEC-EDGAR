@@ -32,6 +32,13 @@ locals {
   parsing_modules = "selectolax==1.0.2,tokenizers==0.23.3,pymupdf==2.1,pydantic==2.14.3"
   # build_companies imports the ticker-map parser, which imports the SEC client (httpx, dotenv)
   reference_modules = "httpx==0.28.1,python-dotenv==1.2.4"
+  # embed_chunks (ADR-032): the quantized bge model runs on onnxruntime through fastembed. The versions
+  # equal uv.lock; their transitive dependencies are resolved by pip at job start (accepted risk, ADR-032).
+  # The model files are NOT installed here: they are staged in S3 and fetched once per Python worker.
+  embedding_modules = "fastembed==0.9.1,onnxruntime==1.32.0,tokenizers==0.23.3"
+
+  # A per-job cap on run time where the default is too short; a stuck run still stops billing at it.
+  timeout_overrides = { "edgarqa-embed-chunks" = 120 }
 
   jobs = {
     "edgarqa-fsds-to-iceberg"   = { script = "fsds_to_iceberg_job.py", extra_args = {} }
@@ -44,6 +51,10 @@ locals {
     "edgarqa-parse-filings" = {
       script     = "parse_filings_job.py"
       extra_args = { "--additional-python-modules" = local.parsing_modules }
+    }
+    "edgarqa-embed-chunks" = {
+      script     = "embed_chunks_job.py"
+      extra_args = { "--additional-python-modules" = local.embedding_modules }
     }
   }
 }
@@ -60,14 +71,22 @@ resource "aws_glue_catalog_database" "smoke" {
 resource "aws_glue_job" "this" {
   for_each = local.jobs
 
+  # `timeout` is in minutes; a stuck run stops billing at it (a per-job override applies, see timeout_overrides).
+
   name              = each.key
   role_arn          = aws_iam_role.job.arn
   glue_version      = var.glue_version
   worker_type       = var.worker_type
   number_of_workers = var.number_of_workers
-  timeout           = var.timeout_minutes # minutes; a stuck job stops billing at this limit
-  max_retries       = 0                   # a retry would bill the failed work twice
+  timeout           = lookup(local.timeout_overrides, each.key, var.timeout_minutes)
+  max_retries       = 0 # a retry would bill the failed work twice
   execution_class   = "STANDARD"
+
+  # One run per job at a time (also Glue's default): the embedding job's insert-only MERGE would
+  # write duplicate rows if two runs overlapped on one output table.
+  execution_property {
+    max_concurrent_runs = 1
+  }
 
   command {
     name            = "glueetl"

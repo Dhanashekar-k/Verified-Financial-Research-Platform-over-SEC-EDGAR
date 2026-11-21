@@ -83,3 +83,10 @@ CHUNKS = _schema(
     ("chunk_index", _I), ("text", _S), ("n_tokens", _I), ("is_table", _B),
     ("source_url", _S), ("anchor", _S), ("page", _I), ("doc_source", _S), ("corpus_version", _I),
 )  # fmt: skip
+
+# `curated.chunk_embeddings` (contract section 2.2, ADR-032): one L2-normalized float32 vector per
+# chunk, from the quantized bge-small model. Partitioned by `bucket(16, chunk_id)`.
+CHUNK_EMBEDDINGS = _schema(
+    ("chunk_id", _S), ("model_name", _S), ("dim", _I),
+    ("embedding", ArrayType(FloatType())), ("embedded_at", TimestampType()),
+)  # fmt: skip
