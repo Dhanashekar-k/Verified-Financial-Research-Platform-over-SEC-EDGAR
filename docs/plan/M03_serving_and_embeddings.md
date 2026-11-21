@@ -2,6 +2,8 @@
 
 **Time:** about 12 h (fast track about 8 h) · **Roles:** big data + ML (distributed inference), SDE (atomic loads, indexing) · **Depends on:** M1, M2
 
+> **Amended 2026-11-21 (see ADR-032 to ADR-035 and `05_data_contracts.md`).** Where this runbook says EMR, use **AWS Glue 5.0** (ADR-027): no custom image, the model files are staged in S3 and pinned by sha256 (ADR-032). `query_embed` adds **no** BGE prefix for this model, so queries go through our `embed_queries` wrapper (ADR-033). The real load, index build and bench run on a **cloud** Postgres (EC2 `m7i.large` + Docker `pgvector/pgvector:pg17`, ADR-034), not locally; Testcontainers is for tests only. Degenerate chunks (`n_tokens <= 5`) are embedded but not exported (ADR-035). Swap/rollback/retention follow the `corpus_state` semantics in the contract (keep `live` and `previous`, not "N-1/N-2").
+
 ## 1. Goal
 
 Fast lookups for numbers and text: chunk embeddings computed at scale, a versioned Parquet export from the lake, and a Postgres serving store loaded with an **atomic version swap**, with HNSW recall and latency measured.
@@ -38,8 +40,8 @@ Fast lookups for numbers and text: chunk embeddings computed at scale, a version
 2. Bulk load with **psycopg COPY** (stream Parquet with pyarrow and write `halfvec` as `[x1,…,x384]` text). Alternatively use DuckDB's Postgres extension. Pick one and write the ADR.
 3. Build indexes **after** loading: B-trees, the GIN index on `tsv`, then HNSW (`m=16, ef_construction=64`). Session settings for the build: `maintenance_work_mem='1GB'`, `max_parallel_maintenance_workers=2`. On a 4 GiB box, temporarily resizing to `t4g.large` for the build and back is a cheap trick [Likely].
 4. **Validate** before swapping: row counts equal the manifest; 20 sample fact lookups; 20 sample text searches return rows.
-5. **Swap in one transaction:** `CREATE OR REPLACE VIEW facts …; CREATE OR REPLACE VIEW chunks …; UPDATE corpus_state SET live_version=N, swapped_at=now();`
-6. Keep N−1 for rollback (`load_snapshot.py --rollback`) and drop N−2.
+5. **Swap in one transaction:** `CREATE OR REPLACE VIEW facts …; CREATE OR REPLACE VIEW chunks …; UPDATE corpus_state SET previous_version=live_version, live_version=N, swapped_at=now();`
+6. Keep the live and the previous version for rollback (`load_snapshot.py --rollback`) and drop every other `*_vK` (not "N−2": after a rollback N−2 can be the live version).
 - Postgres settings for 4 GiB (`serving/postgres.conf`): `shared_buffers=1GB`, `effective_cache_size=2560MB`, `work_mem=16MB`, `random_page_cost=1.1`, `max_connections=50` [Likely starting points; tune them].
 
 ### 3.4 Retrieval primitives and measurements (2 h)
@@ -83,7 +85,7 @@ write the numbers into docs/milestones/M03-report.md from the bench's JSON outpu
 - [ ] `curated.chunk_embeddings` complete (missing = 0); T2b recorded (option A) or option B used and noted.
 - [ ] Export `corpus_version=1` with manifest; loader swaps it into local Postgres; rollback tested.
 - [ ] HNSW recall@10 ≥ 0.95 at the chosen `ef_search` (or documented).
-- [ ] Numeric lookup p95 < 50 ms; hybrid search (no rerank) p95 < 200 ms, locally (re-measure on EC2 in M9).
+- [ ] Numeric lookup p95 < 50 ms; hybrid search (no rerank) p95 < 200 ms, measured on the cloud box with a co-located client (instance type recorded; re-measure on the final box in M9).
 - [ ] Integration test for load/swap/rollback green in CI.
 
 ## 7. Pitfalls

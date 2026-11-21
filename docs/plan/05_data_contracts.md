@@ -224,6 +224,21 @@ CREATE TABLE lake.curated.chunks (
 CREATE TABLE lake.curated.chunk_embeddings (
   chunk_id string, model_name string, dim int, embedding array<float>, embedded_at timestamp
 ) USING iceberg PARTITIONED BY (bucket(16, chunk_id));
+-- model_name = 'BAAI/bge-small-en-v1.5', the name the contract and the manifest use. fastembed resolves that name to the
+-- QUANTIZED ONNX 'Qdrant/bge-small-en-v1.5-onnx-Q' (model_optimized.onnx), not the fp32 model; the exact artifact is pinned by
+-- sha256 in the export manifest (`embedding_artifact`). Vectors are L2-normalized float32, dim 384. EVERY chunk is embedded,
+-- including degenerate ones (n_tokens <= 5), so "missing = 0" stays checkable; degenerate chunks are dropped only at export (section 2.3).
+-- The query side must use the same artifact; fastembed's query_embed adds NO BGE query instruction for this model (query_embed == passage_embed).
+
+CREATE TABLE lake.curated.corpus_versions (     -- one row per serving export (M3); corpus_version = previous max + 1
+  corpus_version int, created_at timestamp, git_sha string,
+  facts_rows bigint, chunks_rows bigint, chunks_excluded bigint,
+  embedding_model string, embedding_artifact_sha256 string, dim int,
+  facts_snapshot_id bigint, chunks_snapshot_id bigint, chunk_embeddings_snapshot_id bigint,
+  export_uri string
+) USING iceberg;
+-- Tiny table. The export job appends one row after it has written the Parquet files and _MANIFEST.json (same values as the manifest).
+-- Re-exporting version N replaces its row (MERGE on corpus_version), never appends a second one.
 ```
 
 ### 2.3 Exports (lake → serving)
@@ -232,13 +247,21 @@ CREATE TABLE lake.curated.chunk_embeddings (
 ```json
 {"corpus_version": 7, "created_at": "2026-12-04T03:12:00Z", "git_sha": "abc1234",
  "facts_rows": 0, "chunks_rows": 0, "embedding_model": "BAAI/bge-small-en-v1.5", "dim": 384,
- "iceberg_snapshots": {"curated.facts": 0, "curated.chunks": 0}}
+ "embedding_artifact": {"hf_repo": "Qdrant/bge-small-en-v1.5-onnx-Q", "onnx_file": "model_optimized.onnx", "onnx_sha256": "<hex>"},
+ "chunk_exclusions": {"rule": "n_tokens <= 5", "count": 0},
+ "iceberg_snapshots": {"curated.facts": 0, "curated.chunks": 0, "curated.chunk_embeddings": 0}}
 ```
 Record the Iceberg snapshot IDs. You can then reproduce any eval run against the exact corpus with time travel.
+- `embedding_artifact` pins the ONNX file that produced the vectors (fastembed's name `BAAI/bge-small-en-v1.5` is the quantized Qdrant build, ADR-032). The loader and any query embedder must use the same file.
+- `chunk_exclusions` records chunks that are embedded in the lake but NOT exported. Rule: `n_tokens <= 5` (degenerate, near-empty chunks whose vectors carry no meaning). `count` is the exact number dropped by this export; `chunks_rows` is the count AFTER the exclusion. The export job fails if `count` differs from its pre-flight count.
+- `chunks` exports only `form IN ('10-K','10-K/A')` or `doc_source = 'financebench_pdf'` until a milestone decides to serve 10-Q text; `curated.chunks.corpus_version` is not exported and `tenant_id` is exported as NULL.
 
 ---
 
 ## 3. Serving store (Postgres 17 + pgvector 0.8.x)
+
+**Runtime (M3 onward).** The serving store runs on a **cloud** Postgres, not on the developer's laptop: the real load, the index builds and the retrieval bench run there. M3 uses Docker `pgvector/pgvector:pg17` on an EC2 `m7i.large` (non-burstable; flex instances throttle under sustained load and would distort build and latency numbers, ADR-034). Docker + Testcontainers on a laptop remain for unit and integration tests only.
+**Version requirement (the loader asserts it and fails fast):** PostgreSQL **17**, pgvector **>= 0.8.0**, 0.8.x preferred. Why: `halfvec` needs >= 0.7, HNSW needs >= 0.5, iterative index scans (filtered ANN, `hnsw.iterative_scan`) need >= 0.8. Any managed Postgres used later (RDS, Aurora PostgreSQL) must meet the same floor; check `SELECT extversion FROM pg_extension WHERE extname = 'vector'` rather than trusting a release-note table (AWS lists pgvector 0.8.1 for Aurora 17.9, from the AWS docs via web search, not verified on the cluster). `database-1` (Aurora 17.9) was not used: AWS's Free-plan pages cap Aurora at 1 GiB storage and 4 ACU (ADR-034).
 
 ```sql
 CREATE EXTENSION IF NOT EXISTS vector;
@@ -275,7 +298,13 @@ CREATE INDEX ON chunks_v7 (cik, fiscal_year);
 
 CREATE OR REPLACE VIEW facts AS SELECT * FROM facts_v7;    -- swapped in one transaction
 CREATE OR REPLACE VIEW chunks AS SELECT * FROM chunks_v7;
-CREATE TABLE corpus_state (id int PRIMARY KEY DEFAULT 1, live_version int NOT NULL, swapped_at timestamptz);
+CREATE TABLE corpus_state (id int PRIMARY KEY DEFAULT 1 CHECK (id = 1), live_version int NOT NULL,
+  previous_version int, swapped_at timestamptz);   -- previous_version = the rollback target; NULL before the first swap
+-- Swap: ONE transaction replaces both views and sets live_version = N, previous_version = <old live_version>, swapped_at = now().
+-- Rollback: the same transaction shape with the pair exchanged (live_version = old previous_version, previous_version = old live_version).
+-- Retention: after a swap or rollback, drop every facts_vK / chunks_vK whose K is NOT in (live_version, previous_version). It is
+-- never "N-2": after swap 1, swap 2, rollback to 1, load 3, version 1 is live and must survive. Loading N when N is already one of
+-- (live, previous) is refused. The loader is the single writer (one load at a time); corpus_version = max + 1 assumes that.
 
 CREATE TABLE tenants (tenant_id serial PRIMARY KEY, name text, created_at timestamptz DEFAULT now(),
   daily_question_cap int DEFAULT 50);

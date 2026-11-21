@@ -82,7 +82,7 @@ flowchart LR
 | 002 | Numbers come only from XBRL facts via a typed plan compiler; the LLM never writes SQL on the main path | Verifiable, safe and debuggable |
 | 003 | Iceberg over plain Parquet | Atomic commits, MERGE for restatements, time travel for reproducible evals |
 | 004 | No Kafka | Daily volume is a few hundred filings; SQS + a scheduler covers it. Project 2 shows streaming |
-| 005 | One EC2 box for API + Postgres + Redis rather than Lambda + Aurora + ElastiCache | Lower cost, no cold starts, fits HNSW in RAM; scale path documented |
+| 005 | One EC2 box for API + Postgres + Redis rather than Lambda + Aurora + ElastiCache | Lower cost, no cold starts, fits HNSW in RAM; scale path documented. **M3 evidence (2026-11-21, ADR-034):** the served corpus is 1,081,461 chunks (vectors alone 0.84 GB, text 1.40 GB); a 4 GiB `t4g.medium` is not Free-plan-eligible by the EC2 API flag and likely cannot hold it with the HNSW graph, so M3 builds and benchmarks on an 8 GiB `m7i.large` and M9 re-decides the final box |
 | 006 | No NAT gateway | Lambdas run outside the VPC; EC2 sits in a public subnet with no inbound ports except from CloudFront |
 | 007 | DuckDB vs Spark: measured crossover | Honest big-data framing |
 | 008 | Chunks of about 400 embedder tokens, never crossing section boundaries | Fits the 512-token embedder; citations stay meaningful |
