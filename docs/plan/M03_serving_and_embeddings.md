@@ -2,7 +2,7 @@
 
 **Time:** about 12 h (fast track about 8 h) · **Roles:** big data + ML (distributed inference), SDE (atomic loads, indexing) · **Depends on:** M1, M2
 
-> **Amended 2026-11-21 (see ADR-032 to ADR-035 and `05_data_contracts.md`).** Where this runbook says EMR, use **AWS Glue 5.0** (ADR-027): no custom image, the model files are staged in S3 and pinned by sha256 (ADR-032). `query_embed` adds **no** BGE prefix for this model, so queries go through our `embed_queries` wrapper (ADR-033). The real load, index build and bench run on a **cloud** Postgres (EC2 `m7i.large` + Docker `pgvector/pgvector:pg17`, ADR-034), not locally; Testcontainers is for tests only. Degenerate chunks (`n_tokens <= 5`) are embedded but not exported (ADR-035). Swap/rollback/retention follow the `corpus_state` semantics in the contract (keep `live` and `previous`, not "N-1/N-2").
+> **Amended 2026-11-21 (see ADR-032 to ADR-035 and `05_data_contracts.md`).** Where this runbook says EMR, use **AWS Glue 5.0** (ADR-027): no custom image, the model files are staged in S3 and pinned by sha256 (ADR-032). `query_embed` adds **no** BGE prefix for this model, so queries go through our `embed_queries` wrapper (ADR-033). The real load, index build and bench run on a **cloud** Postgres (EC2 `m7i.large` + Docker `pgvector/pgvector:pg17`, ADR-034), not locally; Testcontainers is for tests only. Degenerate chunks (`n_tokens <= 5`) are embedded but not exported (ADR-035). EDGAR 10-Q and 10-Q/A chunks are deliberately not embedded (ADR-037), so "`chunk_embeddings` complete (missing = 0)" means complete over the embedding scope (10-K, 10-K/A, FinanceBench). Swap/rollback/retention follow the `corpus_state` semantics in the contract (keep `live` and `previous`, not "N-1/N-2").
 
 ## 1. Goal
 

@@ -27,6 +27,7 @@ import importlib
 import json
 import logging
 import math
+import os
 import platform
 import sys
 import tempfile
@@ -70,6 +71,7 @@ from pyspark.sql import functions as F  # noqa: E402
 
 from pipelines.spark.curated_schemas import CHUNK_EMBEDDINGS  # noqa: E402
 from pipelines.spark.iceberg_util import ensure_table  # noqa: E402
+from pipelines.spark.serving_scope import served_predicate  # noqa: E402
 
 log = logging.getLogger(__name__)
 
@@ -77,7 +79,8 @@ CHUNKS_TABLE = "lake.curated.chunks"
 OUTPUT_TABLE = "lake.curated.chunk_embeddings"
 PARTITIONING = "bucket(16, chunk_id)"
 DEFAULT_ROWS_PER_PARTITION = 10_000
-DEFAULT_BATCH_SIZE = 256
+DEFAULT_BATCH_SIZE = 32  # with length-sorted batches; 256 padded most of a batch to 400 tokens
+SCOPES = ("all", "served")
 
 
 @dataclass(frozen=True)
@@ -111,17 +114,52 @@ def _local_model_dir(model_location: str) -> Path:
     return cached
 
 
+_CPU_FLAGS = ("avx2", "avx512f", "avx512_vnni", "avx_vnni", "amx_int8", "avx512bw")
+
+
+def _cpu_summary() -> str:
+    """CPU model, logical CPUs and the vector-instruction flags int8 inference depends on."""
+    model, flags = "", set()
+    try:
+        with open("/proc/cpuinfo", encoding="utf-8") as handle:
+            for line in handle:
+                key, _, value = line.partition(":")
+                if key.strip() == "model name" and not model:
+                    model = value.strip()
+                elif key.strip() in {"flags", "Features"} and not flags:  # x86 / aarch64
+                    flags = set(value.split())
+    except OSError:  # not Linux
+        pass
+    model = model or platform.processor() or platform.machine()
+    # No flags line means "could not tell", never "has none of them".
+    tracked = ",".join(f for f in _CPU_FLAGS if f in flags) or "none-tracked"
+    have = tracked if flags else "unknown"
+    try:
+        cpus = len(os.sched_getaffinity(0))  # what this process may use, not the host's count
+    except AttributeError:
+        cpus = os.cpu_count()
+    return f"cpu='{model}' usable_cpus={cpus} flags={have}"
+
+
 def _embed_batches(
-    model_location: str, batch_size: int
+    model_location: str, batch_size: int, sort_by_length: bool
 ) -> Callable[[Iterator[pd.DataFrame]], Iterator[pd.DataFrame]]:
     """The `mapInPandas` function: embeds the `text` of each pandas batch with the cached model."""
 
     def run(batches: Iterator[pd.DataFrame]) -> Iterator[pd.DataFrame]:
+        started = time.perf_counter()
         embedder = get_embedder(
             _local_model_dir(model_location), threads=1, expected_onnx_sha256=ARTIFACT_ONNX_SHA256
         )
+        loaded = time.perf_counter()
+        rows, infer = 0, 0.0
         for batch in batches:
-            vectors = embedder.embed_passages(batch["text"].fillna("").tolist(), batch_size)
+            t0 = time.perf_counter()
+            vectors = embedder.embed_passages(
+                batch["text"].fillna("").tolist(), batch_size, sort_by_length=sort_by_length
+            )
+            infer += time.perf_counter() - t0
+            rows += len(batch)
             yield pd.DataFrame(
                 {
                     "chunk_id": batch["chunk_id"].to_numpy(),
@@ -131,6 +169,15 @@ def _embed_batches(
                     "embedded_at": pd.Timestamp.now("UTC").tz_localize(None),
                 }
             )
+        # One line per partition on the executor's stderr (CloudWatch): load vs inference time, and
+        # the hardware the rate was measured on. Never read back by the job itself.
+        print(
+            f"embed_partition rows={rows} load_s={loaded - started:.1f} infer_s={infer:.1f} "
+            f"rows_per_s={rows / infer if infer else 0:.2f} batch={batch_size} "
+            f"sorted={sort_by_length} pid={os.getpid()} {_cpu_summary()}",
+            file=sys.stderr,
+            flush=True,
+        )
 
     return run
 
@@ -141,8 +188,11 @@ def _select_missing_ids(
     output_table: str,
     forms: Sequence[str] | None,
     ciks: Sequence[int] | None,
+    scope: str,
 ) -> DataFrame:
     chunks = spark.table(chunks_table)
+    if scope == "served":
+        chunks = chunks.where(served_predicate())
     if forms:
         chunks = chunks.where(F.col("form").isin(list(forms)))
     if ciks:
@@ -164,6 +214,8 @@ def embed_chunks(
     max_chunks: int | None = None,
     rows_per_partition: int = DEFAULT_ROWS_PER_PARTITION,
     batch_size: int = DEFAULT_BATCH_SIZE,
+    scope: str = "all",
+    sort_by_length: bool = True,
 ) -> EmbedStats:
     """Embed the chunks that lack a vector, at most `max_chunks` of them (see the module docstring).
 
@@ -175,6 +227,8 @@ def embed_chunks(
         raise ValueError(f"batch_size must be >= 1, got {batch_size}")
     if max_chunks is not None and max_chunks < 0:
         raise ValueError(f"max_chunks must be >= 0, got {max_chunks}")
+    if scope not in SCOPES:
+        raise ValueError(f"scope must be one of {SCOPES}, got {scope!r}")
 
     # Verify the model on the driver first: a bad or missing one fails before any table is touched.
     onnx_sha256 = sha256_file(_local_model_dir(model_location) / "model_optimized.onnx")
@@ -188,7 +242,7 @@ def embed_chunks(
 
     ensure_table(spark, output_table, spark.createDataFrame([], CHUNK_EMBEDDINGS), PARTITIONING)
 
-    missing = _select_missing_ids(spark, chunks_table, output_table, forms, ciks)
+    missing = _select_missing_ids(spark, chunks_table, output_table, forms, ciks, scope)
     wave = missing
     if max_chunks is not None:
         # The order only decides WHICH chunks a limited wave takes; an unlimited run needs no sort.
@@ -212,7 +266,9 @@ def embed_chunks(
         n_parts = max(1, math.ceil(n_wave / rows_per_partition))
         embedded_df = (
             texts.repartition(n_parts, "chunk_id")
-            .mapInPandas(_embed_batches(model_location, batch_size), schema=CHUNK_EMBEDDINGS)
+            .mapInPandas(
+                _embed_batches(model_location, batch_size, sort_by_length), schema=CHUNK_EMBEDDINGS
+            )
             # Persisted so the MERGE below reads the vectors instead of embedding them again.
             .persist(StorageLevel.DISK_ONLY)
         )
@@ -266,6 +322,14 @@ def _csv(cast: type) -> Callable[[str], list]:
     return parse
 
 
+def _bool(value: str) -> bool:
+    if value.lower() in {"true", "1", "yes"}:
+        return True
+    if value.lower() in {"false", "0", "no"}:
+        return False
+    raise argparse.ArgumentTypeError(f"expected true or false, got {value!r}")
+
+
 def _write_json(location: str, payload: dict[str, object]) -> None:
     text = json.dumps(payload, indent=2, sort_keys=True) + "\n"
     if location.startswith("s3://"):
@@ -288,6 +352,18 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--max-chunks", type=int, help="wave size; omit for no limit")
     parser.add_argument("--rows-per-partition", type=int, default=DEFAULT_ROWS_PER_PARTITION)
     parser.add_argument("--batch-size", type=int, default=DEFAULT_BATCH_SIZE)
+    parser.add_argument(
+        "--scope",
+        choices=SCOPES,
+        default="all",
+        help="served = 10-K, 10-K/A and FinanceBench only (ADR-037)",
+    )
+    parser.add_argument(
+        "--sort-by-length",
+        type=_bool,
+        default=True,
+        help="true|false: sort each Arrow batch (up to 10,000 rows) by text length before batching",
+    )
     parser.add_argument("--metrics-out", help="write the EmbedStats JSON here (path or s3:// URI)")
     return parser
 
@@ -310,6 +386,8 @@ def main(argv: list[str] | None = None) -> int:
             max_chunks=args.max_chunks,
             rows_per_partition=args.rows_per_partition,
             batch_size=args.batch_size,
+            scope=args.scope,
+            sort_by_length=args.sort_by_length,
         )
     finally:
         spark.stop()

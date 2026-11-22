@@ -73,3 +73,44 @@ def test_a_verified_embedder_is_cached_and_works(model_dir: Path):
 
 def test_a_relative_and_an_absolute_path_share_one_embedder(model_dir: Path):
     assert get_embedder(model_dir) is get_embedder(model_dir.resolve())
+
+
+def test_sorting_by_length_changes_neither_the_vectors_nor_their_order(model_dir: Path):
+    embedder = get_embedder(model_dir)
+    texts = [
+        "short",
+        "A much longer passage about supply chain risk. " * 12,
+        "mid length text about revenue growth in the quarter",
+        "",
+        "Another long one about gross margin and operating expenses. " * 9,
+        "tiny",
+    ]
+
+    sorted_v = embedder.embed_passages(texts, batch_size=2, sort_by_length=True)
+    plain_v = embedder.embed_passages(texts, batch_size=2, sort_by_length=False)
+
+    assert sorted_v.shape == plain_v.shape == (len(texts), 384)
+    cos = (sorted_v * plain_v).sum(axis=1)
+    assert cos.min() >= 0.99999  # row i is still the embedding of texts[i]
+
+
+def test_equal_length_texts_keep_their_own_vectors(model_dir: Path):
+    embedder = get_embedder(model_dir)
+    texts = ["aaaa bbbb", "cccc dddd", "eeee ffff", "gggg hhhh"]  # four texts of equal length
+
+    both = embedder.embed_passages(texts, batch_size=2)
+    singly = np.stack([embedder.embed_passages([t])[0] for t in texts])
+
+    assert (both * singly).sum(axis=1).min() >= 0.99999
+
+
+def test_a_single_text_and_the_query_path_survive_sorting(model_dir: Path):
+    embedder = get_embedder(model_dir)
+    questions = ["what drove margin", "how large is the dividend and when is it paid out", "risk"]
+
+    sorted_q = embedder.embed_queries(questions, batch_size=2, sort_by_length=True)
+    plain_q = embedder.embed_queries(questions, batch_size=2, sort_by_length=False)
+    one = embedder.embed_passages(["only one text"])
+
+    assert (sorted_q * plain_q).sum(axis=1).min() >= 0.99999
+    assert one.shape == (1, 384)

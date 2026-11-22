@@ -104,17 +104,32 @@ class Embedder:
         run: Callable[..., Iterable[np.ndarray]],
         texts: Sequence[str],
         batch_size: int,
+        sort_by_length: bool,
     ) -> np.ndarray:
         if batch_size < 1:
             raise ValueError(f"batch size must be >= 1, got {batch_size}")
         if len(texts) == 0:
             return np.zeros((0, DIM), dtype=np.float32)
-        rows = list(run(list(texts), batch_size=batch_size))
-        return l2_normalize(np.stack(rows))
+        items = list(texts)
+        # A batch is padded to its longest text, so mixing a 400-token and a 10-token text wastes
+        # most of the compute. Sorting by length puts similar lengths together; the stable sort and
+        # the inverse permutation keep the output in input order. The int8 model's activation scales
+        # depend on the batch, so vectors can differ from an unsorted run by about 1e-6 in cosine.
+        order = np.argsort([len(t) for t in items], kind="stable") if sort_by_length else None
+        if order is not None:
+            items = [items[i] for i in order]
+        stacked = np.stack(list(run(items, batch_size=batch_size)))
+        if order is not None:
+            restored = np.empty_like(stacked)
+            restored[order] = stacked
+            stacked = restored
+        return l2_normalize(stacked)
 
-    def embed_passages(self, texts: Sequence[str], batch_size: int = 256) -> np.ndarray:
+    def embed_passages(
+        self, texts: Sequence[str], batch_size: int = 256, *, sort_by_length: bool = True
+    ) -> np.ndarray:
         """(n, 384) float32 unit vectors for document text; no instruction is ever added."""
-        return self._embed(self._model.passage_embed, texts, batch_size)
+        return self._embed(self._model.passage_embed, texts, batch_size, sort_by_length)
 
     def embed_queries(
         self,
@@ -122,13 +137,14 @@ class Embedder:
         batch_size: int = 256,
         *,
         instruction: bool = True,
+        sort_by_length: bool = True,
     ) -> np.ndarray:
         """(n, 384) float32 unit vectors for questions; the BGE instruction is prepended (ADR-033).
 
         `instruction=False` embeds the questions as written (the M4 with/without comparison).
         """
         texts = [query_text(q) for q in questions] if instruction else list(questions)
-        return self._embed(self._model.query_embed, texts, batch_size)
+        return self._embed(self._model.query_embed, texts, batch_size, sort_by_length)
 
 
 _CACHE: dict[tuple[str, int, str | None], Embedder] = {}

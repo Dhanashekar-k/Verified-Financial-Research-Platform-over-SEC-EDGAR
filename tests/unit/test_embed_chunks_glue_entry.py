@@ -13,9 +13,14 @@ OPTIONS = [
     "max-chunks",
     "rows-per-partition",
     "batch-size",
+    "scope",
+    "sort-by-length",
     "metrics-out",
 ]
-DEFAULTS = {"model-location": "s3://{bucket}/artifacts/models/bge-small-en-v1.5"}
+DEFAULTS = {
+    "model-location": "s3://{bucket}/artifacts/models/bge-small-en-v1.5",
+    "scope": "served",
+}
 
 
 def test_the_staged_model_is_the_default_location():
@@ -27,6 +32,8 @@ def test_the_staged_model_is_the_default_location():
         "glue",
         "--model-location",
         "s3://my-lake/artifacts/models/bge-small-en-v1.5",
+        "--scope",
+        "served",
     ]
 
 
@@ -49,6 +56,7 @@ def test_a_smoke_run_forwards_its_arguments_and_glues_own_are_ignored():
         "--model-location", "s3://my-lake/artifacts/models/bge-small-en-v1.5",
         "--forms", "10-K,10-K/A",
         "--max-chunks", "2000",
+        "--scope", "served",
         "--metrics-out", "s3://my-lake/metrics/embed/smoke.json",
     ]  # fmt: skip
 

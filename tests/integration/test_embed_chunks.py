@@ -595,6 +595,133 @@ def test_a_duplicated_chunk_id_in_the_chunks_table_gets_one_vector(
     assert out.count() == out.select("chunk_id").distinct().count() == 40
 
 
+def _scope_rows() -> list[dict[str, object]]:
+    """Base rows plus FinanceBench PDF chunks of non-10-K forms (they stay in scope)."""
+    fb = [
+        {
+            **chunk_row(100 + i, 111, form, f"FinanceBench evidence chunk {i}"),
+            "doc_source": "financebench_pdf",
+        }
+        for i, form in enumerate(["10-K", "10-Q", "8-K", ""])
+    ]
+    amendment = chunk_row(200, 320193, "10-K/A", "A 10-K/A chunk")
+    quarter_amendment = chunk_row(201, 320193, "10-Q/A", "A 10-Q/A chunk")
+    return [*base_rows(), *fb, amendment, quarter_amendment]
+
+
+def test_scope_served_embeds_10k_family_and_financebench_and_not_edgar_10q(
+    spark: SparkSession, lake_namespace: str, model_dir: Path
+):
+    """ADR-037: EDGAR 10-Q / 10-Q/A are not embedded; FinanceBench chunks of any form are."""
+    rows = _scope_rows()
+    table = f"{lake_namespace}.chunks"
+    write_chunks(spark, table, rows)
+    output = f"{lake_namespace}.chunk_embeddings"
+    expected = {
+        str(r["chunk_id"])
+        for r in rows
+        if r["form"] in ("10-K", "10-K/A") or r["doc_source"] == "financebench_pdf"
+    }
+
+    stats = embed_chunks(
+        spark,
+        chunks_table=table,
+        output_table=output,
+        model_location=str(model_dir),
+        rows_per_partition=20,
+        scope="served",
+    )
+
+    assert set(ids_in(spark, output)) == expected
+    assert stats.chunks_selected == stats.chunks_embedded == len(expected)
+    assert stats.chunks_remaining == 0
+    # "complete" is judged over the scope: nothing in scope lacks a vector, and the 10-Q rows
+    # (16 base 10-Q + one 10-Q/A, all edgar_html) are deliberately absent.
+    missing = spark.sql(
+        f"SELECT count(*) AS n FROM {table} c LEFT ANTI JOIN {output} e ON c.chunk_id = e.chunk_id "
+        "WHERE c.form IN ('10-Q','10-Q/A') AND c.doc_source = 'edgar_html'"
+    ).first()
+    assert missing is not None and missing.n == 17
+    # a rerun in scope adds nothing
+    again = embed_chunks(
+        spark,
+        chunks_table=table,
+        output_table=output,
+        model_location=str(model_dir),
+        rows_per_partition=20,
+        scope="served",
+    )
+    assert (again.chunks_selected, again.chunks_embedded) == (0, 0)
+
+
+def test_scope_all_still_embeds_everything_and_an_unknown_scope_is_an_error(
+    spark: SparkSession, seed: Seed, model_dir: Path
+):
+    stats = run(spark, seed, model_dir, scope="all")
+
+    assert stats.chunks_embedded == 40
+    with pytest.raises(ValueError):
+        run(spark, seed, model_dir, scope="quarterly")
+
+
+def test_sorting_by_length_gives_the_same_vectors_as_not_sorting(
+    spark: SparkSession, seed: Seed, model_dir: Path, lake_namespace: str
+):
+    run(spark, seed, model_dir, sort_by_length=True, batch_size=4)
+    run(
+        spark,
+        seed,
+        model_dir,
+        output=f"{lake_namespace}.unsorted_embeddings",
+        sort_by_length=False,
+        batch_size=256,
+    )
+
+    a = vectors(spark, seed.output)
+    b = vectors(spark, f"{lake_namespace}.unsorted_embeddings")
+    assert a.keys() == b.keys() and len(a) == 40
+    assert min(cosine(a[k], b[k]) for k in a) >= 0.99999
+
+
+def test_the_scope_predicates_handle_nulls_and_partition_the_chunks(spark: SparkSession):
+    """NULL in one column does not stop the other from qualifying; both NULL is not served."""
+    from pyspark.sql import functions as F
+
+    from pipelines.spark.serving_scope import not_embedded_predicate, served_predicate
+
+    rows = [
+        ("10-K", "edgar_html"),  # served
+        ("10-K/A", "edgar_html"),  # served
+        ("10-Q", "financebench_pdf"),  # served (FinanceBench keeps every form)
+        (None, "financebench_pdf"),  # served: NULL form, FinanceBench
+        ("10-K", None),  # served: NULL doc_source, 10-K form
+        ("10-Q", "edgar_html"),  # deliberately not embedded
+        ("10-Q/A", "edgar_html"),  # deliberately not embedded
+        ("8-K", "edgar_html"),  # neither (no such chunk exists today)
+        (None, None),  # neither
+    ]
+    df = spark.createDataFrame(rows, "form string, doc_source string").select(
+        "form",
+        "doc_source",
+        served_predicate().alias("served"),
+        not_embedded_predicate().alias("out"),
+    )
+
+    got = {(r.form, r.doc_source): (r.served, r.out) for r in df.collect()}
+
+    assert got[("10-K", "edgar_html")] == (True, False)
+    assert got[("10-Q", "financebench_pdf")] == (True, False)
+    assert got[(None, "financebench_pdf")] == (True, False)
+    assert got[("10-K", None)] == (True, False)
+    assert got[("10-Q", "edgar_html")] == (False, True)
+    assert got[("10-Q/A", "edgar_html")] == (False, True)
+    assert got[("8-K", "edgar_html")] == (False, False)
+    assert got[(None, None)] == (False, False)
+    # never both, and no NULLs: the manifest counts rely on served and not-embedded being disjoint
+    assert df.where(F.col("served") & F.col("out")).count() == 0
+    assert df.where(F.col("served").isNull() | F.col("out").isNull()).count() == 0
+
+
 # --------------------------------------------------------------------------------------------
 # 6. filters
 # --------------------------------------------------------------------------------------------
