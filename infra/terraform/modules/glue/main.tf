@@ -38,7 +38,7 @@ locals {
   embedding_modules = "fastembed==0.9.1,onnxruntime==1.32.0,tokenizers==0.23.3"
 
   # A per-job cap on run time where the default is too short; a stuck run still stops billing at it.
-  timeout_overrides = { "edgarqa-embed-chunks" = 120 }
+  timeout_overrides = { "edgarqa-embed-chunks" = 120, "edgarqa-export-serving" = 60 }
 
   jobs = {
     "edgarqa-fsds-to-iceberg"   = { script = "fsds_to_iceberg_job.py", extra_args = {} }
@@ -55,6 +55,12 @@ locals {
     "edgarqa-embed-chunks" = {
       script     = "embed_chunks_job.py"
       extra_args = { "--additional-python-modules" = local.embedding_modules }
+    }
+    # export_serving needs Spark and the pydantic manifest model; it does not import the model
+    # runtime (fastembed) or pyarrow.
+    "edgarqa-export-serving" = {
+      script     = "export_serving_job.py"
+      extra_args = { "--additional-python-modules" = "pydantic==2.14.3" }
     }
   }
 }

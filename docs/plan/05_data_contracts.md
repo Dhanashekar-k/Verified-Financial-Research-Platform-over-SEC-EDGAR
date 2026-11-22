@@ -254,14 +254,18 @@ CREATE TABLE lake.curated.corpus_versions (     -- one row per serving export (M
  "embedding_artifact": {"hf_repo": "Qdrant/bge-small-en-v1.5-onnx-Q", "hf_revision": "<40-hex commit>",
                         "onnx_file": "model_optimized.onnx", "onnx_sha256": "<hex>"},
  "chunk_exclusions": {"rule": "n_tokens <= 5", "count": 0},
+ "companies_rows": 0,
+ "files": {"companies": [{"path": "companies/part-00000.parquet", "rows": 0, "bytes": 0}], "facts": ["..."], "chunks": ["..."]},
+ "filters": {"facts": "<the facts filter, human readable>", "chunks": "<the chunks filter, human readable>"},
  "embedding_scope": {"rule": "form IN ('10-K','10-K/A') OR doc_source = 'financebench_pdf'",
                      "not_embedded": {"rule": "doc_source = 'edgar_html' AND form IN ('10-Q','10-Q/A')", "count": 0,
                                       "reason": "serving is 10-K-only; quarterly numbers come from curated.facts (ADR-037)"}},
  "iceberg_snapshots": {"curated.facts": 0, "curated.chunks": 0, "curated.chunk_embeddings": 0}}
 ```
 Record the Iceberg snapshot IDs. You can then reproduce any eval run against the exact corpus with time travel.
+- `files` lists every Parquet file of each table with its footer row count and size (paths relative to the export prefix); `facts_rows`, `chunks_rows` and `companies_rows` equal the sums of those counts, and the loader checks both against the footers before loading. `filters` states the filters that produced the export, so a reader can reproduce it.
 - `embedding_artifact` pins the ONNX file that produced the vectors (fastembed's name `BAAI/bge-small-en-v1.5` is the quantized Qdrant build, ADR-032). The loader and any query embedder must use the same file.
-- `chunk_exclusions` records chunks that are embedded in the lake but NOT exported. Rule: `n_tokens <= 5` (degenerate, near-empty chunks whose vectors carry no meaning). `count` is the exact number dropped by this export; `chunks_rows` is the count AFTER the exclusion. The export job fails if `count` differs from its pre-flight count.
+- `chunk_exclusions` records chunks that are embedded in the lake but NOT exported. Rule: `n_tokens <= 5` (degenerate, near-empty chunks whose vectors carry no meaning). `count` is the exact number dropped by this export; `chunks_rows` is the count AFTER the exclusion. The count is measured by the export and recorded for audit; whoever runs it compares it with the pre-flight count (ADR-035), the job itself does not fail on it.
 - `embedding_scope` records the deliberate scope decision: 10-Q and 10-Q/A chunks of `doc_source = 'edgar_html'` are in `curated.chunks` but have no embedding and are not exported, so their absence is a scope decision, not a gap. `not_embedded.count` is the exact number of such chunks in `curated.chunks` at export time (1,759,310 when this was decided: 1,756,066 + 3,244).
 - `chunks` exports only `form IN ('10-K','10-K/A')` or `doc_source = 'financebench_pdf'` until a milestone decides to serve 10-Q text; `curated.chunks.corpus_version` is not exported and `tenant_id` is exported as NULL.
 

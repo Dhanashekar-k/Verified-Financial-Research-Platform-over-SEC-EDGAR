@@ -90,3 +90,12 @@ CHUNK_EMBEDDINGS = _schema(
     ("chunk_id", _S), ("model_name", _S), ("dim", _I),
     ("embedding", ArrayType(FloatType())), ("embedded_at", TimestampType()),
 )  # fmt: skip
+
+# `curated.corpus_versions` (contract section 2.2): one row per serving export.
+CORPUS_VERSIONS = _schema(
+    ("corpus_version", _I), ("created_at", TimestampType()), ("git_sha", _S),
+    ("facts_rows", _L), ("chunks_rows", _L), ("chunks_excluded", _L),
+    ("embedding_model", _S), ("embedding_artifact_sha256", _S), ("dim", _I),
+    ("facts_snapshot_id", _L), ("chunks_snapshot_id", _L), ("chunk_embeddings_snapshot_id", _L),
+    ("export_uri", _S),
+)  # fmt: skip

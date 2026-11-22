@@ -22,18 +22,34 @@ from pathlib import Path
 import numpy as np
 from fastembed import TextEmbedding
 
-MODEL_NAME = "BAAI/bge-small-en-v1.5"
-DIM = 384
-QUERY_INSTRUCTION = "Represent this sentence for searching relevant passages: "
-ARTIFACT_HF_REPO = "Qdrant/bge-small-en-v1.5-onnx-Q"
-ARTIFACT_ONNX_FILE = "model_optimized.onnx"
-# Commit of ARTIFACT_HF_REPO the model was fetched from (from the Hugging Face download metadata,
-# 2026-11-21); `scripts/stage_model.py download` fetches exactly this revision.
-ARTIFACT_HF_REVISION = "aa8f8b060edb00e03bfdd08813a2949946c8ba55"
-# sha256 of the ONNX file fetched from ARTIFACT_HF_REPO on 2026-11-21 (`make fetch-model`,
-# 66,465,124 bytes). Recorded in the export manifest as `embedding_artifact.onnx_sha256`; callers
-# that must not drift pass it as `expected_onnx_sha256`.
-ARTIFACT_ONNX_SHA256 = "51f1bd0addd6e859e42c2c8021a5e5461385bb676a649f4b269aa445449f2431"
+from pipelines.common.embedding_artifact import (
+    ARTIFACT_HF_REPO,
+    ARTIFACT_HF_REVISION,
+    ARTIFACT_ONNX_FILE,
+    ARTIFACT_ONNX_SHA256,
+    DIM,
+    MODEL_NAME,
+    QUERY_INSTRUCTION,
+)
+
+# The constants live in `embedding_artifact` (no heavy imports); they are re-exported here.
+__all__ = [
+    "ARTIFACT_HF_REPO",
+    "ARTIFACT_HF_REVISION",
+    "ARTIFACT_ONNX_FILE",
+    "ARTIFACT_ONNX_SHA256",
+    "DIM",
+    "MODEL_NAME",
+    "QUERY_INSTRUCTION",
+    "Embedder",
+    "ModelIntegrityError",
+    "batched",
+    "get_embedder",
+    "l2_normalize",
+    "query_text",
+    "sha256_file",
+    "verify_model_dir",
+]
 
 _HASH_BLOCK = 1 << 20
 
