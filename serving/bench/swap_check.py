@@ -87,14 +87,14 @@ def timed(fn: Any) -> tuple[Any, float]:
     return out, time.perf_counter() - started
 
 
-def run(dsn: str, source: str) -> dict[str, Any]:
+def run(dsn: str, source: str, source_v2: str) -> dict[str, Any]:
     steps: list[dict[str, Any]] = []
     reader = Reader(dsn)
     reader.start()
     try:
         steps.append(snapshot_state(dsn, "start: version 1 live"))
         report, load_s = timed(
-            lambda: load_version(dsn, version=2, source=source, build_indexes=False)
+            lambda: load_version(dsn, version=2, source=source_v2, build_indexes=False)
         )
         steps.append(
             snapshot_state(dsn, "loaded version 2 (no indexes), not swapped")
@@ -105,7 +105,7 @@ def run(dsn: str, source: str) -> dict[str, Any]:
         new_live, s = timed(lambda: rollback(dsn))
         steps.append(snapshot_state(dsn, "rollback()") | {"seconds": s, "returned": new_live})
         report, load_s = timed(
-            lambda: load_version(dsn, version=2, source=source, build_indexes=False)
+            lambda: load_version(dsn, version=2, source=source_v2, build_indexes=False)
         )
         steps.append(
             snapshot_state(dsn, "reloaded version 2 (previous)")
@@ -131,10 +131,15 @@ def run(dsn: str, source: str) -> dict[str, Any]:
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--source", required=True)
+    parser.add_argument(
+        "--source", required=True, help="export prefix of version 1 (kept for the record)"
+    )
+    parser.add_argument(
+        "--source-v2", help="export prefix holding corpus_version=2 (default: --source)"
+    )
     parser.add_argument("--out", type=Path, required=True)
     args = parser.parse_args(argv)
-    result = run(os.environ["EDGARQA_PG_DSN"], args.source)
+    result = run(os.environ["EDGARQA_PG_DSN"], args.source, args.source_v2 or args.source)
     args.out.write_text(json.dumps(result, indent=1) + "\n", encoding="utf-8")
     for step in result["steps"]:
         print(
