@@ -22,3 +22,7 @@ output "glue_job_names" {
   description = "Glue jobs, for `aws glue start-job-run --job-name`."
   value       = module.glue.job_names
 }
+
+output "serving_box_instance_id" {
+  value = module.serving_db.instance_id
+}

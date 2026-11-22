@@ -316,8 +316,8 @@ CREATE TABLE corpus_state (id int PRIMARY KEY DEFAULT 1 CHECK (id = 1), live_ver
 -- Swap: ONE transaction replaces both views and sets live_version = N, previous_version = <old live_version>, swapped_at = now().
 -- Rollback: the same transaction shape with the pair exchanged (live_version = old previous_version, previous_version = old live_version).
 -- Retention: after a swap or rollback, drop every facts_vK / chunks_vK whose K is NOT in (live_version, previous_version). It is
--- never "N-2": after swap 1, swap 2, rollback to 1, load 3, version 1 is live and must survive. Loading N when N is already one of
--- (live, previous) is refused. The loader is the single writer (one load at a time); corpus_version = max + 1 assumes that.
+-- never "N-2": after swap 1, swap 2, rollback to 1, load 3, version 1 is live and must survive. Loading N is refused only when N is the
+-- LIVE version (its tables are serving); reloading the previous version drops and recreates it, which replaces the rollback target until the reload finishes (ADR-038). The loader is the single writer (one load at a time); corpus_version = max + 1 assumes that.
 
 CREATE TABLE tenants (tenant_id serial PRIMARY KEY, name text, created_at timestamptz DEFAULT now(),
   daily_question_cap int DEFAULT 50);

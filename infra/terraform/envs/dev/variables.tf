@@ -46,3 +46,9 @@ variable "smoke_databases" {
   type        = list(string)
   default     = []
 }
+
+variable "serving_db_enabled" {
+  description = "Create the M3 serving box (EC2 m7i.large). Costs money while it exists; turn off after the bench."
+  type        = bool
+  default     = false
+}

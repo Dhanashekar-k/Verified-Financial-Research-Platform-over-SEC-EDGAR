@@ -48,3 +48,9 @@ module "emr" {
   image_uri           = var.emr_image_uri
   create_application  = var.create_emr_application
 }
+
+module "serving_db" {
+  source           = "../../modules/serving_db"
+  enabled          = var.serving_db_enabled
+  lake_bucket_name = module.lake.bucket_name
+}
