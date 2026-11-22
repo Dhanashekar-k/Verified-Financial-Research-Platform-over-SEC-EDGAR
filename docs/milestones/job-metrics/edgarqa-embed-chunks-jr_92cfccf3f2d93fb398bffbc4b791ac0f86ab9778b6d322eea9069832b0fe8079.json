@@ -1,0 +1,30 @@
+{
+ "job": "edgarqa-embed-chunks",
+ "job_run_id": "jr_92cfccf3f2d93fb398bffbc4b791ac0f86ab9778b6d322eea9069832b0fe8079",
+ "note": "M3 served run wave 3 (scope served, sorted batch 32, 20 workers)",
+ "state": "SUCCEEDED",
+ "started_on": "2026-11-22T02:51:22.225000-05:00",
+ "completed_on": "2026-11-22T03:24:28.504000-05:00",
+ "execution_seconds": 1977,
+ "dpu_seconds": 39552.0,
+ "glue_version": "5.0",
+ "worker_type": "G.1X",
+ "number_of_workers": 20,
+ "timeout_minutes": 60,
+ "arguments": {
+  "--scope": "served",
+  "--max-chunks": "300000",
+  "--metrics-out": "s3://edgarqa-lake-019593222039/metrics/embed_chunks/served-wave3.json",
+  "--batch-size": "32",
+  "--sort-by-length": "true",
+  "--rows-per-partition": "1500"
+ },
+ "rate_usd_per_dpu_hour": 0.44,
+ "cost_usd": 4.834133333333333,
+ "billed_dpu_seconds": 39552.0,
+ "dpu_hours": 10.986666666666666,
+ "chunks": 300000,
+ "cost_scope": "whole job run including startup and fixed overhead",
+ "usd_per_100k_chunks": 1.6113777777777778,
+ "chunks_per_minute_job": 9104.704097116843
+}

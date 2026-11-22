@@ -232,6 +232,109 @@
   "onnx_sha256": "51f1bd0addd6e859e42c2c8021a5e5461385bb676a649f4b269aa445449f2431",
   "table": "corpus_smoke.chunk_embeddings"
  },
+ "served_run": {
+  "aws_session": {
+   "exported_credentials_expiration_utc": "2026-11-22T11:07:03Z",
+   "lifetime_of_exported_credentials_minutes": 15,
+   "observed_at_utc": "2026-11-22T10:52:24Z"
+  },
+  "config": "Glue 5.0, 20 x G.1X (19 executors, all allocated: 19 executor log streams + driver), --scope served, length-sorted batch 32, rows-per-partition 1500, 4 waves of at most 300,000",
+  "cost_explorer_reconcile": {
+   "expect_dpu_hours_from_all_embed_chunks_runs": 41.44,
+   "note": "reconcile UsageQuantity on 2026-11-22 UTC a day later; credits zero the dollar field, so compare quantity x $0.44",
+   "usage_type": "USE2-ETL-DPU-Hour"
+  },
+  "dod_athena_2026-11-22": {
+   "adr_035_preflight_prediction": 15915,
+   "array_length_max": 384,
+   "array_length_min": 384,
+   "dim_max": 384,
+   "dim_min": 384,
+   "distinct_chunk_ids": 1097376,
+   "edgar_html_10q_chunks_not_embedded": 1759310,
+   "edgar_html_10q_chunks_with_a_vector": 0,
+   "expected_in_scope_chunks": 1097376,
+   "missing_over_embedded_scope": 0,
+   "model_names": [
+    "BAAI/bge-small-en-v1.5"
+   ],
+   "norm_max": 1.0000000369816913,
+   "norm_min": 0.9999999649671613,
+   "null_embedded_at": 0,
+   "orphan_vectors": 0,
+   "out_of_scope_vectors": 0,
+   "rows": 1097376,
+   "rows_nan_or_inf": 0,
+   "rows_off_unit_norm_by_more_than_1e-3": 0,
+   "tiny_chunks_n_tokens_le_5_embedded": 15915
+  },
+  "rerun": {
+   "chunks_embedded": 0,
+   "chunks_selected": 0,
+   "distinct_ids_after": 1097376,
+   "dpu_seconds": 218.0,
+   "execution_seconds": 109,
+   "rows_after": 1097376,
+   "rows_before": 1097376,
+   "run": "jr_f429e61fbbbd405a0aa5d8813c743aa30e65a3cd8856db115a7bf324133327f7",
+   "state": "SUCCEEDED",
+   "workers": 2
+  },
+  "scope": "form IN ('10-K','10-K/A') OR doc_source = 'financebench_pdf' (ADR-037)",
+  "t2b_measured": {
+   "chunks": 1097376,
+   "chunks_per_minute_whole_runs": 9149.88326848249,
+   "cost_usd": 17.593644444444443,
+   "dpu_hours": 39.98555555555556,
+   "estimate_before_run_usd": "about 14.7 marginal + 4 x 0.25 overhead = about 15.7; measured is about 12% higher",
+   "rate_usd_per_dpu_hour": 0.44,
+   "run_seconds": 7196,
+   "scope_of_number": "whole job runs including startup, the table scan and the model load; replaces the estimate of $1.34 marginal (+ about $0.25 per wave overhead)",
+   "usd_per_100k_chunks": 1.6032466943367125
+  },
+  "waves": [
+   {
+    "chunks": 300000,
+    "chunks_per_minute_job": 9365.244536940685,
+    "cost_usd": 4.699933333333333,
+    "dpu_hours": 10.681666666666667,
+    "dpu_seconds": 38454.0,
+    "execution_seconds": 1922,
+    "run": "jr_e3ee826605df6057de42b4a4da69aaeeb37aa357a82c194e297507fa58a83922",
+    "usd_per_100k_chunks": 1.5666444444444443
+   },
+   {
+    "chunks": 300000,
+    "chunks_per_minute_job": 9287.925696594428,
+    "cost_usd": 4.737333333333334,
+    "dpu_hours": 10.766666666666667,
+    "dpu_seconds": 38760.0,
+    "execution_seconds": 1938,
+    "run": "jr_d3e472e5ed1d037550de55f5aa590d58df8975eb5c889ba70bb783f6b00d5a22",
+    "usd_per_100k_chunks": 1.5791111111111114
+   },
+   {
+    "chunks": 300000,
+    "chunks_per_minute_job": 9104.704097116843,
+    "cost_usd": 4.834133333333333,
+    "dpu_hours": 10.986666666666666,
+    "dpu_seconds": 39552.0,
+    "execution_seconds": 1977,
+    "run": "jr_92cfccf3f2d93fb398bffbc4b791ac0f86ab9778b6d322eea9069832b0fe8079",
+    "usd_per_100k_chunks": 1.6113777777777778
+   },
+   {
+    "chunks": 197376,
+    "chunks_per_minute_job": 8714.172185430463,
+    "cost_usd": 3.3222444444444443,
+    "dpu_hours": 7.5505555555555555,
+    "dpu_seconds": 27182.0,
+    "execution_seconds": 1359,
+    "run": "jr_7bbcec480f8f1a546dfdbd9c69ca2da53ac54a8010a58eb7a2762dc8adcbd340",
+    "usd_per_100k_chunks": 1.6832058834125954
+   }
+  ]
+ },
  "smoke2_batching_on_glue": {
   "B_sorted_b32": {
    "chunks_per_second_per_core": 2.3957834211787254,

@@ -1,0 +1,23 @@
+{
+ "job": "edgarqa-embed-chunks",
+ "job_run_id": "jr_f429e61fbbbd405a0aa5d8813c743aa30e65a3cd8856db115a7bf324133327f7",
+ "note": "M3 served rerun: idempotency check, 2 workers, selected 0",
+ "state": "SUCCEEDED",
+ "started_on": "2026-11-22T05:53:01.029000-05:00",
+ "completed_on": "2026-11-22T05:54:57.485000-05:00",
+ "execution_seconds": 109,
+ "dpu_seconds": 218.0,
+ "glue_version": "5.0",
+ "worker_type": "G.1X",
+ "number_of_workers": 2,
+ "timeout_minutes": 15,
+ "arguments": {
+  "--scope": "served",
+  "--metrics-out": "s3://edgarqa-lake-019593222039/metrics/embed_chunks/served-rerun.json",
+  "--batch-size": "32"
+ },
+ "rate_usd_per_dpu_hour": 0.44,
+ "cost_usd": 0.026644444444444446,
+ "billed_dpu_seconds": 218.0,
+ "dpu_hours": 0.06055555555555556
+}
