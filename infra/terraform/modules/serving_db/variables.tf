@@ -10,9 +10,9 @@ variable "lake_bucket_name" {
 }
 
 variable "instance_type" {
-  description = "Non-burstable on purpose: flex and t-class instances throttle under the sustained load of an HNSW build and a latency bench (ADR-034)."
+  description = "m7i-flex.large: the largest Free-plan-eligible type (2 vCPU, 8 GiB). The Free plan refused m7i.large on 2026-11-22 (ADR-034); flex has a CPU baseline, so build and latency numbers from it are preliminary."
   type        = string
-  default     = "m7i.large"
+  default     = "m7i-flex.large"
 }
 
 variable "volume_gb" {
