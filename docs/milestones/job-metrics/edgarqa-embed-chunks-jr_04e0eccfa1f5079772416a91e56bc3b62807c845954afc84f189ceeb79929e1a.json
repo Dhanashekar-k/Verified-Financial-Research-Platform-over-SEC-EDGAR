@@ -1,0 +1,29 @@
+{
+ "job": "edgarqa-embed-chunks",
+ "job_run_id": "jr_04e0eccfa1f5079772416a91e56bc3b62807c845954afc84f189ceeb79929e1a",
+ "note": "M3 smoke: 2,000 chunks (10-K family, xxhash order) -> lake.corpus_smoke.chunk_embeddings; 4 x G.1X; code 27386ada2e31",
+ "state": "SUCCEEDED",
+ "started_on": "2026-11-21T20:54:08.763000-05:00",
+ "completed_on": "2026-11-21T21:02:02.071000-05:00",
+ "execution_seconds": 465,
+ "dpu_seconds": 1861.0,
+ "glue_version": "5.0",
+ "worker_type": "G.1X",
+ "number_of_workers": 4,
+ "timeout_minutes": 20,
+ "arguments": {
+  "--max-chunks": "2000",
+  "--metrics-out": "s3://edgarqa-lake-019593222039/metrics/embed_chunks/smoke-2026-11-21.json",
+  "--forms": "10-K,10-K/A",
+  "--output-table": "lake.corpus_smoke.chunk_embeddings",
+  "--rows-per-partition": "500"
+ },
+ "rate_usd_per_dpu_hour": 0.44,
+ "cost_usd": 0.22745555555555555,
+ "billed_dpu_seconds": 1861.0,
+ "dpu_hours": 0.5169444444444444,
+ "chunks": 2000,
+ "cost_scope": "whole job run including startup and fixed overhead",
+ "usd_per_100k_chunks": 11.372777777777777,
+ "chunks_per_minute_job": 258.06451612903226
+}

@@ -70,7 +70,7 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     rows = athena_rows(
-        "SELECT e.chunk_id, CAST(c.n_tokens AS varchar), c.text, CAST(e.embedding AS varchar) "
+        "SELECT e.chunk_id, CAST(c.n_tokens AS varchar), c.text, '[' || array_join(e.embedding, ',') || ']' "
         f"FROM {args.table} e JOIN curated.chunks c ON c.chunk_id = e.chunk_id "
         f"ORDER BY xxhash64(to_utf8(e.chunk_id)) LIMIT {CANDIDATES}"
     )
