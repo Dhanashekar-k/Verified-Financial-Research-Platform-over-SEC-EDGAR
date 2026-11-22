@@ -55,8 +55,24 @@ def test_pseudo_query_is_deterministic_for_a_seed():
     assert pseudo_query(text, random.Random(7)) == pseudo_query(text, random.Random(7))
 
 
+def test_lexical_question_defaults_to_an_and_query_and_or_is_explicit():
+    text = "the supply chain disruptions affected supply of components and logistics"
+
+    assert " or " not in lexical_question(text)
+    assert set(lexical_question(text).split()) == {
+        "disruptions",
+        "components",
+        "logistics",
+        "supply",
+        "chain",
+        "affected",
+    }
+
+
 def test_lexical_question_is_a_broad_or_query_of_distinct_long_words():
-    q = lexical_question("the supply chain disruptions affected supply of components and logistics")
+    q = lexical_question(
+        "the supply chain disruptions affected supply of components and logistics", mode="or"
+    )
 
     terms = q.split(" or ")
     assert len(terms) == len(set(t.lower() for t in terms)) <= 6

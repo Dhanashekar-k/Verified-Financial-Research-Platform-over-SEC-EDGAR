@@ -76,14 +76,20 @@ def pseudo_query(text: str, rng: random.Random, words: int = 12) -> str | None:
     return " ".join(tokens[start : start + words])
 
 
-def lexical_question(query: str, max_terms: int = 6) -> str:
-    """A broad (OR) full-text query from a pseudo-query: its longest distinct words."""
+def lexical_question(query: str, max_terms: int = 6, mode: str = "and") -> str:
+    """A full-text query from a pseudo-query: its longest distinct words.
+
+    `and` (websearch_to_tsquery's own default, what a user question would be) needs every term;
+    `or` matches any term and so ranks far more rows: a deliberately harsh stress case.
+    """
     seen: list[str] = []
     for word in re.findall(r"[A-Za-z]{4,}", query):
         if word.lower() not in {w.lower() for w in seen}:
             seen.append(word)
     longest = sorted(seen, key=len, reverse=True)[:max_terms]
-    return " or ".join(longest) if longest else query
+    if not longest:
+        return query
+    return (" or " if mode == "or" else " ").join(longest)
 
 
 def cpu_steal_fraction(before: str, after: str) -> float:
@@ -184,7 +190,18 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
     steal_before = Path("/proc/stat").read_text().splitlines()[0]
     embedder = Embedder(Path(args.model_dir), threads=2, expected_onnx_sha256=ARTIFACT_ONNX_SHA256)
     rng = random.Random(args.seed)
-    result: dict[str, Any] = {"instance_type": args.instance_type, "seed": args.seed}
+    phases = set(args.phases.split(","))
+    unknown = phases - {"recall", "numeric", "hybrid", "ab", "filtered"}
+    if unknown:
+        raise SystemExit(f"unknown phases {sorted(unknown)}")
+    need_exact = bool(phases & {"recall", "ab"})
+    result_phases = sorted(phases)
+    result: dict[str, Any] = {
+        "instance_type": args.instance_type,
+        "seed": args.seed,
+        "phases": result_phases,
+        "hybrid_lexical_mode": args.lexical_mode,
+    }
     with psycopg.connect(dsn, autocommit=True) as conn:
         result["server"] = {
             "version": conn.execute("SHOW server_version").fetchone()[0],  # type: ignore[index]
@@ -211,153 +228,167 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         vec_plain = embedder.embed_queries(texts, instruction=False)
         vec_mixed = embedder.embed_queries(mixed, instruction=True)
 
-        # ---- exact top-10 (the ground truth of the recall measurement)
-        started = time.perf_counter()
-        exact_prefix = [exact_top_ids(conn, v) for v in vec_prefix]
-        result["exact_scan_seconds_per_query"] = (time.perf_counter() - started) / len(queries)
-        exact_plain = [exact_top_ids(conn, v) for v in vec_plain]
-        exact_mixed = [exact_top_ids(conn, v) for v in vec_mixed]
+        if need_exact:
+            # ---- exact top-10 (the ground truth of the recall measurement)
+            started = time.perf_counter()
+            exact_prefix = [exact_top_ids(conn, v) for v in vec_prefix]
+            result["exact_scan_seconds_per_query"] = (time.perf_counter() - started) / len(queries)
+            exact_plain = [exact_top_ids(conn, v) for v in vec_plain]
+            exact_mixed = [exact_top_ids(conn, v) for v in vec_mixed]
 
-        # ---- HNSW recall and latency per ef_search. Recall is reported for both query sets; the
-        # headline `recall_at_10` is the LOWER of the two (self-span queries are the easy case:
-        # each one's nearest neighbour is its own source chunk, inside a dense region).
-        query_sets = {
-            "self_span": (vec_prefix, exact_prefix),
-            "mixed_pair": (vec_mixed, exact_mixed),
-        }
-        curve: dict[int, dict[str, float]] = {}
-        for ef in args.ef:
-            for v in vec_prefix[:20]:  # warm-up, not measured
-                dense_search(conn, v, limit=K, ef_search=ef)
-            per_set: dict[str, float] = {}
-            lat = []
-            worst = 1.0
-            for name, (vectors, truths) in query_sets.items():
-                recalls = []
-                for v, truth in zip(vectors, truths, strict=True):
-                    hits, ms = _timed_ms(
-                        lambda v=v, ef=ef: dense_search(conn, v, limit=K, ef_search=ef)
-                    )
-                    recalls.append(recall_at_k([h.chunk_id for h in hits], truth))
-                    lat.append(ms)
-                per_set[f"recall_{name}"] = statistics.fmean(recalls)
-                worst = min(worst, min(recalls))
-            curve[ef] = {
-                "recall_at_10": min(per_set.values()),
-                **per_set,
-                "min_single_query_recall": worst,
-                **percentiles(lat),
+        if "recall" in phases:
+            # ---- HNSW recall and latency per ef_search. Recall is reported for both sets; the
+            # headline `recall_at_10` is the LOWER of the two (self-span queries are the easy case:
+            # each one's nearest neighbour is its own source chunk, inside a dense region).
+            query_sets = {
+                "self_span": (vec_prefix, exact_prefix),
+                "mixed_pair": (vec_mixed, exact_mixed),
             }
-        result["hnsw_curve"] = {str(ef): m for ef, m in curve.items()}
-        result["latency_note"] = (
-            "latencies are one `dense_search`/query call as the application issues it: round trip "
-            "from the box's Python through the Docker port, BEGIN, two SET LOCAL, the query, COMMIT"
-        )
-        result["default_ef_search_for_recall_0.95"] = pick_default_ef(curve)
+            curve: dict[int, dict[str, float]] = {}
+            for ef in args.ef:
+                for v in vec_prefix[:20]:  # warm-up, not measured
+                    dense_search(conn, v, limit=K, ef_search=ef)
+                per_set: dict[str, float] = {}
+                lat = []
+                worst = 1.0
+                for name, (vectors, truths) in query_sets.items():
+                    recalls = []
+                    for v, truth in zip(vectors, truths, strict=True):
+                        hits, ms = _timed_ms(
+                            lambda v=v, ef=ef: dense_search(conn, v, limit=K, ef_search=ef)
+                        )
+                        recalls.append(recall_at_k([h.chunk_id for h in hits], truth))
+                        lat.append(ms)
+                    per_set[f"recall_{name}"] = statistics.fmean(recalls)
+                    worst = min(worst, min(recalls))
+                curve[ef] = {
+                    "recall_at_10": min(per_set.values()),
+                    **per_set,
+                    "min_single_query_recall": worst,
+                    **percentiles(lat),
+                }
+            result["hnsw_curve"] = {str(ef): m for ef, m in curve.items()}
+            result["latency_note"] = (
+                "latencies are one `dense_search`/query call as the application issues it: "
+                "round trip from the box's Python through the Docker port, BEGIN, two SET LOCAL, "
+                "the query, COMMIT"
+            )
+            result["default_ef_search_for_recall_0.95"] = pick_default_ef(curve)
 
-        # ---- numeric lookup
-        facts = conn.execute(
-            "SELECT cik, tag, fiscal_year, fiscal_period, uom FROM facts WHERE is_original "
-            "ORDER BY fact_id LIMIT 20000"
-        ).fetchall()
-        picks = rng.sample(facts, min(args.lookups, len(facts)))
-        for p in picks[:20]:
-            conn.execute(
-                "SELECT value, accession FROM facts WHERE cik=%s AND tag=%s AND fiscal_year=%s "
-                "AND fiscal_period=%s AND uom=%s AND is_original",
-                p,
+        if "numeric" in phases:
+            # ---- numeric lookup
+            facts = conn.execute(
+                "SELECT cik, tag, fiscal_year, fiscal_period, uom FROM facts WHERE is_original "
+                "ORDER BY fact_id LIMIT 20000"
             ).fetchall()
-        lat = []
-        for p in picks:
-            _, ms = _timed_ms(
-                lambda p=p: conn.execute(
+            picks = rng.sample(facts, min(args.lookups, len(facts)))
+            for p in picks[:20]:
+                conn.execute(
                     "SELECT value, accession FROM facts WHERE cik=%s AND tag=%s AND fiscal_year=%s "
                     "AND fiscal_period=%s AND uom=%s AND is_original",
                     p,
                 ).fetchall()
+            lat = []
+            for p in picks:
+                _, ms = _timed_ms(
+                    lambda p=p: conn.execute(
+                        "SELECT value, accession FROM facts WHERE cik=%s AND tag=%s "
+                        "AND fiscal_year=%s "
+                        "AND fiscal_period=%s AND uom=%s AND is_original",
+                        p,
+                    ).fetchall()
+                )
+                lat.append(ms)
+            result["numeric_lookup"] = percentiles(lat)
+
+        if "hybrid" in phases:
+            # ---- hybrid (lexical + dense + RRF), question embedded on the box
+            hybrid: dict[str, Any] = {}
+            for text in texts[:20]:  # warm-up (embedder session, GIN and heap caches); not measured
+                lexical_search(conn, lexical_question(text, mode=args.lexical_mode), limit=50)
+                dense_search(
+                    conn, embedder.embed_queries([text])[0], limit=50, ef_search=args.ef[0]
+                )
+            for ef in args.ef:
+                total, t_embed, t_lex, t_dense, t_fuse = [], [], [], [], []
+                for text in texts[: args.hybrid]:
+                    started = time.perf_counter()
+                    qv, ms_e = _timed_ms(lambda text=text: embedder.embed_queries([text])[0])
+                    lex, ms_l = _timed_ms(
+                        lambda text=text: lexical_search(
+                            conn, lexical_question(text, mode=args.lexical_mode), limit=50
+                        )
+                    )
+                    den, ms_d = _timed_ms(
+                        lambda qv=qv, ef=ef: dense_search(conn, qv, limit=50, ef_search=ef)
+                    )
+                    lex_ids, den_ids = [h.chunk_id for h in lex], [h.chunk_id for h in den]
+                    _, ms_f = _timed_ms(lambda a=lex_ids, b=den_ids: rrf([a, b]))
+                    total.append((time.perf_counter() - started) * 1000.0)
+                    t_embed.append(ms_e)
+                    t_lex.append(ms_l)
+                    t_dense.append(ms_d)
+                    t_fuse.append(ms_f)
+                hybrid[str(ef)] = {
+                    "total": percentiles(total),
+                    "embed": percentiles(t_embed),
+                    "lexical": percentiles(t_lex),
+                    "dense": percentiles(t_dense),
+                    "fuse": percentiles(t_fuse),
+                }
+            result["hybrid"] = hybrid
+
+        if "ab" in phases:
+            # ---- BGE query-instruction A/B (reported only: the queries come from the chunks)
+            def source_rank(ids: list[str], source: str) -> int | None:
+                return ids.index(source) + 1 if source in ids else None
+
+            ab: dict[str, Any] = {}
+            for name, exact in (
+                ("with_instruction", exact_prefix),
+                ("without_instruction", exact_plain),
+            ):
+                ranks = [source_rank(e, src) for e, (src, _) in zip(exact, queries, strict=True)]
+                hits = [r for r in ranks if r is not None]
+                ab[name] = {
+                    "source_chunk_in_top10": len(hits) / len(ranks),
+                    "mrr_at_10": sum(1.0 / r for r in hits) / len(ranks),
+                }
+            ab["top10_overlap_between_variants"] = statistics.fmean(
+                len(set(a) & set(b)) / K for a, b in zip(exact_prefix, exact_plain, strict=True)
             )
-            lat.append(ms)
-        result["numeric_lookup"] = percentiles(lat)
+            ab["caveat"] = (
+                "queries are spans of the chunks themselves; this favours no instruction (ADR-033)"
+            )
+            result["query_instruction_ab"] = ab
 
-        # ---- hybrid (lexical + dense + RRF), question embedded on the box
-        hybrid: dict[str, Any] = {}
-        for text in texts[:20]:  # warm-up (embedder session, GIN and heap caches); not measured
-            lexical_search(conn, lexical_question(text), limit=50)
-            dense_search(conn, embedder.embed_queries([text])[0], limit=50, ef_search=args.ef[0])
-        for ef in args.ef:
-            total, t_embed, t_lex, t_dense, t_fuse = [], [], [], [], []
-            for text in texts[: args.hybrid]:
-                started = time.perf_counter()
-                qv, ms_e = _timed_ms(lambda text=text: embedder.embed_queries([text])[0])
-                lex, ms_l = _timed_ms(
-                    lambda text=text: lexical_search(conn, lexical_question(text), limit=50)
-                )
-                den, ms_d = _timed_ms(
-                    lambda qv=qv, ef=ef: dense_search(conn, qv, limit=50, ef_search=ef)
-                )
-                lex_ids, den_ids = [h.chunk_id for h in lex], [h.chunk_id for h in den]
-                _, ms_f = _timed_ms(lambda a=lex_ids, b=den_ids: rrf([a, b]))
-                total.append((time.perf_counter() - started) * 1000.0)
-                t_embed.append(ms_e)
-                t_lex.append(ms_l)
-                t_dense.append(ms_d)
-                t_fuse.append(ms_f)
-            hybrid[str(ef)] = {
-                "total": percentiles(total),
-                "embed": percentiles(t_embed),
-                "lexical": percentiles(t_lex),
-                "dense": percentiles(t_dense),
-                "fuse": percentiles(t_fuse),
+        if "filtered" in phases:
+            # ---- filtered dense search: rows returned, and which plan the planner chose
+            ciks = [
+                r[0]
+                for r in conn.execute(
+                    "SELECT cik FROM chunks GROUP BY cik HAVING count(*) >= 50 "
+                    "ORDER BY cik LIMIT 300"
+                ).fetchall()
+            ]
+            chosen = rng.sample(ciks, min(50, len(ciks)))
+            returned = []
+            for cik, v in zip(chosen, vec_prefix, strict=False):
+                returned.append(len(dense_search(conn, v, limit=K, ef_search=args.ef[0], cik=cik)))
+            hnsw_plans = sum(
+                1
+                for cik, v in zip(chosen[:10], vec_prefix, strict=False)
+                if filtered_plan_uses_hnsw(conn, v, cik, args.ef[0])
+            )
+            result["filtered_dense"] = {
+                "n": len(returned),
+                "min_rows_returned": min(returned),
+                "limit": K,
+                "plans_using_the_hnsw_index": f"{hnsw_plans} of {min(10, len(chosen))}",
+                "note": "when the planner prefers the (cik, fiscal_year) btree the HNSW iterative "
+                "scan "
+                "is not exercised for that query",
             }
-        result["hybrid"] = hybrid
-
-        # ---- BGE query-instruction A/B (reported only: the queries come from the chunks)
-        def source_rank(ids: list[str], source: str) -> int | None:
-            return ids.index(source) + 1 if source in ids else None
-
-        ab: dict[str, Any] = {}
-        for name, exact in (
-            ("with_instruction", exact_prefix),
-            ("without_instruction", exact_plain),
-        ):
-            ranks = [source_rank(e, src) for e, (src, _) in zip(exact, queries, strict=True)]
-            hits = [r for r in ranks if r is not None]
-            ab[name] = {
-                "source_chunk_in_top10": len(hits) / len(ranks),
-                "mrr_at_10": sum(1.0 / r for r in hits) / len(ranks),
-            }
-        ab["top10_overlap_between_variants"] = statistics.fmean(
-            len(set(a) & set(b)) / K for a, b in zip(exact_prefix, exact_plain, strict=True)
-        )
-        ab["caveat"] = (
-            "queries are spans of the chunks themselves; this favours no instruction (ADR-033)"
-        )
-        result["query_instruction_ab"] = ab
-
-        # ---- filtered dense search: rows returned, and which plan the planner chose
-        ciks = [
-            r[0]
-            for r in conn.execute(
-                "SELECT cik FROM chunks GROUP BY cik HAVING count(*) >= 50 ORDER BY cik LIMIT 300"
-            ).fetchall()
-        ]
-        chosen = rng.sample(ciks, min(50, len(ciks)))
-        returned = []
-        for cik, v in zip(chosen, vec_prefix, strict=False):
-            returned.append(len(dense_search(conn, v, limit=K, ef_search=args.ef[0], cik=cik)))
-        hnsw_plans = sum(
-            1
-            for cik, v in zip(chosen[:10], vec_prefix, strict=False)
-            if filtered_plan_uses_hnsw(conn, v, cik, args.ef[0])
-        )
-        result["filtered_dense"] = {
-            "n": len(returned),
-            "min_rows_returned": min(returned),
-            "limit": K,
-            "plans_using_the_hnsw_index": f"{hnsw_plans} of {min(10, len(chosen))}",
-            "note": "when the planner prefers the (cik, fiscal_year) btree the HNSW iterative scan "
-            "is not exercised for that query",
-        }
     steal_after = Path("/proc/stat").read_text().splitlines()[0]
     result["cpu_steal_fraction_whole_run"] = cpu_steal_fraction(steal_before, steal_after)
     result["cpu_steal_fraction_of_busy_time"] = cpu_steal_of_busy_time(steal_before, steal_after)
@@ -379,6 +410,12 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--lookups", type=int, default=200)
     parser.add_argument("--hybrid", type=int, default=100)
     parser.add_argument("--seed", type=int, default=20261122)
+    parser.add_argument(
+        "--phases",
+        default="recall,numeric,hybrid,ab,filtered",
+        help="comma-separated subset of recall,numeric,hybrid,ab,filtered",
+    )
+    parser.add_argument("--lexical-mode", choices=["and", "or"], default="and")
     args = parser.parse_args(argv)
     result = run(args)
     args.out.write_text(json.dumps(result, indent=1) + "\n", encoding="utf-8")
@@ -386,7 +423,13 @@ def main(argv: list[str] | None = None) -> int:
         json.dumps(
             {
                 k: result[k]
-                for k in ("hnsw_curve", "numeric_lookup", "default_ef_search_for_recall_0.95")
+                for k in (
+                    "hnsw_curve",
+                    "numeric_lookup",
+                    "hybrid",
+                    "default_ef_search_for_recall_0.95",
+                )
+                if k in result
             },
             indent=1,
         )
