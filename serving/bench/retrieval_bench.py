@@ -104,6 +104,19 @@ def cpu_steal_fraction(before: str, after: str) -> float:
     return steal / total if total > 0 else 0.0
 
 
+def bootstrap_ci(
+    values: Sequence[float], n_resamples: int = 10_000, seed: int = 0, level: float = 0.95
+) -> tuple[float, float]:
+    """Percentile bootstrap confidence interval of the mean (10,000 resamples by default)."""
+    arr = np.asarray(values, dtype=np.float64)
+    if arr.size == 0:
+        raise ValueError("no values")
+    rng = np.random.default_rng(seed)
+    means = arr[rng.integers(0, arr.size, size=(n_resamples, arr.size))].mean(axis=1)
+    tail = (1.0 - level) / 2.0 * 100.0
+    return float(np.percentile(means, tail)), float(np.percentile(means, 100.0 - tail))
+
+
 def cpu_steal_of_busy_time(before: str, after: str) -> float:
     """Stolen CPU time as a share of the non-idle time (steal / (total - idle - iowait)).
 
@@ -244,11 +257,15 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
                 "self_span": (vec_prefix, exact_prefix),
                 "mixed_pair": (vec_mixed, exact_mixed),
             }
-            curve: dict[int, dict[str, float]] = {}
+            curve: dict[int, dict[str, Any]] = {}
+            # Global warm-up: load the HNSW index into the caches once, so the first ef is warm.
+            for v in vec_prefix:
+                dense_search(conn, v, limit=K, ef_search=100)
             for ef in args.ef:
                 for v in vec_prefix[:20]:  # warm-up, not measured
                     dense_search(conn, v, limit=K, ef_search=ef)
                 per_set: dict[str, float] = {}
+                per_set_ci: dict[str, list[float]] = {}
                 lat = []
                 worst = 1.0
                 for name, (vectors, truths) in query_sets.items():
@@ -260,10 +277,15 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
                         recalls.append(recall_at_k([h.chunk_id for h in hits], truth))
                         lat.append(ms)
                     per_set[f"recall_{name}"] = statistics.fmean(recalls)
+                    per_set_ci[f"recall_{name}_ci95"] = list(bootstrap_ci(recalls, seed=args.seed))
                     worst = min(worst, min(recalls))
+                low_name = min(per_set, key=lambda k: per_set[k])
                 curve[ef] = {
                     "recall_at_10": min(per_set.values()),
+                    "recall_at_10_ci95": per_set_ci[f"{low_name}_ci95"],
+                    "recall_at_10_set": low_name,
                     **per_set,
+                    **per_set_ci,
                     "min_single_query_recall": worst,
                     **percentiles(lat),
                 }
@@ -373,8 +395,16 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
             ]
             chosen = rng.sample(ciks, min(50, len(ciks)))
             returned = []
+            returned_wide = []
             for cik, v in zip(chosen, vec_prefix, strict=False):
                 returned.append(len(dense_search(conn, v, limit=K, ef_search=args.ef[0], cik=cik)))
+                returned_wide.append(
+                    len(
+                        dense_search(
+                            conn, v, limit=K, ef_search=args.ef[0], cik=cik, max_scan_tuples=500_000
+                        )
+                    )
+                )
             hnsw_plans = sum(
                 1
                 for cik, v in zip(chosen[:10], vec_prefix, strict=False)
@@ -383,6 +413,11 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
             result["filtered_dense"] = {
                 "n": len(returned),
                 "min_rows_returned": min(returned),
+                "queries_returning_fewer_than_limit": sum(1 for r in returned if r < K),
+                "min_rows_returned_with_max_scan_tuples_500000": min(returned_wide),
+                "queries_returning_fewer_than_limit_with_max_scan_tuples_500000": sum(
+                    1 for r in returned_wide if r < K
+                ),
                 "limit": K,
                 "plans_using_the_hnsw_index": f"{hnsw_plans} of {min(10, len(chosen))}",
                 "note": "when the planner prefers the (cik, fiscal_year) btree the HNSW iterative "

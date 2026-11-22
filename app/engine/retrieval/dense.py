@@ -23,6 +23,7 @@ def dense_search(
     ef_search: int = 100,
     cik: int | None = None,
     fiscal_year: int | None = None,
+    max_scan_tuples: int | None = None,
 ) -> list[ChunkHit]:
     """Top `limit` chunks by cosine distance to `query_vector`, best first (score = 1 - distance).
 
@@ -48,6 +49,10 @@ def dense_search(
     with conn.transaction():
         conn.execute(f"SET LOCAL hnsw.ef_search = {int(ef_search)}")
         conn.execute("SET LOCAL hnsw.iterative_scan = relaxed_order")
+        if max_scan_tuples is not None:
+            # pgvector ends an iterative scan after this many tuples (default 20,000), which can
+            # return fewer than `limit` rows for a very selective filter.
+            conn.execute(f"SET LOCAL hnsw.max_scan_tuples = {int(max_scan_tuples)}")
         rows = conn.execute(sql, params).fetchall()
     # relaxed_order lets pgvector emit rows slightly out of order; sort best first before ranking.
     ordered = sorted(((float(r[1]), r[0]) for r in rows), key=lambda t: (-t[0], t[1]))

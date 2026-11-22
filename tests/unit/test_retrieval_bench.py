@@ -7,6 +7,7 @@ import random
 import pytest
 
 from serving.bench.retrieval_bench import (
+    bootstrap_ci,
     cpu_steal_fraction,
     cpu_steal_of_busy_time,
     lexical_question,
@@ -101,3 +102,19 @@ def test_steal_as_a_share_of_busy_time_is_not_diluted_by_idle():
 
     assert cpu_steal_fraction(before, after) == pytest.approx(0.02)  # diluted by the idle time
     assert cpu_steal_of_busy_time(before, after) == pytest.approx(0.2)
+
+
+def test_bootstrap_ci_brackets_the_mean_and_is_deterministic_for_a_seed():
+    values = [0.0] * 20 + [1.0] * 80  # mean 0.8
+
+    lo, hi = bootstrap_ci(values, seed=3)
+
+    assert lo < 0.8 < hi
+    assert 0.70 < lo and hi < 0.90
+    assert bootstrap_ci(values, seed=3) == (lo, hi)
+
+
+def test_bootstrap_ci_of_a_constant_is_a_point_and_empty_input_is_an_error():
+    assert bootstrap_ci([0.5] * 10) == (0.5, 0.5)
+    with pytest.raises(ValueError):
+        bootstrap_ci([])
