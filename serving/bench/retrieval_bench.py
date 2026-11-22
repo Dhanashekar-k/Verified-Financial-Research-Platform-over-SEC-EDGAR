@@ -224,6 +224,28 @@ def filtered_plan_uses_hnsw(
     return "hnsw" in json.dumps(plan)
 
 
+def build_queries(
+    conn: psycopg.Connection[Any], seed: int, n: int
+) -> tuple[list[tuple[str, str]], list[str], list[str]]:
+    """The deterministic query sets: spans of `n` sampled chunks, and the harder mixed pairs.
+
+    Returns `(queries as (source chunk_id, span), spans, mixed pairs)`. A harder second set joins
+    two unrelated spans, which lands between clusters. The same seed gives the same queries on
+    every run, which is what makes recall comparable across index builds.
+    """
+    rng = random.Random(seed)
+    queries: list[tuple[str, str]] = []
+    for chunk_id, text in sample_chunks(conn, n * 2, seed):
+        q = pseudo_query(text, rng)
+        if q:
+            queries.append((chunk_id, q))
+        if len(queries) == n:
+            break
+    texts = [q for _, q in queries]
+    mixed = [f"{texts[i]} {texts[(i + 1) % len(texts)]}" for i in range(len(texts))]
+    return queries, texts, mixed
+
+
 def run(args: argparse.Namespace) -> dict[str, Any]:
     from pipelines.common.embedding import ARTIFACT_ONNX_SHA256, Embedder
 
@@ -254,17 +276,7 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
             "live_version": conn.execute("SELECT live_version FROM corpus_state").fetchone()[0],  # type: ignore[index]
         }
         # ---- chunk-derived queries
-        sample = sample_chunks(conn, args.queries * 2, args.seed)
-        queries: list[tuple[str, str]] = []
-        for chunk_id, text in sample:
-            q = pseudo_query(text, rng)
-            if q:
-                queries.append((chunk_id, q))
-            if len(queries) == args.queries:
-                break
-        texts = [q for _, q in queries]
-        # A harder second set: two unrelated spans joined, which lands between clusters.
-        mixed = [f"{texts[i]} {texts[(i + 1) % len(texts)]}" for i in range(len(texts))]
+        queries, texts, mixed = build_queries(conn, args.seed, args.queries)
         vec_prefix = embedder.embed_queries(texts, instruction=True)
         vec_plain = embedder.embed_queries(texts, instruction=False)
         vec_mixed = embedder.embed_queries(mixed, instruction=True)

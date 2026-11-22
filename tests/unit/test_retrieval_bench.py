@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import random
 
+import numpy as np
 import pytest
 
 from serving.bench.retrieval_bench import (
@@ -130,3 +131,18 @@ def test_tie_aware_recall_counts_an_equally_near_duplicate_as_a_hit():
     assert tie_aware_recall([0.10, 0.10, 0.10, 0.11, 0.30], exact, k=5) == pytest.approx(0.8)
     assert tie_aware_recall([], exact, k=5) == 0.0
     assert tie_aware_recall([0.2], [], k=5) == 1.0
+
+
+def test_fp32_top_is_an_exact_dot_product_top_k():
+    from serving.bench.halfvec_check import fp32_top
+
+    rng = np.random.default_rng(0)
+    matrix = rng.normal(size=(500, 16)).astype(np.float32)
+    matrix /= np.linalg.norm(matrix, axis=1, keepdims=True)
+    ids = [f"c{i:03d}" for i in range(500)]
+    query = matrix[7]
+
+    top = fp32_top(ids, matrix, np.asarray([query]), k=5)[0]
+
+    expected = [ids[i] for i in np.argsort(-(matrix @ query))[:5]]
+    assert top == expected and top[0] == "c007"
