@@ -15,6 +15,7 @@ from serving.bench.retrieval_bench import (
     pick_default_ef,
     pseudo_query,
     recall_at_k,
+    tie_aware_recall,
 )
 
 
@@ -118,3 +119,14 @@ def test_bootstrap_ci_of_a_constant_is_a_point_and_empty_input_is_an_error():
     assert bootstrap_ci([0.5] * 10) == (0.5, 0.5)
     with pytest.raises(ValueError):
         bootstrap_ci([])
+
+
+def test_tie_aware_recall_counts_an_equally_near_duplicate_as_a_hit():
+    exact = [0.10, 0.10, 0.10, 0.11, 0.12]  # three ties, then two a little further
+    approx = [0.10, 0.10, 0.10, 0.11, 0.12]
+
+    assert tie_aware_recall(approx, exact, k=5) == 1.0
+    # different ids at the same distances still count; a clearly farther result does not
+    assert tie_aware_recall([0.10, 0.10, 0.10, 0.11, 0.30], exact, k=5) == pytest.approx(0.8)
+    assert tie_aware_recall([], exact, k=5) == 0.0
+    assert tie_aware_recall([0.2], [], k=5) == 1.0

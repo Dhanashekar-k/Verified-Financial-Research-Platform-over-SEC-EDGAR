@@ -54,6 +54,26 @@ def recall_at_k(approx: Sequence[str], exact: Sequence[str], k: int = K) -> floa
     return len(set(approx[:k]) & set(truth)) / len(truth)
 
 
+def tie_aware_recall(
+    hit_distances: Sequence[float], exact_distances: Sequence[float], k: int = K, eps: float = 1e-4
+) -> float:
+    """Share of the returned top-k whose distance is no worse than the exact k-th distance.
+
+    Set-overlap recall counts an equally near duplicate as a miss. A corpus of 10-Ks repeats the
+    same paragraphs year after year, so many chunks tie on distance and which of them an exact scan
+    lists is arbitrary. This asks instead: is each returned chunk as near as the k-th exact one?
+    (`eps` absorbs the rounding of halfvec distances.) It is reported next to the set-based recall
+    and does not replace it.
+    """
+    if not exact_distances:
+        return 1.0
+    threshold = list(exact_distances)[:k][-1] + eps
+    returned = list(hit_distances)[:k]
+    if not returned:
+        return 0.0
+    return sum(1 for d in returned if d <= threshold) / min(k, len(exact_distances))
+
+
 def percentiles(values_ms: Sequence[float]) -> dict[str, float]:
     arr = np.asarray(values_ms, dtype=np.float64)
     return {
@@ -151,17 +171,24 @@ def _timed_ms(fn: Any) -> tuple[Any, float]:
     return result, (time.perf_counter() - started) * 1000.0
 
 
-def exact_top_ids(conn: psycopg.Connection[Any], vector: Sequence[float], k: int = K) -> list[str]:
-    """Exact cosine top-k over the same halfvec column (index scans off, so a sequential scan)."""
+def exact_top(
+    conn: psycopg.Connection[Any], vector: Sequence[float], k: int = K
+) -> list[tuple[str, float]]:
+    """Exact cosine top-k over the same halfvec column (index scans off: a sequential scan)."""
     lit = vector_literal(vector)
     with conn.transaction():
         conn.execute("SET LOCAL enable_indexscan = off")
         conn.execute("SET LOCAL enable_bitmapscan = off")
         rows = conn.execute(
-            "SELECT chunk_id FROM chunks ORDER BY embedding <=> %s::halfvec, chunk_id LIMIT %s",
-            (lit, k),
+            "SELECT chunk_id, embedding <=> %s::halfvec AS distance FROM chunks "
+            "ORDER BY embedding <=> %s::halfvec, chunk_id LIMIT %s",
+            (lit, lit, k),
         ).fetchall()
-    return [r[0] for r in rows]
+    return [(r[0], float(r[1])) for r in rows]
+
+
+def exact_top_ids(conn: psycopg.Connection[Any], vector: Sequence[float], k: int = K) -> list[str]:
+    return [chunk_id for chunk_id, _ in exact_top(conn, vector, k)]
 
 
 def sample_chunks(conn: psycopg.Connection[Any], n: int, seed: int) -> list[tuple[str, str]]:
@@ -172,7 +199,8 @@ def sample_chunks(conn: psycopg.Connection[Any], n: int, seed: int) -> list[tupl
     words (tables, headings) are skipped, so the queries lean toward prose.
     """
     rows = conn.execute(
-        "SELECT chunk_id, text FROM chunks WHERE mod(abs(hashtext(chunk_id || %s)), 50) = 0",
+        "SELECT chunk_id, text FROM chunks WHERE mod(abs(hashtext(chunk_id || %s)), 50) = 0 "
+        "ORDER BY chunk_id",
         (str(seed),),
     ).fetchall()
     prose = [(cid, text) for cid, text in rows if len(text.split()) >= 60]
@@ -244,18 +272,19 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         if need_exact:
             # ---- exact top-10 (the ground truth of the recall measurement)
             started = time.perf_counter()
-            exact_prefix = [exact_top_ids(conn, v) for v in vec_prefix]
+            exact_prefix_full = [exact_top(conn, v) for v in vec_prefix]
+            exact_prefix = [[cid for cid, _ in r] for r in exact_prefix_full]
             result["exact_scan_seconds_per_query"] = (time.perf_counter() - started) / len(queries)
             exact_plain = [exact_top_ids(conn, v) for v in vec_plain]
-            exact_mixed = [exact_top_ids(conn, v) for v in vec_mixed]
+            exact_mixed_full = [exact_top(conn, v) for v in vec_mixed]
 
         if "recall" in phases:
             # ---- HNSW recall and latency per ef_search. Recall is reported for both sets; the
             # headline `recall_at_10` is the LOWER of the two (self-span queries are the easy case:
             # each one's nearest neighbour is its own source chunk, inside a dense region).
             query_sets = {
-                "self_span": (vec_prefix, exact_prefix),
-                "mixed_pair": (vec_mixed, exact_mixed),
+                "self_span": (vec_prefix, exact_prefix_full),
+                "mixed_pair": (vec_mixed, exact_mixed_full),
             }
             curve: dict[int, dict[str, Any]] = {}
             # Global warm-up: load the HNSW index into the caches once, so the first ef is warm.
@@ -266,16 +295,26 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
                     dense_search(conn, v, limit=K, ef_search=ef)
                 per_set: dict[str, float] = {}
                 per_set_ci: dict[str, list[float]] = {}
+                tie_aware: dict[str, float] = {}
                 lat = []
                 worst = 1.0
                 for name, (vectors, truths) in query_sets.items():
-                    recalls = []
-                    for v, truth in zip(vectors, truths, strict=True):
+                    recalls: list[float] = []
+                    ties: list[float] = []
+                    for v, truth_full in zip(vectors, truths, strict=True):
                         hits, ms = _timed_ms(
                             lambda v=v, ef=ef: dense_search(conn, v, limit=K, ef_search=ef)
                         )
-                        recalls.append(recall_at_k([h.chunk_id for h in hits], truth))
+                        recalls.append(
+                            recall_at_k([h.chunk_id for h in hits], [c for c, _ in truth_full])
+                        )
+                        ties.append(
+                            tie_aware_recall(
+                                [1.0 - h.score for h in hits], [d for _, d in truth_full]
+                            )
+                        )
                         lat.append(ms)
+                    tie_aware[f"tie_aware_recall_{name}"] = statistics.fmean(ties)
                     per_set[f"recall_{name}"] = statistics.fmean(recalls)
                     per_set_ci[f"recall_{name}_ci95"] = list(bootstrap_ci(recalls, seed=args.seed))
                     worst = min(worst, min(recalls))
@@ -286,6 +325,8 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
                     "recall_at_10_set": low_name,
                     **per_set,
                     **per_set_ci,
+                    **tie_aware,
+                    "tie_aware_recall_at_10": min(tie_aware.values()),
                     "min_single_query_recall": worst,
                     **percentiles(lat),
                 }
