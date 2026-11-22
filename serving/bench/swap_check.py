@@ -16,6 +16,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import threading
 import time
 from pathlib import Path
@@ -27,8 +28,10 @@ from serving.load.load_snapshot import load_version, rollback, state, swap
 
 
 def view_target(conn: psycopg.Connection[Any], view: str) -> str:
-    row = conn.execute(f"SELECT tableoid::regclass::text FROM {view} LIMIT 1").fetchone()
-    return str(row[0]) if row else "empty"
+    """The versioned table a view reads, taken from its definition (views have no tableoid)."""
+    definition = conn.execute("SELECT pg_get_viewdef(%s::regclass)", (view,)).fetchone()[0]  # type: ignore[index]
+    match = re.search(rf"\b({view}_v\d+)\b", definition)
+    return match.group(1) if match else "unknown"
 
 
 def snapshot_state(dsn: str, step: str) -> dict[str, Any]:

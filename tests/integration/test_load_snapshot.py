@@ -1287,3 +1287,20 @@ def test_nul_characters_in_text_are_removed_counted_and_never_drop_a_row(dsn: st
     )
     assert stored == "beforeafter"
     assert report.rows["chunks"] == manifest.chunks_rows
+
+
+def test_swap_check_reads_the_view_target_from_its_definition(dsn: str, tmp_path: Path):
+    """The real-data swap check identifies the table a view reads (views have no tableoid)."""
+    from serving.bench.swap_check import view_target
+
+    write_export(tmp_path, 1)
+    load_version(dsn, version=1, source=str(tmp_path))
+    swap(dsn, 1)
+    with psycopg.connect(dsn, autocommit=True) as conn:
+        assert view_target(conn, "chunks") == "chunks_v1"
+        assert view_target(conn, "facts") == "facts_v1"
+    write_export(tmp_path, 2)
+    load_version(dsn, version=2, source=str(tmp_path))
+    swap(dsn, 2)
+    with psycopg.connect(dsn, autocommit=True) as conn:
+        assert view_target(conn, "chunks") == "chunks_v2"
