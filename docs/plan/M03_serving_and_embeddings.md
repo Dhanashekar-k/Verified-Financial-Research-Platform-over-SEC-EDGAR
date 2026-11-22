@@ -38,7 +38,7 @@ Fast lookups for numbers and text: chunk embeddings computed at scale, a version
 `serving/load/load_snapshot.py --version N --source s3://… | ./exports/…`:
 1. Create `facts_vN` and `chunks_vN` from `serving/sql/templates/*.sql` (no indexes yet).
 2. Bulk load with **psycopg COPY** (stream Parquet with pyarrow and write `halfvec` as `[x1,…,x384]` text). Alternatively use DuckDB's Postgres extension. Pick one and write the ADR.
-3. Build indexes **after** loading: B-trees, the GIN index on `tsv`, then HNSW (`m=16, ef_construction=64`). Session settings for the build: `maintenance_work_mem='1GB'`, `max_parallel_maintenance_workers=2`. On a 4 GiB box, temporarily resizing to `t4g.large` for the build and back is a cheap trick [Likely].
+3. Build indexes **after** loading: B-trees, the GIN index on `tsv`, then HNSW (`m=32, ef_construction=128` after measurement, ADR-040; the runbook's `m=16, ef_construction=64` is the starting point). Session settings for the build: `maintenance_work_mem='1GB'`, `max_parallel_maintenance_workers=2`. On a 4 GiB box, temporarily resizing to `t4g.large` for the build and back is a cheap trick [Likely].
 4. **Validate** before swapping: row counts equal the manifest; 20 sample fact lookups; 20 sample text searches return rows.
 5. **Swap in one transaction:** `CREATE OR REPLACE VIEW facts …; CREATE OR REPLACE VIEW chunks …; UPDATE corpus_state SET previous_version=live_version, live_version=N, swapped_at=now();`
 6. Keep the live and the previous version for rollback (`load_snapshot.py --rollback`) and drop every other `*_vK` (not "N−2": after a rollback N−2 can be the live version).

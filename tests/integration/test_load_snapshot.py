@@ -370,7 +370,7 @@ def test_tsv_is_generated_from_text(dsn: str, tmp_path: Path) -> None:
 
 
 def test_indexes_are_built_after_load_with_contract_parameters(dsn: str, tmp_path: Path) -> None:
-    """Facts B-trees, chunks GIN + HNSW (m=16, ef_construction=64, cosine ops), btree(cik, fy).
+    """Facts B-trees, chunks GIN + HNSW (m=32, ef_construction=128, cosine ops), btree(cik, fy).
 
     The partial index is on exactly (cik, tag, fiscal_year, fiscal_period, uom) WHERE is_original.
     """
@@ -395,7 +395,7 @@ def test_indexes_are_built_after_load_with_contract_parameters(dsn: str, tmp_pat
         "JOIN pg_am am ON am.oid = c.relam WHERE x.indrelid = 'chunks_v1'::regclass "
         "AND am.amname = 'hnsw'",
     )[0][0]
-    assert sorted(opts) == ["ef_construction=64", "m=16"]
+    assert sorted(opts) == ["ef_construction=128", "m=32"]
     assert len(chunks) == 3
 
 

@@ -318,8 +318,8 @@ def load_version(
     version: int,
     source: str,
     build_indexes: bool = True,
-    hnsw_m: int = 16,
-    hnsw_ef_construction: int = 64,
+    hnsw_m: int = 32,
+    hnsw_ef_construction: int = 128,
     maintenance_work_mem: str = "1GB",
     sample_checks: int = 20,
 ) -> LoadReport:
@@ -568,6 +568,8 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--swap", action="store_true", help="swap the version in after loading")
     parser.add_argument("--rollback", action="store_true")
     parser.add_argument("--skip-indexes", action="store_true")
+    parser.add_argument("--hnsw-m", type=int, default=32)
+    parser.add_argument("--hnsw-ef-construction", type=int, default=128)
     parser.add_argument("--maintenance-work-mem", default="1GB")
     parser.add_argument("--report-out", type=Path)
     return parser
@@ -593,6 +595,8 @@ def main(argv: list[str] | None = None) -> int:
             source=args.source,
             build_indexes=not args.skip_indexes,
             maintenance_work_mem=args.maintenance_work_mem,
+            hnsw_m=args.hnsw_m,
+            hnsw_ef_construction=args.hnsw_ef_construction,
         )
         if args.swap:
             started = time.perf_counter()

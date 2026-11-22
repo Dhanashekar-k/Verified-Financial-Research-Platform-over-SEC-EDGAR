@@ -306,7 +306,7 @@ CREATE TABLE chunks_v7 (
   embedding halfvec(384) NOT NULL
 );
 CREATE INDEX ON chunks_v7 USING gin (tsv);
-CREATE INDEX ON chunks_v7 USING hnsw (embedding halfvec_cosine_ops) WITH (m = 16, ef_construction = 64);
+CREATE INDEX ON chunks_v7 USING hnsw (embedding halfvec_cosine_ops) WITH (m = 32, ef_construction = 128);   -- measured on the M3 corpus, ADR-040 (m = 16, ef_construction = 64 reached recall@10 0.92 at ef_search 800)
 CREATE INDEX ON chunks_v7 (cik, fiscal_year);
 
 CREATE OR REPLACE VIEW facts AS SELECT * FROM facts_v7;    -- swapped in one transaction
