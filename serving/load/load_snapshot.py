@@ -192,9 +192,38 @@ def _csv_bytes(table: str, batch: pa.RecordBatch) -> bytes:
     return sink.getvalue()
 
 
+NUL = "\x00"
+
+
+def _strip_nul(
+    table: str, batch: pa.RecordBatch, found: dict[str, dict[str, int]]
+) -> pa.RecordBatch:
+    """Remove NUL characters from every string column, counting what was removed per column.
+
+    Postgres cannot store 0x00 in text, so one such character in the export (a PDF-extraction
+    artifact) aborts the whole COPY. The loader removes them and says how many rows and
+    characters were affected; it never drops a row.
+    """
+    columns = list(batch.columns)
+    changed = False
+    for i, field in enumerate(batch.schema):
+        if not (pa.types.is_string(field.type) or pa.types.is_large_string(field.type)):
+            continue
+        counts = pc.count_substring(columns[i], NUL)
+        chars = pc.sum(counts).as_py() or 0
+        if not chars:
+            continue
+        entry = found.setdefault(f"{table}.{field.name}", {"rows": 0, "chars": 0})
+        entry["rows"] += int(pc.sum(pc.greater(counts, 0)).as_py() or 0)
+        entry["chars"] += int(chars)
+        columns[i] = pc.replace_substring(columns[i], NUL, "")
+        changed = True
+    return pa.RecordBatch.from_arrays(columns, schema=batch.schema) if changed else batch
+
+
 def _copy_table(
     conn: psycopg.Connection[Any], fs: pafs.FileSystem, base: str, manifest: Manifest, table: str,
-    target: str,
+    target: str, nul_found: dict[str, dict[str, int]],
 ) -> int:  # fmt: skip
     cols = ", ".join(COLUMNS[table])
     loaded = 0
@@ -205,7 +234,7 @@ def _copy_table(
         for f in manifest.files[table]:
             with fs.open_input_file(f"{base}/{f.path}") as handle:
                 for batch in pq.ParquetFile(handle).iter_batches(batch_size=BATCH_ROWS):
-                    copy.write(_csv_bytes(table, batch))
+                    copy.write(_csv_bytes(table, _strip_nul(table, batch, nul_found)))
                     loaded += batch.num_rows
     return loaded
 
@@ -307,6 +336,7 @@ def load_version(
     sizes: dict[str, int] = {}
     validation: dict[str, object] = {}
     notices: list[str] = []
+    nul_found: dict[str, dict[str, int]] = {}
     with psycopg.connect(dsn, autocommit=True) as conn:
         conn.add_notice_handler(lambda diag: notices.append(diag.message_primary or ""))
         _preflight_server(conn)
@@ -320,7 +350,9 @@ def load_version(
             for table in ("companies", "facts", "chunks"):
                 started = time.perf_counter()
                 with conn.transaction():
-                    n = _copy_table(conn, fs, base, manifest, table, f"{table}_v{version}")
+                    n = _copy_table(
+                        conn, fs, base, manifest, table, f"{table}_v{version}", nul_found
+                    )
                 seconds[f"copy_{table}"] = time.perf_counter() - started
                 rows[table] = n
                 if n != manifest.expected_rows(table):
@@ -338,6 +370,7 @@ def load_version(
                     seconds[f"index_{name}"] = time.perf_counter() - started
             validation = _validate(conn, version, manifest, sample_checks)
             validation["server_notices"] = [n for n in notices if n]
+            validation["nul_characters_removed"] = nul_found
             sizes = _sizes(conn, version)
             # Last step: a version without this mark is partial (a killed load); never swapped in.
             for table in TABLES:

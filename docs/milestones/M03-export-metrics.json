@@ -1,0 +1,105 @@
+{
+ "export_uri": "s3://edgarqa-lake-019593222039/exports/serving/corpus_version=1",
+ "manifest": {
+  "corpus_version": 1,
+  "created_at": "2026-11-22T12:12:26Z",
+  "git_sha": "51ec636a2d74",
+  "facts_rows": 1909504,
+  "chunks_rows": 1081461,
+  "companies_rows": 12321,
+  "embedding_model": "BAAI/bge-small-en-v1.5",
+  "dim": 384,
+  "chunk_exclusions": {
+   "rule": "n_tokens <= 5",
+   "count": 15915
+  },
+  "embedding_scope": {
+   "rule": "form IN ('10-K','10-K/A') OR doc_source = 'financebench_pdf'",
+   "not_embedded": {
+    "rule": "doc_source = 'edgar_html' AND form IN ('10-Q','10-Q/A')",
+    "count": 1759310,
+    "reason": "serving is 10-K-only; quarterly numbers come from curated.facts (ADR-037)"
+   }
+  },
+  "iceberg_snapshots": {
+   "curated.facts": 3165188557388806648,
+   "curated.chunks": 7976949640651389464,
+   "curated.chunk_embeddings": 1679404993418457301,
+   "curated.companies": 8959263426158902436
+  },
+  "embedding_artifact": {
+   "hf_repo": "Qdrant/bge-small-en-v1.5-onnx-Q",
+   "hf_revision": "aa8f8b060edb00e03bfdd08813a2949946c8ba55",
+   "onnx_file": "model_optimized.onnx",
+   "onnx_sha256": "51f1bd0addd6e859e42c2c8021a5e5461385bb676a649f4b269aa445449f2431"
+  },
+  "filters": {
+   "facts": "cik of companies with in_sp500 OR in_financebench (plus --extra-ciks); taxonomy in ['us-gaap', 'dei', 'srt']; uom in ['USD', 'shares', 'USD/shares', 'pure']; is_latest OR is_original",
+   "chunks": "form IN ('10-K','10-K/A') OR doc_source = 'financebench_pdf'; n_tokens > 5; inner join chunk_embeddings"
+  }
+ },
+ "files": {
+  "companies": {
+   "n_files": 1,
+   "rows": 12321,
+   "bytes": 223423
+  },
+  "facts": {
+   "n_files": 1,
+   "rows": 1909504,
+   "bytes": 59125909
+  },
+  "chunks": {
+   "n_files": 11,
+   "rows": 1081461,
+   "bytes": 2050208841
+  }
+ },
+ "footer_check_from_laptop_via_pyarrow": {
+  "companies": {
+   "footer_rows": 12321,
+   "manifest_rows": 12321
+  },
+  "facts": {
+   "footer_rows": 1909504,
+   "manifest_rows": 1909504
+  },
+  "chunks": {
+   "footer_rows": 1081461,
+   "manifest_rows": 1081461
+  },
+  "every_file_matches": true,
+  "embedding_lengths_checked": [
+   384
+  ],
+  "embedding_rows_checked": 98317
+ },
+ "first_run": {
+  "job_run": "jr_b50118b51f2c9576869f753c81eb783893a57522c324bdafb18d6b84a7fde346",
+  "execution_seconds": 205,
+  "dpu_seconds": 2059.0,
+  "cost_usd": 0.2516555555555556
+ },
+ "reexport": {
+  "job_run": "jr_6f4a237ef377732e1f6d4ab9e682d0c9d4f4ec13e5e7ff717f349da03bb3ff8a",
+  "execution_seconds": 200,
+  "dpu_seconds": 2008.0,
+  "cost_usd": 0.24542222222222224,
+  "same_headline_fields": true,
+  "same_per_file_row_counts": {
+   "companies": true,
+   "facts": true,
+   "chunks": true
+  },
+  "corpus_versions_rows_for_version_1": 1
+ },
+ "chunks_missing_embeddings": 0,
+ "chunks_missing_embeddings_check": "the export job raises ExportError before writing if any in-scope chunk with n_tokens > 5 lacks an embedding of the pinned model",
+ "corpus_versions_row": {
+  "corpus_version": 1,
+  "facts_rows": 1909504,
+  "chunks_rows": 1081461,
+  "chunks_excluded": 15915,
+  "dim": 384
+ }
+}

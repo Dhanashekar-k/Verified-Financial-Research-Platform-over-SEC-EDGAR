@@ -1,0 +1,22 @@
+{
+ "job": "edgarqa-export-serving",
+ "job_run_id": "jr_6f4a237ef377732e1f6d4ab9e682d0c9d4f4ec13e5e7ff717f349da03bb3ff8a",
+ "note": "M3 stage B re-export corpus_version=1 (idempotency check), 10 x G.1X",
+ "state": "SUCCEEDED",
+ "started_on": "2026-11-22T07:28:53.004000-05:00",
+ "completed_on": "2026-11-22T07:32:20.338000-05:00",
+ "execution_seconds": 200,
+ "dpu_seconds": 2008.0,
+ "glue_version": "5.0",
+ "worker_type": "G.1X",
+ "number_of_workers": 10,
+ "timeout_minutes": 60,
+ "arguments": {
+  "--version": "1",
+  "--git-sha": "51ec636a2d74"
+ },
+ "rate_usd_per_dpu_hour": 0.44,
+ "cost_usd": 0.24542222222222224,
+ "billed_dpu_seconds": 2008.0,
+ "dpu_hours": 0.5577777777777778
+}

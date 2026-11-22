@@ -1,0 +1,21 @@
+{
+ "job": "edgarqa-export-serving",
+ "job_run_id": "jr_b50118b51f2c9576869f753c81eb783893a57522c324bdafb18d6b84a7fde346",
+ "note": "M3 stage B export corpus_version=1 (first run), 10 x G.1X",
+ "state": "SUCCEEDED",
+ "started_on": "2026-11-22T07:11:39.495000-05:00",
+ "completed_on": "2026-11-22T07:15:13.281000-05:00",
+ "execution_seconds": 205,
+ "dpu_seconds": 2059.0,
+ "glue_version": "5.0",
+ "worker_type": "G.1X",
+ "number_of_workers": 10,
+ "timeout_minutes": 60,
+ "arguments": {
+  "--git-sha": "51ec636a2d74"
+ },
+ "rate_usd_per_dpu_hour": 0.44,
+ "cost_usd": 0.2516555555555556,
+ "billed_dpu_seconds": 2059.0,
+ "dpu_hours": 0.5719444444444445
+}

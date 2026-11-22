@@ -1253,3 +1253,37 @@ def test_rollback_prunes_versions_that_are_neither_live_nor_previous(dsn: str, t
             )
         }
     assert tables == {"chunks_v1", "chunks_v2"}
+
+
+def test_nul_characters_in_text_are_removed_counted_and_never_drop_a_row(dsn: str, tmp_path: Path):
+    """Postgres cannot store 0x00; one in the export used to abort the whole COPY."""
+    manifest = write_export(tmp_path, 1)
+    first = manifest.files["chunks"][0].path
+    table = read_table(tmp_path, 1, "chunks")
+    texts = table["text"].to_pylist()
+    titles = table["section_title"].to_pylist()
+    texts[0] = "before\x00after"
+    texts[1] = "\x00\x00lead"
+    titles[0] = "T\x00itle"
+    table = table.set_column(
+        table.schema.get_field_index("text"), "text", pa.array(texts, pa.string())
+    )
+    table = table.set_column(
+        table.schema.get_field_index("section_title"),
+        "section_title",
+        pa.array(titles, pa.string()),
+    )
+    # keep the one-file layout: replace only the first file with the rows it already held
+    keep = pq.read_metadata(tmp_path / "corpus_version=1" / first).num_rows
+    replace_file(tmp_path, 1, first, table.slice(0, keep))
+
+    report = load_version(dsn, version=1, source=str(tmp_path))
+
+    removed = report.validation["nul_characters_removed"]
+    assert removed["chunks.text"] == {"rows": 2, "chars": 3}
+    assert removed["chunks.section_title"] == {"rows": 1, "chars": 1}
+    stored = scalar(
+        dsn, "SELECT text FROM chunks_v1 WHERE chunk_id = %s", (table["chunk_id"][0].as_py(),)
+    )
+    assert stored == "beforeafter"
+    assert report.rows["chunks"] == manifest.chunks_rows
