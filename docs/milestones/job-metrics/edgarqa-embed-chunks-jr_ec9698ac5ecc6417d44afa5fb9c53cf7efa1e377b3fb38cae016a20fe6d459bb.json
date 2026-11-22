@@ -1,0 +1,27 @@
+{
+ "job": "edgarqa-embed-chunks",
+ "job_run_id": "jr_ec9698ac5ecc6417d44afa5fb9c53cf7efa1e377b3fb38cae016a20fe6d459bb",
+ "note": "smoke A (control, unsorted batch 256, 12 tasks): FAILED, executors lost at 4 workers per executor",
+ "state": "FAILED",
+ "started_on": "2026-11-22T01:12:24.579000-05:00",
+ "completed_on": "2026-11-22T01:16:46.789000-05:00",
+ "execution_seconds": 245,
+ "dpu_seconds": 983.0,
+ "glue_version": "5.0",
+ "worker_type": "G.1X",
+ "number_of_workers": 4,
+ "timeout_minutes": 20,
+ "arguments": {
+  "--batch-size": "256",
+  "--rows-per-partition": "167",
+  "--max-chunks": "2000",
+  "--metrics-out": "s3://edgarqa-lake-019593222039/metrics/embed_chunks/smoke2-a.json",
+  "--forms": "10-K,10-K/A",
+  "--output-table": "lake.corpus_smoke.chunk_embeddings_a",
+  "--sort-by-length": "false"
+ },
+ "rate_usd_per_dpu_hour": 0.44,
+ "cost_usd": 0.12014444444444444,
+ "billed_dpu_seconds": 983.0,
+ "dpu_hours": 0.27305555555555555
+}

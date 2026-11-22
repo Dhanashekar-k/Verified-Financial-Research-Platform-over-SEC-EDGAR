@@ -1,0 +1,31 @@
+{
+ "job": "edgarqa-embed-chunks",
+ "job_run_id": "jr_0e38c3a586f8a1175c6f64bef83aa0b1e2998301b0639bb2207f7fbdaf584ccd",
+ "note": "smoke C (unsorted batch 32, 12 tasks) code eb4b1dd72cd4",
+ "state": "SUCCEEDED",
+ "started_on": "2026-11-22T01:27:42.185000-05:00",
+ "completed_on": "2026-11-22T01:33:07.419000-05:00",
+ "execution_seconds": 312,
+ "dpu_seconds": 1251.0,
+ "glue_version": "5.0",
+ "worker_type": "G.1X",
+ "number_of_workers": 4,
+ "timeout_minutes": 20,
+ "arguments": {
+  "--batch-size": "32",
+  "--rows-per-partition": "167",
+  "--max-chunks": "2000",
+  "--metrics-out": "s3://edgarqa-lake-019593222039/metrics/embed_chunks/smoke2-c.json",
+  "--forms": "10-K,10-K/A",
+  "--output-table": "lake.corpus_smoke.chunk_embeddings_c",
+  "--sort-by-length": "false"
+ },
+ "rate_usd_per_dpu_hour": 0.44,
+ "cost_usd": 0.15289999999999998,
+ "billed_dpu_seconds": 1251.0,
+ "dpu_hours": 0.3475,
+ "chunks": 2000,
+ "cost_scope": "whole job run including startup and fixed overhead",
+ "usd_per_100k_chunks": 7.644999999999999,
+ "chunks_per_minute_job": 384.61538461538464
+}

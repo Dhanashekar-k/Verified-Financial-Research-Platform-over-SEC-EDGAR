@@ -232,6 +232,78 @@
   "onnx_sha256": "51f1bd0addd6e859e42c2c8021a5e5461385bb676a649f4b269aa445449f2431",
   "table": "corpus_smoke.chunk_embeddings"
  },
+ "smoke2_batching_on_glue": {
+  "B_sorted_b32": {
+   "chunks_per_second_per_core": 2.3957834211787254,
+   "inference_seconds_total": 834.8,
+   "max_partition": 2.61,
+   "min_partition": 2.3,
+   "partitions": 12,
+   "rows": 2000
+  },
+  "C_unsorted_b32": {
+   "chunks_per_second_per_core": 2.0157226365652083,
+   "inference_seconds_total": 992.2,
+   "max_partition": 2.28,
+   "min_partition": 1.85,
+   "partitions": 12,
+   "rows": 2000
+  },
+  "glue_executor_cpu": {
+   "model": "Intel(R) Xeon(R) Platinum 8259CL CPU @ 2.50GHz",
+   "tracked_flags_present": "avx2,avx512f,avx512bw",
+   "usable_cpus_per_executor": 4,
+   "vnni_flag_present": false
+  },
+  "local_vs_glue_gap": {
+   "gap_x": 7.4297200000000005,
+   "glue_B_per_core": 2.3957834211787254,
+   "mac_arm64_sorted_b32_chunks_per_s_per_core": 17.8,
+   "unresolved": "hyperthreading (4 busy vCPUs on ~2 physical cores) and a slower int8 path (no VNNI flag visible, 2.5 GHz) are both plausible; not separated; documented as a hardware characteristic"
+  },
+  "ratios_on_glue": {
+   "B_vs_smoke1_baseline_unsorted_b256": 1.6914230953521803,
+   "note": "B vs smoke1 is confounded: smoke1 had only 4 of 12 cores busy; a unsorted-b256 control at full load could not run (executors lost)",
+   "sorted_vs_unsorted_same_batch32_same_load": 1.1885481552467658
+  },
+  "served_run_estimate": {
+   "E11": {
+    "hours_wall": 2.891696606060606,
+    "served_usd": 15.268158080000001,
+    "usd_per_100k_marginal": 1.3913333333333333
+   },
+   "E19": {
+    "hours_wall": 1.6741401403508773,
+    "served_usd": 14.732433235087722,
+    "usd_per_100k_marginal": 1.342514619883041
+   },
+   "E3": {
+    "hours_wall": 10.602887555555554,
+    "served_usd": 18.661082097777776,
+    "usd_per_100k_marginal": 1.7005185185185188
+   },
+   "model": "chunks x (E+1)/(E x 4 cores x rate) DPU-s / 3600 x 0.44, all cores busy, plus fixed per-run overhead"
+  },
+  "smoke1_unsorted_b256_4_busy_cores": {
+   "chunks_per_second_per_core_lower_bound": 1.4164305949008498
+  },
+  "smoke_vector_agreement_glue_x86": {
+   "B_vs_C": {
+    "below_0.9999": 0,
+    "min_cosine": 0.9999999384817176
+   },
+   "B_vs_original_batch256": {
+    "below_0.9999": 0,
+    "mean_cosine": 0.9999999989489509,
+    "min_cosine": 0.9999999384817176,
+    "n": 2000
+   },
+   "C_vs_original": {
+    "below_0.9999": 0,
+    "min_cosine": 0.9999999384817176
+   }
+  }
+ },
  "smoke_run_and_cost_extrapolation": {
   "chunks_per_second_per_core_lower_bound": 1.4164305949008498,
   "embedding_stage_seconds": 353.0,
