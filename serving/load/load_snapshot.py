@@ -30,6 +30,7 @@ from typing import Any
 import numpy as np
 import psycopg
 import pyarrow as pa
+import pyarrow.compute as pc
 import pyarrow.csv as pacsv
 import pyarrow.fs as pafs
 import pyarrow.parquet as pq
@@ -130,7 +131,7 @@ def _check_export(fs: pafs.FileSystem, root: str, manifest: Manifest) -> None:
         with fs.open_input_file(f"{base}/{first}") as handle:
             batch = next(pq.ParquetFile(handle).iter_batches(batch_size=64), None)
         if batch is not None and batch.num_rows:
-            lengths = set(pa.compute.list_value_length(batch.column("embedding")).to_pylist())
+            lengths = set(pc.list_value_length(batch.column("embedding")).to_pylist())
             if lengths != {DIM}:
                 raise LoadError(
                     f"embedding lengths in the export are {sorted(map(str, lengths))}, not {DIM}"
@@ -161,7 +162,7 @@ def _vectors_as_text(column: pa.ChunkedArray | pa.Array) -> pa.Array:
     n = len(arr)
     if arr.null_count:
         raise LoadError(f"{arr.null_count} NULL embeddings in the export")
-    lengths = set(pa.compute.list_value_length(arr).to_pylist())
+    lengths = set(pc.list_value_length(arr).to_pylist())
     if lengths != {DIM}:
         raise LoadError(f"embedding lengths {sorted(lengths)} found, every row must have {DIM}")
     flat = np.asarray(arr.flatten().to_numpy(zero_copy_only=False), dtype=np.float32)

@@ -13,7 +13,7 @@ mkdir -p "$PGDATA" /opt/edgarqa
 (umask 077; printf 'POSTGRES_PASSWORD=%s\n' "$(cat /opt/edgarqa/pgpass)" > /opt/edgarqa/pg.env)
 docker pull "$IMAGE" >/dev/null
 docker rm -f edgarqa-pg >/dev/null 2>&1 || true
-docker run -d --name edgarqa-pg --restart unless-stopped --shm-size=2g \
+docker run -d --name edgarqa-pg --restart unless-stopped --shm-size=4g \
   -p 127.0.0.1:5432:5432 \
   --env-file /opt/edgarqa/pg.env \
   -v "$PGDATA":/var/lib/postgresql/data \
