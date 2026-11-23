@@ -49,15 +49,25 @@ def test_real_catalog_loads_and_has_about_twenty_metrics() -> None:
 
 
 def test_real_catalog_revenue_chain_keeps_contract_order_and_bank_fallback() -> None:
-    """05 4.2 documents this exact chain, including the JPMorgan RevenuesNetOfInterestExpense."""
-    rev = load_catalog(CATALOG_PATH)["revenue"]
-    assert rev.tags == [
-        "RevenueFromContractWithCustomerExcludingAssessedTax",
-        "Revenues",
-        "SalesRevenueNet",
-        "RevenueFromContractWithCustomerIncludingAssessedTax",
-        "RevenuesNetOfInterestExpense",
-    ]
+    """05 4.2: the two contract-revenue tags lead the chain. After the M4 catalog review
+    (ADR-042, docs/m4/metric_catalog_proposed.patch) tax-inclusive and bank revenue are their
+    own metrics; before Shekar applies it they are still chain members. Either state passes;
+    a mix (moved out but still in the chain) fails."""
+    cat = load_catalog(CATALOG_PATH)
+    rev = cat["revenue"]
+    assert rev.tags is not None
+    assert rev.tags[:2] == ["RevenueFromContractWithCustomerExcludingAssessedTax", "Revenues"]
+    if "bank_revenue_net_of_interest_expense" in cat:
+        assert rev.tags == rev.tags[:2]
+        assert cat["bank_revenue_net_of_interest_expense"].tags == ["RevenuesNetOfInterestExpense"]
+    else:
+        assert rev.tags == [
+            "RevenueFromContractWithCustomerExcludingAssessedTax",
+            "Revenues",
+            "SalesRevenueNet",
+            "RevenueFromContractWithCustomerIncludingAssessedTax",
+            "RevenuesNetOfInterestExpense",
+        ]
 
 
 def test_real_catalog_derived_metrics_are_ratios_over_catalog_keys() -> None:
@@ -441,3 +451,46 @@ def test_cli_requires_a_dsn(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> 
     monkeypatch.delenv(cr.DSN_ENV, raising=False)
     with pytest.raises(SystemExit):
         cr.main(["--out", str(tmp_path / "o.md")])
+
+
+def test_render_shows_review_fields(monkeypatch: pytest.MonkeyPatch) -> None:
+    """ADR-042 fields are visible in the packet; a fallback without only_if says it's unused."""
+    monkeypatch.setattr(cr, "_render_tags", lambda *a, **k: [])
+    no_fetch: Any = lambda *a: [(0,)]  # noqa: E731
+    bare = MetricDef.model_validate(
+        {
+            "unit": "USD",
+            "period_type": "duration",
+            "tags": ["GrossProfit"],
+            "fallback_formula": "revenue - cost",
+        }
+    )
+    out = render_metric("gross_profit", bare, no_fetch)
+    assert "fallback only_if: NONE (the generator never uses it)" in out
+    guarded = bare.model_copy(update={"only_if": ["same_entity"], "fallback_result": "derived"})
+    assert "fallback only_if: same_entity; result: derived" in render_metric(
+        "gp", guarded, no_fetch
+    )
+    multi = MetricDef.model_validate(
+        {
+            "unit": "USD",
+            "period_type": "duration",
+            "tags": ["A", "B"],
+            "presentation_basis": "net_of_interest_expense",
+        }
+    )
+    out = render_metric("bank", multi, no_fetch)
+    assert "presentation_basis: net_of_interest_expense" in out and "multi-tag" in out
+
+
+def test_empty_only_if_is_rejected() -> None:
+    with pytest.raises(ValidationError, match="at least one"):
+        MetricDef.model_validate(
+            {
+                "unit": "USD",
+                "period_type": "duration",
+                "tags": ["A"],
+                "fallback_formula": "a - b",
+                "only_if": [],
+            }
+        )

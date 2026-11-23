@@ -43,7 +43,7 @@ import re
 from collections.abc import Callable, Sequence
 from itertools import combinations
 from pathlib import Path
-from typing import Any, Literal
+from typing import Any, Literal, get_args
 
 import yaml
 from pydantic import BaseModel, ConfigDict, model_validator
@@ -62,6 +62,16 @@ Fetch = Callable[[str, Sequence[Any]], list[tuple[Any, ...]]]
 # --- catalog model ---------------------------------------------------------------------------
 
 
+FallbackCondition = Literal[
+    "same_entity",  # every input fact has the same cik
+    "same_period",  # same period_end, and same qtrs for durations
+    "same_currency",  # same uom (USD)
+    "same_scope",  # consolidated totals only (the facts view; never facts_dimensional)
+    "inputs_verified",  # every input metric is on the verified allowlist and resolved cleanly
+]
+FALLBACK_CONDITIONS: tuple[str, ...] = get_args(FallbackCondition)
+
+
 class MetricDef(BaseModel):
     """One metric_catalog.yaml entry (05_data_contracts.md 4.2)."""
 
@@ -74,9 +84,26 @@ class MetricDef(BaseModel):
     formula: str | None = None
     fallback_formula: str | None = None
     synonyms: list[str] = []
+    # ADR-042 (M4 catalog review). A distinct presentation basis makes a metric its own concept,
+    # never a fallback of a generic one (bank revenue, tax-inclusive revenue).
+    presentation_basis: Literal["net_of_interest_expense", "including_assessed_tax"] | None = None
+    # Conditions under which fallback_formula may be used; a consumer that can't check every
+    # listed condition must not use the fallback. A fallback without only_if is never used by
+    # the numeric generator.
+    only_if: list[FallbackCondition] | None = None
+    # How a fallback_formula value is labelled: "derived" (computed), never "reported".
+    fallback_result: Literal["derived"] | None = None
 
     @model_validator(mode="after")
     def _tags_xor_formula(self) -> MetricDef:
+        if (self.only_if is not None or self.fallback_result is not None) and (
+            self.fallback_formula is None
+        ):
+            raise ValueError("`only_if` / `fallback_result` need a `fallback_formula`")
+        if self.only_if is not None and not self.only_if:
+            raise ValueError("`only_if` must list at least one condition (omit it instead)")
+        if self.only_if is not None and len(set(self.only_if)) != len(self.only_if):
+            raise ValueError(f"duplicate condition in only_if {self.only_if}")
         if (self.tags is None) == (self.formula is None):
             raise ValueError("a metric needs exactly one of `tags` or `formula`")
         if self.tags is not None:
@@ -95,7 +122,16 @@ def definition_sha(m: MetricDef) -> str:
     """12-hex sha of the parts of a definition that change VALUES: unit, period_type, tags (in
     order), formula and fallback_formula. Label and synonyms are excluded, so a wording change
     doesn't invalidate a verification, while any chain change does."""
-    payload = m.model_dump(mode="json", exclude={"label", "synonyms"})
+    payload = m.model_dump(
+        mode="json",
+        exclude={"label", "synonyms", "presentation_basis", "only_if", "fallback_result"},
+    )
+    # ADR-042 fields enter the payload only when set, so adding them to the model left the sha
+    # of every metric that doesn't use them unchanged (no verification is invalidated by it).
+    for key in ("presentation_basis", "only_if", "fallback_result"):
+        value = getattr(m, key)
+        if value is not None:
+            payload[key] = value
     canonical = json.dumps(payload, sort_keys=True, separators=(",", ":"))
     return hashlib.sha256(canonical.encode()).hexdigest()[:SHA_LEN]
 
@@ -496,6 +532,16 @@ def render_metric(
     lines = [f"## {name}", ""]
     lines.append(f"- label: {m.label or '(none)'}; unit: {m.unit}; period_type: {m.period_type}")
     lines.append(f"- definition sha (copy into the allowlist): `{name}  sha={definition_sha(m)}`")
+    if m.presentation_basis:
+        lines.append(f"- presentation_basis: {m.presentation_basis} (its own concept, ADR-042)")
+    if m.fallback_formula:
+        conds = ", ".join(m.only_if) if m.only_if else "NONE (the generator never uses it)"
+        lines.append(f"- fallback only_if: {conds}; result: {m.fallback_result or 'unlabelled'}")
+    if m.tags is not None and len(m.tags) > 1:
+        lines.append(
+            "- multi-tag: candidates are resolved (statement presentation, gross-profit "
+            "identity) or abstained, never first-populated-wins (ADR-043)"
+        )
     if m.tags is not None:
         lines += _render_tags(name, m, fetch, labels)
         if m.fallback_formula and catalog:
