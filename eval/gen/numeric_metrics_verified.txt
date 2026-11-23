@@ -1,0 +1,16 @@
+# Metrics Shekar verified at TAG-CHAIN level (M4 step 3a).
+#
+# Format: one line per verified metric:   <metric>  sha=<12 hex>
+# The sha is the metric's current definition sha, printed in the review packet next to each
+# metric (`python -m eval.gen.catalog_review`). It covers unit, period_type, tags (in order),
+# formula and fallback_formula, so any later chain change invalidates the line and
+# load_verified_metrics fails until the metric is reviewed again. '#' starts a comment; blank
+# lines are ignored.
+#
+# Only list a metric after reviewing the packet: every tag in its chain is the same concept as
+# the metric, the rows where a fallback wins look right, and conflicts and qtrs flags are
+# explained. A derived metric (formula) or a metric with a fallback_formula is only accepted
+# when all of its inputs are listed too (enforced).
+#
+# The numeric generator (eval/gen/make_numeric_set.py, step 3b) will accept only metrics
+# listed here. Nothing is listed until the review.

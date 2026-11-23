@@ -1,0 +1,200 @@
+# Metric catalog (05_data_contracts.md section 4.2).
+#
+# Initial file written once by Claude (M4 step 3a, 2026-11-22). OWNED BY SHEKAR from here on;
+# Claude may read, test and propose diffs only.
+#
+# Before numeric gold (eval/gen/make_numeric_set.py, step 3b) may use ANY metric, Shekar reviews it at
+# TAG-CHAIN level with `python -m eval.gen.catalog_review` and lists it in
+# eval/gen/numeric_metrics_verified.txt. Coverage alone proves nothing: a tag that resolves
+# to the wrong concept passes coverage AND the companyfacts second-source check (same tag on
+# both sides).
+#
+# Shape: `tags` is an ordered fallback chain (the first tag with a value for (cik, period)
+# wins); derived metrics use `formula` over other catalog keys; `fallback_formula` applies
+# only when no tag in the chain has a value. Exactly one of `tags` / `formula` per metric.
+# Tags marked "VERIFY" are less certain and need extra attention in the review.
+#
+# Chains are kept CONCEPT-PURE: a fallback tag must be the same concept as the metric, not a
+# wider or narrower one. These scope-changing fallbacks were dropped after review (2026-11-22);
+# Shekar can add any of them back as a SEPARATE metric with its own label:
+#   net_income          <- ProfitLoss (includes noncontrolling interests)
+#   r_and_d             <- ResearchAndDevelopmentExpenseExcludingAcquiredInProcessCost (narrower)
+#   interest_expense    <- InterestExpenseNonoperating (scope differs by filer)
+#   stockholders_equity <- StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest
+#   cash                <- CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents (restricted)
+#   long_term_debt      <- LongTermDebt (includes the current portion)
+#   shares_outstanding  <- dei:EntityCommonStockSharesOutstanding (cover-page date, not balance sheet)
+#   dividends_paid      <- PaymentsOfDividends (may include preferred and NCI dividends)
+
+# --- income statement (duration) ---------------------------------------------------------
+
+revenue:
+  label: Revenue
+  unit: USD
+  period_type: duration
+  tags:
+    - RevenueFromContractWithCustomerExcludingAssessedTax
+    - Revenues
+    - SalesRevenueNet
+    - RevenueFromContractWithCustomerIncludingAssessedTax
+    - RevenuesNetOfInterestExpense   # bank revenue (no Revenues tag); M1 spot check, JPMorgan
+  synonyms: [sales, net sales, total revenue, top line, turnover]
+
+cost_of_revenue:
+  label: Cost of revenue
+  unit: USD
+  period_type: duration
+  tags:
+    - CostOfRevenue
+    - CostOfGoodsAndServicesSold
+    - CostOfGoodsSold   # VERIFY: older filings; may be goods only, excluding services
+  synonyms: [cost of sales, cost of goods sold, COGS]
+
+gross_profit:
+  label: Gross profit
+  unit: USD
+  period_type: duration
+  tags: [GrossProfit]
+  fallback_formula: revenue - cost_of_revenue
+  synonyms: [gross income]
+
+operating_income:
+  label: Operating income
+  unit: USD
+  period_type: duration
+  tags: [OperatingIncomeLoss]
+  synonyms: [operating profit, income from operations]
+
+net_income:
+  label: Net income
+  unit: USD
+  period_type: duration
+  tags: [NetIncomeLoss]
+  synonyms: [net earnings, profit, bottom line, net profit]
+
+eps_basic:
+  label: Basic EPS
+  unit: USD/shares
+  period_type: duration
+  tags: [EarningsPerShareBasic]
+  synonyms: [basic earnings per share]
+
+eps_diluted:
+  label: Diluted EPS
+  unit: USD/shares
+  period_type: duration
+  tags: [EarningsPerShareDiluted]
+  synonyms: [diluted earnings per share, EPS]
+
+r_and_d:
+  label: Research and development expense
+  unit: USD
+  period_type: duration
+  tags: [ResearchAndDevelopmentExpense]
+  synonyms: [R&D, research and development]
+
+sga:
+  label: Selling, general and administrative expense
+  unit: USD
+  period_type: duration
+  tags: [SellingGeneralAndAdministrativeExpense]
+  synonyms: [SG&A]
+
+interest_expense:
+  label: Interest expense
+  unit: USD
+  period_type: duration
+  tags: [InterestExpense]
+  synonyms: [interest cost]
+
+income_tax:
+  label: Income tax expense
+  unit: USD
+  period_type: duration
+  tags: [IncomeTaxExpenseBenefit]
+  synonyms: [provision for income taxes, tax expense]
+
+# --- balance sheet (instant) -------------------------------------------------------------
+
+total_assets:
+  label: Total assets
+  unit: USD
+  period_type: instant
+  tags: [Assets]
+  synonyms: [assets]
+
+total_liabilities:
+  label: Total liabilities
+  unit: USD
+  period_type: instant
+  tags: [Liabilities]   # VERIFY: many filers don't tag a Liabilities total
+  synonyms: [liabilities]
+
+stockholders_equity:
+  label: Stockholders' equity
+  unit: USD
+  period_type: instant
+  tags: [StockholdersEquity]
+  synonyms: [shareholders' equity, equity]
+
+cash:
+  label: Cash and cash equivalents
+  unit: USD
+  period_type: instant
+  tags: [CashAndCashEquivalentsAtCarryingValue]
+  synonyms: [cash and equivalents, cash position]
+
+long_term_debt:
+  label: Long-term debt (noncurrent)
+  unit: USD
+  period_type: instant
+  tags: [LongTermDebtNoncurrent]
+  synonyms: [long-term borrowings]
+
+shares_outstanding:
+  label: Common shares outstanding
+  unit: shares
+  period_type: instant
+  tags: [CommonStockSharesOutstanding]
+  synonyms: [shares outstanding, share count]
+
+# --- cash flow (duration) ----------------------------------------------------------------
+
+operating_cash_flow:
+  label: Net cash from operating activities
+  unit: USD
+  period_type: duration
+  tags: [NetCashProvidedByUsedInOperatingActivities]
+  synonyms: [operating cash flow, cash from operations, CFO]
+
+capex:
+  label: Capital expenditures
+  unit: USD
+  period_type: duration
+  tags: [PaymentsToAcquirePropertyPlantAndEquipment]
+  synonyms: [capital expenditure, capex, purchases of property and equipment]
+
+dividends_paid:
+  label: Dividends paid
+  unit: USD
+  period_type: duration
+  tags: [PaymentsOfDividendsCommonStock]
+  synonyms: [cash dividends, dividends]
+
+# --- derived ratios ----------------------------------------------------------------------
+
+gross_margin:
+  label: Gross margin
+  unit: ratio
+  formula: gross_profit / revenue
+
+operating_margin:
+  label: Operating margin
+  unit: ratio
+  formula: operating_income / revenue
+
+net_margin:
+  label: Net margin
+  unit: ratio
+  formula: net_income / revenue
+  synonyms: [profit margin, net profit margin]
