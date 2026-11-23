@@ -1018,7 +1018,8 @@ def main(argv: list[str] | None = None) -> int:
     if not verified and not args.resolver_audit:
         raise SystemExit(f"{args.verified} lists no verified metric; nothing may be generated")
     audit_metrics = {"revenue", "cost_of_revenue"} & catalog.keys()
-    use = verified | (audit_metrics if args.resolver_audit else set())
+    # the audit reads only the resolved metrics and their identity evidence (no gold is built)
+    use = audit_metrics if args.resolver_audit else verified
 
     import psycopg
 

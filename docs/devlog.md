@@ -76,3 +76,9 @@ the day-to-day calls and progress. Append one dated entry at the end of each wor
   - implement `eval/metrics.py` with `max(tolerance_abs, tolerance_rel*|gold|)`;
   - edit M05 §3.4 and M04 §3.3/§3.7, which these ADRs supersede;
   - review ADR-042 to ADR-045.
+
+## 2026-11-23 — M4 resolver audit (box start/stop, $0 API)
+- **Run:** `make_numeric_set --resolver-audit 40`, read-only role on the serving box (corpus version not recorded by this run). Output: `eval/sets/drafts/revenue_resolver_audit.md`. No gold was generated and the allowlist is unchanged. Audit mode now reads only revenue, cost of revenue and gross-profit evidence.
+- **Result** (per the file): 482 materially conflicting (cik, period) cases. The gross-profit identity resolved 48; 434 abstained (`conflicting_candidates`); presentation resolved 0. 40 cases were sampled.
+- **Why presentation never decided** (in-session read-only diagnostic, 2026-11-23; not recorded in the audit file): the local `fsds_pre` covers only 2022Q1-2024Q1. 129 same-filing conflicts plus 7 cross-filing ones had full coverage, and in all 136 both revenue tags are presented on the income statement (component line vs total line). Presence cannot tell them apart.
+- **Next (Shekar):** decide the revenue rule (e.g. `Revenues` as the total when both are presented, the pre line order, or the full lake `fsds_pre`) before revenue is allowlisted. Box stopped.
