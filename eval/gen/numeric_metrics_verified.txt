@@ -14,3 +14,20 @@
 #
 # The numeric generator (eval/gen/make_numeric_set.py, step 3b) will accept only metrics
 # listed here. Nothing is listed until the review.
+operating_income  sha=49b10d93794f
+net_income  sha=20843640661f
+eps_basic  sha=25ea2fe44657
+eps_diluted  sha=4f94d17f1823
+r_and_d  sha=124baa9fdbb5
+sga  sha=a0a5225eb4dc
+interest_expense  sha=f47a6bbcdfa7
+income_tax  sha=c8c919932dda
+total_assets  sha=40e8f4f0b82d
+total_liabilities  sha=09c879738701
+stockholders_equity  sha=d45138dac3cf
+cash  sha=42535cdfd32d
+long_term_debt  sha=b801d09aca50
+shares_outstanding  sha=bde68c96b880
+operating_cash_flow  sha=9671ab71fee0
+capex  sha=b666602c0dc2
+dividends_paid  sha=90c340a2a857

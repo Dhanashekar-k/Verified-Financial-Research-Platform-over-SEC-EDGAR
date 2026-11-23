@@ -9,9 +9,14 @@
 # to the wrong concept passes coverage AND the companyfacts second-source check (same tag on
 # both sides).
 #
-# Shape: `tags` is an ordered fallback chain (the first tag with a value for (cik, period)
-# wins); derived metrics use `formula` over other catalog keys; `fallback_formula` applies
-# only when no tag in the chain has a value. Exactly one of `tags` / `formula` per metric.
+# Shape: `tags` lists the candidate tags in preference order. A one-tag chain is the metric;
+# with two or more, the first populated tag does NOT simply win: candidates that disagree
+# materially are resolved by income-statement presentation and the gross-profit identity,
+# or the gold generator abstains (ADR-043; the engine's rule is M5's). Derived metrics use `formula` over other catalog keys; `fallback_formula`
+# applies only when no tag has a value, only under every `only_if` condition, and its result
+# is labelled `fallback_result: derived` (ADR-042). `presentation_basis` marks a metric whose
+# basis differs from the generic concept (it is never a fallback of one).
+# Exactly one of `tags` / `formula` per metric.
 # Tags marked "VERIFY" are less certain and need extra attention in the review.
 #
 # Chains are kept CONCEPT-PURE: a fallback tag must be the same concept as the metric, not a
@@ -32,22 +37,39 @@ revenue:
   label: Revenue
   unit: USD
   period_type: duration
+  # ADR-042: the two tags are candidates, not a first-wins chain (they differ by >1% in 63.9%
+  # of same-period pairs). Conflicts are resolved by income-statement presentation and the
+  # gross-profit identity, else abstained (ADR-043).
   tags:
     - RevenueFromContractWithCustomerExcludingAssessedTax
     - Revenues
-    - SalesRevenueNet
-    - RevenueFromContractWithCustomerIncludingAssessedTax
-    - RevenuesNetOfInterestExpense   # bank revenue (no Revenues tag); M1 spot check, JPMorgan
   synonyms: [sales, net sales, total revenue, top line, turnover]
+
+revenue_including_assessed_tax:
+  label: Revenue including assessed taxes (excise and sales taxes)
+  unit: USD
+  period_type: duration
+  presentation_basis: including_assessed_tax
+  tags: [RevenueFromContractWithCustomerIncludingAssessedTax]
+  synonyms: [gross revenue including excise taxes]
+
+bank_revenue_net_of_interest_expense:
+  label: Total net revenue (net of interest expense)
+  unit: USD
+  period_type: duration
+  presentation_basis: net_of_interest_expense
+  tags: [RevenuesNetOfInterestExpense]   # M1 spot check, JPMorgan
+  synonyms: [total net revenue, managed revenue]
 
 cost_of_revenue:
   label: Cost of revenue
   unit: USD
   period_type: duration
+  # ADR-042: CostOfRevenue (consolidated total) preferred, conditionally: a material,
+  # unreconciled disagreement between the two tags abstains (ADR-043).
   tags:
     - CostOfRevenue
     - CostOfGoodsAndServicesSold
-    - CostOfGoodsSold   # VERIFY: older filings; may be goods only, excluding services
   synonyms: [cost of sales, cost of goods sold, COGS]
 
 gross_profit:
@@ -56,6 +78,8 @@ gross_profit:
   period_type: duration
   tags: [GrossProfit]
   fallback_formula: revenue - cost_of_revenue
+  only_if: [same_entity, same_period, same_currency, same_scope, inputs_verified]
+  fallback_result: derived
   synonyms: [gross income]
 
 operating_income:
@@ -127,7 +151,7 @@ total_liabilities:
   label: Total liabilities
   unit: USD
   period_type: instant
-  tags: [Liabilities]   # VERIFY: many filers don't tag a Liabilities total
+  tags: [Liabilities]   # kept (ADR-042): consolidated balance-sheet total, instant; many filers don't tag it
   synonyms: [liabilities]
 
 stockholders_equity:
@@ -145,7 +169,7 @@ cash:
   synonyms: [cash and equivalents, cash position]
 
 long_term_debt:
-  label: Long-term debt (noncurrent)
+  label: Noncurrent long-term debt   # excludes the current portion and lease liabilities (ADR-042)
   unit: USD
   period_type: instant
   tags: [LongTermDebtNoncurrent]
@@ -155,7 +179,7 @@ shares_outstanding:
   label: Common shares outstanding
   unit: shares
   period_type: instant
-  tags: [CommonStockSharesOutstanding]
+  tags: [CommonStockSharesOutstanding]   # balance-sheet date; not dei cover-page, not weighted-average (ADR-042)
   synonyms: [shares outstanding, share count]
 
 # --- cash flow (duration) ----------------------------------------------------------------
