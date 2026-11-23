@@ -1,0 +1,790 @@
+{
+  "gold_chunk_ids": {
+    "fb-00005": [
+      "fb:CORNING_2022_10K#p60#0000",
+      "fb:CORNING_2022_10K#p60#0001"
+    ],
+    "fb-00070": [
+      "fb:AMERICANWATERWORKS_2022_10K#p81#0000",
+      "fb:AMERICANWATERWORKS_2022_10K#p82#0000",
+      "fb:AMERICANWATERWORKS_2022_10K#p82#0001"
+    ],
+    "fb-00080": [
+      "fb:PAYPAL_2022_10K#p61#0000",
+      "fb:PAYPAL_2022_10K#p61#0001"
+    ],
+    "fb-00206": [
+      "fb:JPMORGAN_2022_10K#p3#0000",
+      "fb:JPMORGAN_2022_10K#p3#0001",
+      "fb:JPMORGAN_2022_10K#p3#0002",
+      "fb:JPMORGAN_2022_10K#p3#0003"
+    ],
+    "fb-00215": [
+      "fb:VERIZON_2022_10K#p23#0000",
+      "fb:VERIZON_2022_10K#p23#0001",
+      "fb:VERIZON_2022_10K#p23#0002",
+      "fb:VERIZON_2022_10K#p56#0000",
+      "fb:VERIZON_2022_10K#p56#0001"
+    ],
+    "fb-00216": [
+      "fb:VERIZON_2022_10K#p56#0000",
+      "fb:VERIZON_2022_10K#p56#0001"
+    ],
+    "fb-00222": [
+      "fb:AMD_2022_10K#p56#0000",
+      "fb:AMD_2022_10K#p56#0001"
+    ],
+    "fb-00283": [
+      "fb:Pfizer_2023Q2_10Q#p41#0000",
+      "fb:Pfizer_2023Q2_10Q#p41#0001",
+      "fb:Pfizer_2023Q2_10Q#p41#0002"
+    ],
+    "fb-00288": [
+      "fb:BESTBUY_2024Q2_10Q#p20#0000",
+      "fb:BESTBUY_2024Q2_10Q#p20#0001",
+      "fb:BESTBUY_2024Q2_10Q#p20#0002",
+      "fb:BESTBUY_2024Q2_10Q#p20#0003"
+    ],
+    "fb-00299": [
+      "fb:JPMORGAN_2021Q1_10Q#p19#0000",
+      "fb:JPMORGAN_2021Q1_10Q#p19#0001"
+    ],
+    "fb-00302": [
+      "fb:PFIZER_2021_10K#p59#0000",
+      "fb:PFIZER_2021_10K#p59#0001"
+    ],
+    "fb-00382": [
+      "fb:MGMRESORTS_2022Q4_EARNINGS#p13#0000",
+      "fb:MGMRESORTS_2022Q4_EARNINGS#p13#0001"
+    ],
+    "fb-00394": [
+      "fb:JPMORGAN_2022Q2_10Q#p21#0000",
+      "fb:JPMORGAN_2022Q2_10Q#p21#0001",
+      "fb:JPMORGAN_2022Q2_10Q#p21#0002",
+      "fb:JPMORGAN_2022Q2_10Q#p21#0003"
+    ],
+    "fb-00407": [
+      "fb:MGMRESORTS_2023Q2_10Q#p11#0000",
+      "fb:MGMRESORTS_2023Q2_10Q#p11#0001",
+      "fb:MGMRESORTS_2023Q2_10Q#p11#0002"
+    ],
+    "fb-00438": [
+      "fb:ADOBE_2022_10K#p54#0000",
+      "fb:ADOBE_2022_10K#p54#0001"
+    ],
+    "fb-00460": [
+      "fb:BESTBUY_2024Q2_10Q#p17#0000",
+      "fb:BESTBUY_2024Q2_10Q#p17#0001",
+      "fb:BESTBUY_2024Q2_10Q#p17#0002"
+    ],
+    "fb-00464": [
+      "fb:BOEING_2022_10K#p8#0000",
+      "fb:BOEING_2022_10K#p8#0001"
+    ],
+    "fb-00476": [
+      "fb:AMERICANEXPRESS_2022_10K#p1#0000",
+      "fb:AMERICANEXPRESS_2022_10K#p1#0001",
+      "fb:AMERICANEXPRESS_2022_10K#p1#0002"
+    ],
+    "fb-00494": [
+      "fb:BOEING_2022_10K#p9#0000",
+      "fb:BOEING_2022_10K#p9#0001",
+      "fb:BOEING_2022_10K#p9#0002"
+    ],
+    "fb-00499": [
+      "fb:3M_2022_10K#p48#0000",
+      "fb:3M_2022_10K#p48#0001",
+      "fb:3M_2022_10K#p50#0000",
+      "fb:3M_2022_10K#p50#0001",
+      "fb:3M_2022_10K#p52#0000",
+      "fb:3M_2022_10K#p52#0001",
+      "fb:3M_2022_10K#p52#0002"
+    ],
+    "fb-00517": [
+      "fb:BOEING_2022_10K#p62#0000",
+      "fb:BOEING_2022_10K#p62#0001"
+    ],
+    "fb-00521": [
+      "fb:ULTABEAUTY_2023_10K#p57#0000",
+      "fb:ULTABEAUTY_2023_10K#p57#0001",
+      "fb:ULTABEAUTY_2023_10K#p57#0002"
+    ],
+    "fb-00540": [
+      "fb:AES_2022_10K#p130#0000",
+      "fb:AES_2022_10K#p130#0001",
+      "fb:AES_2022_10K#p130#0002",
+      "fb:AES_2022_10K#p132#0000",
+      "fb:AES_2022_10K#p132#0001",
+      "fb:AES_2022_10K#p132#0002"
+    ],
+    "fb-00552": [
+      "fb:MICROSOFT_2023_10K#p60#0000",
+      "fb:MICROSOFT_2023_10K#p60#0001"
+    ],
+    "fb-00563": [
+      "fb:AMD_2022_10K#p48#0000",
+      "fb:AMD_2022_10K#p48#0001"
+    ],
+    "fb-00566": [
+      "fb:VERIZON_2022_10K#p77#0000",
+      "fb:VERIZON_2022_10K#p77#0001",
+      "fb:VERIZON_2022_10K#p77#0002"
+    ],
+    "fb-00585": [
+      "fb:BOEING_2022_10K#p55#0000",
+      "fb:BOEING_2022_10K#p55#0001"
+    ],
+    "fb-00591": [
+      "fb:ADOBE_2022_10K#p57#0000",
+      "fb:ADOBE_2022_10K#p57#0001",
+      "fb:ADOBE_2022_10K#p57#0002"
+    ],
+    "fb-00601": [
+      "fb:ULTABEAUTY_2023Q4_EARNINGS#p2#0000",
+      "fb:ULTABEAUTY_2023Q4_EARNINGS#p2#0001",
+      "fb:ULTABEAUTY_2023Q4_EARNINGS#p2#0002"
+    ],
+    "fb-00603": [
+      "fb:ULTABEAUTY_2023Q4_EARNINGS#p3#0000",
+      "fb:ULTABEAUTY_2023Q4_EARNINGS#p3#0001"
+    ],
+    "fb-00605": [
+      "fb:ULTABEAUTY_2023Q4_EARNINGS#p3#0000",
+      "fb:ULTABEAUTY_2023Q4_EARNINGS#p3#0001"
+    ],
+    "fb-00606": [
+      "fb:ULTABEAUTY_2023Q4_EARNINGS#p2#0000",
+      "fb:ULTABEAUTY_2023Q4_EARNINGS#p2#0001",
+      "fb:ULTABEAUTY_2023Q4_EARNINGS#p2#0002"
+    ],
+    "fb-00651": [
+      "fb:JOHNSON_JOHNSON_2022Q4_EARNINGS#p1#0000",
+      "fb:JOHNSON_JOHNSON_2022Q4_EARNINGS#p1#0001"
+    ],
+    "fb-00669": [
+      "fb:JOHNSON_JOHNSON_2022_10K#p34#0000"
+    ],
+    "fb-00678": [
+      "fb:BOEING_2022_10K#p55#0000",
+      "fb:BOEING_2022_10K#p55#0001"
+    ],
+    "fb-00684": [
+      "fb:AMCOR_2023_10K#p50#0000",
+      "fb:AMCOR_2023_10K#p50#0001"
+    ],
+    "fb-00685": [
+      "fb:BESTBUY_2023_10K#p40#0000"
+    ],
+    "fb-00702": [
+      "fb:PFIZER_2021_10K#p57#0000",
+      "fb:PFIZER_2021_10K#p57#0001"
+    ],
+    "fb-00705": [
+      "fb:PEPSICO_2023_8K_dated-2023-05-30#p2#0000",
+      "fb:PEPSICO_2023_8K_dated-2023-05-30#p2#0001",
+      "fb:PEPSICO_2023_8K_dated-2023-05-30#p2#0002",
+      "fb:PEPSICO_2023_8K_dated-2023-05-30#p2#0003"
+    ],
+    "fb-00711": [
+      "fb:JOHNSON_JOHNSON_2022_10K#p46#0000",
+      "fb:JOHNSON_JOHNSON_2022_10K#p46#0001",
+      "fb:JOHNSON_JOHNSON_2022_10K#p47#0000"
+    ],
+    "fb-00720": [
+      "fb:AMERICANEXPRESS_2022_10K#p96#0000",
+      "fb:AMERICANEXPRESS_2022_10K#p96#0001"
+    ],
+    "fb-00723": [
+      "fb:AMERICANEXPRESS_2022_10K#p96#0000",
+      "fb:AMERICANEXPRESS_2022_10K#p96#0001"
+    ],
+    "fb-00724": [
+      "fb:Pfizer_2023Q2_10Q#p38#0000",
+      "fb:Pfizer_2023Q2_10Q#p38#0001",
+      "fb:Pfizer_2023Q2_10Q#p38#0002",
+      "fb:Pfizer_2023Q2_10Q#p38#0003"
+    ],
+    "fb-00735": [
+      "fb:PEPSICO_2022_10K#p26#0000",
+      "fb:PEPSICO_2022_10K#p26#0001"
+    ],
+    "fb-00746": [
+      "fb:ULTABEAUTY_2023_10K#p1#0000",
+      "fb:ULTABEAUTY_2023_10K#p1#0001",
+      "fb:ULTABEAUTY_2023_10K#p1#0002"
+    ],
+    "fb-00757": [
+      "fb:AMD_2022_10K#p12#0000",
+      "fb:AMD_2022_10K#p12#0001"
+    ],
+    "fb-00790": [
+      "fb:CVSHEALTH_2022_10K#p108#0000",
+      "fb:CVSHEALTH_2022_10K#p108#0001",
+      "fb:CVSHEALTH_2022_10K#p110#0000",
+      "fb:CVSHEALTH_2022_10K#p110#0001"
+    ],
+    "fb-00799": [
+      "fb:AMCOR_2023_10K#p52#0000",
+      "fb:AMCOR_2023_10K#p52#0001"
+    ],
+    "fb-00807": [
+      "fb:3M_2023Q2_10Q#p5#0000",
+      "fb:3M_2023Q2_10Q#p5#0001"
+    ],
+    "fb-00822": [
+      "fb:FOOTLOCKER_2022_8K_dated-2022-05-20#p2#0000",
+      "fb:FOOTLOCKER_2022_8K_dated-2022-05-20#p2#0001",
+      "fb:FOOTLOCKER_2022_8K_dated-2022-05-20#p2#0002"
+    ],
+    "fb-00839": [
+      "fb:FOOTLOCKER_2022_8K_dated_2022-08-19#p2#0000",
+      "fb:FOOTLOCKER_2022_8K_dated_2022-08-19#p2#0001",
+      "fb:FOOTLOCKER_2022_8K_dated_2022-08-19#p2#0002",
+      "fb:FOOTLOCKER_2022_8K_dated_2022-08-19#p2#0003"
+    ],
+    "fb-00859": [
+      "fb:VERIZON_2021_10K#p85#0000",
+      "fb:VERIZON_2021_10K#p85#0001",
+      "fb:VERIZON_2021_10K#p85#0002"
+    ],
+    "fb-00882": [
+      "fb:PEPSICO_2023_8K_dated-2023-05-30#p2#0000",
+      "fb:PEPSICO_2023_8K_dated-2023-05-30#p2#0001",
+      "fb:PEPSICO_2023_8K_dated-2023-05-30#p2#0002",
+      "fb:PEPSICO_2023_8K_dated-2023-05-30#p2#0003"
+    ],
+    "fb-00917": [
+      "fb:AMD_2022_10K#p43#0000",
+      "fb:AMD_2022_10K#p43#0001",
+      "fb:AMD_2022_10K#p43#0002"
+    ],
+    "fb-00941": [
+      "fb:3M_2023Q2_10Q#p1#0000",
+      "fb:3M_2023Q2_10Q#p1#0001",
+      "fb:3M_2023Q2_10Q#p1#0002"
+    ],
+    "fb-00956": [
+      "fb:JOHNSON_JOHNSON_2022_10K#p28#0000",
+      "fb:JOHNSON_JOHNSON_2022_10K#p28#0001"
+    ],
+    "fb-00995": [
+      "fb:AMD_2022_10K#p4#0000",
+      "fb:AMD_2022_10K#p4#0001",
+      "fb:AMD_2022_10K#p4#0002"
+    ],
+    "fb-01009": [
+      "fb:PEPSICO_2022_10K#p4#0000",
+      "fb:PEPSICO_2022_10K#p4#0001",
+      "fb:PEPSICO_2022_10K#p4#0002",
+      "fb:PEPSICO_2022_10K#p5#0000",
+      "fb:PEPSICO_2022_10K#p5#0001",
+      "fb:PEPSICO_2022_10K#p5#0002"
+    ],
+    "fb-01028": [
+      "fb:AMERICANEXPRESS_2022_10K#p155#0000",
+      "fb:AMERICANEXPRESS_2022_10K#p155#0001"
+    ],
+    "fb-01077": [
+      "fb:BESTBUY_2023_10K#p51#0000",
+      "fb:BESTBUY_2023_10K#p51#0001",
+      "fb:BESTBUY_2023_10K#p51#0002"
+    ],
+    "fb-01079": [
+      "fb:AMCOR_2023_10K#p64#0000",
+      "fb:AMCOR_2023_10K#p64#0001",
+      "fb:AMCOR_2023_10K#p64#0002"
+    ],
+    "fb-01091": [
+      "fb:BOEING_2022_10K#p113#0000",
+      "fb:BOEING_2022_10K#p113#0001"
+    ],
+    "fb-01107": [
+      "fb:CVSHEALTH_2022_10K#p173#0000",
+      "fb:CVSHEALTH_2022_10K#p173#0001",
+      "fb:CVSHEALTH_2022_10K#p173#0002",
+      "fb:CVSHEALTH_2022_10K#p174#0000",
+      "fb:CVSHEALTH_2022_10K#p174#0001",
+      "fb:CVSHEALTH_2022_10K#p174#0002"
+    ],
+    "fb-01148": [
+      "fb:AMCOR_2023_10K#p5#0000",
+      "fb:AMCOR_2023_10K#p5#0001"
+    ],
+    "fb-01163": [
+      "fb:NIKE_2023_10K#p62#0000",
+      "fb:NIKE_2023_10K#p62#0001",
+      "fb:NIKE_2023_10K#p62#0002"
+    ],
+    "fb-01198": [
+      "fb:AMD_2022_10K#p43#0000",
+      "fb:AMD_2022_10K#p43#0001",
+      "fb:AMD_2022_10K#p43#0002"
+    ],
+    "fb-01226": [
+      "fb:3M_2022_10K#p27#0000",
+      "fb:3M_2022_10K#p27#0001"
+    ],
+    "fb-01244": [
+      "fb:CVSHEALTH_2022_10K#p68#0000",
+      "fb:CVSHEALTH_2022_10K#p68#0001",
+      "fb:CVSHEALTH_2022_10K#p68#0002"
+    ],
+    "fb-01254": [
+      "fb:MGMRESORTS_2022_10K#p32#0000",
+      "fb:MGMRESORTS_2022_10K#p32#0001"
+    ],
+    "fb-01275": [
+      "fb:BESTBUY_2023_10K#p42#0000",
+      "fb:BESTBUY_2023_10K#p42#0001"
+    ],
+    "fb-01279": [
+      "fb:AMD_2022_10K#p58#0000",
+      "fb:AMD_2022_10K#p58#0001"
+    ],
+    "fb-01290": [
+      "fb:BOEING_2022_10K#p10#0000",
+      "fb:BOEING_2022_10K#p10#0001",
+      "fb:BOEING_2022_10K#p10#0002",
+      "fb:BOEING_2022_10K#p14#0000",
+      "fb:BOEING_2022_10K#p14#0001",
+      "fb:BOEING_2022_10K#p14#0002",
+      "fb:BOEING_2022_10K#p8#0000",
+      "fb:BOEING_2022_10K#p8#0001"
+    ],
+    "fb-01319": [
+      "fb:AES_2022_10K#p132#0000",
+      "fb:AES_2022_10K#p132#0001",
+      "fb:AES_2022_10K#p132#0002"
+    ],
+    "fb-01328": [
+      "fb:PEPSICO_2022_10K#p78#0000",
+      "fb:PEPSICO_2022_10K#p78#0001"
+    ],
+    "fb-01346": [
+      "fb:CORNING_2022_10K#p24#0000",
+      "fb:CORNING_2022_10K#p24#0001"
+    ],
+    "fb-01351": [
+      "fb:AMERICANEXPRESS_2022_10K#p44#0000",
+      "fb:AMERICANEXPRESS_2022_10K#p44#0001",
+      "fb:AMERICANEXPRESS_2022_10K#p44#0002"
+    ],
+    "fb-01474": [
+      "fb:PEPSICO_2023Q1_EARNINGS#p1#0000",
+      "fb:PEPSICO_2023Q1_EARNINGS#p1#0001"
+    ],
+    "fb-01476": [
+      "fb:PEPSICO_2023Q1_EARNINGS#p1#0000",
+      "fb:PEPSICO_2023Q1_EARNINGS#p1#0001"
+    ],
+    "fb-01482": [
+      "fb:PEPSICO_2023_8K_dated-2023-05-05#p4#0000"
+    ],
+    "fb-01484": [
+      "fb:JOHNSON_JOHNSON_2022Q4_EARNINGS#p2#0000",
+      "fb:JOHNSON_JOHNSON_2022Q4_EARNINGS#p2#0001"
+    ],
+    "fb-01487": [
+      "fb:JOHNSON_JOHNSON_2023Q2_EARNINGS#p10#0000",
+      "fb:JOHNSON_JOHNSON_2023Q2_EARNINGS#p10#0001"
+    ],
+    "fb-01488": [
+      "fb:JOHNSON_JOHNSON_2023_8K_dated-2023-08-30#p4#0000",
+      "fb:JOHNSON_JOHNSON_2023_8K_dated-2023-08-30#p4#0001"
+    ],
+    "fb-01490": [
+      "fb:JOHNSON_JOHNSON_2023_8K_dated-2023-08-30#p4#0000",
+      "fb:JOHNSON_JOHNSON_2023_8K_dated-2023-08-30#p4#0001"
+    ],
+    "fb-01491": [
+      "fb:JOHNSON_JOHNSON_2023_8K_dated-2023-08-30#p4#0000",
+      "fb:JOHNSON_JOHNSON_2023_8K_dated-2023-08-30#p4#0001"
+    ],
+    "fb-01858": [
+      "fb:3M_2023Q2_10Q#p62#0000",
+      "fb:3M_2023Q2_10Q#p62#0001",
+      "fb:3M_2023Q2_10Q#p62#0002"
+    ],
+    "fb-01865": [
+      "fb:3M_2022_10K#p25#0000",
+      "fb:3M_2022_10K#p25#0001",
+      "fb:3M_2022_10K#p25#0002"
+    ],
+    "fb-01902": [
+      "fb:BESTBUY_2024Q2_10Q#p18#0000",
+      "fb:BESTBUY_2024Q2_10Q#p18#0001",
+      "fb:BESTBUY_2024Q2_10Q#p18#0002"
+    ],
+    "fb-01911": [
+      "fb:MGMRESORTS_2022Q4_EARNINGS#p14#0000",
+      "fb:MGMRESORTS_2022Q4_EARNINGS#p14#0001",
+      "fb:MGMRESORTS_2022Q4_EARNINGS#p14#0002"
+    ],
+    "fb-01912": [
+      "fb:MGMRESORTS_2022Q4_EARNINGS#p3#0000",
+      "fb:MGMRESORTS_2022Q4_EARNINGS#p3#0001",
+      "fb:MGMRESORTS_2022Q4_EARNINGS#p4#0000",
+      "fb:MGMRESORTS_2022Q4_EARNINGS#p4#0001"
+    ],
+    "fb-01928": [
+      "fb:AMCOR_2023Q4_EARNINGS#p12#0000",
+      "fb:AMCOR_2023Q4_EARNINGS#p12#0001",
+      "fb:AMCOR_2023Q4_EARNINGS#p12#0002"
+    ],
+    "fb-01930": [
+      "fb:AMCOR_2023Q4_EARNINGS#p10#0000"
+    ],
+    "fb-01935": [
+      "fb:AMCOR_2022_8K_dated-2022-07-01#p2#0000",
+      "fb:AMCOR_2022_8K_dated-2022-07-01#p2#0001",
+      "fb:AMCOR_2022_8K_dated-2022-07-01#p2#0002",
+      "fb:AMCOR_2022_8K_dated-2022-07-01#p2#0003"
+    ],
+    "fb-01936": [
+      "fb:AMCOR_2023Q2_10Q#p15#0000"
+    ],
+    "fb-01964": [
+      "fb:AMERICANEXPRESS_2022_10K#p98#0000",
+      "fb:AMERICANEXPRESS_2022_10K#p98#0001"
+    ],
+    "fb-01981": [
+      "fb:AMERICANEXPRESS_2022_10K#p45#0000",
+      "fb:AMERICANEXPRESS_2022_10K#p45#0001",
+      "fb:AMERICANEXPRESS_2022_10K#p45#0002"
+    ],
+    "fb-02024": [
+      "fb:VERIZON_2021_10K#p63#0000",
+      "fb:VERIZON_2021_10K#p63#0001",
+      "fb:VERIZON_2021_10K#p63#0002",
+      "fb:VERIZON_2021_10K#p94#0000",
+      "fb:VERIZON_2021_10K#p94#0001",
+      "fb:VERIZON_2021_10K#p94#0002"
+    ],
+    "fb-02049": [
+      "fb:JPMORGAN_2023Q2_10Q#p85#0000",
+      "fb:JPMORGAN_2023Q2_10Q#p85#0001",
+      "fb:JPMORGAN_2023Q2_10Q#p85#0002"
+    ],
+    "fb-02119": [
+      "fb:JPMORGAN_2021Q1_10Q#p6#0000",
+      "fb:JPMORGAN_2021Q1_10Q#p6#0001"
+    ],
+    "fb-02416": [
+      "fb:PFIZER_2021_10K#p70#0000",
+      "fb:PFIZER_2021_10K#p70#0001",
+      "fb:PFIZER_2021_10K#p70#0002",
+      "fb:PFIZER_2021_10K#p70#0003",
+      "fb:PFIZER_2021_10K#p71#0000",
+      "fb:PFIZER_2021_10K#p71#0001",
+      "fb:PFIZER_2021_10K#p71#0002",
+      "fb:PFIZER_2021_10K#p71#0003",
+      "fb:PFIZER_2021_10K#p71#0004"
+    ],
+    "fb-02419": [
+      "fb:Pfizer_2023Q2_10Q#p41#0000",
+      "fb:Pfizer_2023Q2_10Q#p41#0001",
+      "fb:Pfizer_2023Q2_10Q#p41#0002"
+    ],
+    "fb-02608": [
+      "fb:BESTBUY_2017_10K#p56#0000",
+      "fb:BESTBUY_2017_10K#p56#0001"
+    ],
+    "fb-02981": [
+      "fb:CORNING_2021_10K#p65#0000",
+      "fb:CORNING_2021_10K#p65#0001"
+    ],
+    "fb-02987": [
+      "fb:ACTIVISIONBLIZZARD_2019_10K#p69#0000",
+      "fb:ACTIVISIONBLIZZARD_2019_10K#p69#0001",
+      "fb:ACTIVISIONBLIZZARD_2019_10K#p70#0000",
+      "fb:ACTIVISIONBLIZZARD_2019_10K#p70#0001"
+    ],
+    "fb-03029": [
+      "fb:3M_2018_10K#p60#0000",
+      "fb:3M_2018_10K#p60#0001",
+      "fb:3M_2018_10K#p60#0002"
+    ],
+    "fb-03031": [
+      "fb:LOCKHEEDMARTIN_2021_10K#p68#0000",
+      "fb:LOCKHEEDMARTIN_2021_10K#p68#0001"
+    ],
+    "fb-03069": [
+      "fb:AMD_2015_10K#p56#0000",
+      "fb:AMD_2015_10K#p60#0000",
+      "fb:AMD_2015_10K#p60#0001"
+    ],
+    "fb-03282": [
+      "fb:NETFLIX_2017_10K#p45#0000",
+      "fb:NETFLIX_2017_10K#p45#0001"
+    ],
+    "fb-03471": [
+      "fb:GENERALMILLS_2020_10K#p50#0000",
+      "fb:GENERALMILLS_2020_10K#p50#0001"
+    ],
+    "fb-03473": [
+      "fb:COCACOLA_2017_10K#p74#0000",
+      "fb:COCACOLA_2017_10K#p74#0001",
+      "fb:COCACOLA_2017_10K#p76#0000",
+      "fb:COCACOLA_2017_10K#p76#0001"
+    ],
+    "fb-03531": [
+      "fb:NIKE_2019_10K#p54#0000",
+      "fb:NIKE_2019_10K#p54#0001"
+    ],
+    "fb-03620": [
+      "fb:PEPSICO_2022_10K#p62#0000",
+      "fb:PEPSICO_2022_10K#p62#0001",
+      "fb:PEPSICO_2022_10K#p64#0000",
+      "fb:PEPSICO_2022_10K#p64#0001"
+    ],
+    "fb-03718": [
+      "fb:LOCKHEEDMARTIN_2022_10K#p63#0000",
+      "fb:LOCKHEEDMARTIN_2022_10K#p63#0001"
+    ],
+    "fb-03838": [
+      "fb:BLOCK_2020_10K#p86#0000",
+      "fb:BLOCK_2020_10K#p86#0001"
+    ],
+    "fb-03849": [
+      "fb:MGMRESORTS_2020_10K#p65#0000",
+      "fb:MGMRESORTS_2020_10K#p65#0001",
+      "fb:MGMRESORTS_2020_10K#p65#0002",
+      "fb:MGMRESORTS_2020_10K#p67#0000",
+      "fb:MGMRESORTS_2020_10K#p67#0001",
+      "fb:MGMRESORTS_2020_10K#p67#0002",
+      "fb:MGMRESORTS_2020_10K#p67#0003"
+    ],
+    "fb-03856": [
+      "fb:ADOBE_2017_10K#p57#0000",
+      "fb:ADOBE_2017_10K#p57#0001",
+      "fb:ADOBE_2017_10K#p61#0000",
+      "fb:ADOBE_2017_10K#p61#0001",
+      "fb:ADOBE_2017_10K#p61#0002",
+      "fb:ADOBE_2017_10K#p61#0003"
+    ],
+    "fb-03882": [
+      "fb:AMCOR_2020_10K#p50#0000",
+      "fb:AMCOR_2020_10K#p50#0001",
+      "fb:AMCOR_2020_10K#p50#0002"
+    ],
+    "fb-04080": [
+      "fb:NIKE_2021_10K#p59#0000",
+      "fb:NIKE_2021_10K#p61#0000",
+      "fb:NIKE_2021_10K#p61#0001"
+    ],
+    "fb-04103": [
+      "fb:GENERALMILLS_2019_10K#p53#0000",
+      "fb:GENERALMILLS_2019_10K#p53#0001",
+      "fb:GENERALMILLS_2019_10K#p55#0000",
+      "fb:GENERALMILLS_2019_10K#p55#0001"
+    ],
+    "fb-04171": [
+      "fb:MGMRESORTS_2018_10K#p57#0000",
+      "fb:MGMRESORTS_2018_10K#p57#0001"
+    ],
+    "fb-04209": [
+      "fb:COSTCO_2021_10K#p38#0000",
+      "fb:COSTCO_2021_10K#p38#0001"
+    ],
+    "fb-04254": [
+      "fb:AMERICANWATERWORKS_2021_10K#p86#0000",
+      "fb:AMERICANWATERWORKS_2021_10K#p86#0001",
+      "fb:AMERICANWATERWORKS_2021_10K#p88#0000",
+      "fb:AMERICANWATERWORKS_2021_10K#p88#0001",
+      "fb:AMERICANWATERWORKS_2021_10K#p88#0002"
+    ],
+    "fb-04302": [
+      "fb:NIKE_2018_10K#p46#0000"
+    ],
+    "fb-04412": [
+      "fb:LOCKHEEDMARTIN_2020_10K#p67#0000",
+      "fb:LOCKHEEDMARTIN_2020_10K#p67#0001",
+      "fb:LOCKHEEDMARTIN_2020_10K#p69#0000",
+      "fb:LOCKHEEDMARTIN_2020_10K#p69#0001"
+    ],
+    "fb-04417": [
+      "fb:BESTBUY_2019_10K#p52#0000",
+      "fb:BESTBUY_2019_10K#p52#0001"
+    ],
+    "fb-04458": [
+      "fb:NETFLIX_2015_10K#p40#0000",
+      "fb:NETFLIX_2015_10K#p42#0000",
+      "fb:NETFLIX_2015_10K#p42#0001",
+      "fb:NETFLIX_2015_10K#p42#0002"
+    ],
+    "fb-04481": [
+      "fb:PEPSICO_2022_10K#p62#0000",
+      "fb:PEPSICO_2022_10K#p62#0001",
+      "fb:PEPSICO_2022_10K#p64#0000",
+      "fb:PEPSICO_2022_10K#p64#0001"
+    ],
+    "fb-04660": [
+      "fb:BLOCK_2016_10K#p68#0000",
+      "fb:BLOCK_2016_10K#p68#0001"
+    ],
+    "fb-04672": [
+      "fb:3M_2018_10K#p58#0000",
+      "fb:3M_2018_10K#p58#0001"
+    ],
+    "fb-04700": [
+      "fb:MICROSOFT_2016_10K#p52#0000",
+      "fb:MICROSOFT_2016_10K#p52#0001"
+    ],
+    "fb-04735": [
+      "fb:ADOBE_2015_10K#p59#0000",
+      "fb:ADOBE_2015_10K#p59#0001",
+      "fb:ADOBE_2015_10K#p59#0002",
+      "fb:ADOBE_2015_10K#p59#0003",
+      "fb:ADOBE_2015_10K#p59#0004",
+      "fb:ADOBE_2015_10K#p59#0005",
+      "fb:ADOBE_2015_10K#p59#0006",
+      "fb:ADOBE_2015_10K#p59#0007",
+      "fb:ADOBE_2015_10K#p59#0008",
+      "fb:ADOBE_2015_10K#p59#0009",
+      "fb:ADOBE_2015_10K#p59#0010",
+      "fb:ADOBE_2015_10K#p59#0011",
+      "fb:ADOBE_2015_10K#p59#0012",
+      "fb:ADOBE_2015_10K#p59#0013",
+      "fb:ADOBE_2015_10K#p59#0014",
+      "fb:ADOBE_2015_10K#p63#0000",
+      "fb:ADOBE_2015_10K#p63#0001",
+      "fb:ADOBE_2015_10K#p63#0002",
+      "fb:ADOBE_2015_10K#p63#0003",
+      "fb:ADOBE_2015_10K#p63#0004",
+      "fb:ADOBE_2015_10K#p63#0005",
+      "fb:ADOBE_2015_10K#p63#0006",
+      "fb:ADOBE_2015_10K#p63#0007",
+      "fb:ADOBE_2015_10K#p63#0008",
+      "fb:ADOBE_2015_10K#p63#0009",
+      "fb:ADOBE_2015_10K#p63#0010",
+      "fb:ADOBE_2015_10K#p63#0011",
+      "fb:ADOBE_2015_10K#p63#0012"
+    ],
+    "fb-04784": [
+      "fb:WALMART_2019_10K#p48#0000",
+      "fb:WALMART_2019_10K#p48#0001"
+    ],
+    "fb-04854": [
+      "fb:GENERALMILLS_2020_10K#p52#0000",
+      "fb:GENERALMILLS_2020_10K#p52#0001",
+      "fb:GENERALMILLS_2020_10K#p52#0002"
+    ],
+    "fb-04980": [
+      "fb:PEPSICO_2021_10K#p63#0000",
+      "fb:PEPSICO_2021_10K#p63#0001"
+    ],
+    "fb-05718": [
+      "fb:AMERICANWATERWORKS_2020_10K#p86#0000",
+      "fb:AMERICANWATERWORKS_2020_10K#p86#0001",
+      "fb:AMERICANWATERWORKS_2020_10K#p86#0002"
+    ],
+    "fb-05915": [
+      "fb:CVSHEALTH_2018_10K#p302#0000",
+      "fb:CVSHEALTH_2018_10K#p302#0001",
+      "fb:CVSHEALTH_2018_10K#p304#0000",
+      "fb:CVSHEALTH_2018_10K#p304#0001"
+    ],
+    "fb-06247": [
+      "fb:WALMART_2018_10K#p57#0000",
+      "fb:WALMART_2018_10K#p57#0001",
+      "fb:WALMART_2018_10K#p59#0000",
+      "fb:WALMART_2018_10K#p59#0001"
+    ],
+    "fb-06272": [
+      "fb:COCACOLA_2022_10K#p63#0000",
+      "fb:COCACOLA_2022_10K#p63#0001",
+      "fb:COCACOLA_2022_10K#p66#0000",
+      "fb:COCACOLA_2022_10K#p66#0001",
+      "fb:COCACOLA_2022_10K#p66#0002"
+    ],
+    "fb-06655": [
+      "fb:AMAZON_2017_10K#p38#0000",
+      "fb:AMAZON_2017_10K#p38#0001",
+      "fb:AMAZON_2017_10K#p40#0000",
+      "fb:AMAZON_2017_10K#p40#0001"
+    ],
+    "fb-06741": [
+      "fb:WALMART_2020_10K#p51#0000",
+      "fb:WALMART_2020_10K#p51#0001",
+      "fb:WALMART_2020_10K#p56#0000",
+      "fb:WALMART_2020_10K#p56#0001",
+      "fb:WALMART_2020_10K#p56#0002"
+    ],
+    "fb-07507": [
+      "fb:ADOBE_2016_10K#p62#0000",
+      "fb:ADOBE_2016_10K#p62#0001"
+    ],
+    "fb-07661": [
+      "fb:BLOCK_2020_10K#p90#0000",
+      "fb:BLOCK_2020_10K#p90#0001",
+      "fb:BLOCK_2020_10K#p90#0002",
+      "fb:BLOCK_2020_10K#p90#0003"
+    ],
+    "fb-07966": [
+      "fb:ACTIVISIONBLIZZARD_2019_10K#p70#0000",
+      "fb:ACTIVISIONBLIZZARD_2019_10K#p70#0001",
+      "fb:ACTIVISIONBLIZZARD_2019_10K#p73#0000",
+      "fb:ACTIVISIONBLIZZARD_2019_10K#p73#0001",
+      "fb:ACTIVISIONBLIZZARD_2019_10K#p73#0002"
+    ],
+    "fb-08135": [
+      "fb:AMAZON_2017_10K#p38#0000",
+      "fb:AMAZON_2017_10K#p38#0001"
+    ],
+    "fb-08286": [
+      "fb:AMAZON_2019_10K#p38#0000",
+      "fb:AMAZON_2019_10K#p38#0001"
+    ],
+    "fb-09724": [
+      "fb:COCACOLA_2021_10K#p62#0000",
+      "fb:COCACOLA_2021_10K#p62#0001"
+    ],
+    "fb-10130": [
+      "fb:CORNING_2020_10K#p70#0000",
+      "fb:CORNING_2020_10K#p72#0000",
+      "fb:CORNING_2020_10K#p72#0001"
+    ],
+    "fb-10136": [
+      "fb:GENERALMILLS_2022_10K#p45#0000",
+      "fb:GENERALMILLS_2022_10K#p45#0001",
+      "fb:GENERALMILLS_2022_10K#p49#0000",
+      "fb:GENERALMILLS_2022_10K#p49#0001",
+      "fb:GENERALMILLS_2022_10K#p49#0002"
+    ],
+    "fb-10285": [
+      "fb:BOEING_2018_10K#p52#0000",
+      "fb:BOEING_2018_10K#p52#0001"
+    ],
+    "fb-10420": [
+      "fb:AES_2022_10K#p130#0000",
+      "fb:AES_2022_10K#p130#0001",
+      "fb:AES_2022_10K#p130#0002",
+      "fb:AES_2022_10K#p132#0000",
+      "fb:AES_2022_10K#p132#0001",
+      "fb:AES_2022_10K#p132#0002"
+    ],
+    "fb-10499": [
+      "fb:KRAFTHEINZ_2019_10K#p50#0000",
+      "fb:KRAFTHEINZ_2019_10K#p50#0001",
+      "fb:KRAFTHEINZ_2019_10K#p52#0000",
+      "fb:KRAFTHEINZ_2019_10K#p52#0001"
+    ]
+  },
+  "summary": {
+    "documents": 84,
+    "documents_without_chunks": [],
+    "evidence_items": 189,
+    "evidence_pages_without_chunks": [],
+    "gold_chunk_ids_total": 469,
+    "rows": 150,
+    "rows_without_gold_chunks": [],
+    "source": {
+      "caveat": "chunk ids read from the local Iceberg warehouse; cross-check against the served corpus_version=1 (serving box) before using hit@k numbers from it",
+      "data_files": 15,
+      "iceberg_metadata": "v7.metadata.json",
+      "iceberg_snapshot_id": 5766788461035059271,
+      "questions": "data/raw/financebench/financebench_open_source.jsonl",
+      "warehouse_chunks": "warehouse/curated/chunks"
+    }
+  }
+}
