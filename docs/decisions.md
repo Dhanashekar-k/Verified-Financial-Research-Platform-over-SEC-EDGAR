@@ -249,3 +249,77 @@ DuckDB's time grows faster than the data (2 to 7 quarters); not investigated. Ag
 **Consequences:** (draft by Claude for Shekar to review and rewrite) One Pydantic model serves the structured-output schema, the verifier and the API, so nothing converts between refusal forms. `found` is display text, not evidence: anything that needs provenance reads `claims`. A refused answer may still carry claims (a partial answer), so "refused" and "has claims" are independent; metrics must not infer one from the other. The correctness judge decides a refusal in code without a model call, so no `found` or `missing` text reaches any judge prompt.
 **How to revisit:** if the UI needs to link each `found` entry to its claim, add an optional `claim_ids` list to `Refusal` (a contract change: 05 first).
 
+
+## ADR-042: Metric catalog after the M4 accounting review: six concept calls (2026-11-23)
+**Status:** proposed (Shekar applies the catalog diff; `metric_catalog.yaml` is his file)
+**Context:** The tag-chain review packet (`docs/m4/catalog_review_packet.md`) went to an accounting reviewer. Her memo, distilled in `docs/m4/m4_catalog_decisions.md`, makes one point: verifying that a number *exists* in EDGAR is not verifying that it *means* what the question asks. Her term for a source-only match is "source-matched"; "verified" is reserved for a match on scope, period, unit, entity and interpretation as well. The initial catalog treated `tags` as a first-populated-wins chain and mixed concepts inside chains.
+**Options considered:** (a) keep the chains and rely on the companyfacts second-source check. Rejected: the same tag sits on both sides, so a wrong concept passes. (b) narrow every chain to one tag. Rejected: it loses real coverage where two tags are the same concept. (c) make the six calls below, give distinct presentation bases their own metrics, and resolve multi-tag chains instead of taking the first tag (ADR-043). Chosen.
+**Decision:** The six calls:
+1a. **Tax-inclusive revenue** (`RevenueFromContractWithCustomerIncludingAssessedTax`) leaves `revenue` and becomes `revenue_including_assessed_tax` (`presentation_basis: including_assessed_tax`). The memo's Philip Morris example: $29.6B excluding vs $79.8B including taxes (2.69x).
+1b. **Bank revenue** (`RevenuesNetOfInterestExpense`) leaves `revenue` and becomes `bank_revenue_net_of_interest_expense` (`presentation_basis: net_of_interest_expense`). It is a real revenue measure for banks, not comparable to industrial sales.
+2. **Cost of revenue** prefers `CostOfRevenue`, the consolidated total, only conditionally. A material, unreconciled disagreement with `CostOfGoodsAndServicesSold` abstains. The memo's Block example: $6.76B vs $143.9M.
+3. **Gross profit = revenue - cost of revenue** stays as `fallback_formula`, under `only_if: [same_entity, same_period, same_currency, same_scope, inputs_verified]`, and its result is labelled `fallback_result: derived`.
+4. **Total liabilities** (`Liabilities`) is kept as the consolidated balance-sheet total, an instant (qtrs = 0).
+5. **Shares outstanding** (`CommonStockSharesOutstanding`) is kept as the balance-sheet-date count. It is distinct from the dei cover-page count and from the weighted-average count.
+6. **Long-term debt** (`LongTermDebtNoncurrent`) is kept, under its precise label "Noncurrent long-term debt": it excludes the current portion and leases.
+
+The inert deprecated tags `SalesRevenueNet` and `CostOfGoodsSold` (0 facts in the packet) are dropped.
+
+The catalog model (`eval/gen/catalog_review.py` `MetricDef`, 05 §4.2) gains the optional fields `presentation_basis`, `only_if` and `fallback_result`. They enter `definition_sha` only when set, so no existing verification is invalidated by the model change; the changed metrics get new shas and need re-review. The proposed catalog edit is `docs/m4/metric_catalog_proposed.patch` (`git apply`); a unit test applies it to a copy and loads the result.
+**Consequences:** (draft by Claude for Shekar to review and rewrite) Revenue questions for banks and tax-inclusive filers now ask for a named concept, not "revenue". That is less coverage for generic `revenue` and fewer silent concept swaps. `numeric_metrics_verified.txt` must list the new shas; the memo says to hold `revenue` and its dependents (gross profit, margins) until the resolver has been audited on conflicting filings (`make_numeric_set --resolver-audit K`). Contract 05 §4.2 was updated before the model, per the contracts-first rule.
+**How to revisit:** if the resolver audit shows `RevenueFromContractWithCustomerExcludingAssessedTax` and `Revenues` disagree for structural reasons in one sector (for example insurers), split that sector's revenue into its own metric, as was done for banks.
+
+## ADR-043: Multi-tag metrics are resolved by statement presentation and the gross-profit identity, or abstain (2026-11-23)
+**Status:** proposed (drafted by Claude, pending Shekar). Binds M4 gold generation; M5 decides the engine's own resolution, and M05 §3.4's "first tag with a value wins" (`ORDER BY array_position ... LIMIT 1`) is superseded for Shekar to edit
+**Context:** The review found that even the top two revenue tags are not synonyms: `...ExcludingAssessedTax` and `Revenues` differ by more than 1% in 849 of 1,328 same-period pairs (63.9%, per the memo in `docs/m4/m4_catalog_decisions.md`). An unconditional priority chain therefore puts a component or a different scope into gold whenever the first tag happens to be populated.
+**Options considered:** (a) first populated tag wins (the old contract text). Rejected for the reason above. (b) always the largest value. Rejected: it picks tax-inclusive or gross-of-something figures. (c) the review's selection sequence: candidates for the exact entity and period, the statement presentation, a calculation check, then abstain (chosen).
+**Decision:** `eval/gen/revenue_resolver.py` implements the sequence. It applies to every metric with two or more tags (after ADR-042, `revenue` and `cost_of_revenue`), for one (cik, fiscal_year, fiscal_period):
+1. Candidates come from the metric's chain only.
+2. Candidates are screened and versioned by ADR-044.
+3. Candidates that agree within the metric tolerance are one number; the chain order only picks which tag to cite.
+4. On a material disagreement, the tag the filing presents on its income statement wins. The test is presence on the statement, not that the line is the total; see the limits below. The source is FSDS `pre` with `stmt = 'IS'`, not parenthetical, read from the local `raw.fsds_pre` snapshot. If the gross-profit identity (revenue - cost of revenue = `GrossProfit`) contradicts the presented tag while another candidate satisfies it, the resolver abstains.
+5. Otherwise the candidate that satisfies the gross-profit identity wins.
+6. Otherwise it abstains (`conflicting_candidates`), with the candidates exposed in `numeric_auto.abstentions.jsonl`.
+
+`make_numeric_set --resolver-audit K` writes `eval/sets/drafts/revenue_resolver_audit.md`, a sample of decisions on conflicting filings, for the memo's final step: audit the resolver before any revenue gold is generated.
+**Consequences:** (draft by Claude for Shekar to review and rewrite)
+- The numeric set loses the hardest revenue rows instead of carrying wrong gold. Abstentions are counted and shown, not hidden.
+- Presentation data covers only filings in the local `fsds_pre` snapshot: 48,722 distinct `adsh`, counted 2026-11-23 with DuckDB over the current snapshot of `warehouse/raw/fsds_pre`. Outside it, only agreement and the identity can resolve a conflict, so coverage is reported (`presentation_known` / `presentation_unknown` in the summary).
+- The FSDS calculation linkbase is not loaded. The gross-profit identity is the only calculation check, so a conflict with no `GrossProfit` fact and no presentation data abstains.
+- A property test asserts that the outcome never depends on input order, the signature of first-populated-wins.
+- Known limit, "presented" is not "total": if a statement shows only a component line (say `CostOfGoodsAndServicesSold`) and the total `CostOfRevenue` sits in the notes, with no `GrossProfit` fact to contradict it, the presented component wins. In a conflict, chain order does not override presentation. So ADR-042's "prefer `CostOfRevenue`" holds only for ties and for cases the identity settles. The resolver audit is where this shows up.
+- Deferred to M5/M6 and recorded here rather than built now: the typed metric registry, a dimensional consolidation policy (today `facts` is consolidated by construction), and the four verification states (source-matched / concept / period-scope / verified).
+**How to revisit:** if abstentions starve a stratum, load the calculation linkbase (FSDS has no `cal` table; it would come from the XBRL instance) before loosening the abstain rule.
+
+## ADR-044: Data-quality policies for numeric gold: scope, periods, versions, tolerances (2026-11-23)
+**Status:** proposed (drafted by Claude, pending Shekar). Supersedes M04 §3.3 "Keep `tolerance_rel = 0.01`" and §3.7's "within `tolerance_rel`" for Shekar to edit
+**Context:** The review listed safeguards that a source match does not provide. The cases: 22 FY rows with `qtrs = 0` on duration metrics (revenue 1, net_income 1, income_tax 2, capex 1, dividends 17); EPS facts that may carry `USD` instead of `USD/shares`; restatements; segment values; margins from -1,399% to 9,587%; and a flat 1% tolerance that hides material errors on large values and misjudges rounded per-share figures.
+**Options considered:** fix the rows in the lake (rejected: M4 must not rebuild M1 at this stage), or screen at generation time and log every rejection (chosen). For tolerance: a flat 1% (rejected), exact match (rejected: answers round), or metric-aware tolerances (chosen).
+**Decision:** `eval/gen/numeric_policy.py`, applied by `make_numeric_set.py`:
+- **Scope.** Only the `facts` view (consolidated: `coreg IS NULL`, no segments, 05 §2.2), never `facts_dimensional`, and only the `us-gaap` taxonomy.
+- **Period.** FY requires qtrs = 4 and Q1-Q4 require qtrs = 1. H1/9M and year-to-date amounts are never used as a quarter. A derived Q4 (`derived_from` set) is excluded unless `--allow-derived-q4` is passed.
+- **Quarantine.** qtrs = 0 on a duration metric, a unit mismatch, and qtrs != 0 on an instant are quarantined row by row to `numeric_auto.quarantine.jsonl`. Every other exclusion is counted by reason.
+- **Versions.** The declared policy is `as_filed` (ADR-017): gold is the originally filed value, `latest_value` records the restatement, and a restated row's question says "as originally reported". `--policy latest_restated` is the alternative, one policy per set. The target is 20 restated rows at n = 300 (`RESTATED_TARGET`); fewer are drawn when restated facts are scarce.
+- **Tolerance.** A value is correct when it is within `max(tolerance_abs, tolerance_rel * |gold|)`:
+  - USD and share amounts: `rel` = 0.0005 (4 significant figures) and `abs` = 0.5, half a base unit, so a gold of 0 needs an exact 0. A first draft also inferred the filer's reporting scale from trailing zeros. The review showed this overstates the scale for round values: a gold of 0 or 3,000,000 got a tolerance of ±500,000. It was dropped.
+  - Per-share amounts: `abs` = $0.005.
+  - Ratios and growth: `abs` = 0.0005 (0.05 percentage points).
+  - Two candidate tags disagree materially when neither tolerance accepts the other.
+- **Denominators.** Ratios and growth abstain when the denominator is <= 0 or below $1M (`near_zero_denominator`). Each abstention is recorded with its reason (growth abstentions carry a `growth:` prefix). Margins are never clamped.
+- **EPS units.** If the lake normalised every EPS fact to `USD`, the `uom_mismatch` quarantine would remove all EPS gold. The quarantine counts in the summary would show it, and that is a finding about the lake, not a reason to relax the check.
+
+Contract 05 §6 gains `tolerance_abs`, `tolerance_basis`, `value_basis`, `latest_value`, `is_restated`, `value_kind`, `source_tags`, `resolution`, `compare_cik` and `period_end`, all with defaults (`eval/schemas.py` `NumericRow`).
+**Consequences:** (draft by Claude for Shekar to review and rewrite)
+- `eval/metrics.py` (Shekar's) must apply `max(tolerance_abs, tolerance_rel * |gold|)` instead of `tolerance_rel` alone; a diff is proposed in chat.
+- The tolerance for a USD amount is 20x tighter than the runbook's 1% on large values, so the composer must keep full precision in `Claim.value`; rounding belongs in the text only.
+- The second-source check matches companyfacts values exactly, for every unit, since companyfacts carries the filed value. Tolerance is for answers, not for comparing two copies of one filing.
+- The 300 rows still share their mapping with the engine, so they measure resolution and mapping, not ground truth. The hand-audited sanity set (50-100 questions from the filings themselves) is the independent check.
+**How to revisit:** if the composer's rounding fails rows that a human would accept, widen `rel` for that unit with the evidence; never widen a tolerance after seeing a score.
+
+## ADR-045: Paraphrase diversity from seeded style variants, not temperature (2026-11-23)
+**Status:** proposed (drafted by Claude, pending Shekar)
+**Context:** M04 §3.3 says to paraphrase with Haiku 5.5 at temperature 0.7. A non-default `temperature` returns 400 on Haiku/Sonnet 5.5 (the M4 docs check).
+**Options considered:** (a) no paraphrase (rejected: template questions are too uniform for a router or planner). (b) several samples per question at the default temperature (rejected: costly and not reproducible). (c) one call per question with a style picked deterministically from six by a hash of (seed, row id) (chosen).
+**Decision:** `make_numeric_set.py` (`STYLES`, `style_for`). A code guard rejects any paraphrase that loses the company (first word of the name, or the ticker), a fiscal year, the quarter, or "as originally reported" / "restated". The row then keeps its template text and is marked `paraphrased: false`, and the reason is logged.
+**Consequences:** (draft by Claude for Shekar to review and rewrite) Diversity comes from the styles, not from sampling, so it is bounded by six styles. Paraphrases are reproducible from cassettes at $0. The guard catches dropped facts, not metric swaps ("profit" for "operating income"); that is what Shekar's 30-paraphrase check is for.
+**How to revisit:** if the 30-row check finds metric drift, add a metric-synonym check to the guard using the catalog's `synonyms`.
