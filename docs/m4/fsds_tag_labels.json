@@ -1,0 +1,222 @@
+{
+  "Assets": {
+    "crdr": "D",
+    "datatype": "monetary",
+    "definition": "Amount of asset recognized for present right to economic benefit.",
+    "iord": "I",
+    "label": "Assets",
+    "version": "us-gaap/2024"
+  },
+  "CashAndCashEquivalentsAtCarryingValue": {
+    "crdr": "D",
+    "datatype": "monetary",
+    "definition": "Amount of currency on hand as well as demand deposits with banks or financial institutions. Includes other kinds of accounts that have the general characteristics of demand deposits. Also includes short-term, highly liquid investments that are both readily convertible to known amounts of cash and so near their maturity that they present insignificant risk of changes in value because of changes in interest rates. Excludes cash and cash equivalents within disposal group and discontinued operation.",
+    "iord": "I",
+    "label": "Cash and Cash Equivalents, at Carrying Value",
+    "version": "us-gaap/2024"
+  },
+  "CommonStockSharesOutstanding": {
+    "crdr": null,
+    "datatype": "shares",
+    "definition": "Number of shares of common stock outstanding. Common stock represent the ownership interest in a corporation.",
+    "iord": "I",
+    "label": "Common Stock, Shares, Outstanding",
+    "version": "us-gaap/2024"
+  },
+  "CostOfGoodsAndServicesSold": {
+    "crdr": "D",
+    "datatype": "monetary",
+    "definition": "The aggregate costs related to goods produced and sold and services rendered by an entity during the reporting period. This excludes costs incurred during the reporting period related to financial services rendered and other revenue generating activities.",
+    "iord": "D",
+    "label": "Cost of Goods and Services Sold",
+    "version": "us-gaap/2024"
+  },
+  "CostOfGoodsSold": {
+    "crdr": "D",
+    "datatype": "monetary",
+    "definition": "Total costs related to goods produced and sold during the reporting period.",
+    "iord": "D",
+    "label": "Cost of Goods Sold (Deprecated 2018-01-31)",
+    "version": "us-gaap/2019"
+  },
+  "CostOfRevenue": {
+    "crdr": "D",
+    "datatype": "monetary",
+    "definition": "The aggregate cost of goods produced and sold and services rendered during the reporting period.",
+    "iord": "D",
+    "label": "Cost of Revenue",
+    "version": "us-gaap/2024"
+  },
+  "EarningsPerShareBasic": {
+    "crdr": null,
+    "datatype": "perShare",
+    "definition": "The amount of net income (loss) for the period per each share of common stock or unit outstanding during the reporting period.",
+    "iord": "D",
+    "label": "Earnings Per Share, Basic",
+    "version": "us-gaap/2023"
+  },
+  "EarningsPerShareDiluted": {
+    "crdr": null,
+    "datatype": "perShare",
+    "definition": "The amount of net income (loss) for the period available to each share of common stock or common unit outstanding during the reporting period and to each share or unit that would have been outstanding assuming the issuance of common shares or units for all dilutive potential common shares or units outstanding during the reporting period.",
+    "iord": "D",
+    "label": "Earnings Per Share, Diluted",
+    "version": "us-gaap/2023"
+  },
+  "GrossProfit": {
+    "crdr": "C",
+    "datatype": "monetary",
+    "definition": "Aggregate revenue less cost of goods and services sold or operating expenses directly attributable to the revenue generation activity.",
+    "iord": "D",
+    "label": "Gross Profit",
+    "version": "us-gaap/2024"
+  },
+  "IncomeTaxExpenseBenefit": {
+    "crdr": "D",
+    "datatype": "monetary",
+    "definition": "Amount of current income tax expense (benefit) and deferred income tax expense (benefit) pertaining to continuing operations.",
+    "iord": "D",
+    "label": "Income Tax Expense (Benefit)",
+    "version": "us-gaap/2024"
+  },
+  "InterestExpense": {
+    "crdr": "D",
+    "datatype": "monetary",
+    "definition": "Amount of interest expense classified as operating and nonoperating. Includes, but is not limited to, cost of borrowing accounted for as interest expense.",
+    "iord": "D",
+    "label": "Interest Expense, Operating and Nonoperating",
+    "version": "us-gaap/2024"
+  },
+  "Liabilities": {
+    "crdr": "C",
+    "datatype": "monetary",
+    "definition": "Amount of liability recognized for present obligation requiring transfer or otherwise providing economic benefit to others.",
+    "iord": "I",
+    "label": "Liabilities",
+    "version": "us-gaap/2024"
+  },
+  "LongTermDebtNoncurrent": {
+    "crdr": "C",
+    "datatype": "monetary",
+    "definition": "Amount, after deduction of unamortized premium (discount) and debt issuance cost, of long-term debt classified as noncurrent. Excludes lease obligation.",
+    "iord": "I",
+    "label": "Long-Term Debt, Excluding Current Maturities",
+    "version": "us-gaap/2024"
+  },
+  "NetCashProvidedByUsedInOperatingActivities": {
+    "crdr": null,
+    "datatype": "monetary",
+    "definition": "Amount of cash inflow (outflow) from operating activities, including discontinued operations. Operating activity cash flows include transactions, adjustments, and changes in value not defined as investing or financing activities.",
+    "iord": "D",
+    "label": "Net Cash Provided by (Used in) Operating Activities",
+    "version": "us-gaap/2024"
+  },
+  "NetIncomeLoss": {
+    "crdr": "C",
+    "datatype": "monetary",
+    "definition": "The portion of profit or loss for the period, net of income taxes, which is attributable to the parent.",
+    "iord": "D",
+    "label": "Net Income (Loss) Attributable to Parent",
+    "version": "us-gaap/2024"
+  },
+  "OperatingIncomeLoss": {
+    "crdr": "C",
+    "datatype": "monetary",
+    "definition": "The net result for the period of deducting operating expenses from operating revenues.",
+    "iord": "D",
+    "label": "Operating Income (Loss)",
+    "version": "us-gaap/2024"
+  },
+  "PaymentsOfDividendsCommonStock": {
+    "crdr": "C",
+    "datatype": "monetary",
+    "definition": "Amount of cash outflow in the form of ordinary dividends to common shareholders of the parent entity.",
+    "iord": "D",
+    "label": "Stock Dividend",
+    "version": "us-gaap/2023"
+  },
+  "PaymentsToAcquirePropertyPlantAndEquipment": {
+    "crdr": "C",
+    "datatype": "monetary",
+    "definition": "The cash outflow associated with the acquisition of long-lived, physical assets that are used in the normal conduct of business to produce goods and services and not intended for resale; includes cash outflows to pay for construction of self-constructed assets.",
+    "iord": "D",
+    "label": "Payments to Acquire Property, Plant, and Equipment",
+    "version": "us-gaap/2024"
+  },
+  "ResearchAndDevelopmentExpense": {
+    "crdr": "D",
+    "datatype": "monetary",
+    "definition": "Amount of expense for research and development. Includes, but is not limited to, cost for computer software product to be sold, leased, or otherwise marketed and writeoff of research and development assets acquired in transaction other than business combination or joint venture formation or both. Excludes write-down of intangible asset acquired in business combination or from joint venture formation or both, used in research and development activity.",
+    "iord": "D",
+    "label": "Research and Development Expense",
+    "version": "us-gaap/2024"
+  },
+  "RevenueFromContractWithCustomerExcludingAssessedTax": {
+    "crdr": "C",
+    "datatype": "monetary",
+    "definition": "Amount, excluding tax collected from customer, of revenue from satisfaction of performance obligation by transferring promised good or service to customer. Tax collected from customer is tax assessed by governmental authority that is both imposed on and concurrent with specific revenue-producing transaction, including, but not limited to, sales, use, value added and excise.",
+    "iord": "D",
+    "label": "Revenue from Contract with Customer, Excluding Assessed Tax",
+    "version": "us-gaap/2023"
+  },
+  "RevenueFromContractWithCustomerIncludingAssessedTax": {
+    "crdr": "C",
+    "datatype": "monetary",
+    "definition": "Amount, including tax collected from customer, of revenue from satisfaction of performance obligation by transferring promised good or service to customer. Tax collected from customer is tax assessed by governmental authority that is both imposed on and concurrent with specific revenue-producing transaction, including, but not limited to, sales, use, value-added and excise.",
+    "iord": "D",
+    "label": "Revenue from Contract with Customer, Including Assessed Tax",
+    "version": "us-gaap/2023"
+  },
+  "Revenues": {
+    "crdr": "C",
+    "datatype": "monetary",
+    "definition": "Amount of revenue recognized from goods sold, services rendered, insurance premiums, or other activities that constitute an earning process. Includes, but is not limited to, investment and interest income before deduction of interest expense when recognized as a component of revenue, and sales and trading gain (loss).",
+    "iord": "D",
+    "label": "Revenues",
+    "version": "us-gaap/2024"
+  },
+  "RevenuesNetOfInterestExpense": {
+    "crdr": "C",
+    "datatype": "monetary",
+    "definition": "Amount of revenue recognized from goods sold, services rendered, insurance premiums, or other activities that constitute an earning process. Includes, but is not limited to, investment and interest income after deduction of interest expense when recognized as a component of revenue, and sales and trading gain (loss).",
+    "iord": "D",
+    "label": "Revenues, Net of Interest Expense",
+    "version": "us-gaap/2023"
+  },
+  "SalesRevenueNet": {
+    "crdr": "C",
+    "datatype": "monetary",
+    "definition": "Total revenue from sale of goods and services rendered during the reporting period, in the normal course of business, reduced by sales returns and allowances, and sales discounts.",
+    "iord": "D",
+    "label": "Revenue, Net (Deprecated 2018-01-31)",
+    "version": "us-gaap/2019"
+  },
+  "SellingGeneralAndAdministrativeExpense": {
+    "crdr": "D",
+    "datatype": "monetary",
+    "definition": "The aggregate total costs related to selling a firm's product and services, as well as all other general and administrative expenses. Direct selling expenses (for example, credit, warranty, and advertising) are expenses that can be directly linked to the sale of specific products. Indirect selling expenses are expenses that cannot be directly linked to the sale of specific products, for example telephone expenses, Internet, and postal charges. General and administrative expenses include salaries of non-sales personnel, rent, utilities, communication, etc.",
+    "iord": "D",
+    "label": "Selling, General and Administrative Expense",
+    "version": "us-gaap/2024"
+  },
+  "StockholdersEquity": {
+    "crdr": "C",
+    "datatype": "monetary",
+    "definition": "Amount of equity (deficit) attributable to parent. Excludes temporary equity and equity attributable to noncontrolling interest.",
+    "iord": "I",
+    "label": "Equity, Attributable to Parent",
+    "version": "us-gaap/2024"
+  },
+  "_source": {
+    "athena_bytes_scanned": 39230128,
+    "athena_filled": [
+      "CostOfGoodsSold",
+      "SalesRevenueNet"
+    ],
+    "athena_query_id": "ffb382a1-5d76-4d02-9dfa-93642e079423",
+    "metadata_file": "v13.metadata.json",
+    "missing_tags": [],
+    "snapshot_id": 1615120326327444570,
+    "table": "warehouse/raw/fsds_tag"
+  }
+}

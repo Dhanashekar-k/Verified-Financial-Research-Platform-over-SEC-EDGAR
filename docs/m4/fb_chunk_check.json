@@ -1,0 +1,10 @@
+{
+  "corpus_version": 1,
+  "financebench_chunks_served": 29606,
+  "gold_ids": 423,
+  "missing": 0,
+  "missing_ids": [],
+  "rows": 150,
+  "rows_with_an_unserved_evidence_page": {},
+  "served": 423
+}
