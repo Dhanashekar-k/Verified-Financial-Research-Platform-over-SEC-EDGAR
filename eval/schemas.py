@@ -48,6 +48,18 @@ class NumericRow(BaseModel):
     template_id: str
     paraphrased: bool
     second_source_check: Literal["match", "mismatch", "unchecked"]
+    # ADR-044 (section 6 notes): metric-aware tolerance, version policy, provenance.
+    # Correct when |v - gold| <= max(tolerance_abs, tolerance_rel * |gold|).
+    tolerance_abs: Decimal = Decimal(0)
+    tolerance_basis: str | None = None
+    value_basis: Literal["as_filed", "latest_restated"] = "as_filed"
+    latest_value: Decimal | None = None
+    is_restated: bool = False
+    value_kind: Literal["reported", "derived"] = "reported"
+    source_tags: list[str] = []
+    resolution: str | None = None
+    compare_cik: int | None = None
+    period_end: date | None = None
 
 
 class Evidence(BaseModel):
