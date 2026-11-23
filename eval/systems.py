@@ -130,12 +130,9 @@ class StubSystem:
 
 
 def _baseline() -> System:
-    try:
-        from app.engine import baseline  # type: ignore[attr-defined]
-    except ImportError as err:
-        raise SystemExit("app/engine/baseline.py does not exist yet (M04 step 7)") from err
-    system: System = baseline.BaselineSystem()
-    return system
+    from app.engine.baseline import BaselineSystem
+
+    return BaselineSystem()
 
 
 def _engine() -> System:

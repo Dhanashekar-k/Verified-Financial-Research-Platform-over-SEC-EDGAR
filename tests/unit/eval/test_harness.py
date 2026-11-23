@@ -412,3 +412,25 @@ def test_expr_provenance_accepts_contract_example() -> None:
 
     p = ExprProvenance(type="expr", expr="(f:111 - f:222) / f:222 * 100", fact_ids=[111, 222])
     assert p.fact_ids == [111, 222]
+
+
+def test_any_system_exception_is_a_recorded_error_not_an_abort(tmp_path: Path) -> None:
+    sets_dir = _write_sets(tmp_path / "sets")
+
+    class Broken:
+        name = "broken"
+
+        def answer(self, question: str, cfg: EvalCfg) -> Answer:
+            raise ConnectionError("tunnel dropped")
+
+    client = LLMClient(mode=LLMMode.stub)
+    outcomes, _ = run.run_questions(
+        Broken(),
+        EvalCfg(llm=AccountingLLM(client)),
+        None,
+        _items(sets_dir, ["unanswerable"]),
+        {},
+        client,
+    )
+    assert len(outcomes) == 8
+    assert all(o.error == "ConnectionError: tunnel dropped" for o in outcomes)

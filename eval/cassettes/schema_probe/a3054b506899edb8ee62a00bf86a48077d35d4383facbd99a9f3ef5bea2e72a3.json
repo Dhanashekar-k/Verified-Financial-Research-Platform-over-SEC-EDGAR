@@ -1,0 +1,28 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "company": "Apple",
+    "facts": [
+      {
+        "label": "Revenue",
+        "value": 383.3
+      },
+      {
+        "label": "Net income",
+        "value": 97.0
+      }
+    ],
+    "fiscal_year": 2023
+  },
+  "request_key": "a3054b506899edb8ee62a00bf86a48077d35d4383facbd99a9f3ef5bea2e72a3",
+  "usage": {
+    "batch": false,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0000805",
+    "input_tokens": 515,
+    "latency_ms": 2634,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 58
+  }
+}

@@ -274,7 +274,9 @@ def run_questions(
                     o.retrieved = list(sink)
                 except BatchPending:
                     pending.append(qid)
-                except (LLMResponseError, BatchGaveUp) as err:
+                except Exception as err:  # noqa: BLE001
+                    # Any system failure (LLM, DB, lookup) is recorded on the question and
+                    # counted against the system, not allowed to abort the whole run.
                     o.error = f"{type(err).__name__}: {err}"
                 finally:
                     o.system_usage += cfg.llm.ledger[mark:]
@@ -450,9 +452,14 @@ def main(argv: list[str] | None = None) -> int:
     if args.gold_chunks.exists():
         gold_chunks = json.loads(args.gold_chunks.read_text()).get("gold_chunk_ids", {})
     items = _load_rows(set_names, args.split, args.sets_dir, args.splits)
-    outcomes, batch_info = run_questions(
-        system, cfg, None if args.no_judge else judge_llm, items, gold_chunks, client
-    )
+    try:
+        outcomes, batch_info = run_questions(
+            system, cfg, None if args.no_judge else judge_llm, items, gold_chunks, client
+        )
+    finally:
+        close = getattr(system, "close", None)
+        if callable(close):
+            close()
     config = RunConfig(
         system=args.system,
         system_version=str(getattr(system, "version", "0")),
