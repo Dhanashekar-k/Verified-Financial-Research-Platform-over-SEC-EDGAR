@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001041061-23-000009#1A#0009",
+      "0001041061-23-000009#1A#0010"
+    ],
+    "gold_points": [
+      "Yum China is largest franchisee; significant KFC business conducted in mainland China",
+      "Risks include economic conditions, Chinese regulation, food safety, COVID-19 restrictions, U.S.\u2013China tensions",
+      "Royalty income depends on Chinese laws and Yum China's performance, so harm reduces royalties",
+      "MLA can be terminated (e.g., insolvency); disputes or IP enforcement problems could interrupt brand operations"
+    ],
+    "note": "Both chunks needed: the first covers the China risks, the second covers the royalty impact and the MLA termination/dispute risks.",
+    "question": "In Yum Brands' fiscal 2022 10-K, how does the company describe its exposure to the Chinese market through Yum China, and what could happen to its royalty income and brand operations there?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "37934d2b67200aa7b1fd42418139b91a517c2f5118e9c79209ad5f219417160d",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00285995",
+    "input_tokens": 1181,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 328
+  }
+}

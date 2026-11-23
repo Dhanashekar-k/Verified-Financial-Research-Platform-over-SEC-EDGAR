@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001558370-25-001222#7#0001",
+      "0001558370-25-001222#7#0002"
+    ],
+    "gold_points": [
+      "Fixed-price contracts are exposed to cost overruns not recoverable via change orders, risking reduced profits or losses",
+      "Cost-plus and time-and-materials work has lower risk, so margins are usually lower than fixed-price",
+      "Progress billings occur at milestones, with retention withheld until work is completed",
+      "Labor, materials and overhead are most of cost of service; labor utilization drives performance"
+    ],
+    "note": "Fixed-price contract terms and retainage are in chunk 1; cost-overrun risk and cost-plus margins are in chunk 2, so both are needed.",
+    "question": "How does Comfort Systems USA describe the risks and payment mechanics of its fixed-price project contracts, compared with cost-plus work, in its fiscal 2024 10-K?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "cd84dfce7b0717802135595b560036943ce00701a9bb577b91bff1e0904a2386",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00285995",
+    "input_tokens": 1226,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 319
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001324424-24-000007#1A#0023",
+      "0001324424-24-000007#1A#0024"
+    ],
+    "gold_points": [
+      "Exposure to Euro, British pound, Canadian dollar, Australian dollar, Brazilian real and Yen movements",
+      "Accommodation revenue exposed to currency moves between booking and stay, and cross-border travel shifts",
+      "Failing to hedge or hedging ineffectively could materially harm financial statements and condition",
+      "Hedging relies on estimates, effective systems, accurate data and controls, otherwise greater volatility"
+    ],
+    "note": "First chunk introduces the FX exposure and currencies; second chunk covers hedging risks, so both are needed.",
+    "question": "In Expedia Group's 2023 10-K, how does the company describe its foreign exchange risk exposure and the risks tied to its hedging program?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "cabfadb098550fbb95f75e1465ad6a0223666b562398462e9491aef1b91b8dde",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00289195",
+    "input_tokens": 1333,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 304
+  }
+}

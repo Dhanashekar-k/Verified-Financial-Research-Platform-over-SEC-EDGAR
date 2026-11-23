@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001692819-25-000013#7#0076"
+    ],
+    "gold_points": [
+      "BCOP default may cross-default the BCOP Credit Agreement, letting lenders accelerate maturity of outstanding balances",
+      "Secured swap counterparties can terminate hedges and require settlement if BCOP debt is accelerated",
+      "Nuveen UPA cross default triggered by acceleration of debt exceeding greater of 1.5% of total assets and $600 million",
+      "Nuveen UPA default makes Vistra Vision Holdings' and guarantors' payment obligations immediately due and payable"
+    ],
+    "note": "Single passage covers cross-default provisions clearly; trailing headings are just section titles.",
+    "question": "In Vistra Corp.'s fiscal 2024 10-K, what are the consequences of a default under the BCOP Credit Agreement and the Nuveen UPA, including effects on the related interest rate swap agreements?",
+    "usable": true,
+    "uses_second_chunk": false
+  },
+  "request_key": "eeea4722b5a9bf6cd03699418f52c2bdf698eb43f1ffe0a60b9e9ed259b21a0b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00221495",
+    "input_tokens": 531,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 329
+  }
+}

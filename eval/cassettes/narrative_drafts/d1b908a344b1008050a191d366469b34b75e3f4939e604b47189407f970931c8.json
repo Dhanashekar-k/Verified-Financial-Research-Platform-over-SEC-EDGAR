@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0000096021-22-000151#7#0039",
+      "0000096021-22-000151#7#0040"
+    ],
+    "gold_points": [
+      "Constant currency translates current-period local results at prior-year exchange rates",
+      "Non-GAAP adjustments provide perspective on underlying business trends and year-over-year comparability",
+      "Acquisition-related intangible amortization, acquisition and due-diligence costs are excluded",
+      "Currency impact raised sales growth from 33.8% to 34.1% on constant currency basis"
+    ],
+    "note": "First chunk gives the rationale for non-GAAP and constant currency; second chunk provides the sales reconciliation showing the currency effect.",
+    "question": "For Sysco's fiscal 2022, how does the company explain its use of constant currency and exclusion of Certain Items and acquisition-related costs in its non-GAAP measures, and how did currency fluctuations affect reported sales growth?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "d1b908a344b1008050a191d366469b34b75e3f4939e604b47189407f970931c8",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00279295",
+    "input_tokens": 1149,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 321
+  }
+}

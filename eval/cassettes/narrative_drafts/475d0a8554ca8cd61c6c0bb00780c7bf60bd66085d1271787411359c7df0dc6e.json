@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001327811-23-000024#1A#0058",
+      "0001327811-23-000024#1A#0059"
+    ],
+    "gold_points": [
+      "Each co-founder granted a voting proxy over Class B shares effective upon death or incapacity",
+      "Survivor would continue to control voting of shares subject to the proxy",
+      "Class B has 10 votes per share versus one vote for Class A",
+      "Co-founders can control director elections and mergers or sales of substantially all assets"
+    ],
+    "note": "Combines proxy/voting-control details from the first chunk with the dual-class vote ratio from the second.",
+    "question": "In Workday's fiscal 2022 10-K, how do the voting agreement between Messrs. Duffield and Bhusri and the dual class stock structure concentrate control over corporate matters?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "475d0a8554ca8cd61c6c0bb00780c7bf60bd66085d1271787411359c7df0dc6e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00237995",
+    "input_tokens": 956,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 277
+  }
+}

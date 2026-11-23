@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0000827054-25-000077#1A#0024",
+      "0000827054-25-000077#1A#0025"
+    ],
+    "gold_points": [
+      "Success depends on market acceptance of SuperFlash and ability to develop and introduce new technologies",
+      "Depends on protecting and enforcing IP rights and availability of foundry licensees with capacity",
+      "Licensee production disruptions reduce revenue received",
+      "Indemnification clauses and royalty audit disputes can cause substantial liability and legal costs"
+    ],
+    "note": "Good question; the first chunk introduces the licensing risk and the second supplies the factor list, licensee disruption, indemnification and audit details.",
+    "question": "In Microchip Technology's fiscal 2024 10-K, what factors does the company say determine the success of its technology licensing business, and what risks does it describe from licensee disruptions and licensing agreements?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "80c0729fc9db6bec02ce5b693637f0adef1972e20b806060a94b6896d2924eba",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00286595",
+    "input_tokens": 1307,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 304
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001558370-21-003245#1A#0001",
+      "0001558370-21-003245#1A#0002"
+    ],
+    "gold_points": [
+      "Supply chain disruptions and reduced product availability from high customer demand",
+      "Temporary store and distribution center closings and reduced store hours for cleaning",
+      "Higher transportation, overtime, and cleaning/protective equipment costs",
+      "About $167 million in employee appreciation bonuses and increased hiring"
+    ],
+    "note": "The list of COVID-19 effects spans both chunks; the first covers supply chain, product availability, and closings, while the second covers costs, bonuses, cybersecurity, and inventories.",
+    "question": "According to Dollar General's fiscal 2020 10-K, what operational and cost effects of the COVID-19 pandemic had the company experienced, even though it was classified as an essential business and kept stores open?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "a81d7132511a4ea524c26362f82e64a80344ffffe91ee76d8049233d5e4150bc",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00265295",
+    "input_tokens": 1094,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 304
+  }
+}

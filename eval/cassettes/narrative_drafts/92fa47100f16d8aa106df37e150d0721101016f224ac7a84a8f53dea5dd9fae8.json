@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001327567-21-000029#1A#0019"
+    ],
+    "gold_points": [
+      "Customers with December 31 year-end spend leftover budgets, boosting second quarter revenue",
+      "Annual sales quotas and commission accelerators boost fourth quarter revenue",
+      "August business slowdowns in the US and Europe hurt first quarter revenue",
+      "Calendar-year-start budget planning delays spending, hurting third quarter revenue"
+    ],
+    "note": "The seasonality discussion is fully contained in the second chunk; the first chunk's end-of-quarter shipment risk is not needed.",
+    "question": "According to Palo Alto Networks' fiscal 2021 10-K, what seasonal factors cause its second and fourth fiscal quarters to generate more revenue than the first and third quarters?",
+    "usable": true,
+    "uses_second_chunk": false
+  },
+  "request_key": "92fa47100f16d8aa106df37e150d0721101016f224ac7a84a8f53dea5dd9fae8",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00279095",
+    "input_tokens": 1337,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 283
+  }
+}

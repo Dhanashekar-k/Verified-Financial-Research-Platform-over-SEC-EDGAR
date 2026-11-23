@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001050915-22-000008#7A#0002"
+    ],
+    "gold_points": [
+      "Foreign operations, mainly Canada and Australia, were 14.7% of 2021 consolidated revenues",
+      "Exchange rate changes raised foreign revenues about $114 million and foreign operating income about $4 million versus 2020",
+      "No foreign currency derivative contracts were outstanding at December 31, 2021",
+      "Company may use derivatives to hedge foreign currency risk on a cash flow basis"
+    ],
+    "note": "Chunk 0002 alone covers all gold points; chunk 0003 only repeats the no-derivatives sentence and adds the cash sensitivity.",
+    "question": "How did foreign currency exchange rate movements affect Quanta Services' foreign operations in fiscal 2021, and what hedging position did the company hold at year-end?",
+    "usable": true,
+    "uses_second_chunk": false
+  },
+  "request_key": "eb14d01af5bf6985be194467ffedb0bac936217ad85421939646c598d2be8502",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00237395",
+    "input_tokens": 835,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 300
+  }
+}

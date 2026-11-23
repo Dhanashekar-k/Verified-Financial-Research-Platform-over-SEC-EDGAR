@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001140859-20-000050#7#0055",
+      "0001140859-20-000050#7#0056"
+    ],
+    "gold_points": [
+      "Uncertain tax position of $371.5 million relates to the $6.6 billion opioid legal accrual",
+      "Significant judgment needed on deductibility because no settlement had been reached",
+      "Operating cash flow was driven by the accrued litigation liability increase despite a net loss",
+      "Accounts payable rose with inventories and supplier payment timing"
+    ],
+    "note": "Combines tax uncertainty on opioid accrual (chunk 55) with cash flow drivers (chunk 56); the chunks overlap by one sentence.",
+    "question": "How did Cencora (then AmerisourceBergen) explain its uncertain tax position tied to the opioid litigation accrual and the drivers of its operating cash flow in fiscal 2020?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "c46ec6d2d2d9363b732e00d33988c46625c83f5db9f4ac5fea91df3cc502a7a7",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00273295",
+    "input_tokens": 1174,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 304
+  }
+}

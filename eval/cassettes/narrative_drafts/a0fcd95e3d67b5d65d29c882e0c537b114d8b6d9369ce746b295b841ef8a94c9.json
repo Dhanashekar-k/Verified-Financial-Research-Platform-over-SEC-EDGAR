@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0000950170-25-024723#7#0056",
+      "0000950170-25-024723#7#0057"
+    ],
+    "gold_points": [
+      "Same property NOI uses rental revenues excluding straight-line rent, lease termination fees, TIFs, above/below-market rent amortization",
+      "Deducts credit losses, operating and maintenance expense, real estate taxes, and rent expense",
+      "Includes proportionate share of Same property NOI from unconsolidated joint ventures",
+      "Reconciliation adjusts for items like G&A, depreciation, impairments, merger charges, gains on sale, interest expense, and taxes"
+    ],
+    "note": "Definition in first chunk; reconciliation line items in second chunk; the question is mostly definitional so the second chunk adds the adjustment list.",
+    "question": "How does Kimco Realty define Same property NOI in its fiscal 2024 10-K, and what adjustments does it make when reconciling from net income available to common shareholders?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "a0fcd95e3d67b5d65d29c882e0c537b114d8b6d9369ce746b295b841ef8a94c9",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00252695",
+    "input_tokens": 813,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 335
+  }
+}

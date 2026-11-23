@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001521332-25-000010#7#0002",
+      "0001521332-25-000010#7#0003"
+    ],
+    "gold_points": [
+      "Plans tax-free spin-off of Electrical Distribution Systems, completion expected by March 31, 2026",
+      "Positioned for growth in software-defined vehicles, active safety, and autonomous driving",
+      "About $31 billion in new business awards in 2024",
+      "Funded $4.1 billion share repurchases, including $3.0 billion ASR"
+    ],
+    "note": "Spin-off announcement appears in chunk 0002 and is repeated at start of chunk 0003; strategy and achievements are in chunk 0003, so both chunks are used for full coverage.",
+    "question": "In Aptiv PLC's fiscal 2024 10-K, how did the company describe its planned separation of the Electrical Distribution Systems business, and what strategic positioning and 2024 achievements did it highlight in its business strategy?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "07eaf60dbf6b65375ddb2d1d94aa4b479fe7a27dca067bede330d5ca2bddc325",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00301595",
+    "input_tokens": 1332,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 329
+  }
+}

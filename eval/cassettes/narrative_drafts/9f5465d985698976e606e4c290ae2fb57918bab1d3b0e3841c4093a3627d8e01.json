@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001397187-23-000012#7A#0002",
+      "0001397187-23-000012#7A#0003"
+    ],
+    "gold_points": [
+      "Revolving credit facility allows borrowings up to $400.0 million at a variable rate",
+      "No borrowings outstanding at January 29, 2023, aside from $6.5 million letters of credit",
+      "No interest rate hedging currently; may use derivatives in future if balance becomes meaningful",
+      "Cash equivalents are not believed to be subject to material interest rate risk"
+    ],
+    "note": "The interest rate risk discussion starts in chunk 0002 and ends in chunk 0003 with the cash equivalents statement, so both chunks are needed to cover all gold points.",
+    "question": "How did lululemon athletica describe its interest rate risk exposure and its approach to hedging in its fiscal 2022 10-K?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "9f5465d985698976e606e4c290ae2fb57918bab1d3b0e3841c4093a3627d8e01",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00278695",
+    "input_tokens": 1248,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 300
+  }
+}

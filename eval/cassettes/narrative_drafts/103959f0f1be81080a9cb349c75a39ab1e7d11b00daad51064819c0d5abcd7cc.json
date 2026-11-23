@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001396009-22-000010#7A#0136",
+      "0001396009-22-000010#7A#0137"
+    ],
+    "gold_points": [
+      "Discount rates set using a high-quality bond full yield curve approach with spot rates per cash flow",
+      "Healthcare cost trend 6.60% pre-65 and 6.50% post-65 for 2022, declining to 4.50% by 2028",
+      "2021 expected return on plan assets revised from 5.25% to 3.75% at remeasurement",
+      "Expected return on plan assets set at 4.00% for 2022"
+    ],
+    "note": "Second chunk is needed for the expected return on plan assets revisions and the 2022 setting; first chunk covers discount rates and healthcare trend.",
+    "question": "How did Vulcan Materials set its pension and postretirement benefit assumptions for fiscal year 2021, including how it determined discount rates, its healthcare cost trend assumptions, and how its expected return on plan assets changed?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "103959f0f1be81080a9cb349c75a39ab1e7d11b00daad51064819c0d5abcd7cc",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00302395",
+    "input_tokens": 1300,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 337
+  }
+}

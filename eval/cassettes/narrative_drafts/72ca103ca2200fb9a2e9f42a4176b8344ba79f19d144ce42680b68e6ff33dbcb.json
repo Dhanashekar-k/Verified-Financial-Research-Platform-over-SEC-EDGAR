@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0000906163-23-000023#7#0052"
+    ],
+    "gold_points": [
+      "Loans sold to secondary market, typically servicing released within 30 days of closing",
+      "Underwritten to investor standards equal to or stricter than FNMA, GNMA, FHLMC, VA, FHA",
+      "Quality control department checks underwriting controls",
+      "Repurchase reserve may prove inadequate if assumptions change unexpectedly"
+    ],
+    "note": "Single passage covers the mortgage credit risk and reserve discussion well; the inflation section is just a cross-reference.",
+    "question": "How did NVR manage credit risk on the mortgage loans it originated in fiscal year 2022, and what limits did it acknowledge on its repurchase reserve?",
+    "usable": true,
+    "uses_second_chunk": false
+  },
+  "request_key": "72ca103ca2200fb9a2e9f42a4176b8344ba79f19d144ce42680b68e6ff33dbcb",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00197895",
+    "input_tokens": 610,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 266
+  }
+}

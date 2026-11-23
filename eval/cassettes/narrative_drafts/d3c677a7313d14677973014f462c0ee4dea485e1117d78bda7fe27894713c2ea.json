@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0000051253-23-000009#7#0024"
+    ],
+    "gold_points": [
+      "Operating cash flow is the primary source of funds for investment, dividends and debt service",
+      "N&B Term Loan Facility totaled $1.250 billion, split into 2024 and 2026 tranches of $625 million each",
+      "IFF assumed N&B's Senior Notes totaling $6.250 billion with maturities of 2 to 30 years",
+      "N&B debt financed the Special Cash Payment to DuPont and transaction fees"
+    ],
+    "note": "The first chunk covers capital resources and the N&B debt assumption; the second chunk only partly overlaps it and is not needed.",
+    "question": "In IFF's fiscal 2022 10-K, how did the company describe its sources of funds for capital needs and the debt financing it assumed in the Nutrition & Biosciences transaction?",
+    "usable": true,
+    "uses_second_chunk": false
+  },
+  "request_key": "d3c677a7313d14677973014f462c0ee4dea485e1117d78bda7fe27894713c2ea",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00271995",
+    "input_tokens": 1151,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 306
+  }
+}

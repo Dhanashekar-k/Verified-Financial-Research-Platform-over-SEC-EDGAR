@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0000105634-25-000015#1A#0015",
+      "0000105634-25-000015#1A#0016"
+    ],
+    "gold_points": [
+      "Competition from better-funded acquirers and macro conditions like high interest rates may limit acquisitions",
+      "Integration problems, management distraction, loss of key personnel or customers, and unknown liabilities",
+      "Seller indemnification may be limited by time limits, deductibles, caps, exclusions, or seller unwillingness",
+      "Acquired businesses' internal controls may need enhancement, causing significant additional costs"
+    ],
+    "note": "Second chunk needed for indemnification and internal controls; its remaining performance obligations paragraph is unrelated and not used.",
+    "question": "In EMCOR Group's fiscal 2024 10-K, what risks does the company say its acquisition-driven growth strategy creates, and how might acquired businesses' internal controls and indemnification protections fall short?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "a57ef54e7527a5a422dbd00d3c9a220e44338950c901b4ae26759fb62d408b4a",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00294895",
+    "input_tokens": 1300,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 322
+  }
+}

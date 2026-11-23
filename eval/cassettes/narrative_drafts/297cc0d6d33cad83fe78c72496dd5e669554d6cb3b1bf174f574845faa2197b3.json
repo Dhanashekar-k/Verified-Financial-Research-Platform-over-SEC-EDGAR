@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0000740260-23-000070#7#0036",
+      "0000740260-23-000070#7#0037"
+    ],
+    "gold_points": [
+      "$20.0 million allowance recognized in 2022 on the Santerre Mezzanine Loan",
+      "Santerre loan has $486.1 million principal balance, priced at LIBOR + 6.42%",
+      "$24.0 million unrealized loss from lower fair value of Brookdale stock warrants",
+      "Warrants' fair value was $23.6 million at year-end, $4.4 million below grant date"
+    ],
+    "note": "The warrant fair value at year-end figures appear only in the second chunk; the rest is in the first.",
+    "question": "For fiscal year 2022, what drove the changes in Ventas, Inc.'s allowance on loans receivable and its other expenses relative to 2021, including the Santerre Mezzanine Loan and the Brookdale stock warrants?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "297cc0d6d33cad83fe78c72496dd5e669554d6cb3b1bf174f574845faa2197b3",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00288595",
+    "input_tokens": 1262,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 317
+  }
+}

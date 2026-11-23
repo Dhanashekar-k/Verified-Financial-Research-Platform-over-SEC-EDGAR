@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0000927653-24-000035#7A#0000",
+      "0000927653-24-000035#7A#0001"
+    ],
+    "gold_points": [
+      "Exited European businesses via Austria, U.K., and E.U. divestitures",
+      "Divestitures reduced Euro and British pound sterling exchange rate risk",
+      "Uses cross-currency swaps as net investment, fair value, or cash flow hedges",
+      "Hedges reduce but do not entirely eliminate currency risk"
+    ],
+    "note": "Fiscal year label is 2023 but the text covers March 31, 2024 and 2023 figures; the question relies on qualitative content that is unaffected by this.",
+    "question": "How did McKesson's European divestitures change its foreign currency exchange rate risk exposure, and what hedging programs does it use to manage the remaining exposure in its fiscal 2023 market risk disclosures?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "be86493a59fa3af2e9ba25bd857bdcf21a6ceebf953748ea985a6e52023dae76",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00280795",
+    "input_tokens": 1239,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 306
+  }
+}

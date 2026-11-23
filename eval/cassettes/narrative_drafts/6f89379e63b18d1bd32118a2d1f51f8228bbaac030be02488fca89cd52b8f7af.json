@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001562762-21-000027#7A#0107"
+    ],
+    "gold_points": [
+      "Proprietary LNG plant optimization technology is licensed to customers",
+      "Payments are made at stated milestones, not tied directly to performance",
+      "Payments are recorded as deferred revenue until customer can use the license",
+      "Contract liabilities expected to be recognized as revenue during 2021 and 2022"
+    ],
+    "note": "Question is answerable from the second chunk alone; the first chunk covers practical expedients and receivables, which are not needed.",
+    "question": "How did ConocoPhillips describe in its fiscal 2020 10-K the treatment of its LNG technology licensing payments as contract liabilities, including when the deferred revenue is expected to be recognized?",
+    "usable": true,
+    "uses_second_chunk": false
+  },
+  "request_key": "6f89379e63b18d1bd32118a2d1f51f8228bbaac030be02488fca89cd52b8f7af",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00286795",
+    "input_tokens": 1499,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 266
+  }
+}

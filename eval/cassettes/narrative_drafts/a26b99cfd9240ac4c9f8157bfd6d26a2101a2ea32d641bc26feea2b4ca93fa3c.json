@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0000045012-21-000009#7#0028",
+      "0000045012-21-000009#7#0027"
+    ],
+    "gold_points": [
+      "Long-lived assets are grouped at the lowest level with largely independent cash flows",
+      "Undiscounted cash flows are compared to carrying amount; if lower, fair value is determined by discounted cash flow",
+      "Goodwill is tested annually in Q3 for each reporting unit, equal to the two segments",
+      "Goodwill fair value uses a discounted cash flow analysis and is compared to the reporting unit's carrying value"
+    ],
+    "note": "Passages cover critical accounting estimate on long-lived asset and goodwill impairment; the first chunk supplies the annual Q3 goodwill testing timing and the trigger-based testing of other assets.",
+    "question": "In Halliburton's fiscal 2020 10-K, how does the company test long-lived assets other than goodwill for impairment, and how does that process differ from its goodwill impairment assessment?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "a26b99cfd9240ac4c9f8157bfd6d26a2101a2ea32d641bc26feea2b4ca93fa3c",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00309595",
+    "input_tokens": 1342,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 343
+  }
+}

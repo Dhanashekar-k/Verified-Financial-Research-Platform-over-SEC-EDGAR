@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001609711-25-000023#1A#0040"
+    ],
+    "gold_points": [
+      "Factors may cause significant fluctuations in quarterly or annual operating results and key metrics",
+      "Variability could cause failure to meet revenue, bookings or operating results expectations of analysts or investors",
+      "Portion of operating expenses is fixed and based on forecasted revenue and bookings trends",
+      "Unable to reduce expenses commensurately in the short term, hurting operating results"
+    ],
+    "note": "The answer is fully contained in the second chunk's closing paragraph; the first chunk is just a bulleted list of factors.",
+    "question": "In GoDaddy's fiscal 2024 10-K, what consequences does the company say could follow from the many factors that cause its quarterly and annual operating results to fluctuate, and why can it not easily offset revenue shortfalls?",
+    "usable": true,
+    "uses_second_chunk": false
+  },
+  "request_key": "45814e87dcb0a6640dce2dead67768b1e578a721223abd8ba432716c8b939026",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00286195",
+    "input_tokens": 1323,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 300
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0000882184-24-000057#7A#0001"
+    ],
+    "gold_points": [
+      "Hedging instruments for uncommitted loans and IRLCs totaled a $3.8 billion notional amount at September 30, 2024",
+      "Fair value changes of hedges generally offset those of uncommitted loans; net change was not significant",
+      "MBS without IRLCs or closed loans totaled $637.9 million versus $1.1 billion in 2023",
+      "Hedges support a program offering below market interest rate financing to homebuyers"
+    ],
+    "note": "First chunk alone covers the hedging discussion; the second chunk is only the debt maturity table.",
+    "question": "How did D.R. Horton describe its use of hedging instruments for mortgage loans held for sale and its below-market financing program for homebuyers in its fiscal 2024 market risk disclosures?",
+    "usable": true,
+    "uses_second_chunk": false
+  },
+  "request_key": "66ef3a20d88fac473faf91631998e691e468bcc8383bca2b702f99dd9e546338",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00247695",
+    "input_tokens": 948,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 298
+  }
+}

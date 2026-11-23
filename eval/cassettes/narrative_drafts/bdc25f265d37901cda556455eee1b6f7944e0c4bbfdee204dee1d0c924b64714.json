@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0000092230-25-000020#1A#0033",
+      "0000092230-25-000020#1A#0034"
+    ],
+    "gold_points": [
+      "Regulators and DOJ can assess significant civil or criminal monetary penalties, fines, or restitution",
+      "Authorities can issue cease and desist or prohibition orders and initiate injunctive actions",
+      "Large institutions face increased scrutiny, supervision, and operational and compliance costs",
+      "New or changed regulations or more aggressive enforcement could require compliance infrastructure changes"
+    ],
+    "note": "Good question; the first chunk covers enforcement powers and the second covers increased scrutiny and evolving regulation.",
+    "question": "In Truist's fiscal 2024 10-K, what enforcement powers do regulators have under anti-money laundering and sanctions laws, and how does the company say its regulatory and compliance burden may change?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "bdc25f265d37901cda556455eee1b6f7944e0c4bbfdee204dee1d0c924b64714",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00276795",
+    "input_tokens": 1189,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 308
+  }
+}

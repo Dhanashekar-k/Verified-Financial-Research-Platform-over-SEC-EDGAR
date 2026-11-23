@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0000749251-21-000010#7#0012",
+      "0000749251-21-000010#7#0013"
+    ],
+    "gold_points": [
+      "Lease liabilities use incremental borrowing rate because leases lack readily determinable implicit rate",
+      "Research subscription revenues are deferred and recognized ratably over the contract term",
+      "Conferences revenues are recognized upon completion of the related conference",
+      "Consulting fixed fee revenue recognized as performance obligations are satisfied; contract optimization is contingent"
+    ],
+    "note": "Question spans lease policy (chunk 12, continued in 13) and revenue recognition (chunk 13), so both chunks are needed.",
+    "question": "How did Gartner describe its accounting for leases and its revenue recognition by source (Research, Conferences, Consulting) in its fiscal 2020 10-K critical accounting policies?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "99fc2dddda26b2f23d563f4c6e2236e4929a4a51ed71b2f2c391976f855637ba",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00290395",
+    "input_tokens": 1360,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 301
+  }
+}

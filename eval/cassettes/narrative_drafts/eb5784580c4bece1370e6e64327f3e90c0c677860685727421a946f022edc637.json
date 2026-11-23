@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0000822416-21-000007#7#0035"
+    ],
+    "gold_points": [
+      "Net cash used in financing was $295.6 million in 2020 versus $733.6 million in 2019",
+      "2020 uses: repurchased 4.5 million shares for $170.7 million, $65.3 million debt repayments, $130.2 million dividends",
+      "2019 uses: repurchased 8.4 million shares for $274.3 million, $310.0 million debt repayments, $122.4 million dividends"
+    ],
+    "note": "Financing activities discussion is fully contained in the first chunk; the second chunk covers seasonality and is not needed.",
+    "question": "How did PulteGroup's financing cash outflows in fiscal 2020 compare with 2019, and what were the main uses of cash in each year?",
+    "usable": true,
+    "uses_second_chunk": false
+  },
+  "request_key": "eb5784580c4bece1370e6e64327f3e90c0c677860685727421a946f022edc637",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00244095",
+    "input_tokens": 1012,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 278
+  }
+}

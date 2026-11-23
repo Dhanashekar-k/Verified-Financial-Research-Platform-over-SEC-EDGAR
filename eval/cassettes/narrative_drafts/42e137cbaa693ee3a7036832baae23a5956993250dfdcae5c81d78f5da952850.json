@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001403161-22-000081#7A#0004"
+    ],
+    "gold_points": [
+      "Decline in plan assets or discount rate lowers funded status, raises pension cost and required funding",
+      "U.S. plans: 10% asset decline and 1% discount rate drop cuts funded status about $150 million",
+      "U.S. pension cost would rise about $32 million",
+      "Non-U.S. plans: funded status falls about $82 million and pension cost rises about $11 million"
+    ],
+    "note": "Single passage covers pension risk sensitivity for both U.S. and non-U.S. plans; good descriptive question.",
+    "question": "How does Visa describe its pension plan market risk in fiscal 2022, and how large would the effect on funded status and pension cost be under a hypothetical decline in asset values and discount rates for its U.S. versus non-U.S. plans?",
+    "usable": true,
+    "uses_second_chunk": false
+  },
+  "request_key": "42e137cbaa693ee3a7036832baae23a5956993250dfdcae5c81d78f5da952850",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00214995",
+    "input_tokens": 621,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 298
+  }
+}

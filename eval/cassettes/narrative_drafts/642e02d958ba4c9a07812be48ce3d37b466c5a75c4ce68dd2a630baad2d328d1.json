@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001020569-22-000035#7A#0001",
+      "0001020569-22-000035#7A#0002"
+    ],
+    "gold_points": [
+      "Finances international subsidiaries with local-currency debt as a natural hedge",
+      "IMI or IMIM borrows in foreign currencies to hedge intercompany financing",
+      "Examples include GBP Notes due 2025 and Australian dollar AUD Term Loan",
+      "Cross-currency swaps hedge net investment in Euro subsidiaries, marked to market through accumulated other comprehensive items"
+    ],
+    "note": "Strategies begin in chunk 1 (natural hedge) and continue in chunk 2 (borrowing, GBP/AUD debt, cross-currency swaps), so both are needed.",
+    "question": "How did Iron Mountain describe its strategies for managing foreign currency risk in its fiscal 2021 10-K, including the use of local-currency debt and derivative instruments?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "642e02d958ba4c9a07812be48ce3d37b466c5a75c4ce68dd2a630baad2d328d1",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00305795",
+    "input_tokens": 1374,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 329
+  }
+}

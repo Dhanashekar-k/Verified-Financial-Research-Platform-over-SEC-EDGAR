@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001652044-25-000014#7A#0004",
+      "0001652044-25-000014#7A#0005"
+    ],
+    "gold_points": [
+      "Non-marketable securities are adjusted to fair value only on observable transactions or impairment (measurement alternative)",
+      "Early-stage private investments may never materialize, risking loss of a substantial part of the investment",
+      "Private company valuations are complex due to lack of readily available market data",
+      "Equity method investments generally don't fluctuate with market prices but may be impaired if carrying value exceeds fair value"
+    ],
+    "note": "Question spans both chunks: the measurement alternative is introduced in chunk 0004, while the private-company risk and equity method discussion are in chunk 0005.",
+    "question": "In Alphabet's fiscal 2024 10-K market risk disclosures, why are its non-marketable equity securities considered riskier and harder to value than its marketable equity securities, and how are equity method investments treated differently?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "dad8490093b3f53d311382a7b069ef8f5367872f186cfff69e5c962f086c03d1",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00288395",
+    "input_tokens": 1200,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 329
+  }
+}

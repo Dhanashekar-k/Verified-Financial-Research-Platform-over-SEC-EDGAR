@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0000940944-22-000042#7#0012",
+      "0000940944-22-000042#7#0013"
+    ],
+    "gold_points": [
+      "Effective tax rate was 12.7% in fiscal 2022 versus (9.7)% in fiscal 2021",
+      "Earnings before income taxes increased in fiscal 2022",
+      "Fiscal 2021 net operating loss was carried back to the previous five tax years",
+      "Benefit arose from the difference in federal tax rates between 2021 and carryback years"
+    ],
+    "note": "The explanation of the fiscal 2021 tax benefit spans both chunks: the rate and the NOL carryback are in the first, and the federal rate difference is in the second.",
+    "question": "How did Darden Restaurants' effective income tax rate change in fiscal 2022 versus fiscal 2021, and what factors explained the swing from a tax benefit to a tax expense?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "f02db1764e7c193d1541129a5ebe8d6354e18f14c6888163f57be3c0142adee8",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00301695",
+    "input_tokens": 1423,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 311
+  }
+}

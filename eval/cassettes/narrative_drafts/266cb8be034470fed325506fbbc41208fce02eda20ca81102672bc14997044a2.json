@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0000898173-24-000009#7A#0001"
+    ],
+    "gold_points": [
+      "Exposure arises from Mexican peso revenues and profits translated into U.S. dollars; Canadian dollar exposure begins in 2024",
+      "Mexican subsidiaries are viewed as long-term investments; a 10% exchange rate change would cost about $31.2 million",
+      "Translation changes are recorded in accumulated other comprehensive income unless subsidiaries are sold or disposed",
+      "A 10% change in average rates would not materially affect results of operations"
+    ],
+    "note": "Single passage covers the foreign currency risk discussion well; the question is answerable in words.",
+    "question": "How did O'Reilly Automotive describe its foreign currency risk exposure in its fiscal 2023 10-K, including where the exposure comes from and how currency changes would affect its financial statements?",
+    "usable": true,
+    "uses_second_chunk": false
+  },
+  "request_key": "266cb8be034470fed325506fbbc41208fce02eda20ca81102672bc14997044a2",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00216795",
+    "input_tokens": 609,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 304
+  }
+}

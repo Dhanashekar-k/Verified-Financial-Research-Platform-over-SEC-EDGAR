@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001164727-25-000011#1A#0001",
+      "0001164727-25-000011#1A#0002"
+    ],
+    "gold_points": [
+      "Price declines hurt revenues, net income and operating cash flows",
+      "Newmont does not hedge gold, copper, silver, lead or zinc sales",
+      "Sustained low prices can cause production declines from uneconomic deposits",
+      "Lower prices can cause stockpile and leach pad write-downs and reduce reserves"
+    ],
+    "note": "Question combines the opening impact statement and hedging strategy in chunk 1 with the consequences list in chunk 2.",
+    "question": "In Newmont's fiscal 2024 10-K, how does the company say a decline in realized metal prices would affect its financial results and operations, given its approach to hedging?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "eff1296fc6e8260953a2def3de575c5e93b1745f0abc6a221630d2dc2e5ceace",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00266895",
+    "input_tokens": 1260,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 274
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0000052988-20-000070#7A#0001"
+    ],
+    "gold_points": [
+      "Weighted average floating rate borrowings were about $1.2 billion in fiscal 2020",
+      "1% rise in floating rates would raise interest expense by about $12.2 million",
+      "Uses foreign exchange contracts to limit exposure when costs are in non-functional currencies",
+      "$521.5 million notional of exchange rate sensitive instruments at October 2, 2020"
+    ],
+    "note": "Single passage covers both interest rate sensitivity and foreign currency risk; contains numbers but the question asks for a descriptive answer.",
+    "question": "How did Jacobs Solutions describe its exposure to floating interest rate changes and its approach to managing foreign currency risk in its fiscal 2020 market risk disclosures?",
+    "usable": true,
+    "uses_second_chunk": false
+  },
+  "request_key": "243c7813caf05622c6c9bf7c929e1e93748dde1b2e3e0222355873d6253b1c83",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00181395",
+    "input_tokens": 345,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 286
+  }
+}

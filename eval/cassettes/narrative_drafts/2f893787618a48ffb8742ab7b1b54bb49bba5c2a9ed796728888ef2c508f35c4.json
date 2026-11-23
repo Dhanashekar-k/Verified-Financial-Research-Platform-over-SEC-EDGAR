@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0000909832-24-000049#7A#0000",
+      "0000909832-24-000049#7A#0001"
+    ],
+    "gold_points": [
+      "Interest rate exposure stems mainly from investments in cash equivalents and short-term government and agency securities",
+      "A 100 basis point rate change would have an immaterial effect on fair market value",
+      "Forward foreign-exchange contracts economically hedge international subsidiaries' U.S. dollar merchandise inventory purchases",
+      "Company does not engage in speculative transactions"
+    ],
+    "note": "Interest rate risk is covered in the first chunk and foreign currency risk in the second, so both are needed.",
+    "question": "How does Costco Wholesale describe its interest rate risk exposure and the way it manages foreign currency risk in its fiscal 2024 10-K?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "2f893787618a48ffb8742ab7b1b54bb49bba5c2a9ed796728888ef2c508f35c4",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00281195",
+    "input_tokens": 1358,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 283
+  }
+}

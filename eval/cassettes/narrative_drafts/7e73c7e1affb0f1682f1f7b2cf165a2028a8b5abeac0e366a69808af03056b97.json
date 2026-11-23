@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0000092122-22-000003#7A#0129",
+      "0000092122-22-000003#7A#0130"
+    ],
+    "gold_points": [
+      "Stopped sending CCR and non-CCR wastes to unlined impoundments before April 11, 2021, so sought no extensions",
+      "EPA's January 2022 proposed determinations for other facilities are under review; impact may be material",
+      "ARO cost estimates are periodically updated, and updates may be material",
+      "Without continued recovery of ARO costs through regulated rates, results could be materially impacted"
+    ],
+    "note": "Good narrative question; the rate recovery risk point comes from the second chunk.",
+    "question": "In Southern Company's fiscal 2021 10-K, how did the traditional electric operating companies respond to the EPA's revised deadline for halting waste disposal in unlined impoundments, and what uncertainties and financial risks remain around CCR closure costs?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "7e73c7e1affb0f1682f1f7b2cf165a2028a8b5abeac0e366a69808af03056b97",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00304695",
+    "input_tokens": 1428,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 316
+  }
+}

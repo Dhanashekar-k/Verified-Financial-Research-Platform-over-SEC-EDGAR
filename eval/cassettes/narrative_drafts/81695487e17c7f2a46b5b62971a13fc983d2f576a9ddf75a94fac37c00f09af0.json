@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001784031-23-000007#1A#0026",
+      "0001784031-23-000007#1A#0027"
+    ],
+    "gold_points": [
+      "Past U.S. proposals would repeal percentage depletion and eliminate intangible drilling cost deductions",
+      "U.K. Energy Profits Levy began at 25% on May 26, 2022",
+      "Autumn Statement 2022 raised the levy to 35% through March 31, 2028",
+      "IRA created a 15% corporate AMT on companies with AFSI above $1.0 billion"
+    ],
+    "note": "Both chunks are needed: the first covers U.S. tax incentive proposals, the second covers the U.K. levy and the IRA.",
+    "question": "In APA Corp's fiscal 2022 10-K risk factors, what tax law changes in the U.S. and U.K. does the company identify as potentially hurting its business, and how did the U.K. Energy Profits Levy change during 2022?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "81695487e17c7f2a46b5b62971a13fc983d2f576a9ddf75a94fac37c00f09af0",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00295295",
+    "input_tokens": 1279,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 327
+  }
+}

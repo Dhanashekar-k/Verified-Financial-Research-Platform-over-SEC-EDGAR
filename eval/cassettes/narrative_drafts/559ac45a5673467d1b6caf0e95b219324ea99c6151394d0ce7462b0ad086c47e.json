@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0000040987-23-000008#1A#0006",
+      "0000040987-23-000008#1A#0007"
+    ],
+    "gold_points": [
+      "Systems could suffer cyber-attacks, viruses, outages, or employee error, disrupting orders and inventory management",
+      "No material cyber-security breach to date, but unauthorized access and phishing attempts occur",
+      "Prolonged disruption could raise expenses, cut sales, harm reputation, and create legal claims",
+      "Stricter privacy and information security regulation could bring significant additional compliance costs"
+    ],
+    "note": "Both chunks are needed: the first covers system dependence and threat types, the second covers breach history, consequences and regulatory costs.",
+    "question": "In Genuine Parts Company's fiscal 2022 10-K, what cybersecurity and information system risks does the company describe, and what consequences could a serious prolonged disruption have for its business?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "559ac45a5673467d1b6caf0e95b219324ea99c6151394d0ce7462b0ad086c47e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00284595",
+    "input_tokens": 1242,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 313
+  }
+}

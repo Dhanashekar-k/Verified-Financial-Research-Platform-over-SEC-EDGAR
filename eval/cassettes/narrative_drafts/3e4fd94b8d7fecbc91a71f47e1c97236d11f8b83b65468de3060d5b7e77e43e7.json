@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001564590-23-002793#1A#0007"
+    ],
+    "gold_points": [
+      "EPD legislation has caused Nucor to incur additional costs",
+      "Could disadvantage domestic steel manufacturers versus foreign competitors",
+      "Disadvantage persists unless standardized mechanisms evaluate foreign producers' products",
+      "California's Buy Clean Act sets GWP benchmarks through EPDs for certain steel products"
+    ],
+    "note": "Question is answerable from the first chunk alone; the second chunk covers COVID-19 risk and is not needed.",
+    "question": "In Nucor's fiscal 2022 10-K, how does the company say Environmental Product Declaration (EPD) requirements and related regulations could affect its costs and competitive position against foreign steel producers?",
+    "usable": true,
+    "uses_second_chunk": false
+  },
+  "request_key": "3e4fd94b8d7fecbc91a71f47e1c97236d11f8b83b65468de3060d5b7e77e43e7",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00266795",
+    "input_tokens": 1239,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 278
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0000813672-23-000011#7#0004",
+      "0000813672-23-000011#7#0005"
+    ],
+    "gold_points": [
+      "Recurring revenue was 85% in fiscal 2022, down from 88% in 2021",
+      "Up-front revenue rose to 15% from 12%",
+      "Up-front revenue is mainly emulation/prototyping hardware and individual IP licenses",
+      "Recurring includes over-time software, services, royalties, maintenance, and non-cancelable commitment arrangements"
+    ],
+    "note": "Second chunk supplies the fiscal 2022 vs 2021 mix figures; first chunk supplies definitions of recurring and up-front revenue.",
+    "question": "How does Cadence Design Systems describe the composition of its recurring versus up-front revenue in fiscal 2022, and how did the mix change from fiscal 2021?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "93055a1cf1f98f38b31d694aead95f1f186411f75fb51227e315213bd1a2fcce",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00207895",
+    "input_tokens": 535,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 301
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0000822416-22-000007#1A#0002",
+      "0000822416-22-000007#1A#0003"
+    ],
+    "gold_points": [
+      "Inflation raises land, materials, and labor costs and is often accompanied by higher interest rates",
+      "May be unable to raise home prices enough to offset costs, reducing margins or buyer affordability",
+      "Cost increases driven by COVID-19 disruptions, strong demand, and skilled labor shortages",
+      "Building material supply is limited (lumber, steel, etc.) due to supply chain disruptions and weather events"
+    ],
+    "note": "Inflation risk factor spans both chunks; the second chunk adds the supply and labor shortage drivers.",
+    "question": "In PulteGroup's fiscal 2021 10-K, how does the company say inflation could hurt its business, and what factors were driving higher labor and materials costs that year?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "74aea722b64eb1cefed541a186f258b454986d47b12ae57e661a3963dd9e7ed6",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00278295",
+    "input_tokens": 1229,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 303
+  }
+}

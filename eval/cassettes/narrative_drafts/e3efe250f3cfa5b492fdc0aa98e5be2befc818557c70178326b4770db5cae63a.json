@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0000797468-23-000011#7#0045",
+      "0000797468-23-000011#7#0046"
+    ],
+    "gold_points": [
+      "Domestic PVC demand fell 7% in 2022 from record 2021 levels",
+      "Export demand rose 46%; exports were 27% of North American production",
+      "Higher interest rates, lower housing starts and inflation weakened domestic demand",
+      "2023 domestic PVC demand expected neutral to lower; lower residential construction offset by infrastructure and global demand"
+    ],
+    "note": "Question needs the 2022 PVC discussion in the first chunk and the 2023 vinyls outlook in the second chunk.",
+    "question": "According to Occidental Petroleum's fiscal 2022 10-K, how did the PVC market in the vinyls business develop in 2022, and what does management expect for domestic PVC demand in 2023?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "e3efe250f3cfa5b492fdc0aa98e5be2befc818557c70178326b4770db5cae63a",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00299995",
+    "input_tokens": 1451,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 302
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001628280-24-024623#1A#0033",
+      "0001628280-24-024623#1A#0034"
+    ],
+    "gold_points": [
+      "Acquired companies may lack public-company controls, procedures and policies, including cyber and information security practices",
+      "Integration of accounting, management information and HR systems is needed for effective management and timely reporting",
+      "Acquisitions may involve equity issuance causing dilution, debt, contingent liabilities, or amortization expenses",
+      "Possible write-offs of goodwill and intangibles, and impairment charges, could harm financial condition"
+    ],
+    "note": "Acquisition risk factor spans both chunks; first covers integration and controls risks, second covers financial consequences such as dilution, debt and write-offs.",
+    "question": "In Take-Two Interactive's fiscal 2023 10-K, what risks does the company describe in connection with integrating acquired companies, particularly their controls and compliance practices, and what financial consequences could future acquisitions have?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "e260c99a699571c9dc17320e86f865de20db093ec2285378e22e78bd7d594427",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00301495",
+    "input_tokens": 1286,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 338
+  }
+}

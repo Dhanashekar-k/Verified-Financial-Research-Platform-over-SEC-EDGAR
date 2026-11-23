@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0000310158-22-000003#7#0024"
+    ],
+    "gold_points": [
+      "Emend sales declined 13% in 2021 on lower volumes in Europe and China",
+      "Emend sales fell 63% in 2020 due to lower U.S. demand and pricing",
+      "U.S. patent expiry for Emend for Injection in September 2019 brought generic competition",
+      "Oral Emend lost market exclusivity in Europe and Japan in 2019, reducing demand"
+    ],
+    "note": "Emend paragraph is fully contained in the first chunk; the second chunk only covers Koselugo and Welireg.",
+    "question": "In Merck's 2021 10-K, how did Emend sales perform in 2021 and 2020, and what factors drove the declines?",
+    "usable": true,
+    "uses_second_chunk": false
+  },
+  "request_key": "44930af35b44606530c13f70dc7b31a5b5bb8968942d1b1206e70082d0a1ea06",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00231995",
+    "input_tokens": 946,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 267
+  }
+}

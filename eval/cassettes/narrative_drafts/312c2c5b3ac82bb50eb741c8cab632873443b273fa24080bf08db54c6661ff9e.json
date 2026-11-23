@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001130310-25-000040#7A#0003"
+    ],
+    "gold_points": [
+      "ZENS debt component is fixed-rate, so no earnings exposure to interest rate changes",
+      "Derivative component liability of $619 million is recorded in income and exposed to risk-free rate changes",
+      "Holdings of AT&T, Charter and WBD shares are held to meet ZENS obligations",
+      "Changes in value of ZENS-Related Securities substantially offset changes in the derivative component"
+    ],
+    "note": "Chunk 0003 alone covers the ZENS debt component, derivative component, and equity securities; chunk 0002 only adds the start of the ZENS discussion.",
+    "question": "How does CenterPoint Energy's fiscal 2024 10-K describe the market risk exposure from the ZENS obligation, covering both its debt and derivative components and the related equity securities it holds?",
+    "usable": true,
+    "uses_second_chunk": false
+  },
+  "request_key": "312c2c5b3ac82bb50eb741c8cab632873443b273fa24080bf08db54c6661ff9e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00289595",
+    "input_tokens": 1307,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 310
+  }
+}

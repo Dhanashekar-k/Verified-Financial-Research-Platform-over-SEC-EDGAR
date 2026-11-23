@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001283699-23-000016#1A#0018",
+      "0001283699-23-000016#1A#0019"
+    ],
+    "gold_points": [
+      "Substantial debt reduces flexibility and increases cash needed to service debt",
+      "Less funds available for capital expenditures, share repurchases and other activities",
+      "May need to refinance, sell strategic assets at unfavorable prices, or borrow more",
+      "Might be unable to do so on commercially reasonable terms, harming business"
+    ],
+    "note": "The first chunk covers the effects of indebtedness; the second covers the fallback options if debt cannot be serviced.",
+    "question": "In T-Mobile US's fiscal 2022 10-K, how does the company say its substantial indebtedness could affect its business, and what options might it have to turn to if it cannot meet its debt obligations?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "57a6f0820669258ecc64ff178412172d94c11b385dbabbc5379a3351f1baa8f5",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00273095",
+    "input_tokens": 1267,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 285
+  }
+}

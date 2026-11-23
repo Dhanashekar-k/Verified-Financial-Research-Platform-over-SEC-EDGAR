@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0000950170-23-033201#7#0034"
+    ],
+    "gold_points": [
+      "Operating income decreased 64% mainly due to global volume declines",
+      "Partially offset by yield improvement and lower operating expenses",
+      "Cost cuts: reduced flight hours, parked/retired aircraft, route consolidation, sort closures",
+      "Cost reductions lagged volume declines, so expenses stayed high relative to demand"
+    ],
+    "note": "Single chunk covers the question fully; the second chunk only continues expense line items.",
+    "question": "Why did FedEx Express segment operating income fall sharply in fiscal 2023 at FedEx Corp, and what cost actions did the company take in response to volume declines?",
+    "usable": true,
+    "uses_second_chunk": false
+  },
+  "request_key": "f9d0a9326ea2f6d1ad1e0d49efd33421d8f01ddfd61378ac67460820a42f360e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00268695",
+    "input_tokens": 1393,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 251
+  }
+}

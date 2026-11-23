@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001415404-21-000005#1A#0002",
+      "0001415404-21-000005#1A#0003"
+    ],
+    "gold_points": [
+      "Substantial contractual capacity commitments rest on existing customer contracts and backlog",
+      "Early contract termination could leave insufficient revenue to cover satellite capacity costs",
+      "Capacity may be insufficient for demand increases and cannot be adjusted quickly",
+      "Limited additional capacity in North America, including EchoStar's own fleet, until new satellites launch"
+    ],
+    "note": "Risk factor spans both chunks; the second chunk adds the demand-side shortage and North America limits, so both are needed.",
+    "question": "According to EchoStar's fiscal 2020 10-K risk factors, what risks does the company face from its satellite capacity commitments and from possibly lacking enough capacity to meet demand?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "dbdbe4ab261c7e2599f5822b20b9201caddfa2523e2c07aad7bfa915bbfb47d8",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00289195",
+    "input_tokens": 1358,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 299
+  }
+}

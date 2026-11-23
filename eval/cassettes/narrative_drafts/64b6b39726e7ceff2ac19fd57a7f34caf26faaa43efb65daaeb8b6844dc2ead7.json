@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001585689-22-000013#7#0002",
+      "0001585689-22-000013#7#0003"
+    ],
+    "gold_points": [
+      "Two reportable segments: management and franchise, and ownership",
+      "Management and franchise earns management fees, franchise fees, and IP licensing fees from HGV and partnerships",
+      "Franchise fees cover brand use plus reservation, marketing and IT services",
+      "Ownership earns from room sales, food and beverage, and other services at owned and leased hotels"
+    ],
+    "note": "Segment description starts in the first chunk and finishes in the second, so both are needed for full coverage.",
+    "question": "How did Hilton Worldwide Holdings describe its two reportable segments and the ways each generates revenue in its fiscal 2021 10-K?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "64b6b39726e7ceff2ac19fd57a7f34caf26faaa43efb65daaeb8b6844dc2ead7",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00268295",
+    "input_tokens": 1294,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 270
+  }
+}

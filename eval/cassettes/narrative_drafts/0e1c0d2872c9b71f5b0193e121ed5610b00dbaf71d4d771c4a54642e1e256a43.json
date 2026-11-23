@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0000049196-24-000020#7#0105",
+      "0000049196-24-000020#7#0106"
+    ],
+    "gold_points": [
+      "Separate committees cover operational, fraud, funds movement, technology, and third-party risk",
+      "Model Risk Oversight Committee sets policies for evaluating and managing model risk",
+      "Committees report significant findings and remediation recommendations to the Risk Management Committee",
+      "Concerns may be escalated to the ROC and Audit Committee"
+    ],
+    "note": "Second chunk adds the goal of the framework and repeats the escalation sentence; the first chunk carries most of the governance detail, but the question draws on both.",
+    "question": "How did Huntington Bancshares describe its governance structure and committee oversight for operational risk, including model risk, in its fiscal year 2023 10-K?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "0e1c0d2872c9b71f5b0193e121ed5610b00dbaf71d4d771c4a54642e1e256a43",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00277095",
+    "input_tokens": 1302,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 286
+  }
+}

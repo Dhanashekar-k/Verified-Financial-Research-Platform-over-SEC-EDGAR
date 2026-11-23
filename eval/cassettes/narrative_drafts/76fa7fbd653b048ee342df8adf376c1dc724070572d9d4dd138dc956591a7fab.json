@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001659166-24-000046#1A#0026",
+      "0001659166-24-000046#1A#0027"
+    ],
+    "gold_points": [
+      "Certain Fortive products are medical devices regulated by the FDA and comparable agencies",
+      "Violations or failure to obtain clearances can lead to warning letters, recalls, fines, and injunctions",
+      "Penalties can include consent decrees, partial or total production shutdowns, and withdrawal of approvals",
+      "Defending against actions is costly and time-consuming, impairing the business even if successful"
+    ],
+    "note": "The medical device regulation bullet begins in chunk 0026 and its consequences continue in chunk 0027, so both are needed.",
+    "question": "In Fortive's fiscal 2023 10-K risk factors, what consequences could the company face if regulators conclude that its medical device products or business practices violate applicable requirements?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "76fa7fbd653b048ee342df8adf376c1dc724070572d9d4dd138dc956591a7fab",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00276195",
+    "input_tokens": 1203,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 304
+  }
+}

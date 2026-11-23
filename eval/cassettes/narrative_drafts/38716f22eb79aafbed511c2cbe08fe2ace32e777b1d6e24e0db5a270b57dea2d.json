@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001193125-21-049380#1A#0068",
+      "0001193125-21-049380#1A#0069"
+    ],
+    "gold_points": [
+      "Large share of pay is year-end discretionary, largely deferred equity awards, so lower profitability hurts retention",
+      "Intense competition for talent from financial services and technology industries",
+      "Tax and compensation law changes in operating jurisdictions can impair hiring and retention",
+      "Regulators such as the FRB, PRA, FCA and FDIC limit compensation practices"
+    ],
+    "note": "Second chunk adds the multi-regulator compensation limits; first chunk covers the rest.",
+    "question": "In Goldman Sachs's fiscal 2020 10-K, what risks does the firm describe in hiring and retaining qualified employees, and how do compensation structure and regulation contribute to those risks?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "38716f22eb79aafbed511c2cbe08fe2ace32e777b1d6e24e0db5a270b57dea2d",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00254895",
+    "input_tokens": 1045,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 293
+  }
+}

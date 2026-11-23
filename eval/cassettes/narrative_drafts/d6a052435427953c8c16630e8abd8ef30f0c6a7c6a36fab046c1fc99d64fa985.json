@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0000047217-20-000045#1A#0046"
+    ],
+    "gold_points": [
+      "Civil and criminal penalties, including contract termination, forfeiture of profits, and suspension of payments",
+      "Government contractors face fines and suspension from future government contracting",
+      "Qui tam litigation by private individuals could include treble damages claims",
+      "Reputational damage and negative publicity may hurt ability to compete for new contracts"
+    ],
+    "note": "First chunk fully covers the contract compliance risk factor; second chunk only repeats the tail and moves to tax risk.",
+    "question": "In HP Inc.'s fiscal 2020 10-K, what consequences does the company say it could face if it fails to comply with customer contracts or government contracting regulations?",
+    "usable": true,
+    "uses_second_chunk": false
+  },
+  "request_key": "d6a052435427953c8c16630e8abd8ef30f0c6a7c6a36fab046c1fc99d64fa985",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00269895",
+    "input_tokens": 1350,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 262
+  }
+}

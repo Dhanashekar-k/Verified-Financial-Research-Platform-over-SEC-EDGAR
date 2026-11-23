@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0000927653-22-000051#7#0010",
+      "0000927653-22-000051#7#0011"
+    ],
+    "gold_points": [
+      "Workplace measures included telecommuting, restricted travel, and enhanced safety measures",
+      "Approved a partial remote work model for certain employees under its real estate strategy",
+      "Serves as CDC centralized distributor of COVID-19 vaccines and ancillary supplies, starting December 2020",
+      "Picks and packs vaccines for U.S. donation program; results reported in U.S. Pharmaceutical segment"
+    ],
+    "note": "Fiscal year label says 2021 but the filing covers the year ended March 31, 2022 (McKesson's fiscal 2022); question hedges by naming both.",
+    "question": "How did McKesson describe its workplace response to COVID-19 and its role in distributing COVID-19 vaccines and supplies in its fiscal 2021 10-K (year ended March 31, 2022)?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "8f3f1f18d7d7b59a7fd4cc5e19086899bd7e81e76c273febcd175f6beb9e0e79",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00297595",
+    "input_tokens": 1277,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 332
+  }
+}

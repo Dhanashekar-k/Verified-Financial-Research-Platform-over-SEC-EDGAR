@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0002011641-24-000005#7A#0001"
+    ],
+    "gold_points": [
+      "Fuel price fluctuations could affect transportation costs",
+      "Price volatility could materially impact financial condition or results of operations",
+      "Company monitors commodity trends and has alternative sourcing plans for supplier concentration",
+      "Mitigation includes passing commodity inflation to customers or suppliers and scaling distribution networks"
+    ],
+    "note": "Single chunk is short but supports a descriptive question on fuel risk and mitigation; the safe harbor part is boilerplate.",
+    "question": "In Ferguson Enterprises' fiscal 2024 10-K market risk disclosures, how does the company describe its exposure to fuel price fluctuations and the steps it takes to mitigate commodity-related risks?",
+    "usable": true,
+    "uses_second_chunk": false
+  },
+  "request_key": "bf6cb295f7792c296ee9f9ea8cbec5691ff84694ea0be365dd33a1e251ba0e69",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00181895",
+    "input_tokens": 375,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 281
+  }
+}

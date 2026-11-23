@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001558370-23-001757#7A#0000"
+    ],
+    "gold_points": [
+      "Primary market risk exposure is adverse changes in interest rates",
+      "Not exposed to significant commodity price or foreign currency risk",
+      "Variable-rate exposure arises from the revolving credit facility",
+      "Fixed-rate debt consists of notes to former owners and acquired notes payable"
+    ],
+    "note": "First chunk alone answers the question in words; second chunk is only a numeric table.",
+    "question": "What types of market risk was Comfort Systems USA exposed to in fiscal year 2022, and how was its debt structured between fixed and variable interest rates?",
+    "usable": true,
+    "uses_second_chunk": false
+  },
+  "request_key": "7bcff8ad39cc39a557c3d6dfc7c1f5aa7302db31cfe642320e83050f028abb83",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00172195",
+    "input_tokens": 523,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 232
+  }
+}

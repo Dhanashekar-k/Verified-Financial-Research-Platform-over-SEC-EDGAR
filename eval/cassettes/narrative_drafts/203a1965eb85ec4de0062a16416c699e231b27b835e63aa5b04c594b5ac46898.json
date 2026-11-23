@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0000831259-21-000009#1A#0045",
+      "0000831259-21-000009#1A#0046"
+    ],
+    "gold_points": [
+      "Strategy of large, long-lived assets depends on integration and high automation",
+      "Threats include malware, phishing, and attacks targeting operational technologies and process control networks",
+      "Consequences include production downtime, data loss, safety and environmental harm, fines, and reputational damage",
+      "Past incidents caused no material loss, but controls may not prevent future incidents"
+    ],
+    "note": "Cybersecurity risk factor spans both chunks; the first covers dependence and threat types, the second covers consequences and past incidents.",
+    "question": "In its fiscal 2020 10-K, how does Freeport-McMoRan explain its dependence on information technology and the consequences it could face if cybersecurity threats materialize?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "203a1965eb85ec4de0062a16416c699e231b27b835e63aa5b04c594b5ac46898",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00269495",
+    "input_tokens": 1191,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 293
+  }
+}

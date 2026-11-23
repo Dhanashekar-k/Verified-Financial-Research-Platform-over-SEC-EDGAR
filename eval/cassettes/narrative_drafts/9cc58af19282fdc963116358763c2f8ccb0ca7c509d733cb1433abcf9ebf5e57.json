@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001467858-24-000031#7A#0013",
+      "0001467858-24-000031#7A#0014"
+    ],
+    "gold_points": [
+      "Residual value estimate relies on third-party data, auction values, and assumptions on returned volume, used car prices, incentives, fuel prices",
+      "Auditor tested controls over the lease residual estimation process and management's review of third-party estimates",
+      "Auditor recalculated depreciation and performed sensitivity analyses on significant assumptions",
+      "Auditor performed hindsight analyses and tested completeness and accuracy of underlying data"
+    ],
+    "note": "Content is auditor report text within Item 7A, not market risk, but supports a good descriptive question; second chunk needed for hindsight and data testing procedures.",
+    "question": "In General Motors' fiscal 2023 10-K, how did the auditor address the critical audit matter on valuation of GM Financial's operating lease equipment, and which assumptions underlie the residual value estimate?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "9cc58af19282fdc963116358763c2f8ccb0ca7c509d733cb1433abcf9ebf5e57",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00315595",
+    "input_tokens": 1432,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 337
+  }
+}

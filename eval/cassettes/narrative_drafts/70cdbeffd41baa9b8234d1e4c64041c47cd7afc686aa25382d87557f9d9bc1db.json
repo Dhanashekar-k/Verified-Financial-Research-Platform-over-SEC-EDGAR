@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001193125-21-055734#1A#0001"
+    ],
+    "gold_points": [
+      "U.S. franchisees are not required to buy food, equipment or supplies from Domino's",
+      "Franchisees could choose outside suppliers offering lower prices or better service",
+      "Loss of supply chain purchases would hurt financial condition and results of operations",
+      "Failure to compete could cause price pressure, lower demand, reduced margins and market share loss"
+    ],
+    "note": "Answerable from the second chunk alone; the first chunk covers general competition and is not needed.",
+    "question": "In Domino's Pizza's fiscal 2020 10-K, how does the company describe the competitive threat to its U.S. supply chain segment, and what consequences does it say could follow if it fails to maintain its competitive position?",
+    "usable": true,
+    "uses_second_chunk": false
+  },
+  "request_key": "70cdbeffd41baa9b8234d1e4c64041c47cd7afc686aa25382d87557f9d9bc1db",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00268995",
+    "input_tokens": 1271,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 276
+  }
+}

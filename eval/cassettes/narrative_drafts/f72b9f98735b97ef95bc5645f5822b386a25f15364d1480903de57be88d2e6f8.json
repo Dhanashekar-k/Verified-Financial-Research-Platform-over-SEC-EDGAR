@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0000950170-23-004361#7A#0002"
+    ],
+    "gold_points": [
+      "Added industry capacity or cement imports can cause oversupply and lower product prices",
+      "Cement is a key raw material for ready mixed concrete; cost increases may not be passed to customers",
+      "Higher cement prices hurt ready mixed concrete profitability but benefit the cement business, not necessarily in direct correlation",
+      "Hypothetical 10% changes would affect cement revenues by $60.2 million and ready mixed cost of sales by $26.2 million"
+    ],
+    "note": "Single passage covers both cement pricing risk and ready mixed concrete cost sensitivity.",
+    "question": "In Martin Marietta Materials' fiscal 2022 10-K market risk disclosures, how do cement price changes and industry supply conditions affect the company's cement and ready mixed concrete businesses?",
+    "usable": true,
+    "uses_second_chunk": false
+  },
+  "request_key": "f72b9f98735b97ef95bc5645f5822b386a25f15364d1480903de57be88d2e6f8",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00205095",
+    "input_tokens": 467,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 309
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0000029989-21-000004#1A#0003",
+      "0000029989-21-000004#1A#0004"
+    ],
+    "gold_points": [
+      "February 2021 incident disrupted IT systems at one network; not expected to be material",
+      "Future cybersecurity attacks could be material, and protections may fail to prevent breaches",
+      "Third-party service providers, including cloud providers, could also suffer incidents affecting Omnicom",
+      "Widespread COVID-19 work-from-home raises risk of incidents and data exposure"
+    ],
+    "note": "Cyber risk discussion begins in chunk 0003 and continues in 0004; 0004 alone covers all gold points, but 0003 introduces the topic.",
+    "question": "In Omnicom Group's fiscal 2020 10-K, what cybersecurity risks does the company describe, including the February 2021 incident and the effect of remote work during COVID-19?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "5b599ddc32a1afc22d7f0a08f4867a1204edf7b6320337b23e1ef212e8219b1b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00288495",
+    "input_tokens": 1291,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 311
+  }
+}

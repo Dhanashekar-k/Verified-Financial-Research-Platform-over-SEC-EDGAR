@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001281761-21-000012#7A#0084",
+      "0001281761-21-000012#7A#0085"
+    ],
+    "gold_points": [
+      "Total loans were $85.3 billion, up $2.3 billion from year-end 2019",
+      "Consumer loans declined, partly from discontinued indirect auto and indirect other lending",
+      "Commercial and industrial loans rose $2.9 billion, including PPP loans and the Ascentium acquisition",
+      "Line utilization fell to historic lows in second half of 2020"
+    ],
+    "note": "Both passages are needed: the first covers total and consumer loan changes, the second covers commercial and industrial drivers.",
+    "question": "How did Regions Financial Corp's loan portfolio and commercial and industrial lending change during fiscal 2020, and what drove those changes?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "3f92bf7c1ef5c038fe50e9fad68550feba752983fbde5365b18b35d79aa43998",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00272495",
+    "input_tokens": 1276,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 282
+  }
+}

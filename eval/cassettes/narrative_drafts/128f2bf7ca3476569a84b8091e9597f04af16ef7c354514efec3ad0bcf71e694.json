@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001564590-21-009611#7#0017",
+      "0001564590-21-009611#7#0018"
+    ],
+    "gold_points": [
+      "Pricing relies on time-value-of-money because liabilities have long expected durations",
+      "Retroactive reinsurance and periodic payment annuities are expected to produce pre-tax underwriting losses",
+      "Losses arise mainly from deferred charge amortization and discount accretion charges",
+      "Premiums are received at contract inception and are available for investment"
+    ],
+    "note": "Answer spans the end of chunk 17 and the start of chunk 18; the benefit of premiums available for investment appears in chunk 18.",
+    "question": "In Berkshire Hathaway's 2020 10-K, why does the Berkshire Hathaway Reinsurance Group expect pre-tax underwriting losses on retroactive reinsurance and periodic payment annuity business, and how does it still benefit from writing it?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "128f2bf7ca3476569a84b8091e9597f04af16ef7c354514efec3ad0bcf71e694",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00250495",
+    "input_tokens": 861,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 321
+  }
+}

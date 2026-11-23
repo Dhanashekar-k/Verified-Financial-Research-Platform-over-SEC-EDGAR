@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001109357-23-000018#7#0000",
+      "0001109357-23-000018#7#0001"
+    ],
+    "gold_points": [
+      "Work from home policies and travel limits adopted; extra precautions for field employees",
+      "Physical and cyber-security measures maintained to ensure uninterrupted service with remote workforce",
+      "No changes in internal control over financial reporting due to COVID-19",
+      "Exelon and BGE recorded $48 million pre-tax impairment in 2022 due to office use impacts"
+    ],
+    "note": "The first chunk introduces COVID-19 mitigation; the second gives the details on controls, impairment, and security measures needed to answer fully.",
+    "question": "How did Exelon describe the effects of COVID-19 on its operations, controls, and financial results in its fiscal year 2022 10-K, and what measures did it take to protect employees and service?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "dfba9e2a0a9cc2f672812f99772c0c028f5d72f2f2f41f6fa3ff5e19b88ec2ff",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00287695",
+    "input_tokens": 1338,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 300
+  }
+}

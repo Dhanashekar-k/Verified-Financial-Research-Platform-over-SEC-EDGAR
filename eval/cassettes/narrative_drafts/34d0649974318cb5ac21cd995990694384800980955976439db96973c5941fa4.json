@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001103982-21-000004#7#0016",
+      "0001103982-21-000004#7#0017"
+    ],
+    "gold_points": [
+      "Gum and candy growth declined due to less on-the-go consumption",
+      "Overall snack category grew in 2020 from in-home snacking demand",
+      "Snack consumption correlates with GDP growth, urbanization and rising discretionary income in emerging markets",
+      "State of Snacking report found snacking accelerated as consumers spent more time at home"
+    ],
+    "note": "Demand and long-term trends are in the first chunk; the second repeats the State of Snacking sentence, so the second chunk is not strictly needed.",
+    "question": "In Mondelez International's fiscal 2020 10-K, how did the COVID-19 pandemic change demand across its snack categories, and what longer-term consumer trends does management cite as supporting snacking growth?",
+    "usable": true,
+    "uses_second_chunk": false
+  },
+  "request_key": "34d0649974318cb5ac21cd995990694384800980955976439db96973c5941fa4",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00285995",
+    "input_tokens": 1311,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 302
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0000898173-24-000009#1A#0014"
+    ],
+    "gold_points": [
+      "Success depends on attracting, retaining, and motivating executives and key employees amid intense competition",
+      "Hourly positions have high turnover, raising training and retention costs in a competitive labor market",
+      "Acquisitions may fail to find suitable targets at favorable prices or terms",
+      "Integration difficulties and unanticipated legal liabilities may prevent expected benefits from acquisitions"
+    ],
+    "note": "The first chunk covers both the key personnel and acquisition risks; the second chunk is not needed.",
+    "question": "In O'Reilly Automotive's fiscal 2023 10-K, what risks does the company associate with its dependence on key personnel and with its strategy of growing through acquisitions?",
+    "usable": true,
+    "uses_second_chunk": false
+  },
+  "request_key": "2bb58cb5fef12100c09d50780ea2c2c5b52dd15ca06d15adf41be5fa873b8583",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00269695",
+    "input_tokens": 1278,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 276
+  }
+}

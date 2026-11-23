@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001004980-21-000007#7#0002",
+      "0001004980-21-000007#7#0003"
+    ],
+    "gold_points": [
+      "Shares issued to Fire Victim Trust were valued at $4.53 billion versus $6.75 billion accrued",
+      "Utility recorded a $619 million charge to adjust the deferred tax asset",
+      "Company concluded trust is more likely than not a qualified settlement fund",
+      "January 2021 IRS ruling allows grantor trust election; company expects to elect it"
+    ],
+    "note": "Chunk 0003 covers the charge and trust tax treatment; chunk 0002 supplies the $6.75 billion accrual and the July 2020 share issuance context.",
+    "question": "In PG&E Corp's fiscal 2020 10-K, why did the Utility record a deferred tax asset charge in the second quarter of 2020 related to the stock issued to the Fire Victim Trust, and how did the company characterize the trust's tax treatment as of year-end?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "7e0108498543bf5a8b070633b3209cb2995f263cd7569c66605b3ee819353d67",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00307095",
+    "input_tokens": 1312,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 344
+  }
+}

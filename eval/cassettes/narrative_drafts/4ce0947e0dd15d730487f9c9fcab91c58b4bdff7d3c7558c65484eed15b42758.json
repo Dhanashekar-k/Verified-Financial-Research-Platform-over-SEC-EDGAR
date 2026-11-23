@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001558370-21-003245#7A#0001"
+    ],
+    "gold_points": [
+      "At Jan 29, 2021, exposure was on variable rate cash investments classified as cash equivalents",
+      "At Jan 31, 2020, exposure was on variable interest rate debt",
+      "Shift driven by $1.5 billion senior unsecured notes issued in Q1 2020 for COVID-19 liquidity",
+      "Rate changes on fixed rate debt affect fair value, not pre-tax earnings or cash flows"
+    ],
+    "note": "Single passage covers the question; qualitative explanation of exposure shift with supporting context.",
+    "question": "In Dollar General's fiscal 2020 10-K market risk disclosure, how did the company's primary interest rate exposure change between the end of fiscal 2019 and the end of fiscal 2020, and what drove that shift?",
+    "usable": true,
+    "uses_second_chunk": false
+  },
+  "request_key": "4ce0947e0dd15d730487f9c9fcab91c58b4bdff7d3c7558c65484eed15b42758",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00208795",
+    "input_tokens": 529,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 304
+  }
+}

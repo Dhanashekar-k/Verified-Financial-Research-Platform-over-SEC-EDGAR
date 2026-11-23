@@ -1,0 +1,50 @@
+{"id": "un-001", "question": "", "reason": "future_guidance_not_in_filings", "expected": "refuse", "_guide": "Forward guidance or forecasts filings don't contain (e.g. revenue guidance for a future fiscal year)."}
+{"id": "un-002", "question": "", "reason": "future_guidance_not_in_filings", "expected": "refuse", "_guide": ""}
+{"id": "un-003", "question": "", "reason": "future_guidance_not_in_filings", "expected": "refuse", "_guide": ""}
+{"id": "un-004", "question": "", "reason": "future_guidance_not_in_filings", "expected": "refuse", "_guide": ""}
+{"id": "un-005", "question": "", "reason": "future_guidance_not_in_filings", "expected": "refuse", "_guide": ""}
+{"id": "un-006", "question": "", "reason": "future_guidance_not_in_filings", "expected": "refuse", "_guide": ""}
+{"id": "un-007", "question": "", "reason": "future_guidance_not_in_filings", "expected": "refuse", "_guide": ""}
+{"id": "un-008", "question": "", "reason": "future_guidance_not_in_filings", "expected": "refuse", "_guide": ""}
+{"id": "un-009", "question": "", "reason": "future_guidance_not_in_filings", "expected": "refuse", "_guide": ""}
+{"id": "un-010", "question": "", "reason": "future_guidance_not_in_filings", "expected": "refuse", "_guide": ""}
+{"id": "un-011", "question": "", "reason": "not_disclosed", "expected": "refuse", "_guide": "Information companies don't disclose in 10-K/10-Q text or XBRL (e.g. headcount of one office, a named customer's contract value)."}
+{"id": "un-012", "question": "", "reason": "not_disclosed", "expected": "refuse", "_guide": ""}
+{"id": "un-013", "question": "", "reason": "not_disclosed", "expected": "refuse", "_guide": ""}
+{"id": "un-014", "question": "", "reason": "not_disclosed", "expected": "refuse", "_guide": ""}
+{"id": "un-015", "question": "", "reason": "not_disclosed", "expected": "refuse", "_guide": ""}
+{"id": "un-016", "question": "", "reason": "not_disclosed", "expected": "refuse", "_guide": ""}
+{"id": "un-017", "question": "", "reason": "not_disclosed", "expected": "refuse", "_guide": ""}
+{"id": "un-018", "question": "", "reason": "not_disclosed", "expected": "refuse", "_guide": ""}
+{"id": "un-019", "question": "", "reason": "not_disclosed", "expected": "refuse", "_guide": ""}
+{"id": "un-020", "question": "", "reason": "not_disclosed", "expected": "refuse", "_guide": ""}
+{"id": "un-021", "question": "", "reason": "out_of_scope", "expected": "refuse", "_guide": "Outside SEC filings: stock price, buy/sell advice, private companies."}
+{"id": "un-022", "question": "", "reason": "out_of_scope", "expected": "refuse", "_guide": ""}
+{"id": "un-023", "question": "", "reason": "out_of_scope", "expected": "refuse", "_guide": ""}
+{"id": "un-024", "question": "", "reason": "out_of_scope", "expected": "refuse", "_guide": ""}
+{"id": "un-025", "question": "", "reason": "out_of_scope", "expected": "refuse", "_guide": ""}
+{"id": "un-026", "question": "", "reason": "out_of_scope", "expected": "refuse", "_guide": ""}
+{"id": "un-027", "question": "", "reason": "out_of_scope", "expected": "refuse", "_guide": ""}
+{"id": "un-028", "question": "", "reason": "out_of_scope", "expected": "refuse", "_guide": ""}
+{"id": "un-029", "question": "", "reason": "out_of_scope", "expected": "refuse", "_guide": ""}
+{"id": "un-030", "question": "", "reason": "out_of_scope", "expected": "refuse", "_guide": ""}
+{"id": "un-031", "question": "", "reason": "false_premise", "expected": "refuse", "_guide": "The question presumes something false (e.g. 'Why did Apple's revenue double in FY2023?')."}
+{"id": "un-032", "question": "", "reason": "false_premise", "expected": "refuse", "_guide": ""}
+{"id": "un-033", "question": "", "reason": "false_premise", "expected": "refuse", "_guide": ""}
+{"id": "un-034", "question": "", "reason": "false_premise", "expected": "refuse", "_guide": ""}
+{"id": "un-035", "question": "", "reason": "false_premise", "expected": "refuse", "_guide": ""}
+{"id": "un-036", "question": "", "reason": "false_premise", "expected": "refuse", "_guide": ""}
+{"id": "un-037", "question": "", "reason": "false_premise", "expected": "refuse", "_guide": ""}
+{"id": "un-038", "question": "", "reason": "false_premise", "expected": "refuse", "_guide": ""}
+{"id": "un-039", "question": "", "reason": "false_premise", "expected": "refuse", "_guide": ""}
+{"id": "un-040", "question": "", "reason": "false_premise", "expected": "refuse", "_guide": ""}
+{"id": "un-041", "question": "", "reason": "wrong_entity_period", "expected": "refuse", "_guide": "A company/period that can't exist in the corpus (e.g. a fiscal year before the company filed with the SEC)."}
+{"id": "un-042", "question": "", "reason": "wrong_entity_period", "expected": "refuse", "_guide": ""}
+{"id": "un-043", "question": "", "reason": "wrong_entity_period", "expected": "refuse", "_guide": ""}
+{"id": "un-044", "question": "", "reason": "wrong_entity_period", "expected": "refuse", "_guide": ""}
+{"id": "un-045", "question": "", "reason": "wrong_entity_period", "expected": "refuse", "_guide": ""}
+{"id": "un-046", "question": "", "reason": "wrong_entity_period", "expected": "refuse", "_guide": ""}
+{"id": "un-047", "question": "", "reason": "wrong_entity_period", "expected": "refuse", "_guide": ""}
+{"id": "un-048", "question": "", "reason": "wrong_entity_period", "expected": "refuse", "_guide": ""}
+{"id": "un-049", "question": "", "reason": "wrong_entity_period", "expected": "refuse", "_guide": ""}
+{"id": "un-050", "question": "", "reason": "wrong_entity_period", "expected": "refuse", "_guide": ""}

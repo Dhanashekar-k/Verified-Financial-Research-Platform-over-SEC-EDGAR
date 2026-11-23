@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0000766704-24-000008#7A#0001",
+      "0000766704-24-000008#7A#0002"
+    ],
+    "gold_points": [
+      "Interest rate changes do not affect interest expense on fixed rate debt but change its fair value",
+      "Refinancing at maturity could affect future cash flows and earnings depending on replacement financing",
+      "Sensitivity analysis models a hypothetical 1% rate increase after considering interest rate swaps",
+      "Total fair value decline from a 1% increase rose to about $573.8 million from $524.8 million"
+    ],
+    "note": "Second chunk supplies the sensitivity table comparing 2023 and 2022 changes in fair value; the first supplies the qualitative explanation.",
+    "question": "How does Welltower explain the effect of interest rate changes on its fixed rate debt in its fiscal 2023 market risk disclosure, and how did the sensitivity of that debt's fair value to a 1% rate increase change from 2022 to 2023?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "51e60b2e1d1236f92c9db90eb437fd055eb1c38cddb045afe85d74d93a4578a5",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00224895",
+    "input_tokens": 515,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 339
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001628280-22-004531#7A#0000",
+      "0001628280-22-004531#7A#0001"
+    ],
+    "gold_points": [
+      "Hypothetical 10% FX change would move 2021 operating income by about $48.0 million",
+      "International and Brazil segment operating income is used as proxy for foreign earnings",
+      "Cross-border revenue mostly from spot exchanges; company also writes forwards and options for customers",
+      "Net exposures are economically hedged with offsetting contracts with established financial institutions"
+    ],
+    "note": "The first chunk covers the FX sensitivity and cross-border risk; the second chunk is needed for the hedging approach.",
+    "question": "How did Corpay, Inc. describe its foreign currency exposure from international earnings and its cross-border payments business in its fiscal 2021 10-K, and how does it manage the risk in the cross-border business?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "c99d5948effcf7f59d0d6272b8b936e3d9d2f966abe234bb45949a9c946d06db",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00294695",
+    "input_tokens": 1393,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 303
+  }
+}

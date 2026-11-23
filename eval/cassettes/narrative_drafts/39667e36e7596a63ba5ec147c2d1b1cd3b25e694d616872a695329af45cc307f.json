@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0000064803-25-000007#7#0003"
+    ],
+    "gold_points": [
+      "Pharmacy & Consumer Wellness dispenses prescriptions and provides ancillary services like diagnostic testing and vaccinations",
+      "Segment operated more than 9,000 retail locations as of December 31, 2024",
+      "Also runs long-term care pharmacy operations and fulfillment for Health Services segment",
+      "Corporate/Other holds management and administrative expenses plus products no longer sold, like large case pensions"
+    ],
+    "note": "Second chunk alone covers the question; the first chunk mostly overlaps and covers Health Services, which is not needed.",
+    "question": "How did CVS Health describe the operations of its Pharmacy & Consumer Wellness segment and the content of its Corporate/Other segment in its fiscal year 2024 10-K?",
+    "usable": true,
+    "uses_second_chunk": false
+  },
+  "request_key": "39667e36e7596a63ba5ec147c2d1b1cd3b25e694d616872a695329af45cc307f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00277895",
+    "input_tokens": 1245,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 299
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001690820-22-000080#1A#0006"
+    ],
+    "gold_points": [
+      "Not profitable since 2012 inception; accumulated loss of about $1.7 billion at end of 2021",
+      "Expects continued losses while investing heavily in growth and incurring public company expenses",
+      "Many costs are fixed, so it may be unable to cut costs quickly if revenue slows",
+      "Cutting variable costs could limit customer acquisition and revenue growth"
+    ],
+    "note": "Chunk 0006 alone covers the history-of-losses risk factor; chunk 0005 only contains the heading and first sentence plus COVID content.",
+    "question": "In Carvana's fiscal 2021 10-K, why does the company say it may fail to achieve or sustain profitability, and what does it say about its ability to cut costs if revenue growth slows?",
+    "usable": true,
+    "uses_second_chunk": false
+  },
+  "request_key": "5e1d0b52f1d29abc383449c7ba3f2eabb7a94c76729543402f79d2e45ba312ec",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00275495",
+    "input_tokens": 1251,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 293
+  }
+}

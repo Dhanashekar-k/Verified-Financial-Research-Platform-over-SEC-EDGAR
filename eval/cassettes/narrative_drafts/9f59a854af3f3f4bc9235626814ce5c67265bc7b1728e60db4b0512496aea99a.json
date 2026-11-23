@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0000910521-25-000017#7A#0001"
+    ],
+    "gold_points": [
+      "Most sales and inventory purchases are in US dollars, but exposure exists to European, Asian, Canadian, and Latin American currencies",
+      "Hedges existing assets and liabilities and forecasted sales using forward contracts, not for speculative trading",
+      "Remeasurement of monetary assets and liabilities had a negative impact on income from operations",
+      "10% currency change would alter fair value of financial instruments by about $34,000"
+    ],
+    "note": "Chunk 1 alone covers FX risk and hedging; the second chunk mostly covers interest rate risk.",
+    "question": "How did Deckers Outdoor Corp describe its foreign currency exchange rate risk and its hedging approach in its fiscal year 2024 10-K market risk disclosures?",
+    "usable": true,
+    "uses_second_chunk": false
+  },
+  "request_key": "9f59a854af3f3f4bc9235626814ce5c67265bc7b1728e60db4b0512496aea99a",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00289295",
+    "input_tokens": 1379,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 295
+  }
+}

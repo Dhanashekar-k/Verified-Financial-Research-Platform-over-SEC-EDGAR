@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001564590-22-005965#7#0019",
+      "0001564590-22-005965#7#0020"
+    ],
+    "gold_points": [
+      "Lehigh West acquisition in 2021 gave presence in Arizona Sun Corridor and Northern and Southern California",
+      "Sun Corridor is among fastest-growing megaregions, predicted to double population by 2040",
+      "Arizona approved $5.7 billion five-year construction program for 2022 to 2026",
+      "California has $17 billion CALTRANS budget and Senate Bill 1 provides over $50 billion through 2030"
+    ],
+    "note": "Needs both chunks: Arizona details are in the first, California funding details in the second.",
+    "question": "In Martin Marietta's fiscal 2021 10-K, how did the Lehigh West Region platform acquisition expand the company's geographic footprint, and what growth and infrastructure funding factors did it cite for the Arizona Sun Corridor and California megaregions?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "4432a6a1195d7b7e8cdf6fcdff74ee8d87226083ce95ed6c15193e9188f1c4c8",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00308295",
+    "input_tokens": 1374,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 334
+  }
+}

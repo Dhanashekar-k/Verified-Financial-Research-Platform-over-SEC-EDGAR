@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0000105634-22-000006#7#0056",
+      "0000105634-22-000006#7#0057"
+    ],
+    "gold_points": [
+      "Term loan has annual principal payments of $13.9 million, with remaining balance due March 2, 2025",
+      "No direct borrowings outstanding under the revolving credit facility",
+      "Open purchase obligations of $1.73 billion, about $1.50 billion due within 12 months",
+      "Purchase orders are not expected to impact liquidity because amounts are recovered through customer billings"
+    ],
+    "note": "Combines debt terms from the first passage with purchase obligations from the second; the passages overlap slightly but are otherwise distinct.",
+    "question": "How did EMCOR Group describe the structure of its term loan repayment and its open purchase obligations as material cash requirements in its fiscal 2021 10-K, and what did it say about the liquidity effect of those purchase obligations?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "6a687e444a561faebea70c2ff572b7ee9c0402eb0cc205aafb38f602d72b6501",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00294495",
+    "input_tokens": 1331,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 315
+  }
+}

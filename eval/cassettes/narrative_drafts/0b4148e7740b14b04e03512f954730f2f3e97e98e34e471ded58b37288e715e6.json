@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001558370-22-001845#1A#0014",
+      "0001558370-22-001845#1A#0015"
+    ],
+    "gold_points": [
+      "Unhedged foreign currency movements can affect operating results and the value of international investments",
+      "Risks include foreign laws compliance, anti-bribery violations, political unrest, and repatriation obstacles",
+      "International was about 7.1% of consolidated net income in 2021",
+      "International was about 8.5% of NOI in 2021"
+    ],
+    "note": "Risk list is in chunk 0014; the 7.1% and 8.5% contribution figures are in chunk 0015, so both are needed.",
+    "question": "What risks does Simon Property Group describe in its fiscal 2021 10-K as arising from its international operations, and how significant were those activities to its 2021 results?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "0b4148e7740b14b04e03512f954730f2f3e97e98e34e471ded58b37288e715e6",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00274495",
+    "input_tokens": 1311,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 279
+  }
+}

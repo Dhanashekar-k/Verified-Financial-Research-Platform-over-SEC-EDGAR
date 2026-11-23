@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001281761-22-000016#7#0055"
+    ],
+    "gold_points": [
+      "Loans were 60 percent of interest-earning assets at December 31, 2021",
+      "Loans were 64 percent of interest-earning assets at December 31, 2020",
+      "Three segments: commercial, investor real estate, and consumer loans",
+      "Consumer includes residential first mortgage, home equity, credit card, and other consumer"
+    ],
+    "note": "First chunk alone answers the question; the second chunk is just a numeric table.",
+    "question": "How did the share of interest-earning assets represented by loans at Regions Financial Corp change between year-end 2020 and 2021, and what portfolio segments does Regions use to organize its lending in its fiscal 2021 10-K?",
+    "usable": true,
+    "uses_second_chunk": false
+  },
+  "request_key": "f04a77056f2045b763d3c708cec7c778a9b4721ab861a3b90fff9229939041d3",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00207895",
+    "input_tokens": 710,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 266
+  }
+}

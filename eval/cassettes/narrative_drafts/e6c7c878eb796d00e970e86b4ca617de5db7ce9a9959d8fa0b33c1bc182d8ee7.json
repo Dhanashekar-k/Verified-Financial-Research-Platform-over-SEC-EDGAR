@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001013871-22-000010#1A#0021"
+    ],
+    "gold_points": [
+      "Acquisition risks: missed due diligence problems, overpaying, customer retention, financing inability, and integration difficulties",
+      "Disposition risks: separation from NRG's business, unknown risks, and material trailing liabilities",
+      "Acquisitions may not perform well enough to support the acquisition debt or capital expenditures",
+      "Failure to realize benefits could hurt results of operations, cash flows and financial condition"
+    ],
+    "note": "The first chunk fully covers the question; the second chunk covers a different risk (terrorism, cyber) and is not needed.",
+    "question": "In NRG Energy's fiscal 2021 10-K, what risks does the company identify in connection with acquiring or disposing of businesses, assets, or retail customer books, and what could result if those transactions fail to deliver expected benefits?",
+    "usable": true,
+    "uses_second_chunk": false
+  },
+  "request_key": "e6c7c878eb796d00e970e86b4ca617de5db7ce9a9959d8fa0b33c1bc182d8ee7",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00288795",
+    "input_tokens": 1289,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 312
+  }
+}

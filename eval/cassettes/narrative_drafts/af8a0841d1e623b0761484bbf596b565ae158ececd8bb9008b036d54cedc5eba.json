@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001690820-24-000093#7#0016",
+      "0001690820-24-000093#7#0017"
+    ],
+    "gold_points": [
+      "Interest expense covers Senior Secured/Unsecured Notes, Floor Plan Facility, and Finance Receivable Facilities, plus notes payable and finance leases",
+      "Interest expense excludes interest capitalized during construction projects to property and equipment",
+      "Other (income) expense, net includes fair value changes on securitization beneficial interests and Root Warrants",
+      "2023 other (income) expense, net includes Tax Receivable Agreement reserve expense"
+    ],
+    "note": "Definitional MD&A passages, but sufficient for a descriptive question spanning both chunks.",
+    "question": "In Carvana's fiscal 2023 10-K, how does the company define what is included in interest expense and in other (income) expense, net, including what is excluded or newly included for 2023?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "af8a0841d1e623b0761484bbf596b565ae158ececd8bb9008b036d54cedc5eba",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00297995",
+    "input_tokens": 1356,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 317
+  }
+}

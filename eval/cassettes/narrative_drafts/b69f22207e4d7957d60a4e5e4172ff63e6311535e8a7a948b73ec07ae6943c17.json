@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001558370-23-018833#1A#0033",
+      "0001558370-23-018833#1A#0034"
+    ],
+    "gold_points": [
+      "OECD 15% global minimum tax; Swiss rules expected effective January 1, 2024",
+      "Expected to affect TE beginning in fiscal 2025",
+      "Impact could be material to results, cash taxes, and effective tax rate",
+      "Proposals may increase cash taxes, cause double taxation, and raise audit risk"
+    ],
+    "note": "Question needs the first chunk for the OECD timing and the second chunk for the consequences of the proposals if adopted.",
+    "question": "In its fiscal 2023 10-K, how does TE Connectivity describe the risk that the OECD 15% global minimum corporate tax and related legislative proposals could change its tax position, and when does it expect to be affected?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "b69f22207e4d7957d60a4e5e4172ff63e6311535e8a7a948b73ec07ae6943c17",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00285095",
+    "input_tokens": 1347,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 293
+  }
+}

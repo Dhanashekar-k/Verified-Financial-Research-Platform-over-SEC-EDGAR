@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0000950170-24-019725#7#0003"
+    ],
+    "gold_points": [
+      "Impairment evaluated at least annually or when circumstances indicate carrying amount may not be recoverable",
+      "Company-owned store tests are done on an operating market basis, the lowest level with independent cash flows",
+      "Carrying value is compared to undiscounted cash flows, and write-down to fair value if it exceeds",
+      "Same store sales and operating cost fluctuations are key factors in projected cash flows"
+    ],
+    "note": "Chunk 0003 alone covers the impairment methodology; chunk 0002 only adds the introductory sentences on long-lived assets.",
+    "question": "In Domino's fiscal 2023 10-K, how does management describe its approach to testing long-lived assets for impairment, including the level at which Company-owned stores are tested and the key factors affecting projected cash flows?",
+    "usable": true,
+    "uses_second_chunk": false
+  },
+  "request_key": "f8c5db70ffdd85d42846272c8cc25da2faf6c24af5f6a8a353eba2b8cbef1c78",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 779,
+    "cost_usd": "0.00377875",
+    "input_tokens": 1275,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 306
+  }
+}

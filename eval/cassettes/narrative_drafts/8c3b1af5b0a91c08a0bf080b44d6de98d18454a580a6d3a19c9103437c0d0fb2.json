@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0000033213-25-000011#7A#0002"
+    ],
+    "gold_points": [
+      "10% price decrease raises derivative fair value about $283 million; 10% increase lowers it about $340 million",
+      "Analysis excludes offsetting impact of the same price movement on physical natural gas sales",
+      "Hedges approximate a portion of expected physical sales, so derivative losses are offset by physical gains",
+      "Liquidating physical positions before derivative maturity could cause a loss or worthless derivatives"
+    ],
+    "note": "Chunk 0002 fully covers the commodity price sensitivity and the offsetting-hedge explanation; chunk 0003 only repeats one sentence and then moves to interest rate risk.",
+    "question": "In EQT Corp's fiscal 2024 10-K market risk disclosure, how does a hypothetical 10% change in NYMEX natural gas prices affect the fair value of its derivatives, and why does the company say this sensitivity does not reflect its full economic exposure?",
+    "usable": true,
+    "uses_second_chunk": false
+  },
+  "request_key": "8c3b1af5b0a91c08a0bf080b44d6de98d18454a580a6d3a19c9103437c0d0fb2",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00310295",
+    "input_tokens": 1329,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 347
+  }
+}

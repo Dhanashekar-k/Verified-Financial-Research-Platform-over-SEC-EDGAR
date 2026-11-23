@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0000797468-24-000034#1A#0025",
+      "0000797468-24-000034#1A#0026"
+    ],
+    "gold_points": [
+      "Non-U.S. operations were about 16% of consolidated revenue in 2023",
+      "Risks include political instability, war, terrorism, confiscatory taxation, and currency exchange controls",
+      "U.S. or foreign governments may restrict operating in certain jurisdictions or with certain parties",
+      "Licenses or permits needed for foreign drilling could be restricted; a climate emergency could limit exports"
+    ],
+    "note": "Revenue share is in the first chunk; the list of risks and government restrictions is in the second, so both are needed.",
+    "question": "In Occidental Petroleum's fiscal 2023 10-K, what share of revenue came from non-U.S. operations, and what kinds of political, regulatory and government-imposed risks in foreign markets does the company say could harm its business?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "9e4449b4234a000fc7421eab14325d31c45c16a8299c99c5753a6ad047cde0df",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00301495",
+    "input_tokens": 1376,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 320
+  }
+}

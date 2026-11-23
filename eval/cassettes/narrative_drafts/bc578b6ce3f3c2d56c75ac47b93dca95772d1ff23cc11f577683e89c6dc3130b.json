@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001628280-22-022584#7A#0000"
+    ],
+    "gold_points": [
+      "Exposed to two market risks: interest rates and stock prices; no trading instruments",
+      "Fixed-rate debt rate changes affect only fair value; variable-rate changes affect interest expense and cash",
+      "$7.25 billion fixed-rate debt outstanding and no variable-rate debt as of June 30, 2022",
+      "All interest-rate-exposed instruments denominated in U.S. dollars"
+    ],
+    "note": "First chunk alone covers the qualitative narrative; second chunk is just a small numeric table.",
+    "question": "How did Fox Corp describe its market risk exposures and the different effects of interest rate changes on fixed-rate versus variable-rate debt in its fiscal 2022 10-K, and what was its debt position at June 30, 2022?",
+    "usable": true,
+    "uses_second_chunk": false
+  },
+  "request_key": "bc578b6ce3f3c2d56c75ac47b93dca95772d1ff23cc11f577683e89c6dc3130b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00213195",
+    "input_tokens": 598,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 299
+  }
+}

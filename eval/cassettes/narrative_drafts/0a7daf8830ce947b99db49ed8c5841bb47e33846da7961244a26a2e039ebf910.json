@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001478242-25-000045#7#0001"
+    ],
+    "gold_points": [
+      "Income from operations rose over 11% and operating cash flow over 26%",
+      "Technology & Analytics growth improved in second half; R&D Solutions faced short-term challenges persisting into 2025",
+      "Record remaining performance obligations of about $33.5 billion",
+      "Cash of $1,702 million, $825 million drawn on $2,000 million revolver, covenants met"
+    ],
+    "note": "First chunk alone covers the overview; second chunk mostly repeats the covenant sentence and adds boilerplate.",
+    "question": "How did IQVIA Holdings describe its overall operating performance, segment trends, and liquidity position in its fiscal year 2024 10-K MD&A?",
+    "usable": true,
+    "uses_second_chunk": false
+  },
+  "request_key": "0a7daf8830ce947b99db49ed8c5841bb47e33846da7961244a26a2e039ebf910",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00270995",
+    "input_tokens": 1316,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 271
+  }
+}

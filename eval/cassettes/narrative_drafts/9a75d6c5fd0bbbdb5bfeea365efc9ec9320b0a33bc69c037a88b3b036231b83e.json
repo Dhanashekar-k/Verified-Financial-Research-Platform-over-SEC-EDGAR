@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001628280-23-001606#1A#0001",
+      "0001628280-23-001606#1A#0002"
+    ],
+    "gold_points": [
+      "Materials and labor costs rose in 2022 from supply shortages and inflation",
+      "Margins were maintained through stringent cost controls and price increases",
+      "Declining demand as the year progressed forced price reductions instead of increases",
+      "Inflation combined with reduced demand could still hurt profitability if mitigation steps fail"
+    ],
+    "note": "The inflation risk factor spans the end of chunk 1 and the start of chunk 2, so both chunks are needed for the full answer.",
+    "question": "In Lennar's fiscal 2022 10-K, how did inflation and supply shortages affect the company's pricing and margins during the year, and what risk does it flag going forward?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "9a75d6c5fd0bbbdb5bfeea365efc9ec9320b0a33bc69c037a88b3b036231b83e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00275295",
+    "input_tokens": 1309,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 281
+  }
+}

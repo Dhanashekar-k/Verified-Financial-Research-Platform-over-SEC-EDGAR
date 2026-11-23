@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001324404-24-000008#7#0098"
+    ],
+    "gold_points": [
+      "New NGC gas contract signed Q3 2023 runs October 2023 through December 2025",
+      "Recorded $43 million impairment because carrying value exceeded fair value",
+      "Remaining investment could be written off if NGC gas supply is insufficient or unprofitable",
+      "Carrying value of the PLNL investment was $26 million at December 31, 2023"
+    ],
+    "note": "First chunk fully covers the PLNL impairment question; second chunk only repeats the last sentence and moves on to pension PBO.",
+    "question": "Why did CF Industries Holdings record an impairment of its equity method investment in PLNL in fiscal year 2023, and what risk remains for the remaining investment?",
+    "usable": true,
+    "uses_second_chunk": false
+  },
+  "request_key": "d8603416dc997f710f2f2f64732b7d72a783e3a0e6d2ca972a4693e83fd4e3b3",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00264095",
+    "input_tokens": 1242,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 272
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0000033213-24-000008#7#0003"
+    ],
+    "gold_points": [
+      "Equitrans Midstream resumed MVP construction in Q3 2023 after federal legislation approved permits",
+      "Fee structure and conditions precedent in Equitrans agreements, including Consolidated GGA, tie to MVP in-service date",
+      "In-service timing is outside EQT's control",
+      "Could affect 2024 operating expenses, per unit metrics, average differential, and Henry Hub Cash Bonus payments"
+    ],
+    "note": "Answerable from the first chunk alone; the second chunk is just a data table and is not needed.",
+    "question": "According to EQT Corp's fiscal year 2023 10-K, how does the timing of the Mountain Valley Pipeline's in-service date affect the company's expected 2024 results, and why is that timing relevant to its agreements with Equitrans Midstream?",
+    "usable": true,
+    "uses_second_chunk": false
+  },
+  "request_key": "875d56d58121ea58fab48231a63396b5ebe86d48b066305b3e1a994fa79b2a4d",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00281795",
+    "input_tokens": 1209,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 314
+  }
+}

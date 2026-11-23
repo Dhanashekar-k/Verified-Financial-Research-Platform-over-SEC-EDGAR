@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001744489-23-000216#7A#0000"
+    ],
+    "gold_points": [
+      "Interest rate swaps limit rate volatility on earnings and cash flows and lower borrowing costs",
+      "Policy targets fixed-rate debt as a percentage of net debt within min and max",
+      "Forward and option contracts hedge foreign currency exposures, mainly euro, yen, pound, yuan, Canadian dollar",
+      "Cross-currency swaps convert foreign currency borrowings to U.S. dollar borrowings; hedge coverage generally up to four years"
+    ],
+    "note": "First chunk alone covers interest rate and foreign currency objectives and instruments; second chunk mostly repeats the tail of the first and adds commodities and VAR.",
+    "question": "How did Walt Disney Co describe its objectives and instruments for managing interest rate and foreign currency exposures in its fiscal 2023 market risk disclosures?",
+    "usable": true,
+    "uses_second_chunk": false
+  },
+  "request_key": "e40b8bd848484a439360e5435ed0550269c60508bebc88a68ebef15d4da5c982",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00307295",
+    "input_tokens": 1409,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 325
+  }
+}

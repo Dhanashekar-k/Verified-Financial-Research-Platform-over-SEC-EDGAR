@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0002011641-24-000005#1A#0033",
+      "0002011641-24-000005#1A#0034"
+    ],
+    "gold_points": [
+      "OECD/G20 Pillar Two global minimum tax rules adopted by some jurisdictions, effective 2024 and 2025",
+      "Tax audits could yield unrecorded tax expenses, higher future taxes, interest and penalties",
+      "Challenge to Ferguson (Jersey) Limited's tax residence could affect treaty benefits and raise withholding taxes",
+      "Taxes also affected by business changes, foreign earnings mix and exchange rates"
+    ],
+    "note": "Second chunk is needed for the tax residence challenge and other tax-expense factors; the first covers OECD Pillar Two and audit risk.",
+    "question": "In Ferguson Enterprises' fiscal 2024 10-K, how do the company's risk factors describe the way changes in international tax rules and challenges to the tax residence of its parent could affect its tax position?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "6a60e6e441509ad4e5ab4ec0af4f1b15df7f45f36aae50c556bc32a3fa3f1fa5",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00307795",
+    "input_tokens": 1324,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 343
+  }
+}

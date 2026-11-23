@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001558370-21-003706#7#0047",
+      "0001558370-21-003706#7#0048"
+    ],
+    "gold_points": [
+      "Cash flow, commercial paper and credit facility expected to meet liquidity needs for next twelve months and beyond",
+      "About $800 million of senior notes mature within twelve months",
+      "$311 million deferred social security tax due by December 31, 2021, with remainder due 2022",
+      "Expects about $307 million National Fund payment in first half of 2021"
+    ],
+    "note": "Second chunk adds the two-year deferral schedule (half by end of 2021, half by end of 2022) and the $622 million total deferred; the other gold points come from the first chunk.",
+    "question": "How did Kroger describe its near-term liquidity outlook and upcoming cash obligations in its fiscal 2020 10-K, including the role of the CARES Act social security tax deferral?",
+    "usable": true,
+    "uses_second_chunk": true
+  },
+  "request_key": "bdcb14b7a6bd71b2a8768ddacb735b1c188b00f87ce4d9d86c8b7e7c7ecfe1d1",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00288095",
+    "input_tokens": 1302,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 308
+  }
+}

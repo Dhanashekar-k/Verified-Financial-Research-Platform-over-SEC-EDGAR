@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "gold_chunk_ids": [
+      "0001051470-23-000041#7A#0003"
+    ],
+    "gold_points": [
+      "Interest rate increases by approximately 5% per annum after anticipated repayment dates",
+      "Monthly principal payments commence using issuers' Excess Cash Flow",
+      "Notes presented at contractual maturities (2045 to 2048), assuming the 5% increase",
+      "Company expects to refinance on or before anticipated repayment dates"
+    ],
+    "note": "Footnote (d) in the first chunk fully covers the question; the second chunk is not needed.",
+    "question": "In Crown Castle's fiscal 2022 10-K market risk disclosure, what happens to the Tower Revenue Notes if they are not repaid by their anticipated repayment dates, and how does the company present and plan for them?",
+    "usable": true,
+    "uses_second_chunk": false
+  },
+  "request_key": "c3d48b555bb398fb4ed53fe5bf04924dbe8932f03f8a7da837866d989e7b4070",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 779,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00239595",
+    "input_tokens": 982,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 275
+  }
+}
