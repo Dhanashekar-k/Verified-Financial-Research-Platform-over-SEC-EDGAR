@@ -42,6 +42,9 @@ Reason = Literal[
     "multiple_periods",
     "conflicting_candidates",
     "presentation_contradicts_calculation",
+    "total_tag_is_top_line",
+    "total_below_component",
+    "total_fails_gross_profit_identity",
 ]
 SELECTED: frozenset[str] = frozenset(
     {
@@ -49,8 +52,16 @@ SELECTED: frozenset[str] = frozenset(
         "candidates_agree",
         "presented_on_income_statement",
         "reconciles_with_gross_profit",
+        "total_tag_is_top_line",
     }
 )
+
+# ADR-043 option (a), Shekar 2026-11-23: when the two revenue tags conflict and neither
+# presentation nor the gross-profit identity settles it, ``Revenues`` is the income-statement
+# top line and contract revenue a component of it. metric -> (total tag, component tag).
+TOTAL_OVER_COMPONENT: dict[str, tuple[str, str]] = {
+    "revenue": ("Revenues", "RevenueFromContractWithCustomerExcludingAssessedTax"),
+}
 
 
 @dataclass(frozen=True)
@@ -127,6 +138,14 @@ def resolve(
     if len(groups) == 1:
         return done("single_candidate" if len(cands) == 1 else "candidates_agree", groups[0])
 
+    # The below-component guard (ADR-043 option a) holds unconditionally for the pair: a
+    # total under its own component is inconsistent, so no later rule may pick from it.
+    pair = TOTAL_OVER_COMPONENT.get(metric)
+    by_tag = {c.fact.tag: c for c in cands}
+    is_pair = pair is not None and len(groups) == 2 and set(by_tag) == set(pair)
+    if is_pair and pair is not None and by_tag[pair[0]].value < by_tag[pair[1]].value:
+        return done("total_below_component")
+
     # Material disagreement. Statement presentation first, calculation check second.
     calc = {id(g): (reconciles(g.value) if reconciles else None) for g in groups}
     if presented_tags is not None:
@@ -148,6 +167,14 @@ def resolve(
     passing = [g for g in groups if calc[id(g)] is True]
     if len(passing) == 1:
         return done("reconciles_with_gross_profit", passing[0])
+
+    # Last rule (ADR-043 option a): the total tag is the top line, never below its component;
+    # the gross-profit identity, when it can be checked, must not contradict it.
+    if is_pair and pair is not None:
+        total = by_tag[pair[0]]
+        if reconciles is not None and reconciles(total.value) is False:
+            return done("total_fails_gross_profit_identity")
+        return done("total_tag_is_top_line", total)
     return done("conflicting_candidates")
 
 

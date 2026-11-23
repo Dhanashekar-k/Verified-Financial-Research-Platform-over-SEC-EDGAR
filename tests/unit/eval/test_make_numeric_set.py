@@ -158,21 +158,25 @@ FACTS = [
     row(2, "GrossProfit", 2023, "FY", "1000000000"),
     row(2, "EarningsPerShareDiluted", 2023, "FY", "1.2000", uom="CAD"),  # uom mismatch
     row(2, "NetIncomeLoss", 2023, "FY", "300000000"),
-    # company 3: tax-inclusive-sized conflict with no evidence -> abstain; qtrs=0 on duration
-    row(3, REV0, 2023, "FY", "29600000000"),
-    row(3, "Revenues", 2023, "FY", "79800000000"),
+    # company 3: Revenues below contract revenue with no evidence -> abstain; qtrs=0 on duration
+    row(3, REV0, 2023, "FY", "79800000000"),  # Revenues below contract revenue: guard abstains
+    row(3, "Revenues", 2023, "FY", "29600000000"),
     row(3, "NetIncomeLoss", 2023, "FY", "5000000000", qtrs=0),
     row(3, "Revenues", 2023, "FY", "1", taxonomy="custom"),
     # company 4: near-zero revenue -> margins undefined
     row(4, REV0, 2023, "FY", "500000"),
     row(4, "NetIncomeLoss", 2023, "FY", "-7000000"),
     row(4, REV0, 2024, "FY", "9000000"),  # growth over a near-zero prior year: undefined
+    # company 5: UDR-like REIT; contract revenue is a component, no gross profit to check
+    row(5, REV0, 2024, "FY", "8317000"),
+    row(5, "Revenues", 2024, "FY", "1671842000"),
 ]
 COMPANIES = [
     (1, "ALPHA CORP", "ALP", 3571),
     (2, "BETA INC", "BET", 3572),
     (3, "GAMMA HOLDINGS", None, 2111),
     (4, "DELTA BIO", "DLT", 2834),
+    (5, "EPSILON RESIDENTIAL", "EPS", 6798),
 ]
 
 
@@ -257,10 +261,17 @@ def test_conflict_resolved_by_gross_profit_identity(table: mn.ValueTable) -> Non
     assert v.resolution == "reconciles_with_gross_profit"
 
 
-def test_unreconciled_conflict_abstains_with_candidates(table: mn.ValueTable) -> None:
+def test_unsettled_conflict_takes_revenues_as_top_line(table: mn.ValueTable) -> None:
+    v = table.get("revenue", (5, 2024, "FY"))
+    assert v is not None and v.value == Decimal(1_671_842_000)
+    assert v.resolution == "total_tag_is_top_line" and v.tags == ["Revenues"]
+    assert any(k == (5, 2024, "FY") for k, _ in table.conflicts)
+
+
+def test_revenues_below_component_abstains_with_candidates(table: mn.ValueTable) -> None:
     assert table.get("revenue", (3, 2023, "FY")) is None
     (a,) = [a for a in table.abstentions if a.metric == "revenue" and a.cik == 3]
-    assert a.reason == "conflicting_candidates" and len(a.candidates) == 2
+    assert a.reason == "total_below_component" and len(a.candidates) == 2
     assert any(k == (3, 2023, "FY") for k, _ in table.conflicts)
 
 
@@ -270,8 +281,11 @@ def test_presentation_evidence_resolves_without_identity(con: duckdb.DuckDBPyCon
     acc3 = next(f.accession for f in facts if f.cik == 3 and f.tag == REV0)
     t = mn.build_values(cat, ALL, facts, presentation=lambda accs: {acc3: frozenset({"Revenues"})})
     v = t.get("revenue", (3, 2023, "FY"))
-    assert v is not None and v.value == Decimal(79_800_000_000)
-    assert v.resolution == "presented_on_income_statement" and t.presentation_known >= 1
+    # cik 3 has Revenues below contract revenue: the guard holds even against presentation
+    assert v is None and t.presentation_known >= 1
+    (a,) = [a for a in t.abstentions if a.metric == "revenue" and a.cik == 3]
+    assert a.reason == "total_below_component"
+    assert [c.presented for c in a.candidates] == [False, True]
 
 
 def test_quarantine_and_exclusions_are_logged(table: mn.ValueTable) -> None:
