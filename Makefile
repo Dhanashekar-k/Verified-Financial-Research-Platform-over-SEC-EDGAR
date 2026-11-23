@@ -34,7 +34,7 @@ test: ## Unit + property tests (no live services); JAVA_HOME is set for Spark-ba
 test-integration: ## Integration tests (local Spark/Iceberg, Testcontainers); needs a JDK 17, fails without one
 	$(PY) pytest tests/integration -m "not live" -q
 lint: ## Lint + type check
-	$(PY) ruff check . && $(PY) ruff format --check . && $(PY) mypy app/engine
+	$(PY) ruff check . && $(PY) ruff format --check . && $(PY) mypy app/engine app/llm
 fmt: ## Format
 	$(PY) ruff format . && $(PY) ruff check --fix .
 check-gold: ## Verify gold eval files match eval/sets/CHECKSUMS (M4; runs in CI)
