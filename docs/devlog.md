@@ -49,3 +49,30 @@ the day-to-day calls and progress. Append one dated entry at the end of each wor
 - **Done:** schema probe green ($0.0000805); `Refusal` = reason/found/missing (ADR-041); baseline code (derive-and-cite default). Box started, read-only role `edgarqa_eval_ro` created by Shekar's script (password stays in `/opt/edgarqa/ro_pgpass` and `.env`), then: FinanceBench gold chunk ids vs served `chunks`: 423/423 unique ids (469 per-row) served at corpus_version 1, 0 missing, 0 rows lost an evidence page (`docs/m4/fb_chunk_check.json`); catalog tag-chain packet for 23 metrics with us-gaap labels/definitions from FSDS `raw.fsds_tag` (`docs/m4/catalog_review_packet.md`, labels in `docs/m4/fsds_tag_labels.json`; 2 deprecated tags filled by one Athena SELECT); 120 narrative drafts over 24 strata (8 SIC divisions x Items 1A/7/7A, 5 each), Sonnet 5.5 batch, 120/120 succeeded, cost $0.3233 vs $0.3967 estimate (`eval/sets/drafts/narrative_drafts.summary.json`); 50-slot unanswerable template. Box stopped afterwards.
 - **Reviewer fixes:** drafts/template no longer overwritten on rerun (curated drafts never), `--out` confined to `drafts/`, no stub mode, cap checked against the worst case (every draft at max_tokens), batch errors keyed by chunk id, session-level read-only connections, FB page check counts sibling chunks, Athena results paginated.
 - **Not done (blocked on Shekar):** numeric generation (needs `numeric_metrics_verified.txt`), draft promotion, baseline, pool A/B, calibration labels. Drop `edgarqa_eval_ro` when no longer needed.
+
+## 2026-11-23 — M4 catalog review implemented (code only, $0, no box)
+- **Done:**
+  - Contracts first: 05 §4.2 gains the catalog fields `presentation_basis`, `only_if` and `fallback_result`. 05 §6 gains the numeric-row fields for tolerance, versions and provenance, all defaulted.
+  - ADR-042 to ADR-045 written (status proposed): the six calls, the resolver, data-quality policies, paraphrase styles.
+  - The catalog change is a patch for Shekar (`docs/m4/metric_catalog_proposed.patch`). The owned file is untouched.
+  - New modules: `eval/gen/revenue_resolver.py`, `eval/gen/numeric_policy.py` and `eval/gen/make_numeric_set.py`. The generator includes a second-source check, seeded paraphrase and `--resolver-audit`. Tests use DuckDB fixtures, Hypothesis properties and one Testcontainers Postgres test.
+- **Decisions:**
+  - Every multi-tag metric is resolved or abstains, never first-wins. The resolver uses presentation, then the gross-profit identity.
+  - The tolerance is 4 significant figures, plus 0.5 for amounts, half a cent per share and 0.05 percentage points for ratios. Reporting-scale inference was dropped: the review showed it loosened zero and round golds to ±500k.
+  - Companyfacts must match exactly.
+  - Presentation evidence is used only when every candidate's filing is in `fsds_pre`.
+- **Reviewer catches fixed:**
+  - empty `only_if` passing validation;
+  - EPS second-source matches within 50 cents;
+  - companyfacts JSON held in memory for every company;
+  - a paraphrase guard fooled by "The …" and by possessives;
+  - Decimal written through float;
+  - unlogged growth abstentions;
+  - "consolidated total" overclaims in the docs.
+- **Waiting on Shekar:**
+  - apply the catalog patch;
+  - run `--resolver-audit` on the box and review it;
+  - write `numeric_metrics_verified.txt`, holding revenue and its dependents until the audit;
+  - implement `eval/metrics.py` with `max(tolerance_abs, tolerance_rel*|gold|)`;
+  - edit M05 §3.4 and M04 §3.3/§3.7, which these ADRs supersede;
+  - review ADR-042 to ADR-045.
