@@ -9,6 +9,8 @@ SYSTEM ?= engine
 SPLIT ?= dev
 MODE ?= replay
 SETS ?= numeric,financebench,narrative,unanswerable
+COMPOSER ?= sonnet
+EF_SEARCH ?= 800
 TF_DIR := infra/terraform/envs/dev
 
 # Spark (local Iceberg, the integration and differential tests) needs a JDK 17. The caller's JAVA_HOME wins;
@@ -102,8 +104,10 @@ remote-load: ## Load a snapshot on the EC2 box via SSM (M9; asks first)
 	@echo "TODO(M9): implement"
 
 # ---------- eval (M4+) ----------
-bench: ## Eval harness, e.g. make bench SYSTEM=engine SPLIT=dev MODE=replay
-	$(PY) python -m eval.run --system $(SYSTEM) --sets $(SETS) --split $(SPLIT) --mode $(MODE) --out eval/results/
+bench: ## Eval harness, e.g. make bench SYSTEM=baseline SPLIT=dev MODE=replay (DSN from $$EDGARQA_SERVING_DSN)
+	$(PY) python -m eval.run --system $(SYSTEM) --sets $(SETS) --split $(SPLIT) --mode $(MODE) --composer $(COMPOSER) --ef-search $(EF_SEARCH) --out eval/results/ $(if $(CORPUS_VERSION),--corpus-version $(CORPUS_VERSION),)
+splits: ## Stratified dev/test splits -> eval/sets/drafts/splits.json (M4; Shekar promotes)
+	$(PY) python -m eval.splits
 report: ## Regenerate docs/results.md auto tables
 	$(PY) python -m eval.report
 router-train: ## Train the router (M7), e.g. make router-train SEED=13

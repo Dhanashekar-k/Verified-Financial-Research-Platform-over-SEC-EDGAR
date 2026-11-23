@@ -1,0 +1,106 @@
+"""Answer and Claim: the composer's output and the verifier's input (05_data_contracts.md 4.3).
+
+The baseline and the engine both return this schema, so eval scoring is identical for both
+(M04 pitfall: no free-text baseline against a JSON engine).
+
+``Refusal`` fills a gap in the contract: 4.3 only shows ``"refusal": null``, and M06 says a
+refusal carries what was found and what is missing. The minimal shape here is pending
+Shekar's confirmation before it is written into 05.
+"""
+
+from __future__ import annotations
+
+import ast
+import re
+from decimal import Decimal
+from typing import Annotated, Literal
+
+from pydantic import BaseModel, Field, model_validator
+
+# expr may use only f:<fact_id>, numbers, + - * / and parentheses (4.3 rules).
+_FACT_RE = re.compile(r"f:(\d+)")
+_ALLOWED_NODES = (
+    ast.Expression,
+    ast.BinOp,
+    ast.UnaryOp,
+    ast.Add,
+    ast.Sub,
+    ast.Mult,
+    ast.Div,
+    ast.USub,
+    ast.Constant,
+    ast.Name,
+    ast.Load,
+)
+
+
+def _check_expr(expr: str, fact_ids: list[int]) -> None:
+    """Parse ``expr`` as arithmetic over f:<id> tokens and numbers; the ids it uses must equal
+    ``fact_ids``. Raises ValueError otherwise (empty, juxtaposed tokens, calls, other ops)."""
+    py = _FACT_RE.sub(lambda m: f"f_{m.group(1)}", expr)
+    try:
+        tree = ast.parse(py, mode="eval")
+    except SyntaxError as err:
+        raise ValueError(f"expr {expr!r} is not an arithmetic expression") from err
+    for node in ast.walk(tree):
+        if not isinstance(node, _ALLOWED_NODES):
+            raise ValueError(f"expr {expr!r} uses {type(node).__name__}")
+        if isinstance(node, ast.Constant) and (
+            isinstance(node.value, bool) or not isinstance(node.value, int | float)
+        ):
+            raise ValueError(f"expr {expr!r} has a non-numeric constant")
+        if isinstance(node, ast.Name) and not re.fullmatch(r"f_\d+", node.id):
+            raise ValueError(f"expr {expr!r} has a name that is not f:<fact_id>")
+    used = {int(i) for i in _FACT_RE.findall(expr)}
+    if used != set(fact_ids):
+        raise ValueError(f"expr {expr!r} uses facts {sorted(used)} but fact_ids={fact_ids}")
+
+
+class ExprProvenance(BaseModel):
+    type: Literal["expr"]  # required: a discriminator the model may omit breaks parsing
+    expr: str
+    fact_ids: list[int]
+
+    @model_validator(mode="after")
+    def _expr_grammar(self) -> ExprProvenance:
+        _check_expr(self.expr, self.fact_ids)
+        return self
+
+
+class ChunkProvenance(BaseModel):
+    type: Literal["chunk"]
+    chunk_id: str
+    quote: str
+
+
+Provenance = Annotated[ExprProvenance | ChunkProvenance, Field(discriminator="type")]
+
+
+class Claim(BaseModel):
+    id: str
+    kind: Literal["numeric", "numeric_derived", "text"]
+    text: str
+    value: Decimal | None = None  # CLAUDE.md: values are Decimal, never float
+    unit: str | None = None
+    display: str | None = None
+    primary: bool = False
+    provenance: Provenance
+
+
+class Refusal(BaseModel):
+    reason: str
+    found: list[str] = []
+    missing: list[str] = []
+
+
+class Answer(BaseModel):
+    answer_markdown: str
+    claims: list[Claim] = []
+    refusal: Refusal | None = None
+
+    def primary_claim(self) -> Claim | None:
+        """The claim numeric scoring reads: the one marked primary, else the first numeric one."""
+        for claim in self.claims:
+            if claim.primary:
+                return claim
+        return next((c for c in self.claims if c.kind != "text"), None)
