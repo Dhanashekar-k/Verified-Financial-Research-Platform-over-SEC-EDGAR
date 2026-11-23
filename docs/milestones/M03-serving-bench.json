@@ -1,0 +1,763 @@
+{
+ "instance_type": "m7i-flex.large",
+ "server": {
+  "version": "17.12 (Debian 17.12-1.pgdg12+1)",
+  "pgvector": "0.8.7",
+  "chunks": 1081461,
+  "facts": 1909504,
+  "live_version": 1
+ },
+ "queries": 200,
+ "seed": 20261122,
+ "latency_note": "latencies are one `dense_search`/query call as the application issues it: round trip from the box's Python through the Docker port, BEGIN, two SET LOCAL, the query, COMMIT",
+ "index": {
+  "final": {
+   "m": 32,
+   "ef_construction": 128,
+   "build_seconds": 1129,
+   "size_bytes": 1357619200,
+   "maintenance_work_mem": "3GB"
+  },
+  "original": {
+   "m": 16,
+   "ef_construction": 64,
+   "build_seconds": 377.8971784290002,
+   "size_bytes": 1164279808
+  }
+ },
+ "exact_scan_seconds_per_query": 1.2105594543949973,
+ "hnsw_curve": {
+  "40": {
+   "recall_at_10": 0.732,
+   "recall_at_10_ci95": [
+    0.6859999999999999,
+    0.7759999999999999
+   ],
+   "recall_at_10_set": "recall_mixed_pair",
+   "recall_self_span": 0.7659999999999999,
+   "recall_mixed_pair": 0.732,
+   "recall_self_span_ci95": [
+    0.72,
+    0.8105000000000001
+   ],
+   "recall_mixed_pair_ci95": [
+    0.6859999999999999,
+    0.7759999999999999
+   ],
+   "tie_aware_recall_self_span": 0.78,
+   "tie_aware_recall_mixed_pair": 0.742,
+   "tie_aware_recall_at_10": 0.742,
+   "min_single_query_recall": 0.0,
+   "n": 400,
+   "p50_ms": 3.045692500563746,
+   "p95_ms": 4.516777800472477,
+   "mean_ms": 3.1210035624962984,
+   "max_ms": 6.328620000203955
+  },
+  "100": {
+   "recall_at_10": 0.8420000000000001,
+   "recall_at_10_ci95": [
+    0.805,
+    0.8765000000000001
+   ],
+   "recall_at_10_set": "recall_mixed_pair",
+   "recall_self_span": 0.8825,
+   "recall_mixed_pair": 0.8420000000000001,
+   "recall_self_span_ci95": [
+    0.8495000000000001,
+    0.9125
+   ],
+   "recall_mixed_pair_ci95": [
+    0.805,
+    0.8765000000000001
+   ],
+   "tie_aware_recall_self_span": 0.898,
+   "tie_aware_recall_mixed_pair": 0.8525,
+   "tie_aware_recall_at_10": 0.8525,
+   "min_single_query_recall": 0.0,
+   "n": 400,
+   "p50_ms": 4.748217999804183,
+   "p95_ms": 6.944770150403201,
+   "mean_ms": 4.839887787566113,
+   "max_ms": 10.945051999442512
+  },
+  "200": {
+   "recall_at_10": 0.8915000000000001,
+   "recall_at_10_ci95": [
+    0.8590000000000001,
+    0.9205000000000001
+   ],
+   "recall_at_10_set": "recall_mixed_pair",
+   "recall_self_span": 0.9205,
+   "recall_mixed_pair": 0.8915000000000001,
+   "recall_self_span_ci95": [
+    0.894,
+    0.9440000000000001
+   ],
+   "recall_mixed_pair_ci95": [
+    0.8590000000000001,
+    0.9205000000000001
+   ],
+   "tie_aware_recall_self_span": 0.9359999999999999,
+   "tie_aware_recall_mixed_pair": 0.9,
+   "tie_aware_recall_at_10": 0.9,
+   "min_single_query_recall": 0.0,
+   "n": 400,
+   "p50_ms": 7.1173890009958996,
+   "p95_ms": 9.896887401191634,
+   "mean_ms": 7.179746879951381,
+   "max_ms": 13.088658999549807
+  },
+  "400": {
+   "recall_at_10": 0.9245,
+   "recall_at_10_ci95": [
+    0.897,
+    0.9490000000000001
+   ],
+   "recall_at_10_set": "recall_mixed_pair",
+   "recall_self_span": 0.9584999999999999,
+   "recall_mixed_pair": 0.9245,
+   "recall_self_span_ci95": [
+    0.9415,
+    0.9725
+   ],
+   "recall_mixed_pair_ci95": [
+    0.897,
+    0.9490000000000001
+   ],
+   "tie_aware_recall_self_span": 0.9740000000000001,
+   "tie_aware_recall_mixed_pair": 0.9325,
+   "tie_aware_recall_at_10": 0.9325,
+   "min_single_query_recall": 0.0,
+   "n": 400,
+   "p50_ms": 12.14130300013494,
+   "p95_ms": 17.01988545037238,
+   "mean_ms": 12.112803267482377,
+   "max_ms": 21.109707000505296
+  },
+  "800": {
+   "recall_at_10": 0.9615,
+   "recall_at_10_ci95": [
+    0.9415,
+    0.9775
+   ],
+   "recall_at_10_set": "recall_mixed_pair",
+   "recall_self_span": 0.965,
+   "recall_mixed_pair": 0.9615,
+   "recall_self_span_ci95": [
+    0.9490000000000001,
+    0.9780000000000001
+   ],
+   "recall_mixed_pair_ci95": [
+    0.9415,
+    0.9775
+   ],
+   "tie_aware_recall_self_span": 0.9804999999999999,
+   "tie_aware_recall_mixed_pair": 0.9695,
+   "tie_aware_recall_at_10": 0.9695,
+   "min_single_query_recall": 0.0,
+   "n": 400,
+   "p50_ms": 21.75526950031781,
+   "p95_ms": 30.728918151271497,
+   "mean_ms": 21.660096737477943,
+   "max_ms": 38.11137899901951
+  },
+  "1000": {
+   "recall_at_10": 0.9665,
+   "recall_at_10_ci95": [
+    0.9470000000000001,
+    0.982
+   ],
+   "recall_at_10_set": "recall_mixed_pair",
+   "recall_self_span": 0.972,
+   "recall_mixed_pair": 0.9665,
+   "recall_self_span_ci95": [
+    0.9580000000000001,
+    0.9830000000000001
+   ],
+   "recall_mixed_pair_ci95": [
+    0.9470000000000001,
+    0.982
+   ],
+   "tie_aware_recall_self_span": 0.986,
+   "tie_aware_recall_mixed_pair": 0.9745,
+   "tie_aware_recall_at_10": 0.9745,
+   "min_single_query_recall": 0.0,
+   "n": 400,
+   "p50_ms": 27.341894000528555,
+   "p95_ms": 38.29988395009422,
+   "mean_ms": 26.912885197480136,
+   "max_ms": 47.11881900038861
+  }
+ },
+ "hnsw_curve_original_index": {
+  "40": {
+   "recall_at_10": 0.5945,
+   "recall_at_10_ci95": [
+    0.544,
+    0.6445000000000001
+   ],
+   "recall_at_10_set": "recall_mixed_pair",
+   "recall_self_span": 0.6605,
+   "recall_mixed_pair": 0.5945,
+   "recall_self_span_ci95": [
+    0.6054999999999999,
+    0.7140124999999999
+   ],
+   "recall_mixed_pair_ci95": [
+    0.544,
+    0.6445000000000001
+   ],
+   "tie_aware_recall_self_span": 0.6705,
+   "tie_aware_recall_mixed_pair": 0.6054999999999999,
+   "tie_aware_recall_at_10": 0.6054999999999999,
+   "min_single_query_recall": 0.0,
+   "n": 400,
+   "p50_ms": 2.2317765005936963,
+   "p95_ms": 3.2660435997058808,
+   "mean_ms": 2.3109422949892178,
+   "max_ms": 4.606509000950609
+  },
+  "100": {
+   "recall_at_10": 0.732,
+   "recall_at_10_ci95": [
+    0.687,
+    0.7755
+   ],
+   "recall_at_10_set": "recall_mixed_pair",
+   "recall_self_span": 0.8205,
+   "recall_mixed_pair": 0.732,
+   "recall_self_span_ci95": [
+    0.7780000000000001,
+    0.86
+   ],
+   "recall_mixed_pair_ci95": [
+    0.687,
+    0.7755
+   ],
+   "tie_aware_recall_self_span": 0.8315,
+   "tie_aware_recall_mixed_pair": 0.7425,
+   "tie_aware_recall_at_10": 0.7425,
+   "min_single_query_recall": 0.0,
+   "n": 400,
+   "p50_ms": 3.1553415001326357,
+   "p95_ms": 4.396367700701376,
+   "mean_ms": 3.221182760012198,
+   "max_ms": 5.422449999969103
+  },
+  "200": {
+   "recall_at_10": 0.8255,
+   "recall_at_10_ci95": [
+    0.7875,
+    0.8610000000000001
+   ],
+   "recall_at_10_set": "recall_mixed_pair",
+   "recall_self_span": 0.8785,
+   "recall_mixed_pair": 0.8255,
+   "recall_self_span_ci95": [
+    0.8440000000000001,
+    0.9105000000000001
+   ],
+   "recall_mixed_pair_ci95": [
+    0.7875,
+    0.8610000000000001
+   ],
+   "tie_aware_recall_self_span": 0.8935,
+   "tie_aware_recall_mixed_pair": 0.8384999999999999,
+   "tie_aware_recall_at_10": 0.8384999999999999,
+   "min_single_query_recall": 0.0,
+   "n": 400,
+   "p50_ms": 4.725625999526528,
+   "p95_ms": 6.177857249440421,
+   "mean_ms": 4.69354127254519,
+   "max_ms": 7.6511749994097045
+  },
+  "400": {
+   "recall_at_10": 0.8734999999999999,
+   "recall_at_10_ci95": [
+    0.8420000000000001,
+    0.903
+   ],
+   "recall_at_10_set": "recall_mixed_pair",
+   "recall_self_span": 0.9309999999999999,
+   "recall_mixed_pair": 0.8734999999999999,
+   "recall_self_span_ci95": [
+    0.909,
+    0.9505000000000001
+   ],
+   "recall_mixed_pair_ci95": [
+    0.8420000000000001,
+    0.903
+   ],
+   "tie_aware_recall_self_span": 0.9455,
+   "tie_aware_recall_mixed_pair": 0.8865000000000001,
+   "tie_aware_recall_at_10": 0.8865000000000001,
+   "min_single_query_recall": 0.0,
+   "n": 400,
+   "p50_ms": 7.6419260003603995,
+   "p95_ms": 9.945755350508987,
+   "mean_ms": 7.595932432486734,
+   "max_ms": 11.14620400039712
+  },
+  "800": {
+   "recall_at_10": 0.9245,
+   "recall_at_10_ci95": [
+    0.899,
+    0.9475
+   ],
+   "recall_at_10_set": "recall_mixed_pair",
+   "recall_self_span": 0.9575,
+   "recall_mixed_pair": 0.9245,
+   "recall_self_span_ci95": [
+    0.9415,
+    0.971
+   ],
+   "recall_mixed_pair_ci95": [
+    0.899,
+    0.9475
+   ],
+   "tie_aware_recall_self_span": 0.9725,
+   "tie_aware_recall_mixed_pair": 0.935,
+   "tie_aware_recall_at_10": 0.935,
+   "min_single_query_recall": 0.0,
+   "n": 400,
+   "p50_ms": 13.20748750003986,
+   "p95_ms": 17.27825275056601,
+   "mean_ms": 13.09504634746645,
+   "max_ms": 20.784766000360833
+  },
+  "1000": {
+   "recall_at_10": 0.9315000000000001,
+   "recall_at_10_ci95": [
+    0.9059999999999999,
+    0.9540124999999999
+   ],
+   "recall_at_10_set": "recall_mixed_pair",
+   "recall_self_span": 0.96,
+   "recall_mixed_pair": 0.9315000000000001,
+   "recall_self_span_ci95": [
+    0.9445,
+    0.9735
+   ],
+   "recall_mixed_pair_ci95": [
+    0.9059999999999999,
+    0.9540124999999999
+   ],
+   "tie_aware_recall_self_span": 0.9745,
+   "tie_aware_recall_mixed_pair": 0.94,
+   "tie_aware_recall_at_10": 0.94,
+   "min_single_query_recall": 0.0,
+   "n": 400,
+   "p50_ms": 16.413884500252607,
+   "p95_ms": 21.437929148942196,
+   "mean_ms": 16.31762481500118,
+   "max_ms": 25.071726999158273
+  }
+ },
+ "chosen_default_ef_search": 800,
+ "chosen_default_justification": "800 is the smallest tested ef_search whose recall@10 on the harder query set reaches 0.95 (0.9615; its 95% CI [0.942, 0.978] still includes values below 0.95); dense search there takes p50 21.8 ms, p95 30.7 ms on a Free-plan flex instance (preliminary). Lower settings are cheaper but miss the gate: ef 40: 0.732, ef 100: 0.842, ef 200: 0.892, ef 400: 0.924.",
+ "numeric_lookup": {
+  "n": 200,
+  "p50_ms": 1.332980498773395,
+  "p95_ms": 1.7241053998077402,
+  "mean_ms": 1.1321227750158869,
+  "max_ms": 2.630953000334557
+ },
+ "hybrid": {
+  "200": {
+   "total": {
+    "n": 100,
+    "p50_ms": 433.56238399974245,
+    "p95_ms": 1572.9280768484373,
+    "mean_ms": 883.6850341599711,
+    "max_ms": 26788.330372000928
+   },
+   "embed": {
+    "n": 100,
+    "p50_ms": 15.760902500915108,
+    "p95_ms": 19.035686497772982,
+    "mean_ms": 15.968596060192795,
+    "max_ms": 25.27159600140294
+   },
+   "lexical": {
+    "n": 100,
+    "p50_ms": 32.36559399920225,
+    "p95_ms": 1345.2244583992067,
+    "mean_ms": 507.6252288298929,
+    "max_ms": 25659.761450002406
+   },
+   "dense": {
+    "n": 100,
+    "p50_ms": 313.3002829999896,
+    "p95_ms": 817.3414671487989,
+    "mean_ms": 360.01301138006966,
+    "max_ms": 1112.7886879985454
+   },
+   "fuse": {
+    "n": 100,
+    "p50_ms": 0.04617550075636245,
+    "p95_ms": 0.05625739722745493,
+    "mean_ms": 0.04441771026904462,
+    "max_ms": 0.06412999937310815
+   }
+  },
+  "800": {
+   "total": {
+    "n": 100,
+    "p50_ms": 238.57142999986536,
+    "p95_ms": 1018.6569937515742,
+    "mean_ms": 620.4363445401395,
+    "max_ms": 14450.685371000873
+   },
+   "embed": {
+    "n": 100,
+    "p50_ms": 15.468241001144634,
+    "p95_ms": 19.65933690044039,
+    "mean_ms": 15.908612699822697,
+    "max_ms": 23.986221000086516
+   },
+   "lexical": {
+    "n": 100,
+    "p50_ms": 33.247860499614035,
+    "p95_ms": 797.4843877515013,
+    "mean_ms": 422.6056054599758,
+    "max_ms": 13699.82732599965
+   },
+   "dense": {
+    "n": 100,
+    "p50_ms": 149.9476479984878,
+    "p95_ms": 476.9205218522983,
+    "mean_ms": 181.8403020799451,
+    "max_ms": 734.2807989989524
+   },
+   "fuse": {
+    "n": 100,
+    "p50_ms": 0.049369999032933265,
+    "p95_ms": 0.05654920005326858,
+    "mean_ms": 0.04594981008267496,
+    "max_ms": 0.07064999954309314
+   }
+  }
+ },
+ "hybrid_lexical_mode": "and",
+ "hybrid_note": "ef_search values in this table are 200 and 800; the lexical leg is Postgres full-text search with ts_rank_cd over every matching row, which is the known cost (not fixed in M3).",
+ "query_instruction_ab": {
+  "with_instruction": {
+   "source_chunk_in_top10": 0.11,
+   "mrr_at_10": 0.03226984126984127
+  },
+  "without_instruction": {
+   "source_chunk_in_top10": 0.095,
+   "mrr_at_10": 0.030087301587301586
+  },
+  "top10_overlap_between_variants": 0.5885,
+  "caveat": "queries are spans of the chunks themselves; this favours no instruction (ADR-033)"
+ },
+ "filtered_dense": {
+  "n": 50,
+  "min_rows_returned": 10,
+  "queries_returning_fewer_than_limit": 0,
+  "min_rows_returned_with_max_scan_tuples_500000": 10,
+  "queries_returning_fewer_than_limit_with_max_scan_tuples_500000": 0,
+  "limit": 10,
+  "plans_using_the_hnsw_index": "2 of 10",
+  "note": "when the planner prefers the (cik, fiscal_year) btree the HNSW iterative scan is not exercised for that query"
+ },
+ "cpu_steal_fraction_whole_run": 1.718104815847799e-05,
+ "cpu_steal_fraction_of_busy_time": 2.0622950594284694e-05,
+ "halfvec_check": {
+  "chunks": 1081461,
+  "efs": [
+   100,
+   200,
+   800
+  ],
+  "k": 10,
+  "self_span": {
+   "halfvec_exact_vs_fp32_exact": {
+    "mean": 0.99,
+    "ci95": [
+     0.9845000000000002,
+     0.9945
+    ],
+    "n": 200
+   },
+   "hnsw_ef100_vs_halfvec_exact": {
+    "mean": 0.8825,
+    "ci95": [
+     0.85,
+     0.9130000000000001
+    ],
+    "n": 200
+   },
+   "hnsw_ef100_vs_fp32_exact": {
+    "mean": 0.8815000000000001,
+    "ci95": [
+     0.8490000000000001,
+     0.912
+    ],
+    "n": 200
+   },
+   "hnsw_ef200_vs_halfvec_exact": {
+    "mean": 0.9205,
+    "ci95": [
+     0.8935,
+     0.945
+    ],
+    "n": 200
+   },
+   "hnsw_ef200_vs_fp32_exact": {
+    "mean": 0.9195,
+    "ci95": [
+     0.8925,
+     0.9440000000000001
+    ],
+    "n": 200
+   },
+   "hnsw_ef800_vs_halfvec_exact": {
+    "mean": 0.965,
+    "ci95": [
+     0.9490000000000001,
+     0.9784999999999999
+    ],
+    "n": 200
+   },
+   "hnsw_ef800_vs_fp32_exact": {
+    "mean": 0.965,
+    "ci95": [
+     0.9490000000000001,
+     0.9784999999999999
+    ],
+    "n": 200
+   }
+  },
+  "mixed_pair": {
+   "halfvec_exact_vs_fp32_exact": {
+    "mean": 0.9954999999999999,
+    "ci95": [
+     0.9925,
+     0.998
+    ],
+    "n": 200
+   },
+   "hnsw_ef100_vs_halfvec_exact": {
+    "mean": 0.8420000000000001,
+    "ci95": [
+     0.805,
+     0.8769999999999999
+    ],
+    "n": 200
+   },
+   "hnsw_ef100_vs_fp32_exact": {
+    "mean": 0.8415,
+    "ci95": [
+     0.805,
+     0.8765000000000001
+    ],
+    "n": 200
+   },
+   "hnsw_ef200_vs_halfvec_exact": {
+    "mean": 0.8915000000000001,
+    "ci95": [
+     0.8599875000000001,
+     0.9215000000000001
+    ],
+    "n": 200
+   },
+   "hnsw_ef200_vs_fp32_exact": {
+    "mean": 0.8909999999999999,
+    "ci95": [
+     0.8595,
+     0.921
+    ],
+    "n": 200
+   },
+   "hnsw_ef800_vs_halfvec_exact": {
+    "mean": 0.9615,
+    "ci95": [
+     0.9420000000000002,
+     0.9775
+    ],
+    "n": 200
+   },
+   "hnsw_ef800_vs_fp32_exact": {
+    "mean": 0.9620000000000001,
+    "ci95": [
+     0.9425,
+     0.9780000000000001
+    ],
+    "n": 200
+   }
+  },
+  "index": "CREATE INDEX chunks_v1_hnsw ON public.chunks_v1 USING hnsw (embedding halfvec_cosine_ops) WITH (m='32', ef_construction='128')"
+ },
+ "superseded_first_run": {
+  "note": "first full bench on the m=16/64 index: non-deterministic query sample, cold first ef_search, hybrid with an OR lexical query (stress shape)",
+  "hnsw_curve": {
+   "40": {
+    "recall_at_10": 0.5920000000000001,
+    "recall_self_span": 0.639,
+    "recall_mixed_pair": 0.5920000000000001,
+    "min_single_query_recall": 0.0,
+    "n": 400,
+    "p50_ms": 60.34176700040916,
+    "p95_ms": 366.2501342499581,
+    "mean_ms": 121.01240937503462,
+    "max_ms": 1392.024866999236
+   },
+   "100": {
+    "recall_at_10": 0.7440000000000001,
+    "recall_self_span": 0.7835,
+    "recall_mixed_pair": 0.7440000000000001,
+    "min_single_query_recall": 0.0,
+    "n": 400,
+    "p50_ms": 6.5170645002581296,
+    "p95_ms": 20.51620990018817,
+    "mean_ms": 8.21188798249068,
+    "max_ms": 42.26211399964086
+   },
+   "200": {
+    "recall_at_10": 0.826,
+    "recall_self_span": 0.8715,
+    "recall_mixed_pair": 0.826,
+    "min_single_query_recall": 0.0,
+    "n": 400,
+    "p50_ms": 5.5083620000004885,
+    "p95_ms": 8.576205699955606,
+    "mean_ms": 5.693662130004213,
+    "max_ms": 14.826572000856686
+   }
+  },
+  "hybrid_or_mode": {
+   "40": {
+    "total": {
+     "n": 100,
+     "p50_ms": 4999.232303499866,
+     "p95_ms": 7897.3337295503825,
+     "mean_ms": 4805.412832659958,
+     "max_ms": 9142.19742000023
+    },
+    "embed": {
+     "n": 100,
+     "p50_ms": 15.432879500167473,
+     "p95_ms": 18.842786200093542,
+     "mean_ms": 15.933488599921475,
+     "max_ms": 21.6321269999753
+    },
+    "lexical": {
+     "n": 100,
+     "p50_ms": 4700.733797499652,
+     "p95_ms": 7619.994177949684,
+     "mean_ms": 4507.138662080042,
+     "max_ms": 8832.897590000357
+    },
+    "dense": {
+     "n": 100,
+     "p50_ms": 298.1995134996396,
+     "p95_ms": 594.5226447993718,
+     "mean_ms": 282.25793617998534,
+     "max_ms": 945.7858190007755
+    },
+    "fuse": {
+     "n": 100,
+     "p50_ms": 0.0488529999529419,
+     "p95_ms": 0.05947905019638711,
+     "mean_ms": 0.04957041006491636,
+     "max_ms": 0.07045900019875262
+    }
+   },
+   "100": {
+    "total": {
+     "n": 100,
+     "p50_ms": 5046.558148500026,
+     "p95_ms": 7912.99386899982,
+     "mean_ms": 4891.10650573999,
+     "max_ms": 9378.811601000052
+    },
+    "embed": {
+     "n": 100,
+     "p50_ms": 15.819835999991483,
+     "p95_ms": 19.099737900160108,
+     "mean_ms": 16.032940569994025,
+     "max_ms": 21.388236000348115
+    },
+    "lexical": {
+     "n": 100,
+     "p50_ms": 4679.052631500326,
+     "p95_ms": 7640.545471600535,
+     "mean_ms": 4534.376875309972,
+     "max_ms": 8921.883125000022
+    },
+    "dense": {
+     "n": 100,
+     "p50_ms": 301.758617500127,
+     "p95_ms": 688.5843851498976,
+     "mean_ms": 340.61344046006525,
+     "max_ms": 869.5881829999053
+    },
+    "fuse": {
+     "n": 100,
+     "p50_ms": 0.04926749988953816,
+     "p95_ms": 0.055155000700324294,
+     "mean_ms": 0.04980302006515558,
+     "max_ms": 0.06867100000818027
+    }
+   },
+   "200": {
+    "total": {
+     "n": 100,
+     "p50_ms": 5228.682553500221,
+     "p95_ms": 8042.249547249048,
+     "mean_ms": 5050.187032169979,
+     "max_ms": 9223.107498999525
+    },
+    "embed": {
+     "n": 100,
+     "p50_ms": 15.292036500795803,
+     "p95_ms": 18.92239005023839,
+     "mean_ms": 15.809466069958944,
+     "max_ms": 21.3919639991218
+    },
+    "lexical": {
+     "n": 100,
+     "p50_ms": 4661.608273499041,
+     "p95_ms": 7435.609904850162,
+     "mean_ms": 4465.2180937499725,
+     "max_ms": 8492.307665000226
+    },
+    "dense": {
+     "n": 100,
+     "p50_ms": 537.4287579998054,
+     "p95_ms": 907.326412000748,
+     "mean_ms": 569.0759369700481,
+     "max_ms": 1224.2623810016084
+    },
+    "fuse": {
+     "n": 100,
+     "p50_ms": 0.04904099932900863,
+     "p95_ms": 0.05500494989973957,
+     "mean_ms": 0.04967992993442749,
+     "max_ms": 0.07213400022010319
+    }
+   }
+  },
+  "numeric_lookup": {
+   "n": 200,
+   "p50_ms": 1.302262499848439,
+   "p95_ms": 1.7541561506277503,
+   "mean_ms": 1.1107880550116533,
+   "max_ms": 2.010285999858752
+  },
+  "filtered_dense": {
+   "n": 50,
+   "min_rows_returned": 7,
+   "limit": 10,
+   "plans_using_the_hnsw_index": "2 of 10",
+   "note": "when the planner prefers the (cik, fiscal_year) btree the HNSW iterative scan is not exercised for that query"
+  }
+ },
+ "default_ef_dense_latency_ms": {
+  "p50_ms": 21.75526950031781,
+  "p95_ms": 30.728918151271497
+ }
+}

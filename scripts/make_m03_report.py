@@ -93,15 +93,15 @@ def build() -> str:
     a(
         f"| Loader swaps it into Postgres; rollback tested | {f(get(swp, 'reader', 'reads'))} reader queries during {len(swp.get('steps', []))} swap/rollback steps, errors: {f(len(get(swp, 'reader', 'errors', default=[])) if swp else None)} | M03-serving-swap.json |"
     )
-    best = max((v.get("recall_at_10", 0) for v in curve.values()), default=None) if curve else None
+    c_ch = get(curve, str(chosen), default={})
     a(
-        f"| HNSW recall@10 vs exact >= 0.95 at the chosen ef_search | ef_search {f(chosen)}: recall {f(get(curve, str(chosen), 'recall_at_10'), '{:.3f}')} (lower of two query sets); best {f(best, '{:.3f}')} | M03-serving-bench.json `hnsw_curve` |"
+        f"| HNSW recall@10 vs exact >= 0.95 at the chosen ef_search, or documented | **Met only at ef_search {f(chosen)}**: recall {f(c_ch.get('recall_at_10'), '{:.4f}')}, 95% CI {c_ch.get('recall_at_10_ci95')} (lower of two query sets). At ef_search 200 it is {f(get(curve, '200', 'recall_at_10'), '{:.3f}')}. Documented in ADR-040 and below | M03-serving-bench.json `hnsw_curve` |"
     )
     a(
         f"| Numeric lookup p95 < 50 ms (PRELIMINARY) | p50 {ms(get(bench, 'numeric_lookup', 'p50_ms'))}, p95 {ms(get(bench, 'numeric_lookup', 'p95_ms'))} | `numeric_lookup` |"
     )
     a(
-        f"| Hybrid p95 < 200 ms, no rerank (PRELIMINARY) | at ef_search {f(chosen)}: p50 {ms(get(bench, 'hybrid', str(chosen), 'total', 'p50_ms'))}, p95 {ms(get(bench, 'hybrid', str(chosen), 'total', 'p95_ms'))} (includes embedding the question on the box) | `hybrid` |"
+        f"| Hybrid p95 < 200 ms, no rerank (PRELIMINARY) | **NOT MET**: at ef_search {f(chosen)} p50 {ms(get(bench, 'hybrid', str(chosen), 'total', 'p50_ms'))}, p95 {ms(get(bench, 'hybrid', str(chosen), 'total', 'p95_ms'))} (includes embedding the question on the box). The tail is the full-text leg, a known cost not fixed in M3 | `hybrid` |"
     )
     a(
         "| Load/swap/rollback integration test green in CI | see the repository's CI run; Testcontainers suites `tests/integration/test_load_snapshot.py` and `test_retrieval_pg.py` | not a JSON result |"
@@ -155,6 +155,10 @@ def build() -> str:
     for k, v in sorted(lr.get("sizes_bytes", {}).items()):
         a(f"| {k} | {f(v / 1e6, '{:,.0f}', ' MB')} |")
     a("")
+    a(
+        "The HNSW rows in the size table are the original m=16, ef_construction=64 index; the rebuilt m=32 index is 1,295 MiB (Stage D)."
+    )
+    a("")
     res = ld.get("resources", {})
     a(
         f"- Peak disk used: {f(res.get('peak_disk_used_gb'), '{:.1f}', ' GB')}; minimum available memory {f(res.get('min_mem_available_mib'), '{:,.0f}', ' MiB')}; maximum swap used {f(res.get('max_swap_used_mib'), '{:,.0f}', ' MiB')}."
@@ -185,43 +189,107 @@ def build() -> str:
     a("## Stage D: retrieval benchmark (latency PRELIMINARY)")
     a("")
     a(
-        f"{f(bench.get('queries'))} queries per set; instance {bench.get('instance_type', NM)}; server {get(bench, 'server', 'version', default=NM)}, pgvector {get(bench, 'server', 'pgvector', default=NM)}, {f(get(bench, 'server', 'chunks'))} chunks. Exact search takes {f(bench.get('exact_scan_seconds_per_query'), '{:.2f}', ' s')} per query."
+        f"{f(bench.get('queries'))} deterministic queries per set (spans of chunks, and two unrelated spans joined, the harder case); instance {bench.get('instance_type', NM)}; server {get(bench, 'server', 'version', default=NM)}, pgvector {get(bench, 'server', 'pgvector', default=NM)}, {f(get(bench, 'server', 'chunks'))} chunks. Truth is exact search over the same `halfvec(384)` column with index scans off ({f(bench.get('exact_scan_seconds_per_query'), '{:.2f}', ' s')} per query). Recall is the share of the exact top-10 that the index returns; the headline is the lower of the two sets; CIs are 10,000-resample bootstrap intervals."
     )
     a("")
+    a("### Index parameters (ADR-040)")
+    a("")
+    a("| Index | Build | Size | recall@10 at ef 200 | at ef 800 | at ef 1000 |")
+    a("|---|---|---|---|---|---|")
+    for label, key, ck in (
+        ("m=16, ef_construction=64 (runbook)", "original", "hnsw_curve_original_index"),
+        ("m=32, ef_construction=128 (final)", "final", "hnsw_curve"),
+    ):
+        cv = bench.get(ck, {})
+        ix = get(bench, "index", key, default={})
+        a(
+            f"| {label} | {f(ix.get('build_seconds'), '{:,.0f}', ' s')} | {f((ix.get('size_bytes') or 0) / 2**20 if ix.get('size_bytes') else None, '{:,.0f}', ' MiB')} | {f(get(cv, '200', 'recall_at_10'), '{:.3f}')} | {f(get(cv, '800', 'recall_at_10'), '{:.3f}')} | {f(get(cv, '1000', 'recall_at_10'), '{:.3f}')} |"
+        )
+    rr = get(ld, "index_rebuild", "resources", default={})
+    a("")
     a(
-        "| ef_search | recall@10 (lower of two sets) | self-span | mixed-pair | min single query | dense_search p50 | p95 |"
+        f"The m=32 rebuild ran with `maintenance_work_mem` {get(ld, 'index_rebuild', 'maintenance_work_mem', default=NM)}: CPU busy {f(rr.get('cpu_busy_fraction'), '{:.1%}')}, steal {f(rr.get('steal_fraction'), '{:.2%}')}, minimum available memory {f(rr.get('min_mem_available_mib'), '{:,.0f}', ' MiB')}, peak disk {f(rr.get('peak_disk_used_gb'), '{:.1f}', ' GB')} (PRELIMINARY). I stopped at m=32 as instructed rather than raise it further on this box."
     )
-    a("|---|---|---|---|---|---|---|")
+    a("")
+    a("### Recall and latency of the final index")
+    a("")
+    a(
+        "| ef_search | recall@10 (lower of two sets) | 95% CI | self-span | mixed-pair | tie-aware | min single query | dense_search p50 | p95 |"
+    )
+    a("|---|---|---|---|---|---|---|---|---|")
     for ef in sorted(curve, key=int):
         c = curve[ef]
+        ci = c.get("recall_at_10_ci95") or [None, None]
         a(
-            f"| {ef} | {f(c.get('recall_at_10'), '{:.3f}')} | {f(c.get('recall_self_span'), '{:.3f}')} | {f(c.get('recall_mixed_pair'), '{:.3f}')} | {f(c.get('min_single_query_recall'), '{:.2f}')} | {ms(c.get('p50_ms'))} | {ms(c.get('p95_ms'))} |"
+            f"| {ef} | {f(c.get('recall_at_10'), '{:.4f}')} | [{f(ci[0], '{:.3f}')}, {f(ci[1], '{:.3f}')}] | {f(c.get('recall_self_span'), '{:.3f}')} | {f(c.get('recall_mixed_pair'), '{:.3f}')} | {f(c.get('tie_aware_recall_at_10'), '{:.3f}')} | {f(c.get('min_single_query_recall'), '{:.1f}')} | {ms(c.get('p50_ms'))} | {ms(c.get('p95_ms'))} |"
         )
     a("")
     a(
         f"**Chosen default `ef_search` = {f(chosen)}.** {bench.get('chosen_default_justification', NM)}"
     )
     a("")
-    a("| ef_search | hybrid total p50 | p95 | embed p50 | lexical p50 | dense p50 | fuse p50 |")
-    a("|---|---|---|---|---|---|---|")
+    a(
+        "**Outcome against the DoD:** recall@10 reaches 0.95 only from ef_search 800 (and the interval still reaches below 0.95); at ef_search <= 200 it is well short. This is documented, not hidden. Whether it matters is an M4 question, to be answered by retrieval quality against FinanceBench gold (ADR-040)."
+    )
+    a("")
+    hv = bench.get("halfvec_check", {})
+    a("### Is half-precision storage the cause? (same queries)")
+    a("")
+    a("| Comparison | self-span | mixed-pair |")
+    a("|---|---|---|")
+    for key, label in (
+        ("halfvec_exact_vs_fp32_exact", "halfvec exact vs float32 exact (cost of half precision)"),
+        ("hnsw_ef200_vs_halfvec_exact", "HNSW ef 200 vs halfvec exact (what the bench gates)"),
+        ("hnsw_ef200_vs_fp32_exact", "HNSW ef 200 vs float32 exact"),
+        ("hnsw_ef800_vs_halfvec_exact", "HNSW ef 800 vs halfvec exact"),
+        ("hnsw_ef800_vs_fp32_exact", "HNSW ef 800 vs float32 exact"),
+    ):
+        a(
+            f"| {label} | {f(get(hv, 'self_span', key, 'mean'), '{:.4f}')} | {f(get(hv, 'mixed_pair', key, 'mean'), '{:.4f}')} |"
+        )
+    a("")
+    a(
+        "Half precision costs about 0.5 to 1% of top-10 overlap and the index scores the same against either truth, so the shortfall is the HNSW approximation, not the storage type. The halfvec versus `vector(384)` choice is deferred to M4."
+    )
+    a("")
+    a("### Numeric lookup and hybrid search (PRELIMINARY)")
+    a("")
+    a(
+        f"Numeric lookup ({f(get(bench, 'numeric_lookup', 'n'))} lookups): p50 {ms(get(bench, 'numeric_lookup', 'p50_ms'))}, p95 {ms(get(bench, 'numeric_lookup', 'p95_ms'))} (target p95 < 50 ms)."
+    )
+    a("")
+    a(
+        f"Hybrid = full-text (`{bench.get('hybrid_lexical_mode', NM)}` mode) + dense + RRF + embedding the question on the box, no rerank; 100 questions per setting."
+    )
+    a("")
+    a(
+        "| ef_search | total p50 | total p95 | embed p50 | lexical p50 | lexical p95 | dense p50 | dense p95 | fuse p50 |"
+    )
+    a("|---|---|---|---|---|---|---|---|---|")
     for ef, h in sorted(bench.get("hybrid", {}).items(), key=lambda kv: int(kv[0])):
         a(
-            f"| {ef} | {ms(h['total']['p50_ms'])} | {ms(h['total']['p95_ms'])} | {ms(h['embed']['p50_ms'])} | {ms(h['lexical']['p50_ms'])} | {ms(h['dense']['p50_ms'])} | {ms(h['fuse']['p50_ms'])} |"
+            f"| {ef} | {ms(h['total']['p50_ms'])} | {ms(h['total']['p95_ms'])} | {ms(h['embed']['p50_ms'])} | {ms(h['lexical']['p50_ms'])} | {ms(h['lexical']['p95_ms'])} | {ms(h['dense']['p50_ms'])} | {ms(h['dense']['p95_ms'])} | {ms(h['fuse']['p50_ms'])} |"
         )
+    a("")
+    first_or = get(bench, "superseded_first_run", "hybrid_or_mode", "40", "lexical", default={})
+    a(
+        f"**Known cost, not fixed in M3:** the hybrid target is missed at every setting, and the tail is the full-text leg (lexical p95 above): `ts_rank_cd` ranks every row that matches. The first run used an OR query of the same words, a stress shape, and its lexical p50 was {ms(first_or.get('p50_ms'))}. Separately, the dense leg inside the hybrid run is much slower than the standalone dense search at the same ef_search (compare the two tables). My suspicion is that the full-text queries evict HNSW pages from the 8 GiB page cache (the box measured a dense p50 of 6.5 ms standalone vs about 300 ms after heavy lexical work), but I did not isolate it."
+    )
     a("")
     ab = bench.get("query_instruction_ab", {})
     a(
         "BGE query instruction A/B (reported, not used to choose; ADR-033): "
-        f"source chunk in exact top-10 with the instruction {f(get(ab, 'with_instruction', 'source_chunk_in_top10'), '{:.3f}')} vs without {f(get(ab, 'without_instruction', 'source_chunk_in_top10'), '{:.3f}')}; "
-        f"MRR@10 {f(get(ab, 'with_instruction', 'mrr_at_10'), '{:.3f}')} vs {f(get(ab, 'without_instruction', 'mrr_at_10'), '{:.3f}')}; top-10 overlap between the variants {f(ab.get('top10_overlap_between_variants'), '{:.3f}')}. {ab.get('caveat', '')}"
+        f"source chunk in the exact top-10 with the instruction {f(get(ab, 'with_instruction', 'source_chunk_in_top10'), '{:.3f}')} vs without {f(get(ab, 'without_instruction', 'source_chunk_in_top10'), '{:.3f}')}; "
+        f"MRR@10 {f(get(ab, 'with_instruction', 'mrr_at_10'), '{:.4f}')} vs {f(get(ab, 'without_instruction', 'mrr_at_10'), '{:.4f}')}; top-10 overlap between the variants {f(ab.get('top10_overlap_between_variants'), '{:.3f}')}. Caveat from the bench: {ab.get('caveat', NM)}. The queries are chunk spans, not questions, so this says little; the default stays as ADR-033 decided until M4 compares them on the gold sets."
     )
     a("")
     fd = bench.get("filtered_dense", {})
     a(
-        f"Filtered dense search: {f(fd.get('n'))} queries, minimum rows returned {f(fd.get('min_rows_returned'))} of {f(fd.get('limit'))}; plans using the HNSW index: {fd.get('plans_using_the_hnsw_index', NM)}."
+        f"Filtered dense search: {f(fd.get('n'))} single-company queries; queries returning fewer than {f(fd.get('limit'))} rows: {f(fd.get('queries_returning_fewer_than_limit'))} with the default scan limit and {f(fd.get('queries_returning_fewer_than_limit_with_max_scan_tuples_500000'))} with `hnsw.max_scan_tuples` = 500,000. The planner used the HNSW index in {fd.get('plans_using_the_hnsw_index', NM)} sampled plans; otherwise it prefers the (cik, fiscal_year) B-tree. Note from the bench: {fd.get('note', NM)}."
     )
+    a("")
     a(
-        f"\nCPU steal over the whole bench: {f(bench.get('cpu_steal_fraction_whole_run'), '{:.2%}')} of all time, {f(bench.get('cpu_steal_fraction_of_busy_time'), '{:.2%}')} of busy time."
+        f"CPU steal over the final bench: {f(bench.get('cpu_steal_fraction_whole_run'), '{:.4%}')} of all time, {f(bench.get('cpu_steal_fraction_of_busy_time'), '{:.4%}')} of busy time. No throttling showed in the sampler, but flex can still throttle under other conditions, so every latency here stays PRELIMINARY until M9."
     )
     a("")
     a("## Spend")

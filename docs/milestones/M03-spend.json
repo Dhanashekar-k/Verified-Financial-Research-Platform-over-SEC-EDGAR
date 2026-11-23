@@ -1,0 +1,47 @@
+{
+ "items": [
+  {
+   "item": "Glue: embedding smoke runs (4, one failed)",
+   "usd": 0.6133111111111111,
+   "dpu_hours": 1.3938888888888887,
+   "runs": 4
+  },
+  {
+   "item": "Glue: embedding served run (4 waves)",
+   "usd": 17.593644444444443,
+   "dpu_hours": 39.98555555555556,
+   "runs": 4
+  },
+  {
+   "item": "Glue: embedding rerun idempotency check",
+   "usd": 0.026644444444444446,
+   "dpu_hours": 0.06055555555555556,
+   "runs": 1
+  },
+  {
+   "item": "Glue: serving export (2 runs)",
+   "usd": 0.49707777777777784,
+   "dpu_hours": 1.1297222222222223,
+   "runs": 2
+  },
+  {
+   "item": "EC2 m7i-flex.large, 5.84 instance-hours at $0.09576/h (Price List rate x launch-to-stop hours; not from the bill)",
+   "usd": 0.558999
+  },
+  {
+   "item": "EBS gp3 60 GB while running (5.84 h; billing continues at about $4.80/month while stopped)",
+   "usd": 0.03838356164383561
+  },
+  {
+   "item": "Public IPv4 5.84 h at $0.005/h",
+   "usd": 0.0291875
+  }
+ ],
+ "total_m3_usd": 19.357247839421614,
+ "instance": {
+  "launch_utc": "2026-11-22T18:51:28+00:00",
+  "stopped_utc": "2026-11-23T00:41:43+00:00",
+  "hours": 5.8375
+ },
+ "reconciliation": "Glue lines are `dpu_seconds / 3600 x $0.44` from `get_job_run` (job-metrics files). Cost Explorer for 2026-11-22 UTC showed 42.59 DPU-hours = $18.74 before credits against the job-metrics sum of 41.44 + 1.13 (the export runs) = 42.57; the EC2, EBS and IPv4 lines are estimates from list prices and the instance's launch-to-stop time and are not in Cost Explorer yet (it lags about a day). Account-wide, Cost Explorer on 2026-11-23 (before credits): November usage $31.18 = Glue $30.79 (69.97 DPU-hours x $0.44, M1 and M2 included) + $0.40 other (Cost Explorer $0.08, Athena $0.12, RDS $0.01, S3 $0.19; not separable by milestone); credits remaining $168.82 (`aws freetier get-account-plan-state`), consistent with $200.00 minus $31.18. EC2 does not appear in Cost Explorer yet."
+}

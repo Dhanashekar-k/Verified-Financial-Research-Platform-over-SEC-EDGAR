@@ -1,0 +1,183 @@
+{
+ "note": "version 2 is the same export loaded without indexes; version 1 keeps all indexes. Version 2 here is a labelled copy of the version-1 export (exports/serving-swapcheck/corpus_version=2, manifest version field and git_sha suffix changed). The reader selects from the chunks view and the facts view in two separate statements, so a (chunks, facts) pair can straddle a swap; each view on its own always reads one consistent version.",
+ "steps": [
+  {
+   "step": "start: version 1 live",
+   "corpus_state": [
+    1,
+    null
+   ],
+   "chunks_view_reads": "chunks_v1",
+   "facts_view_reads": "facts_v1",
+   "chunks_rows": 1081461,
+   "facts_rows": 1909504,
+   "companies_rows": 12321,
+   "versioned_tables": [
+    "chunks_v1",
+    "companies_v1",
+    "facts_v1"
+   ]
+  },
+  {
+   "step": "loaded version 2 (no indexes), not swapped",
+   "corpus_state": [
+    1,
+    null
+   ],
+   "chunks_view_reads": "chunks_v1",
+   "facts_view_reads": "facts_v1",
+   "chunks_rows": 1081461,
+   "facts_rows": 1909504,
+   "companies_rows": 12321,
+   "versioned_tables": [
+    "chunks_v1",
+    "chunks_v2",
+    "companies_v1",
+    "companies_v2",
+    "facts_v1",
+    "facts_v2"
+   ],
+   "seconds": 530.5925076909998,
+   "rows": {
+    "companies": 12321,
+    "facts": 1909504,
+    "chunks": 1081461
+   }
+  },
+  {
+   "step": "swap(2)",
+   "corpus_state": [
+    2,
+    1
+   ],
+   "chunks_view_reads": "chunks_v2",
+   "facts_view_reads": "facts_v2",
+   "chunks_rows": 1081461,
+   "facts_rows": 1909504,
+   "companies_rows": 12321,
+   "versioned_tables": [
+    "chunks_v1",
+    "chunks_v2",
+    "companies_v1",
+    "companies_v2",
+    "facts_v1",
+    "facts_v2"
+   ],
+   "seconds": 0.09517706499991618
+  },
+  {
+   "step": "rollback()",
+   "corpus_state": [
+    1,
+    2
+   ],
+   "chunks_view_reads": "chunks_v1",
+   "facts_view_reads": "facts_v1",
+   "chunks_rows": 1081461,
+   "facts_rows": 1909504,
+   "companies_rows": 12321,
+   "versioned_tables": [
+    "chunks_v1",
+    "chunks_v2",
+    "companies_v1",
+    "companies_v2",
+    "facts_v1",
+    "facts_v2"
+   ],
+   "seconds": 0.06516169200040167,
+   "returned": 1
+  },
+  {
+   "step": "reloaded version 2 (previous)",
+   "corpus_state": [
+    1,
+    2
+   ],
+   "chunks_view_reads": "chunks_v1",
+   "facts_view_reads": "facts_v1",
+   "chunks_rows": 1081461,
+   "facts_rows": 1909504,
+   "companies_rows": 12321,
+   "versioned_tables": [
+    "chunks_v1",
+    "chunks_v2",
+    "companies_v1",
+    "companies_v2",
+    "facts_v1",
+    "facts_v2"
+   ],
+   "seconds": 509.3302337819996,
+   "rows": {
+    "companies": 12321,
+    "facts": 1909504,
+    "chunks": 1081461
+   }
+  },
+  {
+   "step": "swap(2) again",
+   "corpus_state": [
+    2,
+    1
+   ],
+   "chunks_view_reads": "chunks_v2",
+   "facts_view_reads": "facts_v2",
+   "chunks_rows": 1081461,
+   "facts_rows": 1909504,
+   "companies_rows": 12321,
+   "versioned_tables": [
+    "chunks_v1",
+    "chunks_v2",
+    "companies_v1",
+    "companies_v2",
+    "facts_v1",
+    "facts_v2"
+   ],
+   "seconds": 0.06408940999972401
+  },
+  {
+   "step": "rollback() again",
+   "corpus_state": [
+    1,
+    2
+   ],
+   "chunks_view_reads": "chunks_v1",
+   "facts_view_reads": "facts_v1",
+   "chunks_rows": 1081461,
+   "facts_rows": 1909504,
+   "companies_rows": 12321,
+   "versioned_tables": [
+    "chunks_v1",
+    "chunks_v2",
+    "companies_v1",
+    "companies_v2",
+    "facts_v1",
+    "facts_v2"
+   ],
+   "seconds": 0.05418677999932697,
+   "returned": 1
+  }
+ ],
+ "reader": {
+  "reads": 41103,
+  "errors": [],
+  "distinct_view_targets_seen": [
+   [
+    "chunks_v1",
+    "facts_v1"
+   ],
+   [
+    "chunks_v1",
+    "facts_v2"
+   ],
+   [
+    "chunks_v2",
+    "facts_v1"
+   ],
+   [
+    "chunks_v2",
+    "facts_v2"
+   ]
+  ],
+  "mixed_pairs_explained": "chunks and facts are read in separate statements; the swap replaces both views in one transaction"
+ }
+}
