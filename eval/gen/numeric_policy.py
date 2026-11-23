@@ -11,8 +11,10 @@ Pure functions over fact rows read from the serving ``facts`` view, used by
   duration metric is QUARANTINED (excluded and logged), never silently admitted. An instant
   metric needs ``qtrs = 0``. A derived Q4 (``derived_from`` set: FY minus 9M) is excluded
   unless explicitly allowed, because it is computed, not reported.
-- **Unit.** The fact's ``uom`` must equal the metric's unit exactly (an EPS fact in ``USD``
-  instead of ``USD/shares`` is quarantined: the denominator may have been dropped).
+- **Unit.** The fact's ``uom`` must equal the metric's unit, with one scoped alias: FSDS
+  records per-share amounts as ``USD``, so for a ``USD/shares`` metric a ``USD`` fact is
+  admitted and carried as ``USD/shares`` (the key companyfacts uses). Anything else (a
+  foreign-currency EPS, ``USD`` for a ``shares`` metric) is quarantined.
 - **Versions.** One declared policy, ``as_filed`` (ADR-017): gold is the value in the filing
   that first reported the period (``is_original``); the latest restated value is recorded next
   to it. ``latest_restated`` is the alternative; a set uses one policy for every row.
@@ -25,7 +27,7 @@ from __future__ import annotations
 
 from collections import defaultdict
 from collections.abc import Iterable, Sequence
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from datetime import date
 from decimal import Decimal
 from typing import Literal
@@ -118,6 +120,29 @@ class ScreenLog:
         self.excluded[reason] += 1
 
 
+# --- units -------------------------------------------------------------------------------------
+
+PER_SHARE = "USD/shares"
+# FSDS records per-share amounts with uom 'USD' (raw.fsds_num has no 'USD/shares' row for the
+# EPS tags), while SEC companyfacts files the same facts under 'USD/shares'. For a per-share
+# metric ONLY, an FSDS 'USD' fact is the per-share amount (ADR-044). No other unit is mapped:
+# a 'USD' fact for a 'shares' metric, or a 'CAD' EPS fact, stays a mismatch.
+FSDS_UOM_ALIASES: dict[str, frozenset[str]] = {PER_SHARE: frozenset({PER_SHARE, "USD"})}
+
+
+def uom_matches(fact_uom: str, unit: str) -> bool:
+    return fact_uom in FSDS_UOM_ALIASES.get(unit, frozenset({unit}))
+
+
+def normalize_uom(f: Fact, unit: str) -> Fact:
+    """The fact with the metric's unit once ``uom_matches`` admitted it (FSDS 'USD' ->
+    'USD/shares' for per-share metrics), so grouping, provenance and the companyfacts lookup
+    all use the unit companyfacts uses. Any other fact is returned unchanged."""
+    if f.uom != unit and uom_matches(f.uom, unit):  # an admitted alias: relabel to the unit
+        return replace(f, uom=unit)
+    return f
+
+
 # --- screening ----------------------------------------------------------------------------------
 
 
@@ -144,7 +169,7 @@ def screen(
     if f.taxonomy != TAXONOMY:
         log.exclude("non_us_gaap_taxonomy")
         return False
-    if f.uom != unit:
+    if not uom_matches(f.uom, unit):
         log.quarantine(f, "uom_mismatch")
         return False
     if period_type == "duration" and f.qtrs == 0:

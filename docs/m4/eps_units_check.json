@@ -1,0 +1,145 @@
+{
+  "purpose": "ADR-044 EPS units amendment: FSDS uom for EPS tags vs SEC companyfacts unit key",
+  "fsds": {
+    "table": "warehouse/raw/fsds_num",
+    "metadata_file": "v13.metadata.json",
+    "snapshot_id": 3480242806109852370,
+    "query": "SELECT tag, uom, count(*) FROM read_parquet(?) WHERE tag IN ('EarningsPerShareBasic','EarningsPerShareDiluted') GROUP BY tag, uom ORDER BY tag, uom",
+    "rows": [
+      {
+        "tag": "EarningsPerShareBasic",
+        "uom": "AFN",
+        "count": 3
+      },
+      {
+        "tag": "EarningsPerShareBasic",
+        "uom": "AUD",
+        "count": 32
+      },
+      {
+        "tag": "EarningsPerShareBasic",
+        "uom": "CAD",
+        "count": 213
+      },
+      {
+        "tag": "EarningsPerShareBasic",
+        "uom": "CHF",
+        "count": 11
+      },
+      {
+        "tag": "EarningsPerShareBasic",
+        "uom": "CNY",
+        "count": 428
+      },
+      {
+        "tag": "EarningsPerShareBasic",
+        "uom": "EUR",
+        "count": 28
+      },
+      {
+        "tag": "EarningsPerShareBasic",
+        "uom": "HKD",
+        "count": 33
+      },
+      {
+        "tag": "EarningsPerShareBasic",
+        "uom": "ILS",
+        "count": 4
+      },
+      {
+        "tag": "EarningsPerShareBasic",
+        "uom": "INR",
+        "count": 9
+      },
+      {
+        "tag": "EarningsPerShareBasic",
+        "uom": "JPY",
+        "count": 69
+      },
+      {
+        "tag": "EarningsPerShareBasic",
+        "uom": "SGD",
+        "count": 5
+      },
+      {
+        "tag": "EarningsPerShareBasic",
+        "uom": "USD",
+        "count": 176845
+      },
+      {
+        "tag": "EarningsPerShareDiluted",
+        "uom": "AFN",
+        "count": 3
+      },
+      {
+        "tag": "EarningsPerShareDiluted",
+        "uom": "AUD",
+        "count": 12
+      },
+      {
+        "tag": "EarningsPerShareDiluted",
+        "uom": "CAD",
+        "count": 229
+      },
+      {
+        "tag": "EarningsPerShareDiluted",
+        "uom": "CHF",
+        "count": 11
+      },
+      {
+        "tag": "EarningsPerShareDiluted",
+        "uom": "CNY",
+        "count": 421
+      },
+      {
+        "tag": "EarningsPerShareDiluted",
+        "uom": "EUR",
+        "count": 24
+      },
+      {
+        "tag": "EarningsPerShareDiluted",
+        "uom": "HKD",
+        "count": 33
+      },
+      {
+        "tag": "EarningsPerShareDiluted",
+        "uom": "ILS",
+        "count": 4
+      },
+      {
+        "tag": "EarningsPerShareDiluted",
+        "uom": "INR",
+        "count": 9
+      },
+      {
+        "tag": "EarningsPerShareDiluted",
+        "uom": "JPY",
+        "count": 69
+      },
+      {
+        "tag": "EarningsPerShareDiluted",
+        "uom": "SGD",
+        "count": 2
+      },
+      {
+        "tag": "EarningsPerShareDiluted",
+        "uom": "USD",
+        "count": 165261
+      }
+    ]
+  },
+  "companyfacts": {
+    "cik": 320193,
+    "fetched": "2026-11-23",
+    "via": "pipelines.fetch.sec_client",
+    "units": {
+      "EarningsPerShareBasic": [
+        "USD/shares"
+      ],
+      "EarningsPerShareDiluted": [
+        "USD/shares"
+      ]
+    },
+    "note": "one fetch in the M4 session; unit keys copied from its output"
+  }
+}

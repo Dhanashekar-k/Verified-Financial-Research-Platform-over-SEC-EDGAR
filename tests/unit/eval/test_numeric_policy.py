@@ -14,9 +14,11 @@ from eval.gen.numeric_policy import (
     ScreenLog,
     agree,
     denominator_ok,
+    normalize_uom,
     screen,
     select_versions,
     tolerance_for,
+    uom_matches,
 )
 
 
@@ -56,10 +58,47 @@ def test_qtrs0_on_duration_metric_is_quarantined_and_logged() -> None:
     assert log.quarantined[0].fact_id == f.fact_id
 
 
-def test_unit_mismatch_is_quarantined_eps_in_usd() -> None:
+@pytest.mark.parametrize("tag", ["EarningsPerShareBasic", "EarningsPerShareDiluted"])
+def test_fsds_usd_eps_is_admitted_and_normalized_to_per_share(tag: str) -> None:
+    """FSDS records EPS with uom 'USD'; companyfacts files it under 'USD/shares' (ADR-044)."""
     log = ScreenLog()
-    assert not screen(fact(uom="USD"), unit="USD/shares", period_type="duration", log=log)
+    f = fact(tag=tag, uom="USD", value=Decimal("2.5000"))
+    assert screen(f, unit="USD/shares", period_type="duration", log=log)
+    assert not log.quarantined
+    assert normalize_uom(f, "USD/shares").uom == "USD/shares"
+    assert normalize_uom(f, "USD/shares").value == f.value
+
+
+@pytest.mark.parametrize(
+    ("uom", "unit"),
+    [
+        ("CAD", "USD/shares"),  # foreign-currency EPS: still a mismatch
+        ("USD", "shares"),  # the alias is scoped to per-share metrics only
+        ("USD/shares", "USD"),
+        ("shares", "USD"),
+    ],
+)
+def test_other_unit_mismatches_stay_quarantined(uom: str, unit: str) -> None:
+    log = ScreenLog()
+    assert not screen(fact(uom=uom), unit=unit, period_type="duration", log=log)
     assert log.quarantined[0].reason == "uom_mismatch"
+
+
+@pytest.mark.parametrize("unit", ["USD", "USD/shares", "shares", "ratio"])
+@pytest.mark.parametrize("uom", ["USD", "USD/shares", "shares", "CAD", "pure"])
+def test_every_admitted_fact_is_relabelled_to_the_metric_unit(uom: str, unit: str) -> None:
+    """Admission (uom_matches) and relabelling (normalize_uom) can't drift apart."""
+    f = fact(uom=uom)
+    if uom_matches(uom, unit):
+        assert normalize_uom(f, unit).uom == unit
+    else:
+        assert normalize_uom(f, unit) is f
+
+
+def test_normalize_leaves_non_per_share_facts_alone() -> None:
+    f = fact(uom="USD")
+    assert normalize_uom(f, "USD") is f
+    assert normalize_uom(fact(uom="CAD"), "USD/shares").uom == "CAD"
 
 
 @pytest.mark.parametrize(("fp", "qtrs"), [("Q2", 2), ("Q3", 3), ("Q1", 4), ("FY", 1)])

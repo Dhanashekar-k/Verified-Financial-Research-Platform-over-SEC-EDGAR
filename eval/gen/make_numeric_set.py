@@ -15,7 +15,8 @@ and promotes. Built around the M4 catalog review (``docs/m4/m4_catalog_decisions
 - **Data-quality policies** (``numeric_policy``, ADR-044): us-gaap consolidated facts only
   (the ``facts`` view, never ``facts_dimensional``); ``qtrs = 0`` on a duration metric is
   quarantined and logged; year-to-date amounts never stand in for a quarter; derived Q4 rows
-  are excluded by default; units must match exactly; one declared version policy (default
+  are excluded by default; units must match, except the scoped FSDS ``USD`` ->
+  ``USD/shares`` alias for per-share metrics; one declared version policy (default
   ``as_filed``: gold = the originally filed value, latest restated value recorded next to it,
   and a restated row's question says "as originally reported"); metric-aware tolerances;
   undefined ratios/growth abstain instead of being clamped.
@@ -70,6 +71,7 @@ from eval.gen.numeric_policy import (
     Versioned,
     VersionPolicy,
     denominator_ok,
+    normalize_uom,
     screen,
     select_versions,
     tolerance_for,
@@ -270,7 +272,7 @@ def build_values(
             log=table.log,
             allow_derived_q4=allow_derived_q4,
         ):
-            grouped[(owner, f.cik, f.fiscal_year, f.fiscal_period)].append(f)
+            grouped[(owner, f.cik, f.fiscal_year, f.fiscal_period)].append(normalize_uom(f, m.unit))
 
     versioned = {k: select_versions(v, policy) for k, v in grouped.items()}
     accessions = {v.fact.accession for vs in versioned.values() for v in vs}

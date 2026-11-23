@@ -56,6 +56,12 @@ CATALOG: dict[str, Any] = {
         "period_type": "duration",
         "tags": ["NetIncomeLoss"],
     },
+    "eps_basic": {
+        "label": "Basic EPS",
+        "unit": "USD/shares",
+        "period_type": "duration",
+        "tags": ["EarningsPerShareBasic"],
+    },
     "eps_diluted": {
         "label": "Diluted EPS",
         "unit": "USD/shares",
@@ -139,7 +145,8 @@ FACTS = [
         accession="0000000001-24-000009",
     ),
     row(1, "NetIncomeLoss", 2023, "FY", "1500000000"),
-    row(1, "EarningsPerShareDiluted", 2023, "FY", "2.5000", uom="USD/shares"),
+    row(1, "EarningsPerShareDiluted", 2023, "FY", "2.5000"),  # FSDS: per-share uom is 'USD'
+    row(1, "EarningsPerShareBasic", 2023, "FY", "2.6000"),
     row(1, "Assets", 2023, "FY", "50000000000", qtrs=0),
     row(1, REV0, 2023, "Q1", "3000000000"),
     row(1, REV0, 2023, "Q2", "6100000000", qtrs=2),  # year-to-date H1 labelled Q2: excluded
@@ -149,7 +156,7 @@ FACTS = [
     row(2, "Revenues", 2023, "FY", "4400000000"),
     row(2, "CostOfRevenue", 2023, "FY", "3000000000"),
     row(2, "GrossProfit", 2023, "FY", "1000000000"),
-    row(2, "EarningsPerShareDiluted", 2023, "FY", "1.2000", uom="USD"),  # uom mismatch
+    row(2, "EarningsPerShareDiluted", 2023, "FY", "1.2000", uom="CAD"),  # uom mismatch
     row(2, "NetIncomeLoss", 2023, "FY", "300000000"),
     # company 3: tax-inclusive-sized conflict with no evidence -> abstain; qtrs=0 on duration
     row(3, REV0, 2023, "FY", "29600000000"),
@@ -206,6 +213,7 @@ ALL = {
     "cost_of_revenue",
     "gross_profit",
     "net_income",
+    "eps_basic",
     "eps_diluted",
     "total_assets",
     "gross_margin",
@@ -455,12 +463,58 @@ def test_second_source_match_mismatch_and_missing(table: mn.ValueTable) -> None:
     assert mn.check_fact(f, None)[0] == "not_found"
 
 
-def test_second_source_per_share_needs_the_exact_value(table: mn.ValueTable) -> None:
-    v = table.get("eps_diluted", (1, 2023, "FY"))
-    assert v is not None
+@pytest.mark.parametrize(
+    ("metric", "tag", "value"),
+    [
+        ("eps_basic", "EarningsPerShareBasic", "2.6"),
+        ("eps_diluted", "EarningsPerShareDiluted", "2.5"),
+    ],
+)
+def test_eps_from_fsds_usd_becomes_gold_and_checks_under_usd_per_share(
+    table: mn.ValueTable, metric: str, tag: str, value: str
+) -> None:
+    """FSDS 'USD' EPS facts are admitted, carried as 'USD/shares', and looked up in
+    companyfacts under 'USD/shares' (the key SEC uses; confirmed on Apple 2026-11-23)."""
+    v = table.get(metric, (1, 2023, "FY"))
+    assert v is not None and v.value == Decimal(value) and v.unit == "USD/shares"
     f = v.inputs[0].fact
-    assert mn.check_fact(f, _cf(f, "2.5"))[0] == "match"
-    assert mn.check_fact(f, _cf(f, "2.67"))[0] == "mismatch"  # 17 cents off is not a match
+    assert f.tag == tag and f.uom == "USD/shares"
+    cf = {
+        "facts": {
+            "us-gaap": {
+                tag: {
+                    "units": {
+                        "USD/shares": [
+                            {
+                                "accn": f.accession,
+                                "end": f.period_end.isoformat(),
+                                "start": f.period_start.isoformat() if f.period_start else None,
+                                "val": float(value),
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    }
+    assert mn.check_fact(f, cf)[0] == "match"
+    usd_only = {
+        "facts": {
+            "us-gaap": {tag: {"units": {"USD": cf["facts"]["us-gaap"][tag]["units"]["USD/shares"]}}}
+        }
+    }
+    assert mn.check_fact(f, usd_only)[0] == "not_found"  # never matched under a 'USD' key
+    assert mn.check_fact(f, _cf(f, str(Decimal(value) + Decimal("0.17"))))[0] == "mismatch"
+    row = mn.to_row(
+        "num-0001",
+        mn.Item("single_value", metric, 1, 2023, "FY", v.value, v.unit, (v,), "manufacturing"),
+        "q?",
+        "single_v1",
+        False,
+        "as_filed",
+        "match",
+    )
+    assert row.unit == "USD/shares" and row.tolerance_abs == Decimal("0.005")
 
 
 def test_second_source_row_status_and_report(table: mn.ValueTable) -> None:

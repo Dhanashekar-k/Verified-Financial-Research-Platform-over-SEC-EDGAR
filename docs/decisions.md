@@ -306,7 +306,10 @@ The catalog model (`eval/gen/catalog_review.py` `MetricDef`, 05 §4.2) gains the
   - Ratios and growth: `abs` = 0.0005 (0.05 percentage points).
   - Two candidate tags disagree materially when neither tolerance accepts the other.
 - **Denominators.** Ratios and growth abstain when the denominator is <= 0 or below $1M (`near_zero_denominator`). Each abstention is recorded with its reason (growth abstentions carry a `growth:` prefix). Margins are never clamped.
-- **EPS units.** If the lake normalised every EPS fact to `USD`, the `uom_mismatch` quarantine would remove all EPS gold. The quarantine counts in the summary would show it, and that is a finding about the lake, not a reason to relax the check.
+- **EPS units (amended 2026-11-23, Shekar approved option a).** FSDS records per-share amounts with uom `USD`. In `raw.fsds_num`, `EarningsPerShareBasic` has 176,845 `USD` rows and `EarningsPerShareDiluted` 165,261, plus 1,652 across both tags in other currencies, and neither has a `USD/shares` row. SEC companyfacts files the same facts under `USD/shares`: one fetch through `sec_client` of CIK 320193 (Apple) showed `units: ['USD/shares']` for both tags. The query, snapshot id, per-currency counts and the companyfacts units are in `docs/m4/eps_units_check.json` (2026-11-23). The exact-unit rule would therefore have quarantined every EPS fact.
+  - For metrics whose unit is `USD/shares` only, an FSDS `USD` fact is admitted and carried as `USD/shares` (`numeric_policy.uom_matches` / `normalize_uom`). Grouping, `source_tags` provenance and the companyfacts lookup then use `USD/shares`.
+  - Nothing else is mapped. A `USD` fact for a `shares` metric is still a mismatch, as is a foreign-currency EPS (`CAD` and the like), and both are quarantined.
+  - The pre-review version of this bullet guessed that the lake had dropped the denominator. That guess was wrong: the convention comes from FSDS itself.
 
 Contract 05 §6 gains `tolerance_abs`, `tolerance_basis`, `value_basis`, `latest_value`, `is_restated`, `value_kind`, `source_tags`, `resolution`, `compare_cik` and `period_end`, all with defaults (`eval/schemas.py` `NumericRow`).
 **Consequences:** (draft by Claude for Shekar to review and rewrite)
