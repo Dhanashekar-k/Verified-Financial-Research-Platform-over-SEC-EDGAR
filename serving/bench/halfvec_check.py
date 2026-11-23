@@ -14,6 +14,7 @@ and reports recall of each against each, with bootstrap CIs:
 from __future__ import annotations
 
 import argparse
+import gc
 import json
 import os
 import statistics
@@ -31,13 +32,18 @@ from serving.bench.retrieval_bench import K, bootstrap_ci, build_queries, exact_
 
 
 def load_fp32(source: str, version: int) -> tuple[list[str], np.ndarray]:
-    """All exported chunk ids and their float32 embeddings, in manifest order."""
+    """All exported chunk ids and their float32 embeddings, in manifest order.
+
+    The matrix is allocated once from the manifest's row count (no concatenation copy): on an
+    8 GiB box a second 1.7 GB copy would push Postgres's data out of the page cache.
+    """
     fs, root = pafs.FileSystem.from_uri(source)
     base = f"{root}/corpus_version={version}"
     with fs.open_input_stream(f"{base}/{MANIFEST_NAME}") as h:
         manifest = read_manifest(h.read().decode("utf-8"))
+    matrix = np.empty((manifest.chunks_rows, manifest.dim), dtype=np.float32)
     ids: list[str] = []
-    blocks: list[np.ndarray] = []
+    filled = 0
     for f in manifest.files["chunks"]:
         with fs.open_input_file(f"{base}/{f.path}") as h:
             for batch in pq.ParquetFile(h).iter_batches(
@@ -45,8 +51,13 @@ def load_fp32(source: str, version: int) -> tuple[list[str], np.ndarray]:
             ):
                 ids += batch.column("chunk_id").to_pylist()
                 flat = batch.column("embedding").flatten().to_numpy(zero_copy_only=False)
-                blocks.append(np.asarray(flat, dtype=np.float32).reshape(batch.num_rows, -1))
-    return ids, np.concatenate(blocks)
+                matrix[filled : filled + batch.num_rows] = np.asarray(
+                    flat, dtype=np.float32
+                ).reshape(batch.num_rows, manifest.dim)
+                filled += batch.num_rows
+    if filled != manifest.chunks_rows:
+        raise RuntimeError(f"read {filled} rows, manifest says {manifest.chunks_rows}")
+    return ids, matrix
 
 
 def fp32_top(
@@ -79,8 +90,13 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
             "self_span": embedder.embed_queries(texts, instruction=True),
             "mixed_pair": embedder.embed_queries(mixed, instruction=True),
         }
+        # fp32 truth first, then free the matrix BEFORE any database scan: the exact scans need
+        # Postgres's pages in the OS cache, which the 1.7 GB matrix would otherwise evict.
+        truths32 = {name: fp32_top(ids, matrix, vectors) for name, vectors in sets.items()}
+        del matrix
+        gc.collect()
         for name, vectors in sets.items():
-            truth32 = fp32_top(ids, matrix, vectors)
+            truth32 = truths32[name]
             half = [[cid for cid, _ in exact_top(conn, v)] for v in vectors]
             block: dict[str, Any] = {
                 "halfvec_exact_vs_fp32_exact": summarize(
