@@ -3,9 +3,8 @@
 The baseline and the engine both return this schema, so eval scoring is identical for both
 (M04 pitfall: no free-text baseline against a JSON engine).
 
-``Refusal`` fills a gap in the contract: 4.3 only shows ``"refusal": null``, and M06 says a
-refusal carries what was found and what is missing. The minimal shape here is pending
-Shekar's confirmation before it is written into 05.
+``Refusal`` is ``reason`` / ``found`` / ``missing`` (05_data_contracts.md 4.3, ADR-041): the
+same shape for the composer, the M6 verifier's sufficiency refusal and the API response.
 """
 
 from __future__ import annotations
@@ -88,6 +87,10 @@ class Claim(BaseModel):
 
 
 class Refusal(BaseModel):
+    """ADR-041. ``found``: what the filings support (for a verifier refusal, the text of each
+    surviving verified claim; the claims stay in ``Answer.claims``). ``missing``: what was
+    needed."""
+
     reason: str
     found: list[str] = []
     missing: list[str] = []

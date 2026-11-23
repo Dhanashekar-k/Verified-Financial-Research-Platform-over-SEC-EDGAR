@@ -70,13 +70,13 @@ Write `metric_catalog.yaml` (format in `05_data_contracts.md` §4.2) for about 5
   2. **Numeric claims may only use values from the `NumericResult`s, with their provenance copied. Do no arithmetic.** If a number you'd like to state isn't provided, don't state it.
   3. Numbers that appear in chunk text can be stated only as text claims whose `quote` contains that number.
   4. `quote` must be copied verbatim from the chunk.
-  5. If the provided material doesn't answer the question, set `refusal` with what was found.
+  5. If the provided material doesn't answer the question, set `refusal` (`reason`, `found`, `missing`; `05_data_contracts.md` §4.3, ADR-041) with what was found.
 - **Pareto:** run dev with Haiku 5.5 and Sonnet 5.5 composers. Record accuracy, cost/question and p95 latency for both, and pick the default (ADR-012).
 
 ### 3.8 Orchestrator (2 h)
 `engine.answer(question, cfg) -> Answer + Usage + spans`:
 - `plan` → in parallel (`asyncio.gather`): `compile(plan)` if numeric/hybrid; `retrieve(plan)` if narrative/hybrid → `compose` → (`verify`: pass-through until M6).
-- `out_of_scope` → a templated refusal (no composer call).
+- `out_of_scope` → a templated refusal (no composer call; §4.3 shape with `found`/`missing` empty).
 - OpenTelemetry spans per stage, with token/cost attributes (exporter wired in M8; spans can exist now).
 
 ## 4. Claude Code session plan

@@ -38,7 +38,7 @@ For `text` claims with `provenance.type == "chunk"`:
 
 ### 3.4 Policy and rendering (`policy.py` **you**, `render.py`)
 - Drop `unsupported`. `PARTIAL`: drop in strict mode (the default) or keep it marked "partially supported" in lenient mode.
-- **Sufficiency:** numeric/hybrid plans need a verified numeric claim for every requested (company, metric, period). Narrative plans need at least one verified text claim per narrative topic. If that isn't met, return a `refusal` with `found: [surviving claims]` and `missing: [...]`.
+- **Sufficiency:** numeric/hybrid plans need a verified numeric claim for every requested (company, metric, period). Narrative plans need at least one verified text claim per narrative topic. If that isn't met, return a `refusal` in the `05_data_contracts.md` §4.3 shape (ADR-041): `reason`, `found` = the `text` of each surviving verified claim (the claims stay in `claims`), `missing` = one entry per unsupported (company, metric, period) or topic.
 - **Render `answer_markdown` deterministically from the surviving claims** (in composer order, with `[n]` markers), so a dropped claim can never leave dangling prose. Composer prose isn't shown directly; it's input to the renderer.
 - Verification status: `verified` (all kept claims passed), `partially_verified` (some dropped, still sufficient), `refused`.
 

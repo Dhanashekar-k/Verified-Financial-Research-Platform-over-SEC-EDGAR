@@ -424,7 +424,19 @@ The `RevenuesNetOfInterestExpense` fallback comes from the M1 second-source spot
   "refusal": null
 }
 ```
-Rules: every claim has exactly one provenance. `expr` may only use `f:<fact_id>`, numbers, and `+ - * /` and parentheses. `quote` must be an exact substring of the chunk text (after whitespace normalization).
+Rules: every claim has exactly one provenance. `expr` may only use `f:<fact_id>`, numbers, and `+ - * /` and parentheses, and the `f:<id>` tokens must be exactly `fact_ids` (`app/engine/answer.py` parses it). `quote` must be an exact substring of the chunk text (after whitespace normalization).
+
+**Refusal** (ADR-041): `refusal` is `null` or an object with three fields, the same shape everywhere it appears (composer output, the M6 verifier's sufficiency refusal, the API response):
+
+```json
+"refusal": {"reason": "No FY2027 guidance appears in Apple's filings.",
+            "found": ["Apple's FY2023 revenue was $383.3 billion."],
+            "missing": ["revenue guidance for fiscal 2027"]}
+```
+- `reason` (string, required): one sentence a user can read.
+- `found` (list of strings, default `[]`): what the filings do support. When the verifier refuses, each entry is the `text` of a surviving verified claim; the claims themselves stay in `claims`, so `found` never carries provenance of its own.
+- `missing` (list of strings, default `[]`): what would have been needed, e.g. one entry per (company, metric, period) or narrative topic left unsupported.
+A refused answer may keep `claims` (partial answer) or leave it empty. Eval treats `refusal != null` as a refusal (`eval/metrics.py`).
 
 ### 4.4 Verifier output (per claim)
 
@@ -472,6 +484,7 @@ Response 200 *(illustrative values)*:
   "corpus_version": 7, "engine_version": "0.6.0", "cached": false
 }
 ```
+`refusal` is `null` or `{"reason", "found", "missing"}` exactly as in §4.3 (ADR-041).
 
 Errors use `application/problem+json` (RFC 9457): `400 invalid_question`, `401 invalid_key`, `429 rate_limited` (+ `Retry-After`), `503 spend_cap_reached`, `500 internal` (always with `request_id`).
 
