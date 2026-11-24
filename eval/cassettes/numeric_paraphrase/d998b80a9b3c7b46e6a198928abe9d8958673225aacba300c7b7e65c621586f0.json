@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "What was Domino's Pizza's net income in Q2 2020?"
+  },
+  "request_key": "d998b80a9b3c7b46e6a198928abe9d8958673225aacba300c7b7e65c621586f0",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003005",
+    "input_tokens": 451,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 30
+  }
+}

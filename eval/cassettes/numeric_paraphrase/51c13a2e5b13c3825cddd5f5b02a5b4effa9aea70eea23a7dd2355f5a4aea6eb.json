@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Can you tell me what Jacobs Solutions Inc.'s noncurrent long-term debt was at the end of Q2 of fiscal year 2020?"
+  },
+  "request_key": "51c13a2e5b13c3825cddd5f5b02a5b4effa9aea70eea23a7dd2355f5a4aea6eb",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0000385",
+    "input_tokens": 470,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 60
+  }
+}

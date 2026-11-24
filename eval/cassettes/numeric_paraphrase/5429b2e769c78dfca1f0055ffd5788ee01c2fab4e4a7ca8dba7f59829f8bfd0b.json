@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Vulcan Materials vs EQT dividends paid FY2023 - how much higher was Vulcan's?"
+  },
+  "request_key": "5429b2e769c78dfca1f0055ffd5788ee01c2fab4e4a7ca8dba7f59829f8bfd0b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003435",
+    "input_tokens": 462,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 45
+  }
+}

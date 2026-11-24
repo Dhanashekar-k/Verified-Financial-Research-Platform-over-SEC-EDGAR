@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "QSI op income FY2023?"
+  },
+  "request_key": "d3aa5a6da4629956bfcea9866801c89b195bae04822798b73f3efaf3b4c19f9e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00002745",
+    "input_tokens": 454,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 19
+  }
+}

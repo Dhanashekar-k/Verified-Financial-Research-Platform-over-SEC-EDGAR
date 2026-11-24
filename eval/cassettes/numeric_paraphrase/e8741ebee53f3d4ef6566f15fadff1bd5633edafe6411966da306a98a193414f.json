@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "How much income tax expense did Newmont Corp /DE/ report in the third quarter of fiscal 2024?"
+  },
+  "request_key": "e8741ebee53f3d4ef6566f15fadff1bd5633edafe6411966da306a98a193414f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003385",
+    "input_tokens": 452,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 45
+  }
+}

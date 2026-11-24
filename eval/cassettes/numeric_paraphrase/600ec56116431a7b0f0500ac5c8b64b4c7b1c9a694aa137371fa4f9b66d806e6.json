@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "CME Group stockholders' equity end of Q3 FY2020, as originally reported?"
+  },
+  "request_key": "600ec56116431a7b0f0500ac5c8b64b4c7b1c9a694aa137371fa4f9b66d806e6",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003260",
+    "input_tokens": 467,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 37
+  }
+}

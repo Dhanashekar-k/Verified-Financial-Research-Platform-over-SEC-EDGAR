@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "What were the total liabilities of The Cigna Group as of the end of fiscal year 2024?"
+  },
+  "request_key": "03bb039d4afcbc34a1cf0c8b05bd61d2670ba3c0beda6993f073558f8247bb0a",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003185",
+    "input_tokens": 442,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 39
+  }
+}

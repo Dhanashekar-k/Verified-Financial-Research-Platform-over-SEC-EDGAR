@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "As originally reported, what were the total liabilities of Monolithic Power Systems, Inc. as of the end of the third quarter of fiscal year 2025?"
+  },
+  "request_key": "99ebca841df8ee3a16485982e14caebd3f1001ed0b8274be2c242f36a92ce69b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003825",
+    "input_tokens": 470,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 59
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Cencora capex FY2020?"
+  },
+  "request_key": "2890539842fd01e3b4e7fe730ba74db214a0c768883012c2bd9e7c0f4e61cafc",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00002760",
+    "input_tokens": 452,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 20
+  }
+}

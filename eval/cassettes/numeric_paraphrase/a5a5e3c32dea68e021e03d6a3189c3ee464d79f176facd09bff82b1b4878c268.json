@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "What was the percentage change in CF Industries Holdings, Inc.'s operating income between Q1 of fiscal year 2024 and Q1 of fiscal year 2025?"
+  },
+  "request_key": "a5a5e3c32dea68e021e03d6a3189c3ee464d79f176facd09bff82b1b4878c268",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00004005",
+    "input_tokens": 471,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 66
+  }
+}

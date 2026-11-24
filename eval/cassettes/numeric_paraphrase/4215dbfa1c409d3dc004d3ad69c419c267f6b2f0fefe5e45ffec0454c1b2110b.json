@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "How much income tax expense did Axon Enterprise report in Q2 of fiscal 2024, as originally reported?"
+  },
+  "request_key": "4215dbfa1c409d3dc004d3ad69c419c267f6b2f0fefe5e45ffec0454c1b2110b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0000345",
+    "input_tokens": 460,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 46
+  }
+}

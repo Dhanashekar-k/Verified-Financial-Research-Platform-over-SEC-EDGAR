@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "How much did Halliburton pay in dividends in 2023?"
+  },
+  "request_key": "61d0dd5a6dbd8c8c75ae145e8ed6b472d6c495f071f90a060e9191b5706bd273",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00002930",
+    "input_tokens": 446,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 28
+  }
+}

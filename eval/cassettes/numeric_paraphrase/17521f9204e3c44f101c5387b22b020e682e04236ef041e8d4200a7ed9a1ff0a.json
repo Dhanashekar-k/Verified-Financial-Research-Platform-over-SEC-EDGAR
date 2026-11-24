@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "How much did Atmos Energy's operating income go up or down between Q1 2025 and Q1 2026, in percentage terms?"
+  },
+  "request_key": "17521f9204e3c44f101c5387b22b020e682e04236ef041e8d4200a7ed9a1ff0a",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003625",
+    "input_tokens": 475,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 50
+  }
+}

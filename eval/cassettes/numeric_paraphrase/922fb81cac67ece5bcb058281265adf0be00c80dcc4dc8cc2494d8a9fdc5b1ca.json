@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "How much did Yum Brands' dividends paid change in percentage terms between Q1 2020 and Q1 2021?"
+  },
+  "request_key": "922fb81cac67ece5bcb058281265adf0be00c80dcc4dc8cc2494d8a9fdc5b1ca",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003515",
+    "input_tokens": 468,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 47
+  }
+}

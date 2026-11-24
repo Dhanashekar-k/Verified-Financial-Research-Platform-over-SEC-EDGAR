@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "How much did Fastenal's capital expenditures change in percentage terms from Q1 2021 to Q1 2022?"
+  },
+  "request_key": "97a7f699140e4fcf8bb4c05083db5d67ea7e666f06404087fb5dc44a3966232e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003525",
+    "input_tokens": 470,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 47
+  }
+}

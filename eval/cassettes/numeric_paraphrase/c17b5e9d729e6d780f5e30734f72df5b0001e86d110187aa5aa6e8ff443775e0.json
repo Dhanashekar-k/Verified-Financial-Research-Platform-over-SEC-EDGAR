@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "What was the percentage change in Cardinal Health Inc's dividends paid between fiscal year 2023 and fiscal year 2024?"
+  },
+  "request_key": "c17b5e9d729e6d780f5e30734f72df5b0001e86d110187aa5aa6e8ff443775e0",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003630",
+    "input_tokens": 461,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 53
+  }
+}

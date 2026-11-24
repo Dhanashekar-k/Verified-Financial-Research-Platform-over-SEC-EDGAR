@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Can you tell me what Aon plc's income tax expense was in fiscal year 2020?"
+  },
+  "request_key": "bf736bd2c7ecbeb35771050f5d48fc8582c7372005fc6eb15c1f8f4a58fdb16c",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003175",
+    "input_tokens": 445,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 38
+  }
+}

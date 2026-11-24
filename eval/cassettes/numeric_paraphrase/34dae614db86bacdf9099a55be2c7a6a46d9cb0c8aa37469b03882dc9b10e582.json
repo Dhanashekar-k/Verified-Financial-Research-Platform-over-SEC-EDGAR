@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "GWW capex vs DPZ capex FY2022, how much higher?"
+  },
+  "request_key": "34dae614db86bacdf9099a55be2c7a6a46d9cb0c8aa37469b03882dc9b10e582",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003175",
+    "input_tokens": 475,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 32
+  }
+}

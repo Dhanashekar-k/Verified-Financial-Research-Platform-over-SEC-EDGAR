@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "How much did Dollar Tree's net income go up or down from Q3 2023 to Q3 2024, in percent?"
+  },
+  "request_key": "df60bfcdd2d0f6ac19b0e8facee45913f099a2df21cf941d4affd44bd6c6d20f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003510",
+    "input_tokens": 472,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 46
+  }
+}

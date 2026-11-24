@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Hey, how much did Ferguson Enterprises' SG&A expense go up or down in percentage terms between Q2 of fiscal 2024 and Q2 of fiscal 2025?"
+  },
+  "request_key": "26c8da034ef8c1c732c5551eaef30f7f423ebe9ec91ffe664bd1f5cb6ce5d75a",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00004215",
+    "input_tokens": 488,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 71
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Can you tell me what Invesco Ltd.'s capital expenditures were in Q1 of fiscal year 2023?"
+  },
+  "request_key": "29249a1297fd8ae41018f90fafd8f5c094b3e93922d63e4e88ec74888e32fef8",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003505",
+    "input_tokens": 456,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 49
+  }
+}

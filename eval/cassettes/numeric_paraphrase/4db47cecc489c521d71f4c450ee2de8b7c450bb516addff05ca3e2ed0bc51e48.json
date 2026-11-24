@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "PNC vs VICI total assets FY2024 - how much higher is PNC's? terse"
+  },
+  "request_key": "4db47cecc489c521d71f4c450ee2de8b7c450bb516addff05ca3e2ed0bc51e48",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003375",
+    "input_tokens": 485,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 38
+  }
+}

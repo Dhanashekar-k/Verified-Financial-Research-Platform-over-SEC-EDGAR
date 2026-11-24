@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "How much did Cardinal Health's dividends paid change in percentage terms from Q1 2024 to Q1 2025?"
+  },
+  "request_key": "7e8172657c94cdadeec2e5a7066c5b4c36a3250be329dc9a902ba86c294a0101",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003570",
+    "input_tokens": 474,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 48
+  }
+}

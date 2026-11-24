@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "What was Exelon's operating income in 2023?"
+  },
+  "request_key": "3afac9c0fbd9a3f2222d3e0ba9056e2348606f073b2d2935d20f59548a32688e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00002805",
+    "input_tokens": 441,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 24
+  }
+}

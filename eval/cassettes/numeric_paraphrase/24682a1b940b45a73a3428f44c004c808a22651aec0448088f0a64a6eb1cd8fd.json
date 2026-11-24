@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "What was Devon Energy's net cash provided by operating activities in fiscal year 2021?"
+  },
+  "request_key": "24682a1b940b45a73a3428f44c004c808a22651aec0448088f0a64a6eb1cd8fd",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003205",
+    "input_tokens": 451,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 38
+  }
+}

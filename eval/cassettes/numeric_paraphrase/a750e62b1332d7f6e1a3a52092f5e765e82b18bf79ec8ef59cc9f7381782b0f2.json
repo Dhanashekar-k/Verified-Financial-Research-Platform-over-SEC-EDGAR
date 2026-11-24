@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "How much did EQT Corp's capex go up or down from Q1 2022 to Q1 2023, in percentage terms?"
+  },
+  "request_key": "a750e62b1332d7f6e1a3a52092f5e765e82b18bf79ec8ef59cc9f7381782b0f2",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003540",
+    "input_tokens": 468,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 48
+  }
+}

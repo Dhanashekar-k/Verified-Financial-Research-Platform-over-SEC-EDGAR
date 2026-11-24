@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "How much did D.R. Horton's income tax expense go up or down from 2022 to 2023 in percentage terms?"
+  },
+  "request_key": "718803715827ccffac18041963474f671cb825427ae1b72699aaad3abfd1a339",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003470",
+    "input_tokens": 464,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 46
+  }
+}

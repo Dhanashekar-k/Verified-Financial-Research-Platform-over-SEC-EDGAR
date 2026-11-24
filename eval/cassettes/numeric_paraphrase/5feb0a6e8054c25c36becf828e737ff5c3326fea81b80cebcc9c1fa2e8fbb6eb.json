@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Can you tell me how much higher Kinder Morgan's common shares outstanding were than NiSource's at the end of fiscal year 2021?"
+  },
+  "request_key": "5feb0a6e8054c25c36becf828e737ff5c3326fea81b80cebcc9c1fa2e8fbb6eb",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003745",
+    "input_tokens": 474,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 55
+  }
+}

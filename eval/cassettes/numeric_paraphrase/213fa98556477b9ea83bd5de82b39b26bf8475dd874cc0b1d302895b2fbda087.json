@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "What was NVR Inc.'s basic earnings per share in Q1 of fiscal year 2023?"
+  },
+  "request_key": "213fa98556477b9ea83bd5de82b39b26bf8475dd874cc0b1d302895b2fbda087",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003265",
+    "input_tokens": 443,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 42
+  }
+}

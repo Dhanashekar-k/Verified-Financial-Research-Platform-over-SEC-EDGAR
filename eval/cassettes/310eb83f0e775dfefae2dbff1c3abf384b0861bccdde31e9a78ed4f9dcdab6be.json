@@ -1,0 +1,118 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Three main companies Pfizer acquired (or agreed to acquire) per the 2021 10-K:\n\n1. **Trillium** \u2013 acquired November 17, 2021 for $18.50 per share in cash, total consideration of $2.0 billion net of cash acquired [70].\n2. **Arena** \u2013 definitive agreement in December 2021 to acquire all outstanding shares for $100 per share in cash, total equity value of about $6.7 billion; targeted to close in the first half of 2022 [33].\n3. **Array** \u2013 acquired July 30, 2019 for $48 per share in cash; total fair value of consideration $11.2 billion [70].\n\nTherachon (2019) is also mentioned as an acquisition [71].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:PFIZER_2021_10K#p70",
+          "quote": "On November 17, 2021, we acquired all of the issued and outstanding common stock not already owned by Pfizer of Trillium",
+          "type": "chunk"
+        },
+        "text": "Pfizer acquired Trillium, a clinical stage immuno-oncology company, on November 17, 2021.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": "$2.0 billion",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:PFIZER_2021_10K#p70",
+          "quote": "for total consideration of $2.0 billion, net of cash acquired",
+          "type": "chunk"
+        },
+        "text": "Trillium total consideration was $2.0 billion, net of cash acquired.",
+        "unit": "USD billions",
+        "value": "2"
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:PFIZER_2021_10K#p33",
+          "quote": "we will acquire all outstanding shares of Arena for $100",
+          "type": "chunk"
+        },
+        "text": "Pfizer entered into a definitive agreement in December 2021 to acquire Arena, a clinical stage company developing therapies for immuno-inflammatory diseases.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": "$6.7 billion",
+        "id": "c4",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:PFIZER_2021_10K#p33",
+          "quote": "for a total equity value of approximately $6.7 billion",
+          "type": "chunk"
+        },
+        "text": "The Arena acquisition has a total equity value of approximately $6.7 billion.",
+        "unit": "USD billions",
+        "value": "6.7"
+      },
+      {
+        "display": null,
+        "id": "c5",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:PFIZER_2021_10K#p70",
+          "quote": "On July 30, 2019, we acquired Array",
+          "type": "chunk"
+        },
+        "text": "Pfizer acquired Array, a commercial stage biopharmaceutical company, on July 30, 2019 for $48 per share in cash.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": "$11.2 billion",
+        "id": "c6",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:PFIZER_2021_10K#p70",
+          "quote": "The total fair value of the consideration transferred was $11.2 billion",
+          "type": "chunk"
+        },
+        "text": "The total fair value of consideration transferred for Array was $11.2 billion.",
+        "unit": "USD billions",
+        "value": "11.2"
+      },
+      {
+        "display": null,
+        "id": "c7",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:PFIZER_2021_10K#p9",
+          "quote": "the November 2021 acquisition of Trillium, a clinical stage immuno-oncology company",
+          "type": "chunk"
+        },
+        "text": "The three main companies acquired by Pfizer mentioned in the 10-K are Trillium, Arena and Array.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "310eb83f0e775dfefae2dbff1c3abf384b0861bccdde31e9a78ed4f9dcdab6be",
+  "usage": {
+    "batch": false,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.5153374",
+    "input_tokens": 251424,
+    "latency_ms": 16817,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 1225
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Can you tell me what Expeditors International of Washington's diluted EPS was in Q3 of fiscal year 2025?"
+  },
+  "request_key": "427faf4657414f301c23531c3e9c8f0234fa99344835c01711eab8c4c473bbb0",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003595",
+    "input_tokens": 474,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 49
+  }
+}

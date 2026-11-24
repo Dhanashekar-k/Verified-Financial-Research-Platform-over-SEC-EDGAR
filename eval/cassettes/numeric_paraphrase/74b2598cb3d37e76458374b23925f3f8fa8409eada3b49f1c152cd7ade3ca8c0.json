@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "How much did Ferguson Enterprises' income tax expense change in percentage terms from 2022 to 2023?"
+  },
+  "request_key": "74b2598cb3d37e76458374b23925f3f8fa8409eada3b49f1c152cd7ade3ca8c0",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003475",
+    "input_tokens": 470,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 45
+  }
+}

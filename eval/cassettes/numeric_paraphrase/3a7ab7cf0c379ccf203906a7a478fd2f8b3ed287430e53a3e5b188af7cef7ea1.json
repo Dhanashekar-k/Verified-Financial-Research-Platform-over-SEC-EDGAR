@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "What was Global Payments' SG&A expense in Q1 2025, as originally reported?"
+  },
+  "request_key": "3a7ab7cf0c379ccf203906a7a478fd2f8b3ed287430e53a3e5b188af7cef7ea1",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003260",
+    "input_tokens": 467,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 37
+  }
+}

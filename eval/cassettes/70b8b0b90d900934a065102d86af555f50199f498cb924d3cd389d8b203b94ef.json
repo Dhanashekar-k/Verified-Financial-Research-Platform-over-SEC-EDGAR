@@ -1,0 +1,62 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Yes. Pfizer's property, plant and equipment (PP&E, net) grew from $13,745 million at December 31, 2020 to $14,882 million at December 31, 2021 [59]. That is an increase of $1,137 million, or about 8.3%.",
+    "claims": [
+      {
+        "display": "$14,882 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:PFIZER_2021_10K#p59",
+          "quote": "Property, plant and equipment\n14,882 \n13,745",
+          "type": "chunk"
+        },
+        "text": "Pfizer's net property, plant and equipment was $14,882 million as of December 31, 2021.",
+        "unit": "USD millions",
+        "value": "14882"
+      },
+      {
+        "display": "$13,745 million",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:PFIZER_2021_10K#p59",
+          "quote": "Property, plant and equipment\n14,882 \n13,745",
+          "type": "chunk"
+        },
+        "text": "Pfizer's net property, plant and equipment was $13,745 million as of December 31, 2020.",
+        "unit": "USD millions",
+        "value": "13745"
+      },
+      {
+        "display": "$1,137 million",
+        "id": "c3",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:PFIZER_2021_10K#p59",
+          "quote": "Property, plant and equipment\n14,882 \n13,745",
+          "type": "chunk"
+        },
+        "text": "Net PP&E increased by $1,137 million between FY20 and FY21 (about 8.3%), so Pfizer grew its PP&E.",
+        "unit": "USD millions",
+        "value": "1137"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "70b8b0b90d900934a065102d86af555f50199f498cb924d3cd389d8b203b94ef",
+  "usage": {
+    "batch": false,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.5087434",
+    "input_tokens": 251422,
+    "latency_ms": 3988,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 566
+  }
+}

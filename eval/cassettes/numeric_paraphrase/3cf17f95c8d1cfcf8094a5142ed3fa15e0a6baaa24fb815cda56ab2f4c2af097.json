@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Can you tell me what Comfort Systems USA's noncurrent long-term debt was at the end of Q3 of fiscal year 2021?"
+  },
+  "request_key": "3cf17f95c8d1cfcf8094a5142ed3fa15e0a6baaa24fb815cda56ab2f4c2af097",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003720",
+    "input_tokens": 469,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 55
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "What was Eversource Energy's basic EPS in fiscal year 2021?"
+  },
+  "request_key": "480ee36dcdb93f068335a1928b9bdc1b4a8f190b4416affd28b416c9f217cd51",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003080",
+    "input_tokens": 446,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 34
+  }
+}

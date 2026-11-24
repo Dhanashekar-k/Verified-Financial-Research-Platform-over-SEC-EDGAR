@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Can you tell me by what percentage INTUIT INC.'s research and development expense changed from Q2 of fiscal year 2025 to Q2 of fiscal year 2026?"
+  },
+  "request_key": "6a84cbc8b4390097b60b8b191ed8e336d6b95d9823bbe5af21eadf9580b4771e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00004045",
+    "input_tokens": 474,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 67
+  }
+}

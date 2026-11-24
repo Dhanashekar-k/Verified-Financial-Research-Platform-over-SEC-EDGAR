@@ -1,0 +1,62 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Microsoft's FY2016 (year ended June 30, 2016) cost of goods sold, shown as total cost of revenue on the income statement, was **$32,780 million**. That is product cost of revenue of $17,880 million plus service and other cost of revenue of $14,900 million [52].",
+    "claims": [
+      {
+        "display": "$32,780 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:MICROSOFT_2016_10K#p52",
+          "quote": "Total cost of revenue",
+          "type": "chunk"
+        },
+        "text": "Microsoft's total cost of revenue (COGS) for fiscal year ended June 30, 2016 was $32,780 million.",
+        "unit": "USD millions",
+        "value": "32780"
+      },
+      {
+        "display": "$17,880 million",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:MICROSOFT_2016_10K#p52",
+          "quote": "Cost of revenue:",
+          "type": "chunk"
+        },
+        "text": "FY2016 product cost of revenue was $17,880 million.",
+        "unit": "USD millions",
+        "value": "17880"
+      },
+      {
+        "display": "$14,900 million",
+        "id": "c3",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:MICROSOFT_2016_10K#p52",
+          "quote": "Service and other",
+          "type": "chunk"
+        },
+        "text": "FY2016 service and other cost of revenue was $14,900 million.",
+        "unit": "USD millions",
+        "value": "14900"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "a7118c08bc6a53020922bc55384b58673c003d545d8b15915841e564a2a5059e",
+  "usage": {
+    "batch": false,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.3080394",
+    "input_tokens": 151345,
+    "latency_ms": 3382,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 511
+  }
+}

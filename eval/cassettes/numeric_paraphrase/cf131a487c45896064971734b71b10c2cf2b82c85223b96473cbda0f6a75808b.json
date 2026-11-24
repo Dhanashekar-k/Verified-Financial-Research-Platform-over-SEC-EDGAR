@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "In fiscal year 2023, what was the gap between Pinnacle West Capital's operating income and Southwest Airlines' operating income, with Pinnacle West's being higher?"
+  },
+  "request_key": "cf131a487c45896064971734b71b10c2cf2b82c85223b96473cbda0f6a75808b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000040",
+    "input_tokens": 470,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 66
+  }
+}

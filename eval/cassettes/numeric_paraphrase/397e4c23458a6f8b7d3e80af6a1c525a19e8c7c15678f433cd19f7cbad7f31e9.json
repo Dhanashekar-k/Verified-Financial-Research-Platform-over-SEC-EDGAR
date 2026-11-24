@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "What was the interest expense reported by McKesson Corporation for the second quarter (Q2) of fiscal year 2021?"
+  },
+  "request_key": "397e4c23458a6f8b7d3e80af6a1c525a19e8c7c15678f433cd19f7cbad7f31e9",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003430",
+    "input_tokens": 446,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 48
+  }
+}

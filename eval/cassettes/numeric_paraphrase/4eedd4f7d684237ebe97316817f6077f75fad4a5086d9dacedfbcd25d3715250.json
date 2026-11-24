@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Can you tell me what Baker Hughes Co's net income was in Q2 of fiscal year 2024?"
+  },
+  "request_key": "4eedd4f7d684237ebe97316817f6077f75fad4a5086d9dacedfbcd25d3715250",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003355",
+    "input_tokens": 451,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 44
+  }
+}

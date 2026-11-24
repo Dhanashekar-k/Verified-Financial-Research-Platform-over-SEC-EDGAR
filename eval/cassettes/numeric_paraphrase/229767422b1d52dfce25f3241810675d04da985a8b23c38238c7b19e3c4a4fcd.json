@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "How much did S&P Global's dividend payouts go up or down between fiscal 2021 and fiscal 2022, in percentage terms?"
+  },
+  "request_key": "229767422b1d52dfce25f3241810675d04da985a8b23c38238c7b19e3c4a4fcd",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003645",
+    "input_tokens": 464,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 53
+  }
+}

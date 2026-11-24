@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "At the end of fiscal 2025, how much more stockholders' equity did Edison International have compared to Constellation Energy?"
+  },
+  "request_key": "b1abbdc8c21cb0b48df1cfe7cb35e79be6c53369d91fa5e16d5bbbbdfb03f302",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003545",
+    "input_tokens": 469,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 48
+  }
+}

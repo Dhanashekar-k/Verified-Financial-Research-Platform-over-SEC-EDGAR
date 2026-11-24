@@ -1,0 +1,117 @@
+{
+  "rows": 240,
+  "seed": 13,
+  "version_policy": "as_filed",
+  "verified_metrics": [
+    "capex",
+    "cash",
+    "dividends_paid",
+    "eps_basic",
+    "eps_diluted",
+    "income_tax",
+    "interest_expense",
+    "long_term_debt",
+    "net_income",
+    "operating_cash_flow",
+    "operating_income",
+    "r_and_d",
+    "sga",
+    "shares_outstanding",
+    "stockholders_equity",
+    "total_assets",
+    "total_liabilities"
+  ],
+  "stratification": {
+    "qtype": {
+      "compare": 40,
+      "growth": 80,
+      "single_value": 120
+    },
+    "sic_division": {
+      "construction": 26,
+      "finance": 31,
+      "manufacturing": 26,
+      "mining": 32,
+      "retail": 18,
+      "services": 35,
+      "transport_utilities": 28,
+      "wholesale": 44
+    },
+    "fiscal_year": {
+      "2020": 15,
+      "2021": 42,
+      "2022": 44,
+      "2023": 52,
+      "2024": 38,
+      "2025": 37,
+      "2026": 12
+    },
+    "metric": {
+      "capex": 33,
+      "cash": 5,
+      "dividends_paid": 13,
+      "eps_basic": 6,
+      "eps_diluted": 6,
+      "income_tax": 22,
+      "interest_expense": 30,
+      "long_term_debt": 7,
+      "net_income": 13,
+      "operating_cash_flow": 26,
+      "operating_income": 14,
+      "r_and_d": 6,
+      "sga": 17,
+      "shares_outstanding": 7,
+      "stockholders_equity": 10,
+      "total_assets": 9,
+      "total_liabilities": 16
+    },
+    "cadence": {
+      "annual": 130,
+      "quarterly": 110
+    },
+    "restated": {
+      "False": 204,
+      "True": 36
+    }
+  },
+  "quarantined": 119,
+  "quarantined_by_reason": {
+    "qtrs0_on_duration_metric": 119
+  },
+  "excluded_by_reason": {
+    "derived_q4": 22660,
+    "not_a_gold_period": 49297
+  },
+  "abstentions_by_reason": {
+    "multiple_periods": 124,
+    "no_candidate": 6,
+    "growth:nonpositive_denominator": 3204,
+    "growth:near_zero_denominator": 207
+  },
+  "presentation_known": 0,
+  "presentation_unknown": 0,
+  "second_source": {
+    "match": 238,
+    "unchecked": 2
+  },
+  "second_source_mismatches": [],
+  "paraphrased": 225,
+  "paraphrase_drift": {
+    "num-0012": "quarter_lost",
+    "num-0028": "quarter_lost",
+    "num-0044": "company_lost:1286681",
+    "num-0104": "quarter_lost",
+    "num-0117": "company_lost:1050915",
+    "num-0128": "year_lost:2024",
+    "num-0134": "year_lost:2025",
+    "num-0139": "quarter_lost",
+    "num-0140": "company_lost:1286681",
+    "num-0141": "company_lost:1413329",
+    "num-0153": "year_lost:2022",
+    "num-0163": "quarter_lost",
+    "num-0164": "year_lost:2022",
+    "num-0210": "company_lost:1286681",
+    "num-0221": "company_lost:63908"
+  },
+  "paraphrase_cost_usd": "0"
+}

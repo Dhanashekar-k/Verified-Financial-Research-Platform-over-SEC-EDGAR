@@ -710,20 +710,32 @@ CompanyFacts = Callable[[int], dict[str, Any] | None]
 SecondSource = Literal["match", "mismatch", "unchecked"]
 
 
+DATE_SLACK_DAYS = 7  # second-source period match: see check_fact
+
+
 def check_fact(f: Fact, cf: dict[str, Any] | None) -> tuple[str, Decimal | None]:
     """'match' / 'mismatch' / 'not_found' for one fact against the company's companyfacts,
     matched on taxonomy, tag, unit, accession and period (start and end for durations)."""
     if cf is None:
         return "not_found", None
     entries = cf.get("facts", {}).get(f.taxonomy, {}).get(f.tag, {}).get("units", {}).get(f.uom, [])
-    end = f.period_end.isoformat()
-    start = f.period_start.isoformat() if f.period_start and f.qtrs else None
+
+    def near(iso: str | None, want: date) -> bool:
+        # FSDS dates are month-end normalized; a 52/53-week filer's real period ends a few days
+        # off (Sysco FY2023: 2023-07-01 vs 2023-06-30). The accession and the exact value must
+        # still agree, and a prior-year comparative in the same filing is ~365 days away.
+        try:
+            return iso is not None and abs((date.fromisoformat(iso) - want).days) <= DATE_SLACK_DAYS
+        except ValueError:
+            return False
+
+    has_start = f.period_start is not None and bool(f.qtrs)
     hits = [
         e
         for e in entries
         if e.get("accn") == f.accession
-        and e.get("end") == end
-        and (start is None or e.get("start") == start)
+        and near(e.get("end"), f.period_end)
+        and (not has_start or near(e.get("start"), f.period_start))  # type: ignore[arg-type]
     ]
     if not hits:
         return "not_found", None

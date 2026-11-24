@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Hey, I was looking at Henry Schein's filings and wondering how much their interest expense moved between Q2 2020 and Q2 2021 as originally reported. What was the percentage change?"
+  },
+  "request_key": "850dc038487209fdb3a0f4a8210342c9abe675f653e6ff94343f8032851d0977",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00004155",
+    "input_tokens": 481,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 70
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Kraft Heinz's FY2019 inventory turnover ratio is **about 6.25x**.\n\n- FY2019 cost of products sold (COGS) was $16,830 million [50].\n- Inventories were $2,721 million at Dec 28, 2019 and $2,667 million at Dec 29, 2018 [52][67].\n- Average inventory = (2,721 + 2,667) / 2 = $2,694 million.\n- Inventory turnover = 16,830 / 2,694 \u2248 6.25.",
+    "claims": [
+      {
+        "display": "$16,830 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:KRAFTHEINZ_2019_10K#p50",
+          "quote": "Cost of products sold",
+          "type": "chunk"
+        },
+        "text": "Kraft Heinz's FY2019 cost of products sold (COGS) was $16,830 million.",
+        "unit": "USD millions",
+        "value": "16830"
+      },
+      {
+        "display": "$2,721 million",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:KRAFTHEINZ_2019_10K#p67",
+          "quote": "Inventories consisted of the following (in millions):",
+          "type": "chunk"
+        },
+        "text": "Inventories at Dec 28, 2019 were $2,721 million and at Dec 29, 2018 were $2,667 million.",
+        "unit": "USD millions",
+        "value": "2721"
+      },
+      {
+        "display": "$2,694 million",
+        "id": "c3",
+        "kind": "numeric_derived",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:KRAFTHEINZ_2019_10K#p67",
+          "quote": "Inventories consisted of the following (in millions):",
+          "type": "chunk"
+        },
+        "text": "Average inventory between FY2018 and FY2019 is $2,694 million.",
+        "unit": "USD millions",
+        "value": "2694"
+      },
+      {
+        "display": "6.25",
+        "id": "c4",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:KRAFTHEINZ_2019_10K#p50",
+          "quote": "Cost of products sold",
+          "type": "chunk"
+        },
+        "text": "Kraft Heinz's FY2019 inventory turnover ratio (COGS / average inventory) is approximately 6.25.",
+        "unit": "ratio",
+        "value": "6.25"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "54f1da8aff23f1ae4f7dcd638e0556d1630645fe249d17abe5210d4d2bd3881c",
+  "usage": {
+    "batch": false,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.4192274",
+    "input_tokens": 203779,
+    "latency_ms": 8174,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 1143
+  }
+}

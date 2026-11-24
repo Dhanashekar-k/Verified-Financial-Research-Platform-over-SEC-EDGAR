@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "DG interest expense % chg FY22 to FY23?"
+  },
+  "request_key": "0e00fe1f9c0d26445849f33267fd9dfccc0d9b63e74cf9c0c554736a08a4865f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003020",
+    "input_tokens": 469,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 27
+  }
+}

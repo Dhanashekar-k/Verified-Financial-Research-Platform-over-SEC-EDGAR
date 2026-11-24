@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "What was Ameriprise Financial's net income for the fourth quarter (Q4) of fiscal year 2023?"
+  },
+  "request_key": "9e292c68cd1fec604314a82880eeac26a3826ad2ba606ca84028065086c6f10a",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003410",
+    "input_tokens": 452,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 46
+  }
+}

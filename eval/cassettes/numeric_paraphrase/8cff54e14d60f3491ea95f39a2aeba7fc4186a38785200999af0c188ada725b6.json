@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Can you tell me by what percentage Oracle's interest expense changed from Q2 of fiscal 2025 to Q2 of fiscal 2026?"
+  },
+  "request_key": "8cff54e14d60f3491ea95f39a2aeba7fc4186a38785200999af0c188ada725b6",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003835",
+    "input_tokens": 472,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 59
+  }
+}

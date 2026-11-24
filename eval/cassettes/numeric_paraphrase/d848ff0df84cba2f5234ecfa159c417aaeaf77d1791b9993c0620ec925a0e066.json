@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Can you tell me what PPG Industries had in cash and cash equivalents at the end of fiscal year 2022?"
+  },
+  "request_key": "d848ff0df84cba2f5234ecfa159c417aaeaf77d1791b9993c0620ec925a0e066",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0000345",
+    "input_tokens": 460,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 46
+  }
+}

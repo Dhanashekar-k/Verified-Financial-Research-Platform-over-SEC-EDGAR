@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "EXPAND ENERGY dividends paid FY2022?"
+  },
+  "request_key": "968076bb158d0744b1a3e12da9d7049567aabc746c21bee90cbf0cf01b580e2b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00002995",
+    "input_tokens": 454,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 29
+  }
+}

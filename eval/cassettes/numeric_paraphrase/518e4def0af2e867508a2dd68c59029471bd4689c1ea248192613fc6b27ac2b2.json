@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "XCEL Energy op income % change FY2024 to FY2025?"
+  },
+  "request_key": "518e4def0af2e867508a2dd68c59029471bd4689c1ea248192613fc6b27ac2b2",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0000310",
+    "input_tokens": 465,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 31
+  }
+}

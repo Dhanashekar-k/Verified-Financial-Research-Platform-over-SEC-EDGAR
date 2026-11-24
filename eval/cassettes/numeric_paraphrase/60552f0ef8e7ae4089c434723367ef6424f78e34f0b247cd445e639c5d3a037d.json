@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "IDEXX basic EPS FY2022?"
+  },
+  "request_key": "60552f0ef8e7ae4089c434723367ef6424f78e34f0b247cd445e639c5d3a037d",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00002890",
+    "input_tokens": 458,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 24
+  }
+}

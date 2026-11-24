@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "What was Sysco's net cash from operating activities in fiscal 2023, as originally reported?"
+  },
+  "request_key": "70cc5405620e11b63c6dc43fbb64bc091ca8bc75a6a3be29ef92cb228352ed37",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003225",
+    "input_tokens": 450,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 39
+  }
+}

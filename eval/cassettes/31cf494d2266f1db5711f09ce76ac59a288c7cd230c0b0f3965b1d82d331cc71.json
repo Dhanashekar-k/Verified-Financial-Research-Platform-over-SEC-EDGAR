@@ -1,0 +1,90 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Among JPMorgan's four reportable business segments, Commercial Banking had the lowest net revenue in Q1 2021, at $2,393 million [19]. The other segments were Consumer & Community Banking ($12,517 million), Corporate & Investment Bank ($14,605 million) and Asset & Wealth Management ($4,077 million) [19]. The separate Corporate segment reported a net revenue loss of $473 million [19]. It is a reconciling/corporate segment rather than a line of business, so I excluded it from the comparison.",
+    "claims": [
+      {
+        "display": "$2,393 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:JPMORGAN_2021Q1_10Q#p19",
+          "quote": "Total net revenue\n$ 12,517 \n$ 13,287 \n (6) %\n$ 14,605 \n$ 10,003 \n 46 %\n$ \n2,393 \n$ \n2,165 \n 11 %",
+          "type": "chunk"
+        },
+        "text": "Commercial Banking had total net revenue of $2,393 million in Q1 2021, the lowest among the four reportable business segments.",
+        "unit": "USD millions",
+        "value": "2393"
+      },
+      {
+        "display": "$12,517 million",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:JPMORGAN_2021Q1_10Q#p19",
+          "quote": "Total net revenue\n$ 12,517 \n$ 13,287 \n (6) %",
+          "type": "chunk"
+        },
+        "text": "Consumer & Community Banking had Q1 2021 total net revenue of $12,517 million.",
+        "unit": "USD millions",
+        "value": "12517"
+      },
+      {
+        "display": "$14,605 million",
+        "id": "c3",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:JPMORGAN_2021Q1_10Q#p19",
+          "quote": "$ 14,605 \n$ 10,003 \n 46 %",
+          "type": "chunk"
+        },
+        "text": "Corporate & Investment Bank had Q1 2021 total net revenue of $14,605 million.",
+        "unit": "USD millions",
+        "value": "14605"
+      },
+      {
+        "display": "$4,077 million",
+        "id": "c4",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:JPMORGAN_2021Q1_10Q#p19",
+          "quote": "Total net revenue\n$ \n4,077 \n$ \n3,389 \n 20 %",
+          "type": "chunk"
+        },
+        "text": "Asset & Wealth Management had Q1 2021 total net revenue of $4,077 million.",
+        "unit": "USD millions",
+        "value": "4077"
+      },
+      {
+        "display": "$(473) million",
+        "id": "c5",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:JPMORGAN_2021Q1_10Q#p19",
+          "quote": "$ \n(473) $ \n166",
+          "type": "chunk"
+        },
+        "text": "The Corporate segment had Q1 2021 net revenue of negative $473 million, a loss.",
+        "unit": "USD millions",
+        "value": "-473"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "31cf494d2266f1db5711f09ce76ac59a288c7cd230c0b0f3965b1d82d331cc71",
+  "usage": {
+    "batch": false,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.5291814",
+    "input_tokens": 259231,
+    "latency_ms": 7225,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 1048
+  }
+}

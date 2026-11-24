@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Can you tell me by what percentage Comfort Systems USA's selling, general and administrative expense changed from fiscal year 2020 to fiscal year 2021?"
+  },
+  "request_key": "30b99d583dd8c898be51ceac4db2a4fc39364482508c627069d35a68b8f3f9fb",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003930",
+    "input_tokens": 476,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 62
+  }
+}

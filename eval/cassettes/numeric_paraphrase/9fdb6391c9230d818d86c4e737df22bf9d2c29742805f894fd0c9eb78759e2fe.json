@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "FactSet Research common shares outstanding end of Q1 FY2020, as originally reported?"
+  },
+  "request_key": "9fdb6391c9230d818d86c4e737df22bf9d2c29742805f894fd0c9eb78759e2fe",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003360",
+    "input_tokens": 477,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 39
+  }
+}

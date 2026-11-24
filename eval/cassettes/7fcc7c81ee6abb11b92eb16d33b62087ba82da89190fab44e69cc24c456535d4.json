@@ -1,0 +1,76 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Amcor's quick ratio **improved** from FY2022 to FY2023. A quick ratio is a normal liquidity measure to ask about for a manufacturer like Amcor, so it applies here.\n\nI define it as (cash and cash equivalents + trade receivables) \u00f7 total current liabilities, using the balance sheet [52]:\n- FY2023: ($689M + $1,875M) \u00f7 $4,476M \u2248 0.57\n- FY2022: ($775M + $1,935M) \u00f7 $5,103M \u2248 0.53\n\nThe improvement came mainly from lower current liabilities (about $4.5B vs. $5.1B), which more than offset the lower cash and receivables [52].\n\nUsing the broader definition, (total current assets \u2212 inventories) \u00f7 current liabilities, gives the same direction: about 0.69 in FY2023 vs. 0.67 in FY2022 [52].\n\nBoth ratios are well below 1.0. This is typical for a company that finances itself partly through commercial paper and carries large trade payables [52].",
+    "claims": [
+      {
+        "display": "0.57",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:AMCOR_2023_10K#p52",
+          "quote": "Trade receivables, net of allowance for credit losses of $21 and $25, respectively",
+          "type": "chunk"
+        },
+        "text": "Amcor's quick ratio (cash plus trade receivables divided by total current liabilities) was about 0.57 at June 30, 2023, based on cash of $689M, trade receivables of $1,875M and current liabilities of $4,476M.",
+        "unit": "ratio",
+        "value": "0.573"
+      },
+      {
+        "display": "0.53",
+        "id": "c2",
+        "kind": "numeric_derived",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:AMCOR_2023_10K#p52",
+          "quote": "Total current liabilities",
+          "type": "chunk"
+        },
+        "text": "Amcor's quick ratio was about 0.53 at June 30, 2022, based on cash of $775M, trade receivables of $1,935M and current liabilities of $5,103M.",
+        "unit": "ratio",
+        "value": "0.531"
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:AMCOR_2023_10K#p52",
+          "quote": "Total current liabilities",
+          "type": "chunk"
+        },
+        "text": "Amcor's quick ratio improved between FY2022 and FY2023, mainly because current liabilities fell from $5,103M to $4,476M.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": "0.69",
+        "id": "c4",
+        "kind": "numeric_derived",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:AMCOR_2023_10K#p52",
+          "quote": "Total current assets",
+          "type": "chunk"
+        },
+        "text": "Using the broader definition (current assets minus inventories, divided by current liabilities), the ratio was about 0.69 in FY2023 versus about 0.67 in FY2022.",
+        "unit": "ratio",
+        "value": "0.691"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "7fcc7c81ee6abb11b92eb16d33b62087ba82da89190fab44e69cc24c456535d4",
+  "usage": {
+    "batch": false,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.3564374",
+    "input_tokens": 170314,
+    "latency_ms": 10966,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 1557
+  }
+}

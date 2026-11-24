@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "How much did Freeport-McMoRan's SG&A expense go up or down from Q2 2023 to Q2 2024, in percentage terms?"
+  },
+  "request_key": "19099d582e3add623e45278cf6cad75701833b95ce78a74b42f0034190b17365",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003805",
+    "input_tokens": 481,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 56
+  }
+}

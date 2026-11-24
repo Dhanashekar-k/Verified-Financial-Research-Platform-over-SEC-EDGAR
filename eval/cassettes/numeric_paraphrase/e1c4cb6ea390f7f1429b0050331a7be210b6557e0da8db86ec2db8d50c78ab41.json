@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Can you tell me by what percentage WEC Energy Group's operating income changed from fiscal year 2022 to fiscal year 2023?"
+  },
+  "request_key": "e1c4cb6ea390f7f1429b0050331a7be210b6557e0da8db86ec2db8d50c78ab41",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0000370",
+    "input_tokens": 470,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 54
+  }
+}

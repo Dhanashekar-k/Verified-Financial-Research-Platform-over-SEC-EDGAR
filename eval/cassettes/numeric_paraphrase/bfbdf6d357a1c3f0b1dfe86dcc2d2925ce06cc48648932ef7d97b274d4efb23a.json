@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "What was the percentage change in AFLAC Inc.'s selling, general and administrative expense from fiscal year 2021 to fiscal year 2022, as originally reported?"
+  },
+  "request_key": "bfbdf6d357a1c3f0b1dfe86dcc2d2925ce06cc48648932ef7d97b274d4efb23a",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003930",
+    "input_tokens": 466,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 64
+  }
+}

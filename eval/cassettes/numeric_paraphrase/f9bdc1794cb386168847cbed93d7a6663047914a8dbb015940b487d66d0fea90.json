@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Hey, how much did Yum Brands' income tax expense go up or down in percentage terms when comparing Q1 2023 to Q1 2024?"
+  },
+  "request_key": "f9bdc1794cb386168847cbed93d7a6663047914a8dbb015940b487d66d0fea90",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003795",
+    "input_tokens": 474,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 57
+  }
+}

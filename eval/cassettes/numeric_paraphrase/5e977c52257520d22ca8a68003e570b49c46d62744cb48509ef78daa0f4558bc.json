@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "What was ONEOK's income tax expense in Q3 of fiscal year 2023?"
+  },
+  "request_key": "5e977c52257520d22ca8a68003e570b49c46d62744cb48509ef78daa0f4558bc",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003180",
+    "input_tokens": 451,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 37
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Can you tell me what CDW Corp's net income was in Q1 of fiscal year 2024?"
+  },
+  "request_key": "4f2f80b86342a938520834cce219ce1a3bbcef49e0410b9207f89d3f42950619",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003265",
+    "input_tokens": 448,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 41
+  }
+}

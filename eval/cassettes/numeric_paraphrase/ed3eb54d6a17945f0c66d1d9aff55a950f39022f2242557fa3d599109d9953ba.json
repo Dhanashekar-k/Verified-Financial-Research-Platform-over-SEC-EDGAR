@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Can you tell me what Martin Marietta Materials' capital expenditures were in Q1 of fiscal year 2023, as originally reported?"
+  },
+  "request_key": "ed3eb54d6a17945f0c66d1d9aff55a950f39022f2242557fa3d599109d9953ba",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003730",
+    "input_tokens": 471,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 55
+  }
+}

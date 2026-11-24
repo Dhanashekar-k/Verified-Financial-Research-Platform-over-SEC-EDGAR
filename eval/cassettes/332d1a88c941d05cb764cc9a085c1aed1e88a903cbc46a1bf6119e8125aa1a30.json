@@ -1,0 +1,62 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Adobe's operating income rose from $903,095 thousand in FY2015 to $1,493,602 thousand in FY2016 [62]. That is a year-over-year increase of (1,493,602 \u2212 903,095) / 903,095 \u2248 **65.4%**.",
+    "claims": [
+      {
+        "display": "$1,493,602 thousand",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:ADOBE_2016_10K#p62",
+          "quote": "1,493,602",
+          "type": "chunk"
+        },
+        "text": "Adobe's operating income for fiscal 2016 was $1,493,602 thousand.",
+        "unit": "USD thousands",
+        "value": "1493602"
+      },
+      {
+        "display": "$903,095 thousand",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:ADOBE_2016_10K#p62",
+          "quote": "903,095",
+          "type": "chunk"
+        },
+        "text": "Adobe's operating income for fiscal 2015 was $903,095 thousand.",
+        "unit": "USD thousands",
+        "value": "903095"
+      },
+      {
+        "display": "65.4%",
+        "id": "c3",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:ADOBE_2016_10K#p62",
+          "quote": "1,493,602",
+          "type": "chunk"
+        },
+        "text": "Adobe's year-over-year change in operating income from FY2015 to FY2016 was about 65.4%.",
+        "unit": "percent",
+        "value": "65.4"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "332d1a88c941d05cb764cc9a085c1aed1e88a903cbc46a1bf6119e8125aa1a30",
+  "usage": {
+    "batch": false,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.3019714",
+    "input_tokens": 147136,
+    "latency_ms": 5592,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 746
+  }
+}

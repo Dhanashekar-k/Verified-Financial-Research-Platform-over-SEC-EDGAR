@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Block vs Take-Two FY2022 op cash flow: how much higher was Block's net cash from operating activities?"
+  },
+  "request_key": "fc86fbf4cc01921117062ca4d4c3366c564821efbaae659fd05e54f1d72a36d9",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003555",
+    "input_tokens": 481,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 46
+  }
+}

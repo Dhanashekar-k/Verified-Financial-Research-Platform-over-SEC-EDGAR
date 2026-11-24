@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "How much did Marsh & McLennan's operating cash flow change in percentage terms from 2021 to 2022?"
+  },
+  "request_key": "821035449081af22744e84a5f7d57d4a4a2fe5ed970574c4a5924a31c40c04f1",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003510",
+    "input_tokens": 477,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 45
+  }
+}

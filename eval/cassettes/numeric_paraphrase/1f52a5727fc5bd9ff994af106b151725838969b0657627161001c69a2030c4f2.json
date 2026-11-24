@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "What was Henry Schein's interest expense in Q2 2021, as originally reported?"
+  },
+  "request_key": "1f52a5727fc5bd9ff994af106b151725838969b0657627161001c69a2030c4f2",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003190",
+    "input_tokens": 458,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 36
+  }
+}

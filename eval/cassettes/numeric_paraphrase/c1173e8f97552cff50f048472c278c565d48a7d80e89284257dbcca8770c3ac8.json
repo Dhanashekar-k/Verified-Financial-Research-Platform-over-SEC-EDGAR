@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "TE Connectivity dividends paid FY2025?"
+  },
+  "request_key": "c1173e8f97552cff50f048472c278c565d48a7d80e89284257dbcca8770c3ac8",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0000290",
+    "input_tokens": 450,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 26
+  }
+}

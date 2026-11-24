@@ -1,0 +1,90 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Netflix's FY2015 unadjusted EBITDA margin is about **5.4%**.\n\n- Operating income was $305,826 thousand [40].\n- Depreciation and amortization of property, equipment and intangibles, from the cash flow statement, was $62,283 thousand [42].\n- Unadjusted EBITDA is 305,826 + 62,283 = $368,109 thousand.\n- Revenues were $6,779,511 thousand [40].\n- Margin is 368,109 / 6,779,511 \u2248 5.4%.\n\nI used only the property, equipment and intangibles D&A line. Streaming and DVD content amortization were excluded because they are content costs rather than D&A of fixed assets.",
+    "claims": [
+      {
+        "display": "$305,826 thousand",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:NETFLIX_2015_10K#p40",
+          "quote": "Operating income\n305,826",
+          "type": "chunk"
+        },
+        "text": "Netflix's FY2015 operating income was $305,826 thousand.",
+        "unit": "USD thousands",
+        "value": "305826"
+      },
+      {
+        "display": "$62,283 thousand",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:NETFLIX_2015_10K#p42",
+          "quote": "Depreciation and amortization of property, equipment and intangibles\n62,283",
+          "type": "chunk"
+        },
+        "text": "Netflix's FY2015 depreciation and amortization of property, equipment and intangibles was $62,283 thousand.",
+        "unit": "USD thousands",
+        "value": "62283"
+      },
+      {
+        "display": "$6,779,511 thousand",
+        "id": "c3",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:NETFLIX_2015_10K#p40",
+          "quote": "Revenues\n$\n6,779,511",
+          "type": "chunk"
+        },
+        "text": "Netflix's FY2015 revenues were $6,779,511 thousand.",
+        "unit": "USD thousands",
+        "value": "6779511"
+      },
+      {
+        "display": "$368,109 thousand",
+        "id": "c4",
+        "kind": "numeric_derived",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:NETFLIX_2015_10K#p40",
+          "quote": "Operating income\n305,826",
+          "type": "chunk"
+        },
+        "text": "Netflix's FY2015 unadjusted EBITDA (operating income plus D&A) was $368,109 thousand.",
+        "unit": "USD thousands",
+        "value": "368109"
+      },
+      {
+        "display": "5.4%",
+        "id": "c5",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:NETFLIX_2015_10K#p40",
+          "quote": "Operating income\n305,826",
+          "type": "chunk"
+        },
+        "text": "Netflix's FY2015 unadjusted EBITDA margin was about 5.4% of revenues.",
+        "unit": "percent",
+        "value": "5.43"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "f9113b33fbbc873c3721e34d24443922606b284d8920665763789c8ee66dce78",
+  "usage": {
+    "batch": false,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.1723994",
+    "input_tokens": 80065,
+    "latency_ms": 8126,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 1203
+  }
+}

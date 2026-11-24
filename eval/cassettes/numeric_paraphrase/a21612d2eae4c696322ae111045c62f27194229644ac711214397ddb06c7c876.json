@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "What was the percentage change in PulteGroup Inc.'s net cash provided by operating activities between the first quarter of fiscal year 2024 and the first quarter of fiscal year 2025?"
+  },
+  "request_key": "a21612d2eae4c696322ae111045c62f27194229644ac711214397ddb06c7c876",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00004155",
+    "input_tokens": 476,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 71
+  }
+}

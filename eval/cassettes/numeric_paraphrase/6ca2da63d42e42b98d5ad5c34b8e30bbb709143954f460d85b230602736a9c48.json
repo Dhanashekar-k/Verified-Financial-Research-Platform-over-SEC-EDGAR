@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Intuit total liabs vs AppLovin, FY2022 end - how much higher was Intuit's?"
+  },
+  "request_key": "6ca2da63d42e42b98d5ad5c34b8e30bbb709143954f460d85b230602736a9c48",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003405",
+    "input_tokens": 466,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 43
+  }
+}

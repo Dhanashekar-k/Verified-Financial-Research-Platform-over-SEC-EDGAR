@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "How much did Martin Marietta Materials' interest expense change in percentage terms from Q1 2023 to Q1 2024, as originally reported?"
+  },
+  "request_key": "0eb92ce98f8c54ce50c0172a1e975a27b7aaab1ea86e7801cbd48293cc223507",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003825",
+    "input_tokens": 485,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 56
+  }
+}

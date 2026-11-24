@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Hey, what was Expeditors International of Washington's net cash from operating activities in Q1 of fiscal 2021, as originally reported?"
+  },
+  "request_key": "96250b5f41f4a4d69d1d5de53f920f7f6e506ea7eb25c7a7792f48cb4f779f92",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003755",
+    "input_tokens": 481,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 54
+  }
+}

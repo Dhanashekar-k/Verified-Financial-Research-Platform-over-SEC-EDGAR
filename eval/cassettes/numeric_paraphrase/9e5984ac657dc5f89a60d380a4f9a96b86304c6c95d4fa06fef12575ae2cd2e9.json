@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "McKesson capex % chg Q1 FY2020 to Q1 FY2021?"
+  },
+  "request_key": "9e5984ac657dc5f89a60d380a4f9a96b86304c6c95d4fa06fef12575ae2cd2e9",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003305",
+    "input_tokens": 476,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 37
+  }
+}

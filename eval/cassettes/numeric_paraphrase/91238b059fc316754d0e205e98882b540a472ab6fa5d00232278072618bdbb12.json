@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "At the end of fiscal 2024, by how much did Halliburton's total liabilities exceed Vulcan Materials' total liabilities?"
+  },
+  "request_key": "91238b059fc316754d0e205e98882b540a472ab6fa5d00232278072618bdbb12",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003655",
+    "input_tokens": 461,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 54
+  }
+}

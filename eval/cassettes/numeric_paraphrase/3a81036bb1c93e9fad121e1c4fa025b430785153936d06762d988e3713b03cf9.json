@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "What was Sysco's income tax expense in Q3 2020?"
+  },
+  "request_key": "3a81036bb1c93e9fad121e1c4fa025b430785153936d06762d988e3713b03cf9",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00002955",
+    "input_tokens": 446,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 29
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Can you tell me what Cardinal Health's net income was in Q2 of fiscal 2021?"
+  },
+  "request_key": "ec439da4d541510ce54378b2e1ce3fd782da031e773cc2206a707be9115dbbe5",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0000330",
+    "input_tokens": 455,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 41
+  }
+}

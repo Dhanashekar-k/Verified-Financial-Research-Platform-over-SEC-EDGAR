@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Can you tell me how much higher TE Connectivity plc's capital expenditures were than W.W. Grainger, Inc.'s in fiscal year 2020?"
+  },
+  "request_key": "954da2ee194e84a2f7556fec8fe7ed9f4e67d0f3c89b1b75e6e7e17d336b108f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0000390",
+    "input_tokens": 470,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 62
+  }
+}

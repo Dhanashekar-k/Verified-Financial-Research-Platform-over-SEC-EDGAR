@@ -1,0 +1,76 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "No. The Q2 2023 10-Q describes no new spin-off of a large business segment. The only spin-off it mentions is the earlier Upjohn Business, which was spun off on November 16, 2020 and combined with Mylan to form Viatris [3]. Pfizer still expects about $700 million of separation costs for Upjohn, roughly 90% of which had been incurred through Q2 2023 [40]. The current strategic moves are an acquisition and a small divestiture. Pfizer is acquiring Seagen for about $43 billion [12]. In July 2023 it agreed to sell its early-stage rare disease gene therapy portfolio to Alexion for up to $1 billion plus royalties [40].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:Pfizer_2023Q2_10Q#p6",
+          "quote": "that was spun-off on November 16, 2020 and combined with Mylan to create Viatris",
+          "type": "chunk"
+        },
+        "text": "Pfizer's Q2 2023 10-Q describes no new spin-off of a large business segment; the only spin-off referenced is the Upjohn Business, spun off on November 16, 2020 and combined with Mylan to form Viatris.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": "$700 million",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:Pfizer_2023Q2_10Q#p41",
+          "quote": "We expect to incur costs of approximately $700 million in connection with separating Upjohn, of which approximately 90% has been incurred since inception",
+          "type": "chunk"
+        },
+        "text": "Pfizer expects to incur approximately $700 million in costs in connection with separating Upjohn.",
+        "unit": "USD millions",
+        "value": "700"
+      },
+      {
+        "display": "$43 billion",
+        "id": "c3",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:Pfizer_2023Q2_10Q#p13",
+          "quote": "for $229 in cash per Seagen share for a total enterprise value of approximately $43 billion",
+          "type": "chunk"
+        },
+        "text": "Pfizer agreed to acquire Seagen for a total enterprise value of approximately $43 billion.",
+        "unit": "USD billions",
+        "value": "43"
+      },
+      {
+        "display": "up to $1 billion",
+        "id": "c4",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:Pfizer_2023Q2_10Q#p41",
+          "quote": "Alexion will pay us total consideration of up to $1 billion, plus tiered royalties based on annual net sales of the assets.",
+          "type": "chunk"
+        },
+        "text": "In July 2023 Pfizer agreed to sell its early-stage rare disease gene therapy portfolio to Alexion for total consideration of up to $1 billion plus tiered royalties.",
+        "unit": "USD billions",
+        "value": "1"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "bd5bf19f4153af2f41090f8dc09bf45262b695fb54d50815068b2ab33e6e17de",
+  "usage": {
+    "batch": false,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.2229594",
+    "input_tokens": 106520,
+    "latency_ms": 8457,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 968
+  }
+}

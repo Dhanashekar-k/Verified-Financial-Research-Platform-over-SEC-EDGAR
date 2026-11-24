@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Brown & Brown's Q1 2023 capex, as originally reported?"
+  },
+  "request_key": "69a8cee5452110f2423371f3e52278da86b1c0500f3ad97f62f7a4af4be91038",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003160",
+    "input_tokens": 467,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 33
+  }
+}

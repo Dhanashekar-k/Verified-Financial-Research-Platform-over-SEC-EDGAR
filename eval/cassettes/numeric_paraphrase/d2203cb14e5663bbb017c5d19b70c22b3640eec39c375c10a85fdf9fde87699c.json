@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Verisk SG&A chg % Q1 FY24 to Q1 FY25?"
+  },
+  "request_key": "d2203cb14e5663bbb017c5d19b70c22b3640eec39c375c10a85fdf9fde87699c",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0000335",
+    "input_tokens": 485,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 37
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Dominion Energy total liabilities end of Q3 FY2021?"
+  },
+  "request_key": "e0bdec1132ad25a14b3e5f36b9306c921e65132356f3cfff872e9005ce9288d6",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003110",
+    "input_tokens": 462,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 32
+  }
+}

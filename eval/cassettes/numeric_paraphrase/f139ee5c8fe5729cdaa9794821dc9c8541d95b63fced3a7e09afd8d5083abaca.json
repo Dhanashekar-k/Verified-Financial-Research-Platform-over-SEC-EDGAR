@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Hey, how much did Cencora, Inc. spend on selling, general and administrative expenses back in fiscal 2020?"
+  },
+  "request_key": "f139ee5c8fe5729cdaa9794821dc9c8541d95b63fced3a7e09afd8d5083abaca",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003495",
+    "input_tokens": 454,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 49
+  }
+}

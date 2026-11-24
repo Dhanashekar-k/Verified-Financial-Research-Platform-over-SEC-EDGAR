@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "How much did Everest Group's operating cash flow change in percentage terms from 2023 to 2024?"
+  },
+  "request_key": "62ba3a8f1c056ee8572f6b50f989304b35c9069ae72c39ebf81d1b9e31024a49",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003370",
+    "input_tokens": 469,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 41
+  }
+}

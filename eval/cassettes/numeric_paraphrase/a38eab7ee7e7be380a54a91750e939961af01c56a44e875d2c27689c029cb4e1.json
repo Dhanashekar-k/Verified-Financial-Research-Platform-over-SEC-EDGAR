@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Newmont R&D expense % chg FY2023 to FY2024?"
+  },
+  "request_key": "a38eab7ee7e7be380a54a91750e939961af01c56a44e875d2c27689c029cb4e1",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0000315",
+    "input_tokens": 470,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 32
+  }
+}

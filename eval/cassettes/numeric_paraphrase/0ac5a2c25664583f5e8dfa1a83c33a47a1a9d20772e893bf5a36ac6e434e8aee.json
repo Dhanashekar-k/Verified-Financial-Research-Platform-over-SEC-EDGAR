@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "In fiscal year 2023, by how much did the capital expenditures of Quanta Services, Inc. exceed those of D.R. Horton, Inc.?"
+  },
+  "request_key": "0ac5a2c25664583f5e8dfa1a83c33a47a1a9d20772e893bf5a36ac6e434e8aee",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003835",
+    "input_tokens": 467,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 60
+  }
+}

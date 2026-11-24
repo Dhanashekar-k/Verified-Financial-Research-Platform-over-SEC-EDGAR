@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Cardinal Health FY2023 income tax expense, as originally reported?"
+  },
+  "request_key": "b16dbe88c3b51f969d83ad98f569ec23aae5a3ea968a565f943eab8ced541c84",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003125",
+    "input_tokens": 460,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 33
+  }
+}

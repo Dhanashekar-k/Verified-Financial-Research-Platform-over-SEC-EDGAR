@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "What were the capital expenditures of Quanta Services, Inc. in fiscal year 2023?"
+  },
+  "request_key": "fb663f5bae2ecfc760b92b8ba44a7d5c8fe2528060cec2e177fbe3087ec593cb",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003245",
+    "input_tokens": 449,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 40
+  }
+}

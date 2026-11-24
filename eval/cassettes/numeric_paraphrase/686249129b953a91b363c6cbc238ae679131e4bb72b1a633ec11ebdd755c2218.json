@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "ADM vs Viatris FY2025 interest expense gap? how much higher was ADM's?"
+  },
+  "request_key": "686249129b953a91b363c6cbc238ae679131e4bb72b1a633ec11ebdd755c2218",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003330",
+    "input_tokens": 466,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 40
+  }
+}

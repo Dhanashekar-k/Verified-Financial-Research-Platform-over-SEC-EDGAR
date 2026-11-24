@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "What were DoorDash's total assets at the end of Q1 2025?"
+  },
+  "request_key": "50d103d2db2c4768ca0d762d0bd46615dd2cdcc7a17fdc9e8d1fae3b3eb9bde2",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003025",
+    "input_tokens": 450,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 31
+  }
+}

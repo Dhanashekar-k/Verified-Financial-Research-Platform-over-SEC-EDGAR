@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "What was the percentage change in Sysco Corp's dividends paid from fiscal year 2024 to fiscal year 2025?"
+  },
+  "request_key": "2b585e269257fd6fce6f46b8f0bcdce19ef67b0ea44ae7d21a3880c78adc131e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003530",
+    "input_tokens": 456,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 50
+  }
+}

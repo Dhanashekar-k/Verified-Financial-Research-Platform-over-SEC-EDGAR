@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "At the end of fiscal 2023, how much bigger were EOG Resources' total assets compared to Halliburton's?"
+  },
+  "request_key": "625b9622367d58ef1e88f9648ff4465c36e72922817a7039f7d4cbdefbe9e87f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003490",
+    "input_tokens": 463,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 47
+  }
+}

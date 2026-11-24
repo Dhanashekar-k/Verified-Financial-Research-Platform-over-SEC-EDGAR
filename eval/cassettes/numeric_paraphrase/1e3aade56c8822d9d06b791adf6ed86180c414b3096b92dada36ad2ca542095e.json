@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "In fiscal 2021, how much more net cash from operating activities did Automatic Data Processing Inc. report than Workday, Inc., as originally reported?"
+  },
+  "request_key": "1e3aade56c8822d9d06b791adf6ed86180c414b3096b92dada36ad2ca542095e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0000385",
+    "input_tokens": 475,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 59
+  }
+}

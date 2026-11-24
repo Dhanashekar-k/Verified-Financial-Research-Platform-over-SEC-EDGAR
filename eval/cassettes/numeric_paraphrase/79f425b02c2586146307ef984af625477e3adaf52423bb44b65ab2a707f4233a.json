@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Can you tell me how much higher Costco Wholesale's total liabilities were than Carvana's at the end of fiscal year 2022?"
+  },
+  "request_key": "79f425b02c2586146307ef984af625477e3adaf52423bb44b65ab2a707f4233a",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003705",
+    "input_tokens": 476,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 53
+  }
+}

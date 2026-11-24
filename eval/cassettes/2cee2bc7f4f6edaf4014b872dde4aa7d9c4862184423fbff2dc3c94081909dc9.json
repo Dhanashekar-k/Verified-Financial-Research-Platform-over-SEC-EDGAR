@@ -1,0 +1,62 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Lockheed Martin's two-year revenue CAGR from FY2020 to FY2022 is about **0.4%**. Total net sales were $65,398 million in FY2020 and $65,984 million in FY2022 [63]. The calculation is (65,984 / 65,398)^(1/2) \u2212 1 \u2248 0.447%, which rounds to 0.4%.",
+    "claims": [
+      {
+        "display": "$65,398 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:LOCKHEEDMARTIN_2022_10K#p63",
+          "quote": "Total net sales",
+          "type": "chunk"
+        },
+        "text": "Lockheed Martin's total net sales in FY2020 were $65,398 million.",
+        "unit": "USD millions",
+        "value": "65398"
+      },
+      {
+        "display": "$65,984 million",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:LOCKHEEDMARTIN_2022_10K#p63",
+          "quote": "Total net sales",
+          "type": "chunk"
+        },
+        "text": "Lockheed Martin's total net sales in FY2022 were $65,984 million.",
+        "unit": "USD millions",
+        "value": "65984"
+      },
+      {
+        "display": "0.4%",
+        "id": "c3",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:LOCKHEEDMARTIN_2022_10K#p63",
+          "quote": "Total net sales",
+          "type": "chunk"
+        },
+        "text": "Lockheed Martin's two-year revenue CAGR from FY2020 to FY2022 is approximately 0.4%.",
+        "unit": "percent",
+        "value": "0.4"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "2cee2bc7f4f6edaf4014b872dde4aa7d9c4862184423fbff2dc3c94081909dc9",
+  "usage": {
+    "batch": false,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.3727774",
+    "input_tokens": 182084,
+    "latency_ms": 11700,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 837
+  }
+}

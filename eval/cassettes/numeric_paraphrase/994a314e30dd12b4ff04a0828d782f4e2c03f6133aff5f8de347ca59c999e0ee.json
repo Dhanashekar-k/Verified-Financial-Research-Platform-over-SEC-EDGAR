@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "What were Cisco Systems' capital expenditures in fiscal 2025?"
+  },
+  "request_key": "994a314e30dd12b4ff04a0828d782f4e2c03f6133aff5f8de347ca59c999e0ee",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0000310",
+    "input_tokens": 450,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 34
+  }
+}

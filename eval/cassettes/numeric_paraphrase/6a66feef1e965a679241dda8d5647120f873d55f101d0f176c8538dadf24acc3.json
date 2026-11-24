@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "What was the stockholders' equity of J.B. Hunt Transport Services, Inc. as of the end of Q2 of fiscal year 2022?"
+  },
+  "request_key": "6a66feef1e965a679241dda8d5647120f873d55f101d0f176c8538dadf24acc3",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003740",
+    "input_tokens": 463,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 57
+  }
+}

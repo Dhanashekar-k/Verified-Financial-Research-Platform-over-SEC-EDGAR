@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Hey, what was Hartford Insurance Group's interest expense in Q2 of 2020?"
+  },
+  "request_key": "c868bf10a672c87304de474fcfa703aefe45c9292e843a8c295f34ea6e072670",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003320",
+    "input_tokens": 464,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 40
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "How much did Jacobs Solutions' interest expense go up or down in percentage terms from Q1 2022 to Q1 2023?"
+  },
+  "request_key": "facc0002781876e59b3216a08ed1f2d5d0a7403f0d532a002867503839562f8c",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003685",
+    "input_tokens": 477,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 52
+  }
+}

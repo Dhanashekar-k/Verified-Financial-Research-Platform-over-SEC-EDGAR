@@ -1,0 +1,62 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "PepsiCo raised its full-year 2023 core constant currency EPS growth guidance by **1 percentage point**, from 8 percent to 9 percent [3].",
+    "claims": [
+      {
+        "display": "1 percentage point",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:PEPSICO_2023Q1_EARNINGS#p3",
+          "quote": "9 percent core constant currency EPS growth (previously 8 percent)",
+          "type": "chunk"
+        },
+        "text": "PepsiCo raised its FY2023 core constant currency EPS growth guidance by 1 percentage point, from 8 percent (previously) to 9 percent (now).",
+        "unit": "percent",
+        "value": "1"
+      },
+      {
+        "display": "9 percent",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:PEPSICO_2023Q1_EARNINGS#p3",
+          "quote": "9 percent core constant currency EPS growth (previously 8 percent)",
+          "type": "chunk"
+        },
+        "text": "The new FY2023 core constant currency EPS growth guidance is 9 percent.",
+        "unit": "percent",
+        "value": "9"
+      },
+      {
+        "display": "8 percent",
+        "id": "c3",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:PEPSICO_2023Q1_EARNINGS#p3",
+          "quote": "9 percent core constant currency EPS growth (previously 8 percent)",
+          "type": "chunk"
+        },
+        "text": "The previous FY2023 core constant currency EPS growth guidance was 8 percent.",
+        "unit": "percent",
+        "value": "8"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "71d3e733c5eb69246e4777a65ea392cc7dc4943711bf07e6ff52aeeae55f0556",
+  "usage": {
+    "batch": false,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0392734",
+    "input_tokens": 16747,
+    "latency_ms": 4167,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 554
+  }
+}

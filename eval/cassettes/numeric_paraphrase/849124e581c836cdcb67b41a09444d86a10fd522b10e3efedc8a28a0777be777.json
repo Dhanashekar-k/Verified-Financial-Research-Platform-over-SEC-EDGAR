@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Can you tell me by what percentage APA Corp's dividends paid changed from fiscal year 2021 to fiscal year 2022?"
+  },
+  "request_key": "849124e581c836cdcb67b41a09444d86a10fd522b10e3efedc8a28a0777be777",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003625",
+    "input_tokens": 460,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 53
+  }
+}

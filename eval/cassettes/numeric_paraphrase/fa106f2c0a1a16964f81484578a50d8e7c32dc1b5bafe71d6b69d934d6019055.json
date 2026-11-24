@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "What was the interest expense reported by Cardinal Health Inc. for the second quarter (Q2) of fiscal year 2026?"
+  },
+  "request_key": "fa106f2c0a1a16964f81484578a50d8e7c32dc1b5bafe71d6b69d934d6019055",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003525",
+    "input_tokens": 450,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 51
+  }
+}

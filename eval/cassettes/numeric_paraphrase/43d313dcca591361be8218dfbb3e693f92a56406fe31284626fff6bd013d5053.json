@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "What was NetApp's operating income for Q2 of fiscal 2025?"
+  },
+  "request_key": "43d313dcca591361be8218dfbb3e693f92a56406fe31284626fff6bd013d5053",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003055",
+    "input_tokens": 446,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 33
+  }
+}

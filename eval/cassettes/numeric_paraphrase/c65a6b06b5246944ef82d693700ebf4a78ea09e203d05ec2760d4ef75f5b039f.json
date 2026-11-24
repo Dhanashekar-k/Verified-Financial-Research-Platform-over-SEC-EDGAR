@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Fastenal interest expense: % change Q1 2023 to Q1 2024?"
+  },
+  "request_key": "c65a6b06b5246944ef82d693700ebf4a78ea09e203d05ec2760d4ef75f5b039f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003265",
+    "input_tokens": 473,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 36
+  }
+}

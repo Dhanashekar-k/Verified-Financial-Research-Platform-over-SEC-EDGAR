@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "How much did CDW's capital expenditures go up or down between fiscal 2020 and fiscal 2021, in percent?"
+  },
+  "request_key": "b00916ba83bb846f6c2f00bc7cca1999b28af636927d50b2f32435f56221ec22",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003490",
+    "input_tokens": 458,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 48
+  }
+}

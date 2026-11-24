@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Jacobs basic EPS Q1 2025?"
+  },
+  "request_key": "29eb5d487ab1090a57bab785d6c3c623d2818ae3854c4629fb4257f6d69434a6",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00002965",
+    "input_tokens": 463,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 26
+  }
+}

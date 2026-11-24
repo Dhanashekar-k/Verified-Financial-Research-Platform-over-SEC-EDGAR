@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Hey, I've been looking into Cardinal Health. How much did it end up paying in interest expense for fiscal 2024?"
+  },
+  "request_key": "a6ad663cb56d9e338ab085353fdabfcc87006d18046f2b5f921ff3f4ac02e58c",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003480",
+    "input_tokens": 451,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 49
+  }
+}

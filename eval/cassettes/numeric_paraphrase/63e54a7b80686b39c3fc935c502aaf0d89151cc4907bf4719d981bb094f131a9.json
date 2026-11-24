@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "How much did Intuit's operating income change in percentage terms from Q1 2025 to Q1 2026?"
+  },
+  "request_key": "63e54a7b80686b39c3fc935c502aaf0d89151cc4907bf4719d981bb094f131a9",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003415",
+    "input_tokens": 468,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 43
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "How much did Quanta Services' capital expenditures go up or down in percentage terms from fiscal 2023 to fiscal 2024?"
+  },
+  "request_key": "b06248436bf1fcb49d4c6357335c4f915140c1c95877874e50d8d74970ec2333",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003645",
+    "input_tokens": 464,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 53
+  }
+}

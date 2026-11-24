@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "What was Quest Diagnostics' selling, general and administrative expense in Q1 2025?"
+  },
+  "request_key": "b1f923ec3505cc673a320652610874ed7857b6334e2920634df24c4f66c9acef",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003270",
+    "input_tokens": 459,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 39
+  }
+}

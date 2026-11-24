@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "In fiscal year 2024, by how much did Realty Income Corp's net cash provided by operating activities exceed that of Humana Inc.?"
+  },
+  "request_key": "63832b11e045bf2b876eb01791b508fee0f8549360bc7bb9ea3926732f795b0e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003670",
+    "input_tokens": 459,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 55
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Hey, how much did Phillips 66's income tax expense go up or down between Q1 2023 and Q1 2024? I'm curious what the percentage change was."
+  },
+  "request_key": "c5cd558cd179f9ded05bbd1b582d091833a5814c836b093772a84d28298d2977",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0000385",
+    "input_tokens": 470,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 60
+  }
+}

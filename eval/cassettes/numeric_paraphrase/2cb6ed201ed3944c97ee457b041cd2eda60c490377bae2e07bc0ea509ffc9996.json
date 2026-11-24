@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Hey, how much did Cencora, Inc. spend on selling, general and administrative expenses in fiscal 2023?"
+  },
+  "request_key": "2cb6ed201ed3944c97ee457b041cd2eda60c490377bae2e07bc0ea509ffc9996",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003470",
+    "input_tokens": 454,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 48
+  }
+}

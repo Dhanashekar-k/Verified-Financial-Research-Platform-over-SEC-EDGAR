@@ -1,0 +1,62 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Walmart's unadjusted operating income margin (operating income \u00f7 total revenues, from the income statement) rose by about **0.2 percentage points** from FY2018 to FY2019 [48].\n\n- FY2019: $21,957M \u00f7 $514,405M \u2248 4.27% [48]\n- FY2018: $20,437M \u00f7 $500,343M \u2248 4.08% [48]\n- Change: \u2248 +0.18 points, which rounds to 0.2 points.",
+    "claims": [
+      {
+        "display": "4.27%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:WALMART_2019_10K#p48",
+          "quote": "Consolidated Statements of Income",
+          "type": "chunk"
+        },
+        "text": "Walmart's FY2019 operating income margin (operating income $21,957M divided by total revenues $514,405M) is about 4.27%.",
+        "unit": "percent",
+        "value": "4.27"
+      },
+      {
+        "display": "4.08%",
+        "id": "c2",
+        "kind": "numeric_derived",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:WALMART_2019_10K#p48",
+          "quote": "Consolidated Statements of Income",
+          "type": "chunk"
+        },
+        "text": "Walmart's FY2018 operating income margin (operating income $20,437M divided by total revenues $500,343M) is about 4.08%.",
+        "unit": "percent",
+        "value": "4.08"
+      },
+      {
+        "display": "0.2%",
+        "id": "c3",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:WALMART_2019_10K#p48",
+          "quote": "Consolidated Statements of Income",
+          "type": "chunk"
+        },
+        "text": "The change in Walmart's unadjusted operating income margin from FY2018 to FY2019 is an increase of about 0.2 percentage points.",
+        "unit": "percent",
+        "value": "0.2"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "e60971a5bb7f61b059a4e541042272dbf653b341ae799f88bd651ecab03b1e6d",
+  "usage": {
+    "batch": false,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.3343594",
+    "input_tokens": 161030,
+    "latency_ms": 8854,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 1206
+  }
+}

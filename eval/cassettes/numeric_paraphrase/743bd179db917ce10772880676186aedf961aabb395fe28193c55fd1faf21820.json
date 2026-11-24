@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Hey, I've been looking at NextEra Energy and Kinder Morgan. At the end of fiscal 2022, how much more in total liabilities did NextEra Energy have compared to Kinder Morgan?"
+  },
+  "request_key": "743bd179db917ce10772880676186aedf961aabb395fe28193c55fd1faf21820",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00004320",
+    "input_tokens": 474,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 78
+  }
+}

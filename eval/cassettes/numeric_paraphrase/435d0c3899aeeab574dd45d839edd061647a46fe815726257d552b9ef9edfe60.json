@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "How much did Starbucks spend on capital expenditures in Q1 of fiscal 2022?"
+  },
+  "request_key": "435d0c3899aeeab574dd45d839edd061647a46fe815726257d552b9ef9edfe60",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003260",
+    "input_tokens": 452,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 40
+  }
+}

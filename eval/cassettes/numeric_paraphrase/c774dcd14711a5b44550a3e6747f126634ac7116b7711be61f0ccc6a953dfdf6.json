@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "How much interest expense did Oracle Corp have in Q1 of fiscal 2026?"
+  },
+  "request_key": "c774dcd14711a5b44550a3e6747f126634ac7116b7711be61f0ccc6a953dfdf6",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003190",
+    "input_tokens": 448,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 38
+  }
+}

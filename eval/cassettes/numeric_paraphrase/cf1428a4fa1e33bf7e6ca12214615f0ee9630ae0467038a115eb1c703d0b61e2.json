@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "How much did Expand Energy's capital spending go up or down between 2021 and 2022, in percentage terms?"
+  },
+  "request_key": "cf1428a4fa1e33bf7e6ca12214615f0ee9630ae0467038a115eb1c703d0b61e2",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003440",
+    "input_tokens": 468,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 44
+  }
+}

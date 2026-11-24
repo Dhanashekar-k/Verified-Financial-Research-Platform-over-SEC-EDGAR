@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Hey, I've been looking at Principal Financial Group and BXP. At the end of fiscal 2024, how much bigger were Principal Financial's total liabilities compared to BXP's?"
+  },
+  "request_key": "823d5b9c0f0958d7235b5808fb06a01680aa2ef41eceb03e34b4b3c69c6608b5",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00004135",
+    "input_tokens": 477,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 70
+  }
+}

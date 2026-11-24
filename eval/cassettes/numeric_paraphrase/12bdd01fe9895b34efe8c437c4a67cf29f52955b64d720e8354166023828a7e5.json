@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Hey, I was looking at Fidelity National Information Services (FIS) and wondering what their income tax expense came to in Q3 of fiscal 2022, as originally reported?"
+  },
+  "request_key": "12bdd01fe9895b34efe8c437c4a67cf29f52955b64d720e8354166023828a7e5",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003980",
+    "input_tokens": 466,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 66
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "MCK vs CAH SG&A FY2023 as originally reported: how much higher was McKesson's?"
+  },
+  "request_key": "dce58e7340079efea7b9927d9197762e2624d5a85fd4eecb6a6b529bda94e22e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003470",
+    "input_tokens": 479,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 43
+  }
+}

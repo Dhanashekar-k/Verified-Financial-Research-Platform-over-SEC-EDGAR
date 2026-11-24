@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "At the end of fiscal 2021, how many more common shares were outstanding for D.R. Horton than for Jacobs Solutions?"
+  },
+  "request_key": "d711c896935a30f556f7bd632ada866b6977336c9838b526f14c170ba4829777",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003665",
+    "input_tokens": 473,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 52
+  }
+}

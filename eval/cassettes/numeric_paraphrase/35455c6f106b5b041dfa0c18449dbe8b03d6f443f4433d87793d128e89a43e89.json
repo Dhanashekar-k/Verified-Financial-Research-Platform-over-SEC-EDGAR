@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Can you tell me how much higher SLB Limited/NV's capital expenditures were than Martin Marietta Materials Inc's in fiscal year 2023, as originally reported?"
+  },
+  "request_key": "35455c6f106b5b041dfa0c18449dbe8b03d6f443f4433d87793d128e89a43e89",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00004085",
+    "input_tokens": 482,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 67
+  }
+}

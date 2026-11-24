@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "UAL stockholders' equity FY2025 year-end?"
+  },
+  "request_key": "049d9aa1bce7e504ff11123ed576194100afc92551b0acc54585103c5f8cc1b8",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003005",
+    "input_tokens": 461,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 28
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not report a wages expense line, and they cover fiscal 2022 (ended January 28, 2023), not FY2023. The closest related figure is SG&A, which includes store payroll and benefits. SG&A fell to 23.5% of net sales in fiscal 2022 from 23.9% in fiscal 2021 [2]. The release says this was partly offset by deleverage of store payroll and benefits due to wage investments [2]. Wages as a percent of net sales, and any FY2023 result, cannot be determined from these passages.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "SG&A expenses decreased to 23.5% of net sales in fiscal 2022 from 23.9% in fiscal 2021, partially offset by deleverage of store payroll and benefits due to wage investments."
+      ],
+      "missing": [
+        "A wages or payroll expense line item as a percent of net sales",
+        "Fiscal 2023 actual results"
+      ],
+      "reason": "The passages do not break out wages expense as a percent of net sales, and they cover fiscal 2022 (ended January 28, 2023) results with only an FY2023 outlook, not FY2023 actuals."
+    }
+  },
+  "request_key": "a5e674e54a76f990bdf883a5910817547cdddb359fa618624418caf5c630adc6",
+  "usage": {
+    "batch": false,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0229294",
+    "input_tokens": 9420,
+    "latency_ms": 3902,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 385
+  }
+}

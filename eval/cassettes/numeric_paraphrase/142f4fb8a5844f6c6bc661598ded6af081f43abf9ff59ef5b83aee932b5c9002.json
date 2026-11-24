@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Hubbell noncurrent LT debt end of Q1 FY2024?"
+  },
+  "request_key": "142f4fb8a5844f6c6bc661598ded6af081f43abf9ff59ef5b83aee932b5c9002",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003160",
+    "input_tokens": 462,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 34
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Can you tell me how many common shares DTE Energy Co had outstanding at the end of fiscal year 2021?"
+  },
+  "request_key": "7f9bc82b6418c5482548219fa7cfbe77d1a5679be58fc8b7b8057c60da506c92",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003425",
+    "input_tokens": 455,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 46
+  }
+}

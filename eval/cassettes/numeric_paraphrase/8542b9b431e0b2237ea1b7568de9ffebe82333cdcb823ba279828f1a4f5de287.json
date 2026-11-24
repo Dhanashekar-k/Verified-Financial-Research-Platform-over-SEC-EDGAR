@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Quick one: how much bigger were Expand Energy's total assets vs Vulcan Materials' at FY2025 year-end?"
+  },
+  "request_key": "8542b9b431e0b2237ea1b7568de9ffebe82333cdcb823ba279828f1a4f5de287",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003625",
+    "input_tokens": 470,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 51
+  }
+}

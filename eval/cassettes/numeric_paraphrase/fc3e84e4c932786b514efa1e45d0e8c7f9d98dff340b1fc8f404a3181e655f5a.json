@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "How much did Expeditors International of Washington's operating income change in percentage terms from Q3 2021 to Q3 2022?"
+  },
+  "request_key": "fc3e84e4c932786b514efa1e45d0e8c7f9d98dff340b1fc8f404a3181e655f5a",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003660",
+    "input_tokens": 487,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 49
+  }
+}

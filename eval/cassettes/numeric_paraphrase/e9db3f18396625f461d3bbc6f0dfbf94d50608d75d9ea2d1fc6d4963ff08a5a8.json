@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "What was Mastercard's interest expense in Q1 2024?"
+  },
+  "request_key": "e9db3f18396625f461d3bbc6f0dfbf94d50608d75d9ea2d1fc6d4963ff08a5a8",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00002965",
+    "input_tokens": 448,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 29
+  }
+}

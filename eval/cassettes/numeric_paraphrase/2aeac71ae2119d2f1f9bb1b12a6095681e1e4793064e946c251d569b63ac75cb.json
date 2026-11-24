@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "What was Jacobs Solutions Inc.'s basic earnings per share (EPS) for fiscal year 2023?"
+  },
+  "request_key": "2aeac71ae2119d2f1f9bb1b12a6095681e1e4793064e946c251d569b63ac75cb",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0000345",
+    "input_tokens": 450,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 48
+  }
+}

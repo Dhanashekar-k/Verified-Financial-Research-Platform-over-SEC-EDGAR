@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "What was the percentage change in PulteGroup Inc.'s capital expenditures between fiscal year 2022 and fiscal year 2023?"
+  },
+  "request_key": "e9d2cd2294c77cfe3b7c4ce7b2afb478fd374eda963a38eca5caad4033cc77d5",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003695",
+    "input_tokens": 464,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 55
+  }
+}

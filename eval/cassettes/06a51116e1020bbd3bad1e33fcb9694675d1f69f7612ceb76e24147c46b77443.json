@@ -1,0 +1,76 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Yes. MGM Resorts paid dividends to common shareholders in FY2022: quarterly dividends of $0.0025 per share in March, June, September and December 2022, totaling $4 million for the year [47]. The cash flow statement shows $4,048 thousand of dividends paid to common shareholders [62]. The company maintained an annual dividend of $0.01 per share throughout 2022, and in February 2023 it announced the suspension of ongoing dividends [32].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:MGMRESORTS_2022_10K#p47",
+          "quote": "In March 2022, June 2022, September 2022, and December 2022, we paid dividends of $0.0025 per share, totaling $4 million for 2022.",
+          "type": "chunk"
+        },
+        "text": "MGM Resorts paid quarterly dividends to common shareholders in 2022 (March, June, September and December), at $0.0025 per share each.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": "$4,048 thousand",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:MGMRESORTS_2022_10K#p62",
+          "quote": "Dividends paid to common shareholders\n(4,048)",
+          "type": "chunk"
+        },
+        "text": "Dividends paid to common shareholders in 2022 totaled $4,048 thousand.",
+        "unit": "USD thousands",
+        "value": "4048"
+      },
+      {
+        "display": "$0.01 per share",
+        "id": "c3",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:MGMRESORTS_2022_10K#p32",
+          "quote": "We maintained an annual dividend of $0.01 per share throughout 2022.",
+          "type": "chunk"
+        },
+        "text": "The company maintained an annual dividend of $0.01 per share throughout 2022.",
+        "unit": "USD/shares",
+        "value": "0.01"
+      },
+      {
+        "display": null,
+        "id": "c4",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:MGMRESORTS_2022_10K#p32",
+          "quote": "On February 8, 2023, we announced that the Board of Directors has determined to suspend the ongoing dividends",
+          "type": "chunk"
+        },
+        "text": "On February 8, 2023, the Board announced it would suspend ongoing dividends in favor of share repurchases.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "06a51116e1020bbd3bad1e33fcb9694675d1f69f7612ceb76e24147c46b77443",
+  "usage": {
+    "batch": false,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.5067094",
+    "input_tokens": 249275,
+    "latency_ms": 5562,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 792
+  }
+}

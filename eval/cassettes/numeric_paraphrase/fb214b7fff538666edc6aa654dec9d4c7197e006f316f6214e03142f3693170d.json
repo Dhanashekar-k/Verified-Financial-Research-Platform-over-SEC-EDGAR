@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Hey, how much did ON Semiconductor's interest expense go up or down between Q1 2022 and Q1 2023? I'm curious what the percentage change was."
+  },
+  "request_key": "fb214b7fff538666edc6aa654dec9d4c7197e006f316f6214e03142f3693170d",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003920",
+    "input_tokens": 479,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 61
+  }
+}

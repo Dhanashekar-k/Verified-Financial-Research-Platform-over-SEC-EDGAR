@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "What was the percentage change in Martin Marietta Materials, Inc.'s income tax expense between the third quarter of fiscal year 2023 and the third quarter of fiscal year 2024, as originally reported?"
+  },
+  "request_key": "94cde8f2f2e77a4a4b28a572fac8a702665d2d51874ebc8cfeefd406288805d1",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00004340",
+    "input_tokens": 483,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 77
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "What was the noncurrent portion of long-term debt reported by Hubbell Inc. at the end of fiscal year 2021?"
+  },
+  "request_key": "ab2c4ce072fb46746df6e0b98251675bb9e77666f5defabc96fb04ed253bf9b9",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003495",
+    "input_tokens": 449,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 50
+  }
+}

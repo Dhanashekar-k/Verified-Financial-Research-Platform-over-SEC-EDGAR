@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "In fiscal year 2024, how much more interest expense did Domino's Pizza have compared to Henry Schein?"
+  },
+  "request_key": "b5047902633736a963538d40eecabda74d5607905878f356a1b6edd8c4cc0306",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003460",
+    "input_tokens": 462,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 46
+  }
+}

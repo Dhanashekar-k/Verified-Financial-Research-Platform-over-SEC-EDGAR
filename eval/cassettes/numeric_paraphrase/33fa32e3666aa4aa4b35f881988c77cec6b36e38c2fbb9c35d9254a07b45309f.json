@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "What was Host Hotels & Resorts' stockholders' equity at the end of Q3 2022?"
+  },
+  "request_key": "33fa32e3666aa4aa4b35f881988c77cec6b36e38c2fbb9c35d9254a07b45309f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0000335",
+    "input_tokens": 465,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 41
+  }
+}

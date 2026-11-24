@@ -1,0 +1,62 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "No. J&J's guidance implies adjusted EPS growth in FY2023 is expected to slow rather than accelerate. FY2022 adjusted EPS was $10.15, up 3.6% from $9.80 [2]. For FY2023, the company guides adjusted EPS (diluted) of $10.45\u2013$10.65, with a $10.55 mid-point, a 3.0%\u20135.0% change vs. the prior year and a 4.0% mid-point [5]. On an adjusted operational basis, EPS guidance is $10.50 at the mid-point, or 3.5% growth [5]. At the mid-point, reported-basis adjusted EPS growth of 4.0% is only slightly above 2022's 3.6%, and the operational measure's 3.5% is slightly below it [2][5]. Overall this is roughly stable to modestly higher growth, not a clear acceleration.",
+    "claims": [
+      {
+        "display": "3.6%",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:JOHNSON_JOHNSON_2022Q4_EARNINGS#p2",
+          "quote": "$10.15 \n$9.80 \n3.6%",
+          "type": "chunk"
+        },
+        "text": "J&J's FY2022 adjusted diluted EPS was $10.15, up 3.6% from $9.80 in FY2021.",
+        "unit": "percent",
+        "value": "3.6"
+      },
+      {
+        "display": "4.0%",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:JOHNSON_JOHNSON_2022Q4_EARNINGS#p5",
+          "quote": "$10.45 \u2013 $10.65 / $10.55 \nChange vs. Prior Year / Mid-point \n3.0% \u2013 5.0% / 4.0%",
+          "type": "chunk"
+        },
+        "text": "J&J guides FY2023 adjusted EPS (diluted) mid-point of $10.55, a 4.0% mid-point change vs. prior year (range 3.0%\u20135.0%).",
+        "unit": "percent",
+        "value": "4"
+      },
+      {
+        "display": "3.5%",
+        "id": "c3",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:JOHNSON_JOHNSON_2022Q4_EARNINGS#p1",
+          "quote": "adjusted operational EPS of $10.50, reflecting growth of 3.5%*",
+          "type": "chunk"
+        },
+        "text": "J&J guides FY2023 adjusted operational EPS of $10.50 at the mid-point, reflecting growth of 3.5%.",
+        "unit": "percent",
+        "value": "3.5"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "7c647623cbfd28b07935303d8c43c169bafdab6b68a97b64984c6a5979b25018",
+  "usage": {
+    "batch": false,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0714974",
+    "input_tokens": 31219,
+    "latency_ms": 6368,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 882
+  }
+}

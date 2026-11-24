@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "In 2020, which had a bigger income tax expense, Chubb Ltd. or KKR & Co. Inc., and by how much?"
+  },
+  "request_key": "963289f1ddd9c5b02962eaeacca7d92e58d97a76da55f2f3d73c03f76a975bae",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003605",
+    "input_tokens": 461,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 52
+  }
+}

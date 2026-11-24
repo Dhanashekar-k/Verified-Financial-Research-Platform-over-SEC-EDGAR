@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "How much did Cencora's capital expenditures change in percentage terms between fiscal 2021 and fiscal 2022?"
+  },
+  "request_key": "450359eeee7a8dd176941e17fe5157040b9aaf2a55bac0ed270b8d58c7f5c8e5",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003495",
+    "input_tokens": 459,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 48
+  }
+}

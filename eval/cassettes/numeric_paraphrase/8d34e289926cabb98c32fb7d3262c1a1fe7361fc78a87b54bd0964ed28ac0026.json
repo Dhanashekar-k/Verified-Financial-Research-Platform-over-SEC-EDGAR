@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Can you tell me what GENUINE PARTS CO's capital expenditures were in fiscal year 2022?"
+  },
+  "request_key": "8d34e289926cabb98c32fb7d3262c1a1fe7361fc78a87b54bd0964ed28ac0026",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003385",
+    "input_tokens": 452,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 45
+  }
+}

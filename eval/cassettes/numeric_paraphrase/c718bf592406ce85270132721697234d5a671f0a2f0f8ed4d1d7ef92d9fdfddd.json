@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "How much did McKesson's interest expense change in percentage terms between fiscal 2021 and fiscal 2022?"
+  },
+  "request_key": "c718bf592406ce85270132721697234d5a671f0a2f0f8ed4d1d7ef92d9fdfddd",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003430",
+    "input_tokens": 456,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 46
+  }
+}

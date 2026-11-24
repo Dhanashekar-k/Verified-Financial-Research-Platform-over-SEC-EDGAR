@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "How much did McCormick's interest expense change in percentage terms from Q2 2021 to Q2 2022?"
+  },
+  "request_key": "eba1a37caa3bf21665104a3e4fc2bc27724f78cfd59856c17e5854f34a259725",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003460",
+    "input_tokens": 472,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 44
+  }
+}

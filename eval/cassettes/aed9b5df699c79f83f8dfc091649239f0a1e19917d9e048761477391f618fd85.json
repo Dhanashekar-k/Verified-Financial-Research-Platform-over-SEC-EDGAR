@@ -1,0 +1,62 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Excluding FX movements, raw material pass-through and items affecting comparability, Amcor's FY2023 net sales change versus FY2022 was essentially flat (0%, i.e. \"in line with the prior year\"). This is the comparable constant currency growth: reported growth of 1%, less FX of (3)%, plus constant-currency growth of 4%, less raw material pass-through of 5% and items affecting comparability of (1)%, which nets to about 0% [1][10]. Volumes were about 3% lower, offset by price/mix benefits of about 3% [2].",
+    "claims": [
+      {
+        "display": "0%",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:AMCOR_2023Q4_EARNINGS#p2",
+          "quote": "Net sales on a comparable constant currency basis were in line with the prior year",
+          "type": "chunk"
+        },
+        "text": "Amcor's FY2023 comparable constant currency net sales growth (excluding FX, raw material pass-through and items affecting comparability) was 0%, i.e. in line with the prior year.",
+        "unit": "percent",
+        "value": "0"
+      },
+      {
+        "display": "$14,694 million",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:AMCOR_2023Q4_EARNINGS#p1",
+          "quote": "Net sales of $14,694 million, in line with the prior year on a comparable constant currency basis;",
+          "type": "chunk"
+        },
+        "text": "Reported net sales rose from $14,544 million in FY2022 to $14,694 million in FY2023.",
+        "unit": "USD millions",
+        "value": "14694"
+      },
+      {
+        "display": "3%",
+        "id": "c3",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:AMCOR_2023Q4_EARNINGS#p2",
+          "quote": "largely reflecting price/mix benefits of \napproximately 3%.  Full year volumes were approximately 3% lower than last year.",
+          "type": "chunk"
+        },
+        "text": "Full-year volumes were approximately 3% lower, offset by price/mix benefits of approximately 3%.",
+        "unit": "percent",
+        "value": "3"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "aed9b5df699c79f83f8dfc091649239f0a1e19917d9e048761477391f618fd85",
+  "usage": {
+    "batch": false,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0458734",
+    "input_tokens": 19177,
+    "latency_ms": 5270,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 728
+  }
+}

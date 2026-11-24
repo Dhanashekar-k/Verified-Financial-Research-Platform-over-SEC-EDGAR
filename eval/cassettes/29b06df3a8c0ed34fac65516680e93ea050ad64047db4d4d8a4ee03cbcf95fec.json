@@ -1,0 +1,90 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "**Yes, PayPal had positive working capital at December 31, 2022, but the metric is of limited use for this company.**\n\n- Total current assets were $57,517 million and total current liabilities were $45,101 million [61]. That gives working capital of about $12,416 million (current ratio of about 1.28).\n- The figure is distorted by customer-related items. Current assets include $36,357 million of funds receivable and customer accounts, and current liabilities include $40,107 million of funds payable and amounts due to customers [61]. The customer-account assets are restricted to meet regulatory requirements and are held to cover customer balances [72]. They are therefore not freely available liquidity.\n- A more meaningful liquidity measure is corporate cash, cash equivalents and investments, which were $13,723 million [45]. PayPal also had $5.0 billion of undrawn borrowing capacity under its revolving credit facility [48].",
+    "claims": [
+      {
+        "display": "$57,517 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:PAYPAL_2022_10K#p61",
+          "quote": "Total current assets",
+          "type": "chunk"
+        },
+        "text": "PayPal's total current assets as of December 31, 2022 were $57,517 million.",
+        "unit": "USD millions",
+        "value": "57517"
+      },
+      {
+        "display": "$45,101 million",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:PAYPAL_2022_10K#p61",
+          "quote": "Total current liabilities",
+          "type": "chunk"
+        },
+        "text": "PayPal's total current liabilities as of December 31, 2022 were $45,101 million.",
+        "unit": "USD millions",
+        "value": "45101"
+      },
+      {
+        "display": "$12,416 million",
+        "id": "c3",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:PAYPAL_2022_10K#p61",
+          "quote": "Total current assets",
+          "type": "chunk"
+        },
+        "text": "PayPal's working capital (current assets minus current liabilities) at December 31, 2022 was about $12,416 million, which is positive.",
+        "unit": "USD millions",
+        "value": "12416"
+      },
+      {
+        "display": "$40,107 million",
+        "id": "c4",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:PAYPAL_2022_10K#p61",
+          "quote": "Funds payable and amounts due to customers",
+          "type": "chunk"
+        },
+        "text": "Funds payable and amounts due to customers were $40,107 million in current liabilities at December 31, 2022, largely offsetting customer-account assets in current assets, which distorts working capital.",
+        "unit": "USD millions",
+        "value": "40107"
+      },
+      {
+        "display": "$13,723 million",
+        "id": "c5",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:PAYPAL_2022_10K#p45",
+          "quote": "Cash, cash equivalents, and investments",
+          "type": "chunk"
+        },
+        "text": "Cash, cash equivalents, and investments (excluding customer funds) were $13,723 million at December 31, 2022.",
+        "unit": "USD millions",
+        "value": "13723"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "29b06df3a8c0ed34fac65516680e93ea050ad64047db4d4d8a4ee03cbcf95fec",
+  "usage": {
+    "batch": false,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.3487934",
+    "input_tokens": 167112,
+    "latency_ms": 9828,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 1433
+  }
+}

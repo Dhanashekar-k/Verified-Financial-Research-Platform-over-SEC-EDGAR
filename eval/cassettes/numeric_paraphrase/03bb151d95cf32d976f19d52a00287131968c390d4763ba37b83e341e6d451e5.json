@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "In fiscal year 2023, how much more net cash from operating activities did McKesson Corp generate compared with TE Connectivity plc?"
+  },
+  "request_key": "03bb151d95cf32d976f19d52a00287131968c390d4763ba37b83e341e6d451e5",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003620",
+    "input_tokens": 459,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 53
+  }
+}

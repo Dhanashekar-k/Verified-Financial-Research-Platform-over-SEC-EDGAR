@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "What were the capital expenditures of Cardinal Health Inc. in Q1 of fiscal year 2021?"
+  },
+  "request_key": "2a9a1e960246f549e3de0bd36b9505740b71966ddbc5ab024be43b99930b1efe",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003385",
+    "input_tokens": 452,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 45
+  }
+}

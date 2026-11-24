@@ -477,6 +477,62 @@ def test_second_source_match_mismatch_and_missing(table: mn.ValueTable) -> None:
     assert mn.check_fact(f, None)[0] == "not_found"
 
 
+def _cf_dates(f: Fact, end: str, start: str | None, val: str) -> dict[str, Any]:
+    entry: dict[str, Any] = {"accn": f.accession, "end": end, "val": val}
+    if start:
+        entry["start"] = start
+    return {"facts": {"us-gaap": {f.tag: {"units": {f.uom: [entry]}}}}}
+
+
+def test_second_source_tolerates_52_53_week_period_dates(table: mn.ValueTable) -> None:
+    """FSDS period dates are month-end normalized; a 52/53-week filer's real dates are a few days
+    off (Sysco FY2023 ends 2023-07-01). Same accession and exact value still decide."""
+    v = table.get("revenue", (1, 2023, "FY"))
+    assert v is not None
+    f = v.inputs[0].fact
+    assert f.period_start is not None
+    end = f.period_end.fromordinal(f.period_end.toordinal() + 1).isoformat()  # 1 day late
+    start = f.period_start.fromordinal(f.period_start.toordinal() - 6).isoformat()  # 6 days early
+    assert mn.check_fact(f, _cf_dates(f, end, start, "12000000000"))[0] == "match"
+    assert mn.check_fact(f, _cf_dates(f, end, start, "12000000001"))[0] == "mismatch"  # value exact
+
+
+@pytest.mark.parametrize(("days", "expected"), [(7, "match"), (-7, "match"), (8, "not_found")])
+@pytest.mark.parametrize("which", ["end", "start"])
+def test_second_source_slack_boundary_is_7_days_on_both_dates(
+    table: mn.ValueTable, days: int, expected: str, which: str
+) -> None:
+    v = table.get("revenue", (1, 2023, "FY"))
+    assert v is not None
+    f = v.inputs[0].fact
+    assert f.period_start is not None
+    end, start = f.period_end, f.period_start
+    if which == "end":
+        end = end.fromordinal(end.toordinal() + days)
+    else:
+        start = start.fromordinal(start.toordinal() + days)
+    cf = _cf_dates(f, end.isoformat(), start.isoformat(), "12000000000")
+    assert mn.check_fact(f, cf)[0] == expected
+
+
+def test_second_source_does_not_match_a_comparative_or_a_distant_date(
+    table: mn.ValueTable,
+) -> None:
+    v = table.get("revenue", (1, 2023, "FY"))
+    assert v is not None
+    f = v.inputs[0].fact
+    assert f.period_start is not None
+    prior_end = f.period_end.replace(year=f.period_end.year - 1).isoformat()
+    prior_start = f.period_start.replace(year=f.period_start.year - 1).isoformat()
+    # the prior-year column of the same filing carries the same accession: never this fact
+    assert mn.check_fact(f, _cf_dates(f, prior_end, prior_start, "12000000000"))[0] == "not_found"
+    far = f.period_end.fromordinal(f.period_end.toordinal() + 8).isoformat()  # one day past slack
+    assert mn.check_fact(f, _cf_dates(f, far, f.period_start.isoformat(), "12000000000"))[0] == (
+        "not_found"
+    )
+    assert mn.check_fact(f, _cf_dates(f, "not-a-date", None, "12000000000"))[0] == "not_found"
+
+
 @pytest.mark.parametrize(
     ("metric", "tag", "value"),
     [
@@ -575,7 +631,9 @@ def test_main_refuses_an_empty_allowlist(tmp_path: Path) -> None:
     allow = tmp_path / "verified.txt"
     allow.write_text("# nothing verified yet\n")
     with pytest.raises(SystemExit, match="no verified metric"):
-        mn.main(["--dsn", "postgresql://unused", "--verified", str(allow)])
+        # --overwrite: the real drafts now exist, and the guard against clobbering them would
+        # fire before the allowlist check this test is about (it exits before writing anything)
+        mn.main(["--dsn", "postgresql://unused", "--verified", str(allow), "--overwrite"])
 
 
 def test_main_refuses_output_outside_drafts(tmp_path: Path) -> None:

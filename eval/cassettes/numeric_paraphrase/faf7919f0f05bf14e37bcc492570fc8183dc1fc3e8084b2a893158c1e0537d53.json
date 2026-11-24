@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Comcast cash & equivalents end of Q3 FY2022?"
+  },
+  "request_key": "faf7919f0f05bf14e37bcc492570fc8183dc1fc3e8084b2a893158c1e0537d53",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003080",
+    "input_tokens": 461,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 31
+  }
+}

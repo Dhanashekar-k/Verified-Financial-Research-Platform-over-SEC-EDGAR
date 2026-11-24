@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Hey, how much did Gilead Sciences' net income change in percentage terms between Q1 2023 and Q1 2024?"
+  },
+  "request_key": "1ec9fb647296fdd57eacfeeb6e467371629cbee1f95b20dc8286701566b97cff",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003635",
+    "input_tokens": 477,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 50
+  }
+}

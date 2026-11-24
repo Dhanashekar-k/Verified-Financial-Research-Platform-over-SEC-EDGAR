@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "How much did Microsoft spend on research and development in Q2 of fiscal 2026?"
+  },
+  "request_key": "8f6dede0ed124e1b39a666ef2c477ec61b1fc3fd9c3abe7bfca09a591ec29b94",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003180",
+    "input_tokens": 451,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 37
+  }
+}

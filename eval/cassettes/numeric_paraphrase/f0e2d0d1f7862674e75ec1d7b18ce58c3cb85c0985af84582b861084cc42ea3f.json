@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "How much did EchoStar Corp's research and development expense change in percentage terms between Q3 2021 and Q3 2022?"
+  },
+  "request_key": "f0e2d0d1f7862674e75ec1d7b18ce58c3cb85c0985af84582b861084cc42ea3f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003555",
+    "input_tokens": 466,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 49
+  }
+}

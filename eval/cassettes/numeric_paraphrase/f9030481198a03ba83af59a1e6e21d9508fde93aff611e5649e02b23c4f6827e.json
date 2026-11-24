@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Hey, what were Foot Locker's total liabilities at the end of fiscal 2022?"
+  },
+  "request_key": "f9030481198a03ba83af59a1e6e21d9508fde93aff611e5649e02b23c4f6827e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003255",
+    "input_tokens": 456,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 39
+  }
+}

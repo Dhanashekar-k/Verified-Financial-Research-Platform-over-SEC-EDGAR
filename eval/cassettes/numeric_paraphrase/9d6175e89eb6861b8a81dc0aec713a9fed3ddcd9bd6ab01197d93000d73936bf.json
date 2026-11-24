@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Con Ed income tax expense % chg Q2 FY22 to Q2 FY23?"
+  },
+  "request_key": "9d6175e89eb6861b8a81dc0aec713a9fed3ddcd9bd6ab01197d93000d73936bf",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003380",
+    "input_tokens": 481,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 39
+  }
+}

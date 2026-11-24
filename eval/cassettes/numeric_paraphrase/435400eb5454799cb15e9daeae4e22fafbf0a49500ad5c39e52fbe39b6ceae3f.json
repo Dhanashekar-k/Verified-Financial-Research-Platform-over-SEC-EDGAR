@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Can you tell me by what percentage EOG Resources' net cash from operating activities changed from fiscal year 2020 to fiscal year 2021, as originally reported?"
+  },
+  "request_key": "435400eb5454799cb15e9daeae4e22fafbf0a49500ad5c39e52fbe39b6ceae3f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0000395",
+    "input_tokens": 475,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 63
+  }
+}

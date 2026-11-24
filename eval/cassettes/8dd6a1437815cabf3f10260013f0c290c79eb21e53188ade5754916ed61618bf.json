@@ -1,0 +1,76 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "In FY2022, J&J's U.S. sales grew faster than international sales. U.S. sales rose 3.0% to $48,580 million, while international sales fell 0.6% to $46,363 million on a reported basis [1][2]. Excluding currency, international operational growth was 9.1% versus 3.0% for the U.S., so currency headwinds of 9.7% drove the reported international decline [2].",
+    "claims": [
+      {
+        "display": "3.0%",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:JOHNSON_JOHNSON_2022Q4_EARNINGS#p2",
+          "quote": "U.S. \n$48,580  \n$47,156  \n3.0% \n3.0 \n- \n3.0",
+          "type": "chunk"
+        },
+        "text": "J&J's U.S. sales grew 3.0% on a reported basis in full-year 2022, to $48,580 million.",
+        "unit": "percent",
+        "value": "3"
+      },
+      {
+        "display": "0.6%",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:JOHNSON_JOHNSON_2022Q4_EARNINGS#p2",
+          "quote": "International \n46,363 \n46,619 \n(0.6)% \n9.1 \n(9.7) \n9.3",
+          "type": "chunk"
+        },
+        "text": "J&J's international sales declined 0.6% on a reported basis in full-year 2022, to $46,363 million.",
+        "unit": "percent",
+        "value": "-0.6"
+      },
+      {
+        "display": "9.1%",
+        "id": "c3",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:JOHNSON_JOHNSON_2022Q4_EARNINGS#p2",
+          "quote": "International \n46,363 \n46,619 \n(0.6)% \n9.1 \n(9.7) \n9.3",
+          "type": "chunk"
+        },
+        "text": "International operational sales growth excluding currency was 9.1% in FY2022, versus 3.0% for the U.S.",
+        "unit": "percent",
+        "value": "9.1"
+      },
+      {
+        "display": "9.7%",
+        "id": "c4",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:JOHNSON_JOHNSON_2022Q4_EARNINGS#p2",
+          "quote": "International \n46,363 \n46,619 \n(0.6)% \n9.1 \n(9.7) \n9.3",
+          "type": "chunk"
+        },
+        "text": "Currency reduced international sales growth by 9.7% in FY2022.",
+        "unit": "percent",
+        "value": "-9.7"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "8dd6a1437815cabf3f10260013f0c290c79eb21e53188ade5754916ed61618bf",
+  "usage": {
+    "batch": false,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0714094",
+    "input_tokens": 31215,
+    "latency_ms": 5743,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 874
+  }
+}

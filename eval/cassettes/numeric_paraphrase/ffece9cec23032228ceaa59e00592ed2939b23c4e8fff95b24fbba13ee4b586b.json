@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "What was Netflix's diluted earnings per share in Q1 2021?"
+  },
+  "request_key": "ffece9cec23032228ceaa59e00592ed2939b23c4e8fff95b24fbba13ee4b586b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003035",
+    "input_tokens": 447,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 32
+  }
+}

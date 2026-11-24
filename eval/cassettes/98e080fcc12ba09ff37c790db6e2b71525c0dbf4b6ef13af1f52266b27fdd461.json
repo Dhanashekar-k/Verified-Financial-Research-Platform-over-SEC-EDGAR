@@ -1,0 +1,62 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Adobe's FY2017 operating cash flow ratio is about **0.83**: net cash provided by operating activities of $2,912,853 thousand [61] divided by total current liabilities of $3,527,457 thousand [57] (2,912,853 / 3,527,457 \u2248 0.826).",
+    "claims": [
+      {
+        "display": "$2,912,853 thousand",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:ADOBE_2017_10K#p61",
+          "quote": "Net cash provided by operating activities\n2,912,853",
+          "type": "chunk"
+        },
+        "text": "Adobe's net cash provided by operating activities in fiscal 2017 was $2,912,853 thousand.",
+        "unit": "USD thousands",
+        "value": "2912853"
+      },
+      {
+        "display": "$3,527,457 thousand",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:ADOBE_2017_10K#p57",
+          "quote": "Total current liabilities\n3,527,457",
+          "type": "chunk"
+        },
+        "text": "Adobe's total current liabilities as of December 1, 2017 were $3,527,457 thousand.",
+        "unit": "USD thousands",
+        "value": "3527457"
+      },
+      {
+        "display": "0.83",
+        "id": "c3",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:ADOBE_2017_10K#p61",
+          "quote": "Net cash provided by operating activities\n2,912,853",
+          "type": "chunk"
+        },
+        "text": "Adobe's FY2017 operating cash flow ratio (cash from operations divided by total current liabilities) is approximately 0.83.",
+        "unit": "ratio",
+        "value": "0.83"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "98e080fcc12ba09ff37c790db6e2b71525c0dbf4b6ef13af1f52266b27fdd461",
+  "usage": {
+    "batch": false,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.2932454",
+    "input_tokens": 143573,
+    "latency_ms": 5905,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 586
+  }
+}

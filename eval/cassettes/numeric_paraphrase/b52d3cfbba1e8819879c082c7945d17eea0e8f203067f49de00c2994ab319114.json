@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "NEWMONT dividends paid: % change FY2022 to FY2023?"
+  },
+  "request_key": "b52d3cfbba1e8819879c082c7945d17eea0e8f203067f49de00c2994ab319114",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0000320",
+    "input_tokens": 470,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 34
+  }
+}

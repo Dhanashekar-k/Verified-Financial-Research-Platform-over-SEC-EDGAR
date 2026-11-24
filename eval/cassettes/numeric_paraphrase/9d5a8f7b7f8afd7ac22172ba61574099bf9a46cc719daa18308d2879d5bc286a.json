@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "What was Visa's income tax expense in Q1 2022?"
+  },
+  "request_key": "9d5a8f7b7f8afd7ac22172ba61574099bf9a46cc719daa18308d2879d5bc286a",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00002925",
+    "input_tokens": 445,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 28
+  }
+}

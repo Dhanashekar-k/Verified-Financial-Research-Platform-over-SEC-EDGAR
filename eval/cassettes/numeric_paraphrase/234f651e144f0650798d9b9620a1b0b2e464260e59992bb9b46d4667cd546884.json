@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "What was the percentage change in Mastercard Inc.'s net cash provided by operating activities between Q1 of fiscal year 2021 and Q1 of fiscal year 2022?"
+  },
+  "request_key": "234f651e144f0650798d9b9620a1b0b2e464260e59992bb9b46d4667cd546884",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00004045",
+    "input_tokens": 469,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 68
+  }
+}

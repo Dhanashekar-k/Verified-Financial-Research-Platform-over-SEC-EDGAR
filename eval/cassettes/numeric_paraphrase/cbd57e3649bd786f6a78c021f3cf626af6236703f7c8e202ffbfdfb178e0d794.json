@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "How much did Expand Energy's capital expenditures grow or shrink in percentage terms from 2022 to 2023?"
+  },
+  "request_key": "cbd57e3649bd786f6a78c021f3cf626af6236703f7c8e202ffbfdfb178e0d794",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000035",
+    "input_tokens": 465,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 47
+  }
+}

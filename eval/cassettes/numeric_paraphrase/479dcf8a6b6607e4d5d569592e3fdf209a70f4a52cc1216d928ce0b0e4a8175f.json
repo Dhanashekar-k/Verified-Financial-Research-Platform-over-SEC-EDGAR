@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Can you tell me by what percentage CRH PLC's interest expense changed from fiscal year 2022 to fiscal year 2023?"
+  },
+  "request_key": "479dcf8a6b6607e4d5d569592e3fdf209a70f4a52cc1216d928ce0b0e4a8175f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003665",
+    "input_tokens": 468,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 53
+  }
+}

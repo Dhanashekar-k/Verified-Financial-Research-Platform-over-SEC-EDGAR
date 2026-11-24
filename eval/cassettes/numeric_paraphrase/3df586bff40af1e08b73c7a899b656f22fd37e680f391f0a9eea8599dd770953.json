@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "What were TE Connectivity's SG&A expenses in Q3 2025?"
+  },
+  "request_key": "3df586bff40af1e08b73c7a899b656f22fd37e680f391f0a9eea8599dd770953",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003110",
+    "input_tokens": 452,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 34
+  }
+}

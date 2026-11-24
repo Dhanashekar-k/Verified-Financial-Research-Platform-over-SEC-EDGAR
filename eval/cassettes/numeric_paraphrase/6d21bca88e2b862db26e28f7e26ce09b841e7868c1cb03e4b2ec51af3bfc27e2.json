@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "What was Raymond James Financial's net income in Q1 2026?"
+  },
+  "request_key": "6d21bca88e2b862db26e28f7e26ce09b841e7868c1cb03e4b2ec51af3bfc27e2",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003020",
+    "input_tokens": 454,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 30
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "What was the percentage change in Genuine Parts Co's net income from Q1 2020 to Q1 2021?"
+  },
+  "request_key": "829f695563fd9383bfcbaad0f6d3836e76af528af4679c7511dc9c1e9731c485",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003455",
+    "input_tokens": 466,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 45
+  }
+}

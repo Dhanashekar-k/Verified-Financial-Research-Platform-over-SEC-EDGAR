@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "How much cash did PulteGroup generate from operating activities in Q1 of fiscal 2025?"
+  },
+  "request_key": "10434528466a3f64678217d78e4a13e387eaebe3409e90115c7959e49dd6e86b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003305",
+    "input_tokens": 456,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 41
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "How much did Occidental Petroleum spend on capital expenditures in 2023, as originally reported?"
+  },
+  "request_key": "3c3f40aa4fc739904328d69e2ddb6a64d2ee618182aef6744d94eb62a37b5699",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003345",
+    "input_tokens": 464,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 41
+  }
+}

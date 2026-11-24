@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Can you tell me by what percentage Hartford Insurance Group's net income changed from Q2 of 2022 to Q2 of 2023, as originally reported?"
+  },
+  "request_key": "bff7a8efe7b7346fbd77a2c7f2e858fa6cd2f0dab99eeadaa19d218cf7ddcd68",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003970",
+    "input_tokens": 489,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 61
+  }
+}

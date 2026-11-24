@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "Can you tell me how much higher W.W. Grainger, Inc.'s income tax expense was than Sysco Corp's in fiscal year 2023, as originally reported?"
+  },
+  "request_key": "d22506de6b54ec3db514d6e2a392e1aad3358848348353afb118d9005fb2174b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003995",
+    "input_tokens": 474,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 65
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "question": "How much interest expense did Vertiv Holdings have in fiscal 2025?"
+  },
+  "request_key": "4216a38e20cf3d86162678ed3363aea1558484b3de43573c623c7726a16e3f89",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00003105",
+    "input_tokens": 446,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 35
+  }
+}
