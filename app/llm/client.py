@@ -134,12 +134,14 @@ class LLMClient:
         sleep: Callable[[float], None] = time.sleep,
         max_retries: int = DEFAULT_MAX_RETRIES,
         max_batch_attempts: int = 2,
+        request_timeout_s: float = REQUEST_TIMEOUT_S,
     ) -> None:
         self.mode = mode if mode is not None else LLMMode(os.environ.get(MODE_ENV, "live"))
         self.cassette_dir = Path(cassette_dir)
         self.registry = {**REGISTRY, **(registry or {})}
         self._sleep = sleep
         self._max_retries = max_retries
+        self.request_timeout_s = request_timeout_s
         self._sdk = sdk_client
         self._pending: dict[str, tuple[str, dict[str, Any], type[BaseModel]]] = {}
         self._spent_keys: set[str] = set()
@@ -154,7 +156,7 @@ class LLMClient:
             if not key:
                 raise RuntimeError(f"{KEY_ENV} is not set; it is the only API key variable read")
             self._sdk = anthropic.Anthropic(
-                api_key=key, base_url=API_BASE_URL, timeout=REQUEST_TIMEOUT_S, max_retries=0
+                api_key=key, base_url=API_BASE_URL, timeout=request_timeout_s, max_retries=0
             )
 
     # --- request identity --------------------------------------------------------------

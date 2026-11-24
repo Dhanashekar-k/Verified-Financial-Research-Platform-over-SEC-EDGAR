@@ -72,6 +72,8 @@ def render(runs: list[dict[str, Any]]) -> str:
                 continue
             n = s.get("n")
             errs = f"{s.get('errors', 0)} sys / {s.get('judge_errors', 0)} judge"
+            if s.get("scoring_errors"):
+                errs += f" / {s['scoring_errors']} scoring"
             if name == "unanswerable":
                 rows = [
                     (

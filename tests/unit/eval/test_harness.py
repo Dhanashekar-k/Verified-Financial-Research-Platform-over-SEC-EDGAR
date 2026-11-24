@@ -79,7 +79,16 @@ def real_metrics(monkeypatch: pytest.MonkeyPatch) -> None:
     )
 
 
-def test_unscored_when_metrics_are_unimplemented(tmp_path: Path) -> None:
+def test_unscored_when_metrics_are_unimplemented(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """The harness contract for a metric that raises NotImplementedError. Patched in, so the
+    test holds whether or not eval/metrics.py (Shekar's) has been written yet."""
+
+    def unwritten(*_: object) -> None:
+        raise NotImplementedError
+
+    monkeypatch.setattr(metrics, "refused", unwritten)
     sets_dir = _write_sets(tmp_path / "sets")
     client = LLMClient(mode=LLMMode.stub)
     cfg = EvalCfg(llm=AccountingLLM(client))
@@ -89,6 +98,60 @@ def test_unscored_when_metrics_are_unimplemented(tmp_path: Path) -> None:
     sets = run.aggregate(outcomes, None)
     assert sets["unanswerable"].refusal_rate is None  # type: ignore[union-attr]
     assert all(o.scores["refused"] is None for o in outcomes)
+
+
+def test_a_metric_valueerror_leaves_that_row_unscored_and_the_run_continues(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """A metric may reject a malformed row (e.g. no gold points). One bad row must not abort a
+    paid run: it is recorded as a scoring error, unscored, and every other row is still scored."""
+    calls = {"n": 0}
+
+    def refused(answer: Answer) -> bool:
+        calls["n"] += 1
+        if calls["n"] == 3:
+            raise ValueError("malformed row")
+        return answer.refusal is not None
+
+    monkeypatch.setattr(metrics, "refused", refused)
+    sets_dir = _write_sets(tmp_path / "sets")
+    client = LLMClient(mode=LLMMode.stub)
+    cfg = EvalCfg(llm=AccountingLLM(client))
+    outcomes, _ = run.run_questions(
+        run.SYSTEMS["stub"](), cfg, None, _items(sets_dir, ["unanswerable"]), {}, client
+    )
+    assert len(outcomes) == 8
+    bad = [o for o in outcomes if "scoring_error" in o.scores]
+    assert len(bad) == 1 and "malformed row" in bad[0].scores["scoring_error"]
+    assert bad[0].scores.get("correct") is None  # unscored, not guessed incorrect
+    assert sum(o.scores.get("refused") is not None for o in outcomes) == 7
+    sets = run.aggregate(outcomes, None)
+    assert sets["unanswerable"].scoring_errors == 1  # type: ignore[union-attr]
+
+
+def test_a_metric_that_rejects_most_rows_fails_the_run(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """One or two malformed rows are tolerated; a metric that raises on most rows (a new judge
+    label, say) must fail the run instead of reporting accuracy=None as if it were a result."""
+
+    def refused(answer: Answer) -> bool:
+        raise ValueError("unknown label")
+
+    monkeypatch.setattr(metrics, "refused", refused)
+    sets_dir = _write_sets(tmp_path / "sets")
+    client = LLMClient(mode=LLMMode.stub)
+    cfg = EvalCfg(llm=AccountingLLM(client))
+    outcomes, _ = run.run_questions(
+        run.SYSTEMS["stub"](), cfg, None, _items(sets_dir, ["unanswerable"]), {}, client
+    )
+    assert run.scoring_error_breaches(outcomes) == {"unanswerable": (8, 8)}
+    ok = outcomes[:]
+    for o in ok[1:]:
+        o.scores.pop("scoring_error", None)  # 1 of 8 = 12.5% is still over; 0 of 8 is not
+    assert run.scoring_error_breaches(ok) == {"unanswerable": (1, 8)}
+    ok[0].scores.pop("scoring_error")
+    assert run.scoring_error_breaches(ok) == {}
 
 
 def test_end_to_end_stub_run_writes_valid_results(tmp_path: Path, real_metrics: None) -> None:
@@ -434,3 +497,19 @@ def test_any_system_exception_is_a_recorded_error_not_an_abort(tmp_path: Path) -
     )
     assert len(outcomes) == 8
     assert all(o.error == "ConnectionError: tunnel dropped" for o in outcomes)
+
+
+def test_results_config_records_the_sample_and_timeout() -> None:
+    cfg = run.RunConfig(
+        system="longctx",
+        composer="claude-sonnet-5-5",
+        mode="record",
+        split="all",
+        sets=["financebench"],
+        sample=30,
+        sample_seed=13,
+        request_timeout_s=600.0,
+    )
+    back = run.RunConfig.model_validate_json(cfg.model_dump_json())
+    assert (back.sample, back.sample_seed, back.request_timeout_s) == (30, 13, 600.0)
+    assert run.RunConfig(system="s", composer="c", mode="m", split="all", sets=[]).sample is None

@@ -562,3 +562,5 @@ Other endpoints: `POST /v1/feedback {request_id, rating, comment}`, `POST /v1/ke
  "latency_ms": {"p50": 0, "p95": 0}, "cost": {"total_usd": 0.0, "per_question_usd": 0.0},
  "per_question": [{"id": "num-0001", "correct": true, "route": "numeric", "cost_usd": 0.0, "latency_ms": 0, "trace_id": "..."}]}
 ```
+
+`config` fields added in M4 (all optional, so earlier files still validate): `sample` and `sample_seed` (a run on a seeded random sample of N questions per set, `--sample N --sample-seed S`; both null for a full run, so a 30-question long-context run is not mistaken for a full run and its questions can be reproduced), and `request_timeout_s` (the per-call API timeout when it was raised from the 120 s default, null otherwise). `sets.<name>` may also carry `scoring_errors`, the count of questions a metric rejected with `ValueError` (unscored, not counted wrong; a run with more than 10% of a set's rows in this state exits 2, ADR-044). A per-question `retrieved_top20` is null, and the `recall_at_k` keys are absent, for a system that does not retrieve (`longctx`).

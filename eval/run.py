@@ -19,6 +19,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import random
 import subprocess
 import time
 from collections.abc import Callable, Sequence
@@ -78,7 +79,7 @@ class Outcome:
     answer: Answer | None = None
     error: str | None = None
     latency_ms: int = 0
-    retrieved: list[str] = field(default_factory=list)
+    retrieved: list[str] | None = field(default_factory=list)  # None: system doesn't retrieve
     system_usage: list[Usage] = field(default_factory=list)
     judge_usage: list[Usage] = field(default_factory=list)
     scores: dict[str, Any] = field(default_factory=dict)
@@ -154,7 +155,7 @@ def score(
 
 
 def _recall(outcome: Outcome, gold: list[str]) -> None:
-    if not gold:
+    if not gold or outcome.retrieved is None:  # no gold, or a system that doesn't retrieve
         return
     for k in RECALL_KS:
         outcome.scores[f"recall_at_{k}"] = _unimplemented(
@@ -204,12 +205,30 @@ def aggregate(outcomes: list[Outcome], kappa: float | None) -> dict[str, Any]:
                 )
         res["errors"] = sum(o.error is not None for o in rows)
         res["judge_errors"] = sum("judge_error" in o.scores for o in rows)
+        res["scoring_errors"] = sum("scoring_error" in o.scores for o in rows)
         sets[name] = SetResult.model_validate(res)
     answerable = [o for o in outcomes if o.set_name in ANSWERABLE]
     fr, _, _ = _with_ci([o.scores.get("refused") for o in answerable])
     sets["answerable_false_refusal"] = fr
     sets["claims"] = ClaimsResult(n=0)  # support judge needs chunk text: NOT MEASURED in M4
     return sets
+
+
+MAX_SCORING_ERROR_SHARE = 0.10
+
+
+def scoring_error_breaches(
+    outcomes: list[Outcome], max_share: float = MAX_SCORING_ERROR_SHARE
+) -> dict[str, tuple[int, int]]:
+    """Sets where more than ``max_share`` of the questions hit a scoring error (a metric raised
+    ValueError): ``{set: (errors, n)}``. A few malformed rows are tolerated and reported; a
+    metric that rejects most rows (say a new judge label) makes every aggregate meaningless."""
+    n: dict[str, int] = {}
+    bad: dict[str, int] = {}
+    for o in outcomes:
+        n[o.set_name] = n.get(o.set_name, 0) + 1
+        bad[o.set_name] = bad.get(o.set_name, 0) + ("scoring_error" in o.scores)
+    return {k: (bad[k], n[k]) for k in n if bad[k] > max_share * n[k]}
 
 
 # --- running --------------------------------------------------------------------------------
@@ -244,6 +263,19 @@ def _load_rows(
     return out
 
 
+def sample_items(
+    items: list[tuple[str, BaseModel, str | None]], n: int, seed: int
+) -> list[tuple[str, BaseModel, str | None]]:
+    """A seeded random sample of ``n`` rows per set (all of them when a set has fewer), in the
+    original order. The same seed and rows give the same questions on every run."""
+    out: list[tuple[str, BaseModel, str | None]] = []
+    for name in dict.fromkeys(i[0] for i in items):
+        positions = [k for k, i in enumerate(items) if i[0] == name]
+        chosen = set(random.Random(f"{seed}|{name}").sample(positions, min(n, len(positions))))
+        out += [items[k] for k in sorted(chosen)]
+    return out
+
+
 def run_questions(
     system: Any,
     cfg: EvalCfg,
@@ -255,7 +287,13 @@ def run_questions(
     batch_rounds: int = MAX_BATCH_ROUNDS,
     log: Callable[[str], None] = print,
 ) -> tuple[list[Outcome], dict[str, Any]]:
-    outcomes = {row.id: Outcome(row=row, set_name=name, split=sp) for name, row, sp in items}  # type: ignore[attr-defined]
+    retrieves = getattr(system, "retrieves", True)
+    outcomes = {
+        row.id: Outcome(  # type: ignore[attr-defined]
+            row=row, set_name=name, split=sp, retrieved=[] if retrieves else None
+        )
+        for name, row, sp in items
+    }
     todo = list(outcomes)
     batches: list[dict[str, Any]] = []
     pending: list[str] = []
@@ -271,7 +309,7 @@ def run_questions(
                 try:
                     o.answer = system.answer(o.row.question, cfg)  # type: ignore[attr-defined]
                     o.latency_ms = int((time.monotonic() - start) * 1000)
-                    o.retrieved = list(sink)
+                    o.retrieved = list(sink) if getattr(system, "retrieves", True) else None
                 except BatchPending:
                     pending.append(qid)
                 except Exception as err:  # noqa: BLE001
@@ -293,6 +331,11 @@ def run_questions(
             except (LLMResponseError, BatchGaveUp, InvalidJudgeOutput) as err:
                 # billed judge failures are already on the ledger (sliced in score's finally)
                 o.scores["judge_error"] = f"{type(err).__name__}: {err}"
+            except ValueError as err:
+                # A metric rejected this row (e.g. narrative_coverage on a row with no gold
+                # points). Unscored and recorded; one bad row must not abort a paid run.
+                # After the judge errors above: InvalidJudgeOutput is a ValueError.
+                o.scores["scoring_error"] = f"{type(err).__name__}: {err}"
         if not pending:
             break
         if client.mode is not LLMMode.batch:
@@ -337,7 +380,7 @@ def build_results(
             "judge_cost_usd": str(sum((u.cost_usd for u in o.judge_usage), Decimal(0))),
             "input_tokens": sum(u.input_tokens for u in o.system_usage),
             "output_tokens": sum(u.output_tokens for u in o.system_usage),
-            "retrieved_top20": o.retrieved[:20],
+            "retrieved_top20": None if o.retrieved is None else o.retrieved[:20],
             "error": o.error,
             **{k: v for k, v in o.scores.items() if k != "correct"},
         }
@@ -425,9 +468,26 @@ def main(argv: list[str] | None = None) -> int:
         action="store_true",
         help="skip LLM judges (FinanceBench and narrative are then unscored)",
     )
+    ap.add_argument(
+        "--sample",
+        type=int,
+        default=None,
+        help="a seeded random sample of N questions per set (e.g. 30 for long-context)",
+    )
+    ap.add_argument("--sample-seed", type=int, default=13)
+    ap.add_argument(
+        "--request-timeout",
+        type=float,
+        default=None,
+        help="seconds per API call (default 120); raise it for ~150K-token long-context prompts",
+    )
     ap.add_argument("--kappa-file", type=Path, default=Path("eval/judges/kappa.json"))
     ap.add_argument("--cassettes", type=Path, default=Path("eval/cassettes"))
     args = ap.parse_args(argv)
+    if args.sample is not None and args.sample < 1:
+        ap.error("--sample must be at least 1")
+    if args.request_timeout is not None and args.request_timeout <= 0:
+        ap.error("--request-timeout must be positive")
 
     if args.mode == "stub" and not args.allow_stub_results:
         raise SystemExit("--mode stub produces fake answers; no results file is written")
@@ -435,8 +495,12 @@ def main(argv: list[str] | None = None) -> int:
         print("NOTE: test split. Iterate on dev; run test only at milestones (rules/eval.md).")
     set_names = [s.strip() for s in args.sets.split(",") if s.strip()]
     composer = COMPOSERS[args.composer]
+    timeout = {} if args.request_timeout is None else {"request_timeout_s": args.request_timeout}
     client = LLMClient(
-        mode=LLMMode(args.mode), cassette_dir=args.cassettes, registry={"composer": composer}
+        mode=LLMMode(args.mode),
+        cassette_dir=args.cassettes,
+        registry={"composer": composer},
+        **timeout,
     )
     system_llm, judge_llm = AccountingLLM(client), AccountingLLM(client)
     cfg = EvalCfg(
@@ -452,6 +516,8 @@ def main(argv: list[str] | None = None) -> int:
     if args.gold_chunks.exists():
         gold_chunks = json.loads(args.gold_chunks.read_text()).get("gold_chunk_ids", {})
     items = _load_rows(set_names, args.split, args.sets_dir, args.splits)
+    if args.sample is not None:
+        items = sample_items(items, args.sample, args.sample_seed)
     try:
         outcomes, batch_info = run_questions(
             system, cfg, None if args.no_judge else judge_llm, items, gold_chunks, client
@@ -474,6 +540,9 @@ def main(argv: list[str] | None = None) -> int:
         judge_rubrics=_rubric_versions(),
         batches=batch_info["batches"],
         failed_usage_usd=str(client.failed_usage_usd),
+        sample=args.sample,
+        sample_seed=None if args.sample is None else args.sample_seed,
+        request_timeout_s=args.request_timeout,
         latency_note=None
         if args.mode in ("live", "record")
         else f"{args.mode} mode: latency is not a system measurement",
@@ -493,6 +562,11 @@ def main(argv: list[str] | None = None) -> int:
     path = args.out / f"{results.run_id}.json"
     path.write_text(results.model_dump_json(indent=2) + "\n")
     print(f"wrote {path} ({len(outcomes)} questions, ${results.cost.total_usd:.4f})")
+    breaches = scoring_error_breaches(outcomes)
+    if breaches:  # the file is written first: the run's cost and answers are not lost
+        for name, (bad, n) in breaches.items():
+            print(f"FAIL: {bad}/{n} {name} questions hit a scoring error (> 10%); see per_question")
+        return 2
     return 0
 
 

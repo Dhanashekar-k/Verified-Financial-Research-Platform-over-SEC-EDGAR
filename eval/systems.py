@@ -135,6 +135,12 @@ def _baseline() -> System:
     return BaselineSystem()
 
 
+def _longctx() -> System:
+    from app.engine.longctx import LongContextSystem
+
+    return LongContextSystem()
+
+
 def _engine() -> System:
     raise SystemExit("the engine arrives in M5")
 
@@ -142,5 +148,6 @@ def _engine() -> System:
 SYSTEMS: dict[str, Callable[[], System]] = {
     "stub": StubSystem,
     "baseline": _baseline,
+    "longctx": _longctx,
     "engine": _engine,
 }

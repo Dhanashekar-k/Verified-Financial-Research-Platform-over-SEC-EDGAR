@@ -190,6 +190,9 @@ class RunConfig(BaseModel):
     batches: list[dict[str, Any]] = []
     failed_usage_usd: str = "0"  # billed batch results that came back unusable
     latency_note: str | None = None
+    sample: int | None = None  # --sample N: a seeded sample of N questions per set (None: all)
+    sample_seed: int | None = None
+    request_timeout_s: float | None = None  # raised from the 120 s default for long prompts
 
 
 class ResultsFile(BaseModel):
