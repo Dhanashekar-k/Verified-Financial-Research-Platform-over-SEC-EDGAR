@@ -28,7 +28,23 @@ from app.engine.retrieval.types import ChunkHit
 if TYPE_CHECKING:
     from eval.systems import EvalCfg
 
-VERSION = "0.1.0"
+VERSION = "0.2.0"  # 0.2.0: numeric claims must carry a unit from NUMERIC_UNITS, full precision
+
+# The unit labels a numeric claim may carry. eval.metrics.normalize_value reads exactly these
+# (the test that ties the two together is tests/unit/eval/test_metrics.py, which lands with
+# eval/metrics.py); the prompt below is built from it.
+NUMERIC_UNITS: tuple[str, ...] = (
+    "USD",
+    "USD thousands",
+    "USD millions",
+    "USD billions",
+    "USD/shares",
+    "shares",
+    "shares thousands",
+    "shares millions",
+    "percent",
+    "ratio",
+)
 TOP_K = 8
 EF_SEARCH = 800
 MODEL_DIR_ENV = "EDGARQA_EMBED_MODEL_DIR"
@@ -45,8 +61,13 @@ Return JSON matching the schema:
   - kind: "numeric" for a number stated in a passage, "numeric_derived" for a number you
     derived from passage numbers (a growth rate, margin, ratio or difference), otherwise "text".
   - text: the statement, self-contained.
-  - for numeric claims: value (a plain number, no commas or units), unit (for example USD,
-    USD millions, percent, ratio, shares), display (as written in the answer, e.g. "$1.58 billion").
+  - for numeric claims: value (a plain number, no commas or units), unit, display (as written
+    in the answer, e.g. "$1.58 billion"). unit is REQUIRED on every numeric claim and must
+    describe the value field exactly, using one of: @UNITS@.
+    value keeps every digit the passage gives; rounding belongs only in display and
+    answer_markdown. Example: a passage figure of 1,583 (USD millions) with display
+    "$1.58 billion" has value 1583 and unit "USD millions" (not value 1.58). A margin or
+    growth rate of 29.8% is value 29.8 with unit "percent", or value 0.298 with unit "ratio".
   - primary: true for the single claim that directly answers the question, false otherwise.
   - provenance: {"type": "chunk", "chunk_id": <the passage's chunk_id>, "quote": <an EXACT,
     contiguous substring copied from that passage that supports the claim>}; for a derived
@@ -58,6 +79,7 @@ Return JSON matching the schema:
 
 Rules: base every number on numbers in the passages; do not guess periods or companies the
 passages don't name."""
+COMPOSER_SYSTEM = COMPOSER_SYSTEM.replace("@UNITS@", ", ".join(NUMERIC_UNITS))
 
 # A naive-RAG comparator derives numbers the way a plain LLM would. Banning that would make the
 # baseline refuse most growth/ratio/compare questions by construction and inflate the engine's

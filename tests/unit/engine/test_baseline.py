@@ -21,6 +21,7 @@ from app.engine.answer import Answer, ChunkProvenance, Claim
 from app.engine.baseline import (
     COMPOSER_SYSTEM,
     EF_SEARCH,
+    NUMERIC_UNITS,
     TOP_K,
     BaselineSystem,
     Passage,
@@ -184,6 +185,11 @@ def test_prompt_rules() -> None:
     assert "ONLY the numbered" in COMPOSER_SYSTEM
     assert '"numeric_derived"' in COMPOSER_SYSTEM
     assert "do not compute" not in COMPOSER_SYSTEM
+    # a numeric claim must carry a unit from the vocabulary eval.metrics.normalize_value reads
+    assert "unit is REQUIRED on every numeric claim" in COMPOSER_SYSTEM
+    assert "@UNITS@" not in COMPOSER_SYSTEM
+    assert ", ".join(NUMERIC_UNITS) in COMPOSER_SYSTEM
+    assert "value keeps every digit" in COMPOSER_SYSTEM  # ADR-044: no rounding in Claim.value
     msgs = build_messages("Q?", [Passage("a#1#0000", "body")])
     assert msgs == [
         {"role": "user", "content": "Passages:\n\n[1] chunk_id=a#1#0000 ()\nbody\n\nQuestion: Q?"}
