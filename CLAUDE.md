@@ -49,11 +49,15 @@ Kafka/Kinesis, Kubernetes, LangChain/LlamaIndex, a second vector database, ORMs 
 - `make status`, `make cost-today`, `make llm-spend`: what's running and what it costs
 - Milestone skills: `/milestone M5`, `/dod M5`, `/interview-me <path>`, `/adr "<title>"`, `/results-audit`
 
-## How to work in this repo
-- Start every milestone in plan mode with `/milestone <id>`. Wait for approval before editing.
-- Prefer the smallest change that satisfies the runbook. Ask when the runbook is ambiguous rather than guessing.
-- When reporting results, quote the file and key you took each number from.
-- Use the `reviewer` subagent on staged diffs before commits, and the `test-writer` subagent for test-first work.
+## How to work in this repo (execution mode — speed priority, 2026-11-24)
+Deadline reality: a working 80% shipped soon beats a perfect 100% weeks late. Optimize for a finished, defensible end-to-end system, not polish on any one part.
+- **Batch aggressively.** One prompt may carry many steps. Plan the whole batch once (plan mode for the batch, not per micro-step), take one approval, then execute to completion. Do not stop between reversible, local, $0 steps to ask.
+- **Stop and ask ONLY at the gates** (already encoded as Hard rules / "Explain before consequential actions", still binding): spending money (starting the box, any paid `live`/`batch` LLM run), writing or promoting gold (Hard rule 2, hook-gated), mutating cloud state or deploying (Hard rule 8), changing a contract/schema (Hard rule 7), and anything irreversible or hard to undo. State the expected cost first at a money gate.
+- **Never trade these for speed:** Hard rule 1 (every number measured, never invented) and gold integrity (Hard rule 2). They are the project's credibility; batching does not relax them.
+- **Don't gold-plate.** When a part is good enough to be interview-defensible, stop and move on; log deferred polish as an ADR or devlog TODO rather than chasing it. (Revenue resolver: correct to defer, costly to keep polishing.)
+- **Finish the runbook's intent**, not the narrowest edit. On ambiguity below a gate, take the most reasonable reading, state the assumption, and continue; only gate-level ambiguities are worth a stop.
+- When reporting results, quote the file and key each number came from.
+- Use the `reviewer` subagent on staged diffs before commits, and `test-writer` for test-first work.
 
 ## Explain before consequential actions
 Before any command that mutates cloud state (AWS, `terraform apply`, Glue/EMR runs), deploys, spends money, deletes or overwrites data, or pushes to git: first write ONE short plain-English paragraph (what it does, what it changes, the risk), then run it. Do not explain read-only commands (ls, grep, cat, Athena SELECTs).
