@@ -20,9 +20,9 @@ from typing import Any
 
 import duckdb
 import pytest
-from pipelines.duckdb.normalize_facts_duckdb import derive_fiscal
 
 from pipelines.common.fiscal_ref import FactInput
+from pipelines.duckdb.normalize_facts_duckdb import derive_fiscal
 from tests.fiscal_cases import (
     FISCAL_YEAR_SCENARIOS,
     INPUT_FIELDS,

@@ -22,7 +22,6 @@ from typing import Any
 
 import duckdb
 import pytest
-from pipelines.duckdb.normalize_facts_duckdb import derive_fiscal, select_versions
 
 from pipelines.common.fiscal_ref import (
     FactInput,
@@ -32,6 +31,7 @@ from pipelines.common.fiscal_ref import (
 from pipelines.common.fiscal_ref import (
     derive_fiscal as derive_fiscal_ref,
 )
+from pipelines.duckdb.normalize_facts_duckdb import derive_fiscal, select_versions
 from tests.integration.test_differential import generate, generate_versions
 
 FISCAL_COLUMNS = [
