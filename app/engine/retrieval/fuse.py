@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from collections.abc import Sequence
+from collections.abc import Mapping, Sequence
 from typing import Any
 
 import psycopg
@@ -30,6 +30,21 @@ def rrf(rank_lists: Sequence[Sequence[str]], k: int = RRF_K) -> list[tuple[str, 
             seen.add(chunk_id)
             rank += 1
             scores[chunk_id] = scores.get(chunk_id, 0.0) + 1.0 / (k + rank)
+    return sorted(scores.items(), key=lambda item: (-item[1], item[0]))
+
+
+def rrf_boosted(
+    rank_lists: Sequence[Sequence[str]],
+    boosts: Mapping[str, float] | None = None,
+    k: int = RRF_K,
+) -> list[tuple[str, float]]:
+    """`rrf` plus an additive bonus for the ids in `boosts` (a soft preference, never a filter:
+    an id absent from every list stays absent; a hard section filter kills recall when the
+    planner guesses the section wrong, M05 section 7). Ties break by id, best first."""
+    scores = dict(rrf(rank_lists, k))
+    for chunk_id, bonus in (boosts or {}).items():
+        if chunk_id in scores:
+            scores[chunk_id] += bonus
     return sorted(scores.items(), key=lambda item: (-item[1], item[0]))
 
 

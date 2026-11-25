@@ -23,6 +23,8 @@ def dense_search(
     ef_search: int = 100,
     cik: int | None = None,
     fiscal_year: int | None = None,
+    ciks: Sequence[int] | None = None,
+    fiscal_years: Sequence[int] | None = None,
     max_scan_tuples: int | None = None,
 ) -> list[ChunkHit]:
     """Top `limit` chunks by cosine distance to `query_vector`, best first (score = 1 - distance).
@@ -30,7 +32,7 @@ def dense_search(
     `hnsw.ef_search` and `hnsw.iterative_scan` are set with `SET LOCAL` inside a transaction, so
     they end with it (on an autocommit connection that is this call). Iterative scans keep a
     filtered query from returning fewer than `limit` rows when the index visits too many rows that
-    the filter rejects.
+    the filter rejects. `ciks` / `fiscal_years` are "any of" filters (empty matches nothing).
     """
     where = []
     params: list[Any] = [vector_literal(query_vector)]
@@ -40,6 +42,12 @@ def dense_search(
     if fiscal_year is not None:
         where.append("fiscal_year = %s")
         params.append(fiscal_year)
+    if ciks is not None:
+        where.append("cik = ANY(%s)")
+        params.append(list(ciks))
+    if fiscal_years is not None:
+        where.append("fiscal_year = ANY(%s)")
+        params.append(list(fiscal_years))
     params += [vector_literal(query_vector), limit]
     clause = f"WHERE {' AND '.join(where)} " if where else ""
     sql = (

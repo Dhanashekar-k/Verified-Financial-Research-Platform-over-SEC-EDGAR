@@ -16,6 +16,8 @@ import json
 from pathlib import Path
 from typing import Any
 
+from eval.stats import paired_bootstrap
+
 START, END = "<!-- AUTO:START -->", "<!-- AUTO:END -->"
 NM = "NOT MEASURED"
 
@@ -113,10 +115,144 @@ def kappa_for(run: dict[str, Any], record: dict[str, Any] | None) -> dict[str, A
     return None
 
 
-def render(runs: list[dict[str, Any]], kappa_record: dict[str, Any] | None = None) -> str:
-    if not runs:
+def _correct_by_id(run: dict[str, Any], set_name: str) -> dict[str, float]:
+    """id -> 1.0/0.0 for the questions of ``set_name`` the run scored (unscored rows are absent)."""
+    return {
+        q["id"]: float(q["correct"])
+        for q in run["per_question"]
+        if q.get("set") == set_name and q.get("correct") is not None
+    }
+
+
+def render_comparison(runs: list[dict[str, Any]]) -> list[str]:
+    """Engine vs baseline on the same questions: a paired bootstrap of the per-question
+    difference in correctness (never two independent CIs compared by eye)."""
+    engines = [r for r in runs if r["config"].get("system") == "engine"]
+    baselines = [r for r in runs if r["config"].get("system") == "baseline"]
+    rows: list[str] = []
+    for e in engines:
+        split = e["config"].get("split")
+        cands = [b for b in baselines if b["config"].get("split") == split]
+        for b in sorted(cands, key=lambda r: r["run_id"], reverse=True):
+            for name in ("numeric", "financebench"):
+                ce, cb = _correct_by_id(e, name), _correct_by_id(b, name)
+                ids = sorted(set(ce) & set(cb))
+                if not ids:
+                    continue
+                pr = paired_bootstrap([ce[i] for i in ids], [cb[i] for i in ids])
+                lo, hi = pr.ci95
+                verdict = (
+                    "engine higher"
+                    if lo > 0
+                    else ("baseline higher" if hi < 0 else "no difference shown")
+                )
+                rows.append(
+                    f"| `{e['run_id']}` | `{b['run_id']}` | {split} | {name} | {pr.n} "
+                    f"| {_pct(sum(ce[i] for i in ids) / pr.n)} "
+                    f"| {_pct(sum(cb[i] for i in ids) / pr.n)} "
+                    f"| {100 * pr.mean_diff:+.1f} pp | {_ci(pr.ci95)} "
+                    f"| {pr.p_two_sided:.4f} | {verdict} |"
+                )
+            break  # the newest matching baseline run only
+    if not rows:
+        return [
+            "### Engine vs baseline (paired bootstrap)\n",
+            f"{NM}: no engine run with a baseline run on the same split yet.",
+        ]
+    return [
+        "### Engine vs baseline (paired bootstrap)\n",
+        "| engine run | baseline run | split | set | paired n | engine | baseline | difference "
+        "| 95% CI | p | reading |\n|---|---|---|---|---:|---:|---:|---:|---|---:|---|",
+        *rows,
+        "\nThe difference is engine minus baseline on the questions both runs scored; the CI is "
+        "a paired bootstrap (10,000 resamples) and `reading` only says whether it excludes 0.",
+    ]
+
+
+def render_pareto(runs: list[dict[str, Any]]) -> list[str]:
+    """One row per engine run: what each composer costs and gets (ADR-012's input)."""
+    engines = sorted(
+        (r for r in runs if r["config"].get("system") == "engine"),
+        key=lambda r: (str(r["config"].get("split")), r["run_id"]),
+    )
+    if not engines:
+        return ["### Composer Pareto\n", f"{NM}: no engine run yet."]
+    out = [
+        "### Composer Pareto (accuracy, cost, latency per composer)\n",
+        "| run | split | composer | numeric accuracy | FinanceBench accuracy | narrative coverage "
+        "| $ / question | p95 ms |\n|---|---|---|---:|---:|---:|---:|---:|",
+    ]
+    for r in engines:
+        sets, lat = r["sets"], r["latency_ms"]
+
+        def acc(name: str, key: str = "accuracy", sets: dict[str, Any] = sets) -> str:
+            v = sets.get(name)
+            return _pct(v.get(key)) if isinstance(v, dict) else NM
+
+        p95 = NM if lat.get("p95") is None else f"{lat['p95']:.0f}"
+        out.append(
+            f"| `{r['run_id']}` | {r['config'].get('split')} | {r['config'].get('composer')} "
+            f"| {acc('numeric')} | {acc('financebench')} | {acc('narrative', 'coverage')} "
+            f"| {float(r['cost']['per_question_usd']):.5f} | {p95} |"
+        )
+    return out
+
+
+def render_ablation(docs: list[dict[str, Any]]) -> list[str]:
+    """The newest retrieval ablation: recall@k per component, latency, and each row's paired
+    difference from the row before it (recall@8)."""
+    if not docs:
+        return ["### Retrieval ablation\n", f"{NM}: no ablation run yet."]
+    doc = sorted(docs, key=lambda d: d["run_id"])[-1]
+    out = [
+        f"### Retrieval ablation ({doc['config'].get('split', NM)} split)\n",
+        f"Run `{doc['run_id']}`, corpus version {doc.get('corpus_version') or NM}, "
+        f"{doc['config']['n_questions']} questions, plan: {doc['config']['plan_source']}; "
+        f"reranker `{doc['config']['reranker']}`. Latency is {doc['config']['latency_note']}.\n",
+    ]
+    set_names = sorted({s for row in doc["rows"] for s in row["sets"]})
+    for set_name in set_names:
+        out.append(f"\n**{set_name}** (hit@k, 95% CI)\n")
+        out.append(
+            "| component | n | @1 | @3 | @5 | @8 | vs previous row (@8, paired) "
+            "| p50 ms | p95 ms |\n|---|---:|---|---|---|---|---|---:|---:|"
+        )
+        prev: dict[str, float] | None = None
+        for row in doc["rows"]:
+            st = row["sets"].get(set_name)
+            if st is None:
+                continue
+            cells = [
+                f"{_pct(st[f'recall_at_{k}'])} {_ci(st[f'recall_at_{k}_ci95'])}"
+                for k in (1, 3, 5, 8)
+            ]
+            cur = {q["id"]: q["hits"]["8"] for q in row["per_question"] if q["set"] == set_name}
+            if prev is None:
+                diff = "-"
+            else:
+                ids = sorted(set(cur) & set(prev))
+                pr = paired_bootstrap([cur[i] for i in ids], [prev[i] for i in ids])
+                diff = f"{100 * pr.mean_diff:+.1f} pp {_ci(pr.ci95)}"
+            prev = cur
+            lat = row["latency_ms"]
+            out.append(
+                f"| {row['name']} | {st['n']} | "
+                + " | ".join(cells)
+                + f" | {diff} | {lat['p50']:.0f} | {lat['p95']:.0f} |"
+            )
+    return out
+
+
+def render(
+    runs: list[dict[str, Any]],
+    kappa_record: dict[str, Any] | None = None,
+    ablation: list[dict[str, Any]] | None = None,
+) -> str:
+    if not runs and not ablation:
         return "_No results files yet: every metric is NOT MEASURED._"
     out: list[str] = []
+    if not runs:
+        return "\n".join(render_ablation(ablation or []))
     out.append("### Accuracy by set\n")
     out.append(
         "| run | split | set | n | n scored | errors | metric | value | 95% CI | judge |\n"
@@ -217,11 +353,12 @@ def render(runs: list[dict[str, Any]], kappa_record: dict[str, Any] | None = Non
         for rid, kd in cal:
             if not kd:
                 continue
-            k = float(kd["kappa"])
+            kappa_value = float(kd["kappa"])
             sha = str(kd.get("labels_sha256") or NM)[:12]
             out.append(
-                f"| `{rid}` | {k:.3f} | {kd['n'] if kd['n'] is not None else NM} "
-                f"| {'met' if k >= KAPPA_TARGET else 'below target'} | {kd.get('rubric') or NM} "
+                f"| `{rid}` | {kappa_value:.3f} | {kd['n'] if kd['n'] is not None else NM} "
+                f"| {'met' if kappa_value >= KAPPA_TARGET else 'below target'} "
+                f"| {kd.get('rubric') or NM} "
                 f"| {kd.get('judge') or NM} | `{sha}` | {kd['source']} |"
             )
     out.append("\n### Cost and latency\n")
@@ -246,6 +383,12 @@ def render(runs: list[dict[str, Any]], kappa_record: dict[str, Any] | None = Non
         "\nSource: `eval/results/<run_id>.json`. Claims / unsupported-claim rate: NOT MEASURED "
         "until the support judge has chunk text to read (M6)."
     )
+    out.append("")
+    out += render_comparison(runs)
+    out.append("")
+    out += render_pareto(runs)
+    out.append("")
+    out += render_ablation(ablation or [])
     return "\n".join(out)
 
 
@@ -266,7 +409,13 @@ def main(argv: list[str] | None = None) -> int:
     args = ap.parse_args(argv)
     runs = select_runs(args.results, args.runs) if args.results.exists() else []
     kappa = json.loads(args.kappa_file.read_text()) if args.kappa_file.exists() else None
-    args.page.write_text(splice(args.page.read_text(), render(runs, kappa)))
+    ablation_dir = args.results / "ablation"
+    ablation = (
+        [json.loads(p.read_text()) for p in sorted(ablation_dir.glob("*.json"))]
+        if ablation_dir.exists()
+        else []
+    )
+    args.page.write_text(splice(args.page.read_text(), render(runs, kappa, ablation)))
     print(f"updated {args.page} from {len(runs)} run(s)")
     return 0
 

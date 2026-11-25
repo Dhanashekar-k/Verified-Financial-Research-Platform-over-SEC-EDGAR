@@ -31,7 +31,7 @@ from typing import Any
 
 from pydantic import BaseModel
 
-from app.engine.answer import Answer
+from app.engine.answer import Answer, ChunkProvenance, ExprProvenance
 from app.llm.client import BatchGaveUp, BatchPending, LLMClient, LLMResponseError
 from app.llm.types import LLMMode, Usage
 from eval import metrics
@@ -210,11 +210,41 @@ def aggregate(outcomes: list[Outcome], kappa: float | None) -> dict[str, Any]:
     answerable = [o for o in outcomes if o.set_name in ANSWERABLE]
     fr, _, _ = _with_ci([o.scores.get("refused") for o in answerable])
     sets["answerable_false_refusal"] = fr
-    sets["claims"] = ClaimsResult(n=0)  # support judge needs chunk text: NOT MEASURED in M4
+    # n is the number of claims asked about; the unsupported-claim rates need the support judge
+    # with chunk text (M6) and stay NOT MEASURED.
+    n_claims = sum(len(o.answer.claims) for o in outcomes if o.answer is not None)
+    sets["claims"] = ClaimsResult(n=n_claims)
     return sets
 
 
 MAX_SCORING_ERROR_SHARE = 0.10
+
+
+def provenance_gaps(answer: Answer, *, strict: bool = False) -> list[str]:
+    """Claims whose provenance is present in shape but empty in substance: an `expr` claim with no
+    fact ids, a `chunk` claim with no chunk id or a blank quote. 05 section 4.3 gives every claim
+    exactly one provenance; DoD M5 asserts that none is missing. ``strict`` (the engine) also
+    flags an answer that has prose, no claim and no refusal: nothing in it carries provenance."""
+    gaps: list[str] = []
+    for c in answer.claims:
+        p = c.provenance
+        if isinstance(p, ExprProvenance):
+            if not p.fact_ids:
+                gaps.append(f"{c.id}: expr provenance without fact ids")
+        elif isinstance(p, ChunkProvenance) and (not p.chunk_id.strip() or not p.quote.strip()):
+            gaps.append(f"{c.id}: chunk provenance without a chunk id or quote")
+    if strict and not answer.claims and answer.refusal is None and answer.answer_markdown.strip():
+        gaps.append("answer has prose but no claim and no refusal")
+    return gaps
+
+
+def provenance_breaches(outcomes: list[Outcome], *, strict: bool = False) -> dict[str, list[str]]:
+    """``{question id: gaps}`` over every answered question (the harness asserts this is empty)."""
+    out: dict[str, list[str]] = {}
+    for o in outcomes:
+        if o.answer is not None and (gaps := provenance_gaps(o.answer, strict=strict)):
+            out[o.row.id] = gaps  # type: ignore[attr-defined]
+    return out
 
 
 def scoring_error_breaches(
@@ -618,6 +648,13 @@ def main(argv: list[str] | None = None) -> int:
             f"FAIL: the live corpus version changed from {corpus_version} to {drifted} during "
             "the run; later questions may have retrieved from another corpus. Rerun."
         )
+        return 2
+    # The gate is the engine's contract (DoD M5). The baselines' claims carry a model-written
+    # quote and are not held to it: one blank quote must not abort a paid baseline run.
+    gaps = provenance_breaches(outcomes, strict=True) if args.system == "engine" else {}
+    if gaps:  # the file is written first; a claim without provenance breaks the contract
+        for qid, why in list(gaps.items())[:10]:
+            print(f"FAIL: {qid} has a claim without provenance: {why}")
         return 2
     breaches = scoring_error_breaches(outcomes)
     if breaches:  # the file is written first: the run's cost and answers are not lost

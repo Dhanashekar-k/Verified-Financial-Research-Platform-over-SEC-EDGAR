@@ -67,6 +67,18 @@ uncalibrated and labelled as such.
 | `2026-11-25T05-48-47Z_baseline-0.2.0_sonnet` | 83.5% |
 
 Source: `eval/results/<run_id>.json`. Claims / unsupported-claim rate: NOT MEASURED until the support judge has chunk text to read (M6).
+
+### Engine vs baseline (paired bootstrap)
+
+NOT MEASURED: no engine run with a baseline run on the same split yet.
+
+### Composer Pareto
+
+NOT MEASURED: no engine run yet.
+
+### Retrieval ablation
+
+NOT MEASURED: no ablation run yet.
 <!-- AUTO:END -->
 
 ## Reading the baseline numbers (hand-written; the numbers above are generated)

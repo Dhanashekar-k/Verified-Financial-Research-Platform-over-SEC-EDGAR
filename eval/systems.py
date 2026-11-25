@@ -142,7 +142,9 @@ def _longctx() -> System:
 
 
 def _engine() -> System:
-    raise SystemExit("the engine arrives in M5")
+    from app.engine.engine import EngineSystem
+
+    return EngineSystem()
 
 
 SYSTEMS: dict[str, Callable[[], System]] = {
