@@ -18,6 +18,9 @@ jobs:
       - name: Sync dependencies (project + dev group)
         run: uv sync
 
+      - name: Gold files match CHECKSUMS
+        run: make check-gold
+
       - name: Ruff lint
         run: uv run ruff check .
 
