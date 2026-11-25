@@ -147,6 +147,8 @@ NotFoundReason = Literal[
     "growth_base_nonpositive",
     "division_by_zero",
     "fallback_not_allowed",
+    "nonpositive_denominator",  # a ratio over a negative divisor (gold's name, ADR-044)
+    "near_zero_denominator",  # a USD ratio divisor or growth base under $1M
 ]
 
 

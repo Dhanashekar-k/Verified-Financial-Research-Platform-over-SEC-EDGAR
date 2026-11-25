@@ -7,6 +7,7 @@ fail if either side changes alone.
 from __future__ import annotations
 
 from decimal import Decimal
+from typing import Any
 
 import pytest
 from hypothesis import given, settings
@@ -110,3 +111,58 @@ def test_revenue_picks_agree_with_the_gold_resolver(
         assert engine.value == gold.chosen.value
     elif gold.chosen is not None:
         assert gold.reason == "total_tag_is_top_line"
+
+
+# --- unusable denominators: abstain exactly when the gold rule does -----------------------------
+
+_EDGES = st.sampled_from(
+    ["-5000000", "-1", "0", "0.01", "999999", "999999.9999", "1000000", "1000001"]
+).map(Decimal)
+_DENOMINATORS = _EDGES | st.decimals(min_value=-3_000_000, max_value=3_000_000, places=4)
+
+
+def _prefilled(values: dict[int, dict[str, Decimal]]) -> Any:
+    """A compiler run whose rows are given, so no database is involved."""
+    from datetime import date
+
+    from app.engine.plan.catalog import load_catalog
+
+    tags = {tag for by_tag in values.values() for tag in by_tag}
+    run = compiler._Run(load_catalog(), None, tags)  # type: ignore[arg-type]
+    for year, by_tag in values.items():
+        run.cache[(1, year, "FY")] = {
+            tag: [
+                compiler._Row(
+                    year * 10 + i, year * 10 + i, 1, tag, "USD", 4, date(year, 12, 31), v,
+                    "10-K", False, False,
+                )
+            ]
+            for i, (tag, v) in enumerate(by_tag.items())
+        }  # fmt: skip
+    return run
+
+
+def test_the_floor_is_the_gold_policys() -> None:
+    assert compiler.MIN_DENOMINATOR_USD == numeric_policy.MIN_DENOMINATOR_USD
+
+
+@settings(max_examples=300, deadline=None)
+@given(revenue=_DENOMINATORS)
+def test_a_margin_abstains_exactly_when_gold_would(revenue: Decimal) -> None:
+    from app.engine.plan.schema import PeriodRef
+
+    run = _prefilled({2022: {"Revenues": revenue, "NetIncomeLoss": Decimal("-7")}})
+    got = run.evaluate("net_margin", 1, PeriodRef(fiscal_year=2022))
+    assert isinstance(got, compiler._Value) == (
+        numeric_policy.denominator_ok(revenue, "USD") is None
+    )
+
+
+@settings(max_examples=300, deadline=None)
+@given(base=_DENOMINATORS)
+def test_dollar_growth_abstains_exactly_when_gold_would(base: Decimal) -> None:
+    from app.engine.plan.schema import NumericResult, PeriodRef
+
+    run = _prefilled({2021: {"NetIncomeLoss": base}, 2022: {"NetIncomeLoss": Decimal("5")}})
+    got = run.growth("net_income", 1, PeriodRef(fiscal_year=2022), PeriodRef(fiscal_year=2021))
+    assert isinstance(got, NumericResult) == (numeric_policy.denominator_ok(base) is None)

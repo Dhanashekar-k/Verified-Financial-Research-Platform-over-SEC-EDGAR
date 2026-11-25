@@ -55,6 +55,10 @@ TOTAL_OVER_COMPONENT: dict[str, tuple[str, str]] = {
 # is also labelled FY with qtrs = 4 in the lake.
 ANNUAL_FORM_PREFIX = "10-K"
 
+# The gold generator's floor for a dollar denominator (`denominator_ok`, ADR-044): a margin of
+# -1,399% on tiny revenue is a denominator problem, not a value. Held equal by a test.
+MIN_DENOMINATOR_USD = Decimal(1_000_000)
+
 # "The same number" for two candidate tags: the gold generator's tolerances (ADR-044). Kept here
 # so app/ does not import eval/; a property test holds the two functions equal.
 SIG_FIG_REL = Decimal("0.0005")
@@ -130,6 +134,20 @@ class _Missing:
 
 
 _Outcome = _Value | _Missing
+
+
+def _too_small(value: Decimal, unit: str | None) -> bool:
+    return unit == "USD" and value < MIN_DENOMINATOR_USD
+
+
+def _bad_divisor(value: Decimal, unit: str | None) -> NotFoundReason | None:
+    """Why nothing may be divided by ``value``. ``unit`` is the divisor's metric unit, when it is
+    a metric: only dollar amounts have a floor."""
+    if value == 0:
+        return "division_by_zero"
+    if value < 0:
+        return "nonpositive_denominator"
+    return "near_zero_denominator" if _too_small(value, unit) else None
 
 
 def _wrap(expr: str) -> str:
@@ -395,9 +413,9 @@ class _Run:
         rows: list[_Row] = []
         fallbacks: list[str] = []
 
-        def walk(node: ast.expr) -> tuple[Decimal, str] | None:
-            """(value, expr text), or None on a zero divisor. The expression is built beside the
-            arithmetic, in the same order, so re-evaluating it gives exactly this value."""
+        def walk(node: ast.expr) -> tuple[Decimal, str] | _Missing:
+            """(value, expr text), or why a divisor cannot be used. The expression is built
+            beside the arithmetic, in the same order, so re-evaluating it gives this value."""
             if isinstance(node, ast.Name):
                 operand = inputs[node.id]
                 rows.extend(operand.rows)
@@ -407,11 +425,15 @@ class _Run:
                 return Decimal(str(node.value)), str(node.value)
             if isinstance(node, ast.UnaryOp):
                 inner = walk(node.operand)
-                return None if inner is None else (-inner[0], f"-{_wrap(inner[1])}")
+                if isinstance(inner, _Missing):
+                    return inner
+                return -inner[0], f"-{_wrap(inner[1])}"
             assert isinstance(node, ast.BinOp)  # formula_refs allows nothing else
             left, right = walk(node.left), walk(node.right)
-            if left is None or right is None:
-                return None
+            if isinstance(left, _Missing):
+                return left
+            if isinstance(right, _Missing):
+                return right
             a, b = left[0], right[0]
             if isinstance(node.op, ast.Add):
                 result, symbol = a + b, "+"
@@ -420,14 +442,18 @@ class _Run:
             elif isinstance(node.op, ast.Mult):
                 result, symbol = a * b, "*"
             else:
-                if b == 0:
-                    return None
+                divisor = node.right.id if isinstance(node.right, ast.Name) else None
+                unit = None if divisor is None else self.catalog[divisor].unit
+                why_not = _bad_divisor(b, unit)
+                if why_not is not None:
+                    shown = divisor or "a divisor"
+                    return _Missing(why_not, f"{shown} in {formula!r} is {b:f}")
                 result, symbol = a / b, "/"
             return result, f"{_wrap(left[1])} {symbol} {_wrap(right[1])}"
 
         computed = walk(ast.parse(formula, mode="eval").body)
-        if computed is None:
-            return _Missing("division_by_zero", f"a divisor in {formula!r} is zero")
+        if isinstance(computed, _Missing):
+            return computed
         return _Value(
             name, computed[0], computed[1], tuple(rows), True, None, tuple(dict.fromkeys(fallbacks))
         )
@@ -561,6 +587,16 @@ class _Run:
                 _Missing(
                     "growth_base_nonpositive",
                     f"the {_period_label(base)} value is zero or negative",
+                ),
+            )
+        if _too_small(before.value, self.catalog[metric].unit):
+            return self.not_found(
+                metric,
+                cik,
+                current,
+                _Missing(
+                    "near_zero_denominator",
+                    f"the {_period_label(base)} value is under $1 million",
                 ),
             )
         base_expr = _wrap(before.expr)

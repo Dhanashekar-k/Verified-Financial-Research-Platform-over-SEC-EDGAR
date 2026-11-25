@@ -1764,3 +1764,93 @@ def test_the_derived_quarter_note_names_the_metric(conn: Any) -> None:
     res = one(run(conn, ["revenue"], [TI], [(2022, "Q4")]))
     (n,) = note(res, "q4_derived")
     assert n.text.startswith("Revenue for Q4 FY2022")
+
+
+# ======================================================================
+# 13. Unusable denominators abstain, as in the gold generator (ADR-044 denominator_ok)
+# ======================================================================
+
+
+def _margin_rows(revenue: str, net_income: str = "-5000000") -> list[dict[str, Any]]:
+    return [
+        _fake(TI_REV_FY22, 7_800_000_001, tag="Revenues", value=revenue),
+        _fake(TI_NI_FY22, 7_800_000_002, value=net_income),
+    ]
+
+
+@pytest.mark.parametrize(
+    ("revenue", "reason"),
+    [
+        ("-2000000", "nonpositive_denominator"),  # used to be a +250% "margin"
+        ("999999", "near_zero_denominator"),
+        ("1", "near_zero_denominator"),
+        ("0", "division_by_zero"),
+    ],
+)
+def test_a_margin_on_unusable_revenue_abstains(
+    conn: Any, pg_url: str, revenue: str, reason: str
+) -> None:
+    with _scratch(pg_url, _margin_rows(revenue), "bad_margin") as c:
+        nf = only_not_found(run(c, ["net_margin"], [FAKE_CIK], [(2022, "FY")]))
+    assert (nf.metric, nf.reason) == ("net_margin", reason)
+
+
+def test_a_margin_on_exactly_one_million_of_revenue_is_computed(conn: Any, pg_url: str) -> None:
+    with _scratch(pg_url, _margin_rows("1000000"), "edge_margin") as c:
+        res = compile_plan(make_plan(["net_margin"], [FAKE_CIK], [(2022, "FY")]), c)
+    assert [r.value for r in res.results] == [D("-5")] and not res.not_found
+
+
+@pytest.mark.parametrize("revenue", ["-2000000", "999999"])
+def test_the_reported_revenue_itself_is_still_returned(
+    conn: Any, pg_url: str, revenue: str
+) -> None:
+    """Only a division by it abstains; the filed fact is a fact."""
+    with _scratch(pg_url, _margin_rows(revenue), "bad_revenue_value") as c:
+        res = compile_plan(make_plan(["revenue"], [FAKE_CIK], [(2022, "FY")]), c)
+    assert [r.value for r in res.results] == [D(revenue)]
+
+
+def test_a_rank_by_margin_leaves_the_unusable_company_unranked(conn: Any, pg_url: str) -> None:
+    with _scratch(pg_url, _margin_rows("-2000000"), "bad_rank") as c:
+        out = compile_plan(make_plan(["net_margin"], [TI, FAKE_CIK], [(2022, "FY")], "rank"), c)
+    assert [(r.cik, r.rank) for r in out.results] == [(TI, 1)]
+    assert [(n.cik, n.reason) for n in out.not_found] == [(FAKE_CIK, "nonpositive_denominator")]
+
+
+def _two_years(tag: str, base: str, now: str, **kw: Any) -> list[dict[str, Any]]:
+    return [
+        _fake(TI_NI_FY21, 7_900_000_001, tag=tag, value=base, **kw),
+        _fake(TI_NI_FY22, 7_900_000_002, tag=tag, value=now, **kw),
+    ]
+
+
+@pytest.mark.parametrize(
+    ("base", "reason"),
+    [
+        ("999999", "near_zero_denominator"),
+        ("1", "near_zero_denominator"),
+        ("0", "growth_base_nonpositive"),
+        ("-3000000", "growth_base_nonpositive"),
+    ],
+)
+def test_growth_from_an_unusable_dollar_base_abstains(
+    conn: Any, pg_url: str, base: str, reason: str
+) -> None:
+    rows = _two_years("NetIncomeLoss", base, "5000000")
+    with _scratch(pg_url, rows, "bad_base") as c:
+        nf = only_not_found(run(c, ["net_income"], [FAKE_CIK], [(2022, "FY")], "growth"))
+    assert (nf.reason, nf.fiscal_year) == (reason, 2022)
+
+
+def test_growth_from_exactly_one_million_is_computed(conn: Any, pg_url: str) -> None:
+    with _scratch(pg_url, _two_years("NetIncomeLoss", "1000000", "3000000"), "edge_base") as c:
+        res = compile_plan(make_plan(["net_income"], [FAKE_CIK], [(2022, "FY")], "growth"), c)
+    assert [r.value for r in res.results] == [D("2")]
+
+
+def test_a_small_per_share_base_is_only_held_to_be_positive(conn: Any, pg_url: str) -> None:
+    """Gold's $1M floor is for dollar amounts; earnings per share are always small numbers."""
+    with _scratch(pg_url, _two_years("EarningsPerShareDiluted", "0.5", "1"), "eps_base") as c:
+        res = compile_plan(make_plan(["eps_diluted"], [FAKE_CIK], [(2022, "FY")], "growth"), c)
+    assert [r.value for r in res.results] == [D("1")]
