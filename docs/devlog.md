@@ -120,3 +120,10 @@ the day-to-day calls and progress. Append one dated entry at the end of each wor
 - **Deferred polish:** single-word brand mentions that are not typos or aliases ("Ford", "Cisco", "Schwab") miss and trigger a clarification; add aliases from the dev run's misses, not from test.
 - **Not run, gated on spend:** box start, reranker download (`make fetch-reranker`), the intent-accuracy dev run, the retrieval ablation, every engine bench. No LLM call was made this session.
 - **Next:** Shekar implements `compiler.py`, `periods.py`, `guard.py`, edits the few-shots, labels `router_test.jsonl`; then the gated runs (planner dev run first, cost to be stated before it starts).
+
+## 2026-11-25 (later): owned cores and the flexible front door (M5 A–D)
+- Shekar authorized Claude, under `EDGARQA_ALLOW_CORE_EDITS=1`, to implement `compiler.py`, `periods.py` and `sql_guard/guard.py` (ADR-047). The tests they were built against were also Claude's; Shekar's `/interview-me` review is pending.
+- Added `QueryPlan.period_text`, a new planner prompt and 8 messy few-shots (awaiting sign-off), clarifying questions as refusals, and a text-only fallback for unmapped measures (ADR-048).
+- Two reviewer-agent passes found real defects that every test passed, among them a 10-Q trailing-twelve-month figure served as a fiscal year, a missing revenue pair guard, a SQL guard bypass through Postgres attribute notation, and a period check one company could switch off. Fixed with regression tests; the second-pass fixes were not re-reviewed. One original spec test was changed (Insulet Q4 2021 now abstains).
+- Open for Shekar: `Note` has no metric/unit; `NumericResult` has no base period; negative or tiny ratio denominators are computed (gold abstains); `inputs_verified` ignores the gold allow-list; the gold generator does not filter 10-Q twelve-month rows (198 of 341 gold fact ids not checked, `docs/m5/fy_form_check.json`); the harness provenance gate only checks for non-empty fields and grounding violations are not written to results.
+- No spend, no box, no reranker download. Planner quality is NOT MEASURED. Next: few-shot sign-off, then the planner dev run.
