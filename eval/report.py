@@ -54,7 +54,41 @@ def select_runs(results_dir: Path, explicit: list[str] | None = None) -> list[di
     return list(latest.values())
 
 
-def render(runs: list[dict[str, Any]]) -> str:
+KAPPA_TARGET = 0.70  # M04 DoD: judge-vs-human kappa >= 0.7, or the disagreements documented
+
+
+def kappa_for(run: dict[str, Any], record: dict[str, Any] | None) -> dict[str, Any] | None:
+    """The judge-vs-human kappa that applies to ``run``, with where it came from.
+
+    The run's own ``judge_kappa`` wins. Otherwise ``eval/judges/kappa.json`` applies only when it
+    was measured on THIS run's answers (``results_run_id``) with this run's judge model and
+    correctness rubric: a kappa from another run, model or rubric says nothing about this one.
+    """
+    fb = run["sets"].get("financebench")
+    if not isinstance(fb, dict):
+        return None
+    if fb.get("judge_kappa") is not None:
+        return {"kappa": fb["judge_kappa"], "n": None, "source": "results file"}
+    cfg = run["config"]
+    if (
+        record
+        and record.get("kappa") is not None
+        and record.get("results_run_id") == run["run_id"]
+        and record.get("judge_model") == cfg.get("judge")
+        and record.get("rubric_version") == (cfg.get("judge_rubrics") or {}).get("correctness")
+    ):
+        return {
+            "kappa": record["kappa"],
+            "n": record.get("n"),
+            "source": "eval/judges/kappa.json",
+            "rubric": record.get("rubric_version"),
+            "judge": record.get("judge_model"),
+            "labels_sha256": record.get("labels_sha256"),
+        }
+    return None
+
+
+def render(runs: list[dict[str, Any]], kappa_record: dict[str, Any] | None = None) -> str:
     if not runs:
         return "_No results files yet: every metric is NOT MEASURED._"
     out: list[str] = []
@@ -104,8 +138,12 @@ def render(runs: list[dict[str, Any]]) -> str:
             else:
                 judge = "-"
                 if name == "financebench":
-                    k = s.get("judge_kappa")
-                    judge = f"kappa {k:.2f}" if k is not None else "kappa NOT MEASURED"
+                    kd = kappa_for(r, kappa_record)
+                    judge = (
+                        f"kappa {kd['kappa']:.2f} (answered rows only)"
+                        if kd
+                        else "kappa NOT MEASURED"
+                    )
                 rows = [("accuracy", s.get("accuracy"), s.get("ci95"), judge, s.get("n_scored"))]
                 if name == "financebench":
                     rows.append(
@@ -143,6 +181,24 @@ def render(runs: list[dict[str, Any]]) -> str:
                     judge,
                 ]
                 out.append("| " + " | ".join(str(c) for c in cells) + " |")
+    cal = [(r["run_id"], kappa_for(r, kappa_record)) for r in runs]
+    if any(kd for _, kd in cal):
+        out.append("\n### Judge calibration (FinanceBench correctness judge vs human labels)\n")
+        out.append(
+            "| run | kappa | n labeled (answered rows) | vs 0.70 target | rubric | judge model "
+            "| labels sha256 "
+            "| source |\n|---|---:|---:|---|---|---|---|---|"
+        )
+        for rid, kd in cal:
+            if not kd:
+                continue
+            k = float(kd["kappa"])
+            sha = str(kd.get("labels_sha256") or NM)[:12]
+            out.append(
+                f"| `{rid}` | {k:.3f} | {kd['n'] if kd['n'] is not None else NM} "
+                f"| {'met' if k >= KAPPA_TARGET else 'below target'} | {kd.get('rubric') or NM} "
+                f"| {kd.get('judge') or NM} | `{sha}` | {kd['source']} |"
+            )
     out.append("\n### Cost and latency\n")
     out.append(
         "| run | mode | composer | questions | total $ | $ / question "
@@ -181,9 +237,11 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--results", type=Path, default=Path("eval/results"))
     ap.add_argument("--page", type=Path, default=Path("docs/results.md"))
     ap.add_argument("--runs", nargs="*", default=None, help="explicit run_ids to include")
+    ap.add_argument("--kappa-file", type=Path, default=Path("eval/judges/kappa.json"))
     args = ap.parse_args(argv)
     runs = select_runs(args.results, args.runs) if args.results.exists() else []
-    args.page.write_text(splice(args.page.read_text(), render(runs)))
+    kappa = json.loads(args.kappa_file.read_text()) if args.kappa_file.exists() else None
+    args.page.write_text(splice(args.page.read_text(), render(runs, kappa)))
     print(f"updated {args.page} from {len(runs)} run(s)")
     return 0
 

@@ -636,3 +636,54 @@ def test_a_corpus_swap_during_the_run_fails_it_but_keeps_the_results(
 def test_corpus_version_drift_check_is_off_for_systems_that_read_no_corpus() -> None:
     assert run.corpus_version_drifted(object(), "dsn", 7) is None
     assert run.corpus_version_drifted(_CorpusReader(), None, 7) is None
+
+
+def _kappa_run(
+    judge: str = "J", rubric: str = "correctness-v2", run_id: str = "r1"
+) -> dict[str, Any]:
+    return {
+        "run_id": run_id,
+        "config": {
+            "system": "baseline", "composer": "c", "split": "all", "mode": "batch",
+            "judge": judge, "judge_rubrics": {"correctness": rubric}, "ef_search": 800,
+        },
+        "sets": {
+            "financebench": {"n": 3, "accuracy": 0.5, "ci95": [0.2, 0.8], "judge_kappa": None}
+        },
+        "cost": {"total_usd": "0.1", "per_question_usd": "0.03"},
+        "latency_ms": {"p50": None, "p95": None},
+        "per_question": [],
+    }  # fmt: skip
+
+
+_KAPPA = {
+    "kappa": 0.6456, "n": 46, "judge_model": "J", "rubric_version": "correctness-v2",
+    "labels_sha256": "ab" * 32, "results_run_id": "r1",
+}  # fmt: skip
+
+
+def test_report_uses_kappa_json_only_when_it_was_measured_on_this_run_and_judge() -> None:
+    text = report.render([_kappa_run()], _KAPPA)
+    assert "kappa 0.65" in text and "kappa NOT MEASURED" not in text
+    assert "### Judge calibration" in text and "0.646" in text and "below target" in text
+    assert "| 46 |" in text and "abababababab" in text and "eval/judges/kappa.json" in text
+
+
+@pytest.mark.parametrize(
+    "run",
+    [_kappa_run(run_id="r2"), _kappa_run(judge="other"), _kappa_run(rubric="correctness-v1")],
+)
+def test_report_ignores_a_kappa_from_another_run_judge_or_rubric(run: dict[str, Any]) -> None:
+    text = report.render([run], _KAPPA)
+    assert "kappa NOT MEASURED" in text and "### Judge calibration" not in text
+
+
+def test_report_marks_a_kappa_at_or_above_target_as_met() -> None:
+    assert "| met |" in report.render([_kappa_run()], {**_KAPPA, "kappa": 0.7})
+
+
+def test_report_prefers_the_runs_own_judge_kappa() -> None:
+    run = _kappa_run()
+    run["sets"]["financebench"]["judge_kappa"] = 0.81
+    text = report.render([run], _KAPPA)
+    assert "kappa 0.81" in text and "results file" in text
