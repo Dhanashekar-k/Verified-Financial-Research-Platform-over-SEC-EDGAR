@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Jacobs Solutions"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "competition in markets and its effect on business",
+      "how projects are typically awarded"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2023
+      }
+    ],
+    "section_hints": [
+      "1A",
+      "1"
+    ]
+  },
+  "request_key": "095a0929f3a9cbf60fba79228675b9f8d74b805a8ae6e5f3311b7e6ab274cb04",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000071405",
+    "input_tokens": 61,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 184
+  }
+}

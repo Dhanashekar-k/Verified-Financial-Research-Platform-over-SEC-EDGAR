@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Boeing"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "product and service category revenue breakdown",
+      "revenue share by category"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2022
+      }
+    ],
+    "section_hints": [
+      "1",
+      "7",
+      "8"
+    ]
+  },
+  "request_key": "71a4fa7da5f45a5dffde8f6d28046d22899d0eabd59b5270d2a6d72b12017b01",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000089855",
+    "input_tokens": 40,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 262
+  }
+}

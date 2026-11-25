@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Starbucks"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "capex"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "value",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "Q1",
+        "fiscal_year": 2022
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "5b628719ec822d7512fac27912e2183540ae023ed1adb28888887687b731f14f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000044205",
+    "input_tokens": 37,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 80
+  }
+}

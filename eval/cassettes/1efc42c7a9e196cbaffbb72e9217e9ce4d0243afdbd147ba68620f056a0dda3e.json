@@ -1,0 +1,40 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Amcor"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "restructuring liability nature and purpose"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "Q2",
+        "fiscal_year": 2023
+      }
+    ],
+    "section_hints": [
+      "8",
+      "7"
+    ]
+  },
+  "request_key": "1efc42c7a9e196cbaffbb72e9217e9ce4d0243afdbd147ba68620f056a0dda3e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000094255",
+    "input_tokens": 43,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 279
+  }
+}

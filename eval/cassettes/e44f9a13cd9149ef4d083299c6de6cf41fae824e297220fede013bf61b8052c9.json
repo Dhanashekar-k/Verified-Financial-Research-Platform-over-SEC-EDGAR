@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "McKesson Corp"
+      },
+      {
+        "cik": null,
+        "mention": "TE Connectivity plc"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "operating_cash_flow"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "compare",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2023
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "e44f9a13cd9149ef4d083299c6de6cf41fae824e297220fede013bf61b8052c9",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000073605",
+    "input_tokens": 50,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 195
+  }
+}

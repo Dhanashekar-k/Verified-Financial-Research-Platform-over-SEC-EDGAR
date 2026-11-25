@@ -1,0 +1,43 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "JnJ"
+      }
+    ],
+    "intent": "hybrid",
+    "metrics": [
+      "gross_margin"
+    ],
+    "narrative_topics": [
+      "drivers of gross margin change",
+      "gross margin usefulness for a diversified healthcare company"
+    ],
+    "needs_clarification": null,
+    "operation": "value",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2022
+      }
+    ],
+    "section_hints": [
+      "7",
+      "8"
+    ]
+  },
+  "request_key": "aa1bb79a17295a31d8a8108aec19b8181a36201fef1f4544dd5888c51c060ccc",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000140805",
+    "input_tokens": 54,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 463
+  }
+}

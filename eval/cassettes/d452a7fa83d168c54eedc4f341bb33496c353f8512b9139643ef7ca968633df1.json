@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Alphabet Inc."
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "operating_income"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "growth",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2020
+      },
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2021
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "d452a7fa83d168c54eedc4f341bb33496c353f8512b9139643ef7ca968633df1",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000045755",
+    "input_tokens": 48,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 84
+  }
+}

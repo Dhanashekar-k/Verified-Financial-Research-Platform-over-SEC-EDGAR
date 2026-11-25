@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Mastercard Inc."
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "operating_cash_flow"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "growth",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "Q1",
+        "fiscal_year": 2021
+      },
+      {
+        "fiscal_period": "Q1",
+        "fiscal_year": 2022
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "88f80a5a24ee29297eb4e751f5bc9499b60b8c371a0e1f78b60418625d422454",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000089105",
+    "input_tokens": 65,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 254
+  }
+}

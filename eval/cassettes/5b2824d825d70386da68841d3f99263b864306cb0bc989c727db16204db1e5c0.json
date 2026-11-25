@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "ADM"
+      },
+      {
+        "cik": null,
+        "mention": "Viatris"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "interest_expense"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "compare",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2025
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "5b2824d825d70386da68841d3f99263b864306cb0bc989c727db16204db1e5c0",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000075705",
+    "input_tokens": 37,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 206
+  }
+}

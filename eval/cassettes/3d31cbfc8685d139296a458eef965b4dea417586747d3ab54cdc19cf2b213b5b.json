@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Verizon"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "quick ratio",
+      "liquidity position",
+      "cash and current assets vs current liabilities"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2022
+      }
+    ],
+    "section_hints": [
+      "7",
+      "8"
+    ]
+  },
+  "request_key": "3d31cbfc8685d139296a458eef965b4dea417586747d3ab54cdc19cf2b213b5b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000105855",
+    "input_tokens": 70,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 320
+  }
+}

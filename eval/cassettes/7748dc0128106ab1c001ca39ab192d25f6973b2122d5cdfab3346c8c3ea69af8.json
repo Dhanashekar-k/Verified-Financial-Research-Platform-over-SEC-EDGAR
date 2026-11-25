@@ -1,0 +1,40 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "NRG Energy"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "risks acquiring or disposing of businesses, assets, or retail customer books",
+      "failure to realize expected benefits of acquisitions or dispositions"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2021
+      }
+    ],
+    "section_hints": [
+      "1A"
+    ]
+  },
+  "request_key": "7748dc0128106ab1c001ca39ab192d25f6973b2122d5cdfab3346c8c3ea69af8",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000055955",
+    "input_tokens": 82,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 118
+  }
+}

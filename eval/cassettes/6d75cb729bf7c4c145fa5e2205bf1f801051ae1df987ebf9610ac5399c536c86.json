@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Cardinal Health"
+      },
+      {
+        "cik": null,
+        "mention": "W.W. Grainger"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "dividends_paid"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "compare",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2025
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "6d75cb729bf7c4c145fa5e2205bf1f801051ae1df987ebf9610ac5399c536c86",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000078105",
+    "input_tokens": 50,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 213
+  }
+}

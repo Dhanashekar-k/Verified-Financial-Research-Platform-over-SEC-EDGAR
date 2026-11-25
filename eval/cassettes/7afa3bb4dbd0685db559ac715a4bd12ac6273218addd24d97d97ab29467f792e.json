@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Diamondback Energy"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "eps_diluted"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "value",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2021
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "7afa3bb4dbd0685db559ac715a4bd12ac6273218addd24d97d97ab29467f792e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000068905",
+    "input_tokens": 31,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 180
+  }
+}

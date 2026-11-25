@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "S&P Global"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "dividends_paid"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "growth",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2021
+      },
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2022
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "a74b6f64d97ca04851e62db6f72db2f01a75851681571d6e9e6912bf2c660bba",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000045605",
+    "input_tokens": 50,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 83
+  }
+}

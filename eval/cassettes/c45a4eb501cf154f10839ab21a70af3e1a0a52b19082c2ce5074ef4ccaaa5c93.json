@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Costco Wholesale"
+      },
+      {
+        "cik": null,
+        "mention": "Carvana"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "total_liabilities"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "compare",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2022
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "c45a4eb501cf154f10839ab21a70af3e1a0a52b19082c2ce5074ef4ccaaa5c93",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000046355",
+    "input_tokens": 50,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 86
+  }
+}

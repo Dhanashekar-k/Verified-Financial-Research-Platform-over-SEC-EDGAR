@@ -1,0 +1,44 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Targa Resources Corp."
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "Dodd-Frank derivatives regulation impact on hedging activities",
+      "Dodd-Frank effect on financial results",
+      "margin treatment of current hedges",
+      "margin or collateral requirements for derivatives"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2024
+      }
+    ],
+    "section_hints": [
+      "1A",
+      "7A",
+      "7"
+    ]
+  },
+  "request_key": "c21f7c3d30fd766be4c666baee824388cdc3a9bc425f1ea3649678770c273ad7",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000121405",
+    "input_tokens": 81,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 380
+  }
+}

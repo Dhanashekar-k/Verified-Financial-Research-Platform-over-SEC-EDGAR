@@ -1,0 +1,46 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Nike"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "cost_of_revenue",
+      "revenue"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "ratio",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2016
+      },
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2017
+      },
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2018
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "0b57aace75637f6ee140867cdb65c94c0d6d7c659d6ac432a3f07943b532a65c",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000190105",
+    "input_tokens": 110,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 649
+  }
+}

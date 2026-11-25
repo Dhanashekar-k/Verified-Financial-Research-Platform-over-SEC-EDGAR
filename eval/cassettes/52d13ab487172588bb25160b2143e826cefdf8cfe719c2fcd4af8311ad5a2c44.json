@@ -1,0 +1,36 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Pfizer"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "Upjohn spin-off expected costs",
+      "Upjohn separation costs USD million"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [],
+    "section_hints": [
+      "7",
+      "8"
+    ]
+  },
+  "request_key": "52d13ab487172588bb25160b2143e826cefdf8cfe719c2fcd4af8311ad5a2c44",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000093655",
+    "input_tokens": 36,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 278
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Meta"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "goodwill impairment",
+      "sale of Instagram"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2022
+      }
+    ],
+    "section_hints": [
+      "7",
+      "8"
+    ]
+  },
+  "request_key": "33b3c1928d11fd850c3750e4d262e76e1cadee6fbc53f0ab003bdceb246ecb6d",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000092955",
+    "input_tokens": 32,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 276
+  }
+}

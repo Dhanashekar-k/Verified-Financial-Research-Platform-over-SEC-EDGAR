@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Martin Marietta Materials"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "capex"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "value",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "Q1",
+        "fiscal_year": 2023
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "c0103a936ad393e7d3207c03c88f05c213e0155a539a3debfc7f223d19d59a67",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000066455",
+    "input_tokens": 52,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 166
+  }
+}

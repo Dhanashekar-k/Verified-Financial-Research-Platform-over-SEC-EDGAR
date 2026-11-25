@@ -27,3 +27,5 @@ JPMorgan,19617,FinanceBench company name
 Paypal,1633917,FinanceBench company name
 Verizon,732712,FinanceBench company name
 Meta,1326801,Meta Platforms short name
+CRH PLC,849395,SEC legal name is CRH PUBLIC LTD CO (missed in the planner dev run)
+D.R. Horton,882184,SEC legal name is HORTON D R INC /DE/ (missed in the planner dev run)

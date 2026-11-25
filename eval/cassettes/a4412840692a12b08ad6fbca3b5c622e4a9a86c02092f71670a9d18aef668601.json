@@ -1,0 +1,39 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "MGM Resorts"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "accounts payable"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2018
+      }
+    ],
+    "section_hints": [
+      "8"
+    ]
+  },
+  "request_key": "a4412840692a12b08ad6fbca3b5c622e4a9a86c02092f71670a9d18aef668601",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000080755",
+    "input_tokens": 58,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 222
+  }
+}

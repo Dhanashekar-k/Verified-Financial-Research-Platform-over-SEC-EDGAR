@@ -1,0 +1,38 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Ulta Beauty"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "debt securities registered on national securities exchange",
+      "Section 12(b) securities"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2023
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "06c3bc5a148c2e4a5d5d597e3b2019b8de045abfa53572a4bc097188410baaf2",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000098305",
+    "input_tokens": 44,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 295
+  }
+}

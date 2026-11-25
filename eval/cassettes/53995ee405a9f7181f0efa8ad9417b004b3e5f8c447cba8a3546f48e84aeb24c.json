@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "NextEra Energy"
+      },
+      {
+        "cik": null,
+        "mention": "Kinder Morgan"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "total_liabilities"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "compare",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2022
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "53995ee405a9f7181f0efa8ad9417b004b3e5f8c447cba8a3546f48e84aeb24c",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000072855",
+    "input_tokens": 75,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 187
+  }
+}

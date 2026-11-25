@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Pfizer"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "geographic revenue change year over year",
+      "revenue by region Q2 2023"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "Q2",
+        "fiscal_year": 2023
+      }
+    ],
+    "section_hints": [
+      "7",
+      "8"
+    ]
+  },
+  "request_key": "f000e0ba79dfc76e6cfd9055fe95195e651d61da20cc3e86c8a6d88fae388920",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000118705",
+    "input_tokens": 47,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 376
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Boeing"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "production rate changes",
+      "production rate forecast"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2023
+      }
+    ],
+    "section_hints": [
+      "7",
+      "1"
+    ]
+  },
+  "request_key": "7ba81dd0d0904779e21da0e791ba6bb077f6efc387964fac1791ee9d691b6101",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000086205",
+    "input_tokens": 27,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 250
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Netflix"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "total current liabilities"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2017
+      }
+    ],
+    "section_hints": [
+      "8"
+    ]
+  },
+  "request_key": "51ec321d192b926f95f0e3e7c20c4ea4f98e6bce17aafe1720ae4dc372b5568f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000075405",
+    "input_tokens": 56,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 201
+  }
+}

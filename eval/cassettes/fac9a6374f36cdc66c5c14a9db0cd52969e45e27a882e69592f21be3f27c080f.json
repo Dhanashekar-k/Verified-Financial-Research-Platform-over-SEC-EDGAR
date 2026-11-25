@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "D.R. Horton"
+      },
+      {
+        "cik": null,
+        "mention": "PulteGroup"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "total_liabilities"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "compare",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2025
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "fac9a6374f36cdc66c5c14a9db0cd52969e45e27a882e69592f21be3f27c080f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000068205",
+    "input_tokens": 62,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 171
+  }
+}

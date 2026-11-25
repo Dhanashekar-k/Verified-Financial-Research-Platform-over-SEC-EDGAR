@@ -1,0 +1,1445 @@
+{
+  "run_id": "2026-11-25T11-06-14Z_intent_planner-claude-haiku-5-5",
+  "git_sha": "091bcaf",
+  "config": {
+    "mode": "replay",
+    "split": "dev",
+    "sets": [
+      "numeric",
+      "narrative",
+      "financebench",
+      "unanswerable"
+    ],
+    "planner": "claude-haiku-5-5",
+    "system_prompt_sha256": "ea79284c1561663af3c815a10088055ed140612f482defa588e29812ef5773e9",
+    "n_questions": 147
+  },
+  "cost_usd": 0.0,
+  "intent_accuracy": {
+    "numeric": {
+      "n": 72,
+      "rate": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ]
+    },
+    "narrative": {
+      "n": 15,
+      "rate": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ]
+    }
+  },
+  "numeric_plan_fields": {
+    "metric": {
+      "n": 72,
+      "rate": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ]
+    },
+    "company": {
+      "n": 72,
+      "rate": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ]
+    },
+    "period": {
+      "n": 72,
+      "rate": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ]
+    },
+    "operation": {
+      "n": 72,
+      "rate": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ]
+    }
+  },
+  "confusion": {
+    "numeric": {
+      "numeric": 72
+    },
+    "narrative": {
+      "narrative": 15
+    }
+  },
+  "predicted_intent_distribution": {
+    "numeric": {
+      "numeric": 72
+    },
+    "narrative": {
+      "narrative": 15
+    },
+    "financebench": {
+      "narrative": 27,
+      "numeric": 13,
+      "hybrid": 4,
+      "out_of_scope": 1
+    },
+    "unanswerable": {
+      "out_of_scope": 7,
+      "narrative": 6,
+      "numeric": 2
+    }
+  },
+  "needs_clarification": {
+    "narrative": 1,
+    "financebench": 7,
+    "unanswerable": 2
+  },
+  "per_question": [
+    {
+      "id": "num-0003",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0007",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0010",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0011",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0015",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0022",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0027",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0029",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0030",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0032",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0035",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0037",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0038",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0043",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0046",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0047",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0051",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0054",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0056",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0057",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0061",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0067",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0070",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0079",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0082",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0083",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0085",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0086",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0092",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0093",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0098",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0106",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0110",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0113",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0115",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0116",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0131",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0134",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0135",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0138",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0139",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0140",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0141",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0143",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0146",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0147",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0154",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0155",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0161",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0166",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0172",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0174",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0175",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0177",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0185",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0187",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0188",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0189",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0191",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0199",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0202",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0206",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0213",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0217",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0220",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0224",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0227",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0230",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0232",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0238",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0239",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "num-0240",
+      "set": "numeric",
+      "predicted": "numeric",
+      "label": "numeric",
+      "correct": true,
+      "plan_checks": {
+        "metric": true,
+        "company": true,
+        "period": true,
+        "operation": true
+      }
+    },
+    {
+      "id": "nar-002",
+      "set": "narrative",
+      "predicted": "narrative",
+      "label": "narrative",
+      "correct": true
+    },
+    {
+      "id": "nar-003",
+      "set": "narrative",
+      "predicted": "narrative",
+      "label": "narrative",
+      "correct": true
+    },
+    {
+      "id": "nar-019",
+      "set": "narrative",
+      "predicted": "narrative",
+      "label": "narrative",
+      "correct": true
+    },
+    {
+      "id": "nar-021",
+      "set": "narrative",
+      "predicted": "narrative",
+      "label": "narrative",
+      "correct": true
+    },
+    {
+      "id": "nar-025",
+      "set": "narrative",
+      "predicted": "narrative",
+      "label": "narrative",
+      "correct": true
+    },
+    {
+      "id": "nar-026",
+      "set": "narrative",
+      "predicted": "narrative",
+      "label": "narrative",
+      "correct": true
+    },
+    {
+      "id": "nar-029",
+      "set": "narrative",
+      "predicted": "narrative",
+      "label": "narrative",
+      "correct": true
+    },
+    {
+      "id": "nar-032",
+      "set": "narrative",
+      "predicted": "narrative",
+      "label": "narrative",
+      "correct": true
+    },
+    {
+      "id": "nar-033",
+      "set": "narrative",
+      "predicted": "narrative",
+      "label": "narrative",
+      "correct": true
+    },
+    {
+      "id": "nar-036",
+      "set": "narrative",
+      "predicted": "narrative",
+      "label": "narrative",
+      "correct": true
+    },
+    {
+      "id": "nar-039",
+      "set": "narrative",
+      "predicted": "narrative",
+      "label": "narrative",
+      "correct": true
+    },
+    {
+      "id": "nar-040",
+      "set": "narrative",
+      "predicted": "narrative",
+      "label": "narrative",
+      "correct": true
+    },
+    {
+      "id": "nar-043",
+      "set": "narrative",
+      "predicted": "narrative",
+      "label": "narrative",
+      "correct": true
+    },
+    {
+      "id": "nar-046",
+      "set": "narrative",
+      "predicted": "narrative",
+      "label": "narrative",
+      "correct": true
+    },
+    {
+      "id": "nar-049",
+      "set": "narrative",
+      "predicted": "narrative",
+      "label": "narrative",
+      "correct": true
+    },
+    {
+      "id": "fb-00216",
+      "set": "financebench",
+      "predicted": "narrative"
+    },
+    {
+      "id": "fb-00283",
+      "set": "financebench",
+      "predicted": "narrative"
+    },
+    {
+      "id": "fb-00288",
+      "set": "financebench",
+      "predicted": "numeric"
+    },
+    {
+      "id": "fb-00382",
+      "set": "financebench",
+      "predicted": "narrative"
+    },
+    {
+      "id": "fb-00438",
+      "set": "financebench",
+      "predicted": "hybrid"
+    },
+    {
+      "id": "fb-00494",
+      "set": "financebench",
+      "predicted": "narrative"
+    },
+    {
+      "id": "fb-00499",
+      "set": "financebench",
+      "predicted": "narrative"
+    },
+    {
+      "id": "fb-00517",
+      "set": "financebench",
+      "predicted": "narrative"
+    },
+    {
+      "id": "fb-00603",
+      "set": "financebench",
+      "predicted": "narrative"
+    },
+    {
+      "id": "fb-00605",
+      "set": "financebench",
+      "predicted": "narrative"
+    },
+    {
+      "id": "fb-00651",
+      "set": "financebench",
+      "predicted": "narrative"
+    },
+    {
+      "id": "fb-00669",
+      "set": "financebench",
+      "predicted": "hybrid"
+    },
+    {
+      "id": "fb-00685",
+      "set": "financebench",
+      "predicted": "hybrid"
+    },
+    {
+      "id": "fb-00711",
+      "set": "financebench",
+      "predicted": "narrative"
+    },
+    {
+      "id": "fb-00723",
+      "set": "financebench",
+      "predicted": "hybrid"
+    },
+    {
+      "id": "fb-00724",
+      "set": "financebench",
+      "predicted": "narrative"
+    },
+    {
+      "id": "fb-00735",
+      "set": "financebench",
+      "predicted": "narrative"
+    },
+    {
+      "id": "fb-00746",
+      "set": "financebench",
+      "predicted": "narrative"
+    },
+    {
+      "id": "fb-00941",
+      "set": "financebench",
+      "predicted": "narrative"
+    },
+    {
+      "id": "fb-01163",
+      "set": "financebench",
+      "predicted": "narrative"
+    },
+    {
+      "id": "fb-01319",
+      "set": "financebench",
+      "predicted": "narrative"
+    },
+    {
+      "id": "fb-01328",
+      "set": "financebench",
+      "predicted": "narrative"
+    },
+    {
+      "id": "fb-01346",
+      "set": "financebench",
+      "predicted": "narrative"
+    },
+    {
+      "id": "fb-01474",
+      "set": "financebench",
+      "predicted": "narrative"
+    },
+    {
+      "id": "fb-01858",
+      "set": "financebench",
+      "predicted": "numeric"
+    },
+    {
+      "id": "fb-01912",
+      "set": "financebench",
+      "predicted": "narrative"
+    },
+    {
+      "id": "fb-01930",
+      "set": "financebench",
+      "predicted": "narrative"
+    },
+    {
+      "id": "fb-01936",
+      "set": "financebench",
+      "predicted": "narrative"
+    },
+    {
+      "id": "fb-02119",
+      "set": "financebench",
+      "predicted": "out_of_scope"
+    },
+    {
+      "id": "fb-02419",
+      "set": "financebench",
+      "predicted": "narrative"
+    },
+    {
+      "id": "fb-02608",
+      "set": "financebench",
+      "predicted": "numeric"
+    },
+    {
+      "id": "fb-03282",
+      "set": "financebench",
+      "predicted": "narrative"
+    },
+    {
+      "id": "fb-03473",
+      "set": "financebench",
+      "predicted": "numeric"
+    },
+    {
+      "id": "fb-03718",
+      "set": "financebench",
+      "predicted": "numeric"
+    },
+    {
+      "id": "fb-03838",
+      "set": "financebench",
+      "predicted": "numeric"
+    },
+    {
+      "id": "fb-04171",
+      "set": "financebench",
+      "predicted": "narrative"
+    },
+    {
+      "id": "fb-04302",
+      "set": "financebench",
+      "predicted": "numeric"
+    },
+    {
+      "id": "fb-04412",
+      "set": "financebench",
+      "predicted": "numeric"
+    },
+    {
+      "id": "fb-04417",
+      "set": "financebench",
+      "predicted": "narrative"
+    },
+    {
+      "id": "fb-04672",
+      "set": "financebench",
+      "predicted": "narrative"
+    },
+    {
+      "id": "fb-04784",
+      "set": "financebench",
+      "predicted": "numeric"
+    },
+    {
+      "id": "fb-04980",
+      "set": "financebench",
+      "predicted": "numeric"
+    },
+    {
+      "id": "fb-06272",
+      "set": "financebench",
+      "predicted": "numeric"
+    },
+    {
+      "id": "fb-07507",
+      "set": "financebench",
+      "predicted": "numeric"
+    },
+    {
+      "id": "fb-10420",
+      "set": "financebench",
+      "predicted": "numeric"
+    },
+    {
+      "id": "un-007",
+      "set": "unanswerable",
+      "predicted": "out_of_scope"
+    },
+    {
+      "id": "un-009",
+      "set": "unanswerable",
+      "predicted": "out_of_scope"
+    },
+    {
+      "id": "un-010",
+      "set": "unanswerable",
+      "predicted": "out_of_scope"
+    },
+    {
+      "id": "un-013",
+      "set": "unanswerable",
+      "predicted": "narrative"
+    },
+    {
+      "id": "un-015",
+      "set": "unanswerable",
+      "predicted": "narrative"
+    },
+    {
+      "id": "un-016",
+      "set": "unanswerable",
+      "predicted": "out_of_scope"
+    },
+    {
+      "id": "un-022",
+      "set": "unanswerable",
+      "predicted": "out_of_scope"
+    },
+    {
+      "id": "un-026",
+      "set": "unanswerable",
+      "predicted": "out_of_scope"
+    },
+    {
+      "id": "un-030",
+      "set": "unanswerable",
+      "predicted": "out_of_scope"
+    },
+    {
+      "id": "un-032",
+      "set": "unanswerable",
+      "predicted": "narrative"
+    },
+    {
+      "id": "un-036",
+      "set": "unanswerable",
+      "predicted": "narrative"
+    },
+    {
+      "id": "un-039",
+      "set": "unanswerable",
+      "predicted": "narrative"
+    },
+    {
+      "id": "un-042",
+      "set": "unanswerable",
+      "predicted": "numeric"
+    },
+    {
+      "id": "un-049",
+      "set": "unanswerable",
+      "predicted": "numeric"
+    },
+    {
+      "id": "un-050",
+      "set": "unanswerable",
+      "predicted": "narrative"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Ulta Beauty"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "stock repurchases",
+      "share repurchase spend by quarter",
+      "fourth quarter repurchases"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2023
+      }
+    ],
+    "section_hints": [
+      "7",
+      "8"
+    ]
+  },
+  "request_key": "e1f60670b09a22d38a2c5f0418fb5be9149c10346c1ec6c50b8bc1fc541058da",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000086605",
+    "input_tokens": 50,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 247
+  }
+}

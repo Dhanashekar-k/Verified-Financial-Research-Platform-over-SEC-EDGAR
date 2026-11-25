@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "3M"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "debt securities registered under Section 12(b) on national securities exchange"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "Q2",
+        "fiscal_year": 2023
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "fd960db931ecbe8692eb2e490436efc6c27547242fdb7662d3451baadf2a6161",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000121755",
+    "input_tokens": 43,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 389
+  }
+}

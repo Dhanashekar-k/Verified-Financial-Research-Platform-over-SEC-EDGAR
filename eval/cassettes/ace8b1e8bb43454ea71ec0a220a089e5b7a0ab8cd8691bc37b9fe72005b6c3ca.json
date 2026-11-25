@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Halliburton"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "dividends_paid"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "value",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2023
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "ace8b1e8bb43454ea71ec0a220a089e5b7a0ab8cd8691bc37b9fe72005b6c3ca",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000041105",
+    "input_tokens": 25,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 70
+  }
+}

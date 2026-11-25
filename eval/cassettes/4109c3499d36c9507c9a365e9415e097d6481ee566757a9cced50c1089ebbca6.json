@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "EXPAND ENERGY"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "dividends_paid"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "value",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2022
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "4109c3499d36c9507c9a365e9415e097d6481ee566757a9cced50c1089ebbca6",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000042405",
+    "input_tokens": 26,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 75
+  }
+}

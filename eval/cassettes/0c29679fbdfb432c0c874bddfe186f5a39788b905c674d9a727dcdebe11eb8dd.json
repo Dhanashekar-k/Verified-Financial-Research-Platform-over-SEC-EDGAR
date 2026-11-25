@@ -1,0 +1,43 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Expand Energy (Chesapeake)"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "commodity price risk management with derivatives",
+      "valuation of derivative instruments",
+      "counterparty non-performance risk on derivatives"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2020
+      }
+    ],
+    "section_hints": [
+      "7A",
+      "7",
+      "8"
+    ]
+  },
+  "request_key": "0c29679fbdfb432c0c874bddfe186f5a39788b905c674d9a727dcdebe11eb8dd",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000121605",
+    "input_tokens": 75,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 382
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Coca Cola"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "net_income",
+      "total_assets"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "ratio",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2016
+      },
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2017
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "339404e258512db0f461561f3b60413b652aa2089850712a6243227e0a3c3463",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000143655",
+    "input_tokens": 106,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 464
+  }
+}

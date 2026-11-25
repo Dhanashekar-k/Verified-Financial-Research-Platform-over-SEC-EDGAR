@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Pfizer"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "spin-off of business segments",
+      "divestiture plans"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "Q2",
+        "fiscal_year": 2023
+      }
+    ],
+    "section_hints": [
+      "1",
+      "7"
+    ]
+  },
+  "request_key": "e99b635cf9720365cd6e5c878f2986f5819f95908d9175e7c4c444292a1dd4f8",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000080655",
+    "input_tokens": 31,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 227
+  }
+}

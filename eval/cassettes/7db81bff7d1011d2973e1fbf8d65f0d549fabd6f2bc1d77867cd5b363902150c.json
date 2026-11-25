@@ -1,0 +1,40 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "AES Corporation"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "restructuring costs",
+      "income statement"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2022
+      }
+    ],
+    "section_hints": [
+      "8"
+    ]
+  },
+  "request_key": "7db81bff7d1011d2973e1fbf8d65f0d549fabd6f2bc1d77867cd5b363902150c",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000074955",
+    "input_tokens": 62,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 198
+  }
+}

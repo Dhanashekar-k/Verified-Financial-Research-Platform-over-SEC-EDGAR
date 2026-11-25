@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Hartford Insurance Group"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "interest_expense"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "value",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "Q2",
+        "fiscal_year": 2020
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "ef32196768d657bbb74a70d9fa6145ec5eee7b1ff3496d6b917ad016a7ab3ef0",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000046205",
+    "input_tokens": 37,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 88
+  }
+}

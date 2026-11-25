@@ -1,0 +1,40 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Ulta Beauty"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "merchandise inventories increase drivers"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2023
+      }
+    ],
+    "section_hints": [
+      "7",
+      "8"
+    ]
+  },
+  "request_key": "f7b80a41aa0f7419ca0eb2a97ae2e4391bf92301a00954fe4a3bcbe5af2b0b77",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000082305",
+    "input_tokens": 39,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 232
+  }
+}

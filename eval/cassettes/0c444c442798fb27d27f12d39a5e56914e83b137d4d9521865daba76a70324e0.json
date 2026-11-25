@@ -1,0 +1,43 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Nike"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "net cash from operating activities",
+      "net cash used in investing activities",
+      "net cash from financing activities",
+      "cash flow by activity"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2023
+      }
+    ],
+    "section_hints": [
+      "7",
+      "8"
+    ]
+  },
+  "request_key": "0c444c442798fb27d27f12d39a5e56914e83b137d4d9521865daba76a70324e0",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000112205",
+    "input_tokens": 47,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 350
+  }
+}

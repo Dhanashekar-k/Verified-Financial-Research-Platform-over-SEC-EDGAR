@@ -1,0 +1,40 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "JnJ"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "adjusted EPS growth outlook",
+      "expected acceleration of adjusted EPS growth"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2023
+      }
+    ],
+    "section_hints": [
+      "7"
+    ]
+  },
+  "request_key": "9ce5059a553df46860b4d80d07ed116a3865a8a183c6c550521e5d486f5d2d50",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000135905",
+    "input_tokens": 36,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 447
+  }
+}

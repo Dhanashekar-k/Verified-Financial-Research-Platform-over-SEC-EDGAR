@@ -1,0 +1,46 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Dollar General"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "primary interest rate exposure",
+      "change in interest rate risk",
+      "drivers of interest rate exposure change"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2019
+      },
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2020
+      }
+    ],
+    "section_hints": [
+      "7A",
+      "7"
+    ]
+  },
+  "request_key": "6fa314b1ed8f04eee04d01005036c15bf48855e70c9e2d4c07f9659b1285e01a",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000100055",
+    "input_tokens": 79,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 295
+  }
+}

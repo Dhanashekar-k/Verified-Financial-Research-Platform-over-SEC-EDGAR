@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Hartford Insurance Group"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "net_income"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "growth",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "Q2",
+        "fiscal_year": 2022
+      },
+      {
+        "fiscal_period": "Q2",
+        "fiscal_year": 2023
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "ea1d46488db813b1b11f0807052c46310ee99a54dbf4cd0a33c87dc150807ae8",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000086005",
+    "input_tokens": 58,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 243
+  }
+}

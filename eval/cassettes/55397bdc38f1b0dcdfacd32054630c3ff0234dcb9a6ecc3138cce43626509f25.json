@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Quanta Services, Inc."
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "capex"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "value",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2023
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "55397bdc38f1b0dcdfacd32054630c3ff0234dcb9a6ecc3138cce43626509f25",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000041955",
+    "input_tokens": 37,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 71
+  }
+}

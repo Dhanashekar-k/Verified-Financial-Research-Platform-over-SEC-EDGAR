@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Henry Schein"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "interest_expense"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "value",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "Q2",
+        "fiscal_year": 2021
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "e409b9c42d94ff733c1ed106ff0f3dac13f1f25815c60fa28a0e291dcd242249",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000045005",
+    "input_tokens": 33,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 84
+  }
+}

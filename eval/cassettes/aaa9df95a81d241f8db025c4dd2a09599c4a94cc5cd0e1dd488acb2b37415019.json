@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "NVR Inc."
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "eps_basic"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "value",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "Q1",
+        "fiscal_year": 2023
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "aaa9df95a81d241f8db025c4dd2a09599c4a94cc5cd0e1dd488acb2b37415019",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000045305",
+    "input_tokens": 39,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 84
+  }
+}

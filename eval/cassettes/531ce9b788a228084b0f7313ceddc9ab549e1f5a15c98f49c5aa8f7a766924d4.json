@@ -1,0 +1,35 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Salesforce"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "number of customers located in Chicago"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [],
+    "section_hints": [
+      "1",
+      "7"
+    ]
+  },
+  "request_key": "531ce9b788a228084b0f7313ceddc9ab549e1f5a15c98f49c5aa8f7a766924d4",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000089905",
+    "input_tokens": 26,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 265
+  }
+}

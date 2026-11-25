@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Dollar General Corp"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "interest_expense"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "value",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2023
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "876f1b0a6b9d233affa5e3f4f8a88431caee9d0feb20c2a48a8dff09dce74e3b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000041955",
+    "input_tokens": 32,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 72
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "3M"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "dividends_paid"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": "Which fiscal years should I check for 3M's dividends paid (for example, 2019 to 2023)?",
+    "operation": "trend",
+    "period_text": null,
+    "periods": [],
+    "section_hints": []
+  },
+  "request_key": "091e088db44bd3a3fb96d1cb07487fee38c2c3c4fd02e3821ad87e730fd2d4a8",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000171955",
+    "input_tokens": 27,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 593
+  }
+}

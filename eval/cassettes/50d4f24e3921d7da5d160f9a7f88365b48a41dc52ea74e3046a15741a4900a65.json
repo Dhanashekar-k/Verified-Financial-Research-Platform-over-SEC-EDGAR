@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Sysco"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "operating_cash_flow"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "value",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2023
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "50d4f24e3921d7da5d160f9a7f88365b48a41dc52ea74e3046a15741a4900a65",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 4471,
+    "cost_usd": "0.0002989875",
+    "input_tokens": 36,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 71
+  }
+}

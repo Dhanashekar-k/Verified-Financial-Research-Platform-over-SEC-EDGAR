@@ -1,0 +1,43 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "AMEX"
+      }
+    ],
+    "intent": "hybrid",
+    "metrics": [
+      "operating_margin"
+    ],
+    "narrative_topics": [
+      "whether operating margin is a useful metric for American Express",
+      "operating margin trend and drivers"
+    ],
+    "needs_clarification": null,
+    "operation": "value",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2022
+      }
+    ],
+    "section_hints": [
+      "7",
+      "8"
+    ]
+  },
+  "request_key": "9abd8f7a76cbc5b51c5a585765ec148fdc4a1889aff028dbea5e80e194b3f267",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000176805",
+    "input_tokens": 54,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 607
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "GENUINE PARTS CO"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "capex"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "value",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2022
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "7656749add2dceabb502a63ae888c44752cd63b906f6088b19289ddf1f9bd291",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000042455",
+    "input_tokens": 42,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 72
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Quanta Services, Inc."
+      },
+      {
+        "cik": null,
+        "mention": "D.R. Horton, Inc."
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "capex"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "compare",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2023
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "e802e1f918ccf7a9d958970ae48a14796fc15b1207e675b076ddf0169f4fca73",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000082455",
+    "input_tokens": 57,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 229
+  }
+}

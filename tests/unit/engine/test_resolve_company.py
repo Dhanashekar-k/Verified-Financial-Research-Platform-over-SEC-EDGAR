@@ -391,3 +391,22 @@ def _module_index() -> CompanyIndex:
     if _INDEX is None:
         _INDEX = CompanyIndex.from_csv(FIXTURE)
     return _INDEX
+
+
+# --- SEC legal names that the usual name does not resemble (planner dev run, 2026-11-25) --------
+
+
+@pytest.mark.parametrize(
+    ("mention", "cik"),
+    [
+        ("CRH PLC", 849395),
+        ("CRH plc's", 849395),
+        ("D.R. Horton", 882184),
+        ("D.R. Horton, Inc.", 882184),
+        ("D.R. Horton's", 882184),
+    ],
+)
+def test_names_registered_unlike_their_common_form(
+    mention: str, cik: int, index: CompanyIndex
+) -> None:
+    assert ciks(mention, index) == [cik]

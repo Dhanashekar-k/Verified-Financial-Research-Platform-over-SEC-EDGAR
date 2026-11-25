@@ -1,0 +1,40 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Ferguson Enterprises"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "fuel price exposure",
+      "commodity price risk mitigation"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2024
+      }
+    ],
+    "section_hints": [
+      "7A"
+    ]
+  },
+  "request_key": "1b0624cf11711657b748b5eeffa9af1f6216cd2164e56f13a407bbafa817fc37",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000049705",
+    "input_tokens": 77,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 94
+  }
+}

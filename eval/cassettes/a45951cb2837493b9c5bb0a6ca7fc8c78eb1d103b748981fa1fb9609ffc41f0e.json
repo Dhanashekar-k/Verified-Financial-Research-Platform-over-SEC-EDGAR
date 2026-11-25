@@ -1,0 +1,36 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Amazon"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "price paid per unit to suppliers for Echo devices",
+      "Echo device supplier costs"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [],
+    "section_hints": [
+      "1",
+      "7"
+    ]
+  },
+  "request_key": "a45951cb2837493b9c5bb0a6ca7fc8c78eb1d103b748981fa1fb9609ffc41f0e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000095655",
+    "input_tokens": 31,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 287
+  }
+}

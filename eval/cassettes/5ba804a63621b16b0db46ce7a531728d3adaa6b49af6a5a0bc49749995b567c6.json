@@ -1,0 +1,40 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Pepsico"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "raised full year guidance",
+      "reasons for FY2023 outlook raise"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "Q1",
+        "fiscal_year": 2023
+      }
+    ],
+    "section_hints": [
+      "7"
+    ]
+  },
+  "request_key": "5ba804a63621b16b0db46ce7a531728d3adaa6b49af6a5a0bc49749995b567c6",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000123655",
+    "input_tokens": 36,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 398
+  }
+}

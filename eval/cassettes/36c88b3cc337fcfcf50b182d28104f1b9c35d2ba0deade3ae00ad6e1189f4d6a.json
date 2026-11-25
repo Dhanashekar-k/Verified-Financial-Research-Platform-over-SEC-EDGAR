@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "JnJ"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "inventory turnover ratio",
+      "inventory management",
+      "cost of products sold and average inventory"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2022
+      }
+    ],
+    "section_hints": [
+      "7",
+      "8"
+    ]
+  },
+  "request_key": "36c88b3cc337fcfcf50b182d28104f1b9c35d2ba0deade3ae00ad6e1189f4d6a",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000109805",
+    "input_tokens": 74,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 335
+  }
+}

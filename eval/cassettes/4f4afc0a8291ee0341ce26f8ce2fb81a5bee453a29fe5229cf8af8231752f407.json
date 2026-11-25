@@ -1,0 +1,40 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "lululemon athletica"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "interest rate risk exposure",
+      "hedging approach"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2022
+      }
+    ],
+    "section_hints": [
+      "7A"
+    ]
+  },
+  "request_key": "4f4afc0a8291ee0341ce26f8ce2fb81a5bee453a29fe5229cf8af8231752f407",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000046805",
+    "input_tokens": 49,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 88
+  }
+}
