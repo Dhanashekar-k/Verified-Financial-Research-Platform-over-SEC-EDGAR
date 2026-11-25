@@ -22,7 +22,7 @@ from typing import Any, Literal
 
 import psycopg
 
-from app.engine.plan.catalog import MetricDef, load_catalog
+from app.engine.plan.catalog import MetricDef, load_catalog, verified_metrics_in
 from app.engine.plan.schema import (
     CompileOutcome,
     FiscalPeriodName,
@@ -151,15 +151,26 @@ class _Run:
     """One compilation: the catalog, the connection and the rows read so far."""
 
     def __init__(
-        self, catalog: Mapping[str, MetricDef], conn: psycopg.Connection[Any], tags: set[str]
+        self,
+        catalog: Mapping[str, MetricDef],
+        conn: psycopg.Connection[Any],
+        tags: set[str],
+        verified: Collection[str] | None = None,
     ) -> None:
         self.catalog = catalog
+        self._verified = None if verified is None else frozenset(verified)
         self.conn = conn
         self.tags = sorted(tags)  # every tag any requested metric can read
         # (cik, fiscal_year, fiscal_period) -> tag -> its is_original rows
         self.cache: dict[tuple[int, int, str], dict[str, list[_Row]]] = {}
         self.values: dict[tuple[str, int, int, str], _Outcome] = {}
         self.latest: dict[int, tuple[int, Decimal] | None] = {}
+
+    def verified(self) -> frozenset[str]:
+        """The verified list, read only when a fallback needs it."""
+        if self._verified is None:
+            self._verified = verified_metrics_in(self.catalog)
+        return self._verified
 
     # --- reading --------------------------------------------------------------------------
 
@@ -345,10 +356,8 @@ class _Run:
         out = self._from_formula(name, metric.fallback_formula, cik, period, visiting)
         if isinstance(out, _Missing):
             return out
-        inputs = [
-            self.evaluate(ref, cik, period, visiting)
-            for ref in _formula_names(metric.fallback_formula)
-        ]
+        refs = _formula_names(metric.fallback_formula)
+        inputs = [self.evaluate(ref, cik, period, visiting) for ref in refs]
         holds = {
             "same_entity": len({r.cik for r in out.rows}) == 1,
             "same_period": len({r.period_end for r in out.rows}) == 1
@@ -356,9 +365,9 @@ class _Run:
             "same_currency": {r.uom for r in out.rows} == {metric.unit},
             # the consolidated `facts` view only; every input is a filed fact, not a computation
             "same_scope": all(isinstance(v, _Value) and not v.derived for v in inputs),
-            # "resolved cleanly": each input came out of the tag rule above. The gold
-            # generator's allow-list is NOT consulted here (ADR-047).
-            "inputs_verified": all(isinstance(v, _Value) and v.resolution for v in inputs),
+            # on the verified list (the gold generator's), and out of the tag rule above
+            "inputs_verified": all(ref in self.verified() for ref in refs)
+            and all(isinstance(v, _Value) and v.resolution for v in inputs),
         }
         broken = [c for c in metric.only_if if not holds[c]]
         if broken:
@@ -695,17 +704,20 @@ def compile_plan(
     *,
     catalog: Mapping[str, MetricDef] | None = None,
     universe: Collection[int] | None = None,
+    verified: Collection[str] | None = None,
 ) -> CompileOutcome:
     """Compile ``plan`` against the ``facts`` view on ``conn`` (read-only use).
 
     ``catalog`` defaults to the shipped metric_catalog.yaml; ``universe`` is the CIK set a
-    ``rank`` over "S&P 500" ranges over (the engine passes the tracked CIKs).
+    ``rank`` over "S&P 500" ranges over (the engine passes the tracked CIKs). ``verified`` is the
+    set a fallback's ``inputs_verified`` condition accepts; by default the reviewed list in
+    ``eval/gen/numeric_metrics_verified.txt``.
     Raises ``UnsupportedPlan`` when the plan cannot be compiled at all; any missing number is a
     ``NotFound`` inside the outcome.
     """
     catalog = load_catalog() if catalog is None else catalog
     op, metrics, ciks, periods = _check_plan(plan, catalog, universe)
-    run = _Run(catalog, conn, _tags_reachable(catalog, metrics))
+    run = _Run(catalog, conn, _tags_reachable(catalog, metrics), verified)
     out = CompileOutcome()
     with localcontext(Context()):  # the default context, whatever the caller changed
         for metric in metrics:

@@ -772,6 +772,11 @@ def test_identical_tags_on_both_sides_still_agree(conn: Any) -> None:
     assert res.fact_ids == [INS_REVC_FY20]
 
 
+# A HYPOTHETICAL verified list, used only to exercise the fallback arithmetic. The shipped list
+# has neither input, so with the default the fallback never fires (section 4 below).
+IF_VERIFIED = frozenset({"revenue", "cost_of_revenue"})
+
+
 # ======================================================================
 # 3. Formula metrics
 # ======================================================================
@@ -846,7 +851,7 @@ def test_nested_expression_cites_each_leaf_and_evaluates(conn: Any) -> None:
     (Dollar Tree FY2021 gross_margin = (revenue - cost) / revenue) gets a nested expr that parses
     under the 4.3 grammar, evaluates to the Decimal value, and whose tokens are exactly
     {revenue fact, cost fact} (the negative cost id is one token)."""
-    res = one(run(conn, ["gross_margin"], [DT], [(2021, "FY")]))
+    res = one(run(conn, ["gross_margin"], [DT], [(2021, "FY")], verified=IF_VERIFIED))
     assert set(res.fact_ids) == {DT_REVC_FY21, DT_COGS_FY21}
     assert res.value == (DT_REVC_FY21_V - DT_COGS_FY21_V) / DT_REVC_FY21_V
     assert res.kind == "derived" and "(" in res.expr
@@ -868,6 +873,68 @@ def test_gross_profit_reported_is_a_reported_fact(conn: Any) -> None:
     assert note(res, "derived_fallback") == []
 
 
+@pytest.mark.parametrize("period", [(2021, "FY"), (2022, "FY")])
+def test_gross_profit_is_not_derived_from_unverified_revenue(conn: Any, period: Period) -> None:
+    """The catalog's `inputs_verified`, with the SHIPPED list: revenue and cost of revenue are not
+    on it, so Dollar Tree has no gross profit, although both inputs resolve cleanly.
+
+    CHANGED 2026-11-25 (ADR-047 amendment): the tests used to require the derived value here.
+    If Shekar verifies both inputs, this expectation changes with the list."""
+    nf = only_not_found(run(conn, ["gross_profit"], [DT], [period]))
+    assert nf.reason == "fallback_not_allowed" and "inputs_verified" in nf.detail
+
+
+def test_gross_margin_does_not_come_back_through_the_fallback(conn: Any) -> None:
+    nf = only_not_found(run(conn, ["gross_margin"], [DT], [(2021, "FY")]))
+    assert nf.reason == "missing_input" and nf.missing_inputs == ["gross_profit"]
+    assert "fallback_not_allowed" in nf.detail
+
+
+@pytest.mark.parametrize("verified", [set(), {"revenue"}, {"cost_of_revenue"}, {"gross_profit"}])
+def test_every_fallback_input_must_be_verified(conn: Any, verified: set[str]) -> None:
+    nf = only_not_found(run(conn, ["gross_profit"], [DT], [(2021, "FY")], verified=verified))
+    assert nf.reason == "fallback_not_allowed"
+
+
+def test_the_default_list_is_the_gold_generators_file(
+    conn: Any, monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    """Verifying both inputs in the file (a copy here) turns the fallback on with no code change."""
+    from app.engine.plan import catalog as catalog_module
+    from app.engine.plan.catalog import definition_sha
+
+    shipped = load_catalog()
+    allow = tmp_path / "verified.txt"
+    allow.write_text(
+        "".join(f"{n}  sha={definition_sha(shipped[n])}\n" for n in sorted(IF_VERIFIED))
+    )
+    monkeypatch.setattr(catalog_module, "VERIFIED_PATH", allow)
+    res = one(run(conn, ["gross_profit"], [DT], [(2021, "FY")]))
+    assert res.value == DT_REVC_FY21_V - DT_COGS_FY21_V
+
+
+def test_a_redefined_metric_does_not_inherit_its_verification(
+    conn: Any, monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    from app.engine.plan import catalog as catalog_module
+    from app.engine.plan.catalog import definition_sha
+
+    shipped = load_catalog()
+    allow = tmp_path / "verified.txt"
+    allow.write_text(
+        "".join(f"{n}  sha={definition_sha(shipped[n])}\n" for n in sorted(IF_VERIFIED))
+    )
+    monkeypatch.setattr(catalog_module, "VERIFIED_PATH", allow)
+    changed = dict(shipped)
+    changed["revenue"] = MetricDef(
+        unit="USD",
+        period_type="duration",
+        tags=["RevenueFromContractWithCustomerExcludingAssessedTax"],
+    )
+    nf = only_not_found(run(conn, ["gross_profit"], [DT], [(2021, "FY")], catalog=changed))
+    assert nf.reason == "fallback_not_allowed"
+
+
 @pytest.mark.parametrize(
     ("period", "rev_id", "cost_id", "rev", "cost"),
     [
@@ -878,10 +945,11 @@ def test_gross_profit_reported_is_a_reported_fact(conn: Any) -> None:
 def test_gross_profit_fallback_is_derived_and_labelled(
     conn: Any, period: Period, rev_id: int, cost_id: int, rev: Decimal, cost: Decimal
 ) -> None:
-    """Dollar Tree reports no GrossProfit: revenue - cost_of_revenue is used under the catalog's
-    only_if conditions, labelled kind 'derived' with a must_mention derived_fallback note, and
-    cites both leaf facts (the cost id is negative: `f:A - f:-B` is a subtraction of two facts)."""
-    res = one(run(conn, ["gross_profit"], [DT], [period]))
+    """Dollar Tree reports no GrossProfit: IF both inputs are verified, revenue - cost_of_revenue
+    is used under the catalog's only_if conditions, labelled kind 'derived' with a must_mention
+    derived_fallback note, and cites both leaf facts (the cost id is negative: `f:A - f:-B` is a
+    subtraction of two facts)."""
+    res = one(run(conn, ["gross_profit"], [DT], [period], verified=IF_VERIFIED))
     assert res.value == rev - cost and res.kind == "derived" and res.unit == "USD"
     assert set(res.fact_ids) == {rev_id, cost_id}
     (n,) = note(res, "derived_fallback")
@@ -1345,7 +1413,7 @@ def test_signed_fact_ids_survive_into_expr_and_provenance(conn: Any) -> None:
     assert (
         TI_REV_FY21 < 0 and f"f:{TI_REV_FY21}" in g.expr and g.provenance().fact_ids == g.fact_ids
     )
-    fb = one(run(conn, ["gross_profit"], [DT], [(2021, "FY")]))
+    fb = one(run(conn, ["gross_profit"], [DT], [(2021, "FY")], verified=IF_VERIFIED))
     assert DT_REVC_FY21 > 0 > DT_COGS_FY21
     assert tokens(fb.expr) == {DT_REVC_FY21, DT_COGS_FY21}
 
@@ -1516,7 +1584,7 @@ def test_difference_of_ratios_re_executes(conn: Any) -> None:
 
 
 def test_growth_of_a_fallback_metric_re_executes_with_nested_parentheses(conn: Any) -> None:
-    res = one(run(conn, ["gross_profit"], [DT], [(2022, "FY")], "growth"))
+    res = one(run(conn, ["gross_profit"], [DT], [(2022, "FY")], "growth", verified=IF_VERIFIED))
     assert res.value == ((DT_REVC_FY22_V - DT_COGS_FY22_V) - (DT_REVC_FY21_V - DT_COGS_FY21_V)) / (
         DT_REVC_FY21_V - DT_COGS_FY21_V
     )
@@ -1635,7 +1703,7 @@ def test_restated_notes_on_growth_name_the_period_of_each_input(conn: Any) -> No
 
 
 def test_a_fallback_note_names_the_periods_it_applies_to(conn: Any) -> None:
-    res = one(run(conn, ["gross_profit"], [DT], [(2022, "FY")], "growth"))
+    res = one(run(conn, ["gross_profit"], [DT], [(2022, "FY")], "growth", verified=IF_VERIFIED))
     (n,) = note(res, "derived_fallback")
     assert "FY2022" in n.text and "FY2021" in n.text
 
@@ -1686,7 +1754,9 @@ def test_growth_through_a_fallback_cannot_mix_concepts(
     not comparisons of one quantity."""
     schema = f"gp_growth_{int(reported_2022)}"
     with _scratch(pg_url, _gp_history(reported_2022=reported_2022), schema) as c:
-        nf = only_not_found(run(c, ["gross_profit"], [FAKE_CIK], [(2022, "FY")], "growth"))
+        nf = only_not_found(
+            run(c, ["gross_profit"], [FAKE_CIK], [(2022, "FY")], "growth", verified=IF_VERIFIED)
+        )
     assert nf.reason == "conflicting_candidates"
 
 

@@ -10,6 +10,8 @@ from __future__ import annotations
 import ast
 import hashlib
 import json
+import re
+from collections.abc import Mapping
 from pathlib import Path
 from typing import Literal, get_args
 
@@ -17,6 +19,11 @@ import yaml
 from pydantic import BaseModel, ConfigDict, model_validator
 
 CATALOG_PATH = Path(__file__).resolve().parent / "metric_catalog.yaml"  # cwd-independent
+# Shekar's tag-chain review, shared with the gold generator. Data, not code: app/ reads the file
+# and imports nothing from eval/.
+VERIFIED_PATH = (
+    Path(__file__).resolve().parents[3] / "eval" / "gen" / "numeric_metrics_verified.txt"
+)
 SHA_LEN = 12
 
 
@@ -137,3 +144,71 @@ def load_catalog(path: Path = CATALOG_PATH) -> dict[str, MetricDef]:
             if name in formula_refs(expr):
                 raise ValueError(f"{name}: formula references itself")
     return catalog
+
+
+def dependencies(name: str, catalog: dict[str, MetricDef]) -> set[str]:
+    """Every metric whose values ``name`` can be computed from (formula and fallback_formula,
+    recursively), excluding ``name`` itself."""
+    seen: set[str] = set()
+    stack = [name]
+    while stack:
+        m = catalog[stack.pop()]
+        for expr in (m.formula, m.fallback_formula):
+            for ref in formula_refs(expr) if expr else set():
+                if ref not in seen:
+                    seen.add(ref)
+                    stack.append(ref)
+    seen.discard(name)
+    return seen
+
+
+_ALLOW_LINE = re.compile(r"^(?P<name>[A-Za-z_][A-Za-z0-9_]*)\s+sha=(?P<sha>[0-9a-f]+)$")
+
+
+def load_verified_metrics(
+    path: Path | None = None, catalog: dict[str, MetricDef] | None = None
+) -> set[str]:
+    """Metrics Shekar verified at tag-chain level.
+
+    Each line is ``<metric>  sha=<12 hex>`` where the sha is ``definition_sha`` of the metric
+    as reviewed (the packet prints it). '#' starts a comment; blank lines are ignored. Fails
+    when a name isn't in the catalog, when the definition changed since it was verified (sha
+    mismatch), or when a metric's formula / fallback_formula inputs aren't verified too.
+    """
+    path = VERIFIED_PATH if path is None else path
+    catalog = catalog if catalog is not None else load_catalog()
+    names: set[str] = set()
+    for lineno, line in enumerate(path.read_text().splitlines(), start=1):
+        text = line.split("#", 1)[0].strip()
+        if not text:
+            continue
+        match = _ALLOW_LINE.match(text)
+        if match is None:
+            raise ValueError(f"{path}:{lineno}: expected '<metric>  sha=<hex>', got {text!r}")
+        name, sha = match["name"], match["sha"]
+        if name not in catalog:
+            raise ValueError(f"{path}:{lineno}: {name!r} is not a catalog metric")
+        current = definition_sha(catalog[name])
+        if sha != current:
+            raise ValueError(
+                f"{path}:{lineno}: {name} was verified as sha={sha} but its definition is now "
+                f"sha={current}; review the chain again"
+            )
+        names.add(name)
+    for name in sorted(names):
+        missing = dependencies(name, catalog) - names
+        if missing:
+            raise ValueError(f"{name} is verified but its inputs {sorted(missing)} are not")
+    return names
+
+
+def verified_metrics_in(catalog: Mapping[str, MetricDef]) -> frozenset[str]:
+    """The verified metrics as they apply to ``catalog``: a metric counts only while its
+    definition there matches the shipped, reviewed one. A missing or stale list raises: an
+    unreadable review must not pass silently for "nothing is verified" or "all is"."""
+    shipped = load_catalog()
+    return frozenset(
+        name
+        for name in load_verified_metrics(catalog=shipped)
+        if name in catalog and definition_sha(catalog[name]) == definition_sha(shipped[name])
+    )

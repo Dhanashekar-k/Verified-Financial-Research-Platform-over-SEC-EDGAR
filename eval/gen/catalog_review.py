@@ -38,7 +38,6 @@ import argparse
 import ast
 import json
 import os
-import re
 from collections.abc import Callable, Sequence
 from itertools import combinations
 from pathlib import Path
@@ -53,6 +52,7 @@ from app.engine.plan.catalog import (  # noqa: F401  (re-exported for eval calle
     definition_sha,
     formula_refs,
     load_catalog,
+    load_verified_metrics,
 )
 
 VERIFIED_PATH = Path("eval/gen/numeric_metrics_verified.txt")
@@ -78,61 +78,6 @@ def _ratio_parts(formula: str) -> tuple[str, str] | None:
     ):
         return tree.left.id, tree.right.id
     return None
-
-
-def _dependencies(name: str, catalog: dict[str, MetricDef]) -> set[str]:
-    """Every metric whose values ``name`` can be computed from (formula and fallback_formula,
-    recursively), excluding ``name`` itself."""
-    seen: set[str] = set()
-    stack = [name]
-    while stack:
-        m = catalog[stack.pop()]
-        for expr in (m.formula, m.fallback_formula):
-            for ref in formula_refs(expr) if expr else set():
-                if ref not in seen:
-                    seen.add(ref)
-                    stack.append(ref)
-    seen.discard(name)
-    return seen
-
-
-_ALLOW_LINE = re.compile(r"^(?P<name>[A-Za-z_][A-Za-z0-9_]*)\s+sha=(?P<sha>[0-9a-f]+)$")
-
-
-def load_verified_metrics(
-    path: Path = VERIFIED_PATH, catalog: dict[str, MetricDef] | None = None
-) -> set[str]:
-    """Metrics Shekar verified at tag-chain level.
-
-    Each line is ``<metric>  sha=<12 hex>`` where the sha is ``definition_sha`` of the metric
-    as reviewed (the packet prints it). '#' starts a comment; blank lines are ignored. Fails
-    when a name isn't in the catalog, when the definition changed since it was verified (sha
-    mismatch), or when a metric's formula / fallback_formula inputs aren't verified too.
-    """
-    catalog = catalog if catalog is not None else load_catalog()
-    names: set[str] = set()
-    for lineno, line in enumerate(path.read_text().splitlines(), start=1):
-        text = line.split("#", 1)[0].strip()
-        if not text:
-            continue
-        match = _ALLOW_LINE.match(text)
-        if match is None:
-            raise ValueError(f"{path}:{lineno}: expected '<metric>  sha=<hex>', got {text!r}")
-        name, sha = match["name"], match["sha"]
-        if name not in catalog:
-            raise ValueError(f"{path}:{lineno}: {name!r} is not a catalog metric")
-        current = definition_sha(catalog[name])
-        if sha != current:
-            raise ValueError(
-                f"{path}:{lineno}: {name} was verified as sha={sha} but its definition is now "
-                f"sha={current}; review the chain again"
-            )
-        names.add(name)
-    for name in sorted(names):
-        missing = _dependencies(name, catalog) - names
-        if missing:
-            raise ValueError(f"{name} is verified but its inputs {sorted(missing)} are not")
-    return names
 
 
 # --- SQL builders (pure; Postgres and DuckDB) ---------------------------------------------------

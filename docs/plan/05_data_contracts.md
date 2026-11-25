@@ -473,7 +473,9 @@ A refused answer may keep `claims` (partial answer) or leave it empty. Eval trea
 ```python
 def compile_plan(plan: QueryPlan, conn: psycopg.Connection[Any], *,
                  catalog: Mapping[str, MetricDef] | None = None,
-                 universe: Collection[int] | None = None) -> CompileOutcome: ...
+                 universe: Collection[int] | None = None,
+                 verified: Collection[str] | None = None) -> CompileOutcome: ...
+# verified: the metrics `inputs_verified` accepts; default = eval/gen/numeric_metrics_verified.txt
 # raises UnsupportedPlan; every other failure is a NotFound inside the outcome
 
 class CompileOutcome(BaseModel):
@@ -530,7 +532,7 @@ class UnsupportedPlan(Exception):      # `reason: str`; the plan cannot be compi
   - Only `taxonomy = 'us-gaap'` facts are read: a custom tag that shares a name is a different concept (the gold generator's scope, ADR-044).
   - Two or more facts for one (tag, period), or candidate tags or formula inputs that end on different dates, give `NotFound(conflicting_candidates)`.
   - The gross-profit identity uses `GrossProfit` facts only, never the fallback formula. A derived-Q4 `GrossProfit` row (FY − 9M) counts, as do derived-Q4 inputs of a fallback (`same_scope` means "a fact, not a formula result"). The gold generator excludes derived Q4 by default.
-  - `inputs_verified` means every input came out of the tag rule above (`resolution` is set). The gold generator's allow-list (`eval/gen/numeric_metrics_verified.txt`), which §4.2's condition also refers to, is **not** consulted by the engine: no revenue-family metric is on it, so consulting it would turn the fallback off. `same_scope` additionally requires reported (not computed) inputs.
+  - `inputs_verified` means every input of the fallback is **on the verified list** (`eval/gen/numeric_metrics_verified.txt`, the one the gold generator uses) **and** came out of the tag rule above (`resolution` is set); otherwise `NotFound(fallback_not_allowed)`. A listed metric counts only while its definition matches the reviewed sha; a custom catalog that redefines it does not inherit the verification. With the current list, which has neither `revenue` nor `cost_of_revenue`, the `gross_profit` fallback never fires, so `gross_profit` and `gross_margin` exist only where `GrossProfit` is reported. This gates the fallback only: a margin over reported facts still divides by the resolved `revenue`. `same_scope` additionally requires reported (not computed) inputs. (Changed 2026-11-25; before, the list was not consulted.)
   - `UnsupportedPlan` is also raised for: a rank of exactly one company; a rank with no company and no `universe`; growth of a ratio metric, over more than two periods, or between unlike periods; a catalog formula cycle.
   - A rank over named companies lists all of them (a `NotFound` for each without a value). A rank over `universe` returns the top 10 and leaves out companies without a usable value **without listing them**, so "top 10" means top 10 among the companies whose figure could be resolved.
 
