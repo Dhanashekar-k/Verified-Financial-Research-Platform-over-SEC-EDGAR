@@ -1,0 +1,90 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "**Why the impairment:** In Q3 2023 PLNL entered into a new gas sales contract with NGC (effective October 2023 through December 2025). Because of the terms of that contract, CF assessed its PLNL investment and found its carrying value exceeded fair value. It recorded a $43 million impairment [3].\n\n**Remaining risk:** If NGC does not make enough natural gas available to PLNL at prices that permit profitable operations, PLNL may cease operating its facility, and CF would write off the remaining investment. The carrying value at December 31, 2023 was $26 million [3]. NGC's commitment to supply gas beyond December 2025 depends on new agreements [3].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0001324404-24-000008#7#0098",
+          "quote": "In the third quarter of 2023 and due to the terms of the New NGC Contract, we assessed our investment in PLNL for impairment and determined that the carrying value of our equity method investment in PLNL exceeded its fair value.",
+          "type": "chunk"
+        },
+        "text": "CF Industries recorded the impairment because, due to the terms of the New NGC Contract entered into in Q3 2023, it determined the carrying value of its PLNL equity method investment exceeded its fair value.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": "$43 million",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001324404-24-000008#7#0098",
+          "quote": "we recorded an impairment of our equity method investment in PLNL of $43 million",
+          "type": "chunk"
+        },
+        "text": "The impairment of the equity method investment in PLNL was $43 million.",
+        "unit": "USD millions",
+        "value": "43"
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001324404-24-000008#7#0098",
+          "quote": "If NGC does not make sufficient quantities of natural gas available to PLNL at prices that permit profitable operations, PLNL may cease operating its facility and we would write off the remaining investment in PLNL.",
+          "type": "chunk"
+        },
+        "text": "If NGC does not make sufficient natural gas available to PLNL at prices permitting profitable operations, PLNL may cease operating its facility and CF would write off the remaining investment in PLNL.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": "$26 million",
+        "id": "c4",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001324404-24-000008#7#0098",
+          "quote": "The carrying value of our equity method investment in PLNL at December 31, 2023 was $26 million.",
+          "type": "chunk"
+        },
+        "text": "The carrying value of the equity method investment in PLNL at December 31, 2023 was $26 million.",
+        "unit": "USD millions",
+        "value": "26"
+      },
+      {
+        "display": null,
+        "id": "c5",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001324404-24-000008#7#0098",
+          "quote": "Any NGC commitment to supply gas beyond December 2025 will be based on new agreements.",
+          "type": "chunk"
+        },
+        "text": "The New NGC Contract is effective October 2023 through December 2025, and any NGC commitment to supply gas beyond December 2025 will be based on new agreements.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "5f8cef0a68921572c838c92f36c6cc3f0ae00f992a9010f3d2de09da7552c98b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00935670",
+    "input_tokens": 3832,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 1081
+  }
+}

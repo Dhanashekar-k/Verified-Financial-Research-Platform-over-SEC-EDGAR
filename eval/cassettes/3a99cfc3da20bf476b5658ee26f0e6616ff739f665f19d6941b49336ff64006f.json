@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not give the share of revenue from non-U.S. operations for fiscal 2023. The only figures are from the FY2022 10-K: about 15% in 2022, 16% in 2021 and 19% in 2020 [1]. Those are not the FY2023 figure.\n\nThe FY2023 10-K risk factors [6] do list the foreign-market risks:\n- Uncertain or volatile political, social and economic conditions.\n- Social unrest, terrorism, war or other armed conflict.\n- Public health crises and other catastrophic events.\n- Confiscatory taxation or other adverse tax policies.\n- Theft of, or insufficient legal protection for, proprietary technology and IP.\n- Unexpected changes in legal and regulatory requirements, including changes in interpretation or enforcement of existing laws.\n- Restrictions on repatriation of income or capital.\n- Currency exchange controls.\n- Inflation.\n- Currency fluctuations and devaluations.\n\nThe U.S. government can also prevent or restrict Occidental from doing business in foreign jurisdictions or with certain parties, and foreign governments can impose similar restrictions. Policy and regulatory changes may limit its ability to obtain or maintain licenses or permits, including those for drilling and development of wells. A declared \"climate emergency\" could lead to limits on exports of its products [6].",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "FY2022 10-K: non-US operations were about 15% of consolidated revenue in 2022, 16% in 2021 and 19% in 2020.",
+        "FY2023 10-K risks: volatile political, social and economic conditions; social unrest, terrorism, war or armed conflict; public health crises; confiscatory taxation; weak IP protection; unexpected legal and regulatory changes; restrictions on repatriating income or capital; currency exchange controls; inflation; currency fluctuations and devaluations.",
+        "FY2023 10-K also says U.S. or foreign government restrictions can limit operations abroad or access to opportunities, licenses and permits may be hard to obtain or keep, and a 'climate emergency' declaration could limit exports."
+      ],
+      "missing": [
+        "The FY2023 10-K statement of the percentage of consolidated revenue from non-US operations in 2023."
+      ],
+      "reason": "The provided passages do not state the non-U.S. share of revenue for fiscal 2023. The FY2023 passage covers the risk factors but omits the percentage, and the only percentages given are from the FY2022 10-K."
+    }
+  },
+  "request_key": "3a99cfc3da20bf476b5658ee26f0e6616ff739f665f19d6941b49336ff64006f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.01109570",
+    "input_tokens": 5431,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 1109
+  }
+}

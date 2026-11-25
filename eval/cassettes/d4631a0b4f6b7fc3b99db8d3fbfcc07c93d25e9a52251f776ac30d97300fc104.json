@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages don't support an answer. The PulteGroup passages [1]-[6] contain only the cash flow statement headings, with no financing figures or uses of cash for 2020 or 2019. The passages with cash flow numbers [7] and [8] don't name PulteGroup, and their fiscal periods don't match PulteGroup's calendar-year reporting, so they can't be attributed to it.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "PulteGroup's 10-K filings include consolidated statements of cash flows ($000's omitted), but the passages show only the headings.",
+        "Passage [7] reports financing cash flows of $(1,236.4) million for 2020 and $(764.9) million for 2019 for an unnamed company with a June 30 fiscal year end.",
+        "Passage [8] discusses operating cash flows for a different, unnamed company with fiscal years ending in late January."
+      ],
+      "missing": [
+        "PulteGroup's net cash used in financing activities for 2020 and 2019",
+        "The components of financing and other cash uses, such as share repurchases, debt repayments, dividends and homebuilding investment, for each year"
+      ],
+      "reason": "The PulteGroup passages contain only the title and header of the cash flow statements, with no line-item figures. The passages that do give cash flow numbers do not name PulteGroup."
+    }
+  },
+  "request_key": "d4631a0b4f6b7fc3b99db8d3fbfcc07c93d25e9a52251f776ac30d97300fc104",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00431370",
+    "input_tokens": 1724,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 494
+  }
+}

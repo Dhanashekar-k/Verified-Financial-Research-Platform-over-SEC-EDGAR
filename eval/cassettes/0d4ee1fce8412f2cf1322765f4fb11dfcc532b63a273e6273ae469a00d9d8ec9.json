@@ -1,0 +1,76 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Loans, net of unearned income, represented 60 percent of interest-earning assets at December 31, 2021, down from 64 percent at December 31, 2020, a decline of 4 percentage points [2]. In its fiscal 2021 10-K, Regions organizes lending along three portfolio segments [2]:\n- **Commercial**: commercial and industrial loans, plus owner-occupied commercial real estate mortgage and construction loans.\n- **Investor real estate**: commercial real estate mortgage and construction loans.\n- **Consumer**: residential first mortgage, home equity lines and loans, consumer credit card, other consumer\u2014exit portfolios, and other consumer loans.",
+    "claims": [
+      {
+        "display": "60 percent",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001281761-22-000016#7#0055",
+          "quote": "Loans, net of unearned income, represented 60 percent of interest-earning assets as of December 31, 2021, compared to 64 percent as of December 31, 2020.",
+          "type": "chunk"
+        },
+        "text": "Loans, net of unearned income, represented 60 percent of interest-earning assets as of December 31, 2021.",
+        "unit": "percent",
+        "value": "60"
+      },
+      {
+        "display": "64 percent",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001281761-22-000016#7#0055",
+          "quote": "compared to 64 percent as of December 31, 2020",
+          "type": "chunk"
+        },
+        "text": "Loans, net of unearned income, represented 64 percent of interest-earning assets as of December 31, 2020.",
+        "unit": "percent",
+        "value": "64"
+      },
+      {
+        "display": "4 percentage points",
+        "id": "c3",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0001281761-22-000016#7#0055",
+          "quote": "Loans, net of unearned income, represented 60 percent of interest-earning assets as of December 31, 2021, compared to 64 percent as of December 31, 2020.",
+          "type": "chunk"
+        },
+        "text": "The loan share of interest-earning assets declined by 4 percentage points from year-end 2020 to year-end 2021.",
+        "unit": "percent",
+        "value": "4"
+      },
+      {
+        "display": null,
+        "id": "c4",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0001281761-22-000016#7#0055",
+          "quote": "Lending at Regions is generally organized along three portfolio segments: commercial loans (including commercial and industrial, and owner-occupied commercial real estate mortgage and construction loans), investor real estate loans (commercial real estate mortgage and construction loans) and consumer loans",
+          "type": "chunk"
+        },
+        "text": "Regions organizes its lending along three portfolio segments: commercial, investor real estate, and consumer.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "0d4ee1fce8412f2cf1322765f4fb11dfcc532b63a273e6273ae469a00d9d8ec9",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00974370",
+    "input_tokens": 4949,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 935
+  }
+}

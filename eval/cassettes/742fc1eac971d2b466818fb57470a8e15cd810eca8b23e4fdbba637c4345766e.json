@@ -1,0 +1,76 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The FY2020 passage covers only part of the question. It does not include the valuation methodology or the treatment of non-performance risk, because the \"Fair Value\" section is cut off.\n\n**Counterparty credit risk:** Chesapeake says its derivatives expose it to counterparties' credit risk. To mitigate this, it enters into derivative contracts only with counterparties that are highly rated or deemed to have acceptable credit strength, and it tries to limit its exposure to any single counterparty [4]. As of December 31, 2020, its oil, natural gas and NGL derivatives were spread among 7 counterparties [4].\n\n**Collateral:** Some hedging counterparties were also lenders (or affiliates of lenders) under the DIP Credit Facility. Their contracts are secured by the same collateral as the pre-petition revolving credit facility. Their obligations must be secured by cash or letters of credit when mark-to-market amounts owed to Chesapeake exceed defined thresholds [4].\n\n**Accumulated other comprehensive loss:** It reflects the net deferred loss on commodity derivatives previously designated as cash flow hedges. Those amounts will be recognized in earnings in the months the original contracts were to occur [4].\n\n**Not found:** The FY2020 passage does not include the fair value methodology or the handling of non-performance risk.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000895126-21-000078#8#0168",
+          "quote": "we enter into derivative contracts only with counterparties that are highly rated or deemed by us to have acceptable credit strength",
+          "type": "chunk"
+        },
+        "text": "To mitigate counterparty credit risk on its derivatives, Chesapeake enters into derivative contracts only with counterparties that are highly rated or deemed to have acceptable credit strength, and attempts to limit exposure to any single counterparty.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000895126-21-000078#8#0168",
+          "quote": "As of December 31, 2020, our oil, natural gas and NGL derivative instruments were spread among 7 counterparties.",
+          "type": "chunk"
+        },
+        "text": "As of December 31, 2020, Chesapeake's oil, natural gas and NGL derivative instruments were spread among 7 counterparties.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000895126-21-000078#8#0168",
+          "quote": "The counterparties\u2019 obligations must be secured by cash or letters of credit to the extent that any mark-to-market amounts owed to us exceed defined thresholds.",
+          "type": "chunk"
+        },
+        "text": "Counterparties' obligations must be secured by cash or letters of credit to the extent mark-to-market amounts owed to Chesapeake exceed defined thresholds.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c4",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000895126-21-000078#8#0168",
+          "quote": "Remaining deferred gain or loss amounts will be recognized in earnings in the month for which the original contract months are to occur.",
+          "type": "chunk"
+        },
+        "text": "The accumulated other comprehensive loss as of December 31, 2020 represents the net deferred loss on commodity derivative contracts previously designated as cash flow hedges, to be recognized in earnings in the month the original contract months occur.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "742fc1eac971d2b466818fb57470a8e15cd810eca8b23e4fdbba637c4345766e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.01412770",
+    "input_tokens": 5368,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 1728
+  }
+}

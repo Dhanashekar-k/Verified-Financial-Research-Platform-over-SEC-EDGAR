@@ -1,0 +1,36 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "contradiction": false,
+    "points": [
+      {
+        "covered": true,
+        "index": 0
+      },
+      {
+        "covered": true,
+        "index": 1
+      },
+      {
+        "covered": true,
+        "index": 2
+      },
+      {
+        "covered": true,
+        "index": 3
+      }
+    ],
+    "reason": "The answer covers all four gold points: meat, seafood, dairy and fuel exposure; fixed-price and price-to-be-fixed contracts; the ability to adjust retail prices; and no commodity derivatives outstanding at January 29, 2022."
+  },
+  "request_key": "d0b313b2e92e31f0bb3f5fa08d790b6c02a3e9bd9e04ba3e9d6cd511ba4663dc",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 683,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00135415",
+    "input_tokens": 560,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 152
+  }
+}

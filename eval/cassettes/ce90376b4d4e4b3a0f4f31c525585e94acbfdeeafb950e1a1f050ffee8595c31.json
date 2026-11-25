@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not include the risk factors section of Jacobs' fiscal 2023 10-K. The only Jacobs competition discussion provided is from the fiscal 2022 10-K [4], so I can't attribute it to the fiscal 2023 filing.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "FY2022 10-K (not FY2023): Jacobs says it faces intense competition from many regional, national and multinational companies, and that competition can put downward pressure on contract prices and profit margins. If it cannot compete effectively, it may lose market share or have reduced profitability, which could materially hurt its business, financial condition and results of operations.",
+        "FY2022 10-K (not FY2023): projects are frequently awarded through a competitive procurement process, with competition based on pricing, schedule, and the breadth and technical sophistication of services."
+      ],
+      "missing": [
+        "Section 1A (Risk Factors) of Jacobs' fiscal 2023 10-K (filing 0000052988-23-000084)"
+      ],
+      "reason": "The provided passages do not contain the fiscal 2023 10-K risk factors for Jacobs. The only Jacobs competition risk factor comes from the fiscal 2022 10-K."
+    }
+  },
+  "request_key": "ce90376b4d4e4b3a0f4f31c525585e94acbfdeeafb950e1a1f050ffee8595c31",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00882670",
+    "input_tokens": 5652,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 611
+  }
+}

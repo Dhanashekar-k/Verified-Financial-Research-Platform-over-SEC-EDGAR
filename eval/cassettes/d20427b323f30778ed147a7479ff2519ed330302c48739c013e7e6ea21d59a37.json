@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not support an answer. None of the Microsoft passages mention a U.S. Army contract for HoloLens headsets or report a profit margin on any single contract. They give only segment-level revenue, gross margin and operating income changes.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Microsoft segment discussions describe revenue, gross margin and operating income changes for Intelligent Cloud and More Personal Computing [2][6][8].",
+        "No Microsoft passage mentions HoloLens or a U.S. Army contract."
+      ],
+      "missing": [
+        "Disclosure of Microsoft's U.S. Army HoloLens (IVAS) contract revenue and costs or profit margin"
+      ],
+      "reason": "The provided passages contain no information about a Microsoft U.S. Army HoloLens contract or contract-level profit margin."
+    }
+  },
+  "request_key": "d20427b323f30778ed147a7479ff2519ed330302c48739c013e7e6ea21d59a37",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00625770",
+    "input_tokens": 4748,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 278
+  }
+}

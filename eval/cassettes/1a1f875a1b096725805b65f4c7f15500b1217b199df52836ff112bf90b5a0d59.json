@@ -1,0 +1,36 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "contradiction": false,
+    "points": [
+      {
+        "covered": false,
+        "index": 0
+      },
+      {
+        "covered": false,
+        "index": 1
+      },
+      {
+        "covered": false,
+        "index": 2
+      },
+      {
+        "covered": false,
+        "index": 3
+      }
+    ],
+    "reason": "The system refused to answer, saying the retrieved passages lacked Quanta's seasonality discussion, so no gold points are covered and no contradiction is recorded."
+  },
+  "request_key": "1a1f875a1b096725805b65f4c7f15500b1217b199df52836ff112bf90b5a0d59",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 683,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00113415",
+    "input_tokens": 490,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 122
+  }
+}

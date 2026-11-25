@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not support an answer. None of them mention Exxon Mobil, and none give a dividend commitment for 2029. The passages describe other companies' past or near-term dividends, and say future dividends are subject to board determination.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Passages cover dividends for other companies (e.g., Exelon's $0.3375 quarterly dividend for Q1 2022), not Exxon Mobil.",
+        "Passages state that the timing and amounts of future dividends are subject to board determination."
+      ],
+      "missing": [
+        "Exxon Mobil filing passages on dividends",
+        "Any declared or committed dividend per share for 2029"
+      ],
+      "reason": "The passages contain no information about Exxon Mobil's dividends, and no company's passages commit to a dividend for 2029. Future dividends are described as subject to board approval."
+    }
+  },
+  "request_key": "05e686a409db771653b66bf97605649c7f3bf1cc32379305a0326fb2ceb7dd5e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00479870",
+    "input_tokens": 3279,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 280
+  }
+}

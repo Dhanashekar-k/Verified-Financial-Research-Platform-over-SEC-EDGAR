@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not state what price Amazon pays per unit to its suppliers for Echo devices. They mention Echo devices only in patent litigation (Jawbone Innovations complaint) [1][2], and the supplier discussion says only that no vendor accounted for 10% or more of purchases and that Amazon generally has no long-term contracts guaranteeing terms [7][8]. No per-unit pricing is given.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Echo devices appear only in the Jawbone Innovations patent infringement complaint [1][2].",
+        "During 2025 and 2024, no vendor accounted for 10% or more of Amazon's purchases, and Amazon generally lacks long-term contracts with vendors guaranteeing payment terms [7][8]."
+      ],
+      "missing": [
+        "Per-unit purchase prices or cost of goods for Echo devices",
+        "Supplier contract pricing terms for Echo devices"
+      ],
+      "reason": "The passages contain no per-unit supplier pricing for Echo devices."
+    }
+  },
+  "request_key": "734007124b4e438ce9e4286b023daf173d4ddc3d4b47959e890c307e82757d47",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00579370",
+    "input_tokens": 3969,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 341
+  }
+}

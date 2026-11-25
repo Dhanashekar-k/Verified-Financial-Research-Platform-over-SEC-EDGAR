@@ -1,0 +1,90 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not include the fiscal 2024 10-K's own market risk or hedging text. The FY2025 10-K note does describe the program and gives September 30, 2024 comparative figures, so this answer draws on that note [1].\n\n- **Mortgage loans held for sale:** D.R. Horton hedges interest rate risk in its mortgage operations mainly with forward sales of mortgage-backed securities (MBS). It does not hold derivatives for trading or speculative purposes. Newly originated loans that are closed but not yet committed to third-party purchasers are hedged against fair value changes. They are typically committed to purchasers within three days of origination. The fair value change on the hedging instruments generally offsets the change in the loans' fair value, and the net change is not significant [1]. At September 30, 2024, uncommitted loans held for sale totaled $1.9 billion [1].\n- **Below-market financing program:** The Company also uses hedging instruments as part of a program that offers below market interest rate financing to homebuyers. At September 30, 2024, it held $637.9 million of MBS that did not yet have interest rate lock commitments or closed loans created or assigned [1].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000882184-25-000081#8#0082",
+          "quote": "the Company hedges its risk using derivative instruments, generally forward sales of mortgage-backed securities (MBS)",
+          "type": "chunk"
+        },
+        "text": "D.R. Horton hedges interest rate risk in its mortgage operations generally with forward sales of mortgage-backed securities and does not hold derivatives for trading or speculative purposes.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000882184-25-000081#8#0082",
+          "quote": "Hedged loans are committed to third-party purchasers typically within three days after origination.",
+          "type": "chunk"
+        },
+        "text": "Newly originated loans closed but not committed to third-party purchasers are hedged, and hedged loans are typically committed to purchasers within three days after origination.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": "$1.9 billion",
+        "id": "c3",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000882184-25-000081#8#0082",
+          "quote": "totaled $2.3 billion and $1.9 billion, respectively",
+          "type": "chunk"
+        },
+        "text": "At September 30, 2024, mortgage loans held for sale not committed to third-party purchasers totaled $1.9 billion.",
+        "unit": "USD billions",
+        "value": "1.9"
+      },
+      {
+        "display": null,
+        "id": "c4",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000882184-25-000081#8#0082",
+          "quote": "The Company also uses hedging instruments as part of a program to offer below market interest rate financing to its homebuyers.",
+          "type": "chunk"
+        },
+        "text": "The Company uses hedging instruments as part of a program to offer below market interest rate financing to its homebuyers.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": "$637.9 million",
+        "id": "c5",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000882184-25-000081#8#0082",
+          "quote": "MBS totaling $677.5 million and $637.9 million, respectively",
+          "type": "chunk"
+        },
+        "text": "At September 30, 2024, the Company had MBS totaling $637.9 million that did not yet have interest rate lock commitments or closed loans created or assigned.",
+        "unit": "USD millions",
+        "value": "637.9"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "bf8809035263d0a71ae7bef5a13583e90c1d1ce338c34591ab19058db6d7f508",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 2394,
+    "cost_usd": "0.0168315",
+    "input_tokens": 5469,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 1674
+  }
+}

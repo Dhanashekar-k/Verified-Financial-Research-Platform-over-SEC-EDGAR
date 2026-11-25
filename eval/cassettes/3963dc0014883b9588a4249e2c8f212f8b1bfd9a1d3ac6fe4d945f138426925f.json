@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not give Apple's stock price today. They only show indexed cumulative total shareholder return values (base of $100) in performance graph tables, which are not share prices, and none of them is current.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Performance graph tables show Apple's indexed cumulative total return, e.g. $100 in September 2020 rising to $234 by September 2025 in the FY2025 10-K [1]."
+      ],
+      "missing": [
+        "Apple's current (today's) market price per share",
+        "A real-time or dated stock quote"
+      ],
+      "reason": "The passages contain only indexed cumulative total return figures from 10-K performance graphs (starting at $100), not Apple's actual share price, and none is as of 'today'."
+    }
+  },
+  "request_key": "3963dc0014883b9588a4249e2c8f212f8b1bfd9a1d3ac6fe4d945f138426925f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00287870",
+    "input_tokens": 1544,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 243
+  }
+}

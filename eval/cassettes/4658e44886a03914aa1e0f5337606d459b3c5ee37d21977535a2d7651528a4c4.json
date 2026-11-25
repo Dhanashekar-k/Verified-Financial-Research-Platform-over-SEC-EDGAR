@@ -1,0 +1,27 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not disclose the ingredients of Coca-Cola's secret formula. They only describe the company's general product and ingredient safety and quality standards [2], and say nothing about the formula's contents.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Coca-Cola describes rigorous product and ingredient safety and quality standards and an integrated quality management program, without naming specific formula ingredients."
+      ],
+      "missing": [
+        "Any disclosure of the complete ingredient list or composition of the Coca-Cola secret formula"
+      ],
+      "reason": "The passages contain no information about the ingredients or composition of Coca-Cola's secret formula."
+    }
+  },
+  "request_key": "4658e44886a03914aa1e0f5337606d459b3c5ee37d21977535a2d7651528a4c4",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00607470",
+    "input_tokens": 4875,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 216
+  }
+}

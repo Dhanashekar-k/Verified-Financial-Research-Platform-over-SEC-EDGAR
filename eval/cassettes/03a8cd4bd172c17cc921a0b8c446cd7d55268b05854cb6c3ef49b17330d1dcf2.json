@@ -1,0 +1,36 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "contradiction": false,
+    "points": [
+      {
+        "covered": false,
+        "index": 0
+      },
+      {
+        "covered": true,
+        "index": 1
+      },
+      {
+        "covered": true,
+        "index": 2
+      },
+      {
+        "covered": true,
+        "index": 3
+      }
+    ],
+    "reason": "The answer covers the $339M Happy Returns gain, the $122M workforce reduction charges, and offsetting items (loans held for sale losses, lease impairments), but it explicitly says the total change is not given and omits the $291M decrease."
+  },
+  "request_key": "03a8cd4bd172c17cc921a0b8c446cd7d55268b05854cb6c3ef49b17330d1dcf2",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 683,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00135015",
+    "input_tokens": 581,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 147
+  }
+}

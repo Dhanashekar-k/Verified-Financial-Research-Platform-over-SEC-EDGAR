@@ -1,0 +1,36 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "contradiction": false,
+    "points": [
+      {
+        "covered": false,
+        "index": 0
+      },
+      {
+        "covered": false,
+        "index": 1
+      },
+      {
+        "covered": false,
+        "index": 2
+      },
+      {
+        "covered": false,
+        "index": 3
+      }
+    ],
+    "reason": "The system refused to answer, so all gold points are marked not covered and no contradiction is recorded."
+  },
+  "request_key": "5020c2fbb93441ddf2c7d0dfdeedab8b76da69732adca876eb93ce00ecbee383",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 683,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00092115",
+    "input_tokens": 387,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 100
+  }
+}

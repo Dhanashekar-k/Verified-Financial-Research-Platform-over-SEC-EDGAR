@@ -1,0 +1,36 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "contradiction": false,
+    "points": [
+      {
+        "covered": true,
+        "index": 0
+      },
+      {
+        "covered": true,
+        "index": 1
+      },
+      {
+        "covered": true,
+        "index": 2
+      },
+      {
+        "covered": true,
+        "index": 3
+      }
+    ],
+    "reason": "The answer covers all four gold points: credit analyses, limits and terms; the listed credit enhancements; the $0.1 million allowance at 12/31/2020; and Petredec at about 11% of 2020 revenues, with no contradictions."
+  },
+  "request_key": "ad79bfc590a13f54cd0f128fa2f30fb5aa62f46467cf9b784227fd481b34411a",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 683,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00129915",
+    "input_tokens": 525,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 148
+  }
+}

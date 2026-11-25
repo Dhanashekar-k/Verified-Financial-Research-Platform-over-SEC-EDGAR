@@ -1,0 +1,36 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "contradiction": false,
+    "points": [
+      {
+        "covered": true,
+        "index": 0
+      },
+      {
+        "covered": true,
+        "index": 1
+      },
+      {
+        "covered": true,
+        "index": 2
+      },
+      {
+        "covered": true,
+        "index": 3
+      }
+    ],
+    "reason": "The answer covers all four gold points: operating cash flow as primary funding source, the $1.250B term loan split into two $625M tranches, the $6.250B Senior Notes with 2-30 year maturities, and the use of N&B debt to fund the Special Cash Payment and fees, with no contradictions."
+  },
+  "request_key": "564327cda8937804491252c047663cc5679d22272c53043ac18d95dae5f43faa",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 683,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00146415",
+    "input_tokens": 590,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 168
+  }
+}

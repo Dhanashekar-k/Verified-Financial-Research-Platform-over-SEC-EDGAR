@@ -1,0 +1,36 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "contradiction": false,
+    "points": [
+      {
+        "covered": false,
+        "index": 0
+      },
+      {
+        "covered": false,
+        "index": 1
+      },
+      {
+        "covered": false,
+        "index": 2
+      },
+      {
+        "covered": false,
+        "index": 3
+      }
+    ],
+    "reason": "The answer mentions cross-currency swaps as net investment hedges only generically, with no Euro subsidiaries or AOCI treatment, and it says the local-currency debt language is absent from the FY2021 passages, so none of the gold points are covered; this is an omission, not a contradiction."
+  },
+  "request_key": "3f454ccf7844a083bda5861cc8b9e95e7b4e178985dc2aa434ad204ad74b5e9f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 683,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00140515",
+    "input_tokens": 556,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 163
+  }
+}

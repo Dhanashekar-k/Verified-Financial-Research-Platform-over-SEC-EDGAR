@@ -1,0 +1,36 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "contradiction": false,
+    "points": [
+      {
+        "covered": true,
+        "index": 0
+      },
+      {
+        "covered": true,
+        "index": 1
+      },
+      {
+        "covered": true,
+        "index": 2
+      },
+      {
+        "covered": true,
+        "index": 3
+      }
+    ],
+    "reason": "The answer addresses all four gold points: classification of funding type, estimating the purchases-based portion recognized in cost of sales, inventory turn and sell-through factors, and the relatively stable deferral over three years."
+  },
+  "request_key": "a15e84a229237777e9b8929b79e99cb8e9d08cc25f2b19ab081f14f0be2b6566",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 683,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00117115",
+    "input_tokens": 452,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 137
+  }
+}

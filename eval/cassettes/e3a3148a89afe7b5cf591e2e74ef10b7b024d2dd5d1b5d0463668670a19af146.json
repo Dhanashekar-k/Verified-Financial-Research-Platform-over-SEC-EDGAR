@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not support an answer. None of them comes from Dollar General's fiscal 2020 10-K. The closest passage, [1], is from Dollar Tree's 10-K, which describes Dollar Tree and Family Dollar. Passages [4] and [5] are from other retailers, so attributing their content to Dollar General would be a guess.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Dollar Tree's FY2020 10-K says it was classified as an essential business and stayed open, but its operating costs increased significantly because of COVID-19 [1].",
+        "The same Dollar Tree passage cites higher wages and bonuses, enhanced cleaning protocols and personal protection equipment costs [1]."
+      ],
+      "missing": [
+        "Dollar General's fiscal 2020 10-K risk factor or MD&A text on COVID-19 operational and cost effects"
+      ],
+      "reason": "None of the provided passages come from Dollar General's fiscal 2020 10-K. The retail passages are from Dollar Tree/Family Dollar and other companies."
+    }
+  },
+  "request_key": "e3a3148a89afe7b5cf591e2e74ef10b7b024d2dd5d1b5d0463668670a19af146",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00765270",
+    "input_tokens": 5218,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 463
+  }
+}

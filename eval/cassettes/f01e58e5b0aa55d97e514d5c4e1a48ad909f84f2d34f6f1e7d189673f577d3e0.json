@@ -1,0 +1,27 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not contain Airbnb's total revenue for fiscal year 2012. None of the provided filings are identified as Airbnb's, and none cover fiscal year 2012. The passages cover FY2018\u2013FY2021 for other companies, so I cannot give a figure.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "The passages show revenue for other companies (e.g., GoDaddy-like domain/hosting revenue, a lodging/air/advertising company, and a real estate company) for fiscal years 2018 through 2021 only."
+      ],
+      "missing": [
+        "Airbnb's 10-K or other filing covering fiscal year 2012 with total revenue"
+      ],
+      "reason": "The passages contain no Airbnb filing and no data for fiscal year 2012."
+    }
+  },
+  "request_key": "f01e58e5b0aa55d97e514d5c4e1a48ad909f84f2d34f6f1e7d189673f577d3e0",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00457870",
+    "input_tokens": 3174,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 257
+  }
+}

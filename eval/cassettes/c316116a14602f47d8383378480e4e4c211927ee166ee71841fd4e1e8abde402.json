@@ -1,0 +1,36 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "contradiction": false,
+    "points": [
+      {
+        "covered": true,
+        "index": 0
+      },
+      {
+        "covered": true,
+        "index": 1
+      },
+      {
+        "covered": true,
+        "index": 2
+      },
+      {
+        "covered": true,
+        "index": 3
+      }
+    ],
+    "reason": "The answer covers all four gold points, including the Q3 2023 construction resumption, the fee structure and conditions precedent tied to the Consolidated GGA, EQT's lack of control over timing, and the effects on 2024 results, and it contradicts none of them."
+  },
+  "request_key": "c316116a14602f47d8383378480e4e4c211927ee166ee71841fd4e1e8abde402",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 683,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00130715",
+    "input_tokens": 503,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 154
+  }
+}

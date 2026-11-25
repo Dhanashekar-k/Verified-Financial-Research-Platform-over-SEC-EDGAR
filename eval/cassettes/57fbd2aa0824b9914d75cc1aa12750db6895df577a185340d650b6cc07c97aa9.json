@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not support an answer. Moderna's filings provided cover fiscal 2020 through 2025, and none gives vaccine sales for fiscal 2008. The earliest product sales mentioned are $199.9 million of COVID-19 vaccine sales in 2020 [8].",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Moderna recognized $199.9 million of COVID-19 vaccine product sales for the year ended December 31, 2020.",
+        "Moderna achieved 2023 net product sales of $6.7 billion, including $6.1 billion of COVID-19 vaccine sales.",
+        "Moderna achieved 2024 net product sales of $3.1 billion."
+      ],
+      "missing": [
+        "Moderna's financial results for fiscal year 2008",
+        "Any 10-K or 10-Q covering 2008"
+      ],
+      "reason": "The passages contain no information on Moderna's vaccine sales in fiscal 2008. Moderna did not record product sales until December 2020, and the provided filings only cover fiscal 2020 onward."
+    }
+  },
+  "request_key": "57fbd2aa0824b9914d75cc1aa12750db6895df577a185340d650b6cc07c97aa9",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00640470",
+    "input_tokens": 4555,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 346
+  }
+}

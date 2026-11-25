@@ -1,0 +1,76 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Apple did not report a net loss in fiscal 2023. The passages say net income was $97.0 billion on total net sales of $383.3 billion [3]. Net sales did fall 3% (about $11.0 billion) from 2022. Weakness in foreign currencies more than accounted for the decline, which came mainly from lower Mac and iPhone sales, partly offset by higher Services sales [3].",
+    "claims": [
+      {
+        "display": "$97.0 billion",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000320193-23-000106#7#0000",
+          "quote": "net income was $97.0 billion during 2023",
+          "type": "chunk"
+        },
+        "text": "Apple's net income in fiscal 2023 was $97.0 billion, so it did not report a net loss.",
+        "unit": "USD billions",
+        "value": "97"
+      },
+      {
+        "display": "$383.3 billion",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000320193-23-000106#7#0000",
+          "quote": "total net sales were $383.3 billion",
+          "type": "chunk"
+        },
+        "text": "Apple's total net sales in fiscal 2023 were $383.3 billion.",
+        "unit": "USD billions",
+        "value": "383.3"
+      },
+      {
+        "display": "3%",
+        "id": "c3",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000320193-23-000106#7#0000",
+          "quote": "total net sales decreased 3% or $11.0 billion during 2023 compared to 2022",
+          "type": "chunk"
+        },
+        "text": "Total net sales decreased 3% (or $11.0 billion) in 2023 compared to 2022.",
+        "unit": "percent",
+        "value": "3"
+      },
+      {
+        "display": null,
+        "id": "c4",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000320193-23-000106#7#0000",
+          "quote": "The weakness in foreign currencies relative to the U.S. dollar accounted for more than the entire year-over-year decrease in total net sales",
+          "type": "chunk"
+        },
+        "text": "Weakness in foreign currencies relative to the U.S. dollar accounted for more than the entire year-over-year decrease in net sales, which consisted primarily of lower Mac and iPhone sales, partially offset by higher Services sales.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "5f0b969be4cac68930131386c2dd07c1b66983180bf81f3c0923bc67504f7650",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00823670",
+    "input_tokens": 2372,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 1149
+  }
+}

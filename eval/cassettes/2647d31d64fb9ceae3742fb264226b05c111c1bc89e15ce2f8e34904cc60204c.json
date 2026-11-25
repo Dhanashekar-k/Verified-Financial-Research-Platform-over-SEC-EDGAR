@@ -1,0 +1,27 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not contain Cummins Inc.'s fiscal 2021 market risk disclosures, so this question cannot be answered from them. The passages cover other companies: an energy company (Exelon-like, FY2022), a company with grain/hog hedging (FY2022-FY2025), Marathon Petroleum (FY2024-FY2025), and Duke Energy (FY2022). None is identified as Cummins or as a fiscal 2021 filing.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Passages describe commodity price risk management for other registrants (FY2022-FY2025 10-Ks), not Cummins."
+      ],
+      "missing": [
+        "Cummins Inc. 10-K Item 7A for fiscal 2021, including its commodity price risk approach and year-end hedging results."
+      ],
+      "reason": "None of the provided passages is from Cummins Inc., and none is a fiscal 2021 market risk disclosure."
+    }
+  },
+  "request_key": "2647d31d64fb9ceae3742fb264226b05c111c1bc89e15ce2f8e34904cc60204c",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00666670",
+    "input_tokens": 4982,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 313
+  }
+}

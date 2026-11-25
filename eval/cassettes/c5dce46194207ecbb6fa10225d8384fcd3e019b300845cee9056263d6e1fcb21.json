@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages don't support an answer. The fiscal 2020 10-K excerpts provided cover the overview and supplier and supply-disruption risks, but not the competitive threat to the U.S. supply chain segment or the consequences of failing to maintain a competitive position.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "FY2020 10-K risk factors describe the lack of long-term supplier contracts, where suppliers could raise prices or fail to deliver, and the risk of shortages or disruptions in fresh food supply [4].",
+        "The FY2020 10-K overview describes the business and fiscal calendar [6]."
+      ],
+      "missing": [
+        "The FY2020 10-K risk factor or business discussion on competition in the U.S. supply chain segment and its stated consequences"
+      ],
+      "reason": "The provided FY2020 10-K passages do not include any discussion of competition facing the U.S. supply chain segment or the consequences of failing to compete."
+    }
+  },
+  "request_key": "c5dce46194207ecbb6fa10225d8384fcd3e019b300845cee9056263d6e1fcb21",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00744770",
+    "input_tokens": 5208,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 424
+  }
+}

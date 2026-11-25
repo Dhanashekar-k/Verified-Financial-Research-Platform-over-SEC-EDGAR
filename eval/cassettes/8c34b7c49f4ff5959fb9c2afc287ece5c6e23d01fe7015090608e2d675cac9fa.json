@@ -1,0 +1,27 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not contain any revenue guidance from Microsoft for fiscal year 2029. The only Microsoft passage [1] covers fiscal 2023 results compared with fiscal 2022, and the other passages come from other companies.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Microsoft FY2023 highlights: Microsoft Cloud revenue increased 22% to $111.6 billion [1]."
+      ],
+      "missing": [
+        "Microsoft forward-looking revenue guidance or outlook for fiscal year 2029"
+      ],
+      "reason": "The passages contain no Microsoft revenue guidance for fiscal year 2029."
+    }
+  },
+  "request_key": "8c34b7c49f4ff5959fb9c2afc287ece5c6e23d01fe7015090608e2d675cac9fa",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00586070",
+    "input_tokens": 4656,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 217
+  }
+}

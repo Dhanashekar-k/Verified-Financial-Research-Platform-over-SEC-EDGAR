@@ -1,0 +1,31 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not support a full answer. The FY2024 10-K MD&A excerpt [4] contains only the introduction and overview. It describes IQVIA as a provider of clinical research services, commercial insights and healthcare intelligence, with about 88,000 employees in over 100 countries, managed through three reportable segments: Technology & Analytics Solutions, Research & Development Solutions and Contract Sales & Medical Solutions. It gives no discussion of operating results, segment performance trends or liquidity and capital resources.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "IQVIA describes itself as a leading global provider of clinical research services, commercial insights and healthcare intelligence to the life sciences and healthcare industries [4].",
+        "It reports approximately 88,000 employees in over 100 countries [4].",
+        "It is managed through three reportable segments: Technology & Analytics Solutions, Research & Development Solutions and Contract Sales & Medical Solutions [4]."
+      ],
+      "missing": [
+        "FY2024 MD&A discussion of consolidated revenue and operating results",
+        "Segment-level performance and trend discussion",
+        "Liquidity and capital resources discussion (cash, cash flows, debt, credit facilities)"
+      ],
+      "reason": "The provided FY2024 MD&A passage covers only the company overview and segment structure. It does not include results of operations, segment trend discussion or liquidity information."
+    }
+  },
+  "request_key": "12f1797fb0cea32f6a2ab763222b2d71fdc63eaadfbf495290dbef2d360ea239",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00881770",
+    "input_tokens": 5838,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 572
+  }
+}

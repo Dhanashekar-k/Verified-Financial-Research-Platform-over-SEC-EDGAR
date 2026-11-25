@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not state Pfizer's internal manufacturing cost per dose of its COVID-19 vaccine. The Pfizer passage [6] gives only company-wide cost of sales ($30,821 million in 2021) and notes Comirnaty revenue and manufacturing-related revenues for BioNTech. It does not give a per-dose manufacturing cost or dose volumes.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Pfizer's total cost of sales was $30,821 million in 2021, 37.9% of revenues [6].",
+        "Revenues from Comirnaty-related manufacturing activities performed on behalf of BioNTech totaled $320 million for 2021 [6]."
+      ],
+      "missing": [
+        "Pfizer's per-dose internal manufacturing cost for Comirnaty",
+        "Number of Comirnaty doses manufactured and the associated manufacturing costs"
+      ],
+      "reason": "The passages contain no per-dose manufacturing cost for Pfizer's COVID-19 vaccine (Comirnaty), nor dose volumes from which one could be derived."
+    }
+  },
+  "request_key": "ffe68ef3caecc5b738ddbc0375ed6866ed120867f8ffff2f902787fe27a50217",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00735170",
+    "input_tokens": 5417,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 363
+  }
+}

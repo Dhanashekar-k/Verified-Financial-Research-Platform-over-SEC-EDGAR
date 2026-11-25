@@ -1,0 +1,36 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "contradiction": false,
+    "points": [
+      {
+        "covered": true,
+        "index": 0
+      },
+      {
+        "covered": true,
+        "index": 1
+      },
+      {
+        "covered": true,
+        "index": 2
+      },
+      {
+        "covered": true,
+        "index": 3
+      }
+    ],
+    "reason": "The answer covers all four gold points: reserve revisions change the future DD&A rate with the earnings effect, the unit-of-production method, proved developed plus undeveloped reserves for acquisition costs, and proved developed reserves only for lease and well equipment costs."
+  },
+  "request_key": "47d99dfe27fa246320e64fd3fa3d2577d28e043f5b565e8b20036550666cc5a1",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 683,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00125515",
+    "input_tokens": 446,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 155
+  }
+}

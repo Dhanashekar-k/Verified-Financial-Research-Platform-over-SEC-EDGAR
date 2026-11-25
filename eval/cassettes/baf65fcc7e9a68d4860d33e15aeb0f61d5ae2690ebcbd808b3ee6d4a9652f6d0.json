@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not support an answer. None of them is an Amazon filing, and none gives a planned capital expenditure for fiscal 2029. The contractual obligation tables (which look like one other company's filings) show only near-term capital expenditure and cloud computing implementation commitments, and these do not extend to fiscal 2029. The other passages cover a different retailer's fiscal 2025 and 2026 capex plans and sustaining and discretionary capex for other companies.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Contractual obligation tables show capital expenditure and cloud computing implementation commitments only for near-term periods (e.g., $45.2 million for fiscal 2027 in the FY2026 10-K) [3], with none for fiscal 2029 or later.",
+        "Another retailer's filings project capital expenditures of about $1.1 billion for fiscal 2026 [6] and about $855 million for fiscal 2025 [7].",
+        "A different company's filing gives sustaining and discretionary capital investments for 2022 and expected 2023 [8]."
+      ],
+      "missing": [
+        "An Amazon filing or passage",
+        "A stated planned or projected capital expenditure for fiscal 2029"
+      ],
+      "reason": "The passages do not name Amazon and contain no planned capital expenditure for fiscal 2029."
+    }
+  },
+  "request_key": "baf65fcc7e9a68d4860d33e15aeb0f61d5ae2690ebcbd808b3ee6d4a9652f6d0",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00588270",
+    "input_tokens": 3603,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 432
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not contain Zoom Video Communications' operating income for fiscal 2013. They cover other companies (e.g., a Communications Solutions segment and a Verizon-style Consumer Wireline/Video segment), and none names Zoom or covers fiscal 2013.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Passages cover a Communications Solutions segment (fiscal 2022-2024 operating income changes), and Video, Consumer Wireline and Broadband segment results for other companies and years."
+      ],
+      "missing": [
+        "Zoom Video Communications' filing with operating income for fiscal 2013"
+      ],
+      "reason": "None of the passages mention Zoom Video Communications or provide data for fiscal 2013."
+    }
+  },
+  "request_key": "ef110116149598be32608b00f96eaf0d14493ba08d91bdff5d992b1c93c4254e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00370670",
+    "input_tokens": 2357,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 246
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "contradiction": false,
+    "points": [
+      {
+        "covered": false,
+        "index": 0
+      },
+      {
+        "covered": false,
+        "index": 1
+      },
+      {
+        "covered": false,
+        "index": 2
+      },
+      {
+        "covered": true,
+        "index": 3
+      }
+    ],
+    "reason": "The answer covers only the collateral-posting point (counterparties must secure obligations with cash or letters of credit above defined thresholds); it explicitly omits valuation methodology and non-performance risk, and never states the purpose of mitigating commodity price volatility, with no contradictions."
+  },
+  "request_key": "b3cb81e0a46fab7563e70b30dbb5026c0f9a43d8cdd1e80edce2822bbe725d2d",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 683,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00151415",
+    "input_tokens": 680,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 160
+  }
+}

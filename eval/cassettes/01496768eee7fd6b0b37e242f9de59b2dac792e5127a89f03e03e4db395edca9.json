@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not say how much Walmart will spend on share repurchases in fiscal 2029. They give only historical repurchase activity and the remaining authorization, with no spending forecast for that year.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "As of January 31, 2018, $18.8 billion remained under a $20.0 billion share repurchase program approved October 9, 2017 [1].",
+        "Walmart's repurchases in the quarter ended January 31, 2020 totaled 7,519,254 shares, with about $5.7 billion of authorization remaining [5]."
+      ],
+      "missing": [
+        "Any statement of planned or expected Walmart share repurchases for fiscal 2029",
+        "Walmart filings covering fiscal 2029"
+      ],
+      "reason": "The passages contain no forecast or guidance on Walmart's share repurchase spending for fiscal 2029."
+    }
+  },
+  "request_key": "01496768eee7fd6b0b37e242f9de59b2dac792e5127a89f03e03e4db395edca9",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00458870",
+    "input_tokens": 3034,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 287
+  }
+}

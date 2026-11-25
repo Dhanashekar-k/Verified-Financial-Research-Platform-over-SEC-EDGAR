@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not report Uber's net loss for fiscal 2010. They cover fiscal 2018 through 2022 only, so I can't give a 2010 figure.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Net income (loss) attributable to Uber Technologies, Inc. was $997 million in 2018, $(8,506) million in 2019, and $(6,768) million in 2020 [2].",
+        "Net loss attributable to Uber Technologies, Inc. was $(496) million in 2021 and $(9,141) million in 2022 [8]."
+      ],
+      "missing": [
+        "Uber's financial statements or net loss figure for fiscal year 2010"
+      ],
+      "reason": "The provided passages do not include any data for fiscal 2010."
+    }
+  },
+  "request_key": "b759ed56af3be353a4e85b598ab3b55570364e7a282e6c78867d648bdef7dcfa",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00475670",
+    "input_tokens": 3397,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 248
+  }
+}

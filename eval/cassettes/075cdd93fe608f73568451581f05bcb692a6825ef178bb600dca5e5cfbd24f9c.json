@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not answer this question. None of them is from Fastenal's fiscal 2024 10-K, and none names Fastenal. They cover other filers' market-risk sections for FY2020\u2013FY2023 and FY2025, so I can't describe Fastenal's foreign currency exposure or hedging without guessing.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Passages [3]-[6] and [2] describe a company that uses foreign currency forward contracts to hedge forecasted and committed payments and receipts, but they do not name it as Fastenal and none is for FY2024.",
+        "Passages [1], [7] and [8] describe another company whose primary foreign currency exposure is the U.S. dollar to euro rate, but they do not name it as Fastenal and none is for FY2024."
+      ],
+      "missing": [
+        "Fastenal's FY2024 10-K Item 7A (market risk) text on foreign currency exchange rate risk",
+        "Any statement identifying the filer as Fastenal"
+      ],
+      "reason": "The passages do not include Fastenal's FY2024 10-K. They come from other companies' filings for FY2020\u2013FY2023 and FY2025, and none names Fastenal."
+    }
+  },
+  "request_key": "075cdd93fe608f73568451581f05bcb692a6825ef178bb600dca5e5cfbd24f9c",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00787670",
+    "input_tokens": 5262,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 499
+  }
+}

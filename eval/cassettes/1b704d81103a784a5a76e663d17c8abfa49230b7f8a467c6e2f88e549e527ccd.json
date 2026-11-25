@@ -1,0 +1,27 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not support an answer. None of them reports Tesla's net income for fiscal 2004. The Tesla passages cover 2020 (net income attributable to common stockholders of $721 million [5]) and 2024\u20132025, but nothing for 2004.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Tesla's 2020 net income attributable to common stockholders was $721 million [5]."
+      ],
+      "missing": [
+        "Tesla's net income for fiscal year 2004"
+      ],
+      "reason": "The provided passages contain no Tesla financial results for fiscal 2004."
+    }
+  },
+  "request_key": "1b704d81103a784a5a76e663d17c8abfa49230b7f8a467c6e2f88e549e527ccd",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00611870",
+    "input_tokens": 5029,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 194
+  }
+}

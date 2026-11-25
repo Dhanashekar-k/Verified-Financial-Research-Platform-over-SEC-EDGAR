@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not contain TE Connectivity's fiscal 2024 revenue recognition policy, so I can't answer the question. None of the passages names TE Connectivity or covers fiscal 2024. They describe other companies' policies: Johnson & Johnson (FY2020\u2013FY2022), a company with a June 27, 2025 fiscal year end, a company with a March 31, 2023 year end, and others. Attributing any of this to TE Connectivity would be a guess.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Passages 1, 2, 4 and 8 describe Johnson & Johnson's revenue recognition policy (FY2020\u2013FY2022).",
+        "Passage 3 describes a different company's policy, with a fiscal year ending June 27, 2025.",
+        "Passage 6 describes a company with a March 31, 2023 year end.",
+        "Passages 5 and 7 describe other unnamed companies' FY2021 policies."
+      ],
+      "missing": [
+        "TE Connectivity's fiscal 2024 10-K revenue recognition note, covering product sales timing and variable consideration such as rebates and returns"
+      ],
+      "reason": "None of the provided passages is from TE Connectivity's fiscal 2024 filing, and none names TE Connectivity, so its revenue recognition policy cannot be described from them."
+    }
+  },
+  "request_key": "c1adb15d4d682e2f00b2b786124efefe2f7206b4e4f3fae0bff52942e164e03a",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00760570",
+    "input_tokens": 5316,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 434
+  }
+}

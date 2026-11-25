@@ -1,0 +1,90 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "**Approach:** Targa extends credit to customers and other parties in the normal course of business. It manages exposure through initial and subsequent credit risk analyses, maximum credit limits and terms, and credit enhancements when necessary. Enhancements include letters of credit, prepayments, parental guarantees and rights of offset. It also runs an active credit management process focused on controlling loss exposure from bankruptcies or other liquidity issues of counterparties [5].\n\n**Credit losses:** The allowance for doubtful accounts was $0.1 million at December 31, 2020, versus $0.0 million at December 31, 2019. Changes in the allowance were not material for 2020 [5].\n\n**Customer concentration:** Sales of commodities and fees from midstream services provided to Petredec (Europe) Limited were approximately 11% of consolidated revenues in 2020 and 12% in 2019 [5].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001564590-21-006640#7A#0008",
+          "quote": "We have established various procedures to manage our credit exposure, including performing initial and subsequent credit risk analyses, setting maximum credit limits and terms and requiring credit enhancements when necessary.",
+          "type": "chunk"
+        },
+        "text": "Targa manages customer credit exposure through initial and subsequent credit risk analyses, maximum credit limits and terms, and credit enhancements when necessary, such as letters of credit, prepayments, parental guarantees and rights of offset.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": "$0.1 million",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0001564590-21-006640#7A#0008",
+          "quote": "Our allowance for doubtful accounts was $0.1 million and $0.0 million as of December 31, 2020 and December 31, 2019.",
+          "type": "chunk"
+        },
+        "text": "Allowance for doubtful accounts was $0.1 million as of December 31, 2020.",
+        "unit": "USD millions",
+        "value": "0.1"
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001564590-21-006640#7A#0008",
+          "quote": "Changes in the allowance for doubtful accounts were not material for the year ended December 31, 2020.",
+          "type": "chunk"
+        },
+        "text": "Changes in the allowance for doubtful accounts were not material for the year ended December 31, 2020.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": "11%",
+        "id": "c4",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001564590-21-006640#7A#0008",
+          "quote": "sales of commodities and fees from midstream services provided to Petredec (Europe) Limited comprised approximately 11% and 12% of our consolidated revenues.",
+          "type": "chunk"
+        },
+        "text": "Petredec (Europe) Limited accounted for approximately 11% of consolidated revenues in 2020.",
+        "unit": "percent",
+        "value": "11"
+      },
+      {
+        "display": "12%",
+        "id": "c5",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001564590-21-006640#7A#0008",
+          "quote": "sales of commodities and fees from midstream services provided to Petredec (Europe) Limited comprised approximately 11% and 12% of our consolidated revenues.",
+          "type": "chunk"
+        },
+        "text": "Petredec (Europe) Limited accounted for approximately 12% of consolidated revenues in 2019.",
+        "unit": "percent",
+        "value": "12"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "e0b7c515a3010911a388dd65f004c257913ebbbe3718818c2aafa6b409d70447",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.01062670",
+    "input_tokens": 4732,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 1155
+  }
+}

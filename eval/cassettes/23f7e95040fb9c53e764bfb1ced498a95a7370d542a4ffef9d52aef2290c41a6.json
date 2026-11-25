@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not provide this information. They cover Facebook's MAUs/DAUs (Meta) and a mobile games company's Monthly Active Payers, but nothing about Google Maps or its users in Germany.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Facebook had 2.91 billion MAUs worldwide as of December 31, 2021 [2].",
+        "A mobile games company defines Monthly Active Payers (MAPs) as unique mobile devices completing at least one in-app purchase in a month [5]."
+      ],
+      "missing": [
+        "Google Maps monthly active user figures",
+        "Country-level (Germany) user data for Google Maps"
+      ],
+      "reason": "The passages contain no data on Google Maps or any Germany-specific user counts."
+    }
+  },
+  "request_key": "23f7e95040fb9c53e764bfb1ced498a95a7370d542a4ffef9d52aef2290c41a6",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00609470",
+    "input_tokens": 4730,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 249
+  }
+}

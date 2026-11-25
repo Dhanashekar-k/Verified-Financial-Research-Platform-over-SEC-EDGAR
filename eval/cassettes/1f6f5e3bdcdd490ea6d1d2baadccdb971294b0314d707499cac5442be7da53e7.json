@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not include Williams' fiscal 2021 10-K (the filing that covers 2022 liquidity). They contain only the FY2020, FY2023, FY2024 and FY2025 10-Ks, and I cannot infer the FY2021 wording from them. Those filings list similar sources of liquidity: cash on hand, cash from operations, distributions from equity-method investees, the credit facility and/or commercial paper program, debt and equity issuance proceeds, and asset monetizations [6][5][1][2]. I cannot attribute that list to the FY2021 filing.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "FY2020 10-K: sources of liquidity for 2021 include cash on hand, cash from operations, distributions from equity-method investees, the credit facility and/or commercial paper program, debt and equity issuance proceeds, and asset monetizations.",
+        "FY2023, FY2024 and FY2025 10-Ks list the same general sources of liquidity for 2024, 2025 and 2026 respectively."
+      ],
+      "missing": [
+        "Williams' 10-K for fiscal year 2021 (Liquidity section of MD&A discussing 2022)"
+      ],
+      "reason": "The provided passages do not include Williams Companies' fiscal 2021 10-K, so its expected 2022 liquidity sources and debt-maturity funding cannot be stated."
+    }
+  },
+  "request_key": "1f6f5e3bdcdd490ea6d1d2baadccdb971294b0314d707499cac5442be7da53e7",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00798370",
+    "input_tokens": 4999,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 573
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "**BCOP Credit Agreement:** A default by BCOP or any subsidiary guarantor in respect of certain provisions defined in the agreement may trigger a cross default under the BCOP Credit Agreement, allowing the lenders to accelerate the maturity of outstanding balances under the facility [1]. The interest rate swaps secured with a lien on BCOP and its subsidiary guarantors' assets pari passu with the credit agreement carry cross-default provisions. If a BCOP or guarantor default results in acceleration of the debt, the swap counterparty may terminate its hedge or swap agreement with BCOP and require all outstanding obligations under it to be settled [1].\n\n**Nuveen UPA:** A default under any document evidencing borrowed-money indebtedness by Vistra Operations or any Guarantor Subsidiary that results in acceleration of indebtedness above the greater of 1.5% of total assets and $600 million may cause a cross default under the UPA. The payment obligations under the Nuveen UPA of Vistra Vision Holdings and/or any guarantor would then become immediately due and payable [1]. The passage does not describe any effect on interest rate swaps for the Nuveen UPA.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0001692819-25-000013#7#0076",
+          "quote": "Such a default would allow the lenders under such facility to accelerate the maturity of outstanding balances under such facility.",
+          "type": "chunk"
+        },
+        "text": "A default by BCOP or any subsidiary guarantor in respect of certain provisions may result in a cross default under the BCOP Credit Agreement, allowing lenders to accelerate the maturity of outstanding balances under the facility.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001692819-25-000013#7#0076",
+          "quote": "would give such counterparty under these hedging agreements the right to terminate its hedge or interest rate swap agreement with BCOP and require all outstanding obligations under such agreement to be settled",
+          "type": "chunk"
+        },
+        "text": "Interest rate swaps secured with a lien on BCOP and its guarantors' assets pari passu with the BCOP Credit Agreement have cross-default provisions; if a default results in acceleration of such debt, the counterparty may terminate its hedge or swap agreement and require all outstanding obligations to be settled.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": "$600 million",
+        "id": "c3",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001692819-25-000013#7#0076",
+          "quote": "in an aggregate amount that exceeds the greater of 1.5% of total assets and $600 million may result in a cross default under the UPA",
+          "type": "chunk"
+        },
+        "text": "Under the Nuveen UPA, a default resulting in acceleration of indebtedness exceeding the greater of 1.5% of total assets and $600 million may result in a cross default.",
+        "unit": "USD millions",
+        "value": "600"
+      },
+      {
+        "display": null,
+        "id": "c4",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001692819-25-000013#7#0076",
+          "quote": "Such a default would result in the payment obligations under the Nuveen UPA of Vistra Vision Holdings and/or any guarantor thereunder becoming immediately due and payable.",
+          "type": "chunk"
+        },
+        "text": "Such a Nuveen UPA default would make the payment obligations under the Nuveen UPA of Vistra Vision Holdings and/or any guarantor immediately due and payable.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "0a7a334da44f5458eebe4139abf9bd3feee6d20315d24ab34678b19d2e0be777",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.01096370",
+    "input_tokens": 4859,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 1197
+  }
+}

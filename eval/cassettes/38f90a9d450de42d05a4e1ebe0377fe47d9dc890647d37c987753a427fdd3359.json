@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not say how many employees work at the Bentonville headquarters. They state that Walmart owns office facilities in Bentonville, Arkansas, which serve as its principal office [3]. The only headcount given is company-wide: about 2.3 million associates worldwide in fiscal 2018, 1.5 million in the U.S. and 0.8 million internationally [7].",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Walmart owns office facilities in Bentonville, Arkansas, that serve as its principal office.",
+        "As of the end of fiscal 2018, Walmart employed approximately 2.3 million associates worldwide, 1.5 million in the U.S. and 0.8 million internationally."
+      ],
+      "missing": [
+        "Number of employees assigned to or working at the Bentonville headquarters office"
+      ],
+      "reason": "The passages do not give an employee count for the Bentonville, Arkansas headquarters office. They only give a company-wide total."
+    }
+  },
+  "request_key": "38f90a9d450de42d05a4e1ebe0377fe47d9dc890647d37c987753a427fdd3359",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00462870",
+    "input_tokens": 2929,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 316
+  }
+}

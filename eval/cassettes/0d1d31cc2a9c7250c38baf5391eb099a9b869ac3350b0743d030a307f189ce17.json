@@ -1,0 +1,36 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "contradiction": false,
+    "points": [
+      {
+        "covered": true,
+        "index": 0
+      },
+      {
+        "covered": true,
+        "index": 1
+      },
+      {
+        "covered": true,
+        "index": 2
+      },
+      {
+        "covered": false,
+        "index": 3
+      }
+    ],
+    "reason": "The answer covers the fiscal 2020 exposure on variable rate cash investments, the fiscal 2019 exposure on variable rate debt, and the $1.5 billion notes issued for COVID-19 liquidity, but it never says that rate changes on fixed rate debt affect fair value rather than earnings or cash flows, and nothing it says contradicts the gold points."
+  },
+  "request_key": "0d1d31cc2a9c7250c38baf5391eb099a9b869ac3350b0743d030a307f189ce17",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 683,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00155915",
+    "input_tokens": 570,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 191
+  }
+}

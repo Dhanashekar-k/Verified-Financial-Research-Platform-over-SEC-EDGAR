@@ -1,0 +1,76 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The most recent target in the passages is a federal funds target range of **5.25% to 5.50%**, as of September 30, 2023 [6]. It was reached after a 25 bp increase on July 27, 2023 [5]. The Fed had left the rate unchanged at its most recent meetings, and the passages do not give a later date [6].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000720005-23-000079#7#0018",
+          "quote": "a range of 5.25% to 5.50% at September 30, 2023",
+          "type": "chunk"
+        },
+        "text": "As of September 30, 2023, the federal funds target range was 5.25% to 5.50%, the latest rate given in the passages.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": "5.25%",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000720005-23-000079#7#0018",
+          "quote": "a range of 5.25% to 5.50% at September 30, 2023",
+          "type": "chunk"
+        },
+        "text": "Lower bound of the federal funds target range at September 30, 2023.",
+        "unit": "percent",
+        "value": "5.25"
+      },
+      {
+        "display": "5.50%",
+        "id": "c3",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000720005-23-000079#7#0018",
+          "quote": "a range of 5.25% to 5.50% at September 30, 2023",
+          "type": "chunk"
+        },
+        "text": "Upper bound of the federal funds target range at September 30, 2023.",
+        "unit": "percent",
+        "value": "5.5"
+      },
+      {
+        "display": null,
+        "id": "c4",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000720005-23-000079#7#0018",
+          "quote": "While the Fed has left its benchmark rate unchanged in its most recent meetings",
+          "type": "chunk"
+        },
+        "text": "The Fed left its benchmark rate unchanged in its most recent meetings.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "12acea04482b23e09dace67abecb432a0ab71a5defa9843aae7dca53bf3ceb4c",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00710670",
+    "input_tokens": 2302,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 937
+  }
+}

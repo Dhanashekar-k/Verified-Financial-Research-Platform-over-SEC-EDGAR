@@ -1,0 +1,36 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "contradiction": false,
+    "points": [
+      {
+        "covered": true,
+        "index": 0
+      },
+      {
+        "covered": true,
+        "index": 1
+      },
+      {
+        "covered": true,
+        "index": 2
+      },
+      {
+        "covered": true,
+        "index": 3
+      }
+    ],
+    "reason": "The answer covers all four gold points: the NGC contract timing (Oct 2023 through Dec 2025), the $43 million impairment from carrying value exceeding fair value, the write-off risk if gas supply is insufficient or unprofitable, and the $26 million carrying value at December 31, 2023."
+  },
+  "request_key": "34a24b34499e90f28ae45da681fbc208da9173ade3a7399a35f78bd316e9870b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 683,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00131615",
+    "input_tokens": 442,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 168
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages don't support an answer. None of them comes from the fiscal 2022 10-K's dividend or risk-factor discussion. The only FY2022 passage [5] is a balance sheet excerpt. The dividend-policy text in other years' filings says only that dividends are subject to board approval in its sole discretion and to applicable legal requirements [1][2][3]. No passage lists the factors the board weighs or explains why the company might miss a public dividend growth commitment.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "The FY2023, FY2024 and FY2025 10-Ks say the board has adopted a dividend policy of paying quarterly cash dividends, with the amount and timing subject to the board's sole discretion and applicable legal requirements.",
+        "The FY2022 passage is only a balance sheet excerpt, which shows long-term debt of $10,481,449 thousand and distributions in excess of earnings of $(3,392,272) thousand at December 31, 2022."
+      ],
+      "missing": [
+        "The fiscal 2022 10-K text on the factors the board considers when setting quarterly cash distributions",
+        "The fiscal 2022 10-K risk factor on the public dividend growth commitment"
+      ],
+      "reason": "The provided passages do not include the fiscal 2022 10-K discussion of the factors the board considers for quarterly distributions or the risks to the company's dividend growth commitment."
+    }
+  },
+  "request_key": "ed3e38745fc246a48301626b3548e7a9c8084a96e99151c4ac3a364b16ef6ebb",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00752970",
+    "input_tokens": 4060,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 670
+  }
+}

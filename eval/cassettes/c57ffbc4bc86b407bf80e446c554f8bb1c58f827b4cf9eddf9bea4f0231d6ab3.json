@@ -1,0 +1,27 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not contain Pinterest's revenue for fiscal 2009. They cover other companies (Intuit-like filings, Block-like segment data, Target-like revenue tables, and a modules/other net sales table), none of which are Pinterest, and none for fiscal 2009.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Passages cover other companies' filings for FY2019, FY2021\u2013FY2025, none identified as Pinterest."
+      ],
+      "missing": [
+        "Pinterest's 10-K or financial data for fiscal 2009 showing total revenue"
+      ],
+      "reason": "None of the passages are from Pinterest or cover fiscal 2009, so the question cannot be answered from them."
+    }
+  },
+  "request_key": "c57ffbc4bc86b407bf80e446c554f8bb1c58f827b4cf9eddf9bea4f0231d6ab3",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00452070",
+    "input_tokens": 3226,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 235
+  }
+}

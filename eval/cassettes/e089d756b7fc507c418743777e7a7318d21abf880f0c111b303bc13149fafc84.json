@@ -1,0 +1,62 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "**What the FY2021 10-K passages show:**\n- Iron Mountain's derivative instruments include interest rate swaps (designated as cash flow hedges), cross-currency swaps (designated as net investment hedges) and foreign exchange currency forward contracts (not designated as hedges) [8].\n- For foreign currency specifically, the company says it \"on occasion\" enters into forward contracts to hedge exposures tied to certain foreign currencies. It has not designated these as hedges and records each derivative's fair value on a gross basis [1].\n- It had no outstanding forward contracts as of December 31, 2021 and 2020 [1].\n\n**Limitation:** The FY2021 passages provided do not contain the language about using borrowings in foreign currencies (local-currency debt) as a hedge. That language appears only in the FY2020, FY2023 and FY2024 10-K passages [2][5][6], so I cannot attribute it to the FY2021 filing from these passages.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0001020569-22-000035#15#0122",
+          "quote": "Derivative instruments we are party to include: (i) interest rate swap agreements (which are designated as cash flow hedges), (ii) cross-currency swap agreements (which are designated as net investment hedges) and (iii) foreign exchange currency forward contracts (which are not designated as hedges).",
+          "type": "chunk"
+        },
+        "text": "In its FY2021 10-K, Iron Mountain's derivative instruments include interest rate swaps (designated as cash flow hedges), cross-currency swaps (designated as net investment hedges) and foreign exchange currency forward contracts (not designated as hedges).",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001020569-22-000035#15#0124",
+          "quote": "On occasion, we enter into forward contracts to hedge our exposures associated with certain foreign currencies. We have not designated any of these forward contracts as hedges.",
+          "type": "chunk"
+        },
+        "text": "On occasion, Iron Mountain enters into forward contracts to hedge exposures associated with certain foreign currencies, and has not designated any of them as hedges.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001020569-22-000035#15#0124",
+          "quote": "As of December 31, 2021 and 2020, we had no outstanding forward contracts.",
+          "type": "chunk"
+        },
+        "text": "Iron Mountain had no outstanding foreign currency forward contracts as of December 31, 2021 and 2020.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "e089d756b7fc507c418743777e7a7318d21abf880f0c111b303bc13149fafc84",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.01202270",
+    "input_tokens": 4858,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 1409
+  }
+}

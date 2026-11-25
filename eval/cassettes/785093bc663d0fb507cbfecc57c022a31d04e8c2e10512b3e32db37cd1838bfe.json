@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not support an answer. They contain no forecast or guidance for Tesla's vehicle deliveries in 2028. Tesla's FY2022 and FY2023 10-K excerpts only list production status by factory and model, and say the next phase of production growth depends on factory ramps and the next generation platform [1][2]. They give no delivery counts or targets for 2028.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Tesla's FY2022 10-K reports 2022 total revenues of $81.46 billion and lists the production status of its vehicle models [1].",
+        "Tesla's FY2023 10-K says the next phase of production growth depends on the continued factory ramp and the introduction of its next generation platform [2]."
+      ],
+      "missing": [
+        "Any Tesla guidance or projection for 2028 vehicle deliveries",
+        "Tesla vehicle delivery counts for any period"
+      ],
+      "reason": "The passages contain no Tesla delivery forecast or target for 2028, and a 10-K would not give a reliable future delivery figure in any case."
+    }
+  },
+  "request_key": "785093bc663d0fb507cbfecc57c022a31d04e8c2e10512b3e32db37cd1838bfe",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00472970",
+    "input_tokens": 2870,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 348
+  }
+}

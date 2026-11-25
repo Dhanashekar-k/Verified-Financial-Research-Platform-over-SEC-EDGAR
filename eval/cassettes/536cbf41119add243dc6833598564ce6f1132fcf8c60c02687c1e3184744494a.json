@@ -1,0 +1,27 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages cannot answer this question. None of them covers fiscal year 2031 (the latest period shown is FY2024), and none identifies Apple as the filer of any total-assets figure.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Total assets tables cover fiscal years up to 2022 (passages [3], [5], [7]) and the other filings reach at most FY2024 for intangible assets, none labeled as Apple's total assets for 2031."
+      ],
+      "missing": [
+        "Apple's 10-K for fiscal year 2031 with its balance sheet or total assets figure"
+      ],
+      "reason": "The passages contain no data for fiscal year 2031 and do not identify any of the reported total-assets figures as Apple's."
+    }
+  },
+  "request_key": "536cbf41119add243dc6833598564ce6f1132fcf8c60c02687c1e3184744494a",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00301970",
+    "input_tokens": 1690,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 242
+  }
+}

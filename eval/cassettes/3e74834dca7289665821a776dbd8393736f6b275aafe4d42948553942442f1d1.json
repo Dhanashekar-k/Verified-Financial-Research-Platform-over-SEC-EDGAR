@@ -1,0 +1,27 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not identify any company named Zorblax Technologies Corp., so its fiscal 2023 net income cannot be determined from them. The passages show financials for other, unnamed or differently identified companies, and none is labeled as Zorblax.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "The passages contain net income and revenue figures for other companies, but none is identified as Zorblax Technologies Corp."
+      ],
+      "missing": [
+        "A filing passage that identifies Zorblax Technologies Corp. and reports its fiscal 2023 net income"
+      ],
+      "reason": "None of the provided passages names or can be tied to Zorblax Technologies Corp., so its fiscal 2023 net income cannot be determined."
+    }
+  },
+  "request_key": "3e74834dca7289665821a776dbd8393736f6b275aafe4d42948553942442f1d1",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00366970",
+    "input_tokens": 2350,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 240
+  }
+}

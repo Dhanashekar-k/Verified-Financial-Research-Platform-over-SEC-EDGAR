@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not support an answer. None of them mention Johnson & Johnson, and none give any information about dividends to be declared in 2028. The passages cover other companies and cover periods only through projected 2025.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Passages [4] and [7] give quarterly dividends, and a projected 2025 figure, for an unnamed company. They do not cover 2028.",
+        "Other passages give dividends for other or unnamed companies for FY2020\u2013FY2024."
+      ],
+      "missing": [
+        "Johnson & Johnson's filings or dividend declarations",
+        "Any statement of the quarterly dividend per share for 2028"
+      ],
+      "reason": "The passages contain no information about Johnson & Johnson's dividends, and none address 2028 dividends. Any future dividend would also be a board decision that the filings do not state."
+    }
+  },
+  "request_key": "8fe64ab68080e94c0b045e37892ede9a4ee9996a495fb885e8958375a6e7373a",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00318470",
+    "input_tokens": 1685,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 276
+  }
+}

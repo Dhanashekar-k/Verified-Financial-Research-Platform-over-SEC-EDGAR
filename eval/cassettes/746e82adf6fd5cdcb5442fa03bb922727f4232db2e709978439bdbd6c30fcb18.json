@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not state the capital of Australia. They only list TK Maxx store counts by Australian state and territory, including the Australian Capital Territory, and mention newspapers in several Australian cities.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "TK Maxx store counts by Australian state and territory, including the Australian Capital Territory [1]",
+        "News Corp Australia newspaper portfolio covering Sydney, Melbourne, Brisbane and Adelaide [8]"
+      ],
+      "missing": [
+        "A passage that explicitly names the capital city of Australia"
+      ],
+      "reason": "The passages do not say what the capital of Australia is. They only give TK Maxx store counts by Australian state and territory and mention some Australian newspaper markets."
+    }
+  },
+  "request_key": "746e82adf6fd5cdcb5442fa03bb922727f4232db2e709978439bdbd6c30fcb18",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00296870",
+    "input_tokens": 1244,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 321
+  }
+}

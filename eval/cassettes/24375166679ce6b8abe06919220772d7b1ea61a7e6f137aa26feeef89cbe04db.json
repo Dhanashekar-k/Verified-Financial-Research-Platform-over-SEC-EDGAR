@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not support a forecast of JPMorgan Chase's operating margin for 2028. JPMorgan's filings here give only full-year 2023 outlook figures (net interest income of about $73 billion and adjusted expense of about $81 billion) [1], and no operating margin projection for any year. The other operating margin figures belong to other companies or are not attributed to JPMorgan.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "JPMorgan's FY2022 10-K outlook for full-year 2023: net interest income of approximately $73 billion and adjusted expense of approximately $81 billion [1]."
+      ],
+      "missing": [
+        "A JPMorgan Chase operating margin projection or target for 2028",
+        "Any long-term outlook covering 2028"
+      ],
+      "reason": "The passages contain no operating margin forecast for JPMorgan Chase for 2028, and no operating margin target for any future year."
+    }
+  },
+  "request_key": "24375166679ce6b8abe06919220772d7b1ea61a7e6f137aa26feeef89cbe04db",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00495070",
+    "input_tokens": 3321,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 302
+  }
+}

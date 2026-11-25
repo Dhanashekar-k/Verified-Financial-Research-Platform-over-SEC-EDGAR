@@ -1,0 +1,27 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "I can't help with this request. It asks for a creative poem, not a question about SEC filings, and the passages contain no information that answers it. The passages only discuss risk factors about short sellers and stock price volatility.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "The passages are risk-factor disclosures about short selling and stock price volatility from several companies' 10-K filings."
+      ],
+      "missing": [
+        "A question about the content of the SEC filings that the passages could support."
+      ],
+      "reason": "The question asks for a creative poem about the stock market, which is not a question the provided SEC filing passages can answer."
+    }
+  },
+  "request_key": "46914396ae41f604c8f60c631b2e7947cfd5a0c3ac72ed4b1e6aec3440bf31fd",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00661570",
+    "input_tokens": 4701,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 359
+  }
+}

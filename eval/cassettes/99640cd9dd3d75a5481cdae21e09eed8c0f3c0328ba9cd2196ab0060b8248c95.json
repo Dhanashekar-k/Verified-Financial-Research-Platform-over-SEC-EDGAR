@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not support a forecast of Apple's fiscal 2028 total net sales. They report only historical net sales, the latest being $478,834 million for fiscal 2026, up from $416,161 million in fiscal 2025 [8]. They contain no guidance or projections for fiscal 2028.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Total net sales were $478,834 million in fiscal 2026, $416,161 million in fiscal 2025 and $391,035 million in fiscal 2024 [8]."
+      ],
+      "missing": [
+        "Company guidance or projections for fiscal 2028 net sales",
+        "Any filing data for fiscal 2027 or fiscal 2028"
+      ],
+      "reason": "The question asks for a forecast of fiscal 2028 net sales. The passages contain only historical figures through fiscal 2026 and no guidance or projections."
+    }
+  },
+  "request_key": "99640cd9dd3d75a5481cdae21e09eed8c0f3c0328ba9cd2196ab0060b8248c95",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00298570",
+    "input_tokens": 1426,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 288
+  }
+}

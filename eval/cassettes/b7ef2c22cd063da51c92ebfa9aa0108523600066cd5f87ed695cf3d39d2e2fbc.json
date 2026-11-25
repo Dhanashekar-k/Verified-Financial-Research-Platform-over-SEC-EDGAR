@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not report Facebook's revenue for fiscal 2005. The Meta/Facebook passages cover only 2020 (revenue of $85.97 billion) [2] and 2023\u20132025 (total revenue of $134,902 million in 2023, rising to $200,966 million in 2025) [1]. Nothing covers 2005.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Facebook/Meta total revenue was $85.97 billion in 2020 [2].",
+        "Meta total revenue was $134,902 million in 2023, $164,501 million in 2024 and $200,966 million in 2025 (USD millions) [1]."
+      ],
+      "missing": [
+        "Facebook's annual revenue for fiscal year 2005 (e.g., from a filing covering that period)"
+      ],
+      "reason": "The provided passages contain no Facebook revenue data for fiscal 2005; they cover only 2020 and 2023-2025."
+    }
+  },
+  "request_key": "b7ef2c22cd063da51c92ebfa9aa0108523600066cd5f87ed695cf3d39d2e2fbc",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00492170",
+    "input_tokens": 3257,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 309
+  }
+}

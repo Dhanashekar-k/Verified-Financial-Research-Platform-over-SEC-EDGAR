@@ -1,0 +1,62 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Per EQT's FY2023 10-K, the date the Mountain Valley Pipeline (MVP) is placed in service is outside EQT's control and could affect its 2024 operating results, including its operating expenses and per unit metrics, its average differential, and any payments required to settle the Henry Hub Cash Bonus, if required [1]. The timing matters because the fee structure and various conditions precedent in certain agreements with Equitrans Midstream, including the Consolidated GGA, are tied to the date MVP is placed in service [1]. Equitrans Midstream resumed forward construction of MVP in the third quarter of 2023 after federal legislation ratified the necessary permits and authorizations [1].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000033213-24-000008#7#0003",
+          "quote": "the timing of the date on which the Mountain Valley Pipeline is ultimately placed in service, which is outside of our control, could impact our operating results during 2024, including our operating expenses and per unit metrics, average differential and any payments required to settle the Henry Hub Cash Bonus",
+          "type": "chunk"
+        },
+        "text": "The timing of the MVP in-service date is outside EQT's control and could affect 2024 operating results, including operating expenses and per unit metrics, average differential, and any payments required to settle the Henry Hub Cash Bonus, if required.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000033213-24-000008#7#0003",
+          "quote": "The fee structure and various conditions precedent specified in certain of our agreements with Equitrans Midstream, including but not limited to the Consolidated GGA, are tied to the date on which the Mountain Valley Pipeline is placed in service.",
+          "type": "chunk"
+        },
+        "text": "The fee structure and various conditions precedent in certain agreements with Equitrans Midstream, including the Consolidated GGA, are tied to the date MVP is placed in service.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000033213-24-000008#7#0003",
+          "quote": "in the third quarter of 2023, Equitrans Midstream resumed forward construction of the Mountain Valley Pipeline",
+          "type": "chunk"
+        },
+        "text": "Equitrans Midstream resumed forward construction of MVP in the third quarter of 2023 following federal legislation approving the necessary permits and authorizations.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "ef96f3bc10180e1a3b27c340d423937b4d8287db946d7b46adc034217b1089cf",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00960570",
+    "input_tokens": 5301,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 837
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Passage [3] does not name the company, so this assumes it is the Dollar General fiscal 2020 10-K the question refers to.\n\n- **End of fiscal 2019 (January 31, 2020):** the primary interest rate exposure was changes in rates on the company's variable interest rate debt [3].\n- **End of fiscal 2020 (January 29, 2021):** the primary exposure had moved to changes in rates on variable rate investment holdings, which were classified as cash and cash equivalents [3].\n- **What drove the shift:** an increase in cash and cash equivalents, driven primarily by the issuance of $1.5 billion of senior unsecured notes in the first quarter of 2020. The company issued them to strengthen liquidity given the continued uncertainty from the COVID-19 pandemic [3].\n- **Size of the exposure:** the variable rate cash investment balance was $1.1 billion at January 29, 2021 [3].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0001558370-21-003245#7A#0001",
+          "quote": "At January 29, 2021, our primary interest rate exposure was from changes in interest rates on our variable rate investment holdings, which were classified as cash and cash equivalents in our consolidated financial statements.",
+          "type": "chunk"
+        },
+        "text": "At January 31, 2020, the company's primary interest rate exposure was from changes in interest rates on its variable interest rate debt; by January 29, 2021 it was from changes in interest rates on variable rate investment holdings classified as cash and cash equivalents, driven by the increase in cash from issuing senior unsecured notes to strengthen liquidity during COVID-19.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001558370-21-003245#7A#0001",
+          "quote": "At January 31, 2020, our primary interest rate exposure was from changes in interest rates on our variable interest rate debt.",
+          "type": "chunk"
+        },
+        "text": "At January 31, 2020, the primary interest rate exposure was from changes in interest rates on variable interest rate debt.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": "$1.5 billion",
+        "id": "c3",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001558370-21-003245#7A#0001",
+          "quote": "our issuance of $1.5 billion of senior unsecured notes during the first quarter of 2020",
+          "type": "chunk"
+        },
+        "text": "The company issued $1.5 billion of senior unsecured notes during the first quarter of 2020, which drove the increase in cash and cash equivalents.",
+        "unit": "USD billions",
+        "value": "1.5"
+      },
+      {
+        "display": "$1.1 billion",
+        "id": "c4",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001558370-21-003245#7A#0001",
+          "quote": "Based on our variable rate cash investment balance of $1.1 billion at January 29, 2021",
+          "type": "chunk"
+        },
+        "text": "The variable rate cash investment balance was $1.1 billion at January 29, 2021.",
+        "unit": "USD billions",
+        "value": "1.1"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "3dbcffddd2c86925fc4db7fb6a2afa7b1df137391b148647899ef9ba82804d8e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.01313770",
+    "input_tokens": 4518,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 1700
+  }
+}

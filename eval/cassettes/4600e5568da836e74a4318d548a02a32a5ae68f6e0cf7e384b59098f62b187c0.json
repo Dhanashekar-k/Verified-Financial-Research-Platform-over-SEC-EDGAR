@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not support an answer. None of them is Domino's fiscal 2023 10-K. Most are MGM Resorts filings, which discuss casino asset groups and indefinite-lived intangibles. One is a CVS-style retail pharmacy store impairment discussion. Passage [7] is an auditor's critical audit matter on store-level long-lived asset impairment, but it is FY2024 and does not name Domino's. Nothing in the passages describes how Domino's tests Company-owned stores or what drives its projected cash flows.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "MGM Resorts 10-K passages describe testing long-lived assets at the lowest level with identifiable cash flows, a quarterly review for impairment triggers, and cash flow estimates based on internal budgets.",
+        "One FY2024 passage [7] describes store-level impairment testing by an unnamed company, but it is not identified as Domino's and is not fiscal 2023."
+      ],
+      "missing": [
+        "Domino's fiscal 2023 10-K critical accounting policies or impairment note",
+        "Domino's description of the level at which Company-owned stores are tested and the key assumptions behind projected cash flows"
+      ],
+      "reason": "The passages do not include Domino's fiscal 2023 10-K, so the question cannot be answered from them without guessing the company."
+    }
+  },
+  "request_key": "4600e5568da836e74a4318d548a02a32a5ae68f6e0cf7e384b59098f62b187c0",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 2394,
+    "cost_usd": "0.0112325",
+    "input_tokens": 5280,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 592
+  }
+}

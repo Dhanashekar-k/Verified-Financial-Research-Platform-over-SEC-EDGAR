@@ -1,0 +1,36 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "contradiction": false,
+    "points": [
+      {
+        "covered": false,
+        "index": 0
+      },
+      {
+        "covered": false,
+        "index": 1
+      },
+      {
+        "covered": false,
+        "index": 2
+      },
+      {
+        "covered": false,
+        "index": 3
+      }
+    ],
+    "reason": "The system answer is flagged as a refusal (refused=yes), so under the rubric every point is marked not covered and no contradiction is recorded."
+  },
+  "request_key": "0887f58bd44de715bf106df98967fdf34e3240517543e051f917fde9f984118c",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 683,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00177915",
+    "input_tokens": 700,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 209
+  }
+}

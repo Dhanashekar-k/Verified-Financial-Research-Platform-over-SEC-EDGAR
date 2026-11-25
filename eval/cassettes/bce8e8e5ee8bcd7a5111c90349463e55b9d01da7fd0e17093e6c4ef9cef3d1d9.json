@@ -1,0 +1,90 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "**Enforcement powers (FY2024 10-K):** Federal law grants substantial enforcement powers to federal financial institution regulators, OFAC, and the U.S. DOJ, among other agencies, under AML and sanctions laws. These powers include assessing significant civil or criminal monetary penalties, fines, or restitution; issuing cease and desist or prohibition orders; and initiating injunctive actions against financial institutions and institution-affiliated parties, including individual teammates. Actions may be initiated for violations of laws and regulations or unsafe and unsound practices [3].\n\n**How the burden may change:** Truist says AML, sanctions, embargo and anti-corruption laws can increase its risks of non-compliance and the costs of implementing and maintaining complex compliance programs [3]. It also says the scope and intensity of supervision of the banking industry have increased in recent years, regulatory enforcement and fines have also increased across the sector, and it expects to remain subject to extensive regulation and supervision [2].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000092230-25-000020#1A#0033",
+          "quote": "Federal law grants substantial enforcement powers to federal financial institution regulators, OFAC, and the U.S. DOJ, among other government agencies, with respect to these laws and regulations.",
+          "type": "chunk"
+        },
+        "text": "In the FY2024 10-K, Truist says federal law grants substantial enforcement powers to federal financial institution regulators, OFAC, and the U.S. DOJ, among other agencies, with respect to AML and sanctions laws.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000092230-25-000020#1A#0033",
+          "quote": "assess significant civil or criminal monetary penalties, fines, or restitution; issue cease and desist or prohibition orders; and initiate injunctive actions against financial institutions and institution-affiliated parties, including individual teammates.",
+          "type": "chunk"
+        },
+        "text": "The enforcement authority includes assessing significant civil or criminal monetary penalties, fines, or restitution; issuing cease and desist or prohibition orders; and initiating injunctive actions against financial institutions and institution-affiliated parties, including individual teammates.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000092230-25-000020#1A#0033",
+          "quote": "These enforcement actions may be initiated for violations of laws and regulations or unsafe and unsound practices.",
+          "type": "chunk"
+        },
+        "text": "Enforcement actions may be initiated for violations of laws and regulations or unsafe and unsound practices.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c4",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000092230-25-000020#1A#0033",
+          "quote": "which can increase its risks of non-compliance and costs associated with the implementation and maintenance of complex compliance programs",
+          "type": "chunk"
+        },
+        "text": "Truist says AML, sanctions, embargo and anti-corruption laws can increase its risks of non-compliance and the costs of implementing and maintaining complex compliance programs.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c5",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000092230-25-000020#1#0005",
+          "quote": "Regulatory enforcement and fines have also increased across the banking and financial services sector. Truist expects to remain subject to extensive regulation and supervision.",
+          "type": "chunk"
+        },
+        "text": "Truist says the scope and intensity of supervision of the banking industry have increased in recent years, regulatory enforcement and fines have also increased across the sector, and it expects to remain subject to extensive regulation and supervision.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "bce8e8e5ee8bcd7a5111c90349463e55b9d01da7fd0e17093e6c4ef9cef3d1d9",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.01190470",
+    "input_tokens": 5460,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 1265
+  }
+}

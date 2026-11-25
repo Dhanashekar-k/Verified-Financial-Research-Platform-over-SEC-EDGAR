@@ -1,0 +1,104 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "In its fiscal 2022 10-K, IFF said operating cash flow is the primary source of funds for capital investment needs, dividends paid to shareholders and debt service repayments. It anticipated that cash flows from operations and availability under existing credit facilities would be sufficient to meet investing and financing needs, and believed existing cash balances were sufficient for debt service [2].\n\nOn the N&B transaction, the N&B Term Loan Facility was funded on February 1, 2021 as a $1.250 billion senior unsecured term loan, split into a $625 million three-year tranche (2024 Term Loan Facility) and a $625 million five-year tranche (2026 Term Loan Facility) [2]. After the Merger, IFF assumed N&B's debt financings, including both term loan facilities and Senior Notes totaling $6.250 billion with maturities of 2 to 30 years [2]. N&B's pre-Merger debt was used to fund the Special Cash Payment to DuPont and related transaction fees and expenses [2].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000051253-23-000009#7#0024",
+          "quote": "Operating cash flow provides the primary source of funds for capital investment needs, dividends paid to shareholders and debt service repayments.",
+          "type": "chunk"
+        },
+        "text": "IFF's fiscal 2022 10-K states that operating cash flow provides the primary source of funds for capital investment needs, dividends paid to shareholders and debt service repayments.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000051253-23-000009#7#0024",
+          "quote": "We believe our existing cash balances are sufficient to meet our debt service requirements.",
+          "type": "chunk"
+        },
+        "text": "IFF anticipated that cash flows from operations and availability under existing credit facilities would be sufficient to meet its investing and financing needs, and believed existing cash balances were sufficient to meet debt service requirements.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": "$1.250 billion",
+        "id": "c3",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000051253-23-000009#7#0024",
+          "quote": "in an aggregate principal amount of $1.250 billion",
+          "type": "chunk"
+        },
+        "text": "The N&B Term Loan Facility, funded February 1, 2021, was a senior unsecured term loan facility with aggregate principal amount of $1.250 billion.",
+        "unit": "USD billions",
+        "value": "1.25"
+      },
+      {
+        "display": "$625 million",
+        "id": "c4",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000051253-23-000009#7#0024",
+          "quote": "comprised of a $625 million three-year tranche (\u201c2024 Term Loan Facility\u201d) and a $625 million five-year tranche (\u201c2026 Term Loan Facility\u201d)",
+          "type": "chunk"
+        },
+        "text": "The term loan facility comprised a $625 million three-year tranche (2024 Term Loan Facility) and a $625 million five-year tranche (2026 Term Loan Facility).",
+        "unit": "USD millions",
+        "value": "625"
+      },
+      {
+        "display": "$6.250 billion",
+        "id": "c5",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000051253-23-000009#7#0024",
+          "quote": "a series of Senior Notes in the aggregate amount of $6.250 billion with maturities ranging from 2 to 30 years",
+          "type": "chunk"
+        },
+        "text": "Following the Merger, IFF assumed N&B's debt, including a series of Senior Notes in the aggregate amount of $6.250 billion with maturities ranging from 2 to 30 years.",
+        "unit": "USD billions",
+        "value": "6.25"
+      },
+      {
+        "display": null,
+        "id": "c6",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000051253-23-000009#7#0024",
+          "quote": "N&B\u2019s indebtedness raised prior to the Merger was used to finance the Special Cash Payment to DuPont, which has been paid, and for the satisfaction of the related transaction fees and expenses.",
+          "type": "chunk"
+        },
+        "text": "N&B's indebtedness raised prior to the Merger was used to finance the Special Cash Payment to DuPont and related transaction fees and expenses.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "510f1fd053be2c3390181279a4557fee1e59f5025d0481fdd15a9283ef113470",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.01234770",
+    "input_tokens": 5148,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 1416
+  }
+}

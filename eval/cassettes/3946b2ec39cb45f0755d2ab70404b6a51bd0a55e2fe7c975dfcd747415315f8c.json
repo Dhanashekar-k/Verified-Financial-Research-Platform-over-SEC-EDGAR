@@ -1,0 +1,36 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "contradiction": false,
+    "points": [
+      {
+        "covered": false,
+        "index": 0
+      },
+      {
+        "covered": false,
+        "index": 1
+      },
+      {
+        "covered": false,
+        "index": 2
+      },
+      {
+        "covered": false,
+        "index": 3
+      }
+    ],
+    "reason": "The system declined to answer because the FY2021 10-K was not in its passages, so under the rubric every point is marked not covered and no contradiction is recorded."
+  },
+  "request_key": "3946b2ec39cb45f0755d2ab70404b6a51bd0a55e2fe7c975dfcd747415315f8c",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 683,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00105615",
+    "input_tokens": 427,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 119
+  }
+}

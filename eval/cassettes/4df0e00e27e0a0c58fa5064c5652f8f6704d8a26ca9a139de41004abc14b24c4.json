@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not support an answer. They never mention Meta or any sale of Instagram in 2022, and none of them describes a goodwill impairment tied to such a sale. The passages come from unnamed companies, so I cannot attribute any of their goodwill figures to Meta.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "One company reported no goodwill impairments in FY2021-FY2023 and accumulated impairment losses of $709 million [1][2].",
+        "Other filings report accumulated goodwill impairment losses of $0.1 million [3] and $220.6 million [5][6]. The company is not named in either case."
+      ],
+      "missing": [
+        "Meta Platforms' 10-K or 10-Q passages",
+        "Any disclosure of a sale of Instagram and a related goodwill impairment"
+      ],
+      "reason": "The passages do not mention Meta, Instagram, or any sale of Instagram. They contain only goodwill impairment disclosures for other, unnamed companies."
+    }
+  },
+  "request_key": "4df0e00e27e0a0c58fa5064c5652f8f6704d8a26ca9a139de41004abc14b24c4",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00326370",
+    "input_tokens": 1539,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 321
+  }
+}

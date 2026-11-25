@@ -1,0 +1,36 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "contradiction": false,
+    "points": [
+      {
+        "covered": true,
+        "index": 0
+      },
+      {
+        "covered": true,
+        "index": 1
+      },
+      {
+        "covered": true,
+        "index": 2
+      },
+      {
+        "covered": true,
+        "index": 3
+      }
+    ],
+    "reason": "The answer states all four seasonal factors (December year-end budget flush, annual quotas with accelerators, August slowdown, calendar-year-start budget planning delays) with no contradictions."
+  },
+  "request_key": "16434d5e038139d91a48076fe89f16fff0c411287c7a001f4249233e78a9704b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 683,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00114515",
+    "input_tokens": 461,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 130
+  }
+}

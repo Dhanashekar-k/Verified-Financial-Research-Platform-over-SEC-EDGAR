@@ -1,0 +1,76 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "**Tax law changes identified (FY2022 10-K risk factors):**\n- **U.S.:** The Inflation Reduction Act of 2022, enacted August 16, 2022, introduced a new 15% corporate alternative minimum tax for taxable years beginning after December 31, 2022. It applies to corporations with average annual adjusted financial statement income above $1.0 billion over three consecutive prior tax years. If the Company meets this test, any Corporate AMT liability could hurt future earnings and cash flows [1].\n- **U.K.:** The Energy Profits Levy, a new tax on the profits of oil and gas companies operating in the U.K. and U.K. Continental Shelf, which the Company says could adversely affect its future financial condition and cash flows [1].\n\n**How the Energy Profits Levy changed during 2022:**\n- Announced May 26, 2022: an additional 25% levy, effective May 26, 2022 through December 31, 2025 [1].\n- Announced November 17, 2022 (Autumn Statement 2022): the rate increased from 25% to 35%, effective January 1, 2023 through March 31, 2028. Draft legislation was published November 22, 2022, and the Finance Act 2023 was enacted January 10, 2023 [1].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001784031-23-000007#1A#0027",
+          "quote": "On August 16, 2022, the U.S. enacted the Inflation Reduction Act of 2022 (IRA). Among other changes, the IRA introduced a new 15% corporate alternative minimum tax (Corporate AMT) for taxable years beginning after December 31, 2022",
+          "type": "chunk"
+        },
+        "text": "The U.S. Inflation Reduction Act of 2022, enacted August 16, 2022, introduced a new 15% corporate alternative minimum tax for taxable years beginning after December 31, 2022, which could adversely affect the Company's future financial results if it meets the average AFSI test.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": "$1.0 billion",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001784031-23-000007#1A#0027",
+          "quote": "average annual adjusted financial statement income (AFSI) that exceeds $1.0 billion for any three consecutive tax years",
+          "type": "chunk"
+        },
+        "text": "The Corporate AMT applies to corporations with average annual adjusted financial statement income exceeding $1.0 billion for any three consecutive tax years.",
+        "unit": "USD billions",
+        "value": "1"
+      },
+      {
+        "display": "25 percent",
+        "id": "c3",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0001784031-23-000007#1A#0027",
+          "quote": "an additional levy is assessed at a 25 percent rate and is effective for the period of May 26, 2022, through December 31, 2025",
+          "type": "chunk"
+        },
+        "text": "On May 26, 2022 the U.K. announced the Energy Profits Levy, an additional levy at a 25 percent rate effective May 26, 2022 through December 31, 2025.",
+        "unit": "percent",
+        "value": "25"
+      },
+      {
+        "display": "35 percent",
+        "id": "c4",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0001784031-23-000007#1A#0027",
+          "quote": "increasing the levy assessed from a 25 percent rate to a 35 percent rate, effective for the period of January 1, 2023, through March 31, 2028",
+          "type": "chunk"
+        },
+        "text": "On November 17, 2022 the U.K. announced the levy would increase from 25 percent to 35 percent, effective January 1, 2023 through March 31, 2028; the Finance Act 2023 was enacted January 10, 2023.",
+        "unit": "percent",
+        "value": "35"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "0641488329ffab3c6319f3bb51e42648c1c7b5bf25d3f7273bfeebdb64c89b82",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.01130270",
+    "input_tokens": 4803,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 1276
+  }
+}

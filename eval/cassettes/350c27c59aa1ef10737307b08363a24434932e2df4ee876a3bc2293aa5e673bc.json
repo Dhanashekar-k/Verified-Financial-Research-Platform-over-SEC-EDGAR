@@ -1,0 +1,118 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not give the total \"restructuring and other\" line for 2023 or 2022, and they do not give a single explanation of the year-over-year change. They do show the main components:\n\n- **Happy Returns sale (2023):** a pre-tax gain of $339 million, net of transaction costs, recorded in restructuring and other [1]. This offset other charges in the line.\n- **2023 workforce reduction:** restructuring charges of $122 million, mainly employee severance and benefits, substantially completed by Q4 2023 [6]. The 2022 workforce reduction charges were $121 million, so the two years are nearly the same on this item [5].\n- **Other 2023 items:** about $74 million of losses on loans and interest receivable held for sale [1], a $17 million gain on an owned property sale and a $14 million loss on another owned property [1].\n- **Lease impairments:** $61 million in 2023 [3], compared with $81 million in 2022 [4].\n\nThe passages do not net these items into a total or compare the two years' line totals.",
+    "claims": [
+      {
+        "display": "$339 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0001633917-24-000024#15#0212",
+          "quote": "recorded a pre-tax gain of $339 million, net of transaction costs, in restructuring and other",
+          "type": "chunk"
+        },
+        "text": "In Q4 2023 PayPal completed the sale of Happy Returns and recorded a pre-tax gain of $339 million, net of transaction costs, in restructuring and other.",
+        "unit": "USD millions",
+        "value": "339"
+      },
+      {
+        "display": "$122 million",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001633917-24-000024#15#0209",
+          "quote": "The associated restructuring charges in 2023 were $122 million.",
+          "type": "chunk"
+        },
+        "text": "The 2023 global workforce reduction resulted in restructuring charges of $122 million, primarily employee severance and benefits costs.",
+        "unit": "USD millions",
+        "value": "122"
+      },
+      {
+        "display": "$121 million",
+        "id": "c3",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001633917-23-000033#15#0215",
+          "quote": "The associated restructuring charges in 2022 were $121 million.",
+          "type": "chunk"
+        },
+        "text": "The 2022 strategic workforce reduction resulted in restructuring charges of $121 million.",
+        "unit": "USD millions",
+        "value": "121"
+      },
+      {
+        "display": "$74 million",
+        "id": "c4",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001633917-24-000024#15#0212",
+          "quote": "approximately $74 million of losses were recorded in restructuring and other",
+          "type": "chunk"
+        },
+        "text": "Approximately $74 million of losses were recorded in restructuring and other in 2023, related to loans and interest receivable held for sale.",
+        "unit": "USD millions",
+        "value": "74"
+      },
+      {
+        "display": "$17 million",
+        "id": "c5",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001633917-24-000024#15#0212",
+          "quote": "we recognized a gain of $17 million due to the sale of an owned property",
+          "type": "chunk"
+        },
+        "text": "In 2023 PayPal recognized a $17 million gain on the sale of an owned property.",
+        "unit": "USD millions",
+        "value": "17"
+      },
+      {
+        "display": "$61 million",
+        "id": "c6",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001633917-26-000024#15#0208",
+          "quote": "$61 million in 2023 due to exiting certain leased properties",
+          "type": "chunk"
+        },
+        "text": "Asset impairment charges from exiting leased properties were $61 million in 2023.",
+        "unit": "USD millions",
+        "value": "61"
+      },
+      {
+        "display": "$81 million",
+        "id": "c7",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:PAYPAL_2022_10K#p120#0000",
+          "quote": "We incurred asset impairment charges of $81 million, $26 million, and $30 million in 2022, 2021, and 2020",
+          "type": "chunk"
+        },
+        "text": "Asset impairment charges from exiting leased properties were $81 million in 2022.",
+        "unit": "USD millions",
+        "value": "81"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "350c27c59aa1ef10737307b08363a24434932e2df4ee876a3bc2293aa5e673bc",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.01509470",
+    "input_tokens": 4910,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 2013
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "**Allowance on loans receivable and investments:** The $28.8 million change in 2022 versus 2021 was mainly due to a $20.0 million allowance recognized in 2022 on the Santerre Mezzanine Loan to Santerre Health Investors [4]. The loan has a current principal balance of $486.1 million and is priced at LIBOR + 6.42% [4]. The allowance was calculated under the CECL model [8]. The change was partially offset by the reversal of certain allowances in Q1 2021, following a change in the estimate of credit losses [4].\n\n**Other expenses:** Other expenses rose $21.2 million in 2022 over 2021 [4]. This was primarily due to a $24.0 million increase in unrealized loss from a decrease in the fair value of the stock warrants received in connection with the Brookdale Senior Living lease modification [4].",
+    "claims": [
+      {
+        "display": "$28.8 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000740260-23-000070#7#0036",
+          "quote": "The $28.8 million change in allowance on loans receivable and investments was primarily due to a $20.0 million allowance recognized in 2022",
+          "type": "chunk"
+        },
+        "text": "The change in allowance on loans receivable and investments in 2022 versus 2021 was $28.8 million.",
+        "unit": "USD millions",
+        "value": "28.8"
+      },
+      {
+        "display": "$20.0 million",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000740260-23-000070#7#0036",
+          "quote": "a $20.0 million allowance recognized in 2022 on our cash-pay mezzanine loan (the \u201cSanterre Mezzanine Loan\u201d) to Santerre Health Investors",
+          "type": "chunk"
+        },
+        "text": "A $20.0 million allowance was recognized in 2022 on the Santerre Mezzanine Loan.",
+        "unit": "USD millions",
+        "value": "20"
+      },
+      {
+        "display": "$486.1 million",
+        "id": "c3",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000740260-23-000070#7#0036",
+          "quote": "The Santerre Mezzanine Loan has a current principal balance of $486.1 million, is freely prepayable and is priced at LIBOR + 6.42%.",
+          "type": "chunk"
+        },
+        "text": "The Santerre Mezzanine Loan has a current principal balance of $486.1 million and is priced at LIBOR + 6.42%.",
+        "unit": "USD millions",
+        "value": "486.1"
+      },
+      {
+        "display": null,
+        "id": "c4",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000740260-23-000070#7#0036",
+          "quote": "This is partially offset by the reversal of certain allowances in the first quarter of 2021 due to a change in our estimate of credit losses.",
+          "type": "chunk"
+        },
+        "text": "The allowance change was partially offset by the reversal of certain allowances in the first quarter of 2021 due to a change in estimate of credit losses.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c5",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000740260-23-000070#7#0067",
+          "quote": "The allowance for the Santerre Mezzanine Loan was calculated using the \u201ccurrent expected credit loss\u201d, or \u201cCECL\u201d, model",
+          "type": "chunk"
+        },
+        "text": "The Santerre Mezzanine Loan allowance was calculated using the CECL model.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": "$21.2 million",
+        "id": "c6",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000740260-23-000070#7#0036",
+          "quote": "The $21.2 million increase in other expenses in 2022 over 2021",
+          "type": "chunk"
+        },
+        "text": "Other expenses increased $21.2 million in 2022 over 2021.",
+        "unit": "USD millions",
+        "value": "21.2"
+      },
+      {
+        "display": "$24.0 million",
+        "id": "c7",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000740260-23-000070#7#0036",
+          "quote": "an increase of $24.0 million in unrealized loss as a result of a decrease in the fair value of stock warrants received in connection with the Brookdale Senior Living lease modification",
+          "type": "chunk"
+        },
+        "text": "The increase in other expenses was primarily due to a $24.0 million increase in unrealized loss from a decrease in the fair value of stock warrants received in connection with the Brookdale Senior Living lease modification.",
+        "unit": "USD millions",
+        "value": "24"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "8a74310b55627b3f3a4c48c71abe0b13d22aa7ce10fbd52da196cd3163dd83ab",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.01297670",
+    "input_tokens": 5387,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 1494
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not give a gross margin figure for Kirkland Signature products. They say only that Kirkland Signature products are offered at prices generally lower than national brands and \"generally earn higher margins\" [1][2]. No percentage or dollar margin is disclosed.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Costco believes Kirkland Signature products are high quality, priced generally lower than national brands, and generally earn higher margins.",
+        "Costco expects to continue increasing the sales penetration of its private-label items."
+      ],
+      "missing": [
+        "A quantified gross margin (percentage or dollar amount) for Kirkland Signature products",
+        "Kirkland Signature sales and cost of sales, or segment-level margin data"
+      ],
+      "reason": "The passages describe Kirkland Signature qualitatively but give no gross margin figure for those products alone."
+    }
+  },
+  "request_key": "cd25b2eec0844b0a20cb3d533e352caba2842f99f1186a96b4a18df7ba034747",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00664270",
+    "input_tokens": 5113,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 282
+  }
+}
