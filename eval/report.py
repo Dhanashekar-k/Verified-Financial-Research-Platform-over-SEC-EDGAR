@@ -60,16 +60,41 @@ KAPPA_TARGET = 0.70  # M04 DoD: judge-vs-human kappa >= 0.7, or the disagreement
 def kappa_for(run: dict[str, Any], record: dict[str, Any] | None) -> dict[str, Any] | None:
     """The judge-vs-human kappa that applies to ``run``, with where it came from.
 
-    The run's own ``judge_kappa`` wins. Otherwise ``eval/judges/kappa.json`` applies only when it
+    The run's own ``judge_kappa`` wins; when the harness stamped it from ``kappa.json`` for the same
+    judge and rubric, the row says the labels were measured on another run and that answer identity
+    is not checked here. Otherwise ``eval/judges/kappa.json`` applies only when it
     was measured on THIS run's answers (``results_run_id``) with this run's judge model and
     correctness rubric: a kappa from another run, model or rubric says nothing about this one.
     """
     fb = run["sets"].get("financebench")
     if not isinstance(fb, dict):
         return None
-    if fb.get("judge_kappa") is not None:
-        return {"kappa": fb["judge_kappa"], "n": None, "source": "results file"}
     cfg = run["config"]
+    if fb.get("judge_kappa") is not None:
+        if (
+            fb.get("judge_kappa_source") == "eval/judges/kappa.json"
+            and record
+            and record.get("kappa") == fb["judge_kappa"]
+            and record.get("judge_model") == cfg.get("judge")
+            and record.get("rubric_version") == (cfg.get("judge_rubrics") or {}).get("correctness")
+        ):
+            # Stamped by the harness from kappa.json for this judge and rubric. Nothing here
+            # checks that this run's answers are the ones the labels were made on (a replay of
+            # the same cassettes is, a changed retrieval or prompt is not), and the labels cover
+            # the labelled run's rows, not necessarily this run's split. Say so in the row.
+            return {
+                "kappa": record["kappa"],
+                "n": record.get("n"),
+                "source": (
+                    "eval/judges/kappa.json; labels measured on run "
+                    f"{record.get('results_run_id')}, not on this run's rows "
+                    "(same judge and rubric; answer identity not checked by report.py)"
+                ),
+                "rubric": record.get("rubric_version"),
+                "judge": record.get("judge_model"),
+                "labels_sha256": record.get("labels_sha256"),
+            }
+        return {"kappa": fb["judge_kappa"], "n": None, "source": "results file"}
     if (
         record
         and record.get("kappa") is not None

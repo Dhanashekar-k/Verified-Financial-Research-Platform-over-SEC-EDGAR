@@ -687,3 +687,40 @@ def test_report_prefers_the_runs_own_judge_kappa() -> None:
     run["sets"]["financebench"]["judge_kappa"] = 0.81
     text = report.render([run], _KAPPA)
     assert "kappa 0.81" in text and "results file" in text
+
+
+def _stamped(run_id: str = "replay") -> dict[str, Any]:
+    replay = _kappa_run(run_id=run_id)
+    fb = replay["sets"]["financebench"]
+    fb["judge_kappa"], fb["judge_kappa_source"] = _KAPPA["kappa"], "eval/judges/kappa.json"
+    return replay
+
+
+def test_report_labels_a_stamped_kappa_as_measured_on_another_run() -> None:
+    """A replay stamped from kappa.json (same judge and rubric, a different run id) shows the
+    label provenance but says the labels were measured on the other run and that answer
+    identity is not checked."""
+    text = report.render([_stamped()], _KAPPA)
+    assert "| 46 |" in text and "measured on run r1" in text and "correctness-v2" in text
+    assert "answer identity not checked" in text and "not on this run's rows" in text
+
+
+@pytest.mark.parametrize(
+    "record",
+    [
+        {**_KAPPA, "rubric_version": "correctness-v3"},
+        {**_KAPPA, "judge_model": "other"},
+        {**_KAPPA, "kappa": 0.5},
+    ],
+)
+def test_report_does_not_upgrade_a_stamp_that_disagrees_with_the_record(
+    record: dict[str, Any],
+) -> None:
+    text = report.render([_stamped()], record)
+    assert "measured on run" not in text and "results file" in text
+
+
+def test_report_does_not_upgrade_a_stamp_from_another_source() -> None:
+    run = _stamped()
+    run["sets"]["financebench"]["judge_kappa_source"] = "somewhere else"
+    assert "measured on run" not in report.render([run], _KAPPA)
