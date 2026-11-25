@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not state the number of PTC Inc. common shares outstanding at the end of Q1 2020. They give only the number of shareholders of record at fiscal year-ends (for example, 1,072 on September 30, 2020 [1]) and a private-placement purchase of 10,582,010 PTC shares by another company [4]. Neither is a total shares-outstanding figure.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "PTC had 1,072 shareholders of record on September 30, 2020 [1].",
+        "Another company purchased 10,582,010 PTC shares in a July 2018 private placement [4]."
+      ],
+      "missing": [
+        "PTC Inc.'s shares outstanding as of the end of fiscal Q1 2020 (10-Q cover page or balance sheet for the quarter ended December 31, 2019)"
+      ],
+      "reason": "The passages do not report PTC Inc.'s total common shares outstanding at the end of Q1 2020 (quarter ended around December 2019)."
+    }
+  },
+  "request_key": "2385559c9d6dc5cf848af2800a38618ecf1dcc137a135b13fd61acfac8b185d7",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00404370",
+    "input_tokens": 2269,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 331
+  }
+}

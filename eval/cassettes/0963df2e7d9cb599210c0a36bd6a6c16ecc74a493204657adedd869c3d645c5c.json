@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not support an answer. They cover Cigna's operating cash flow only for FY2018\u2013FY2020 (e.g., $10,350 million in 2020) and don't include any FY2024 or FY2025 figures. Passage [2] reports $12.6 billion for 2023 but appears to be from a different filer's 10-K, so it is not usable here.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Cigna net cash provided by operating activities was $10,350 million in 2020, $9,485 million in 2019 and $3,770 million in 2018 [1]."
+      ],
+      "missing": [
+        "Cigna net cash provided by operating activities for FY2024",
+        "Cigna net cash provided by operating activities for FY2025"
+      ],
+      "reason": "The passages contain no Cigna operating cash flow figures for FY2024 or FY2025, so a percent change between those years cannot be calculated."
+    }
+  },
+  "request_key": "0963df2e7d9cb599210c0a36bd6a6c16ecc74a493204657adedd869c3d645c5c",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00646670",
+    "input_tokens": 4867,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 296
+  }
+}

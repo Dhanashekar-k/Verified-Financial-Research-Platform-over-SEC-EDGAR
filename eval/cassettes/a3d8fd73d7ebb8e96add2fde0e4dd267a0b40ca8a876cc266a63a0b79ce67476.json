@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The answer identifies corporate bonds as the largest short-term investment, matching the gold answer; $416.42M of $507.726M is about 82%, consistent with the gold's roughly 82%."
+  },
+  "request_key": "a3d8fd73d7ebb8e96add2fde0e4dd267a0b40ca8a876cc266a63a0b79ce67476",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00058655",
+    "input_tokens": 170,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 77
+  }
+}

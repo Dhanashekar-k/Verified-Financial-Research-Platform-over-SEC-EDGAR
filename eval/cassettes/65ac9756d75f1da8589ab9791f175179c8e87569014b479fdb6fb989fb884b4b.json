@@ -1,0 +1,27 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages don't give enough to answer. Expand Energy's capital expenditures are given only for 2024, 2023 and 2022 ($1,529 million, $1,782 million and $1,936 million) [8]. No 2021 figure is provided, so the 2021-to-2022 percentage change can't be calculated.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Expand Energy's capital expenditures were $1,529 million in 2024, $1,782 million in 2023 and $1,936 million in 2022 [8]."
+      ],
+      "missing": [
+        "Expand Energy's capital expenditures for fiscal year 2021"
+      ],
+      "reason": "The passages do not contain Expand Energy's 2021 capital expenditures, which are needed to compute the 2021 to 2022 change."
+    }
+  },
+  "request_key": "65ac9756d75f1da8589ab9791f175179c8e87569014b479fdb6fb989fb884b4b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00416970",
+    "input_tokens": 2530,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 304
+  }
+}

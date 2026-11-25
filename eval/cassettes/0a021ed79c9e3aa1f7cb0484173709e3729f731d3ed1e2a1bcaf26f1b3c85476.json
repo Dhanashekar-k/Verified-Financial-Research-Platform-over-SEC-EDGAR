@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The system answer gives FCF of about $3,215.4 million (3,676.2 - 460.8), which matches the gold answer of $3,215.00 million within rounding."
+  },
+  "request_key": "0a021ed79c9e3aa1f7cb0484173709e3729f731d3ed1e2a1bcaf26f1b3c85476",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00057455",
+    "input_tokens": 198,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 69
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not give FY2022 net revenues by region, so I cannot say which region performed worst in FY2022. The FY2022 passage [2] only lists the segments. The revenue-change figures in the passages are for FY2020 versus 2019.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "FY2022 10-K describes the reportable segments (Regional Operations and MGM China, plus others) but gives no revenue figures [2].",
+        "FY2020 10-K shows 2020 vs 2019 net revenue decreases of 77% at MGM China, 61% at Las Vegas Strip Resorts and 45% at Regional Operations [6]. These are not FY2022 data."
+      ],
+      "missing": [
+        "FY2022 net revenues by segment (Las Vegas Strip Resorts, Regional Operations, MGM China) and their change versus FY2021"
+      ],
+      "reason": "The passages contain no FY2022 segment-level revenue figures or year-over-year changes, so regions cannot be compared for FY2022."
+    }
+  },
+  "request_key": "841d870de98d0edc7114d35651917148dcc3073479cac5ed23defd55ceb8d44b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00609470",
+    "input_tokens": 3810,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 433
+  }
+}

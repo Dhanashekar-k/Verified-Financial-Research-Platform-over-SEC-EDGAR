@@ -1,0 +1,90 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Yes. Free cash flow conversion (operating cash flow minus capex, divided by net income) improved at Adobe in FY2022. The passages give no Adobe-reported figure, so this is derived from the cash flow statement [5].\n\n- FY2022: ($7,838M \u2212 $442M) / $4,756M \u2248 155.5% [5]\n- FY2021: ($7,230M \u2212 $348M) / $4,822M \u2248 142.7% [5]\n- FY2020: ($5,727M \u2212 $419M) / $5,260M \u2248 100.9% [5]\n\nConversion rose each year. Free cash flow was $7,396M in FY2022 and $6,882M in FY2021, while net income fell slightly from $4,822M to $4,756M [5].",
+    "claims": [
+      {
+        "display": "155.5%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:ADOBE_2022_10K#p57#0000",
+          "quote": "Net cash provided by operating activities | 7,838 | 7,230 | 5,727",
+          "type": "chunk"
+        },
+        "text": "Adobe's FY2022 free cash flow conversion (operating cash flow less purchases of property and equipment, divided by net income) was about 155.5%, up from about 142.7% in FY2021.",
+        "unit": "percent",
+        "value": "155.5"
+      },
+      {
+        "display": "142.7%",
+        "id": "c2",
+        "kind": "numeric_derived",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:ADOBE_2022_10K#p57#0000",
+          "quote": "Net cash provided by operating activities | 7,838 | 7,230 | 5,727",
+          "type": "chunk"
+        },
+        "text": "Adobe's FY2021 free cash flow conversion was about 142.7%.",
+        "unit": "percent",
+        "value": "142.7"
+      },
+      {
+        "display": "100.9%",
+        "id": "c3",
+        "kind": "numeric_derived",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:ADOBE_2022_10K#p57#0000",
+          "quote": "Purchases of property and equipment | (442) | (348) | (419)",
+          "type": "chunk"
+        },
+        "text": "Adobe's FY2020 free cash flow conversion was about 100.9%.",
+        "unit": "percent",
+        "value": "100.9"
+      },
+      {
+        "display": "$7,396M",
+        "id": "c4",
+        "kind": "numeric_derived",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:ADOBE_2022_10K#p57#0000",
+          "quote": "Purchases of property and equipment | (442) | (348) | (419)",
+          "type": "chunk"
+        },
+        "text": "Adobe's FY2022 free cash flow was $7,396 million (7,838 operating cash flow minus 442 capex).",
+        "unit": "USD millions",
+        "value": "7396"
+      },
+      {
+        "display": "$4,756M",
+        "id": "c5",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:ADOBE_2022_10K#p57#0000",
+          "quote": "Net income | $ | 4,756 | $ | 4,822 | $ | 5,260",
+          "type": "chunk"
+        },
+        "text": "Adobe's net income was $4,756 million in FY2022 and $4,822 million in FY2021.",
+        "unit": "USD millions",
+        "value": "4756"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "a611cd7e95d2fbe0a930b0c36601896a7bdd275f145ffac24c1f6dbd669ff331",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.01239770",
+    "input_tokens": 4893,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 1477
+  }
+}

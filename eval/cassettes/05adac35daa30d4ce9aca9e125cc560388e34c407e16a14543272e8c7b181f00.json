@@ -1,0 +1,27 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not state Quanta Services' total liabilities at the end of fiscal year 2025. The FY2025 passages only give the gross accrued insurance-related liabilities ($521.4 million as of December 31, 2025) [4], which is a subset of liabilities and not the total. The balance sheet is not included.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "As of December 31, 2025, the gross amount accrued for employer's liability, workers' compensation, auto liability, general liability and group health claims totaled $521.4 million, of which $334.6 million is in Insurance and other non-current liabilities."
+      ],
+      "missing": [
+        "Quanta's consolidated balance sheet as of December 31, 2025 showing total liabilities"
+      ],
+      "reason": "The provided passages do not include Quanta's consolidated balance sheet or any total liabilities figure for December 31, 2025."
+    }
+  },
+  "request_key": "05adac35daa30d4ce9aca9e125cc560388e34c407e16a14543272e8c7b181f00",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00480070",
+    "input_tokens": 3211,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 294
+  }
+}

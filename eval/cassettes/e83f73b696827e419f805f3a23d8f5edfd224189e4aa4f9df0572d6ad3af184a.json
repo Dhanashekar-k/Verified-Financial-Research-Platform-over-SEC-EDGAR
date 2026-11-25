@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not give enough to compute this ratio. They include total assets for FY2020 ($50,710 million) and FY2019 ($47,528 million) [1], but no income statement, so FY2020 revenue is missing. The ratio cannot be calculated without it.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Total assets were $50,710 million at December 31, 2020 and $47,528 million at December 31, 2019 [1].",
+        "Average total assets for FY2019-FY2020 would be (50,710 + 47,528) / 2 = 49,119 million."
+      ],
+      "missing": [
+        "Lockheed Martin FY2020 net sales (revenue) from the consolidated statement of earnings"
+      ],
+      "reason": "FY2020 revenue is not in the provided passages. They contain balance sheets and cash flow statements but no income statement (P&L)."
+    }
+  },
+  "request_key": "e83f73b696827e419f805f3a23d8f5edfd224189e4aa4f9df0572d6ad3af184a",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00760970",
+    "input_tokens": 5515,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 395
+  }
+}

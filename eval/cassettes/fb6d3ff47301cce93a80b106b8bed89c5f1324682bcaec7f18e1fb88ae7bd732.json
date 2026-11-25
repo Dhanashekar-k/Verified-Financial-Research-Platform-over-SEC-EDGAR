@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The system answer states a 1 percentage point raise in core constant currency EPS growth guidance, matching the gold answer, and the added detail (8% to 9%) is consistent."
+  },
+  "request_key": "fb6d3ff47301cce93a80b106b8bed89c5f1324682bcaec7f18e1fb88ae7bd732",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00057055",
+    "input_tokens": 184,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 71
+  }
+}

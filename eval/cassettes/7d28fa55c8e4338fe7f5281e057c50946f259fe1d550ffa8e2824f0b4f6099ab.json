@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not support an answer. None of them report vote tallies (for, against, or withheld) for any board nominee. They only describe voting standards, nomination processes, and board composition, so I cannot tell whether any nominee received substantially more votes against than the others.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Abstentions and broker non-votes do not count as votes \"against\" and have no effect on the election of directors in the MGM Resorts passage [1].",
+        "Other passages cover nominee lists, nomination procedures, and director independence, but give no vote results [3][5][6]."
+      ],
+      "missing": [
+        "Voting results by nominee (votes for, against/withheld, abstentions) from an annual meeting report such as Item 5.07 of Form 8-K",
+        "Identification of the specific company and fiscal year the question refers to"
+      ],
+      "reason": "The passages contain no director election results or vote counts by nominee, so a comparison of votes against cannot be made."
+    }
+  },
+  "request_key": "7d28fa55c8e4338fe7f5281e057c50946f259fe1d550ffa8e2824f0b4f6099ab",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00495270",
+    "input_tokens": 3268,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 313
+  }
+}

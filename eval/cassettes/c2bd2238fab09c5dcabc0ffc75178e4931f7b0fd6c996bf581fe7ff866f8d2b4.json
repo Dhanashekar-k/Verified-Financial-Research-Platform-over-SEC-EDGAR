@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not contain enough FY2022 data to say whether 3M is capital-intensive. They have no FY2022 capital expenditures, net property, plant and equipment, total assets or sales, so the ratios that would support such a judgment cannot be computed. The FY2022 passages only show that 3M ranks investing in its business (R&D, capital expenditures, commercialization) as its first capital-deployment priority [7]. They also show total debt of $15,939 million, net debt of $12,023 million and working capital of $5,165 million [1]. None of this measures capital intensity.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "3M lists investing in its business, including R&D, capital expenditures and commercialization capability, as the first priority for capital deployment [7].",
+        "FY2022 total debt was $15,939 million, net debt was $12,023 million and working capital was $5,165 million [1]."
+      ],
+      "missing": [
+        "FY2022 capital expenditures",
+        "FY2022 net property, plant and equipment and total assets",
+        "FY2022 net sales or revenue, to compute capex-to-sales or asset-intensity ratios"
+      ],
+      "reason": "The provided passages lack FY2022 capital spending, PP&E, total assets and revenue figures, which are needed to assess capital intensity."
+    }
+  },
+  "request_key": "c2bd2238fab09c5dcabc0ffc75178e4931f7b0fd6c996bf581fe7ff866f8d2b4",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00852770",
+    "input_tokens": 5493,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 583
+  }
+}

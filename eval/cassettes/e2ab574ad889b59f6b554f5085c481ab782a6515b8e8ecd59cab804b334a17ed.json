@@ -1,0 +1,62 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "SLB's diluted earnings per share for fiscal year 2021 was $1.32, based on net income attributable to SLB of $1,881 million and 1,427 million diluted average shares outstanding [8].",
+    "claims": [
+      {
+        "display": "$1.32",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0001564590-23-000762#8#0021",
+          "quote": "Diluted | $1,881 | 1,427 | $1.32",
+          "type": "chunk"
+        },
+        "text": "SLB's diluted earnings per share for fiscal year 2021 was $1.32.",
+        "unit": "USD/shares",
+        "value": "1.32"
+      },
+      {
+        "display": "$1,881 million",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001564590-23-000762#8#0021",
+          "quote": "Diluted | $1,881 | 1,427 | $1.32",
+          "type": "chunk"
+        },
+        "text": "SLB's 2021 net income attributable to SLB was $1,881 million.",
+        "unit": "USD millions",
+        "value": "1881"
+      },
+      {
+        "display": "1,427 million",
+        "id": "c3",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001564590-23-000762#8#0021",
+          "quote": "Diluted | $1,881 | 1,427 | $1.32",
+          "type": "chunk"
+        },
+        "text": "SLB's 2021 diluted average shares outstanding were 1,427 million.",
+        "unit": "shares millions",
+        "value": "1427"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "e2ab574ad889b59f6b554f5085c481ab782a6515b8e8ecd59cab804b334a17ed",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00636470",
+    "input_tokens": 3690,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 511
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not support an answer. The only Crown Castle passages [1]-[6] are Schedule II headers with no SG&A figures. The passages that do report 2022 SG&A of $2,071 million [7][8] do not name Crown Castle, so I can't attribute that figure to it.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Passages 1-6 are Crown Castle Schedule II (Valuation and Qualifying Accounts) headings with no SG&A amounts.",
+        "Passages 7 and 8 show SG&A of $2,071 million for 2022 (14.4% of revenues), but they do not name the company."
+      ],
+      "missing": [
+        "Crown Castle's 2022 income statement or MD&A passage reporting selling, general and administrative expenses",
+        "Confirmation that the SG&A table in passages 7-8 belongs to Crown Castle"
+      ],
+      "reason": "No passage ties a 2022 SG&A figure to Crown Castle. The Crown Castle passages contain only Schedule II headings, and the passages with SG&A data do not identify the company."
+    }
+  },
+  "request_key": "bc25e3c3b69e55fd103738e7b1040d82c4a4e0b64e0f174d4b7d7cdaa8bb69ba",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00420170",
+    "input_tokens": 1212,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 574
+  }
+}

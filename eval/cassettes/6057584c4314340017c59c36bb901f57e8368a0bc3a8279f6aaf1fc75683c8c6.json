@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "I can't answer this from the passages provided. None of them name Genuine Parts Co or give its capital expenditures for fiscal 2022. The capital expenditure tables appear to come from other companies, and the passages don't identify those companies by name.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Capital expenditure tables for other filers, with segments such as Engineered Products and Pumps & Process Solutions, or SHOP, OM&R and NNN, or Berkshire-style operating businesses. None of the passages names Genuine Parts Co.",
+        "One FY2021 passage mentions an expected 2022 capital expenditure range of 3% to 4% of net sales, but it does not name the company."
+      ],
+      "missing": [
+        "Genuine Parts Co's 10-K for fiscal year 2022, or a passage with its cash flow statement or capital expenditures line"
+      ],
+      "reason": "The passages do not identify Genuine Parts Co as the filer or contain its capital expenditure figures for fiscal 2022."
+    }
+  },
+  "request_key": "6057584c4314340017c59c36bb901f57e8368a0bc3a8279f6aaf1fc75683c8c6",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00416270",
+    "input_tokens": 1983,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 412
+  }
+}

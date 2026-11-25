@@ -1,0 +1,27 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not give Allegion's total assets at the end of Q3 FY2021 (September 30, 2021). They contain only year-end (December 31) parent-company and US Hold Co condensed balance sheet items and stock performance graph data, and no Q3 2021 10-Q balance sheet.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "December 31, 2021 condensed balance sheet items for Allegion plc (total current assets $60.8 million, total noncurrent assets $1,793.1 million) and Allegion US Hold Co (total current assets $785.5 million, total noncurrent assets $1,292.7 million) [4]. These are year-end, not Q3, and are not consolidated totals."
+      ],
+      "missing": [
+        "Allegion plc consolidated balance sheet as of September 30, 2021 (Q3 FY2021 10-Q)"
+      ],
+      "reason": "No passage contains Allegion's consolidated total assets as of the end of Q3 FY2021 (September 30, 2021); no 10-Q for that quarter is included."
+    }
+  },
+  "request_key": "da33f6378b5a7356aff11b9be5e1ec74f7f3a274156ad5f7850c9b1fda5e7fab",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00395770",
+    "input_tokens": 2083,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 351
+  }
+}

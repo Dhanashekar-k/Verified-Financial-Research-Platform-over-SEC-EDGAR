@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not report PulteGroup's net cash from operating activities for Q1 of fiscal 2024 or Q1 of fiscal 2025. The cash flow statement passage [5] contains only a header with no figures, and no 10-Q data is provided. The percentage change therefore cannot be calculated.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "The cash flow statement passage [5] gives only the title and period headings (years ended December 31, 2025, 2024, 2023) with no numbers.",
+        "Other passages cover financing activities for 2022 and 2021, balance sheet data, and stock performance, not Q1 operating cash flow."
+      ],
+      "missing": [
+        "PulteGroup's net cash from operating activities for Q1 2024 (10-Q)",
+        "PulteGroup's net cash from operating activities for Q1 2025 (10-Q)"
+      ],
+      "reason": "The passages contain no quarterly (Q1 2024 or Q1 2025) net cash from operating activities figures for PulteGroup."
+    }
+  },
+  "request_key": "53dc8dfd97fcf6fb9291075120c8a046de7e1e992c3faa77030cc94cfcc86432",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00419670",
+    "input_tokens": 2387,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 338
+  }
+}

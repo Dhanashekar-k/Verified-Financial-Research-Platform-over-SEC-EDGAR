@@ -1,0 +1,48 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "EMCOR Group's diluted earnings per common share for fiscal 2021 was **$7.06** [2], up from $2.40 in fiscal 2020 [2].",
+    "claims": [
+      {
+        "display": "$7.06",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000105634-22-000006#7#0004",
+          "quote": "Diluted earnings per common share | $7.06 | $2.40",
+          "type": "chunk"
+        },
+        "text": "EMCOR Group's diluted earnings per common share for fiscal 2021 was $7.06.",
+        "unit": "USD/shares",
+        "value": "7.06"
+      },
+      {
+        "display": "$2.40",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000105634-22-000006#7#0004",
+          "quote": "Diluted earnings per common share | $7.06 | $2.40",
+          "type": "chunk"
+        },
+        "text": "EMCOR Group's diluted earnings per common share for fiscal 2020 was $2.40.",
+        "unit": "USD/shares",
+        "value": "2.4"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "c1494f5b8f6d83aea8cd870c8f34929a942e2fed06e7a31c3054e1c80d3d20cd",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00392170",
+    "input_tokens": 1942,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 372
+  }
+}

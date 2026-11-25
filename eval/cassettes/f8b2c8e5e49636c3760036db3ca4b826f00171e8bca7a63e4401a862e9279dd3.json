@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not contain Jacobs Solutions' noncurrent long-term debt balance at the end of Q1 FY2026. The latest filing provided is the FY2025 10-K (fiscal year ended September 26, 2025) [8], and no Q1 FY2026 10-Q data is included.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "The FY2025 10-K states the company was in compliance with all debt covenants at September 26, 2025 [8].",
+        "Passages describe the $500 million 5.90% Bonds due 2033 and $600 million 6.35% Bonds due 2028 issued in 2023 [8]."
+      ],
+      "missing": [
+        "Jacobs Solutions' balance sheet for the first quarter of FY2026 (10-Q) showing long-term debt, excluding current portion"
+      ],
+      "reason": "The passages contain no Q1 FY2026 balance sheet or noncurrent long-term debt figure; no 10-Q for that quarter is provided."
+    }
+  },
+  "request_key": "f8b2c8e5e49636c3760036db3ca4b826f00171e8bca7a63e4401a862e9279dd3",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00680070",
+    "input_tokens": 5046,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 327
+  }
+}

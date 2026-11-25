@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages cannot answer this question. None of them identifies MGM as the filer, and none reports Adjusted EBIT for FY2022. The FY2022 figures that do appear (Adjusted EBITDA of $2,122,399 thousand and interest expense of $529,519 thousand [8]) are from a filer the passages don't name as MGM. Adjusted EBITDA is also a different measure from the Adjusted EBIT the question asks for, so I did not compute a ratio.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "An unnamed filer reports FY2022 Adjusted EBITDA of $2,122,399 thousand and interest expense of $529,519 thousand, with an adjusted interest coverage ratio of 3.94x based on total interest [8].",
+        "Other passages describe covenant interest coverage ratios for unnamed companies [5][7]."
+      ],
+      "missing": [
+        "MGM's FY2022 10-K passages",
+        "FY2022 Adjusted EBIT (or EBIT) for MGM",
+        "FY2022 annual interest expense for MGM"
+      ],
+      "reason": "The passages do not identify MGM as the filer and do not give Adjusted EBIT for FY2022, so the requested ratio cannot be computed."
+    }
+  },
+  "request_key": "366f0c019bae5572aa1b474e34be12c6d2d721a3b362caf39aa29f12295574e8",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00741770",
+    "input_tokens": 4128,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 634
+  }
+}

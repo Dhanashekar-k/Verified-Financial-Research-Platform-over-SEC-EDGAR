@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not give Microsoft's research and development spending for Q2 of fiscal 2026. The only Microsoft R&D figures are annual: $27,195 million for fiscal 2023 and $24,512 million for fiscal 2022 [7]. The FY2026 Microsoft passage [4] has no R&D expense figure, and none of the passages contain quarterly data.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Microsoft's annual R&D expense was $27,195 million in fiscal 2023 and $24,512 million in fiscal 2022 [7].",
+        "The fiscal 2026 Microsoft passage covers revenue highlights but does not report R&D expense [4]."
+      ],
+      "missing": [
+        "Microsoft's 10-Q for the second quarter of fiscal 2026 with quarterly R&D expense"
+      ],
+      "reason": "The passages contain no quarterly (Q2 fiscal 2026) research and development expense figure for Microsoft."
+    }
+  },
+  "request_key": "1572b10cbd4ae4a49cb2fc0dc12a07a6f29c7b48b65139c7ac428d18940e0088",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00448070",
+    "input_tokens": 2741,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 324
+  }
+}

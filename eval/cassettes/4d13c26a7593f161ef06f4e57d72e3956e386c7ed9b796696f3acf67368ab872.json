@@ -1,0 +1,62 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not support a Q2 2023 spin-off. They only describe past transactions: the spin-off of the former Upjohn Business, completed in the fourth quarter of 2020 [1][3], and the sale of Meridian in Q4 2021 [1]. As of FY2022, Pfizer managed two operating segments, Biopharma and PC1 [1][4]. None of the passages mentions a planned or pending spin-off of a large business segment. No Q2 2023 filing is provided, so the passages cannot confirm the status as of that date.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000078003-21-000038#8#0029",
+          "quote": "the completion of the spin-off of our Upjohn Business in the fourth quarter of 2020",
+          "type": "chunk"
+        },
+        "text": "Pfizer completed the spin-off of its former Upjohn Business in the fourth quarter of 2020, a past transaction rather than one pending in Q2 2023.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000078003-23-000024#7#0002",
+          "quote": "the sale of our Meridian subsidiary in the fourth quarter of 2021",
+          "type": "chunk"
+        },
+        "text": "Pfizer sold its Meridian subsidiary in the fourth quarter of 2021.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000078003-23-000024#7#0002",
+          "quote": "two operating segments: Biopharma and PC1. Biopharma is the only reportable segment.",
+          "type": "chunk"
+        },
+        "text": "Pfizer manages its commercial operations through two operating segments, Biopharma and PC1, with Biopharma being the only reportable segment.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "4d13c26a7593f161ef06f4e57d72e3956e386c7ed9b796696f3acf67368ab872",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00786070",
+    "input_tokens": 4671,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 614
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages cannot answer this question. None of them identifies McCormick as the company, and none gives quarterly (Q2 2021 or Q2 2022) interest expense. They show only annual figures for unnamed companies, so I cannot give a Q2-to-Q2 percentage change for McCormick.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Annual interest expense tables for unnamed companies, for example one showing $706,212 thousand in 2022 versus $765,620 thousand in 2021 [1].",
+        "Another showing $11.6 million in 2022 versus $10.2 million in 2021, a 13.7% change [8]."
+      ],
+      "missing": [
+        "Confirmation of which company's filing is McCormick's",
+        "McCormick's Q2 2021 and Q2 2022 interest expense from 10-Q filings"
+      ],
+      "reason": "The passages do not name McCormick and contain only annual interest expense data, not Q2 2021 or Q2 2022 quarterly figures."
+    }
+  },
+  "request_key": "a7904a9dcfd2c78ba4302b501206a58fc25a01aaae1a9102d91e461a74a2c35a",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00302070",
+    "input_tokens": 1266,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 327
+  }
+}

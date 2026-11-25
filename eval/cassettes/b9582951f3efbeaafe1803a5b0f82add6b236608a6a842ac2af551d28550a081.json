@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The answer states a 2-year revenue CAGR of about 0.4%, matching the gold answer, and its supporting figures ($65,398M to $65,984M) are consistent with that result."
+  },
+  "request_key": "b9582951f3efbeaafe1803a5b0f82add6b236608a6a842ac2af551d28550a081",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00065255",
+    "input_tokens": 246,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 75
+  }
+}

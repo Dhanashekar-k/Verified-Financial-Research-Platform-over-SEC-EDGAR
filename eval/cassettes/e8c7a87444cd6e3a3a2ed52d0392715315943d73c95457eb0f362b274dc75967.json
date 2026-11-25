@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not contain PulteGroup's operating cash flow for Q1 of fiscal 2025. They include only annual 10-K material, and the cash flow statement passages show headers without any figures. No Q1 2025 10-Q data is provided.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Year-end 2025 and 2024 summarized balance sheet data for the guarantor subsidiaries, including cash, cash equivalents, and restricted cash of $1,632,196 thousand and $1,218,207 thousand [7].",
+        "Cash flow statement headers for the years ended December 31, 2025, 2024, and 2023 without amounts [4]."
+      ],
+      "missing": [
+        "PulteGroup's 10-Q for the quarter ended March 31, 2025, with its statement of cash flows",
+        "Net cash provided by operating activities for the three months ended March 31, 2025"
+      ],
+      "reason": "The passages contain no Q1 fiscal 2025 operating cash flow figure. They are drawn from annual 10-K filings, and the cash flow statement passages show only headings with no amounts."
+    }
+  },
+  "request_key": "e8c7a87444cd6e3a3a2ed52d0392715315943d73c95457eb0f362b274dc75967",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00346170",
+    "input_tokens": 1527,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 363
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not support an answer. None of them identifies ADP (Automatic Data Processing) or reports diluted EPS for Q1 FY2023. The passages are annual 10-K excerpts for unnamed companies, and none covers a quarterly period.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Passages show annual diluted or adjusted EPS figures for unnamed companies (e.g., $1.50 diluted EPS in FY2021 [3]), none attributed to ADP."
+      ],
+      "missing": [
+        "ADP's 10-Q for the first quarter of fiscal 2023 showing diluted EPS",
+        "Passages that explicitly identify ADP as the company"
+      ],
+      "reason": "The passages do not name ADP and contain no Q1 FY2023 (quarterly) diluted EPS data. They are 10-K annual figures for unidentified companies."
+    }
+  },
+  "request_key": "6529d9477e5cd675da5305cc5b6a383e9c932f8d0508a449958497d59f91d398",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00251670",
+    "input_tokens": 952,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 289
+  }
+}

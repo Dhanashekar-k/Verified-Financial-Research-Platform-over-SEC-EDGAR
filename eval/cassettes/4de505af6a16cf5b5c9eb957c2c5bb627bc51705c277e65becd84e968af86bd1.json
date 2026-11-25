@@ -1,0 +1,76 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The shareholder proposal regarding a congruency report on net-zero emissions policies was **defeated** at PepsiCo's May 3, 2023 annual meeting. Votes were 19,718,780 For, 977,228,788 Against, 23,200,321 Abstain, and 172,969,325 Broker Non-Votes [2].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:PEPSICO_2023_8K_dated-2023-05-05#p4#0000",
+          "quote": "(8) The shareholder proposal regarding a congruency report on net-zero emissions policies was defeated:",
+          "type": "chunk"
+        },
+        "text": "The shareholder proposal regarding a congruency report on net-zero emissions policies was defeated at PepsiCo's 2023 Annual Meeting held May 3, 2023.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": "19,718,780",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:PEPSICO_2023_8K_dated-2023-05-05#p4#0000",
+          "quote": "For | 19,718,780",
+          "type": "chunk"
+        },
+        "text": "Votes cast For the net-zero congruency report proposal were 19,718,780.",
+        "unit": "shares",
+        "value": "19718780"
+      },
+      {
+        "display": "977,228,788",
+        "id": "c3",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:PEPSICO_2023_8K_dated-2023-05-05#p4#0000",
+          "quote": "Against | 977,228,788",
+          "type": "chunk"
+        },
+        "text": "Votes cast Against the net-zero congruency report proposal were 977,228,788.",
+        "unit": "shares",
+        "value": "977228788"
+      },
+      {
+        "display": "23,200,321",
+        "id": "c4",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:PEPSICO_2023_8K_dated-2023-05-05#p4#0000",
+          "quote": "Abstain | 23,200,321",
+          "type": "chunk"
+        },
+        "text": "Abstentions on the net-zero congruency report proposal were 23,200,321.",
+        "unit": "shares",
+        "value": "23200321"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "4de505af6a16cf5b5c9eb957c2c5bb627bc51705c277e65becd84e968af86bd1",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00677270",
+    "input_tokens": 2983,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 734
+  }
+}

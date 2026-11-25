@@ -1,0 +1,27 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "I can't answer this from the passages. None of them names Henry Schein or identifies a filing as Henry Schein's. Several passages show operating cash flow for 2022 to 2023 [1][2][5], but they are not labelled with a company name, so I can't tell which, if any, belongs to Henry Schein. I won't guess.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Unnamed filings show operating cash flow figures for 2022 and 2023, such as $1,791,286 thousand to $2,867,602 thousand (+60.1%) in one passage [1] and $963 million to $2,411 million (+150.4%) in another [2], but neither is attributed to Henry Schein."
+      ],
+      "missing": [
+        "A passage from Henry Schein's 10-K that names the company and gives its 2022 and 2023 net cash from operating activities."
+      ],
+      "reason": "The passages do not identify any filing as Henry Schein's, so its 2022-to-2023 operating cash flow change cannot be determined without guessing the company."
+    }
+  },
+  "request_key": "24960488c07fe9b1be0b519805d460b67f73ab8d4034ae6989daf3f63c1af0a4",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00449270",
+    "input_tokens": 1943,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 486
+  }
+}

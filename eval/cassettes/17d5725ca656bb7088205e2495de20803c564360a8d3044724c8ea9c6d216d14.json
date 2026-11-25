@@ -1,0 +1,48 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not describe the 8-K directly. They only show it was used to file exhibits: a First Supplemental Indenture and a Second Supplemental Indenture, both dated June 30, 2022. The parties were Amcor Finance (USA), Inc., Amcor Flexibles North America, Inc. and Deutsche Bank Trust Company Americas, and the exhibits are incorporated by reference to the Form 8-K filed July 1, 2022 [5]. So the key agenda appears to be the supplemental indentures to Amcor's debt arrangements, but the passages give no further detail on the filing's purpose.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:AMCOR_2023_10K#p114#0001",
+          "quote": "First Supplemental Indenture, dated as of June 30, 2022, among Amcor Finance (USA), Inc.,",
+          "type": "chunk"
+        },
+        "text": "Amcor's Form 8-K filed July 1, 2022 included, as an exhibit, a First Supplemental Indenture dated as of June 30, 2022, among Amcor Finance (USA), Inc., Amcor Flexibles North America, Inc. and Deutsche Bank Trust Company Americas.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:AMCOR_2023_10K#p114#0001",
+          "quote": "Second Supplemental Indenture, dated as of June 30, 2022, among Amcor Finance (USA),",
+          "type": "chunk"
+        },
+        "text": "The 8-K filed July 1, 2022 also included a Second Supplemental Indenture dated as of June 30, 2022, among the same parties.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "17d5725ca656bb7088205e2495de20803c564360a8d3044724c8ea9c6d216d14",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00881270",
+    "input_tokens": 2983,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 1142
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The answer states that Boeing expects production increases for the 787, 777X (resuming production) and 737 (gradual rate increases) in 2023, which matches the gold answer's key fact."
+  },
+  "request_key": "69fd39a3e0c88edaeea38e6533360d0df579a2576743cd8faacc4459dee418c6",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00066455",
+    "input_tokens": 263,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 74
+  }
+}

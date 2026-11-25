@@ -1,0 +1,62 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "PepsiCo increased its unsecured five-year revolving credit agreement by $400 million, from $3.8 billion (the 2022 Five Year Credit Agreement, terminated effective May 26, 2023) to $4.2 billion (the new 2023 Five Year Credit Agreement entered into May 26, 2023) [3].",
+    "claims": [
+      {
+        "display": "$400 million",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:PEPSICO_2023_8K_dated-2023-05-30#p2#0001",
+          "quote": "PepsiCo terminated the $3,800,000,000 five year unsecured revolving credit agreement",
+          "type": "chunk"
+        },
+        "text": "PepsiCo's new five-year unsecured revolving credit agreement of May 26, 2023 ($4.2 billion) was $400 million larger than the terminated $3.8 billion 2022 agreement.",
+        "unit": "USD millions",
+        "value": "400"
+      },
+      {
+        "display": "$4.2 billion",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:PEPSICO_2023_8K_dated-2023-05-30#p2#0001",
+          "quote": "PepsiCo entered into a new $4,200,000,000 five year unsecured revolving credit agreement",
+          "type": "chunk"
+        },
+        "text": "The new 2023 Five Year Credit Agreement entered into on May 26, 2023 is for $4,200,000,000.",
+        "unit": "USD",
+        "value": "4200000000"
+      },
+      {
+        "display": "$3.8 billion",
+        "id": "c3",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:PEPSICO_2023_8K_dated-2023-05-30#p2#0001",
+          "quote": "PepsiCo terminated the $3,800,000,000 five year unsecured revolving credit agreement",
+          "type": "chunk"
+        },
+        "text": "The terminated 2022 Five Year Credit Agreement was for $3,800,000,000.",
+        "unit": "USD",
+        "value": "3800000000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "8e0d3b669040e48b6d64104f2806fa955c08fb543b2c6078116e4e3f9d25a424",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00829270",
+    "input_tokens": 4683,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 698
+  }
+}

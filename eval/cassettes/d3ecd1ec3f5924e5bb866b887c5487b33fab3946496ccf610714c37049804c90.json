@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not give the dollar amount of Expand Energy's dividends paid in FY2022. Passage [4] says a table summarizes dividend payments for 2024, 2023 and 2022, but the table's figures are not included.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Expand Energy initiated an annual base dividend in May 2021, expected to be paid quarterly [4].",
+        "In March 2022 it adopted a variable return program that paid an additional variable dividend equal to 50% of Adjusted Free Cash Flow from the prior quarter less the base quarterly dividend [4].",
+        "The FY2024 10-K has a table of dividend payments for 2024, 2023 and 2022, but its contents are not in the passages [4]."
+      ],
+      "missing": [
+        "The dividend payment table (base and variable dividends per share and total amounts) for the year ended December 31, 2022",
+        "The dividends paid line in the 2022 cash flow statement"
+      ],
+      "reason": "The passages mention a dividend payment table covering 2022 but do not include its figures, so the FY2022 dividends paid cannot be stated."
+    }
+  },
+  "request_key": "d3ecd1ec3f5924e5bb866b887c5487b33fab3946496ccf610714c37049804c90",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00722870",
+    "input_tokens": 4594,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 503
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "EOG's net cash provided by operating activities rose about **75.5%**, from $5,008 million in 2020 [6] to $8,791 million in 2021 [1]. The increase was $3,783 million. Caveat: the 2020 figure comes from the FY2020 10-K. The 2021 figure comes from the FY2022 10-K's comparison, because the FY2021 10-K's own cash flow figures are not in the passages.",
+    "claims": [
+      {
+        "display": "$5,008 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000821189-21-000017#7#0030",
+          "quote": "Net cash provided by operating activities of $5,008 million in 2020",
+          "type": "chunk"
+        },
+        "text": "EOG's net cash provided by operating activities in 2020 was $5,008 million.",
+        "unit": "USD millions",
+        "value": "5008"
+      },
+      {
+        "display": "$8,791 million",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000821189-23-000015#7#0032",
+          "quote": "increased $2,302 million from $8,791 million in 2021",
+          "type": "chunk"
+        },
+        "text": "EOG's net cash provided by operating activities in 2021 was $8,791 million.",
+        "unit": "USD millions",
+        "value": "8791"
+      },
+      {
+        "display": "about 75.5%",
+        "id": "c3",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000821189-21-000017#7#0030",
+          "quote": "Net cash provided by operating activities of $5,008 million in 2020",
+          "type": "chunk"
+        },
+        "text": "EOG's net cash provided by operating activities increased about 75.5% from 2020 ($5,008 million) to 2021 ($8,791 million).",
+        "unit": "percent",
+        "value": "75.54"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "1757e824463acadc78abd785449951ae4dee1998b83710e939465bbf95e3028d",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00856370",
+    "input_tokens": 3599,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 969
+  }
+}

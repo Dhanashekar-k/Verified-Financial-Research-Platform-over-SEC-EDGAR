@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not describe any acquisitions by Ulta Beauty in FY2022 or FY2023. The FY2022 and FY2023 overview sections cover only the assortment, store footprint, Ulta Beauty at Target shop-in-shops and digital experiences [3][4]. The only subsidiary mentioned, Space NK Limited, appears in the FY2025 10-K overview, and that passage does not say when or how it was acquired [1].",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "FY2022 and FY2023 10-K overviews describe the product assortment, store footprint (more than 1,350 stores), Ulta Beauty at Target shop-in-shops, and digital experiences, with no acquisitions mentioned.",
+        "The FY2025 10-K overview mentions the subsidiary Space NK Limited, but gives no acquisition date or details."
+      ],
+      "missing": [
+        "Acquisition or business combination disclosures (e.g., notes to financial statements or MD&A) for FY2022 and FY2023",
+        "The timing and terms of any acquisition, including Space NK"
+      ],
+      "reason": "The provided passages do not mention any acquisitions made by Ulta Beauty in FY2022 or FY2023."
+    }
+  },
+  "request_key": "c79a83b4c4066dcaab03c58b5c27348b54ba57436874f3c5f49813c2180610a2",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00749870",
+    "input_tokens": 5349,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 406
+  }
+}

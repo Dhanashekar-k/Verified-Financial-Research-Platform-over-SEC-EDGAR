@@ -1,0 +1,27 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not give PPG's cash and cash equivalents balance for fiscal 2022 on its own. They only say PPG ended 2022 with approximately $1.2 billion in cash and short-term investments combined [6]. The passage that introduces the cash and cash equivalents and short-term investments breakdown is cut off before any figures [3].",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "PPG ended 2022 with approximately $1.2 billion in cash and short-term investments."
+      ],
+      "missing": [
+        "PPG's cash and cash equivalents balance as of December 31, 2022, reported separately from short-term investments (balance sheet or the full liquidity table)."
+      ],
+      "reason": "The passages give only a combined figure for cash and short-term investments, not the separate cash and cash equivalents balance for PPG at the end of 2022."
+    }
+  },
+  "request_key": "03d6d31fa7c636f65c551552c749f6339145697ea76cea298c9812d35a86c11a",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00726870",
+    "input_tokens": 5009,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 428
+  }
+}

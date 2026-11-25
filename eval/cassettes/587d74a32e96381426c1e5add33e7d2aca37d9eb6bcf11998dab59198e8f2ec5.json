@@ -1,0 +1,48 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "None. The FY2022 10-K cover page lists only one class of security registered under Section 12(b): Common Shares (par value $0.20 per share), trading as AXP on the New York Stock Exchange [1]. No debt securities are listed as registered on a national securities exchange in the passages provided.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:AMERICANEXPRESS_2022_10K#p1#0000",
+          "quote": "Common Shares (par value $0.20 per Share) | AXP | New York Stock Exchange",
+          "type": "chunk"
+        },
+        "text": "American Express's FY2022 10-K lists no debt securities as registered on a national securities exchange under Section 12(b). The only registered class shown is Common Shares (par value $0.20 per share), trading as AXP on the New York Stock Exchange.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:AMERICANEXPRESS_2022_10K#p1#0000",
+          "quote": "Securities registered pursuant to section 12(g) of the Act: None",
+          "type": "chunk"
+        },
+        "text": "No securities are registered pursuant to Section 12(g) of the Act.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "587d74a32e96381426c1e5add33e7d2aca37d9eb6bcf11998dab59198e8f2ec5",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00735970",
+    "input_tokens": 4075,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 633
+  }
+}

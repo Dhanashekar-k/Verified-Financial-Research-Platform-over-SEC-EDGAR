@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not state Sempra's total stockholders' equity at the end of fiscal 2021. The only Sempra passage [6] covers share repurchases and dividends, and it gives no balance sheet equity figure. The other passages with equity figures are not identified as Sempra's.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Sempra paid $1,331 million in common dividends and $99 million in preferred dividends in 2021 [6].",
+        "Sempra repurchased shares in late 2021 and early 2022 [6]."
+      ],
+      "missing": [
+        "Sempra's consolidated balance sheet showing total stockholders' equity at December 31, 2021"
+      ],
+      "reason": "No passage provides Sempra's total stockholders' equity for fiscal 2021."
+    }
+  },
+  "request_key": "11cf70e4f19d4a44cebaa4b8682795b546f828a5fb353a98e12531722d019dd8",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00389870",
+    "input_tokens": 1574,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 441
+  }
+}

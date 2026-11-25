@@ -1,0 +1,27 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not report Activision Blizzard's 2021 operating cash flow. The only Activision cash flow statement provided covers fiscal years 2019, 2018 and 2017 (net cash provided by operating activities of $1,831 million, $1,790 million and $2,213 million respectively) [1]. Passages from Microsoft's filings only describe the acquisition [3][4][6].",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Activision Blizzard net cash provided by operating activities was $1,831 million in 2019, $1,790 million in 2018 and $2,213 million in 2017 [1]."
+      ],
+      "missing": [
+        "Activision Blizzard's consolidated statement of cash flows for the year ended December 31, 2021 (FY2021 10-K)"
+      ],
+      "reason": "The provided passages do not include Activision Blizzard's cash flow statement for fiscal year 2021; the Activision cash flow data covers only 2017-2019."
+    }
+  },
+  "request_key": "093f1b6fb166200cad00d879f9df50ddc7f282c778fc5b5faacdd5b6fbad39f3",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00623170",
+    "input_tokens": 4507,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 321
+  }
+}

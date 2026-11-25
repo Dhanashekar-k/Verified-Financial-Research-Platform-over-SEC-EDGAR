@@ -1,0 +1,62 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not give year-end shares outstanding. They report only weighted-average shares for FY2021. On that basis, Kinder Morgan's 2,266 million basic and diluted weighted-average shares [2] were about 1,872.4 million higher than NiSource's 393.6 million basic average common shares [4]. This is roughly 5.8 times as many. If NiSource's diluted average of 417.3 million were used instead, the gap would be about 1,848.7 million.",
+    "claims": [
+      {
+        "display": "2,266 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001506307-22-000018#15#0025",
+          "quote": "Basic and Diluted Weighted Average Shares Outstanding | 2,266",
+          "type": "chunk"
+        },
+        "text": "Kinder Morgan's basic and diluted weighted average shares outstanding for 2021 were 2,266 million.",
+        "unit": "shares millions",
+        "value": "2266"
+      },
+      {
+        "display": "393.6 million",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001111711-22-000007#8#0009",
+          "quote": "Basic Average Common Shares Outstanding | 393.6",
+          "type": "chunk"
+        },
+        "text": "NiSource's basic average common shares outstanding for 2021 were 393.6 million.",
+        "unit": "shares millions",
+        "value": "393.6"
+      },
+      {
+        "display": "about 1,872.4 million",
+        "id": "c3",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0001506307-22-000018#15#0025",
+          "quote": "Basic and Diluted Weighted Average Shares Outstanding | 2,266",
+          "type": "chunk"
+        },
+        "text": "Kinder Morgan's 2021 weighted-average shares exceeded NiSource's 2021 basic average common shares by about 1,872.4 million (2,266 - 393.6), using weighted-average figures as a proxy for shares outstanding.",
+        "unit": "shares millions",
+        "value": "1872.4"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "fce788e69cf9181e4e078c0c69e14fd59908916318962639c6dad6184711a995",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00808170",
+    "input_tokens": 2632,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 1066
+  }
+}

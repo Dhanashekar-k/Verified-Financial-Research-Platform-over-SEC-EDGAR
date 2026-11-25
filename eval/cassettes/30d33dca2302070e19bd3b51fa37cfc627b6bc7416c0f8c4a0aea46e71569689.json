@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "incorrect",
+    "reason": "The gold answer names the specific regions (United States, EMEA, APAC, LACC), but the system answer says the passages do not list specific regions and gives only a general U.S./international split and a count of countries, so it does not state the key facts."
+  },
+  "request_key": "30d33dca2302070e19bd3b51fa37cfc627b6bc7416c0f8c4a0aea46e71569689",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00073355",
+    "input_tokens": 252,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 90
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The answer identifies the key drivers from the gold answer, lower marketing expenses and leverage of incentive compensation on higher sales, and adds correct offsetting context; the fiscal-year labeling confusion does not change the stated drivers."
+  },
+  "request_key": "66cf458c31d0daec0bbaf11aba57f32608506553874ef2a5035536876373bfb4",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00078055",
+    "input_tokens": 289,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 92
+  }
+}

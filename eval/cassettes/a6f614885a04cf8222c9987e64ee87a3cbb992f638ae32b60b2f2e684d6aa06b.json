@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not include PepsiCo's FY2021 statement of cash flows or any PepsiCo capital expenditure figure. The PepsiCo passages [1][2][3][5][6][8] are MD&A introductions that give no capex amount. The only capex discussions are for other companies [4][7].",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "The PepsiCo FY2021 10-K passage [3] contains only the MD&A introduction and executive overview, with no cash flow figures.",
+        "Capital expenditure discussions in the passages relate to other companies (a FedEx spin-off entity [4] and a retailer [7]), not PepsiCo."
+      ],
+      "missing": [
+        "PepsiCo's FY2021 consolidated statement of cash flows, specifically the capital spending line item"
+      ],
+      "reason": "None of the provided passages contain PepsiCo's FY2021 capital expenditures or its statement of cash flows."
+    }
+  },
+  "request_key": "a6f614885a04cf8222c9987e64ee87a3cbb992f638ae32b60b2f2e684d6aa06b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00703870",
+    "input_tokens": 5369,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 310
+  }
+}

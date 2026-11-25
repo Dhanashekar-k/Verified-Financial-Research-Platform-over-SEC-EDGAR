@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The system answer of $1,615.9 million matches the gold $1616.00 million within rounding, and the period (FY2020 year end, June 30, 2020) is consistent."
+  },
+  "request_key": "ed8b93ebc1bb6234d28bdf8e3f74b6c6ce2508b8ae7b07acc94707c188197218",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00055655",
+    "input_tokens": 175,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 70
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not state PulteGroup's capital expenditures for 2024. The cash flow statement headers [3] are provided, but the actual line items (such as purchases of property and equipment) are not included in the passages.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Passage [3] shows the header of the consolidated statements of cash flows for the years ended December 31, 2024, 2023, and 2022, with no line items.",
+        "Passage [2] gives property and equipment and depreciation figures for 2022 and 2021, not 2024 capital expenditures."
+      ],
+      "missing": [
+        "Cash flow statement line item for purchases of property and equipment / capital expenditures for fiscal 2024"
+      ],
+      "reason": "The passages contain only the title/header of the 2024 cash flow statement, not the capital expenditure figures."
+    }
+  },
+  "request_key": "a0e38007217b7a19e97521172ba3029d67af7747fff26866cfa58bccd537a8cc",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00323270",
+    "input_tokens": 1758,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 271
+  }
+}

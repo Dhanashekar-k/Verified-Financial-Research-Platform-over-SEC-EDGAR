@@ -1,0 +1,27 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages don't support a FY2022 to FY2023 percent change in Newmont's dividends paid. They give cash dividends paid per common share of $1.60 for 2023 [3], but none gives the FY2022 figure, so the change can't be calculated.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Newmont's cash dividends paid per common share were $1.00 for 2025, $1.00 for 2024 and $1.60 for 2023 [3]."
+      ],
+      "missing": [
+        "Newmont's cash dividends paid (per share or total) for FY2022"
+      ],
+      "reason": "The FY2022 dividends paid figure for Newmont is not in the passages, so the FY2022 to FY2023 percent change cannot be computed."
+    }
+  },
+  "request_key": "17d47c42b1a6850c229ec4c454bc1696cf0f798be9ff47fbf95499ebf6131e4a",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00536470",
+    "input_tokens": 3430,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 363
+  }
+}

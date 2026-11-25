@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not contain Host Hotels' stockholders' equity at the end of Q1 FY2020. The equity statement passages show only headers, with no figures. No 10-Q for Q1 2020 is provided.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "The passages contain only the headings of the Consolidated Statements of Equity for FY2023, FY2024 and FY2025 10-Ks [1][2][3].",
+        "The MD&A overview text for FY2020-FY2025 describes hotel counts and customer mix, not equity balances."
+      ],
+      "missing": [
+        "Host Hotels' Q1 2020 10-Q balance sheet or statement of equity showing total stockholders' equity as of March 31, 2020"
+      ],
+      "reason": "The passages do not include Host Hotels' stockholders' equity balance at the end of Q1 FY2020 (March 31, 2020). The Q1 2020 10-Q is not among them, and the annual statements of equity shown contain only headings with no numbers."
+    }
+  },
+  "request_key": "e70ba70dd545d3e091f4c647492dc31794b6fee98ce70504d203970de4f4c748",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00553070",
+    "input_tokens": 3741,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 334
+  }
+}

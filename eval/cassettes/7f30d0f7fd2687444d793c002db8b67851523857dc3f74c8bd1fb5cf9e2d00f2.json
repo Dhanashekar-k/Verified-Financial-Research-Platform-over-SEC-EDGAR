@@ -1,0 +1,31 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not report Hartford's stockholders' equity as of the end of Q3 2022 (September 30, 2022). They only give year-end figures: $18.6 billion at December 31, 2020 [3], $17.8 billion at December 31, 2021 [6], $15.3 billion at December 31, 2023 [7], $16.4 billion at December 31, 2024 [4], and $19.0 billion at December 31, 2025 [5]. No 10-Q or December 31, 2022 figure is provided.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Total stockholders' equity was $18.6 billion at December 31, 2020 [3].",
+        "Total stockholders' equity was $17.8 billion at December 31, 2021 [6].",
+        "Total stockholders' equity was $15.3 billion at December 31, 2023 [7].",
+        "Total stockholders' equity was $16.4 billion at December 31, 2024 [4].",
+        "Total stockholders' equity was $19.0 billion at December 31, 2025 [5]."
+      ],
+      "missing": [
+        "Hartford's 10-Q for the quarter ended September 30, 2022, or its balance sheet as of that date"
+      ],
+      "reason": "The passages contain no Q3 2022 (September 30, 2022) balance sheet or 10-Q data, so the originally reported stockholders' equity for that date cannot be determined."
+    }
+  },
+  "request_key": "7f30d0f7fd2687444d793c002db8b67851523857dc3f74c8bd1fb5cf9e2d00f2",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00750870",
+    "input_tokens": 5124,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 453
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not support an answer. They contain no JPMorgan (JPM) segment net income data, and none for Q2 2022. The passages show only annual segment tables for other, unnamed companies, plus an insurer's investment income discussion and an asset breakdown by segment.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Annual segment revenue and profit tables for unnamed companies (FY2021-FY2024)",
+        "Travelers-style net investment income discussion for 2022 and a segment asset table for a different company"
+      ],
+      "missing": [
+        "JPMorgan Chase 10-Q for the quarter ended June 30, 2022",
+        "Net income by business segment (e.g., Consumer & Community Banking, Corporate & Investment Bank, Commercial Banking, Asset & Wealth Management) for Q2 2022"
+      ],
+      "reason": "The passages contain no JPMorgan Chase segment net income figures and no quarterly (Q2 2022) data. The segment tables belong to other, unidentified companies and are annual, not quarterly."
+    }
+  },
+  "request_key": "166ca2c3db787dd5130f429a6b2c1e005a0acca097d96890b0f3e6146af5061c",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00353970",
+    "input_tokens": 1690,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 346
+  }
+}

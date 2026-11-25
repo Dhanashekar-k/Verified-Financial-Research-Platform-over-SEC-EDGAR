@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not support an answer for FY2022 or FY2021. The FY2022 and FY2021 passages are only cash flow statement headers and an exhibit list, with no legal proceedings disclosure [5][7][8]. The litigation passages come from later filings. The FY2023 10-K describes the NYS Matter, filed November 15, 2023, over alleged plastic pollution [4]. The FY2024 and FY2025 10-Ks add the Baltimore, Los Angeles and USVI matters [1][2][3].",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "The FY2023 10-K describes the NYS Matter, filed November 15, 2023, asserting public nuisance and deceptive practices claims over plastic pollution.",
+        "The FY2024 and FY2025 10-Ks describe the NYS, Baltimore and Los Angeles matters, and the FY2025 10-K also describes the USVI Matter.",
+        "The FY2022 and FY2021 passages are only cash flow statement headers and an exhibit list."
+      ],
+      "missing": [
+        "The Legal Proceedings section (Item 3) or the contingencies note from the FY2022 10-K",
+        "The Legal Proceedings section (Item 3) or the contingencies note from the FY2021 10-K"
+      ],
+      "reason": "The provided passages from the FY2022 and FY2021 filings contain no legal proceedings disclosures, so ongoing legal battles for those years cannot be determined from them."
+    }
+  },
+  "request_key": "b9333b2a59814b56c62aa9b6e131b0089a6ec1a3d3f70352c7f8f5828f2a5544",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00705470",
+    "input_tokens": 3615,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 664
+  }
+}

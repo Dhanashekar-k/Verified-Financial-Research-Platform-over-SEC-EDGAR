@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The answer identifies Mary Dillon as the new CEO who previously led Ulta Beauty, a successful omni-channel retailer like Foot Locker, matching the gold answer's key fact; the 'in part' hedge only notes the beauty vs. athletic footwear difference."
+  },
+  "request_key": "17a907bbd684d0ea1cb4bdc7cce1c19960bd1c39d0474c81af7bd9d815b94def",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00087755",
+    "input_tokens": 316,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 106
+  }
+}

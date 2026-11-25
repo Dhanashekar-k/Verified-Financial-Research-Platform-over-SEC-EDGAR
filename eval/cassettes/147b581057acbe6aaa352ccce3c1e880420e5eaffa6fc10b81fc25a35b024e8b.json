@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not contain Block's (Square's) FY2016 balance sheet, so the working capital ratio (total current assets \u00f7 total current liabilities) cannot be computed. The passages only define working capital for other, unnamed companies and years (FY2019\u2013FY2025) and give no Block/Square current asset or current liability figures for FY2016.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Passages define working capital as current assets less current liabilities for other companies and fiscal years (FY2019-FY2025), none identified as Block/Square FY2016."
+      ],
+      "missing": [
+        "Block (Square) total current assets at December 31, 2016",
+        "Block (Square) total current liabilities at December 31, 2016"
+      ],
+      "reason": "The provided passages do not include Block/Square's FY2016 balance sheet, so total current assets and total current liabilities are not available."
+    }
+  },
+  "request_key": "147b581057acbe6aaa352ccce3c1e880420e5eaffa6fc10b81fc25a35b024e8b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00334770",
+    "input_tokens": 1803,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 285
+  }
+}

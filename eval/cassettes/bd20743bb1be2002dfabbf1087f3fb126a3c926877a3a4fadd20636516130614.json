@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not state Invesco Ltd.'s capital expenditures for Q1 of fiscal year 2023. They include only annual 10-K data and no quarterly (10-Q) cash flow figures. The one capital spending figure for 2023 ($1.0 billion to $1.2 billion) comes from a different company's filing, so it cannot be attributed to Invesco [5].",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Invesco repurchased 9.6 million common shares for $150.0 million during 2023, and purchase obligations were $663.5 million as of December 31, 2023 [1].",
+        "The FY2022 passage with a 2023 capital spending expectation ($1.0 billion to $1.2 billion) is from a different filer and is not an Invesco figure [5]."
+      ],
+      "missing": [
+        "Invesco's Q1 2023 10-Q cash flow statement showing purchases of property, equipment and software (capital expenditures)"
+      ],
+      "reason": "The passages contain no Q1 2023 capital expenditure figure for Invesco Ltd. The only capital spending figure for 2023 is a full-year expectation in a filing that does not appear to be Invesco's. It is not a quarterly number."
+    }
+  },
+  "request_key": "bd20743bb1be2002dfabbf1087f3fb126a3c926877a3a4fadd20636516130614",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00619970",
+    "input_tokens": 4060,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 404
+  }
+}

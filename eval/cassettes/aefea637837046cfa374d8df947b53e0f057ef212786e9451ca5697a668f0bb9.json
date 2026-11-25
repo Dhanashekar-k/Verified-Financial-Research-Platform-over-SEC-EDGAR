@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not state Jacobs Solutions Inc.'s noncurrent long-term debt at the end of Q2 of fiscal 2020. They give only a few debt details: the 2020 Term Loan Facility principal balance was $1.0 billion as of October 2, 2020 (fiscal year-end, not Q2) [2]. Passage [8] introduces a long-term debt table but does not contain the figures, and it appears to concern a different company's December 31 period.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "The 2020 Term Loan Facility principal balance was $1.0 billion as of October 2, 2020 (fiscal year-end) [2].",
+        "Passage [8] only introduces a long-term debt table as of December 31, 2020 and 2019 without figures."
+      ],
+      "missing": [
+        "Jacobs' balance sheet or debt note as of the end of fiscal Q2 2020 (around March 27, 2020) showing noncurrent long-term debt"
+      ],
+      "reason": "The passages contain no Q2 fiscal 2020 (mid-year) balance sheet or noncurrent long-term debt figure for Jacobs; the only 10-Q-period data is absent."
+    }
+  },
+  "request_key": "aefea637837046cfa374d8df947b53e0f057ef212786e9451ca5697a668f0bb9",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00518470",
+    "input_tokens": 3090,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 395
+  }
+}

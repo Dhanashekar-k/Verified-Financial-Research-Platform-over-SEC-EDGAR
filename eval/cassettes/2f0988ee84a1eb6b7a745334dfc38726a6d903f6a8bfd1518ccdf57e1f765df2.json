@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not state the dollar amount of dividends paid by TE Connectivity in FY2025. The FY2025 passage [7] contains only a performance graph (cumulative total return of $247.03 on $100 invested in 2020). The dividend text in the FY2022 and FY2023 filings [4][6] says only that future dividends must be approved by shareholders and does not give amounts.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "FY2025 performance graph: TE Connectivity plc cumulative total return of $247.03 in 2025 on $100 invested in 2020 [7]",
+        "Dividend policy language in FY2022 and FY2023 filings: future dividends must be approved by shareholders, with no amounts given [4][6]"
+      ],
+      "missing": [
+        "FY2025 cash flow statement dividends paid line",
+        "FY2025 dividends declared or paid per share and total amount"
+      ],
+      "reason": "The provided passages do not contain the amount of dividends paid by TE Connectivity in FY2025; they include only stock performance graph data and general dividend policy language."
+    }
+  },
+  "request_key": "2f0988ee84a1eb6b7a745334dfc38726a6d903f6a8bfd1518ccdf57e1f765df2",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00376170",
+    "input_tokens": 1872,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 354
+  }
+}

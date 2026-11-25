@@ -1,0 +1,31 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not report Marvell's noncurrent long-term debt balance at the end of fiscal 2021 (January 29, 2022). They describe the debt instruments, but no balance sheet or debt table with the noncurrent carrying amount is included.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "April 2021 issuance of $500.0 million 2026 Senior Notes, $750.0 million 2028 Senior Notes and $750.0 million 2031 Senior Notes [4]",
+        "The 2020 Term Loan Agreement provided $1.75 billion of borrowings in two $875 million tranches [4]",
+        "Interest expense of $119.0 million in fiscal 2022 and $56.8 million in fiscal 2021 [3]",
+        "The 2020 Revolving Credit Facility was undrawn as of January 29, 2022 [2]"
+      ],
+      "missing": [
+        "Consolidated balance sheet line for long-term debt, net of current portion, as of January 29, 2022",
+        "The debt maturity table and carrying values of the outstanding debt as of January 29, 2022"
+      ],
+      "reason": "The passages describe Marvell's debt agreements but do not give the noncurrent long-term debt balance as of the end of fiscal 2021 (January 29, 2022)."
+    }
+  },
+  "request_key": "efaad5e0dbf4f0c64996a59f590b0b7c9f52dfd78441e5aaaf2974ffd024b112",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00651270",
+    "input_tokens": 4298,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 419
+  }
+}

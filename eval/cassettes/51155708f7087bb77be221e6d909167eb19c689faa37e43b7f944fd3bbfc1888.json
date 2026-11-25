@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages don't support an answer. None of them names Fastenal, and they report only annual interest expense, with no Q1 2023 or Q1 2024 figures.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Annual interest expense figures for unnamed companies, e.g. $(5,931) vs $(23,629) for 2024 vs 2023 in one filing [1], and $247 million vs $238 million in another [4]."
+      ],
+      "missing": [
+        "Fastenal's 10-Q filings for Q1 2023 and Q1 2024",
+        "Quarterly interest expense figures clearly attributed to Fastenal"
+      ],
+      "reason": "The passages do not identify Fastenal as the company and give only annual (full-year) interest expense, not quarterly Q1 2023 or Q1 2024 data."
+    }
+  },
+  "request_key": "51155708f7087bb77be221e6d909167eb19c689faa37e43b7f944fd3bbfc1888",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00277870",
+    "input_tokens": 1019,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 328
+  }
+}

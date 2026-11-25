@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages cannot answer this. None of them names Fastenal or gives quarterly (Q1 2021 or Q1 2022) capital expenditure figures. The capital expenditure data they do contain are annual figures for unnamed or other companies.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Annual capital expenditures are shown for several unnamed companies, e.g. $721 million in 2024 vs $516 million in 2023 [4], and $2.8 million in 2022 vs $1.6 million in 2021 [1].",
+        "PepsiCo capital spending is $5,207 million in 2022 vs $4,625 million in 2021 [5]."
+      ],
+      "missing": [
+        "Fastenal's 10-Q filings for Q1 2021 and Q1 2022",
+        "Quarterly capital expenditure figures explicitly attributed to Fastenal"
+      ],
+      "reason": "The passages do not identify Fastenal and contain no Q1 2021 or Q1 2022 capital expenditure data, so the requested percentage change cannot be determined."
+    }
+  },
+  "request_key": "9feb6377edb52c1c2fe5391c7c91309c424ae6b76e24334abafbe6eb2fdf3c1b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00408570",
+    "input_tokens": 1706,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 452
+  }
+}

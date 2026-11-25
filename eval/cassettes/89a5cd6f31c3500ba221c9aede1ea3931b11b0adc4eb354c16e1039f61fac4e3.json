@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not give enough to say whether Boeing's gross margin improved in FY2022. They contain no cost of sales or gross profit figures for Boeing, so gross margin cannot be computed. They also do not say whether gross margin is a useful metric for Boeing.\n\nWhat they do show: total revenues were $66,608 million in 2022, $62,286 million in 2021 and $58,158 million in 2020 [6]. Loss from operations was $(3,547) million in 2022, $(2,902) million in 2021 and $(12,767) million in 2020 [6]. Boeing uses program accounting to determine the amount reported as cost of sales [7]. None of this is a gross margin measure.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Boeing total revenues were $66,608 million in 2022, $62,286 million in 2021 and $58,158 million in 2020.",
+        "Boeing loss from operations was $(3,547) million in 2022, $(2,902) million in 2021 and $(12,767) million in 2020.",
+        "Boeing uses program accounting to determine the amount reported as cost of sales."
+      ],
+      "missing": [
+        "Boeing cost of sales and gross profit for FY2022 and prior years",
+        "Any Boeing discussion of gross margin as a performance metric"
+      ],
+      "reason": "The passages give no Boeing cost of sales or gross profit figures, so a gross margin trend cannot be computed. They also contain no statement on whether gross margin is a useful metric for Boeing."
+    }
+  },
+  "request_key": "89a5cd6f31c3500ba221c9aede1ea3931b11b0adc4eb354c16e1039f61fac4e3",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00880070",
+    "input_tokens": 5026,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 731
+  }
+}

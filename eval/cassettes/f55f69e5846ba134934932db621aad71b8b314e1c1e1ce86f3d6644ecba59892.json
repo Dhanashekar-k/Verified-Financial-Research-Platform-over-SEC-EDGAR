@@ -1,0 +1,27 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not give Jacobs Solutions Inc.'s basic EPS for fiscal 2023. The only EPS figure for Jacobs is diluted EPS from continuing operations of $5.31 [1]. The two basic EPS tables [7][8] do not name Jacobs, so they cannot be attributed to it.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Jacobs reported fiscal 2023 net earnings attributable to the Company from continuing operations of $666.6 million, or $5.31 per diluted share [1]."
+      ],
+      "missing": [
+        "Jacobs Solutions Inc.'s basic earnings per share for fiscal 2023, such as the income statement or EPS note from its FY2023 10-K."
+      ],
+      "reason": "Jacobs' basic EPS for fiscal 2023 is not stated in the passages. Only diluted EPS from continuing operations is given, and the basic EPS tables do not identify Jacobs as the company."
+    }
+  },
+  "request_key": "f55f69e5846ba134934932db621aad71b8b314e1c1e1ce86f3d6644ecba59892",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00478970",
+    "input_tokens": 2505,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 433
+  }
+}

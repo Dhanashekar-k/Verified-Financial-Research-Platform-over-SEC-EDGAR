@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "I can't answer this from the passages. None of them names Lockheed Martin, and no Lockheed Martin balance sheet is provided. Passage [7] gives FY2021 net working capital of $3,803 million, but it is for an unnamed company and I can't attribute it to Lockheed Martin.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "An unnamed company's FY2021 current assets were $8,065 million and current liabilities were $4,262 million, giving net working capital of $3,803 million as of December 31, 2021 [7]."
+      ],
+      "missing": [
+        "Lockheed Martin's total current assets as of December 31, 2021",
+        "Lockheed Martin's total current liabilities as of December 31, 2021"
+      ],
+      "reason": "The passages do not identify Lockheed Martin or contain its balance sheet data. The only FY2021 current assets and current liabilities figures (passage 7) belong to an unnamed company."
+    }
+  },
+  "request_key": "0be864c5666120da5e3b99c6eb13b33ac48dc40ea4571321ab5a47eaa9b47695",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00456870",
+    "input_tokens": 1934,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 503
+  }
+}

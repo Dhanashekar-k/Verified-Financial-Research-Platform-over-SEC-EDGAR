@@ -1,0 +1,27 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not state FactSet's common shares outstanding at the end of Q1 FY2020. They include only business overviews and stock performance graph tables, and no Q1 FY2020 10-Q balance sheet or cover-page share count.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Passages cover FactSet's business overview (FY2024, FY2025, FY2026 10-Ks) and stock performance graph tables (FY2020-FY2024 10-Ks), none of which give shares outstanding."
+      ],
+      "missing": [
+        "FactSet's 10-Q for Q1 FY2020 (quarter ended November 30, 2019) showing common shares outstanding on the balance sheet or cover page"
+      ],
+      "reason": "The provided passages do not contain FactSet's common shares outstanding as of the end of Q1 FY2020 (no 10-Q for that quarter or share count data)."
+    }
+  },
+  "request_key": "4ed38a5fdbd0c4298ad5658c31610f4f9de4705b6273c6edd8376861a078d261",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00480170",
+    "input_tokens": 3197,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 297
+  }
+}

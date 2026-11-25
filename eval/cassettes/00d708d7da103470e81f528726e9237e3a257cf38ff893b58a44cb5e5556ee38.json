@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not support an answer. The only Q2 fiscal 2020 net income figure ($531,667 thousand) is in a quarterly table [8] that does not name the company, so I can't attribute it to Domino's. The Domino's passages [1][3][4] give no quarterly net income.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Domino's FY2020 passages cover the business overview and the tax provision, but no quarterly net income.",
+        "An unattributed fiscal 2020 quarterly table shows Q2 net income of 531,667 (in thousands), but the company is not named."
+      ],
+      "missing": [
+        "Domino's quarterly (Q2 fiscal 2020) income statement or quarterly financial data from its 10-K or 10-Q"
+      ],
+      "reason": "No passage gives Domino's Pizza Inc's Q2 fiscal 2020 net income. The only quarterly table with Q2 2020 net income is not identified as Domino's, and its figures should not be assumed to be Domino's."
+    }
+  },
+  "request_key": "00d708d7da103470e81f528726e9237e3a257cf38ff893b58a44cb5e5556ee38",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00551070",
+    "input_tokens": 2906,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 497
+  }
+}

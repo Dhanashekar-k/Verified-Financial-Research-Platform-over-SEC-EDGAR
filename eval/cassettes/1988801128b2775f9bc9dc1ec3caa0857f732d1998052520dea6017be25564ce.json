@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages don't contain the balance sheet figures needed to compute AMCOR's quick ratio for FY2023 or FY2022. These are cash, marketable securities, receivables, and current liabilities. The passages cover non-GAAP reconciliations, segment net sales, guidance, and unrelated insurance combined ratios, so I can't say whether the ratio improved or declined. A quick ratio is a reasonable liquidity metric for an industrial packaging manufacturer like Amcor, so the problem is missing data, not an irrelevant question.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Amcor's FY2023 and FY2022 net income, EBIT, and Adjusted EBIT reconciliation [6]",
+        "Flexibles segment net sales and Adjusted EBIT for the twelve months ended June 30, 2023 and 2022 [5]"
+      ],
+      "missing": [
+        "Cash and cash equivalents for FY2023 and FY2022",
+        "Accounts receivable and other quick assets for FY2023 and FY2022",
+        "Total current liabilities for FY2023 and FY2022"
+      ],
+      "reason": "The provided passages do not include Amcor's balance sheet items (cash, short-term investments, receivables, current liabilities) for FY2023 or FY2022, so the quick ratio cannot be calculated or compared."
+    }
+  },
+  "request_key": "1988801128b2775f9bc9dc1ec3caa0857f732d1998052520dea6017be25564ce",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00775870",
+    "input_tokens": 4789,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 570
+  }
+}

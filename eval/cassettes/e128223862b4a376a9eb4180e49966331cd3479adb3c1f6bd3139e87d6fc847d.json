@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not state the number of common shares outstanding for Jacobs at the end of fiscal 2021. They only contain stock performance graph tables, repurchase authorization details and financing and spin-off information, none of which give a share count.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Performance graph tables comparing Jacobs' cumulative stock return with the S&P 500 and the S&P 1500 IT Consulting & Other Services index [1][2][3][4][7][8]",
+        "$874.8 million remaining under the 2023 Repurchase Authorization as of September 29, 2023 [5]"
+      ],
+      "missing": [
+        "Common shares outstanding as of the end of fiscal 2021 (for example from the FY2021 10-K cover page, balance sheet or equity note)"
+      ],
+      "reason": "The provided passages do not include the number of common shares outstanding at the end of fiscal year 2021."
+    }
+  },
+  "request_key": "e128223862b4a376a9eb4180e49966331cd3479adb3c1f6bd3139e87d6fc847d",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00424470",
+    "input_tokens": 2630,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 299
+  }
+}

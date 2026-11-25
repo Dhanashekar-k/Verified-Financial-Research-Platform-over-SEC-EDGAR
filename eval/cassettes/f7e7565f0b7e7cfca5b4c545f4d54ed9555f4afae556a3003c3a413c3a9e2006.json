@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not provide 3M's FY2018 capital expenditure amount from its cash flow statement. The only 3M capital spending figures given are a 2023 outlook (about $1.5\u2013$1.8 billion) [2]. The other capex figures belong to other companies or periods, so I cannot state a 3M FY2018 figure.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "3M expected 2023 capital spending of approximately $1.5 billion to $1.8 billion [2].",
+        "3M 2020 dividends and share repurchase data are given, but no capex for 2018 [6]."
+      ],
+      "missing": [
+        "3M FY2018 (or FY2019/FY2020 10-K) cash flow statement showing purchases of property, plant and equipment for 2018"
+      ],
+      "reason": "None of the passages contain 3M's FY2018 purchases of property, plant and equipment from the cash flow statement."
+    }
+  },
+  "request_key": "f7e7565f0b7e7cfca5b4c545f4d54ed9555f4afae556a3003c3a413c3a9e2006",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00569070",
+    "input_tokens": 4066,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 301
+  }
+}

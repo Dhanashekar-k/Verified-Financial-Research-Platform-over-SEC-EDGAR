@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not say how much Pfizer expects to pay in the future to spin off Upjohn. They only report amounts already incurred or distributed: separation-related costs of $434 million in 2020 and $83 million in 2019 [1][2], $412 million of cash transferred to the Upjohn Business, and net assets of $1.6 billion distributed on November 16, 2020 [1].",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Separation-related costs of $434 million in 2020 and $83 million in 2019, included in Discontinued operations, net of tax.",
+        "Net assets of $1.6 billion distributed on November 16, 2020, of which $412 million was cash transferred to the Upjohn Business."
+      ],
+      "missing": [
+        "Any statement of expected or future payments or costs for the Upjohn spin-off."
+      ],
+      "reason": "The passages give historical separation costs and distributions but no forward-looking estimate of future payments to spin off Upjohn."
+    }
+  },
+  "request_key": "4c92f380bb5647f125c55d860e7416e100915aaba39d9c3eb192652c85055ccc",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00772970",
+    "input_tokens": 5060,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 510
+  }
+}

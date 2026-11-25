@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The answer states the effective tax rate rose from about 20% in FY2021 to about 23% in FY2022 (20.2% to 22.9%, roughly 2.7 points), matching the gold answer; the mention of an alternate 20.5% figure is extra context that still lands near the gold values."
+  },
+  "request_key": "7071ca1c7731b19e8bc69d066a216c77911fe5490f0bfc4fdd44183b4711c159",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00083655",
+    "input_tokens": 260,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 109
+  }
+}

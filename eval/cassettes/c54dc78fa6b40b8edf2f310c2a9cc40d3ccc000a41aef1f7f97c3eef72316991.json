@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "I can't answer this from the passages. None of them names Domino's Pizza Inc, so I can't tell which interest expense figures, if any, belong to it. Several passages show FY2023 to FY2024 interest expense changes for unnamed companies, such as [3], [4] and [8]. Picking one would be a guess.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Passage [3] shows interest expense of $(569) million in 2024 versus $(464) million in 2023, a 22.6% change, for an unnamed company.",
+        "Passage [4] shows interest expense of $718,733 thousand in 2024 versus $699,826 thousand in 2023, a 3% change, for an unnamed company.",
+        "Passage [8] shows interest expense of $(126,288) thousand in 2024 versus $(136,710) thousand in 2023, a (7.6)% change, for an unnamed company."
+      ],
+      "missing": [
+        "A passage that names Domino's Pizza Inc or otherwise identifies it as the filer",
+        "Domino's interest expense for fiscal years 2023 and 2024"
+      ],
+      "reason": "The passages do not identify any filer as Domino's Pizza Inc, so no interest expense figures can be attributed to it."
+    }
+  },
+  "request_key": "c54dc78fa6b40b8edf2f310c2a9cc40d3ccc000a41aef1f7f97c3eef72316991",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00440370",
+    "input_tokens": 1434,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 570
+  }
+}

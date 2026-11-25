@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The system answer's EBITDA of $1,832 million (1,196 + 636) matches the gold answer of $1832.00 million."
+  },
+  "request_key": "a7632fbab105e98abc5c10dca0982d3876eaaedac2e4e1c939f5a48395689a54",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00050955",
+    "input_tokens": 193,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 57
+  }
+}

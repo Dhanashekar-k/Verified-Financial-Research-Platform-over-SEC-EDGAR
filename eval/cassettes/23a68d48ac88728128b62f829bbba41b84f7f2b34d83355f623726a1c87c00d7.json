@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The answer says yes, Boeing's business is subject to cyclicality because of its exposure to the cyclical airline industry, which matches the gold answer's key fact."
+  },
+  "request_key": "23a68d48ac88728128b62f829bbba41b84f7f2b34d83355f623726a1c87c00d7",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00076155",
+    "input_tokens": 395,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 67
+  }
+}

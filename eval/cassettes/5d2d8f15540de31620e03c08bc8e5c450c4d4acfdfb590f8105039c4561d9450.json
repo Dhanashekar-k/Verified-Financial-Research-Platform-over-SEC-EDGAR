@@ -1,0 +1,27 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not support an answer. They contain no JPMorgan (JPM) segment net revenue data, and none cover Q1 2021 for any company. The passages cover J.B. Hunt, Jabil, a facilities-management company and other unnamed firms, not JPM.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Passages cover J.B. Hunt segments (JBT, FMS, JBI) on an annual basis, Jabil's DMS and EMS segments, and other unnamed companies' annual segment results."
+      ],
+      "missing": [
+        "JPMorgan Chase 10-Q for Q1 2021 with segment net revenue for its business segments (e.g., Consumer & Community Banking, Corporate & Investment Bank, Commercial Banking, Asset & Wealth Management)"
+      ],
+      "reason": "None of the passages are from JPMorgan Chase's filings, and none give quarterly (Q1 2021) segment net revenue for JPM."
+    }
+  },
+  "request_key": "5d2d8f15540de31620e03c08bc8e5c450c4d4acfdfb590f8105039c4561d9450",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00593370",
+    "input_tokens": 4199,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 323
+  }
+}

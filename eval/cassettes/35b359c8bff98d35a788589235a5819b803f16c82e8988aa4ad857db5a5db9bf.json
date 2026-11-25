@@ -1,0 +1,27 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not support an answer. None of them identifies Mastercard, and none gives quarterly (Q1 2024) interest expense. The passages contain only annual interest expense figures for unnamed companies.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Annual interest expense figures for unnamed companies, e.g. $594 million for 2024 [4], $169 million for 2024 [6], and $196.2 million for 2025 / $209.4 million for 2024 [7]."
+      ],
+      "missing": [
+        "Mastercard's 10-Q for the quarter ended March 31, 2024, or other passages that name Mastercard and give Q1 2024 interest expense."
+      ],
+      "reason": "The passages do not name Mastercard and do not report quarterly (Q1 2024) interest expense; they only show annual figures for unidentified companies."
+    }
+  },
+  "request_key": "35b359c8bff98d35a788589235a5819b803f16c82e8988aa4ad857db5a5db9bf",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00246970",
+    "input_tokens": 960,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 278
+  }
+}

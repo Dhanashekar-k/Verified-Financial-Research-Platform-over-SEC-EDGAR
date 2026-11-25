@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages don't contain the figures needed to compare FY2025 interest expense. The only ADM passages are from its FY2020 10-K, and they cover capital resources and off-balance-sheet arrangements, not interest expense. The Viatris FY2025 passage gives only a floating-rate debt sensitivity: about $259 million of floating rate debt, where a one percentage point rate increase would add about $2.6 million per year [6]. That is not Viatris's total interest expense.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Viatris had approximately $259 million of floating rate debt at December 31, 2025; a one percentage point rate increase would add about $2.6 million per year in interest expense [6].",
+        "The ADM passages are from FY2020 and cover capital resources and off-balance-sheet arrangements, not interest expense [3][8]."
+      ],
+      "missing": [
+        "ADM's FY2025 interest expense",
+        "Viatris's FY2025 total interest expense"
+      ],
+      "reason": "The passages do not include FY2025 interest expense for either ADM or Viatris. No ADM FY2025 filing is provided, and the Viatris FY2025 passage gives only a floating-rate sensitivity, not total interest expense."
+    }
+  },
+  "request_key": "5ac57af442732f278fe46b2997cde7982fb03d1003fe3270968e7035dc46f65a",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00727570",
+    "input_tokens": 4711,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 489
+  }
+}

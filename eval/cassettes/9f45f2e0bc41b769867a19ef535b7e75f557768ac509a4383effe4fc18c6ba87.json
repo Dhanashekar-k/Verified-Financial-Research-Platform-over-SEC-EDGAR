@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not contain McKesson's or Cardinal Health's SG&A figures for FY2023, so the difference cannot be computed. They include only stock performance graph data for McKesson and the S&P indices, plus \"PART II\" headers, and nothing at all for Cardinal Health (CAH).",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Passage [1] gives McKesson's cumulative total return versus the S&P 500 and S&P 500 Health Care indices (March 2018 to March 2023).",
+        "Passage [2] gives the same comparison for March 2017 to March 2022.",
+        "Passages [3] to [8] show only 'McKESSON CORPORATION PART II' headers."
+      ],
+      "missing": [
+        "McKesson's selling, distribution, general and administrative expenses for FY2023 as originally reported",
+        "Cardinal Health's SG&A for FY2023 as originally reported"
+      ],
+      "reason": "The passages contain no SG&A figures for McKesson or Cardinal Health, so the difference for FY2023 cannot be determined."
+    }
+  },
+  "request_key": "9f45f2e0bc41b769867a19ef535b7e75f557768ac509a4383effe4fc18c6ba87",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00271670",
+    "input_tokens": 842,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 351
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The answer says yes, conversion improved, with FY2022 about 155.5% (\u2248156%) and FY2021 about 142.7% (\u2248143%), matching the gold answer's figures and conclusion."
+  },
+  "request_key": "33c26ca05456431e51040d12da53125b825f427545aeb18e407650d15ce33c3a",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00080055",
+    "input_tokens": 369,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 80
+  }
+}

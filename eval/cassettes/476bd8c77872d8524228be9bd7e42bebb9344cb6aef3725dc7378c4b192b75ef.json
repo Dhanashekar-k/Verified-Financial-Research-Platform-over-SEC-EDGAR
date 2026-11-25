@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not give Robinhood's basic EPS for fiscal 2022. The only Robinhood passage [8] covers 2023\u20132025 and shows diluted EPS, not basic EPS.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Robinhood diluted net income (loss) per share was $(0.61) for 2023, $1.56 for 2024 and $2.05 for 2025 [8].",
+        "Basic weighted-average shares were 890,857,659 for 2023, 881,113,156 for 2024 and 888,504,958 for 2025 [8]."
+      ],
+      "missing": [
+        "Robinhood's basic EPS for the year ended December 31, 2022",
+        "Robinhood's FY2022 10-K income statement"
+      ],
+      "reason": "The Robinhood passage covers only 2023, 2024 and 2025, and shows diluted EPS rather than basic EPS. No passage gives Robinhood's basic EPS for fiscal 2022."
+    }
+  },
+  "request_key": "476bd8c77872d8524228be9bd7e42bebb9344cb6aef3725dc7378c4b192b75ef",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00378270",
+    "input_tokens": 1733,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 386
+  }
+}

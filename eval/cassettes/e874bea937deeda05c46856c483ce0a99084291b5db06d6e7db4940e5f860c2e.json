@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The answer states that PepsiCo raised guidance because of a strong start to the year (a strong first quarter), which matches the gold answer's key fact, and the extra detail does not contradict it."
+  },
+  "request_key": "e874bea937deeda05c46856c483ce0a99084291b5db06d6e7db4940e5f860c2e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00068455",
+    "input_tokens": 278,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 75
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "incorrect",
+    "reason": "The gold answer says total Best Buy stores fell 1.32% from 982 in Q2 FY2023 to 969 in Q2 FY2024, but the system answer gives only Canada figures and says total store counts are unavailable, so it does not state the key fact."
+  },
+  "request_key": "03c3147e5e2f8b0ae69f229e59ad897048a1ad2ead73ae484a18013881c3295f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00085955",
+    "input_tokens": 323,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 101
+  }
+}

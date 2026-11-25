@@ -1,0 +1,27 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not contain Quest Diagnostics' selling, general and administrative expense for Q1 2025. None of the passages names Quest Diagnostics, and none gives quarterly (Q1 2025) SG&A data; they present annual figures for other, unnamed companies.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Passages give annual SG&A figures for unnamed companies (e.g., $10.8 billion for fiscal 2025 in one 10-K [7]; $1,500.3 million for 2025 in another [3]), none identified as Quest Diagnostics."
+      ],
+      "missing": [
+        "Quest Diagnostics' 10-Q for the quarter ended March 31, 2025, or other filing text identifying its Q1 2025 SG&A expense"
+      ],
+      "reason": "The passages do not name Quest Diagnostics and do not provide Q1 2025 quarterly SG&A figures."
+    }
+  },
+  "request_key": "a35daa0bf862d8db9d65292a22789a0a87ab839de650a0f92dab9685038e0a0c",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00484570",
+    "input_tokens": 3201,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 305
+  }
+}

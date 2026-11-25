@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "refused",
+    "reason": "The answer says the FY2022 passages do not name primary regions or confirm the segment structure for FY2022, so it declines to answer from the filings, even though it mentions FY2020 segment regions as context."
+  },
+  "request_key": "fe46fd3dcdd892fa480e69fd004382c703e97bb8bbed992dfbce9fa686af69ad",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00083055",
+    "input_tokens": 404,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 79
+  }
+}

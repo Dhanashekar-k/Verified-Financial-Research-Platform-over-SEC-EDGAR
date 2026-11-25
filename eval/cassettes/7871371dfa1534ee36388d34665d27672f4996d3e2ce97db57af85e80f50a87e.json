@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The system answer states $13.2 billion in cash proceeds, matching the gold answer, and the extra context about the Kenvue debt offering, IPO and equity stake does not contradict it."
+  },
+  "request_key": "7871371dfa1534ee36388d34665d27672f4996d3e2ce97db57af85e80f50a87e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00061455",
+    "input_tokens": 208,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 75
+  }
+}

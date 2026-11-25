@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not support an answer. They contain no interest expense figures for either company, and nothing at all about McDonald's Corp. The Costco passages only give an index of financial statements, warehouse counts and fiscal-year descriptions.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Costco's FY2023 was a 53-week fiscal year ended September 3, 2023 [6].",
+        "Costco operated 861 warehouses at September 3, 2023 [6]."
+      ],
+      "missing": [
+        "Costco's fiscal 2023 interest expense as originally reported",
+        "McDonald's Corp's fiscal 2023 interest expense as originally reported"
+      ],
+      "reason": "The passages contain no interest expense figures for Costco or McDonald's for fiscal 2023, and no McDonald's filing content at all."
+    }
+  },
+  "request_key": "5d1a394e53272cdb307e1c9cf6ac39e6a3533d83a11cdb52f4eb2af8380465fa",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00405970",
+    "input_tokens": 2600,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 268
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Yes. Using Boeing's FY2022 segment revenues (total revenues $66,608 million) [2], three segments each exceeded 20%:\n\n- **Commercial Airplanes**: $25,867 million, about 38.8% of revenue [2]\n- **Defense, Space & Security**: $23,162 million, about 34.8% of revenue [2]\n- **Global Services**: $17,611 million, about 26.4% of revenue [2]\n\nBoeing Capital ($199 million) is well below 20% [2]. By type, product sales ($55,893 million) are about 83.9% of revenue, and services ($10,715 million) are about 16.1% [3]. Passage [1] describes a different company, not Boeing, so I did not use it.",
+    "claims": [
+      {
+        "display": "about 38.8%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:BOEING_2022_10K#p62#0000",
+          "quote": "Commercial Airplanes | $25,867 | $19,493 | $16,162",
+          "type": "chunk"
+        },
+        "text": "Commercial Airplanes segment revenue of $25,867 million was about 38.8% of Boeing's FY2022 total revenues of $66,608 million, which is more than 20%.",
+        "unit": "percent",
+        "value": "38.8"
+      },
+      {
+        "display": "about 34.8%",
+        "id": "c2",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:BOEING_2022_10K#p62#0000",
+          "quote": "Defense, Space & Security | 23,162 | 26,540 | 26,257",
+          "type": "chunk"
+        },
+        "text": "Defense, Space & Security segment revenue of $23,162 million was about 34.8% of Boeing's FY2022 total revenues, which is more than 20%.",
+        "unit": "percent",
+        "value": "34.8"
+      },
+      {
+        "display": "about 26.4%",
+        "id": "c3",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:BOEING_2022_10K#p62#0000",
+          "quote": "Global Services | 17,611 | 16,328 | 15,543",
+          "type": "chunk"
+        },
+        "text": "Global Services segment revenue of $17,611 million was about 26.4% of Boeing's FY2022 total revenues, which is more than 20%.",
+        "unit": "percent",
+        "value": "26.4"
+      },
+      {
+        "display": "$66,608 million",
+        "id": "c4",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:BOEING_2022_10K#p62#0000",
+          "quote": "Total revenues | $66,608 | $62,286 | $58,158",
+          "type": "chunk"
+        },
+        "text": "Boeing's FY2022 total revenues were $66,608 million.",
+        "unit": "USD millions",
+        "value": "66608"
+      },
+      {
+        "display": "$199 million",
+        "id": "c5",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:BOEING_2022_10K#p62#0000",
+          "quote": "Boeing Capital | $199 | $272 | $261",
+          "type": "chunk"
+        },
+        "text": "Boeing Capital's FY2022 revenue was $199 million, well below 20% of total revenues.",
+        "unit": "USD millions",
+        "value": "199"
+      },
+      {
+        "display": "about 83.9%",
+        "id": "c6",
+        "kind": "numeric_derived",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:BOEING_2022_10K#p55#0000",
+          "quote": "Sales of products | $55,893 | $51,386 | $47,142",
+          "type": "chunk"
+        },
+        "text": "Sales of products ($55,893 million) were about 83.9% of Boeing's FY2022 total revenues.",
+        "unit": "percent",
+        "value": "83.9"
+      },
+      {
+        "display": "about 16.1%",
+        "id": "c7",
+        "kind": "numeric_derived",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:BOEING_2022_10K#p55#0000",
+          "quote": "Sales of services | 10,715 | 10,900 | 11,016",
+          "type": "chunk"
+        },
+        "text": "Sales of services ($10,715 million) were about 16.1% of Boeing's FY2022 total revenues, below 20%.",
+        "unit": "percent",
+        "value": "16.1"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "38660f420436803cd8485c552402dfa362b870e1b837cc7cf78fff4dcae58bcd",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.01385570",
+    "input_tokens": 4496,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 1848
+  }
+}

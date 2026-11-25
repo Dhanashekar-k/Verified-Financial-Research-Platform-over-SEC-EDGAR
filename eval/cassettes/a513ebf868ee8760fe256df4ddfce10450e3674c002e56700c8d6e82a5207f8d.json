@@ -1,0 +1,27 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not state Starbucks' capital expenditures for Q1 of fiscal 2022. The only Starbucks filing excerpt (FY2026 10-K) covers fiscal 2026 and 2025 dividends, repurchases and cash requirements, and says only that fiscal 2027 capital expenditures are expected to be higher than fiscal 2026 [1]. The other capital expenditure figures in the passages relate to other companies or to other periods.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Starbucks' FY2026 10-K says total capital expenditures for fiscal 2027 are expected to be higher than fiscal 2026, with no dollar amount given [1]."
+      ],
+      "missing": [
+        "Starbucks' capital expenditures for the first quarter of fiscal 2022, for example from its fiscal 2022 Q1 10-Q or cash flow statement."
+      ],
+      "reason": "The passages contain no Starbucks capital expenditure figure for Q1 of fiscal 2022."
+    }
+  },
+  "request_key": "a513ebf868ee8760fe256df4ddfce10450e3674c002e56700c8d6e82a5207f8d",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00606870",
+    "input_tokens": 4259,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 338
+  }
+}

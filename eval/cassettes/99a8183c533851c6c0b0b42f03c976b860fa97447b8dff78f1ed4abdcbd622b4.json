@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The system answer states that no debt securities are registered on a national securities exchange, which matches the gold answer of 'There are none'."
+  },
+  "request_key": "99a8183c533851c6c0b0b42f03c976b860fa97447b8dff78f1ed4abdcbd622b4",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00048955",
+    "input_tokens": 188,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 54
+  }
+}

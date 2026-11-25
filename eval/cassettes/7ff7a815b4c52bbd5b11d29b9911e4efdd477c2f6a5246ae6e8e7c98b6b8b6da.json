@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not support an answer. None of them identify Global Payments, and none give Q1 2025 quarterly SG&A. They show only annual SG&A figures for unnamed companies, so I cannot attribute any figure to Global Payments or to Q1 2025.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Annual SG&A of $24,966 (FY2025) for one unnamed company [1]",
+        "Annual SG&A of $428,842 thousand (FY2025) for another unnamed company [2]"
+      ],
+      "missing": [
+        "Global Payments' 10-Q for the quarter ended March 31, 2025",
+        "Quarterly SG&A expense figure for Q1 2025 attributed to Global Payments"
+      ],
+      "reason": "The passages do not name Global Payments and contain no Q1 2025 quarterly SG&A figure; they provide only annual SG&A for unidentified companies."
+    }
+  },
+  "request_key": "7ff7a815b4c52bbd5b11d29b9911e4efdd477c2f6a5246ae6e8e7c98b6b8b6da",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00371870",
+    "input_tokens": 2109,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 298
+  }
+}

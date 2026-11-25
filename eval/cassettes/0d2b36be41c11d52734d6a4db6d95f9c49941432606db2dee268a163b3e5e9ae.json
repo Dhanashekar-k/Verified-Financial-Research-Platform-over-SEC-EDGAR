@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The answer gives $5,466,312 thousand (about $5,466 million) for FY2017 total current liabilities, which matches the gold $5466.00 million."
+  },
+  "request_key": "0d2b36be41c11d52734d6a4db6d95f9c49941432606db2dee268a163b3e5e9ae",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00051655",
+    "input_tokens": 155,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 66
+  }
+}

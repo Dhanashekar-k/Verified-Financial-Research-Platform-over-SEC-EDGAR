@@ -1,0 +1,27 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not contain AppLovin Corp's cash and cash equivalents as of the end of Q1 fiscal 2021. None of the passages names AppLovin, and they provide only annual year-end figures for unnamed companies, with no Q1 2021 quarter-end data.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "The passages give year-end cash and cash equivalents for various unnamed companies (e.g., $1,472.7 million at December 31, 2021 in one filing), but none is identified as AppLovin and none is a Q1 2021 figure."
+      ],
+      "missing": [
+        "AppLovin Corp's 10-Q for the quarter ended March 31, 2021, or a balance sheet showing cash and cash equivalents at that date."
+      ],
+      "reason": "The passages do not mention AppLovin Corp and contain no Q1 fiscal 2021 balance sheet data (no 10-Q for that quarter)."
+    }
+  },
+  "request_key": "bea03c6645a91acd1d507d27548b48f4a404c333b1f284cfb33d2172e0dcfbe3",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00375570",
+    "input_tokens": 2091,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 309
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Expand Energy's capital expenditures shrank by about 8.0% from 2022 to 2023, falling from $1,936 million in 2022 to $1,782 million in 2023 [1]. The change is (1,782 \u2212 1,936) / 1,936 = \u22127.95%.",
+    "claims": [
+      {
+        "display": "$1,936 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000895126-25-000021#8#0128",
+          "quote": "our capital expenditures were $1,529 million, $1,782 million and $1,936 million, respectively",
+          "type": "chunk"
+        },
+        "text": "Expand Energy's capital expenditures were $1,936 million in 2022.",
+        "unit": "USD millions",
+        "value": "1936"
+      },
+      {
+        "display": "$1,782 million",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000895126-25-000021#8#0128",
+          "quote": "our capital expenditures were $1,529 million, $1,782 million and $1,936 million, respectively",
+          "type": "chunk"
+        },
+        "text": "Expand Energy's capital expenditures were $1,782 million in 2023.",
+        "unit": "USD millions",
+        "value": "1782"
+      },
+      {
+        "display": "about -8.0%",
+        "id": "c3",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000895126-25-000021#8#0128",
+          "quote": "our capital expenditures were $1,529 million, $1,782 million and $1,936 million, respectively",
+          "type": "chunk"
+        },
+        "text": "Expand Energy's capital expenditures decreased by about 7.95% from 2022 to 2023.",
+        "unit": "percent",
+        "value": "-7.95"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "2787a4881f1b9e24d7c2b45073d882b5d02d61a081a8349757f7095be26b9986",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00590270",
+    "input_tokens": 2903,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 576
+  }
+}

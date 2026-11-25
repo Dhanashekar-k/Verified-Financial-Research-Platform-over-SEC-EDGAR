@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not report EQT's interest expense for Q1 2024. They only give full-year figures. For FY2024, EQT's net interest expense was $454,825 thousand [7], and cash paid for interest, net of amounts capitalized, was $401,768 thousand [4]. A Q1 2024 figure cannot be determined from them.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "FY2024 interest expense, net was $454,825 thousand [7]",
+        "FY2024 cash paid for interest, net of amount capitalized, was $401,768 thousand [4]"
+      ],
+      "missing": [
+        "EQT's Q1 2024 (three months ended March 31, 2024) interest expense or cash interest paid, such as from the Q1 2024 10-Q"
+      ],
+      "reason": "The passages contain only annual (year ended December 31) interest figures for EQT, with no quarterly breakdown or Q1 2024 10-Q data."
+    }
+  },
+  "request_key": "d733dfebef71659c6f697b6e9b53886a519684b59397a72f09a827b2b8fb8a84",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00517470",
+    "input_tokens": 3015,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 408
+  }
+}

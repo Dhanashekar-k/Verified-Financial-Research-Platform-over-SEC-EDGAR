@@ -1,0 +1,48 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Salesforce's net cash provided by operating activities was **$6,000 million (about $6.0 billion)** for the fiscal year ended January 31, 2022 [2]. Salesforce's fiscal year ends on January 31, and fiscal 2023 is the year ended January 31, 2023 [4]. Fiscal 2022 is therefore the year ended January 31, 2022.",
+    "claims": [
+      {
+        "display": "$6,000 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0001108524-22-000013#8#0024",
+          "quote": "Net cash provided by operating activities | 6,000 | 4,801 | 4,331",
+          "type": "chunk"
+        },
+        "text": "Salesforce's net cash provided by operating activities for the fiscal year ended January 31, 2022 (fiscal 2022) was $6,000 million.",
+        "unit": "USD millions",
+        "value": "6000"
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001108524-23-000011#8#0027",
+          "quote": "The Company\u2019s fiscal year ends on January 31. References to fiscal 2023, for example, refer to the fiscal year ended January 31, 2023.",
+          "type": "chunk"
+        },
+        "text": "Salesforce's fiscal year ends on January 31, so fiscal 2023 refers to the year ended January 31, 2023, which makes fiscal 2022 the year ended January 31, 2022.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "5cdbe4c7aae6bcc47ab143010d1756bee6f82d4838b0b27d62b566254d2ffbd6",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00773770",
+    "input_tokens": 3658,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 792
+  }
+}

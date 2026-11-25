@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "incorrect",
+    "reason": "The answer reports opioid litigation but gives different figures ($651M judgment, $484M Florida) than the gold's $4.3B/$625M settlement, and it omits the gold's key areas (usual and customary pricing litigation and PBM litigation), while saying 2021 and 2020 have no detail."
+  },
+  "request_key": "b5e4628b2229a1e523463cf7ec0815ea01c3db87daeb132f4333d388e49e5b1f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00129155",
+    "input_tokens": 685,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 115
+  }
+}

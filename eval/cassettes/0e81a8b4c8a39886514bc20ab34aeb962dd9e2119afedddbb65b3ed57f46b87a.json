@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not contain Adobe's income statement or its FY2015 and FY2016 operating income, so the requested year-over-year change cannot be computed. The passages cover other companies and other fiscal years.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Passage [1] and [6] report operating income for a company with a December fiscal year for 2022-2024 and 2021-2023.",
+        "Passages [2]-[5] and [7] report adjusted operating income for segments with an October fiscal year for FY2021-FY2024.",
+        "Passage [8] reports operating income for FY2020-FY2022 for another company."
+      ],
+      "missing": [
+        "Adobe's income statement",
+        "Adobe's operating income for FY2015 and FY2016"
+      ],
+      "reason": "None of the passages is an Adobe filing or covers FY2015/FY2016 operating income, and no Adobe income statement is provided."
+    }
+  },
+  "request_key": "0e81a8b4c8a39886514bc20ab34aeb962dd9e2119afedddbb65b3ed57f46b87a",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00334870",
+    "input_tokens": 1769,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 292
+  }
+}

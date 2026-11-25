@@ -1,0 +1,27 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not contain Pfizer's second-quarter 2023 results, so I can't say which region had the biggest year-over-year percentage drop in Q2 2023. They only give annual figures. In the FY2024 10-K, full-year 2023 vs. 2022 total revenues fell 35% in the U.S. and 46% internationally [3]. That is an annual comparison, not Q2.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Full-year 2023 vs. 2022 total revenues changed by (35)% in the U.S. and (46)% internationally, and by (41)% worldwide (annual, not Q2) [3]."
+      ],
+      "missing": [
+        "Pfizer's Form 10-Q for the quarter ended in Q2 2023 with U.S. and International revenues for Q2 2023 and Q2 2022"
+      ],
+      "reason": "The passages contain only full-year (annual) revenue data by geography, not quarterly data for Q2 2023, so a Q2 2023 year-over-year regional comparison cannot be made."
+    }
+  },
+  "request_key": "da1c6fb99a36c3235b49adb93ece25bb7814479c38a2b7f03803383f7e3afead",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00592970",
+    "input_tokens": 3470,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 468
+  }
+}

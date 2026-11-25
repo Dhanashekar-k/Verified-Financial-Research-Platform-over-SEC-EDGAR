@@ -1,0 +1,62 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Lockheed Martin's 2-year revenue CAGR from FY2020 to FY2022 is about **0.4%**. Total net sales were $65,398 million in FY2020 [1] and $65,984 million in FY2022 [8]. The calculation is (65,984 / 65,398)^(1/2) \u2212 1 \u2248 0.447%, which rounds to 0.4%.",
+    "claims": [
+      {
+        "display": "$65,398 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:LOCKHEEDMARTIN_2020_10K#p67#0000",
+          "quote": "Total net sales | 65,398 | 59,812 | 53,762",
+          "type": "chunk"
+        },
+        "text": "Lockheed Martin's total net sales in FY2020 were $65,398 million.",
+        "unit": "USD millions",
+        "value": "65398"
+      },
+      {
+        "display": "$65,984 million",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:LOCKHEEDMARTIN_2022_10K#p63#0000",
+          "quote": "Total net sales | 65,984 | 67,044 | 65,398",
+          "type": "chunk"
+        },
+        "text": "Lockheed Martin's total net sales in FY2022 were $65,984 million.",
+        "unit": "USD millions",
+        "value": "65984"
+      },
+      {
+        "display": "0.4%",
+        "id": "c3",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:LOCKHEEDMARTIN_2022_10K#p63#0000",
+          "quote": "Total net sales | 65,984 | 67,044 | 65,398",
+          "type": "chunk"
+        },
+        "text": "The 2-year revenue CAGR from FY2020 to FY2022 is approximately 0.4%.",
+        "unit": "percent",
+        "value": "0.4"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "f2cebe56f85e1d6d1098f49985564b9b11188ee8ef25dcce44685663f48ebb6a",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00886470",
+    "input_tokens": 4790,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 791
+  }
+}

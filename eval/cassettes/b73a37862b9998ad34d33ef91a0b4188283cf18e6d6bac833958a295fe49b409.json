@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The system answer states Amcor primarily operates in the packaging industry, which matches the gold answer's key fact that Amcor is a global packaging producer, and the added detail on products and end markets is consistent."
+  },
+  "request_key": "b73a37862b9998ad34d33ef91a0b4188283cf18e6d6bac833958a295fe49b409",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00059955",
+    "input_tokens": 173,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 79
+  }
+}

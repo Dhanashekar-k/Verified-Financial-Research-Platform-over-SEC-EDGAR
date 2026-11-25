@@ -1,0 +1,90 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "FY2019 fixed asset turnover \u2248 **24.26x**. Revenue of $6,489 million [8] divided by average net PP&E of $267.5 million, which is the mean of $253 million (2019) and $282 million (2018) [1].",
+    "claims": [
+      {
+        "display": "$6,489 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:ACTIVISIONBLIZZARD_2019_10K#p70#0000",
+          "quote": "Total net revenues | 6,489 | 7,500 | 7,017",
+          "type": "chunk"
+        },
+        "text": "Activision Blizzard FY2019 total net revenues were $6,489 million.",
+        "unit": "USD millions",
+        "value": "6489"
+      },
+      {
+        "display": "$253 million",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:ACTIVISIONBLIZZARD_2019_10K#p69#0000",
+          "quote": "Property and equipment, net | 253 | 282",
+          "type": "chunk"
+        },
+        "text": "Net property and equipment was $253 million at December 31, 2019.",
+        "unit": "USD millions",
+        "value": "253"
+      },
+      {
+        "display": "$282 million",
+        "id": "c3",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:ACTIVISIONBLIZZARD_2019_10K#p69#0000",
+          "quote": "Property and equipment, net | 253 | 282",
+          "type": "chunk"
+        },
+        "text": "Net property and equipment was $282 million at December 31, 2018.",
+        "unit": "USD millions",
+        "value": "282"
+      },
+      {
+        "display": "$267.5 million",
+        "id": "c4",
+        "kind": "numeric_derived",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:ACTIVISIONBLIZZARD_2019_10K#p69#0000",
+          "quote": "Property and equipment, net | 253 | 282",
+          "type": "chunk"
+        },
+        "text": "Average net PP&E between FY2018 and FY2019 is $267.5 million.",
+        "unit": "USD millions",
+        "value": "267.5"
+      },
+      {
+        "display": "24.26",
+        "id": "c5",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:ACTIVISIONBLIZZARD_2019_10K#p70#0000",
+          "quote": "Total net revenues | 6,489 | 7,500 | 7,017",
+          "type": "chunk"
+        },
+        "text": "FY2019 fixed asset turnover ratio is revenue of 6,489 divided by average PP&E of 267.5, about 24.26.",
+        "unit": "ratio",
+        "value": "24.26"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "c4497a94e6f541c1956ebc6c73fd64655ec02dc71aabf2234c7125305f482a7b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.01092170",
+    "input_tokens": 5457,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 1069
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not contain Philip Morris International Inc.'s capital expenditures for fiscal 2024 or 2025, so the percentage change cannot be determined. The passages cover SMG&A expenses, gross margin, operating expenses and net revenues for other filers, and none of them cover capital expenditures [1][2][5].",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "SMG&A expenses of $1,255,339 (FY2025) vs $1,068,640 (FY2024) in a filing that does not name Philip Morris International [1]",
+        "Net revenues of $3,935 million (FY2025) vs $3,800 million (FY2024) for an unnamed filer [2]",
+        "Operating expense line items (sales and marketing, R&D, G&A, etc.) for an unnamed filer [5]"
+      ],
+      "missing": [
+        "Philip Morris International Inc.'s capital expenditures for fiscal 2024",
+        "Philip Morris International Inc.'s capital expenditures for fiscal 2025"
+      ],
+      "reason": "The provided passages do not include capital expenditure figures for Philip Morris International Inc. for any fiscal year."
+    }
+  },
+  "request_key": "0e238fb7a14cd7240f6e447f3f894a77c7dee3f4ca4d35cf0c856f0d57bc4c16",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00325870",
+    "input_tokens": 1244,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 379
+  }
+}

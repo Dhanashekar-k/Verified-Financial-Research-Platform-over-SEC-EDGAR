@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not support an answer. None of them identify Comfort Systems USA, and none gives its SG&A for fiscal 2020 and fiscal 2021, so I can't give a percentage change without guessing which company a passage describes.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "The passages report SG&A for other, unnamed companies, such as $5,925.9 million vs. $5,900.4 million in one filing and $3,780 million vs. $3,389 million in another.",
+        "One passage (FY2020) mentions mechanical construction and facilities services segments but does not name the company."
+      ],
+      "missing": [
+        "Comfort Systems USA's SG&A expense for fiscal 2020 and fiscal 2021, or the stated percentage change, from its 10-K."
+      ],
+      "reason": "None of the passages is identified as belonging to Comfort Systems USA, and none gives that company's SG&A for fiscal 2020 and fiscal 2021."
+    }
+  },
+  "request_key": "45fc05c794fec5c6db4bdd9ed2649dd495320deb38e14082480dcab04dcc8781",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00411470",
+    "input_tokens": 2000,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 399
+  }
+}

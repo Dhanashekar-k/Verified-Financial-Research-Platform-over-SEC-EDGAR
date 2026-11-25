@@ -1,0 +1,48 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Eversource Energy's 2021 earnings per share was $3.54 [6]. The passage gives only this EPS figure and does not label it as basic. It also reports non-GAAP EPS of $3.86 for 2021 [6].",
+    "claims": [
+      {
+        "display": "$3.54",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000072741-22-000015#11#0002",
+          "quote": "2021 earnings per share equaled $3.54 per share",
+          "type": "chunk"
+        },
+        "text": "Eversource Energy's 2021 earnings per share equaled $3.54 per share (the passage does not label it basic or diluted).",
+        "unit": "USD/shares",
+        "value": "3.54"
+      },
+      {
+        "display": "$3.86",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000072741-22-000015#11#0002",
+          "quote": "non-GAAP earnings per share equaled $3.86",
+          "type": "chunk"
+        },
+        "text": "Eversource Energy's 2021 non-GAAP earnings per share equaled $3.86.",
+        "unit": "USD/shares",
+        "value": "3.86"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "36aa14d5fe9121cebbb81b5ce723acb917e26d08cd4a32fb771d7e158dc258b5",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00408270",
+    "input_tokens": 1988,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 395
+  }
+}

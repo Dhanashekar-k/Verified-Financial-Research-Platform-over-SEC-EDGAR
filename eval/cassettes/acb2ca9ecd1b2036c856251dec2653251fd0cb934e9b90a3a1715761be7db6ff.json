@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not state any gain accruing to Johnson & Johnson from the separation of its Consumer Health business (Kenvue) as of August 30, 2023. J&J's materials only say it intends to \"split off\" Kenvue shares through an exchange offer [2] and that the separation was announced in November 2021 [6]. The $8.1 billion pre-tax gain in the passages belongs to Pfizer's Consumer Healthcare JV with GSK, not to J&J [1].",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "J&J intends to \"split off\" Kenvue shares through an exchange offer, subject to market conditions (Q2 2023 earnings release).",
+        "In November 2021, J&J announced its intention to separate its Consumer Health business (Kenvue).",
+        "The $8.1 billion pre-tax gain in the passages relates to Pfizer's Consumer Healthcare JV with GSK, not J&J."
+      ],
+      "missing": [
+        "A J&J disclosure of any gain or loss on the Kenvue separation or exchange offer, dated as of or near August 30, 2023."
+      ],
+      "reason": "The passages contain no figure for a gain recognized by Johnson & Johnson from the separation of its Consumer Health business (Kenvue) as of August 30, 2023."
+    }
+  },
+  "request_key": "acb2ca9ecd1b2036c856251dec2653251fd0cb934e9b90a3a1715761be7db6ff",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00788870",
+    "input_tokens": 5619,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 430
+  }
+}

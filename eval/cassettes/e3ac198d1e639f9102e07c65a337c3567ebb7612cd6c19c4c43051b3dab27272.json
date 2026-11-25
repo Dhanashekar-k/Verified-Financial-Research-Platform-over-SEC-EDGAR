@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not give McKesson's interest expense for fiscal 2021 or fiscal 2022, so I can't calculate the percentage change. The only McKesson interest expense passage [1] covers fiscal 2025 versus fiscal 2024, and it is qualitative. The interest expense tables in [2] and [8] are not identified as McKesson's.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "McKesson's interest expense increased in fiscal 2025 compared to the prior year, mainly due to higher average loan portfolio balances and a prior-year $9 million gain on debt extinguishment [1].",
+        "The passages with interest expense tables [2], [8] do not identify the company as McKesson, and they cover different periods."
+      ],
+      "missing": [
+        "McKesson's interest expense for fiscal 2021 and fiscal 2022 (fiscal years ended March 31, 2021 and 2022)"
+      ],
+      "reason": "No McKesson interest expense figures for fiscal 2021 or fiscal 2022 appear in the passages."
+    }
+  },
+  "request_key": "e3ac198d1e639f9102e07c65a337c3567ebb7612cd6c19c4c43051b3dab27272",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00593370",
+    "input_tokens": 3059,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 551
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not include MGM Resorts' statement of cash flows (capital expenditures) for FY2018\u2013FY2020. They give net revenues (FY2018 $11,763,096K; FY2019 $12,899,672K; FY2020 $5,162,082K) [3], but without capex figures the capex-as-%-of-revenue average cannot be computed.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Net revenues: FY2020 $5,162,082 thousand, FY2019 $12,899,672 thousand, FY2018 $11,763,096 thousand [3]"
+      ],
+      "missing": [
+        "Capital expenditures for FY2018, FY2019 and FY2020 from the statement of cash flows"
+      ],
+      "reason": "The passages contain revenue data for FY2018-FY2020 but no capital expenditure figures from the statement of cash flows, so capex as a % of revenue cannot be calculated."
+    }
+  },
+  "request_key": "afb663ec53ba7b00b2902575da650a40f09e284f201902b2d59290133b2e5d2b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00393070",
+    "input_tokens": 2276,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 307
+  }
+}

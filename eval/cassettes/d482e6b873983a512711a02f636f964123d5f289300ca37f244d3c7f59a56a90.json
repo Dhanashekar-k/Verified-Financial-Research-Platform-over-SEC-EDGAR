@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The answer reaches the gold conclusion (Yes, Verizon is capital intensive in FY2022) and supports it with large capex figures, though it does not give the 2.77 capital intensity ratio and says it cannot be computed from the passages."
+  },
+  "request_key": "d482e6b873983a512711a02f636f964123d5f289300ca37f244d3c7f59a56a90",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 631,
+    "cost_usd": "0.00159875",
+    "input_tokens": 345,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 93
+  }
+}

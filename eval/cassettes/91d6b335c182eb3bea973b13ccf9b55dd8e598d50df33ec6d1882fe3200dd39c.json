@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not say whether American Express retained Card Members during 2022. They give no attrition or retention figures and no year-end 2021 cards-in-force count to compare against. They report 76.7 million proprietary cards-in-force worldwide at December 31, 2022 [2] and $1,338 billion of worldwide billed business for 2022 [2]. The only earlier count is 68.9 million at December 31, 2020 [4], which skips 2021 and covers cards, not Card Members.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "At December 31, 2022, American Express had 76.7 million proprietary cards-in-force worldwide.",
+        "Worldwide billed business for 2022 was $1,338 billion.",
+        "At December 31, 2020, there were 68.9 million proprietary cards-in-force."
+      ],
+      "missing": [
+        "Cards-in-force or Card Member count at December 31, 2021",
+        "Card Member attrition or retention rates for 2022"
+      ],
+      "reason": "The passages contain no Card Member retention or attrition data for 2022 and no year-end 2021 cards-in-force figure to compare with the 2022 figure."
+    }
+  },
+  "request_key": "91d6b335c182eb3bea973b13ccf9b55dd8e598d50df33ec6d1882fe3200dd39c",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00830170",
+    "input_tokens": 5037,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 629
+  }
+}

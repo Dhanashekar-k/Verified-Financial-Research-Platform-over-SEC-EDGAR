@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not support an answer. None of them names Mastercard Inc., and none gives quarterly (Q1) operating cash flow figures. The passages only give annual cash flow data for unnamed companies.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Annual net cash provided by operating activities figures appear for several unnamed companies, e.g. $1,681 million in 2022 vs. $109 million in 2021 [1], and $9,539 million vs. $15,887 million for fiscal years ended May 31 [7]."
+      ],
+      "missing": [
+        "Mastercard Inc.'s Q1 FY2021 net cash provided by operating activities",
+        "Mastercard Inc.'s Q1 FY2022 net cash provided by operating activities",
+        "A 10-Q or other filing explicitly identified as Mastercard's"
+      ],
+      "reason": "The passages do not identify Mastercard Inc. and contain no Q1 fiscal 2021 or Q1 fiscal 2022 net cash provided by operating activities. They only report annual figures for companies that are not named."
+    }
+  },
+  "request_key": "03f6b50e6eca7a790d7db921ee1b3f54d83292197f652140d1db8eb2d10b555f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00431770",
+    "input_tokens": 2438,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 352
+  }
+}

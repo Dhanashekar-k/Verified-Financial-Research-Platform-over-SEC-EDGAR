@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not support an answer for AES Corporation's FY2022 inventory turnover. None of them is an AES Corporation filing, and none gives AES's cost of sales, inventory balances, or any statement about whether conventional inventory management is meaningful for AES. The inventory turnover figures that do appear belong to other, unnamed companies or to other fiscal years, so I did not apply them to AES.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Passage [1] and [2] give inventory turnover of 6.6 (2023), 6.0 (2022) and 6.4 (2024) for an unnamed company, not identified as AES.",
+        "Passages [3], [4] and [5] define inventory turnover for other companies (retailers) and give no AES figures."
+      ],
+      "missing": [
+        "AES Corporation FY2022 cost of sales",
+        "AES Corporation inventory balances at the start and end of FY2022",
+        "Any AES disclosure on whether conventional inventory turnover is meaningful for its business"
+      ],
+      "reason": "The passages contain no AES Corporation data for FY2022 (no cost of sales, no inventory balances, no discussion of AES inventory practices). The inventory turnover figures present belong to other, unnamed companies or other fiscal years."
+    }
+  },
+  "request_key": "a0ef700ed2d84e7cb9b177c3c47d613dbc5ce7439f4f129fd5d36bab45366ead",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00746770",
+    "input_tokens": 5278,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 414
+  }
+}

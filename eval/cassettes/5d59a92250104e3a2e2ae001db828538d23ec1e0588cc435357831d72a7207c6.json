@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not contain quarterly (Q1 2020 or Q1 2021) dividend data for Yum! Brands, so the percentage change in dividends paid between those quarters cannot be determined. They only give annual dividends declared per share (e.g., $1.88 in FY2020 and $2.00 in FY2021) [1][2], which are declared, not paid, and are annual, not quarterly.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Dividends declared per common share were $1.88 in FY2020 and $2.00 in FY2021 (annual).",
+        "Total dividends declared were $569 million in FY2020 and $594 million in FY2021 (annual)."
+      ],
+      "missing": [
+        "Dividends paid for Q1 2020 (quarterly)",
+        "Dividends paid for Q1 2021 (quarterly)"
+      ],
+      "reason": "The passages provide only annual figures for dividends declared, not quarterly dividends paid for Q1 2020 or Q1 2021."
+    }
+  },
+  "request_key": "5d59a92250104e3a2e2ae001db828538d23ec1e0588cc435357831d72a7207c6",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00393270",
+    "input_tokens": 2173,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 328
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "I can't answer this from the passages. None of them names AppLovin, and none gives AppLovin's operating cash flow. The cash flow tables that appear (for example [2], [4] and [6]) don't identify their companies, so I can't tell which, if any, belongs to AppLovin. Picking one would mean guessing the company.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Passage [2] and [4] show operating cash flows of $1,956.7 million (FY2022) and $1,245.4 million (FY2021) for an unnamed company.",
+        "Passage [6] shows cash from operating activities of $963 million (2022) and $1,562 million (2021) for an unnamed company."
+      ],
+      "missing": [
+        "AppLovin's 10-K or 10-Q passages with its operating cash flow for fiscal 2021 and fiscal 2022"
+      ],
+      "reason": "The passages do not identify any company as AppLovin, and none is attributable to AppLovin. The operating cash flow figures shown are for unnamed companies."
+    }
+  },
+  "request_key": "9ec3f113d5b7feca8457114ee8985f27924dea26051aebdc106b68226fa21d88",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00374070",
+    "input_tokens": 991,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 526
+  }
+}

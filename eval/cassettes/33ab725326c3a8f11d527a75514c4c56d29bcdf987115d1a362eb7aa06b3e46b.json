@@ -1,0 +1,62 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Hubbell had about **$1,435.5 million** of long-term debt outstanding at December 31, 2021, net of unamortized discount and debt issuance costs [2]. None of it matured within the next twelve months [4], so the whole amount is noncurrent. Total debt of $1,445.2 million [1] is higher because it includes other debt beyond this long-term debt.",
+    "claims": [
+      {
+        "display": "$1,435.5 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0001628280-23-002875#7#0034",
+          "quote": "the Company had $1,437.9 million and $1,435.5 million, respectively, of long-term debt outstanding",
+          "type": "chunk"
+        },
+        "text": "Hubbell had $1,435.5 million of long-term debt outstanding at December 31, 2021, net of unamortized discount and capitalized debt issuance costs, which is the noncurrent portion.",
+        "unit": "USD millions",
+        "value": "1435.5"
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001628280-22-002255#7#0050",
+          "quote": "At December 31, 2021 and December 31, 2020 the Company had no long-term debt with maturities due within the next twelve months.",
+          "type": "chunk"
+        },
+        "text": "At December 31, 2021 the Company had no long-term debt with maturities due within the next twelve months, so none of the long-term debt was current.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": "$1,445.2 million",
+        "id": "c3",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001628280-22-002255#7#0054",
+          "quote": "Total Debt | $1,445.2 | $1,590.0",
+          "type": "chunk"
+        },
+        "text": "Total debt at December 31, 2021 was $1,445.2 million.",
+        "unit": "USD millions",
+        "value": "1445.2"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "33ab725326c3a8f11d527a75514c4c56d29bcdf987115d1a362eb7aa06b3e46b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00855770",
+    "input_tokens": 3818,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 924
+  }
+}

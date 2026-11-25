@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not contain Expeditors International of Washington's Q1 fiscal 2021 net cash from operating activities. None of them names Expeditors, and none gives quarterly (Q1) operating cash flow figures.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Passages give annual net cash from operating activities for various companies, none identified as Expeditors International of Washington."
+      ],
+      "missing": [
+        "Expeditors International of Washington's 10-Q for Q1 fiscal 2021 (cash flow statement)",
+        "Identification of Expeditors in any provided passage"
+      ],
+      "reason": "The passages do not mention Expeditors International of Washington and do not include any Q1 fiscal 2021 operating cash flow figure (they are 10-K annual discussions of other, unnamed or different companies)."
+    }
+  },
+  "request_key": "05d5de0b76aa0526f8b82af88a5be320bea2658b494c33ea1897edec3494521e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00499970",
+    "input_tokens": 3545,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 267
+  }
+}

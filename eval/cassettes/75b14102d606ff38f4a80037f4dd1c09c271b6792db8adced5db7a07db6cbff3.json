@@ -1,0 +1,62 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "In the FY2023 passage [6], SG&A fell to 23.5% of net sales from 23.9% in the comparison year. The passage calls that year \"fiscal 2021\". It attributes the decline primarily to lower marketing expenses and leverage of incentive compensation on higher sales. Deleverage of corporate overhead (strategic investments) and of store payroll and benefits (wage investments) partially offset these gains [6].",
+    "claims": [
+      {
+        "display": "23.5%",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:ULTABEAUTY_2023Q4_EARNINGS#p2#0002",
+          "quote": "As a percentage of net sales, SG&A expenses decreased to 23.5% compared to 23.9% in fiscal 2021",
+          "type": "chunk"
+        },
+        "text": "SG&A expenses as a percentage of net sales decreased to 23.5% from 23.9% in the comparison year.",
+        "unit": "percent",
+        "value": "23.5"
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:ULTABEAUTY_2023Q4_EARNINGS#p2#0002",
+          "quote": "primarily due to lower marketing expenses and leverage of incentive compensation due to higher sales",
+          "type": "chunk"
+        },
+        "text": "The decline in SG&A as a percent of net sales was primarily due to lower marketing expenses and leverage of incentive compensation due to higher sales.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:ULTABEAUTY_2023Q4_EARNINGS#p2#0002",
+          "quote": "partially offset by deleverage of corporate overhead due to strategic investments and deleverage of store payroll and benefits due to wage investments",
+          "type": "chunk"
+        },
+        "text": "The decline was partially offset by deleverage of corporate overhead due to strategic investments and deleverage of store payroll and benefits due to wage investments.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "75b14102d606ff38f4a80037f4dd1c09c271b6792db8adced5db7a07db6cbff3",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00895970",
+    "input_tokens": 3250,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 1118
+  }
+}

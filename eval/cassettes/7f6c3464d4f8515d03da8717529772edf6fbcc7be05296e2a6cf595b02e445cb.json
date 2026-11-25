@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The answer states a combined $8.4 billion, matching the gold answer of $8,400,000,000, and the supporting breakdown ($4.2B + $4.2B) is consistent."
+  },
+  "request_key": "7f6c3464d4f8515d03da8717529772edf6fbcc7be05296e2a6cf595b02e445cb",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00070355",
+    "input_tokens": 302,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 74
+  }
+}

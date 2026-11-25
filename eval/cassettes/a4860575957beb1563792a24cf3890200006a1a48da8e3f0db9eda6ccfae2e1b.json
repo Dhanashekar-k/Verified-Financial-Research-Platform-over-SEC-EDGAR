@@ -1,0 +1,27 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not report Jacobs' net income for Q2 of fiscal 2020. The only fiscal 2020 earnings figure provided is the full-year net earnings attributable to Jacobs from continuing operations of $353,861 thousand [5], which is not a quarterly figure.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Full-year fiscal 2020 net earnings attributable to Jacobs from continuing operations were $353,861 thousand (annual, not Q2) [5]."
+      ],
+      "missing": [
+        "Jacobs' 10-Q for the second quarter of fiscal 2020 or other quarterly net income data"
+      ],
+      "reason": "The passages contain no quarterly (Q2 FY2020) income statement data for Jacobs; only annual figures are given."
+    }
+  },
+  "request_key": "a4860575957beb1563792a24cf3890200006a1a48da8e3f0db9eda6ccfae2e1b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00392270",
+    "input_tokens": 2493,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 262
+  }
+}

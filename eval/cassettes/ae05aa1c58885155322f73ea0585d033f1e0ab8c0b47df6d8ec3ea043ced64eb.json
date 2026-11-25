@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The answer says yes and identifies the same three categories as the gold (Commercial Airplanes ~39%, Defense ~35%, Services ~26%), with percentages that match within rounding."
+  },
+  "request_key": "ae05aa1c58885155322f73ea0585d033f1e0ab8c0b47df6d8ec3ea043ced64eb",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00082155",
+    "input_tokens": 415,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 75
+  }
+}

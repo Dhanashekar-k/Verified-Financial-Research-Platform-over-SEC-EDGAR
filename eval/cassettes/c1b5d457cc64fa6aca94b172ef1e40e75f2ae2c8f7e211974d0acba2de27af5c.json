@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not support an answer. None of them identifies Yum! Brands as the filer, and none gives quarterly (Q1 2023 or Q1 2024) income tax expense. The passages contain only annual 10-K figures for unnamed companies.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Annual income tax expense tables from FY2023-FY2025 10-Ks, with no company names and no quarterly data."
+      ],
+      "missing": [
+        "Yum! Brands' Q1 2023 and Q1 2024 income tax expense from 10-Q filings",
+        "Passages that explicitly identify Yum! Brands as the filer"
+      ],
+      "reason": "The passages do not name Yum! Brands and contain no Q1 2023 or Q1 2024 income tax expense data; they show only annual figures for unnamed companies."
+    }
+  },
+  "request_key": "c1b5d457cc64fa6aca94b172ef1e40e75f2ae2c8f7e211974d0acba2de27af5c",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00270470",
+    "input_tokens": 1215,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 274
+  }
+}

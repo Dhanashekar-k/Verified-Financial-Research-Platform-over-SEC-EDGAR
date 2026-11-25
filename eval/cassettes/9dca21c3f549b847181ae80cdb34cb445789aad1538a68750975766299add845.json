@@ -1,0 +1,90 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Corning's effective tax rate rose by about **2.7 percentage points**, from 20.2% in FY2021 to 22.9% in FY2022 [6]. The FY2022 MD&A table shows the same direction at rounded figures, 20% to 23% [2]. The FY2021 10-K itself reported 20.5% for 2021 [3], so the size of the change depends on which 2021 figure is used. Using that figure, the change would be about 2.4 points.",
+    "claims": [
+      {
+        "display": "22.9%",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:CORNING_2022_10K#p77#0000",
+          "quote": "Effective tax rate | 22.9% | 20.2% | 17.5%",
+          "type": "chunk"
+        },
+        "text": "Corning's effective tax rate for FY2022 was 22.9%.",
+        "unit": "percent",
+        "value": "22.9"
+      },
+      {
+        "display": "20.2%",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:CORNING_2022_10K#p77#0000",
+          "quote": "Effective tax rate | 22.9% | 20.2% | 17.5%",
+          "type": "chunk"
+        },
+        "text": "Corning's effective tax rate for FY2021 was 20.2% per the FY2022 10-K reconciliation.",
+        "unit": "percent",
+        "value": "20.2"
+      },
+      {
+        "display": "2.7 percentage points",
+        "id": "c3",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:CORNING_2022_10K#p77#0000",
+          "quote": "Effective tax rate | 22.9% | 20.2% | 17.5%",
+          "type": "chunk"
+        },
+        "text": "The effective tax rate increased by about 2.7 percentage points from FY2021 to FY2022.",
+        "unit": "percent",
+        "value": "2.7"
+      },
+      {
+        "display": "20.5%",
+        "id": "c4",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:CORNING_2021_10K#p29#0000",
+          "quote": "Effective tax rate | 20.5% | 17.8% | 21.1%",
+          "type": "chunk"
+        },
+        "text": "The FY2021 10-K reported a 2021 effective tax rate of 20.5%.",
+        "unit": "percent",
+        "value": "20.5"
+      },
+      {
+        "display": "2.4 percentage points",
+        "id": "c5",
+        "kind": "numeric_derived",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:CORNING_2021_10K#p29#0000",
+          "quote": "Effective tax rate | 20.5% | 17.8% | 21.1%",
+          "type": "chunk"
+        },
+        "text": "Using the 20.5% FY2021 figure, the change to 22.9% would be about 2.4 percentage points.",
+        "unit": "percent",
+        "value": "2.4"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "9dca21c3f549b847181ae80cdb34cb445789aad1538a68750975766299add845",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.01009370",
+    "input_tokens": 4019,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 1191
+  }
+}

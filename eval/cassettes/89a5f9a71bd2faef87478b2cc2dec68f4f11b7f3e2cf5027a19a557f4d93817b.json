@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not support an answer. None of them mention Johnson & Johnson (JnJ) or any segment of it being treated as a discontinued operation from August 30, 2023. The passages cover other companies (e.g., Johnson Controls, Verisk, DuPont, Penske-style segment tables, and a former Las Vegas Operating Properties segment), none of which match the question.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Passages discuss discontinued operations for other companies: Verisk's Energy business, DuPont's Delrin and M&M businesses, and a former Las Vegas Operating Properties segment.",
+        "Johnson Controls (a different company from Johnson & Johnson) is described with four reportable segments, with no discontinued operation in FY2023."
+      ],
+      "missing": [
+        "Johnson & Johnson 10-K or 10-Q passages describing a segment classified as a discontinued operation effective August 30, 2023"
+      ],
+      "reason": "The provided passages contain no information about Johnson & Johnson or any segment being classified as a discontinued operation from August 30, 2023 onward."
+    }
+  },
+  "request_key": "89a5f9a71bd2faef87478b2cc2dec68f4f11b7f3e2cf5027a19a557f4d93817b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00505270",
+    "input_tokens": 3108,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 365
+  }
+}

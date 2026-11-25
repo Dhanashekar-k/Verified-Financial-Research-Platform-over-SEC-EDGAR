@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not report Hartford's interest expense for Q2 2020, so I can't answer this from them. They give only general business descriptions, year-end total assets and equity, FY2020 net income, and a five-year stock return table.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "At December 31, 2020, total assets were $74.1 billion and total stockholders' equity was $18.6 billion [1].",
+        "Full year 2020 net income available to common stockholders was $1.7 billion, or $4.76 per diluted share [7]."
+      ],
+      "missing": [
+        "Interest expense for the quarter ended June 30, 2020 (from the Q2 2020 10-Q income statement)",
+        "Any quarterly financial statements for 2020"
+      ],
+      "reason": "None of the provided passages contain interest expense data, and none cover quarterly (Q2 2020) results."
+    }
+  },
+  "request_key": "1f10de312f09e1e6d99a77c319b6cf6433e5b2659db0d9bafc16ade798137354",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00678270",
+    "input_tokens": 5258,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 281
+  }
+}

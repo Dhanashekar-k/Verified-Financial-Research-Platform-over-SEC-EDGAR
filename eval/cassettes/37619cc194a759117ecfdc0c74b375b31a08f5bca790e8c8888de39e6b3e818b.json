@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not contain Monolithic Power Systems' balance sheet for Q3 of fiscal year 2025, so total liabilities as originally reported at that date cannot be determined from them.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Passage [1] is only the title page of the FY2025 10-K (fiscal year ended December 31, 2025).",
+        "Other passages are table of contents, notes on business and accounting policies, an exhibit list, and auditor reports for earlier years, with no liability figures."
+      ],
+      "missing": [
+        "The Form 10-Q balance sheet for the quarter ended September 30, 2025, showing total liabilities as originally reported."
+      ],
+      "reason": "The provided passages contain no Q3 FY2025 balance sheet or total liabilities figure. They include only a FY2025 10-K cover page, audit report excerpts, an exhibit list, and accounting policy notes."
+    }
+  },
+  "request_key": "37619cc194a759117ecfdc0c74b375b31a08f5bca790e8c8888de39e6b3e818b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00535070",
+    "input_tokens": 3731,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 300
+  }
+}

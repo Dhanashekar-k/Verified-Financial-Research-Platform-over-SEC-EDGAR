@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not contain Genuine Parts Co's net income for Q1 2020 or Q1 2021, so the percentage change cannot be computed. None of the passages name Genuine Parts Co, and the figures provided are annual or segment data for other companies.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "The passages contain annual or segment results for other, unnamed companies (e.g., 3M-like segment tables, Berkshire-like revenue tables), but no Q1 data for Genuine Parts Co."
+      ],
+      "missing": [
+        "Genuine Parts Co's net income for Q1 2020",
+        "Genuine Parts Co's net income for Q1 2021",
+        "A 10-Q filing for the Q1 2021 period"
+      ],
+      "reason": "The passages do not include Genuine Parts Co's quarterly (Q1 2020 and Q1 2021) net income; no passage identifies Genuine Parts Co at all."
+    }
+  },
+  "request_key": "93ae17bd603c5950409b3b3bc1adf7feaa2b63732d16900c227449799e7e8996",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00454170",
+    "input_tokens": 2892,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 306
+  }
+}

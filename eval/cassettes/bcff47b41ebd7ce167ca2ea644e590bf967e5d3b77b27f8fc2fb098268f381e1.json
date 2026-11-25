@@ -1,0 +1,62 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Yes, in part of the year at least. The passages show MGM Resorts paid dividends to common shareholders in 2022. The statement of stockholders' equity, which starts from the April 1, 2022 balance, records dividends declared and paid of $0.0025 per share, totaling about $1.0 million ($1,021 thousand) [5]. The FY2022 10-K excerpt provided [1] only reaches the 2020 entries, so the passages do not give a full-year 2022 total.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:MGMRESORTS_2023Q2_10Q#p8#0000",
+          "quote": "shareholders ($0.0025 per share)",
+          "type": "chunk"
+        },
+        "text": "MGM Resorts declared and paid dividends to common shareholders in the period beginning April 1, 2022 (2022 comparative period in the 2023 Q2 10-Q).",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": "$0.0025 per share",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:MGMRESORTS_2023Q2_10Q#p8#0000",
+          "quote": "shareholders ($0.0025 per share)",
+          "type": "chunk"
+        },
+        "text": "The dividend paid to common shareholders was $0.0025 per share.",
+        "unit": "USD/shares",
+        "value": "0.0025"
+      },
+      {
+        "display": "$1,021 thousand",
+        "id": "c3",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:MGMRESORTS_2023Q2_10Q#p8#0000",
+          "quote": "(1,021) | \u2014 | (1,021)",
+          "type": "chunk"
+        },
+        "text": "Dividends declared and paid to common shareholders totaled $1,021 thousand in that period.",
+        "unit": "USD thousands",
+        "value": "1021"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "bcff47b41ebd7ce167ca2ea644e590bf967e5d3b77b27f8fc2fb098268f381e1",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.01059270",
+    "input_tokens": 4903,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 1114
+  }
+}

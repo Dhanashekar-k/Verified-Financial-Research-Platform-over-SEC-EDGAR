@@ -1,0 +1,76 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The FY2017\u2013FY2019 average capex as a % of revenue for Activision Blizzard is about **1.9%**.\n\n- FY2019: capex $116M / revenue $6,489M = 1.8% [4][5]\n- FY2018: capex $131M / revenue $7,500M = 1.7% [4][5]\n- FY2017: capex $155M / revenue $7,017M = 2.2% [4][5]\n\nAverage: (1.79% + 1.75% + 2.21%) / 3 \u2248 1.9%.",
+    "claims": [
+      {
+        "display": "1.9%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:ACTIVISIONBLIZZARD_2019_10K#p73#0000",
+          "quote": "Capital expenditures | (116) | (131) | (155)",
+          "type": "chunk"
+        },
+        "text": "Three-year (FY2017-FY2019) average of capital expenditures as a percentage of total net revenues for Activision Blizzard is about 1.9%.",
+        "unit": "percent",
+        "value": "1.9"
+      },
+      {
+        "display": "1.8%",
+        "id": "c2",
+        "kind": "numeric_derived",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:ACTIVISIONBLIZZARD_2019_10K#p73#0000",
+          "quote": "Capital expenditures | (116) | (131) | (155)",
+          "type": "chunk"
+        },
+        "text": "FY2019 capex as a percent of revenue: $116M / $6,489M is about 1.79%.",
+        "unit": "percent",
+        "value": "1.79"
+      },
+      {
+        "display": "1.7%",
+        "id": "c3",
+        "kind": "numeric_derived",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:ACTIVISIONBLIZZARD_2019_10K#p73#0000",
+          "quote": "Capital expenditures | (116) | (131) | (155)",
+          "type": "chunk"
+        },
+        "text": "FY2018 capex as a percent of revenue: $131M / $7,500M is about 1.75%.",
+        "unit": "percent",
+        "value": "1.75"
+      },
+      {
+        "display": "2.2%",
+        "id": "c4",
+        "kind": "numeric_derived",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:ACTIVISIONBLIZZARD_2019_10K#p70#0000",
+          "quote": "Total net revenues | 6,489 | 7,500 | 7,017",
+          "type": "chunk"
+        },
+        "text": "FY2017 capex as a percent of revenue: $155M / $7,017M is about 2.21%.",
+        "unit": "percent",
+        "value": "2.21"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "f1313f54155b5165bd609142e0dc65e0e4c61e7f0fa9f5ef402707bd9b3a3942",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.01093370",
+    "input_tokens": 5079,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 1147
+  }
+}

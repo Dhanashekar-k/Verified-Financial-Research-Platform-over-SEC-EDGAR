@@ -1,0 +1,62 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "For FY2023, Boeing's FY2022 10-K says:\n- **787:** production is currently at low rates and is expected to increase gradually to 5 per month in 2023 [1][2].\n- **777X:** production is currently paused and is expected to resume in 2023 [1].\n- **737:** Boeing has struggled to stabilize production at 31 per month. It plans to increase the rate gradually, based on market demand and supply chain capacity. The passages give no specific 2023 target [1].",
+    "claims": [
+      {
+        "display": "5 per month",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:BOEING_2022_10K#p9#0002",
+          "quote": "The 787 program is currently producing at low rates and we expect to gradually increase to 5 per month in 2023.",
+          "type": "chunk"
+        },
+        "text": "Boeing expects the 787 program, currently producing at low rates, to gradually increase production to 5 per month in 2023.",
+        "unit": "shares",
+        "value": "5"
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:BOEING_2022_10K#p9#0002",
+          "quote": "Production of the 777X is currently paused and is expected to resume in 2023.",
+          "type": "chunk"
+        },
+        "text": "Production of the 777X is currently paused and is expected to resume in 2023.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": "31 per month",
+        "id": "c3",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:BOEING_2022_10K#p9#0002",
+          "quote": "The 737 program has experienced operational and supply chain challenges stabilizing production at 31 per month. We plan to gradually increase 737 production rates based on market demand and supply chain capacity.",
+          "type": "chunk"
+        },
+        "text": "The 737 program has had challenges stabilizing production at 31 per month, and Boeing plans to gradually increase 737 production rates based on market demand and supply chain capacity.",
+        "unit": "shares",
+        "value": "31"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "bafa5a0f337344ff17e8d31b930708aa98e5a6e7f04495cfa8050198f5d22585",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00823970",
+    "input_tokens": 4815,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 661
+  }
+}

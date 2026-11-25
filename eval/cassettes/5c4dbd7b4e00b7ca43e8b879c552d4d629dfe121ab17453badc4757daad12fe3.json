@@ -1,0 +1,62 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "General Mills' FY2020 free cash flow is about **$3,215.4 million**: net cash provided by operating activities of $3,676.2 million [8] less purchases of land, buildings, and equipment (capex) of $460.8 million [8].",
+    "claims": [
+      {
+        "display": "$3,676.2 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001193125-20-186469#8#0014",
+          "quote": "Net cash provided by operating activities | 3,676.2 | 2,807.0 | 2,841.0",
+          "type": "chunk"
+        },
+        "text": "General Mills' FY2020 net cash provided by operating activities was $3,676.2 million.",
+        "unit": "USD millions",
+        "value": "3676.2"
+      },
+      {
+        "display": "$460.8 million",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001193125-20-186469#8#0014",
+          "quote": "Purchases of land, buildings, and equipment | (460.8) | (537.6) | (622.7)",
+          "type": "chunk"
+        },
+        "text": "General Mills' FY2020 purchases of land, buildings, and equipment (capex) were $460.8 million.",
+        "unit": "USD millions",
+        "value": "460.8"
+      },
+      {
+        "display": "$3,215.4 million",
+        "id": "c3",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0001193125-20-186469#8#0014",
+          "quote": "Net cash provided by operating activities | 3,676.2 | 2,807.0 | 2,841.0",
+          "type": "chunk"
+        },
+        "text": "General Mills' FY2020 free cash flow (operating cash flow minus capex) was $3,215.4 million.",
+        "unit": "USD millions",
+        "value": "3215.4"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "5c4dbd7b4e00b7ca43e8b879c552d4d629dfe121ab17453badc4757daad12fe3",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00817770",
+    "input_tokens": 5063,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 599
+  }
+}

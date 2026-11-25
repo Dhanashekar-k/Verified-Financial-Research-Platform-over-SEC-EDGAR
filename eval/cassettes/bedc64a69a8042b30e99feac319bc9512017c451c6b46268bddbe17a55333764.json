@@ -1,0 +1,62 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The FY2022 passages say only that PepsiCo serves customers and consumers in more than 200 countries and territories worldwide [3]. They do not name specific primary regions. The FY2022 subsidiary list (Exhibit 21) shows entities in jurisdictions including the United States, Mexico, Brazil, Argentina, Guatemala, Panama, the United Kingdom, Luxembourg, Hong Kong, Australia, Kyrgyzstan, Bermuda and the Cayman Islands [7]. For context, the FY2020 10-K organized operations into North America (US and Canada), Latin America, Europe, Africa/Middle East/South Asia, and Asia Pacific/Australia/New Zealand/China [6]. The passages do not confirm this segment structure for FY2022.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:PEPSICO_2022_10K#p32#0001",
+          "quote": "serving customers and consumers in more than 200 countries and territories.",
+          "type": "chunk"
+        },
+        "text": "In its FY2022 10-K, PepsiCo says it serves customers and consumers in more than 200 countries and territories.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:PEPSICO_2022_10K#p482#0000",
+          "quote": "Alimentos del Istmo, S.A. | Panama",
+          "type": "chunk"
+        },
+        "text": "PepsiCo's FY2022 subsidiary list (Exhibit 21) includes entities in jurisdictions such as Panama, Guatemala, Brazil, Bermuda, Hong Kong, Cayman Islands, the United States, Argentina, Australia and Luxembourg.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000077476-21-000007#1#0000",
+          "quote": "Latin America (LatAm), which includes all of our beverage, food and snack businesses in Latin America;",
+          "type": "chunk"
+        },
+        "text": "The FY2020 10-K described a Latin America segment covering all beverage, food and snack businesses in Latin America, alongside North America, Europe, AMESA and APAC segments.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "bedc64a69a8042b30e99feac319bc9512017c451c6b46268bddbe17a55333764",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.01233270",
+    "input_tokens": 5853,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 1272
+  }
+}

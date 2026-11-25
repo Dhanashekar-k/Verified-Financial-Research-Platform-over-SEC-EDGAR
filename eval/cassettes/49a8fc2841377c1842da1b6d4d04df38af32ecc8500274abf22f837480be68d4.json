@@ -1,0 +1,27 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not report Cencora, Inc.'s selling, general and administrative expenses for fiscal 2023. The Cencora passages [1][2][3] contain only stock performance graph data (cumulative total return). The SG&A figures in the other passages come from filings that do not name Cencora, so I cannot attribute them to the company.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Cencora, Inc. passages [1], [2], [3] show only stock performance graph values versus the S&P 500 and S&P Health Care indices."
+      ],
+      "missing": [
+        "Cencora, Inc.'s fiscal 2023 selling, general and administrative expense figure from its income statement or MD&A"
+      ],
+      "reason": "None of the passages that name Cencora, Inc. contain SG&A expense data; they only show cumulative total shareholder return comparisons. The passages with SG&A figures do not identify the company as Cencora."
+    }
+  },
+  "request_key": "49a8fc2841377c1842da1b6d4d04df38af32ecc8500274abf22f837480be68d4",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00294970",
+    "input_tokens": 1300,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 306
+  }
+}

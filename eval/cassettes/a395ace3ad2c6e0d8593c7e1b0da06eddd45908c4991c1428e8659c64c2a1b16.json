@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not contain the figures needed to answer this. Passage [6] describes changes in SG&A expense (apparently from a different filer, with no company named) but gives no total SG&A for fiscal 2020. The TE Connectivity passages contain only stock performance graph data and no SG&A figures. I cannot compute the difference.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Passage [6] describes year-over-year changes in SG&A drivers for fiscal 2021 vs. 2020 and 2020 vs. 2019, but does not name the company or state total SG&A.",
+        "The TE Connectivity passages [1]-[5], [7], [8] contain only cumulative total return performance graph data."
+      ],
+      "missing": [
+        "Cencora's total SG&A expense for fiscal 2020",
+        "TE Connectivity's total SG&A expense for fiscal 2020"
+      ],
+      "reason": "The passages do not provide fiscal 2020 SG&A totals for Cencora or TE Connectivity, so the difference cannot be calculated."
+    }
+  },
+  "request_key": "a395ace3ad2c6e0d8593c7e1b0da06eddd45908c4991c1428e8659c64c2a1b16",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00383270",
+    "input_tokens": 1993,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 344
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not contain enough information to answer this question. None of them name Newmont Corp /DE/, and none provide quarterly (Q1 2022 or Q1 2023) income tax expense figures. They only include annual data for other, unnamed companies.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Passage 2 shows an annual income tax provision of $154.2 million (2023) vs. $24.0 million (2022), but for an unnamed company and for the full year, not Q1.",
+        "The other passages cover other expense categories on an annual basis for unnamed companies."
+      ],
+      "missing": [
+        "Newmont Corp /DE/ 10-Q filings for Q1 FY2022 and Q1 FY2023",
+        "Quarterly income tax expense figures for Newmont"
+      ],
+      "reason": "The passages do not mention Newmont Corp /DE/ and contain no Q1 FY2022 or Q1 FY2023 income tax expense data."
+    }
+  },
+  "request_key": "a3f975c132525e8da5104db7bd21ed3ca7e5b82b748120b1594a66535f653e0a",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00310870",
+    "input_tokens": 1424,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 313
+  }
+}

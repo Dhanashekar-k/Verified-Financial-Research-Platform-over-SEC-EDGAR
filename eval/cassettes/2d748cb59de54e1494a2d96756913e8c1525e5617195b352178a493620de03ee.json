@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not support an answer. They contain only Henry Schein filings, and none provides a readable fiscal 2024 interest expense figure (the FY2024 statement text has blank values). No Domino's Pizza passages were provided, so the difference cannot be computed.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "The Henry Schein FY2024 income statement excerpt lists an interest expense line but shows no numeric values [3]."
+      ],
+      "missing": [
+        "Domino's Pizza Inc fiscal 2024 interest expense",
+        "Henry Schein Inc fiscal 2024 interest expense amount"
+      ],
+      "reason": "No Domino's Pizza data is in the passages, and Henry Schein's fiscal 2024 interest expense value is not legible in them."
+    }
+  },
+  "request_key": "2d748cb59de54e1494a2d96756913e8c1525e5617195b352178a493620de03ee",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00645870",
+    "input_tokens": 5049,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 258
+  }
+}

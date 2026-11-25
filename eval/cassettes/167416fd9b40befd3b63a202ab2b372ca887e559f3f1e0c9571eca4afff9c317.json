@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not report stockholders' equity for Edison International or Constellation Energy at the end of fiscal 2025, so the difference cannot be computed. The Edison International passages cover only parent-company income statement items such as net income of $4,557 million for 2025 [5]. The Constellation passages cover FY2022 and FY2023 narrative and exhibit lists, with no balance sheet data [2][4][7].",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Edison International parent-only condensed income statement for 2025 shows net income of $4,557 million and net income available to common shareholders of $4,459 million.",
+        "Constellation Energy passages cover only FY2022 and FY2023 MD&A overviews and an exhibit list, with no equity figures."
+      ],
+      "missing": [
+        "Edison International total stockholders' equity at December 31, 2025",
+        "Constellation Energy total shareholders' equity at December 31, 2025"
+      ],
+      "reason": "The passages contain no balance sheet or stockholders' equity figures for Edison International or Constellation Energy at the end of fiscal 2025."
+    }
+  },
+  "request_key": "167416fd9b40befd3b63a202ab2b372ca887e559f3f1e0c9571eca4afff9c317",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00527470",
+    "input_tokens": 3355,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 360
+  }
+}

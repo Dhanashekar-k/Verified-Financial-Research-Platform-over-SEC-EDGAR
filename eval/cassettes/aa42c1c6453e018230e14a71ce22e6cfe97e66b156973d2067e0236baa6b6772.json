@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "incorrect",
+    "reason": "The answer identifies the supplemental indentures but omits the key fact of the substitution of Amcor Flexibles North America for Amcor Finance as issuer (novation) and the Notes due 2026 and 2028, and it hedges that the passages give no further detail on the filing's purpose."
+  },
+  "request_key": "aa42c1c6453e018230e14a71ce22e6cfe97e66b156973d2067e0236baa6b6772",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00099455",
+    "input_tokens": 418,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 109
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The system answer states 0, matching the gold answer, and explains that no restructuring cost line is explicitly outlined for FY2022."
+  },
+  "request_key": "44ee86cccd355b73132cfedfc7e07ebcb4f9ebf5b97a8ec69784109341732c15",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00060755",
+    "input_tokens": 291,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 57
+  }
+}

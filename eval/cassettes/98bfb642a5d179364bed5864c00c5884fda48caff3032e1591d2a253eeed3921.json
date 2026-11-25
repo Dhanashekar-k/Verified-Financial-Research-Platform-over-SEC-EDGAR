@@ -1,0 +1,48 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "As of August 30, 2023, Johnson & Johnson secured $13.2 billion in cash proceeds from the Kenvue debt offering and initial public offering, and it maintained a 9.5% equity stake in Kenvue [7].",
+    "claims": [
+      {
+        "display": "$13.2 billion",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:JOHNSON_JOHNSON_2023_8K_dated-2023-08-30#p4#0000",
+          "quote": "Company secured $13.2 billion in cash proceeds from the Kenvue debt offering and initial public offering and maintains 9.5%",
+          "type": "chunk"
+        },
+        "text": "Johnson & Johnson secured $13.2 billion in cash proceeds from the Kenvue debt offering and initial public offering, as announced August 30, 2023.",
+        "unit": "USD billions",
+        "value": "13.2"
+      },
+      {
+        "display": "9.5%",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:JOHNSON_JOHNSON_2023_8K_dated-2023-08-30#p4#0000",
+          "quote": "Company secured $13.2 billion in cash proceeds from the Kenvue debt offering and initial public offering and maintains 9.5%",
+          "type": "chunk"
+        },
+        "text": "Johnson & Johnson maintained a 9.5% equity stake in Kenvue.",
+        "unit": "percent",
+        "value": "9.5"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "98bfb642a5d179364bed5864c00c5884fda48caff3032e1591d2a253eeed3921",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00701870",
+    "input_tokens": 4399,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 500
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Las Vegas Strip Resorts had the highest Adjusted (Property) EBITDAR contribution in FY2022, at $3,142,308 thousand (about $3.1 billion) [1][8]. That compares with Regional Operations at $1,294,630 thousand and MGM China at a loss of $(203,136) thousand [1].",
+    "claims": [
+      {
+        "display": "$3.1 billion",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:MGMRESORTS_2022_10K#p41#0000",
+          "quote": "Las Vegas Strip Resorts | $ | 3,142,308 | $ | 1,738,211 | $ | 232,188",
+          "type": "chunk"
+        },
+        "text": "Las Vegas Strip Resorts Adjusted Property EBITDAR in FY2022 was $3,142,308 thousand (about $3.1 billion), the highest of MGM's segments.",
+        "unit": "USD thousands",
+        "value": "3142308"
+      },
+      {
+        "display": "$1,294,630 thousand",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:MGMRESORTS_2022_10K#p41#0000",
+          "quote": "Regional Operations | 1,294,630 | 1,217,814 | 343,990",
+          "type": "chunk"
+        },
+        "text": "Regional Operations Adjusted Property EBITDAR in FY2022 was $1,294,630 thousand.",
+        "unit": "USD thousands",
+        "value": "1294630"
+      },
+      {
+        "display": "$(203,136) thousand",
+        "id": "c3",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:MGMRESORTS_2022_10K#p41#0000",
+          "quote": "MGM China | (203,136) | 25,367 | (193,832)",
+          "type": "chunk"
+        },
+        "text": "MGM China Adjusted Property EBITDAR in FY2022 was a loss of $203,136 thousand.",
+        "unit": "USD thousands",
+        "value": "-203136"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "2d2b5c64068061c27824b36fb49896837a5025e064327414bc2b0c5c01c0a44c",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00787870",
+    "input_tokens": 4359,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 680
+  }
+}

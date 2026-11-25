@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not support an answer. For American Water Works at December 31, 2022, they give only the current liabilities side of the balance sheet: total current liabilities of $2,811 million [2]. They do not include total current assets, so working capital cannot be computed or judged positive or negative. Nothing in the passages says whether working capital is a useful or relevant metric for American Water. The working-capital discussions in [1], [4] and [5] define a company-specific measure for a different filer (accession prefix 0000833444), not American Water.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "American Water's total current liabilities were $2,811 million at December 31, 2022, including short-term debt of $1,175 million and current portion of long-term debt of $281 million [2].",
+        "The working-capital discussions in the other passages belong to a different company's filings."
+      ],
+      "missing": [
+        "American Water's total current assets at December 31, 2022 (cash, receivables, inventory, etc.)",
+        "Any company discussion of whether working capital is a meaningful metric for a regulated utility"
+      ],
+      "reason": "The passages lack American Water's FY2022 current assets, so working capital cannot be calculated. They also do not discuss whether working capital is a relevant metric for American Water."
+    }
+  },
+  "request_key": "4d54c38c5b98222532e8a6510df40bd4c6cd43bb000e0f410c8fb332f405e9f1",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00770970",
+    "input_tokens": 4795,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 559
+  }
+}

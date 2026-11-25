@@ -1,0 +1,27 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not include American Express's 2022 balance sheet, so I can't identify its largest liability. The only 2022 liability figure they give is total long-term debt of $42,573 million [4][7]. Without the other balance sheet liabilities (such as deposits), I can't say whether it is the largest.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Total long-term debt of American Express was $42,573 million as of December 31, 2022 (aggregate maturities table)."
+      ],
+      "missing": [
+        "American Express's consolidated balance sheet as of December 31, 2022, listing all liability line items (e.g., customer deposits, accounts payable, other liabilities)"
+      ],
+      "reason": "The passages contain only long-term debt maturity tables for American Express, not the full liabilities section of the balance sheet, so the largest liability cannot be determined."
+    }
+  },
+  "request_key": "91dd57472b632f04d7d6c10cf639ebb09db2afd07323c2cc70a5f9855494a5ea",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00476270",
+    "input_tokens": 2498,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 429
+  }
+}

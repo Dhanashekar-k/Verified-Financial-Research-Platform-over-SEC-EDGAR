@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not support an answer. The restructuring-liability passages ([1], [3], [8]) do not name Amcor, so I can't attribute them to it. The Amcor passages ([4]-[7]) cover guarantees, litigation, environmental accruals and subsequent events, not restructuring. None of the passages is a Q2 FY2023 filing for Amcor.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Passages [1] and [3] describe a restructuring liability made up mainly of employee termination costs, with immaterial real estate-related and other costs. They give $36 million at December 31, 2023 and $65 million at December 31, 2022, but the company is not named.",
+        "Passage [8] describes a $270 million restructuring liability at December 31, 2025, but the company is not named.",
+        "The Amcor passages cover legal proceedings, environmental accruals, guarantor information and a subsequent-event dividend, not restructuring."
+      ],
+      "missing": [
+        "Amcor's 10-Q for the second quarter of fiscal 2023 (the period ended December 31, 2022)",
+        "An Amcor restructuring note that describes the nature and purpose of the liability"
+      ],
+      "reason": "No passage describes an Amcor restructuring liability at the close of Q2 FY2023. The restructuring passages don't identify Amcor as the company, and no Q2 FY2023 (10-Q) data is provided."
+    }
+  },
+  "request_key": "616166c797494b4ed58cbf1acdd61e80f152b9864a44e83cc3c08b8382188455",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00648670",
+    "input_tokens": 2712,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 731
+  }
+}

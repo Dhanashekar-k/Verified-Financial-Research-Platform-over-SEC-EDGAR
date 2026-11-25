@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The answer covers server CPUs, client processors and chipsets, GPUs, embedded processors and FPGAs, which are most of the gold's key product categories, and it says the passages did not describe semi-custom products for FY22 while noting them in FY21; it omits DPUs, APUs and Adaptive SoCs, so the match is partial but still broadly aligned."
+  },
+  "request_key": "210ed36b7868df63d2dd19644592ee275ea73b8ad3caedc998fba9c9ec849fed",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00140655",
+    "input_tokens": 715,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 132
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Yes, based on the passages, Verizon appears capital intensive in FY2022: it invested $23.1 billion in capital expenditures during 2022, including about $6.2 billion of C-Band related spending [7]. The passages also show large ongoing capital needs, with a 2022 capital program guided at $16.5\u2013$17.5 billion plus an additional $5.0\u2013$6.0 billion for C-Band [5]. Long-term debt commitments were $150.2 billion as of December 31, 2021 [5]. The passages do not give FY2022 revenue or total assets, so capex intensity as a ratio cannot be computed from them.",
+    "claims": [
+      {
+        "display": "$23.1 billion",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000732712-23-000012#7#0003",
+          "quote": "these investments included $23.1 billion for capital expenditures",
+          "type": "chunk"
+        },
+        "text": "During the year ended December 31, 2022, Verizon's investments included $23.1 billion of capital expenditures.",
+        "unit": "USD billions",
+        "value": "23.1"
+      },
+      {
+        "display": "$6.2 billion",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000732712-23-000012#7#0003",
+          "quote": "inclusive of approximately $6.2 billion in C-Band related capital expenditures",
+          "type": "chunk"
+        },
+        "text": "The 2022 capital expenditures included approximately $6.2 billion of C-Band related capital expenditures.",
+        "unit": "USD billions",
+        "value": "6.2"
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:VERIZON_2021_10K#p36#0000",
+          "quote": "We anticipate cash requirements for our 2022 capital program to be between $16.5 billion and $17.5 billion.",
+          "type": "chunk"
+        },
+        "text": "Verizon anticipated 2022 capital program cash requirements of $16.5 billion to $17.5 billion, plus an additional $5.0 billion to $6.0 billion related to C-Band.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": "$150.2 billion",
+        "id": "c4",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:VERIZON_2021_10K#p36#0000",
+          "quote": "Long-term debt, including current maturities, commitments of $150.2 billion",
+          "type": "chunk"
+        },
+        "text": "Verizon's long-term debt commitments, including current maturities, were $150.2 billion as of December 31, 2021.",
+        "unit": "USD billions",
+        "value": "150.2"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "245fe8eb993f4edf1c80ed93f9eb4ea070a75a1838e0b87840056b02e4b9a1ea",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00964470",
+    "input_tokens": 5225,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 860
+  }
+}

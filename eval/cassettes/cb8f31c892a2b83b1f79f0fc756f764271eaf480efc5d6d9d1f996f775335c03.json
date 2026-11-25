@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not contain Host Hotels & Resorts' stockholders' equity at the end of Q3 2022 (September 30, 2022). They include only the headers of the annual statements of equity and annual-filing narrative, with no equity figures and no 10-Q data for that quarter.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "The passages include only the titles of the Consolidated Statements of Equity for FY2023, FY2024 and FY2025 10-Ks, without any figures [1][2][3].",
+        "The FY2022 10-K excerpts cover the repurchase program and business overview, not stockholders' equity [5][7]."
+      ],
+      "missing": [
+        "Host Hotels & Resorts' Form 10-Q balance sheet as of September 30, 2022, or a statement of equity showing stockholders' equity at that date"
+      ],
+      "reason": "The passages contain no stockholders' equity figures, and none from a Q3 2022 (September 30, 2022) 10-Q balance sheet."
+    }
+  },
+  "request_key": "cb8f31c892a2b83b1f79f0fc756f764271eaf480efc5d6d9d1f996f775335c03",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00554970",
+    "input_tokens": 3775,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 331
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Royal Caribbean's net income attributable to the company rose about **48.4%**, from $2,877 million in FY2024 to $4,268 million in FY2025 [8]. The increase was $1,391 million.",
+    "claims": [
+      {
+        "display": "$4,268 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000884887-26-000007#7#0030",
+          "quote": "Net Income attributable to Royal Caribbean Cruises Ltd. | $4,268 | $2,877 | $1,697",
+          "type": "chunk"
+        },
+        "text": "Net income attributable to Royal Caribbean Cruises Ltd. in FY2025 was $4,268 million.",
+        "unit": "USD millions",
+        "value": "4268"
+      },
+      {
+        "display": "$2,877 million",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000884887-26-000007#7#0030",
+          "quote": "Net Income attributable to Royal Caribbean Cruises Ltd. | $4,268 | $2,877 | $1,697",
+          "type": "chunk"
+        },
+        "text": "Net income attributable to Royal Caribbean Cruises Ltd. in FY2024 was $2,877 million.",
+        "unit": "USD millions",
+        "value": "2877"
+      },
+      {
+        "display": "48.4%",
+        "id": "c3",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000884887-26-000007#7#0030",
+          "quote": "Net Income attributable to Royal Caribbean Cruises Ltd. | $4,268 | $2,877 | $1,697",
+          "type": "chunk"
+        },
+        "text": "Net income attributable to Royal Caribbean Cruises Ltd. increased by about 48.4% from FY2024 to FY2025 (($4,268 - $2,877) / $2,877).",
+        "unit": "percent",
+        "value": "48.35"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "ab9276d3ed86a28abe0e76c834f64c3751c37ecdc5c01851abae2b82924bd679",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00664370",
+    "input_tokens": 2339,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 837
+  }
+}

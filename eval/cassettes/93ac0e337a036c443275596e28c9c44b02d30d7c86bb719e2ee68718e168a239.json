@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The system answer's 3-year average capex as a percent of revenue is 1.9%, matching the gold answer, and its supporting calculations are consistent."
+  },
+  "request_key": "93ac0e337a036c443275596e28c9c44b02d30d7c86bb719e2ee68718e168a239",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00064955",
+    "input_tokens": 303,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 63
+  }
+}

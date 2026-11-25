@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "I can't compute the FY2019 inventory turnover ratio because the passages don't include Kraft Heinz's FY2019 cost of products sold (COGS), which comes from the income statement. They do give the inventory balances: $2,721 million at December 28, 2019 [1][5] and $2,667 million at December 29, 2018 [2][5]. That makes average inventory $2,694 million, but without COGS the ratio can't be calculated.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Inventories were $2,721 million at December 28, 2019.",
+        "Inventories were $2,667 million at December 29, 2018."
+      ],
+      "missing": [
+        "Kraft Heinz FY2019 cost of products sold from the consolidated statement of income"
+      ],
+      "reason": "The passages lack Kraft Heinz's FY2019 cost of products sold (COGS), which is the numerator of the ratio. The income statement is not included."
+    }
+  },
+  "request_key": "3c8a1c75de4b1fe02bf2df6e6226d443ecc45e396cb4090648002b273b807a22",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00743470",
+    "input_tokens": 5470,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 369
+  }
+}

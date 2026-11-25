@@ -1,0 +1,31 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not contain Hartford's quarterly (Q2 2022 or Q2 2023) net income figures, so the percentage change cannot be calculated. They include only annual narrative discussion of net income drivers, stock-performance tables, and segment commentary, with no Q2 net income amounts.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Segment-level qualitative commentary on net income changes for full years 2021, 2022 and 2023 (e.g., Group Benefits net income increased in 2022 and 2023) [3][6]",
+        "Group Benefits net income margin of 5.0% in 2022 and an expected 6.0%-7.0% for 2023 [4]",
+        "Cumulative five-year total return tables [1][2]"
+      ],
+      "missing": [
+        "Hartford's consolidated net income for Q2 2022 (quarter ended June 30, 2022)",
+        "Hartford's consolidated net income for Q2 2023 (quarter ended June 30, 2023)",
+        "Quarterly (10-Q) financial statements"
+      ],
+      "reason": "The passages (10-K excerpts) do not provide Q2 2022 or Q2 2023 net income figures for The Hartford, so the requested percentage change cannot be determined."
+    }
+  },
+  "request_key": "2c19cf1431f8f92fb4243ec2fe3515db7d82b4776feab01286a0e4c7037f0bfc",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00620270",
+    "input_tokens": 4058,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 405
+  }
+}

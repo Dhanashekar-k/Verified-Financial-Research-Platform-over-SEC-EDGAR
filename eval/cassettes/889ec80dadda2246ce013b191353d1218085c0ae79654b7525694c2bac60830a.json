@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not support an answer. None of them is an AMD filing for fiscal year 2022. The only FY2022 passages [4][8] describe a different company, with Windchill, Creo and Arena products, not AMD. The AMD passages cover FY2020 [5], FY2021 [3] and FY2025 [1][2].",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "AMD FY2021 10-K: Computing and Graphics net revenue of $9.3 billion in 2021 rose 45% from $6.4 billion in 2020, driven by a 57% higher average selling price, partly offset by an 8% decrease in unit shipments.",
+        "AMD FY2021 10-K: Enterprise, Embedded and Semi-Custom net revenue of $7.1 billion in 2021 rose 113% from $3.3 billion in 2020, driven by higher sales of semi-custom products and EPYC server processors.",
+        "AMD FY2025 10-K: Data Center net revenue of $16.6 billion rose 32% and Client and Gaming net revenue of $14.6 billion rose 51%, partly offset by a 3% decline in Embedded net revenue."
+      ],
+      "missing": [
+        "AMD's 10-K for fiscal year 2022, including the MD&A discussion of 2022 versus 2021 net revenue"
+      ],
+      "reason": "No passage from AMD's FY2022 filing is provided, so the drivers of AMD's FY2022 revenue change cannot be determined. The FY2022 passages belong to a different company."
+    }
+  },
+  "request_key": "889ec80dadda2246ce013b191353d1218085c0ae79654b7525694c2bac60830a",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00826070",
+    "input_tokens": 4731,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 682
+  }
+}

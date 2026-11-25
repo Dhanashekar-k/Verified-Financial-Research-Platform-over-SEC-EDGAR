@@ -1,0 +1,62 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Using the figures available in the passages, Coca-Cola's FY2022 dividend payout ratio is about **0.80, or 79.83%**. That is dividends of $7,617 million [5] divided by net income attributable to shareowners of $9,542 million [5].\n\nCaveat: the passages do not include the cash flow statement. The dividend figure comes from the statement of shareowners' equity, so it is dividends recorded there and may not equal cash dividends paid.",
+    "claims": [
+      {
+        "display": "$7,617 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000021344-23-000011#8#0013",
+          "quote": "Dividends (per share \u2014 $1.76, $1.68 and $1.64 in 2022, 2021 and 2020, respectively) | (7,617) | (7,251) | (7,047)",
+          "type": "chunk"
+        },
+        "text": "Coca-Cola's FY2022 dividends were $7,617 million.",
+        "unit": "USD millions",
+        "value": "7617"
+      },
+      {
+        "display": "$9,542 million",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000021344-23-000011#8#0013",
+          "quote": "Net income attributable to shareowners of The Coca-Cola Company | 9,542 | 9,771 | 7,747",
+          "type": "chunk"
+        },
+        "text": "Net income attributable to shareowners of The Coca-Cola Company in FY2022 was $9,542 million.",
+        "unit": "USD millions",
+        "value": "9542"
+      },
+      {
+        "display": "79.83%",
+        "id": "c3",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000021344-23-000011#8#0013",
+          "quote": "Dividends (per share \u2014 $1.76, $1.68 and $1.64 in 2022, 2021 and 2020, respectively) | (7,617) | (7,251) | (7,047)",
+          "type": "chunk"
+        },
+        "text": "Coca-Cola's FY2022 dividend payout ratio (dividends divided by net income attributable to shareowners) is about 79.83%.",
+        "unit": "percent",
+        "value": "79.83"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "85c53874cb02f3b87df2aa78ab28fb451a524c29dd0b18aa367303e768d65971",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00995070",
+    "input_tokens": 4531,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 1060
+  }
+}

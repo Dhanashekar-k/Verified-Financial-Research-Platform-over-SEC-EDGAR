@@ -1,0 +1,31 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not contain enough information to say whether CVS Health is capital-intensive in FY2022. The FY2022 passages only describe the business: more than 9,000 retail locations, more than 1,100 walk-in medical clinics, and a pharmacy benefits manager with over 110 million plan members [3][5][7]. They give no capital expenditures, property and equipment, depreciation, total assets or revenue figures, so no capital-intensity measure can be computed.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "FY2022 10-K: more than 9,000 retail locations and more than 1,100 walk-in medical clinics.",
+        "FY2022 10-K: a pharmacy benefits manager with over 110 million plan members and a senior pharmacy care business serving more than one million patients per year."
+      ],
+      "missing": [
+        "FY2022 capital expenditures",
+        "FY2022 property and equipment, net",
+        "FY2022 depreciation and amortization",
+        "FY2022 total assets and revenue (to compute ratios such as capex/revenue)"
+      ],
+      "reason": "The FY2022 passages give only a qualitative business description and no financial data (capex, PP&E, depreciation, total assets, revenue) from which capital intensity could be assessed."
+    }
+  },
+  "request_key": "cbc21134fd4ac8632f675993585bdec1f8955cd895a7df6464f4e84963ff1698",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00809570",
+    "input_tokens": 5306,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 534
+  }
+}

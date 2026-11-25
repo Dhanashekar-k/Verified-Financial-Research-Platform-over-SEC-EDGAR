@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not report NiSource's net cash from operating activities for Q1 2021. They only cover full-year items such as depreciation and amortization, 401(k) expense, goodwill and 2020 debt activity, so I cannot give a figure.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Depreciation expense of $672.1 million for full-year 2021 [1]",
+        "401(k) match, profit sharing and non-elective contribution expense of $39.1 million for full-year 2021 [2]"
+      ],
+      "missing": [
+        "NiSource's Q1 2021 10-Q cash flow statement showing net cash flows from operating activities for the three months ended March 31, 2021"
+      ],
+      "reason": "None of the passages contain NiSource's cash flow from operating activities for the first quarter of 2021. No 10-Q for Q1 2021 or cash flow statement is included."
+    }
+  },
+  "request_key": "4448b0970f064846ebf40b727df8a288af51a7254021401203b1047f0fd6a5e2",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00330170",
+    "input_tokens": 1732,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 290
+  }
+}

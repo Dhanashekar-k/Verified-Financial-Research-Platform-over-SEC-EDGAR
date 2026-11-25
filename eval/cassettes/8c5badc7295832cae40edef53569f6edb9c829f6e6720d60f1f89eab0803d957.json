@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not give an Adjusted EBITDA figure for Amcor's FY2023. They report Adjusted EBIT of $1,608 million [2][6], but there is no depreciation figure to add back to get EBITDA.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Amcor FY2023 Adjusted EBIT was $1,608 million [2][6].",
+        "Amcor FY2023 EBIT (before adjustments) was $1,510 million, and amortization of acquired intangibles added back was $160 million [6]."
+      ],
+      "missing": [
+        "Amcor's FY2023 depreciation expense, or an explicit Adjusted EBITDA reconciliation"
+      ],
+      "reason": "The passages report Adjusted EBIT, not Adjusted EBITDA, for Amcor FY2023, and they contain no depreciation data to derive it. The only passage with an 'Adjusted EBITDA' heading [1] is an empty table fragment that does not name Amcor or FY2023."
+    }
+  },
+  "request_key": "8c5badc7295832cae40edef53569f6edb9c829f6e6720d60f1f89eab0803d957",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00555770",
+    "input_tokens": 2858,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 516
+  }
+}

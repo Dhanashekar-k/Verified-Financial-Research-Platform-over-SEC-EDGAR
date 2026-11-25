@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not provide quarterly (Q1 2020 or Q1 2021) operating cash flow figures for EchoStar, so the percentage change between those periods cannot be calculated. The passages only give annual operating cash flow for 2023-2025 (outflow of $99 million in 2025, inflows of $1.253 billion in 2024 and $2.433 billion in 2023) [6], and no operating cash flow for 2020 or 2021.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Net cash flows from operating activities for 2025, 2024 and 2023 were an outflow of $99 million and inflows of $1.253 billion and $2.433 billion, respectively [6].",
+        "Passages for FY2021 and FY2022 give EBITDA, net income and subscriber data, but not operating cash flow [1][2][5]."
+      ],
+      "missing": [
+        "EchoStar's operating cash flow for Q1 2020",
+        "EchoStar's operating cash flow for Q1 2021 (10-Q data)"
+      ],
+      "reason": "The passages contain no Q1 2020 or Q1 2021 operating cash flow data for EchoStar, so the requested percentage change cannot be computed."
+    }
+  },
+  "request_key": "75cdc6be0c8bb82a84e53d36cf92db30e1d66a6bc6a15f805ebf2d945877b1df",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00508170",
+    "input_tokens": 2987,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 395
+  }
+}

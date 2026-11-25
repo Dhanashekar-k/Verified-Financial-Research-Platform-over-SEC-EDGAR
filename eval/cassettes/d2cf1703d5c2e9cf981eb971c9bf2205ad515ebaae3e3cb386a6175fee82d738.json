@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not state UAL's total stockholders' equity at FY2025 year-end. The FY2025 10-K excerpt [3] covers only market information, holders of record (4,218 as of February 5, 2026), dividend policy and the repurchase table header. It contains no balance sheet data.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "The FY2025 10-K passage reports 4,218 holders of record of UAL common stock as of February 5, 2026 [3].",
+        "It reports no cash dividend payments during 2025 [3]."
+      ],
+      "missing": [
+        "UAL consolidated balance sheet as of December 31, 2025",
+        "Total stockholders' equity figure for FY2025"
+      ],
+      "reason": "The provided passages do not include UAL's balance sheet or any stockholders' equity figure for December 31, 2025."
+    }
+  },
+  "request_key": "d2cf1703d5c2e9cf981eb971c9bf2205ad515ebaae3e3cb386a6175fee82d738",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00615070",
+    "input_tokens": 4656,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 275
+  }
+}

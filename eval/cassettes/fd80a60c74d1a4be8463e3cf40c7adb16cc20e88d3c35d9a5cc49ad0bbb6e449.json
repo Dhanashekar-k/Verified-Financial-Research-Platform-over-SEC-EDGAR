@@ -1,0 +1,27 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not give Ameriprise Financial's net income for Q4 of fiscal 2023. They report only full-year figures, such as net income of $2,556 million for the year ended December 31, 2023 [1][2]. No quarterly breakdown is provided.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Ameriprise Financial net income for the full year ended December 31, 2023 was $2,556 million [1][2]."
+      ],
+      "missing": [
+        "Ameriprise Financial's Q4 2023 (three months ended December 31, 2023) net income, or quarterly figures from which it could be derived"
+      ],
+      "reason": "The passages contain only annual net income figures for Ameriprise Financial, not fourth-quarter results. Passage 7 includes Q4 2022 data, but it is not for Ameriprise and not for 2023."
+    }
+  },
+  "request_key": "fd80a60c74d1a4be8463e3cf40c7adb16cc20e88d3c35d9a5cc49ad0bbb6e449",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00463870",
+    "input_tokens": 3119,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 280
+  }
+}

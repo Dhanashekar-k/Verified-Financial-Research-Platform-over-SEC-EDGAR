@@ -1,0 +1,76 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Excluding FX movements, raw-material pass-through price increases and items affecting comparability, Amcor's FY2023 net sales were about **1% higher** than FY2022 [1]. This is price/mix of about +4% offset by volumes about 3% lower [1]. Caveat: the full-year figures in the passages are for the Flexibles segment, which reported net sales of $11,154 million vs $11,151 million, essentially flat. No full-year group-level figure is given [1].",
+    "claims": [
+      {
+        "display": "1%",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:AMCOR_2023Q4_EARNINGS#p3#0000",
+          "quote": "On a comparable constant currency basis, net sales were approximately 1% higher than last year reflecting price/mix benefits of 4%, partly offset by approximately 3% lower volumes.",
+          "type": "chunk"
+        },
+        "text": "On a comparable constant currency basis, Amcor Flexibles' net sales for the twelve months ended June 30, 2023 were approximately 1% higher than the prior year.",
+        "unit": "percent",
+        "value": "1"
+      },
+      {
+        "display": "4%",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:AMCOR_2023Q4_EARNINGS#p3#0000",
+          "quote": "reflecting price/mix benefits of 4%, partly offset by approximately 3% lower volumes.",
+          "type": "chunk"
+        },
+        "text": "Price/mix benefits were approximately 4% for the twelve months ended June 30, 2023.",
+        "unit": "percent",
+        "value": "4"
+      },
+      {
+        "display": "3%",
+        "id": "c3",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:AMCOR_2023Q4_EARNINGS#p3#0000",
+          "quote": "partly offset by approximately 3% lower volumes.",
+          "type": "chunk"
+        },
+        "text": "Volumes were approximately 3% lower for the twelve months ended June 30, 2023.",
+        "unit": "percent",
+        "value": "3"
+      },
+      {
+        "display": "$11,154 million",
+        "id": "c4",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:AMCOR_2023Q4_EARNINGS#p3#0000",
+          "quote": "Twelve months ended June 30, 2023 Net sales of $11,154 million were in line with last year on a reported basis",
+          "type": "chunk"
+        },
+        "text": "Flexibles net sales for the twelve months ended June 30, 2023 were $11,154 million, in line with last year on a reported basis.",
+        "unit": "USD millions",
+        "value": "11154"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "07c21eb1aa887ee7bf2c121a43914f86a0b137d1c5ba91cc0b99c541df59636d",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00933570",
+    "input_tokens": 1801,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 1483
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Yes, but only slightly. Q2 2023 net earnings were $5,144M on sales of $25,530M, a net margin of about 20.15% [1]. Q2 2022 net earnings were $4,814M on sales of $24,020M, a margin of about 20.04% [1]. That is an increase of roughly 0.11 percentage points.",
+    "claims": [
+      {
+        "display": "$5,144M",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:JOHNSON_JOHNSON_2023Q2_EARNINGS#p1#0000",
+          "quote": "Net Earnings/(Loss) | $5,144 | $4,814 | 6.9%",
+          "type": "chunk"
+        },
+        "text": "Q2 2023 J&J net earnings were $5,144 million.",
+        "unit": "USD millions",
+        "value": "5144"
+      },
+      {
+        "display": "$25,530M",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:JOHNSON_JOHNSON_2023Q2_EARNINGS#p1#0000",
+          "quote": "Reported Sales | $25,530 | $24,020 | 6.3%",
+          "type": "chunk"
+        },
+        "text": "Q2 2023 J&J reported sales were $25,530 million.",
+        "unit": "USD millions",
+        "value": "25530"
+      },
+      {
+        "display": "$4,814M",
+        "id": "c3",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:JOHNSON_JOHNSON_2023Q2_EARNINGS#p1#0000",
+          "quote": "Net Earnings/(Loss) | $5,144 | $4,814 | 6.9%",
+          "type": "chunk"
+        },
+        "text": "Q2 2022 J&J net earnings were $4,814 million.",
+        "unit": "USD millions",
+        "value": "4814"
+      },
+      {
+        "display": "$24,020M",
+        "id": "c4",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:JOHNSON_JOHNSON_2023Q2_EARNINGS#p1#0000",
+          "quote": "Reported Sales | $25,530 | $24,020 | 6.3%",
+          "type": "chunk"
+        },
+        "text": "Q2 2022 J&J reported sales were $24,020 million.",
+        "unit": "USD millions",
+        "value": "24020"
+      },
+      {
+        "display": "20.15%",
+        "id": "c5",
+        "kind": "numeric_derived",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:JOHNSON_JOHNSON_2023Q2_EARNINGS#p1#0000",
+          "quote": "Net Earnings/(Loss) | $5,144 | $4,814 | 6.9%",
+          "type": "chunk"
+        },
+        "text": "Q2 2023 net earnings as a percent of sales was about 20.15%.",
+        "unit": "percent",
+        "value": "20.15"
+      },
+      {
+        "display": "20.04%",
+        "id": "c6",
+        "kind": "numeric_derived",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:JOHNSON_JOHNSON_2023Q2_EARNINGS#p1#0000",
+          "quote": "Net Earnings/(Loss) | $5,144 | $4,814 | 6.9%",
+          "type": "chunk"
+        },
+        "text": "Q2 2022 net earnings as a percent of sales was about 20.04%.",
+        "unit": "percent",
+        "value": "20.04"
+      },
+      {
+        "display": "about 0.11 percentage points",
+        "id": "c7",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:JOHNSON_JOHNSON_2023Q2_EARNINGS#p1#0000",
+          "quote": "Reported Sales | $25,530 | $24,020 | 6.3%",
+          "type": "chunk"
+        },
+        "text": "Net earnings as a percent of sales increased by about 0.11 percentage points in Q2 2023 versus Q2 2022 (from about 20.04% to about 20.15%).",
+        "unit": "percent",
+        "value": "0.11"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "756516f87b8f717af7afe2bcebe59a8d8bb5e0627f45178f52384580077b43f1",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.01205870",
+    "input_tokens": 3549,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 1678
+  }
+}

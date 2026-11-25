@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not support an answer. They cover only Pinnacle West and contain no Southwest Airlines financial data, so the FY2023 operating income gap cannot be computed. Pinnacle West's FY2023 operating income is also not stated directly in the passages.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Pinnacle West FY2023 consolidated operating revenues were $4,696 million, with fuel and purchased power of $1,793 million, operations and maintenance of $1,059 million, depreciation and amortization of $794 million, and taxes other than income taxes of $224 million [7]."
+      ],
+      "missing": [
+        "Southwest Airlines' FY2023 operating income",
+        "An explicit Pinnacle West FY2023 operating income figure"
+      ],
+      "reason": "The passages contain no information about Southwest Airlines, so a comparison of FY2023 operating income between the two companies cannot be made."
+    }
+  },
+  "request_key": "00880d5ba98c9ef6da2477737ac67ad89526b7219ce8991ed25b6f251b382b14",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00623570",
+    "input_tokens": 4606,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 302
+  }
+}

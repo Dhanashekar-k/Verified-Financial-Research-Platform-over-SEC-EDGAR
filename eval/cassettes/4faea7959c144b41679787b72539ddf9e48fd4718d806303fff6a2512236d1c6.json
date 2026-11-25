@@ -1,0 +1,27 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "I can't answer this from the passages. None of them names Huntington Ingalls Industries, and the interest expense tables give no way to tie any of them to that company. The passages show interest expense for several unnamed filers, so using one of them for Huntington Ingalls would be a guess.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Several filers' interest expense tables appear, none labeled as Huntington Ingalls Industries, e.g. one with $776,510 thousand (2025) vs. $718,733 thousand (2024) [2], and another with $85.5 million (FY2025) vs. $107.5 million (FY2024) [3]."
+      ],
+      "missing": [
+        "A passage from Huntington Ingalls Industries' 10-K that is identified as theirs, showing interest expense for fiscal 2025 and fiscal 2024."
+      ],
+      "reason": "The passages do not identify Huntington Ingalls Industries as the filer of any interest expense table, so its FY2024-to-FY2025 change cannot be determined."
+    }
+  },
+  "request_key": "4faea7959c144b41679787b72539ddf9e48fd4718d806303fff6a2512236d1c6",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00406470",
+    "input_tokens": 1285,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 532
+  }
+}

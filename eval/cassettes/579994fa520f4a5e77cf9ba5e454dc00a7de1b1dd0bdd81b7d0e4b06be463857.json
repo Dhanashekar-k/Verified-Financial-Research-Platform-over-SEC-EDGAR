@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not support an answer. None of them contain JPMorgan Chase (JPM) financial data, such as its assets, liabilities, shareholders' equity, or shares outstanding as of Q1 2021. They cover other companies (e.g., Aflac, a hotel/franchise company, Target-like retailer balance sheets), so a per-shareholder liquidation value for JPM cannot be computed without outside knowledge.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Passages cover other companies' balance sheet and segment data (e.g., Aflac total assets of $157,542 million at 2021 year-end), not JPM."
+      ],
+      "missing": [
+        "JPM total assets and liabilities as of Q1 2021 (March 31, 2021)",
+        "JPM shareholders' equity, including preferred stock claims",
+        "JPM number of common shares outstanding",
+        "Estimated liquidation recovery values for JPM assets"
+      ],
+      "reason": "The provided passages contain no information about JPMorgan Chase (JPM), so liquidation proceeds per shareholder cannot be determined."
+    }
+  },
+  "request_key": "579994fa520f4a5e77cf9ba5e454dc00a7de1b1dd0bdd81b7d0e4b06be463857",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00412370",
+    "input_tokens": 2214,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 358
+  }
+}

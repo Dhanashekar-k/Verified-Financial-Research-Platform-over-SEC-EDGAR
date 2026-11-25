@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not give J&J's U.S. versus international sales growth for FY2022, so I can't make that comparison. Passage [1] gives only total FY2022 reported sales of $94,943 million, up 1.3% [1]. The U.S./international split in passage [6] covers 2021 versus 2020, not 2022 [6].",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "J&J full-year 2022 reported sales were $94,943 million versus $93,775 million in 2021, up 1.3% (total only).",
+        "The FY2021 10-K says U.S. sales grew 9.3% and international sales grew 18.2% in 2021, which is not FY2022."
+      ],
+      "missing": [
+        "J&J FY2022 U.S. sales and growth rate",
+        "J&J FY2022 international sales and growth rate"
+      ],
+      "reason": "The passages contain no FY2022 breakdown of J&J sales between U.S. and international companies. The only U.S./international growth figures are for 2021 versus 2020."
+    }
+  },
+  "request_key": "5cb34c6f7f59c037ede2972abd16989f92367fafa0bc7e8fdcd8fafa63b6cb70",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00836170",
+    "input_tokens": 5367,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 575
+  }
+}

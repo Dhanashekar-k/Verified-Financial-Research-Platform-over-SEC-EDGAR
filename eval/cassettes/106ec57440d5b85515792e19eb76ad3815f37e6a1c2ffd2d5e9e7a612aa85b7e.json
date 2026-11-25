@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not contain TE Connectivity's SG&A expenses for Q3 2025. The TE Connectivity passages [1]-[7] only give cumulative total shareholder return comparisons. The SG&A passage [8] does not name TE Connectivity and shows annual figures, not a quarterly figure.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Passages 1-7 are stock performance graph tables for TE Connectivity, with no SG&A data.",
+        "Passage 8 shows annual SG&A of $24,966 (2025), $22,810 (2024) and $21,590 (2023), but it does not identify the company as TE Connectivity and is not quarterly."
+      ],
+      "missing": [
+        "TE Connectivity's 10-Q for the third quarter of fiscal 2025, or an income statement showing quarterly SG&A expenses"
+      ],
+      "reason": "No passage provides TE Connectivity's SG&A expenses for Q3 2025. The only SG&A data is annual and is not attributed to TE Connectivity."
+    }
+  },
+  "request_key": "106ec57440d5b85515792e19eb76ad3815f37e6a1c2ffd2d5e9e7a612aa85b7e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00400270",
+    "input_tokens": 1773,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 422
+  }
+}

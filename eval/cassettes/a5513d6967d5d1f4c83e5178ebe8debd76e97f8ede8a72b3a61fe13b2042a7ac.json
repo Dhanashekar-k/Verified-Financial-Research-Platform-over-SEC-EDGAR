@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The system answer gives a payout ratio of about 0.80 (79.83%), which matches the gold answer of 0.8; the caveat about the dividend source does not change the stated result."
+  },
+  "request_key": "a5513d6967d5d1f4c83e5178ebe8debd76e97f8ede8a72b3a61fe13b2042a7ac",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00068255",
+    "input_tokens": 291,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 72
+  }
+}

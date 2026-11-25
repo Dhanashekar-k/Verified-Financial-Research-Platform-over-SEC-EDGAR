@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not report common shares outstanding at the end of fiscal 2021 for either company. D.R. Horton's passages give only a weighted average share count (361.1 million for fiscal 2021) [6]. The Jacobs Solutions passages contain only stock performance graph data, with no share counts [1][2][3][4]. A difference in shares outstanding cannot be computed from these passages.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "D.R. Horton's weighted average number of common shares was 361.1 million for fiscal 2021 (a weighted average, not period-end shares outstanding).",
+        "The Jacobs passages contain only cumulative total return performance graph data."
+      ],
+      "missing": [
+        "D.R. Horton common shares outstanding at September 30, 2021",
+        "Jacobs Solutions common shares outstanding at the end of fiscal 2021"
+      ],
+      "reason": "The passages do not state shares outstanding at fiscal year-end 2021 for D.R. Horton or Jacobs Solutions. Jacobs share data is absent entirely."
+    }
+  },
+  "request_key": "246099fbeecc612dcf663dd82e901101aac281c6c36d0f597b007b06371c5a98",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00447170",
+    "input_tokens": 2597,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 351
+  }
+}

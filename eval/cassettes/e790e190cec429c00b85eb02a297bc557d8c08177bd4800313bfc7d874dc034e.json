@@ -1,0 +1,27 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not support an answer. They contain only the company name header for FY2021 and FY2022 10-K sections, with no financial data and nothing about Q1 2026.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Passages are headers for Raymond James Financial, Inc. and Subsidiaries 10-K filings for FY2021 and FY2022, with no net income data."
+      ],
+      "missing": [
+        "Raymond James Financial's 10-Q or other filing for Q1 fiscal 2026 reporting net income"
+      ],
+      "reason": "The passages contain no financial figures and cover only FY2021 and FY2022 10-K filings, not Q1 2026."
+    }
+  },
+  "request_key": "e790e190cec429c00b85eb02a297bc557d8c08177bd4800313bfc7d874dc034e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00190170",
+    "input_tokens": 667,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 223
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not name any specific companies acquired by Pfizer. Passage [1] only says Pfizer made \"acquisitions targeted at critical unmet patient needs\" and mentions \"recently acquired assets\", without naming the targets. I cannot identify three acquired companies from these passages.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Passage [1] (FY2022 10-K) refers generically to acquisitions targeted at critical unmet patient needs and to recently acquired assets, without naming companies."
+      ],
+      "missing": [
+        "The acquisitions or business development section of the 10-K, or the notes on acquisitions, naming the acquired companies."
+      ],
+      "reason": "The provided passages do not name any specific companies acquired by Pfizer."
+    }
+  },
+  "request_key": "92e3b753951c351dd43e45e2b995e89aad1b76ce7a567d166a849e14986c710d",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00653070",
+    "input_tokens": 5146,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 253
+  }
+}

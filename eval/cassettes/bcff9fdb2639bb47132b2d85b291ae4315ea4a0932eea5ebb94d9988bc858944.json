@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The answer says yes, net earnings as a percent of sales increased from about 20.0% in Q2 2022 to about 20.1% in Q2 2023, which matches the gold answer's conclusion and figures within rounding."
+  },
+  "request_key": "bcff9fdb2639bb47132b2d85b291ae4315ea4a0932eea5ebb94d9988bc858944",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00071255",
+    "input_tokens": 251,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 86
+  }
+}

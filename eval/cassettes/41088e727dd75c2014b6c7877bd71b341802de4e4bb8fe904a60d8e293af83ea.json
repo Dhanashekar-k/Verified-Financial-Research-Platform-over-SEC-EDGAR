@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "I can't answer this from the passages. They contain only AppLovin's index to its financial statements and some note text (business description, principles of consolidation). They give no balance sheet figures for either company, and nothing at all on Intuit.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "AppLovin's 10-K filings (FY2021-FY2025) are represented only by their financial statement index pages and note text on business description and consolidation policies."
+      ],
+      "missing": [
+        "Intuit's total liabilities at the end of FY2022",
+        "AppLovin's total liabilities at December 31, 2022 (balance sheet)"
+      ],
+      "reason": "The passages have no total liabilities figure for either Intuit or AppLovin at FY2022 year end, and none mention Intuit."
+    }
+  },
+  "request_key": "41088e727dd75c2014b6c7877bd71b341802de4e4bb8fe904a60d8e293af83ea",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00399570",
+    "input_tokens": 2621,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 251
+  }
+}

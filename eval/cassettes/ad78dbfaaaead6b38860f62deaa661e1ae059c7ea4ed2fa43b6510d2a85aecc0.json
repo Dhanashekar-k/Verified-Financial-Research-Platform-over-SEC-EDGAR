@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not provide FedEx Corp's operating income for Q2 of fiscal year 2026. They come from annual 10-K filings, which report full-year figures, and contain no quarterly (10-Q) data. The only FY2026 operating income shown is for the FedEx Freight segment, at $616 million for the full year [8]. That is not consolidated FedEx operating income and not a Q2 figure.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "FedEx Freight segment operating income for full fiscal year 2026 was $616 million [8].",
+        "Full-year FY2026 10-K disclosures of certain items affecting operating income, such as $23 million of asset impairment charges [1]."
+      ],
+      "missing": [
+        "FedEx Corp's Q2 FY2026 (quarter ended November 30, 2025) 10-Q with consolidated operating income"
+      ],
+      "reason": "The passages contain only annual 10-K data and no Q2 FY2026 quarterly consolidated operating income figure for FedEx Corp."
+    }
+  },
+  "request_key": "ad78dbfaaaead6b38860f62deaa661e1ae059c7ea4ed2fa43b6510d2a85aecc0",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00539770",
+    "input_tokens": 3573,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 341
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not contain Adobe's FY2015 cash flow statement or statement of financial position, so the operating cash flow ratio (cash from operations / total current liabilities) cannot be computed. The passages cover other companies and fiscal years, and none gives Adobe's FY2015 cash from operations or total current liabilities.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Passages cover other companies and periods (e.g., FY2020-FY2024 liquidity discussions and lease cash flow tables) and none are Adobe FY2015."
+      ],
+      "missing": [
+        "Adobe FY2015 net cash provided by operating activities from the cash flow statement",
+        "Adobe FY2015 total current liabilities from the statement of financial position"
+      ],
+      "reason": "The provided passages contain no Adobe FY2015 financial data (neither net cash from operating activities nor total current liabilities)."
+    }
+  },
+  "request_key": "35097b129204c3b13c26fd3809a825c36f7c8b60c267f0214912002461c99485",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00489570",
+    "input_tokens": 3306,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 294
+  }
+}

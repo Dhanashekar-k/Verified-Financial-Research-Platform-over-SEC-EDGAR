@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not state AIG's net cash provided by operating activities for fiscal year 2024. They cover AIG's investing and financing cash flows only. The other operating cash flow figures come from different companies, so I did not use them.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "AIG's net cash provided by investing activities in 2024 was $1.7 billion, including $4.2 billion used in discontinued operations [1].",
+        "AIG's net cash used in financing activities in 2024 was $5.1 billion [1]."
+      ],
+      "missing": [
+        "AIG's consolidated net cash provided by (used in) operating activities for the year ended December 31, 2024"
+      ],
+      "reason": "None of the AIG passages report net cash from operating activities for FY2024."
+    }
+  },
+  "request_key": "12c8b88f66139fa5f499be92c29480198a1440cb219a748c1bce82d501baa764",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00416370",
+    "input_tokens": 2274,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 354
+  }
+}

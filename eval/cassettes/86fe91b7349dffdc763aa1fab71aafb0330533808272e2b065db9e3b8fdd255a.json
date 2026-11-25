@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages don't support an answer. None of them identifies Intuit Inc., and none gives Q2 (quarterly) R&D figures for fiscal 2025 or fiscal 2026. They only show annual R&D for various unnamed companies.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Annual R&D figures for unnamed companies, e.g. $2,075.2 million vs $1,950.4 million (6.4% change) for years ended January 31, 2026 and February 1, 2025 [1]",
+        "Annual R&D of $767,386 thousand vs $693,078 thousand (11% change) for fiscal years ended January 31, 2026 and 2025 [7]"
+      ],
+      "missing": [
+        "Intuit Inc.'s Q2 fiscal 2025 R&D expense",
+        "Intuit Inc.'s Q2 fiscal 2026 R&D expense",
+        "A 10-Q or filing explicitly identified as Intuit's"
+      ],
+      "reason": "The passages contain no Intuit Inc. data and no Q2 quarterly R&D figures for fiscal 2025 or fiscal 2026, so the percentage change can't be computed."
+    }
+  },
+  "request_key": "86fe91b7349dffdc763aa1fab71aafb0330533808272e2b065db9e3b8fdd255a",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00425770",
+    "input_tokens": 1673,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 493
+  }
+}

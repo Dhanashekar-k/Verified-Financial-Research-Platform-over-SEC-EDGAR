@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "incorrect",
+    "reason": "The gold answer says Pfizer is spinning off Upjohn, while the system answer says no spin-off is supported for Q2 2023 and describes Upjohn only as a completed 2020 transaction, so it contradicts the gold conclusion."
+  },
+  "request_key": "67ada586a18a4c0c9795e8c268474ee96f6bc537d3b71221d7762c32d89fa726",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00077555",
+    "input_tokens": 264,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 96
+  }
+}

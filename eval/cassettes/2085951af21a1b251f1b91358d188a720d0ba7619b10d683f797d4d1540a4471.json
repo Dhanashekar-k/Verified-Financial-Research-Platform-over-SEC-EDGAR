@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not provide Workday's Q2 FY2022 operating cash flow. The only Workday-like passage ([3], fiscal year ended July 31) shows only cash paid for contractual interest, not operating cash flow, and no passage gives quarterly figures for Workday.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Passage [3] shows cash paid for contractual interest of $20.2 (year ended July 31, 2022), which is not operating cash flow and is not identified as Workday's.",
+        "Other passages give annual operating cash flow commentary for other, unnamed companies."
+      ],
+      "missing": [
+        "Workday's Q2 FY2022 10-Q cash flow statement showing net cash provided by operating activities"
+      ],
+      "reason": "The passages contain no Workday quarterly (Q2 FY2022) operating cash flow figure."
+    }
+  },
+  "request_key": "2085951af21a1b251f1b91358d188a720d0ba7619b10d683f797d4d1540a4471",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00602570",
+    "input_tokens": 4491,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 283
+  }
+}

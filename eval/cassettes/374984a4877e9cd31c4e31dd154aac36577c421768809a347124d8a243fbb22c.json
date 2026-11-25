@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages don't support an answer. The only passage that names Quanta Services, Inc. [7] is a tax footnote with no operating income figures. The passages that report operating income for fiscal 2022 and 2023 [1] do not name the company, and the other operating income tables [2][5][6] don't name it either. I can't attribute any of them to Quanta without guessing.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Passage [7] is from Quanta Services, Inc.'s FY2025 10-K and covers only income tax provision notes.",
+        "Passage [1] shows operating income of $3,823,112 thousand in fiscal 2023 versus $3,278,700 thousand in fiscal 2022 (17% change), but it does not name the company."
+      ],
+      "missing": [
+        "Quanta Services, Inc.'s operating income for fiscal years 2022 and 2023, in a passage that identifies the company"
+      ],
+      "reason": "No passage ties fiscal 2022 and 2023 operating income figures to Quanta Services, Inc. The only Quanta passage is a tax footnote with no operating income data."
+    }
+  },
+  "request_key": "374984a4877e9cd31c4e31dd154aac36577c421768809a347124d8a243fbb22c",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00550670",
+    "input_tokens": 2542,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 569
+  }
+}

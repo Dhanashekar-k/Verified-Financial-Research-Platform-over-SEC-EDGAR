@@ -1,0 +1,62 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "PepsiCo raised its full-year 2023 core constant currency EPS growth guidance by 1 percentage point, to 9 percent from the previous 8 percent [1][2].",
+    "claims": [
+      {
+        "display": "1 percentage point",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:PEPSICO_2023Q1_EARNINGS#p3#0000",
+          "quote": "9 percent core constant currency EPS growth (previously 8 percent)",
+          "type": "chunk"
+        },
+        "text": "PepsiCo raised its full-year 2023 core constant currency EPS growth guidance by 1 percentage point (from 8 percent to 9 percent).",
+        "unit": "percent",
+        "value": "1"
+      },
+      {
+        "display": "9 percent",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:PEPSICO_2023Q1_EARNINGS#p3#0000",
+          "quote": "9 percent core constant currency EPS growth (previously 8 percent)",
+          "type": "chunk"
+        },
+        "text": "The new full-year 2023 core constant currency EPS growth expectation is 9 percent.",
+        "unit": "percent",
+        "value": "9"
+      },
+      {
+        "display": "8 percent",
+        "id": "c3",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:PEPSICO_2023Q1_EARNINGS#p3#0000",
+          "quote": "9 percent core constant currency EPS growth (previously 8 percent)",
+          "type": "chunk"
+        },
+        "text": "The previous full-year 2023 core constant currency EPS growth expectation was 8 percent.",
+        "unit": "percent",
+        "value": "8"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "8905f198119111a761a52b83af8398e9c77e10d2bf01a9d62051cd5cd87ba642",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00705570",
+    "input_tokens": 4071,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 573
+  }
+}

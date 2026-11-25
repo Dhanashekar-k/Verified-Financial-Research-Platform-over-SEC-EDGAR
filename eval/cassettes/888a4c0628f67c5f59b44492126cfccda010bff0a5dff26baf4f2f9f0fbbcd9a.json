@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The system answer gives a fixed asset turnover of 24.26x, matching the gold answer of 24.26, and its supporting calculation (6,489 / 267.5) is consistent with that figure."
+  },
+  "request_key": "888a4c0628f67c5f59b44492126cfccda010bff0a5dff26baf4f2f9f0fbbcd9a",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00066555",
+    "input_tokens": 244,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 78
+  }
+}

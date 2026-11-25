@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not contain Boeing's FY2022 description of its primary customers. The only FY2022 passage [5] is a table of contractual deliveries. The FY2020 and FY2021 10-Ks say BDS' primary customer is the U.S. Department of Defense [1][2], but I can't confirm that this applied in FY2022.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "FY2020 10-K: BDS' primary customer is the U.S. DoD, about 83% of BDS 2020 revenues.",
+        "FY2021 10-K: BDS' primary customer is the U.S. DoD, about 84% of BDS 2021 revenues.",
+        "The FY2020 and FY2021 10-Ks say the Commercial Airplanes segment serves principally the commercial airline industry worldwide."
+      ],
+      "missing": [
+        "FY2022 10-K business section describing primary customers (e.g., BDS U.S. DoD share of 2022 revenues)"
+      ],
+      "reason": "No passage from the FY2022 10-K describes Boeing's primary customers. The only FY2022 passage is a delivery schedule table."
+    }
+  },
+  "request_key": "1b2eece4be65ca77ff0889391a7acc65f7a2cb91d701389ce0a60e6e07ad72b4",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00723870",
+    "input_tokens": 4484,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 527
+  }
+}

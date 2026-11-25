@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not show whether 3M's dividend distribution has been stable. They give no dividend amounts, per-share figures or payout history for any period. They only say that 3M expects to keep returning cash to shareholders through dividends and share repurchases [1][7]. That is a statement of intent, not a record of a stable dividend trend.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "3M expects to continue returning cash to shareholders through dividends and share repurchases (FY2022 and FY2025 10-K liquidity discussions).",
+        "The FY2020 10-K says 3M suspended share repurchases in March 2020 and would continue to return cash through dividends."
+      ],
+      "missing": [
+        "Dividends declared or paid per share across multiple years",
+        "Cash flow statement dividend payments by year",
+        "Any statement on dividend increases, cuts or consecutive years of payments"
+      ],
+      "reason": "The passages contain no dividend amounts or history, so a dividend trend cannot be assessed."
+    }
+  },
+  "request_key": "4a144898d51e6a1aa38c2b5c5f7512a1314a442b7e6059f25666e3baf592e9b1",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00742670",
+    "input_tokens": 5247,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 412
+  }
+}

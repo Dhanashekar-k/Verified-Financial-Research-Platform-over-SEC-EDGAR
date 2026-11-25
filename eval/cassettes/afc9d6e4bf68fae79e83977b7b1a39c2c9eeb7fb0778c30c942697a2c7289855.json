@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not support an answer. None of them is identified as belonging to Tyler Technologies Inc., and none reports total liabilities for fiscal year 2022. The passages show only total liabilities and equity (or capitalization) for unnamed companies.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Passages [2], [4], [5], [7] and [8] show total liabilities and equity (or capitalization) for unnamed companies, not total liabilities.",
+        "Passage [1] is a TE Connectivity plc stock performance table."
+      ],
+      "missing": [
+        "Tyler Technologies Inc. FY2022 balance sheet",
+        "Total liabilities figure for Tyler Technologies at December 31, 2022"
+      ],
+      "reason": "None of the passages is identified as Tyler Technologies Inc., and none gives a total liabilities figure for fiscal year 2022."
+    }
+  },
+  "request_key": "afc9d6e4bf68fae79e83977b7b1a39c2c9eeb7fb0778c30c942697a2c7289855",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00297370",
+    "input_tokens": 1414,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 288
+  }
+}

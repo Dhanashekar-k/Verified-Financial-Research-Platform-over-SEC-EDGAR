@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The answer states the proposal was defeated, matching the gold answer, and the supporting vote counts (far more Against than For) are consistent with that outcome."
+  },
+  "request_key": "4bda6bfdacb581f9ab7e0db235120e9787a27198f7c64a128c5310a6f55e40fd",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00060255",
+    "input_tokens": 256,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 63
+  }
+}

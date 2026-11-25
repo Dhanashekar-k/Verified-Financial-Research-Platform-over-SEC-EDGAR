@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not list the debt securities registered to trade on a national securities exchange under 3M's name as of Q2 2023. They cover the debt program (a WKSI shelf registration and a Series F medium-term notes program), but not the Section 12(b) securities table from the cover page.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "As of June 30, 2023, about $17.6 billion of debt had been issued under the Series F medium-term notes program (up to $18 billion) [1].",
+        "3M updated its WKSI shelf registration statement effective February 8, 2023 [1]."
+      ],
+      "missing": [
+        "The 10-Q cover page table of securities registered pursuant to Section 12(b), listing titles of each class, trading symbols and exchanges"
+      ],
+      "reason": "The passages do not include the cover-page table of securities registered under Section 12(b), so the specific debt securities listed on a national securities exchange cannot be identified."
+    }
+  },
+  "request_key": "9f9d2dc713966adaa0cbf70ea154a628c2115a5de8c3913be6253e5071f3a8e5",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00618670",
+    "input_tokens": 4532,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 307
+  }
+}

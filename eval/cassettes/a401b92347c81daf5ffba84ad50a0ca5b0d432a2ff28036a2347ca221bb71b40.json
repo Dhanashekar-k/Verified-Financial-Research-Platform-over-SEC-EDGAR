@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not show any non-standard event that substantially increased Pfizer's 2019 net income. They say the Consumer Healthcare JV was formed in 2019 [1][2], but they give no 2019 net income figure, gain or other income effect from it. They also mention the 2019 separation of Meridian and the Mylan-Japan collaboration [3], again without any net income impact.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Pfizer formed the Consumer Healthcare JV in 2019 [1][2].",
+        "The 2019 separations of the Mylan-Japan collaboration and Meridian are mentioned, alongside the Upjohn Business, as part of Pfizer's transformation [3].",
+        "The Upjohn spin-off and combination with Mylan was completed in the fourth quarter of 2020, not 2019 [2]."
+      ],
+      "missing": [
+        "2019 net income and its components, such as gains on the Consumer Healthcare JV formation or other one-time items",
+        "The FY2019 10-K or an MD&A discussion of 2019 non-recurring items"
+      ],
+      "reason": "The passages name 2019 corporate transactions but give no 2019 net income amounts or gains tied to them, so I cannot say whether they substantially increased net income."
+    }
+  },
+  "request_key": "a401b92347c81daf5ffba84ad50a0ca5b0d432a2ff28036a2347ca221bb71b40",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00742970",
+    "input_tokens": 4330,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 596
+  }
+}

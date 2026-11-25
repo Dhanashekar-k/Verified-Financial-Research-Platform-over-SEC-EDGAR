@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The answer identifies Las Vegas Strip Resorts as the region with the highest EBITDAR in FY2022, which matches the gold answer's key fact, though it does not state the ~90% share."
+  },
+  "request_key": "6af0421e5797a31e8b85144cc2ec0d8016dd89880f982810d29af0bdd6d188ad",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00221255",
+    "input_tokens": 216,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 393
+  }
+}

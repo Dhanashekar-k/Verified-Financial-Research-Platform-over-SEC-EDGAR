@@ -1,0 +1,27 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not report TJX's capital expenditures for the first quarter of fiscal 2022. They only give a full-year fiscal 2022 capital spending expectation of $1.2 billion to $1.4 billion [1]. This is a forward-looking annual estimate, not a Q1 actual, and no 10-Q data for Q1 FY2022 is provided.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "TJX expected fiscal 2022 capital spending in the range of $1.2 billion to $1.4 billion (full year, forward-looking) [1]."
+      ],
+      "missing": [
+        "TJX's Q1 fiscal 2022 10-Q cash flow statement showing capital expenditures (property additions) for the quarter"
+      ],
+      "reason": "The passages contain no Q1 fiscal 2022 capital expenditure figure for TJX; they only give an annual fiscal 2022 expectation."
+    }
+  },
+  "request_key": "b001c30aea7394742a39211a08ff0251e940c3ed1e4f9b2b9a93bbf69b2270ee",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00655470",
+    "input_tokens": 4915,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 304
+  }
+}

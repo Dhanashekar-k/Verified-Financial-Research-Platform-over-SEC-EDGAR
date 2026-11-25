@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "incorrect",
+    "reason": "The gold answer says real growth was flat, but the system answer's headline figure is about 1% higher (+4% price/mix offset by -3% volume), which conflicts with flat; the flat note applies only to the Flexibles segment's reported net sales and is not presented as the answer."
+  },
+  "request_key": "dac7f3316480ed75100fc80ba27c0ef1d9ab42116a3da5c081bca3e45f1ccfbf",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00083955",
+    "input_tokens": 283,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 105
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not contain J.B. Hunt's stockholders' equity as of the end of Q2 fiscal 2022. They hold only stock performance graph data and exhibit lists, with no balance sheet or 10-Q data.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Cumulative total return data for J.B. Hunt versus the S&P 500 and peer groups in the 10-K filings for FY2020 through FY2025",
+        "Exhibit index listings from the FY2022 and FY2024 10-Ks"
+      ],
+      "missing": [
+        "The balance sheet in the Form 10-Q for the quarter ended June 30, 2022, showing total stockholders' equity"
+      ],
+      "reason": "The provided passages contain no balance sheet or stockholders' equity figures, and nothing for the Q2 2022 period (June 30, 2022)."
+    }
+  },
+  "request_key": "07751c6a8d7ddfe0abfcf7f460a780f3920b983b13439c0ae38d82706b97a4bf",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00454370",
+    "input_tokens": 3014,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 282
+  }
+}

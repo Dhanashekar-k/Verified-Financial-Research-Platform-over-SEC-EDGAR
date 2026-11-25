@@ -1,0 +1,62 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "FY2021 unadjusted EBITDA = operating income of $1,196 million [4] + depreciation and amortization of $636 million from the cash flow statement [2] = **$1,832 million**.",
+    "claims": [
+      {
+        "display": "$1,196 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:AMERICANWATERWORKS_2021_10K#p86#0000",
+          "quote": "Operating income | 1,196 | 1,248 | 1,214",
+          "type": "chunk"
+        },
+        "text": "American Water Works's FY2021 operating income was $1,196 million.",
+        "unit": "USD millions",
+        "value": "1196"
+      },
+      {
+        "display": "$636 million",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:AMERICANWATERWORKS_2021_10K#p88#0000",
+          "quote": "Depreciation and amortization | 636 | 604 | 582",
+          "type": "chunk"
+        },
+        "text": "American Water Works's FY2021 depreciation and amortization per the cash flow statement was $636 million.",
+        "unit": "USD millions",
+        "value": "636"
+      },
+      {
+        "display": "$1,832 million",
+        "id": "c3",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:AMERICANWATERWORKS_2021_10K#p86#0000",
+          "quote": "Operating income | 1,196 | 1,248 | 1,214",
+          "type": "chunk"
+        },
+        "text": "American Water Works's FY2021 unadjusted EBITDA (operating income plus cash flow statement depreciation and amortization) was $1,832 million.",
+        "unit": "USD millions",
+        "value": "1832"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "25b46a0dbe94c657ae58587d2adc81454216f00a1a7908892e3957315d2c2df9",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00837070",
+    "input_tokens": 5381,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 574
+  }
+}

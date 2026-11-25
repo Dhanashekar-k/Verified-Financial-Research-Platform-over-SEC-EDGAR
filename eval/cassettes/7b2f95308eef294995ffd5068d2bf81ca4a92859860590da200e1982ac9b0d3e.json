@@ -1,0 +1,90 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "As of FY2022, AMD's 10-K lists these product brands, sold under the AMD trademark [3]:\n- **Client processors** for desktop and notebook PCs: AMD Ryzen, Ryzen PRO, Ryzen Threadripper, Ryzen Threadripper PRO, AMD Athlon, Athlon PRO and AMD PRO A-Series [3].\n- **Server microprocessors:** AMD EPYC processors [3].\n- **Consumer graphics:** AMD Radeon graphics, with AMD Embedded Radeon graphics for embedded graphics [3].\n- **Professional graphics:** AMD Radeon PRO graphics [3].\n- **Data center graphics:** Radeon Instinct, Radeon PRO V-series and AMD Instinct accelerators for servers [3].\n- **Chipsets:** sold under AMD trademarks [3].\n- **Embedded processors:** low-power versions of AMD Athlon, AMD Geode, Ryzen, EPYC, R-Series and G-Series processors [3].\n- **FPGAs:** Virtex, Kintex, Artix and Spartan families [3].\n\nThe passages do not describe semi-custom products for FY2022. A FY2021 passage mentions them, including the SoCs for the Sony PlayStation 5 and Microsoft Xbox Series X and S consoles [7].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000002488-23-000047#1#0019",
+          "quote": "Our client processors include: AMD Ryzen, AMD Ryzen PRO, Ryzen Threadripper, Ryzen Threadripper PRO, AMD Athlon, AMD Athlon PRO, and AMD PRO A-Series.",
+          "type": "chunk"
+        },
+        "text": "AMD's FY2022 client processor brands for desktop and notebook PCs include AMD Ryzen, Ryzen PRO, Ryzen Threadripper, Ryzen Threadripper PRO, AMD Athlon, Athlon PRO and AMD PRO A-Series.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000002488-23-000047#1#0019",
+          "quote": "Our product brand for server microprocessors is AMD EPYC processors.",
+          "type": "chunk"
+        },
+        "text": "AMD's server microprocessor brand is AMD EPYC processors.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000002488-23-000047#1#0019",
+          "quote": "Our product brands for data center graphics are Radeon Instinct, Radeon PRO V-series, and AMD Instinct accelerators for servers.",
+          "type": "chunk"
+        },
+        "text": "AMD's graphics brands include AMD Radeon graphics for consumer, AMD Embedded Radeon for embedded, Radeon PRO for professional, and Radeon Instinct, Radeon PRO V-series and AMD Instinct accelerators for data center.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c4",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000002488-23-000047#1#0019",
+          "quote": "We also sell low-power versions of our AMD Athlon, as well as AMD Geode\u2122, AMD Ryzen, AMD EPYC, AMD R-Series and G-Series processors as embedded processor solutions.",
+          "type": "chunk"
+        },
+        "text": "AMD also sells chipsets under AMD trademarks and low-power embedded processor solutions.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c5",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000002488-23-000047#1#0019",
+          "quote": "Our FPGA product brands are Virtex-6, Virtex-7, Virtex UltraScale+, Kintex-7, Kintex UltraScale, Kintex UltraScale+, Artix-7, Artix UltraScale+, Spartan-6 and Spartan-7.",
+          "type": "chunk"
+        },
+        "text": "AMD's FPGA product brands are Virtex, Kintex, Artix and Spartan families.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "7b2f95308eef294995ffd5068d2bf81ca4a92859860590da200e1982ac9b0d3e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.01233070",
+    "input_tokens": 5181,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 1406
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "I can't compute the FY2022 retention ratio from these passages. The FY2022 General Mills passages [5] have their figures stripped out. They show no net earnings attributable to General Mills or total cash dividends paid. The only net earnings figures are for FY2017\u2013FY2020 [6][7], and no passage gives a dividends-paid figure from the cash flow statement.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Net earnings attributable to General Mills were $2,181.2 million in FY2020, $1,752.7 million in FY2019 and $2,131.0 million in FY2018 [6][7].",
+        "Dividends per share were $1.96 for FY2020, FY2019 and FY2018 [6][7]."
+      ],
+      "missing": [
+        "FY2022 net earnings attributable to General Mills, from the income statement",
+        "FY2022 total cash dividends paid, from the financing activities section of the cash flow statement"
+      ],
+      "reason": "The passages do not contain the FY2022 net earnings attributable to General Mills or the FY2022 cash dividends paid. These two inputs are needed to compute the retention ratio."
+    }
+  },
+  "request_key": "ffbfe076897a29aef4d7b2bc09c91d80a6364b3878b5b5e819551f7cbccff870",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00782170",
+    "input_tokens": 5347,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 471
+  }
+}

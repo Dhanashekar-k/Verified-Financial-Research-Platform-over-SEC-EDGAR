@@ -1,0 +1,27 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages don't contain Foot Locker's balance sheet, so its total liabilities at the end of fiscal 2022 can't be determined from them.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Passages cover other companies, for example total liabilities and equity of $6,972.8 million for fiscal 2022 in a filing that does not name Foot Locker [4], and lululemon athletica accounting policies [6]."
+      ],
+      "missing": [
+        "Foot Locker's fiscal 2022 consolidated balance sheet showing total liabilities, or total assets and total equity"
+      ],
+      "reason": "None of the provided passages is from Foot Locker's filings, and none reports Foot Locker's total liabilities for fiscal 2022."
+    }
+  },
+  "request_key": "6be6b68c147e251de6d20cbc8a225b5a0266ffbe48620429d14a7fcaf99c385a",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00417670",
+    "input_tokens": 2242,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 363
+  }
+}

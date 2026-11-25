@@ -1,0 +1,27 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not support an answer. None of them is identified as Verizon's filing, and none gives Verizon's derivative notional values for FY2021. The passages cover other, unnamed companies, so I can't say which Verizon derivative had the highest notional value without guessing.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "The passages give FY2021 derivative notional amounts for other, unnamed companies, such as foreign currency forwards, interest rate swaps and cross-currency swaps, but none is tied to Verizon."
+      ],
+      "missing": [
+        "Verizon's FY2021 10-K derivative disclosures, including notional amounts by instrument type (for example interest rate swaps, cross-currency swaps, foreign exchange forwards, and treasury locks)."
+      ],
+      "reason": "None of the passages is identified as a Verizon filing, and none gives Verizon's derivative notional values for FY2021."
+    }
+  },
+  "request_key": "26fd4f743b122d1e4995371f94b2f1468fe3c94c1a8fd2741d975a321dc7527b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00527870",
+    "input_tokens": 3369,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 358
+  }
+}

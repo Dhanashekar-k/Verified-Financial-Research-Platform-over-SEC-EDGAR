@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages don't say how much Cencora, Inc. spent on selling, general and administrative expenses in fiscal 2020. The only Cencora passages [1][2][3] are stock performance graph tables. The SG&A figures in [4]-[8] belong to other companies or to companies the passages don't name, so I can't attribute them to Cencora.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Cencora, Inc. passages [1][2][3] show only cumulative total shareholder return versus the S&P 500 and S&P Health Care indices.",
+        "SG&A tables in [4]-[8] are for other, unnamed or non-Cencora filers."
+      ],
+      "missing": [
+        "Cencora, Inc. fiscal 2020 income statement or MD&A showing selling, general and administrative expenses"
+      ],
+      "reason": "The passages contain no Cencora SG&A figure for fiscal 2020. The Cencora passages cover only cumulative stock performance, and the SG&A tables are not attributed to Cencora."
+    }
+  },
+  "request_key": "a9ef3e3bdb84c9270b1b48348bf82e58afb662843ba085595ece7fc772c0e420",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00395770",
+    "input_tokens": 1953,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 377
+  }
+}

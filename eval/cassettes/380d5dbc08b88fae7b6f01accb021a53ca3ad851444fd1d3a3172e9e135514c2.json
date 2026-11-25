@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not give Sysco's total dividends paid for fiscal 2024 or fiscal 2025, so the year-over-year percentage change cannot be calculated. The only dividend data is the fourth-quarter fiscal 2025 regular quarterly dividend of $0.54 per share, an increase of $0.03 per share [1]. This is a single quarter's rate, not the full-year amount paid.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "In April 2025, Sysco declared its regular quarterly dividend for the fourth quarter of fiscal 2025 of $0.54 per share, an increase of $0.03 per share, paid in July 2025."
+      ],
+      "missing": [
+        "Total cash dividends paid in fiscal 2024",
+        "Total cash dividends paid in fiscal 2025",
+        "Dividends declared or paid per share for all quarters of fiscal 2024 and fiscal 2025"
+      ],
+      "reason": "The passages do not include total dividends paid (for example, from the cash flow statement) for fiscal 2024 and fiscal 2025, so a year-over-year percentage change cannot be computed."
+    }
+  },
+  "request_key": "380d5dbc08b88fae7b6f01accb021a53ca3ad851444fd1d3a3172e9e135514c2",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00764470",
+    "input_tokens": 4695,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 566
+  }
+}

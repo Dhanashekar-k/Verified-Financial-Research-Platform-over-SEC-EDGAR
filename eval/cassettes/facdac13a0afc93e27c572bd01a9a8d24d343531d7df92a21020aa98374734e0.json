@@ -1,0 +1,48 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages only support part of this question.\n\n- **FY2023:** On January 16, 2023, Amcor announced an agreement to acquire a medical device packaging company based in Shanghai, China. The target generates annual sales of about $50 million. The deal was subject to regulatory approvals and was expected to close by the end of the third quarter of fiscal 2023 [7].\n- **FY2022 and FY2021:** The passages do not describe any acquisitions for these years, so I can't list them.\n- **Not asked:** A later filing mentions a \"Merger\" in fiscal 2025, with shares issued as consideration [6]. This is outside the years asked about.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:AMCOR_2023Q2_10Q#p32#0000",
+          "quote": "On January 16, 2023, the Company announced it had entered into an agreement to acquire a medical device packaging company based in Shanghai, China",
+          "type": "chunk"
+        },
+        "text": "On January 16, 2023, Amcor announced an agreement to acquire a medical device packaging company based in Shanghai, China, expected to close by the end of the third quarter of fiscal year 2023.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": "$50 million",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:AMCOR_2023Q2_10Q#p32#0000",
+          "quote": "which generates annual sales of approximately $50 million",
+          "type": "chunk"
+        },
+        "text": "The Shanghai medical device packaging target generates annual sales of approximately $50 million.",
+        "unit": "USD millions",
+        "value": "50"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "facdac13a0afc93e27c572bd01a9a8d24d343531d7df92a21020aa98374734e0",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00972570",
+    "input_tokens": 5026,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 916
+  }
+}

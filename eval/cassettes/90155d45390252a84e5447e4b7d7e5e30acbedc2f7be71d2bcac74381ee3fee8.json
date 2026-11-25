@@ -1,0 +1,27 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages cover only Yum! Brands (capital spending of $230 million in FY2021 [4][7]) and contain no information about Target, so the comparison cannot be made.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Yum! Brands reported capital spending of $230 million in fiscal 2021."
+      ],
+      "missing": [
+        "Target Corporation's capital expenditures for fiscal year 2021"
+      ],
+      "reason": "The passages contain financial statements only for Yum! Brands, Inc. and none for Target, so Target's FY2021 capital expenditures cannot be determined and no difference can be computed."
+    }
+  },
+  "request_key": "90155d45390252a84e5447e4b7d7e5e30acbedc2f7be71d2bcac74381ee3fee8",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00620670",
+    "input_tokens": 5057,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 206
+  }
+}

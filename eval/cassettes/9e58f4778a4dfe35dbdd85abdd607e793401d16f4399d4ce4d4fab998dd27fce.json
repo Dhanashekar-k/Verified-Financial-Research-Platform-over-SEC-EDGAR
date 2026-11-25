@@ -1,0 +1,27 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "I can't answer this from the passages. None of them names WEC Energy Group, so I can't tell which, if any, belongs to that company. The only passage with an FY2022 to FY2023 operating income comparison [1] shows an increase from $3,278,700 to $3,823,112 (17%). It doesn't name its company, and I can't assume it is WEC.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "One unnamed company's 10-K shows operating income of $3,823,112 in FY2023 versus $3,278,700 in FY2022, a 17% change [1]."
+      ],
+      "missing": [
+        "A passage from WEC Energy Group's FY2023 10-K showing its operating income for FY2023 and FY2022."
+      ],
+      "reason": "The passages do not identify any filing as belonging to WEC Energy Group, so no operating income change can be attributed to that company without guessing."
+    }
+  },
+  "request_key": "9e58f4778a4dfe35dbdd85abdd607e793401d16f4399d4ce4d4fab998dd27fce",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00382370",
+    "input_tokens": 1389,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 463
+  }
+}

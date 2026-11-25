@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The system answer gives an inventory turnover ratio of about 3.46, matching the gold answer, and its supporting calculation (24,576 / 7,110.5 \u2248 3.46) is consistent."
+  },
+  "request_key": "ca84cf35b93d0a4c93e226dc1936bee249d35a976308ca2dc4629f7e2edf31a6",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00071255",
+    "input_tokens": 276,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 81
+  }
+}

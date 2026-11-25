@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not contain Aflac's selling, general and administrative expense for fiscal 2021 or 2022, so I cannot give the percentage change.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Aflac passages [1] and [6] cover benefit and expense ratios, profit margins and cumulative stock returns, not SG&A dollars or growth.",
+        "The SG&A tables in [3], [5], [7] and [8] come from filings by other registrants, not Aflac."
+      ],
+      "missing": [
+        "Aflac's SG&A expense (or an equivalent line item) for FY2021 and FY2022 as originally reported in its FY2022 10-K"
+      ],
+      "reason": "None of the passages report Aflac's SG&A expenses. The SG&A tables come from other companies' filings, and the Aflac passages cover only insurance ratios and stock performance."
+    }
+  },
+  "request_key": "91fca247171237733a84c752adadb649bd911ea0c29c3816747fb8d15a354578",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00379370",
+    "input_tokens": 1629,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 409
+  }
+}

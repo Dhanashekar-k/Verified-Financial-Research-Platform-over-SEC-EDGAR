@@ -1,0 +1,76 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Nike's FY2021 inventory turnover ratio is about **3.46**. Cost of sales for FY2021 was $24,576 million [5]. Inventories were $6,854 million at May 31, 2021 and $7,367 million at May 31, 2020 [7], so average inventory is $7,110.5 million. Turnover is 24,576 / 7,110.5 \u2248 3.46.",
+    "claims": [
+      {
+        "display": "$24,576 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:NIKE_2021_10K#p59#0000",
+          "quote": "Cost of sales | 24,576 | 21,162 | 21,643",
+          "type": "chunk"
+        },
+        "text": "Nike's FY2021 cost of sales was $24,576 million.",
+        "unit": "USD millions",
+        "value": "24576"
+      },
+      {
+        "display": "$6,854 million",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:NIKE_2021_10K#p61#0000",
+          "quote": "Inventories | 6,854 | 7,367",
+          "type": "chunk"
+        },
+        "text": "Nike's inventories were $6,854 million at May 31, 2021 and $7,367 million at May 31, 2020.",
+        "unit": "USD millions",
+        "value": "6854"
+      },
+      {
+        "display": "$7,110.5 million",
+        "id": "c3",
+        "kind": "numeric_derived",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:NIKE_2021_10K#p61#0000",
+          "quote": "Inventories | 6,854 | 7,367",
+          "type": "chunk"
+        },
+        "text": "Nike's average inventory between FY2020 and FY2021 is (6,854 + 7,367) / 2 = $7,110.5 million.",
+        "unit": "USD millions",
+        "value": "7110.5"
+      },
+      {
+        "display": "3.46",
+        "id": "c4",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:NIKE_2021_10K#p59#0000",
+          "quote": "Cost of sales | 24,576 | 21,162 | 21,643",
+          "type": "chunk"
+        },
+        "text": "Nike's FY2021 inventory turnover ratio is FY2021 COGS of 24,576 divided by average inventory of 7,110.5, which is about 3.46.",
+        "unit": "ratio",
+        "value": "3.46"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "34ab490200bbebdcfeb54265125551daf3bc51bac04530717397ce63cdafa5ed",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.01030070",
+    "input_tokens": 5276,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 981
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not provide Brown & Brown's Q1 2023 capital expenditures. The only capex table (passage [4]) comes from a different company's 10-K (it shows annual Upstream/Downstream capex), and the Brown & Brown passages cover only share issuances for business combinations, the audit report and the nature of operations.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Brown & Brown issued 261,614 shares valued at $18.3 million in business combinations during 2023 [1].",
+        "The only capex table [4] is for annual 2021-2023 periods and is not identified as Brown & Brown's."
+      ],
+      "missing": [
+        "Brown & Brown's Q1 2023 10-Q cash flow statement or capital expenditure (purchases of fixed assets) figure for the quarter ended March 31, 2023"
+      ],
+      "reason": "The passages contain no Brown & Brown capital expenditure figures, and none for Q1 2023 (no quarterly data)."
+    }
+  },
+  "request_key": "f3ec4cc45b7d9fa9cf3b944d9ac468c559781d60777f416468e7915e45e387f0",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00496570",
+    "input_tokens": 3231,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 323
+  }
+}

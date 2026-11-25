@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not support an answer. None of them identifies Intercontinental Exchange, Inc. by name, and none gives quarterly (Q1 2022 or Q1 2023) capital expenditure figures. They contain only annual capital expenditure tables for unnamed or other companies.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Annual capital expenditure tables for unnamed companies (FY2022-FY2024), for example $549M in 2023 vs $518M in 2022 in passage [1]",
+        "Cash flow data in passage [7] with no capital expenditure line and no Q1 breakdown"
+      ],
+      "missing": [
+        "Intercontinental Exchange, Inc. Q1 2022 capital expenditures",
+        "Intercontinental Exchange, Inc. Q1 2023 capital expenditures (from 10-Q filings)"
+      ],
+      "reason": "The passages give no Q1 2022 or Q1 2023 capital expenditure figures, and none is attributed to Intercontinental Exchange, Inc."
+    }
+  },
+  "request_key": "0d46a12747148a2b7973e880d48fc33c40631be1e3d1c68af7e76532c8402144",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00354070",
+    "input_tokens": 1721,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 340
+  }
+}

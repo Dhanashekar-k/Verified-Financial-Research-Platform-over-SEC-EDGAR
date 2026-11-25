@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not support an answer. None of the AMD passages cover FY2022 or discuss AMD's customer concentration. The passages that do discuss customer concentration come from other companies (e.g., SANDISK in [2]), and the AMD passages cover only FY2020, FY2021, FY2023 and FY2025 without any customer concentration content [1][4][5][6][8].",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "The AMD passages provided are from the FY2020, FY2021, FY2023 and FY2025 10-K filings (including a 10-K/A) and cover backlog, human capital, business overview and segment revenue, not customer concentration.",
+        "The customer concentration disclosures in the passages belong to other companies (e.g., SANDISK), not AMD."
+      ],
+      "missing": [
+        "AMD's FY2022 10-K (or its notes on concentration of credit risk or significant customers)"
+      ],
+      "reason": "No passage contains AMD's FY2022 filing or any AMD customer concentration disclosure."
+    }
+  },
+  "request_key": "c720eefd2bd46024ffe656fa462363ca85b807922fdddeba387de07378c29a08",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00773570",
+    "input_tokens": 5196,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 484
+  }
+}

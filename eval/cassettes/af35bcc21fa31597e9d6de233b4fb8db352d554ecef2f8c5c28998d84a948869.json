@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages don't support an answer on gross margin. They contain no net sales, cost of sales or gross profit figures for Amcor, so I can't compute a gross margin or say whether it is improving as of FY2023. They also don't say whether gross margin is a useful metric for Amcor.\n\nThe only profitability data is the non-GAAP reconciliation. In it, Adjusted EBIT was $1,608 million in FY2023, versus $1,701 million in FY2022 and $1,621 million in FY2021 [5]. That is not gross margin, and without sales figures it doesn't give a margin trend either.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Adjusted EBIT was $1,608 million in FY2023, $1,701 million in FY2022 and $1,621 million in FY2021 (non-GAAP reconciliation) [5].",
+        "EBIT was $1,510 million in FY2023, $1,250 million in FY2022 and $1,351 million in FY2021 [5]."
+      ],
+      "missing": [
+        "Net sales for FY2023 and prior years",
+        "Cost of sales or gross profit for FY2023 and prior years",
+        "Any company discussion of gross margin as a performance metric"
+      ],
+      "reason": "The passages contain no net sales, cost of sales or gross profit data for Amcor, and no discussion of whether gross margin is a meaningful metric for the company, so a gross margin trend cannot be determined."
+    }
+  },
+  "request_key": "af35bcc21fa31597e9d6de233b4fb8db352d554ecef2f8c5c28998d84a948869",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00614370",
+    "input_tokens": 2989,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 607
+  }
+}

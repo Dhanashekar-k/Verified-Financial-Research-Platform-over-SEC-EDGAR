@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "I can't answer this from the passages provided. They contain only annual interest expense figures, not Q1 2022 or Q1 2023 quarterly data. They also never name ON Semiconductor, so I can't tell which, if any, of the tables belongs to it.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "The passages report annual interest expense for several unnamed filers, for example $699,826 thousand in 2023 vs. $706,212 thousand in 2022 in passage [1], and $105.3 million vs. $57.3 million in passage [4]. None is labeled as ON Semiconductor, and none is quarterly."
+      ],
+      "missing": [
+        "ON Semiconductor's 10-Q filings for Q1 2022 and Q1 2023, with the interest expense for each quarter",
+        "Confirmation that a passage belongs to ON Semiconductor"
+      ],
+      "reason": "The passages give annual (10-K) interest expense for unnamed companies and contain no quarterly Q1 2022 or Q1 2023 figures. None of them is identified as ON Semiconductor."
+    }
+  },
+  "request_key": "84424be6b38c52743d5955c7e76ca538b948d76db2a2c3593431927b1b32bcb4",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00421470",
+    "input_tokens": 1250,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 569
+  }
+}

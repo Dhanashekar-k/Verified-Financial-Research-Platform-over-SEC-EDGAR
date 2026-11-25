@@ -1,0 +1,62 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not support a Q2-to-Q2 comparison. For Travelers, they give only annual after-tax interest expense (the primary component of Interest Expense and Other): $269 million in 2021 and $277 million in 2022 [1][3]. They contain no quarterly (Q2) figures. The full-year change was about 3.0% ($277M vs. $269M), but this is not a Q2 comparison.",
+    "claims": [
+      {
+        "display": "$277 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000086312-23-000011#8#0050",
+          "quote": "after-tax interest expense of $277 million, $269 million and $268 million in 2022, 2021 and 2020, respectively",
+          "type": "chunk"
+        },
+        "text": "Travelers' after-tax interest expense, the primary component of Interest Expense and Other, was $277 million in 2022.",
+        "unit": "USD millions",
+        "value": "277"
+      },
+      {
+        "display": "$269 million",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000086312-22-000013#8#0050",
+          "quote": "after-tax interest expense of $269 million, $268 million and $272 million in 2021, 2020 and 2019, respectively",
+          "type": "chunk"
+        },
+        "text": "Travelers' after-tax interest expense, the primary component of Interest Expense and Other, was $269 million in 2021.",
+        "unit": "USD millions",
+        "value": "269"
+      },
+      {
+        "display": "about 3.0%",
+        "id": "c3",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000086312-23-000011#8#0050",
+          "quote": "after-tax interest expense of $277 million, $269 million and $268 million in 2022, 2021 and 2020, respectively",
+          "type": "chunk"
+        },
+        "text": "Full-year after-tax interest expense for Travelers rose about 3.0% from 2021 to 2022 ($269M to $277M); this is an annual figure, not Q2.",
+        "unit": "percent",
+        "value": "3"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "9298dac5cfdb0b82a518d97218877bdcb91280a6123a400e8c39f3fe3ae64fe5",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00502070",
+    "input_tokens": 1461,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 688
+  }
+}

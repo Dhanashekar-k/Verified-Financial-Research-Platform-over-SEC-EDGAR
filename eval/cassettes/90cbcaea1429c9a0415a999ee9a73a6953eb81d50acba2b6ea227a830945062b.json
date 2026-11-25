@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not contain PulteGroup's capital expenditures for fiscal 2022 or 2023, so I can't give the percentage change. The PulteGroup passages cover only stock performance graphs and balance sheet and cash flow statement headers, with no figures. The only capital expenditures table [8] comes from a different filer (accession prefix 0000079879) and does not name PulteGroup. I did not attribute it to PulteGroup.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "PulteGroup passages contain only stock performance graph data and statement headings (balance sheet, cash flow) without capex values.",
+        "A capex table (2023: $549 million; 2022: $518 million; 6.0% change) appears in a filing from a different company (accession 0000079879-24-000040), not identified as PulteGroup."
+      ],
+      "missing": [
+        "PulteGroup's cash flow statement line for capital expenditures (or property and equipment purchases) for FY2022 and FY2023"
+      ],
+      "reason": "The passages do not include PulteGroup's capital expenditure figures for FY2022 or FY2023. The only capex table [8] is from a different filer and does not name PulteGroup."
+    }
+  },
+  "request_key": "90cbcaea1429c9a0415a999ee9a73a6953eb81d50acba2b6ea227a830945062b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00415570",
+    "input_tokens": 1516,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 504
+  }
+}

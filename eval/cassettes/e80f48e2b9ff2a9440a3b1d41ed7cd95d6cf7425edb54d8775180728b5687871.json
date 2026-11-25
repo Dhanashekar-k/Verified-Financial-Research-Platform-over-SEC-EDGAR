@@ -1,0 +1,48 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Sysco's cash flows from operations were $2.9 billion in fiscal 2023 (compared to $1.8 billion in fiscal 2022), as stated in the FY2023 10-K [3]. The passage gives only the rounded figure, not an exact dollar amount.",
+    "claims": [
+      {
+        "display": "$2.9 billion",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000096021-23-000117#7#0059",
+          "quote": "Cash flows from operations were $2.9 billion in fiscal 2023, compared to $1.8 billion in fiscal 2022;",
+          "type": "chunk"
+        },
+        "text": "Sysco's cash flows from operations were $2.9 billion in fiscal 2023, as reported in the FY2023 10-K.",
+        "unit": "USD billions",
+        "value": "2.9"
+      },
+      {
+        "display": "$1.8 billion",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000096021-23-000117#7#0059",
+          "quote": "Cash flows from operations were $2.9 billion in fiscal 2023, compared to $1.8 billion in fiscal 2022;",
+          "type": "chunk"
+        },
+        "text": "Sysco's cash flows from operations were $1.8 billion in fiscal 2022.",
+        "unit": "USD billions",
+        "value": "1.8"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "e80f48e2b9ff2a9440a3b1d41ed7cd95d6cf7425edb54d8775180728b5687871",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00728970",
+    "input_tokens": 4850,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 464
+  }
+}

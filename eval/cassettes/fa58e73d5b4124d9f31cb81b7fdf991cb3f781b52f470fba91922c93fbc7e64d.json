@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not support an answer on PayPal's FY2022 working capital. None of the PayPal passages [1][4][6][8] give current assets, current liabilities, or a working capital figure for FY2022. The passages that discuss working capital, including the FY2022 one [5], come from a different filer with a September 30 fiscal year-end that is not identified as PayPal. They use a company-specific definition of working capital. The passages also say nothing about whether working capital is a useful or relevant metric for PayPal, so I cannot say it is or isn't.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "PayPal passages cover the business description, regulatory environment, credit ratings, the Paycheck Protection Program (PPP), and transaction loss rates (FY2020 and FY2024 MD&A introductions, FY2021 MD&A introduction).",
+        "The FY2022 working capital passage describes a company with a September 30 fiscal year-end and does not identify it as PayPal."
+      ],
+      "missing": [
+        "PayPal's FY2022 10-K balance sheet with total current assets and total current liabilities",
+        "Any PayPal statement on the relevance of working capital as a metric"
+      ],
+      "reason": "The passages contain no PayPal FY2022 balance sheet data (current assets or current liabilities) and no PayPal discussion of working capital as a metric. The working capital passages belong to a different, unnamed company with a September 30 fiscal year-end."
+    }
+  },
+  "request_key": "fa58e73d5b4124d9f31cb81b7fdf991cb3f781b52f470fba91922c93fbc7e64d",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00826570",
+    "input_tokens": 4536,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 722
+  }
+}

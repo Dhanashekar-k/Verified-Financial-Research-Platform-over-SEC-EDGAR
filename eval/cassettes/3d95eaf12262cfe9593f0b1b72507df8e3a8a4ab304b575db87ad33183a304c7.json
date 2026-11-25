@@ -1,0 +1,27 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not support an answer. None of them identifies Martin Marietta Materials, and none gives Q1 fiscal 2023 capital expenditures. The passages contain only annual or full-year figures for other, unnamed companies, plus one expected-spending range for 2023.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Annual capital expenditure figures for various unnamed companies, such as $162 million for 2023 in one 10-K [0000200406-24-000013#8#0199], but nothing identified as Martin Marietta Materials or as a Q1 figure."
+      ],
+      "missing": [
+        "Martin Marietta Materials' Q1 fiscal 2023 10-Q (or a passage from it) showing capital expenditures as originally reported"
+      ],
+      "reason": "The passages do not name Martin Marietta Materials and contain no quarterly (Q1 FY2023) capital expenditure data for it."
+    }
+  },
+  "request_key": "3d95eaf12262cfe9593f0b1b72507df8e3a8a4ab304b575db87ad33183a304c7",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00341370",
+    "input_tokens": 1779,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 303
+  }
+}

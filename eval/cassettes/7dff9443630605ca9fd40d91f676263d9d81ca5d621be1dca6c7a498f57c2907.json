@@ -1,0 +1,90 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "**Yes for FY2022; the passages give no legal-proceedings detail for 2021 or 2020.**\n\n- **Opioid litigation:** CVS is a defendant in the consolidated MDL (No. 2804) in the Northern District of Ohio and in similar state cases and state Attorney General suits [1].\n  - In August 2022, a federal court in Ohio entered a $651 million judgment against three chain pharmacy defendants jointly, payable over 15 years. The Company is appealing and has not accrued a liability for it [1].\n  - In March 2022, CVS settled all opioid claims by the State of Florida for $484 million, payable over 18 years [1].\n- **Stockholder matters:** Since February 2019, securities class actions and a derivative complaint have alleged omissions and misrepresentations about the performance of the LTC business unit. The Company is defending them [6].\n- **ERISA class actions:** Two ERISA class actions were filed in August and September 2020 in the District of Connecticut against CVS Health, Aetna and certain executives and directors [6].\n\nThe FY2021 passage provided is only an auditor's report, so it contains no legal-proceedings detail for 2021 or 2020 [8].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000064803-23-000009#8#0230",
+          "quote": "The consolidated multidistrict litigation captioned In re National Prescription Opiate Litigation (MDL No. 2804) is pending in the U.S. District Court for the Northern District of Ohio.",
+          "type": "chunk"
+        },
+        "text": "CVS Health is a defendant in the consolidated multidistrict opioid litigation (MDL No. 2804) in the U.S. District Court for the Northern District of Ohio, as well as in similar state court cases and cases brought by state Attorneys General.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": "$651 million",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000064803-23-000009#8#0230",
+          "quote": "in August 2022, the court issued a judgment jointly against the three defendants in the amount of $651 million to be paid over 15 years",
+          "type": "chunk"
+        },
+        "text": "In August 2022 the court issued a judgment jointly against three defendants, including CVS, of $651 million to be paid over 15 years.",
+        "unit": "USD millions",
+        "value": "651"
+      },
+      {
+        "display": "$484 million",
+        "id": "c3",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000064803-23-000009#8#0230",
+          "quote": "CVS Health Corporation settled all opioid claims against it and its subsidiaries by the State of Florida for $484 million, which is to be paid over a period of 18 years",
+          "type": "chunk"
+        },
+        "text": "CVS settled all opioid claims by the State of Florida for $484 million, paid over 18 years.",
+        "unit": "USD millions",
+        "value": "484"
+      },
+      {
+        "display": null,
+        "id": "c4",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000064803-23-000009#8#0240",
+          "quote": "Beginning in February 2019, multiple class action complaints, as well as a derivative complaint, were filed by putative plaintiffs against the Company and certain current and former officers and directors.",
+          "type": "chunk"
+        },
+        "text": "Since February 2019, securities class action complaints and a derivative complaint have been filed against the Company and certain current and former officers and directors, alleging omissions and misrepresentations about the LTC business unit.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c5",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000064803-23-000009#8#0240",
+          "quote": "two class actions under the Employee Retirement Income Security Act of 1974",
+          "type": "chunk"
+        },
+        "text": "In August and September 2020, two ERISA class actions were filed in the District of Connecticut against CVS Health, Aetna and several current and former executives and directors.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "7dff9443630605ca9fd40d91f676263d9d81ca5d621be1dca6c7a498f57c2907",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.01483170",
+    "input_tokens": 5247,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 1893
+  }
+}

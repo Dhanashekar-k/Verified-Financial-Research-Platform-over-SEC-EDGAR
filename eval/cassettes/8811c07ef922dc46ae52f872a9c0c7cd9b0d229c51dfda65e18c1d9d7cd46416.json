@@ -1,0 +1,90 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "No. On the passages' figures, J&J's FY2022 results do not look like those of a high-growth company. Full-year 2022 reported sales were $94,943 million, up only 1.3% from $93,775 million in 2021 [1]. Net earnings fell 14.1% to $17,941 million, and diluted EPS fell 13.8% to $6.73 [1]. The 2023 guidance of 4.0% adjusted operational sales growth excluding the COVID-19 vaccine is also modest [1].",
+    "claims": [
+      {
+        "display": "$94,943 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:JOHNSON_JOHNSON_2022Q4_EARNINGS#p1#0001",
+          "quote": "Reported Sales | $23,706 | $24,804 | (4.4)% | $94,943 | $93,775 | 1.3%",
+          "type": "chunk"
+        },
+        "text": "J&J's full-year 2022 reported sales were $94,943 million.",
+        "unit": "USD millions",
+        "value": "94943"
+      },
+      {
+        "display": "1.3%",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:JOHNSON_JOHNSON_2022Q4_EARNINGS#p1#0001",
+          "quote": "Reported Sales | $23,706 | $24,804 | (4.4)% | $94,943 | $93,775 | 1.3%",
+          "type": "chunk"
+        },
+        "text": "J&J's full-year 2022 reported sales growth was 1.3% versus 2021, which is low growth.",
+        "unit": "percent",
+        "value": "1.3"
+      },
+      {
+        "display": "(14.1)%",
+        "id": "c3",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:JOHNSON_JOHNSON_2022Q4_EARNINGS#p1#0001",
+          "quote": "Net Earnings | $3,520 | $4,736 | (25.7)% | $17,941 | $20,878 | (14.1)%",
+          "type": "chunk"
+        },
+        "text": "J&J's full-year 2022 net earnings declined 14.1% to $17,941 million.",
+        "unit": "percent",
+        "value": "-14.1"
+      },
+      {
+        "display": "(13.8)%",
+        "id": "c4",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:JOHNSON_JOHNSON_2022Q4_EARNINGS#p1#0001",
+          "quote": "EPS (diluted) | $1.33 | $1.77 | (24.9)% | $6.73 | $7.81 | (13.8)%",
+          "type": "chunk"
+        },
+        "text": "J&J's full-year 2022 diluted EPS declined 13.8% to $6.73.",
+        "unit": "percent",
+        "value": "-13.8"
+      },
+      {
+        "display": "4.0%",
+        "id": "c5",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:JOHNSON_JOHNSON_2022Q4_EARNINGS#p1#0001",
+          "quote": "Company guides 2023 adjusted operational sales growth excluding COVID-19 Vaccine of 4.0%*",
+          "type": "chunk"
+        },
+        "text": "J&J guides 2023 adjusted operational sales growth excluding COVID-19 vaccine of 4.0%.",
+        "unit": "percent",
+        "value": "4"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "8811c07ef922dc46ae52f872a9c0c7cd9b0d229c51dfda65e18c1d9d7cd46416",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00993470",
+    "input_tokens": 4215,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 1120
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "**0** \u2013 AES's FY2022 figures in the passages show no restructuring cost line. The FY2022 Adjusted PTC reconciliation lists unrealized derivative losses, foreign currency losses, disposition/acquisition losses, impairment losses and debt extinguishment losses, but no restructuring costs [5]. A restructuring line appears only in the later FY2025 reconciliation (with 2024 shown as \"\u2014\") [3]. The FY2022 income statement itself is not in the passages, so 0 follows the question's instruction for costs that are not explicitly outlined.",
+    "claims": [
+      {
+        "display": "0",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000874761-23-000010#7#0029",
+          "quote": "Loss on extinguishment of debt | 35 | 91 | 223",
+          "type": "chunk"
+        },
+        "text": "AES Corporation's FY2022 materials show no explicitly outlined restructuring costs, so the amount is 0.",
+        "unit": "USD millions",
+        "value": "0"
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000874761-26-000063#7#0025",
+          "quote": "Restructuring costs | 89 | \u2014",
+          "type": "chunk"
+        },
+        "text": "The FY2022 Adjusted PTC reconciliation has no restructuring cost line item, whereas the FY2025 reconciliation includes restructuring costs of $89 million for 2025 and none for 2024.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "e5a67d326fe1256c0dee3d85fd06fa3c57dd52f38f7b9c045644bc7609e2bbaa",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00735370",
+    "input_tokens": 3474,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 752
+  }
+}

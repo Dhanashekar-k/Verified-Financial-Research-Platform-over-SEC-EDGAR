@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages cover only AES Corporation, so the comparison cannot be completed. AES's total stockholders' equity at December 31, 2021 was $2,798 million [1], with total equity of $4,567 million [1]. No passage gives Southwest Airlines Co.'s stockholders' equity, so the difference cannot be calculated.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "AES Corporation's total stockholders' equity was $2,798 million at December 31, 2021.",
+        "AES Corporation's total equity was $4,567 million at December 31, 2021."
+      ],
+      "missing": [
+        "Southwest Airlines Co.'s stockholders' equity at the end of fiscal year 2021"
+      ],
+      "reason": "The passages contain no Southwest Airlines Co. data, so the equity difference cannot be computed."
+    }
+  },
+  "request_key": "2cbf7247af8bee22900aeadcff3ba9a1b74b9e105a20d93da08a34274cca57cc",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00560070",
+    "input_tokens": 4116,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 273
+  }
+}

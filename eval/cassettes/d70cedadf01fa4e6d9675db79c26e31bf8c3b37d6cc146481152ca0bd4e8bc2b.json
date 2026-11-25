@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not report DoorDash's total assets at the end of Q1 2025. They contain only annual income statement percentages, Adjusted EBITDA reconciliations and weighted-average share counts. They include no balance sheet and no Q1 2025 10-Q data.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Annual income statement line items as a percentage of revenue for 2021-2025 [1][2][3]",
+        "Adjusted EBITDA reconciliations for 2022-2025 [4][7]",
+        "Weighted-average shares outstanding for 2022-2025 [5][6][8]"
+      ],
+      "missing": [
+        "DoorDash balance sheet as of March 31, 2025",
+        "DoorDash Form 10-Q for the quarter ended March 31, 2025"
+      ],
+      "reason": "The provided passages contain no balance sheet data and no Q1 2025 (quarterly) figures, so total assets at the end of Q1 2025 cannot be determined."
+    }
+  },
+  "request_key": "d70cedadf01fa4e6d9675db79c26e31bf8c3b37d6cc146481152ca0bd4e8bc2b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00455070",
+    "input_tokens": 2831,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 320
+  }
+}

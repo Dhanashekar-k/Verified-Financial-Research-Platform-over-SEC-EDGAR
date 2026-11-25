@@ -1,0 +1,48 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Corporate bonds were the largest short-term debt investment, at $416.42 million (USD thousands: 416,420) as of June 30, 2023, out of $507.726 million total short-term investments [1].",
+    "claims": [
+      {
+        "display": "$416.42 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:MGMRESORTS_2023Q2_10Q#p11#0000",
+          "quote": "Corporate bonds | Level 2 | 416,420 | 213,875",
+          "type": "chunk"
+        },
+        "text": "Corporate bonds (Level 2) were the largest category of MGM's short-term investments at June 30, 2023, at $416,420 thousand.",
+        "unit": "USD thousands",
+        "value": "416420"
+      },
+      {
+        "display": "$507.726 million",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:MGMRESORTS_2023Q2_10Q#p11#0000",
+          "quote": "Short-term investments | 507,726 | 284,706",
+          "type": "chunk"
+        },
+        "text": "Total short-term investments at June 30, 2023 were $507,726 thousand.",
+        "unit": "USD thousands",
+        "value": "507726"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "706ca7785b4b9c1860718f3dd57d9fe47089ce0ff784a71950401208a1822f55",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00700370",
+    "input_tokens": 4824,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 412
+  }
+}

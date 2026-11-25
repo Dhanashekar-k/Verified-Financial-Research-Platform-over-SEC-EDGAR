@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not say what drove an increase in Ulta Beauty's merchandise inventories at the end of FY2023. The only FY2023 inventory discussion [1] reports a decrease, from $13.5 billion to $11.9 billion. That passage does not identify its filer as Ulta Beauty. It mentions Ulta Beauty shop-in-shops as a store investment. The Ulta Beauty FY2023 passage [4] does not discuss inventory.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Year-end inventory was $11.9 billion, compared with $13.5 billion in 2022, a decrease attributed to supply chain improvements, alignment of inventory with sales trends, and lower freight costs. The passage does not name Ulta Beauty as the filer [1].",
+        "The Ulta Beauty FY2023 MD&A passage covers industry trends, inflation and basis of presentation, with no inventory discussion [4]."
+      ],
+      "missing": [
+        "Ulta Beauty's FY2023 balance sheet merchandise inventories figures",
+        "Ulta Beauty's MD&A explanation of the change in merchandise inventories in FY2023"
+      ],
+      "reason": "The passages contain no Ulta Beauty inventory balance or explanation for FY2023. The only inventory discussion describes a decrease at a company not identified as Ulta Beauty."
+    }
+  },
+  "request_key": "0123c551773eb8afda6afc788599a210b22d98a5dc1ca1cba65d287352d0c44d",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00918170",
+    "input_tokens": 5432,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 726
+  }
+}

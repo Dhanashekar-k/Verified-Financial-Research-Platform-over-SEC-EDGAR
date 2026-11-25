@@ -1,0 +1,27 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not report Netflix's diluted EPS for Q1 2021. The only Netflix passage is the FY2017 10-K, which gives annual diluted EPS of $1.25 for 2017, $0.43 for 2016 and $0.28 for 2015 [8]. The other passages are for different companies or periods.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Netflix's FY2017 10-K reports annual diluted EPS of $1.25 (2017), $0.43 (2016) and $0.28 (2015) [8]."
+      ],
+      "missing": [
+        "Netflix's 10-Q for the quarter ended March 31, 2021, or any Q1 2021 diluted EPS figure for Netflix"
+      ],
+      "reason": "The passages contain no Netflix quarterly data for Q1 2021. The only Netflix passage is the FY2017 10-K with annual figures."
+    }
+  },
+  "request_key": "d62135cd57f90ce107654fff728db749b82e3b0c2db79b2eab6817bd98badbd6",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00409770",
+    "input_tokens": 2493,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 297
+  }
+}

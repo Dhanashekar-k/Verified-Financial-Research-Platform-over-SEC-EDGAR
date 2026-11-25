@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not contain any AMD (Advanced Micro Devices) FY2022 cash flow data, so the question cannot be answered. The cash flow statements provided belong to other companies (Ameren, Southwest Airlines, Textron, Ameriprise), and none are identified as AMD.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Ameren's FY2022 10-K shows net cash used in investing activities of $(3,370) million and net cash provided by financing activities of $1,168 million, but this is not AMD.",
+        "Other passages cover Southwest Airlines, Textron, and Ameriprise for different fiscal years."
+      ],
+      "missing": [
+        "AMD's FY2022 consolidated statement of cash flows (net cash from operating, investing, and financing activities)"
+      ],
+      "reason": "None of the passages are from AMD's FY2022 10-K; they cover Ameren, Southwest Airlines, Textron, and Ameriprise, so AMD's operating, investing, and financing cash flows for FY2022 cannot be determined."
+    }
+  },
+  "request_key": "a187ff554ece1b758f79701f132bd7c21b90b203b46792569dba21ed2102710b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00691570",
+    "input_tokens": 5051,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 349
+  }
+}

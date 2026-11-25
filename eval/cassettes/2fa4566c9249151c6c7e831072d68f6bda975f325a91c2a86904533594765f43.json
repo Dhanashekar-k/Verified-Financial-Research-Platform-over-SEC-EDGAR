@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not support an answer. Passages [1], [3], [4] and [5] report annual capex, but they belong to a different company's filings (accession 0000093410), and the filing is not identified as EQT. The only EQT Corporation passage [2] gives per-share net income, not capex. No passage gives quarterly (Q1 2022 or Q1 2023) capex for any company.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "EQT Corporation net income attributable per share was $4.22 in 2023 and $4.38 in 2022 [2].",
+        "Capex tables for another filer show annual totals only (e.g., $15,829 million in 2023 and $11,974 million in 2022) [1]."
+      ],
+      "missing": [
+        "EQT Corp quarterly (Q1 2022 and Q1 2023) capital expenditure figures from its 10-Q filings"
+      ],
+      "reason": "The passages contain no Q1 2022 or Q1 2023 capex figures for EQT Corp. The only EQT passage shows earnings per share, and the capex tables are annual and not attributed to EQT."
+    }
+  },
+  "request_key": "2fa4566c9249151c6c7e831072d68f6bda975f325a91c2a86904533594765f43",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00489170",
+    "input_tokens": 2962,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 362
+  }
+}

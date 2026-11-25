@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not contain Jacobs' basic EPS for Q1 2025. They hold only annual or multi-year data: a stock performance graph for FY2025, and five-year selected data through FY2020, where basic EPS from continuing operations was $2.69 [5]. The only FY2025 EPS figures ($4.09 basic) appear in passage [8], which does not name Jacobs, so I cannot attribute them to the company.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Jacobs FY2020 basic net earnings from continuing operations per share was $2.69 [5].",
+        "Jacobs stock performance graph data through FY2025 contains no EPS [1]."
+      ],
+      "missing": [
+        "Jacobs 10-Q for the quarter ended December 2024 (Q1 fiscal 2025) showing basic EPS"
+      ],
+      "reason": "The passages contain no quarterly (Q1 2025) basic EPS data for Jacobs; no 10-Q is provided, and the FY2025 EPS table is not identified as Jacobs."
+    }
+  },
+  "request_key": "c640dc93ce78255906242f5f76a127f8c2bbaf5ac8046d9a79b3d1db097bf194",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00464670",
+    "input_tokens": 2782,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 349
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not contain 3M's balance sheet or its FY2018 net property, plant and equipment (PP&E). They cover Level 3 asset and liability rollforwards and assets under supervision for what appears to be a different company, so FY2018 net PP&E for 3M cannot be determined from them.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Level 3 asset and liability rollforwards for 2019-2021",
+        "Assets under supervision rollforward for 2023-2025"
+      ],
+      "missing": [
+        "3M's FY2018 year-end balance sheet",
+        "Net property, plant and equipment as of December 31, 2018"
+      ],
+      "reason": "The passages contain no 3M balance sheet data and no FY2018 figures. They only show Level 3 fair value rollforwards (FY2019-FY2021) and assets under supervision (FY2023-FY2025) for a different filer."
+    }
+  },
+  "request_key": "3ea26d7b4893afe3a5c6cfb5662bbb4254a95ef7d068c270a98e34aa5176a83d",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00369070",
+    "input_tokens": 2101,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 294
+  }
+}

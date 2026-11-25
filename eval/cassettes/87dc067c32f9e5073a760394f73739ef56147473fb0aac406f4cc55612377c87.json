@@ -1,0 +1,29 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not contain quarterly (Q1 2023 or Q1 2024) data for Gilead, so a Q1-over-Q1 net income change cannot be computed. They only give annual figures. For full-year periods, net income attributable to Gilead was $5,665 million in 2023 versus $480 million in 2024, a 92% decrease [4]. The 2023 figure was up 23% from $4,592 million in 2022 [1]. These are annual results and do not answer the Q1 question.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "FY2024 net income attributable to Gilead was $480 million versus $5,665 million in FY2023, a (92)% change [4].",
+        "FY2023 net income attributable to Gilead was $5,665 million versus $4,592 million in FY2022, a 23% change [1]."
+      ],
+      "missing": [
+        "Gilead's Q1 2023 net income (10-Q for the quarter ended March 31, 2023)",
+        "Gilead's Q1 2024 net income (10-Q for the quarter ended March 31, 2024)"
+      ],
+      "reason": "The passages contain only annual (full-year) results, not Q1 2023 or Q1 2024 quarterly net income, so the requested quarterly percentage change cannot be determined."
+    }
+  },
+  "request_key": "87dc067c32f9e5073a760394f73739ef56147473fb0aac406f4cc55612377c87",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00374970",
+    "input_tokens": 1540,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 418
+  }
+}

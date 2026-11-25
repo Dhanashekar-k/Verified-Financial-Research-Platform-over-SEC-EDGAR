@@ -1,0 +1,30 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not support an answer. None of them is from Johnson & Johnson's filings, and none gives J&J's FY2022 cost of goods sold or inventory balances. The passages come from other companies: a contract manufacturer reporting a sales cycle and days in inventory, and a company reporting average inventory turnover of 6.0 for 2022 [3]. Neither is identified as J&J, so I cannot compute or state J&J's FY2022 inventory turnover.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "One passage reports average inventory turnover of 6.0 for 2022 for an unnamed company, not identified as J&J [3].",
+        "Other passages give quarterly inventory turns and days in inventory for a contract manufacturer, not J&J [1][4][6]."
+      ],
+      "missing": [
+        "Johnson & Johnson's FY2022 cost of products sold",
+        "Johnson & Johnson's inventory balances at the beginning and end of FY2022",
+        "Any J&J discussion of whether conventional inventory turnover is meaningful for its business"
+      ],
+      "reason": "The passages contain no Johnson & Johnson data. They come from other, unnamed companies, so J&J's FY2022 inventory turnover cannot be calculated or stated."
+    }
+  },
+  "request_key": "404bb29fb041b47503f841f2f8ae2ea4392a0a3aa7e01bcd150be29b2359a805",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00825570",
+    "input_tokens": 5626,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 502
+  }
+}

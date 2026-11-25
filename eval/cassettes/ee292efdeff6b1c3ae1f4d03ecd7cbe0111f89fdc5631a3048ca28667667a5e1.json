@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The answer says yes and states the $0.55 quarterly dividend per share in 2022, matching the gold answer's key facts; the missing Q2-specific payment date does not contradict it."
+  },
+  "request_key": "ee292efdeff6b1c3ae1f4d03ecd7cbe0111f89fdc5631a3048ca28667667a5e1",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00060955",
+    "input_tokens": 208,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 74
+  }
+}

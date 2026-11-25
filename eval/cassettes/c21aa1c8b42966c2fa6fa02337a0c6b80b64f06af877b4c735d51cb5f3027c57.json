@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The system answer states that no debt securities are registered on a national securities exchange under American Express' name, matching the gold answer of 'There are none'."
+  },
+  "request_key": "c21aa1c8b42966c2fa6fa02337a0c6b80b64f06af877b4c735d51cb5f3027c57",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00050155",
+    "input_tokens": 175,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 59
+  }
+}

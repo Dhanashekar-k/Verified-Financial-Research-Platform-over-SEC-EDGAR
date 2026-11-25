@@ -1,0 +1,62 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Amcor primarily operates in the packaging industry. It develops and produces responsible packaging (flexible and rigid packaging, specialty cartons, closures) for food, beverage, pharmaceutical, medical, home and personal-care, and other consumer goods end markets [7][4].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0001748790-23-000030#7#0002",
+          "quote": "Amcor is a global leader in developing and producing responsible packaging for food, beverage, pharmaceutical, medical, home and personal-care, and other products.",
+          "type": "chunk"
+        },
+        "text": "Amcor is a global leader in developing and producing responsible packaging, i.e., it primarily operates in the packaging industry.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001748790-23-000030#7#0002",
+          "quote": "through a range of flexible and rigid packaging, specialty cartons, closures, and services",
+          "type": "chunk"
+        },
+        "text": "Amcor's products include flexible and rigid packaging, specialty cartons, closures, and services.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001748790-23-000030#8#0018",
+          "quote": "The Company's business activities are organized around two reportable segments, Flexibles and Rigid Packaging.",
+          "type": "chunk"
+        },
+        "text": "Amcor's business is organized around two reportable segments, Flexibles and Rigid Packaging.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "0cfd9cf0c4125ac8ec7dfe2c1e4ac4c4f3e845dbd51d1b294fe03d5a77fd55da",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00800670",
+    "input_tokens": 5262,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 525
+  }
+}

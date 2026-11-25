@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The system answer of about $302.6 million matches the gold answer of $303.00 million within rounding (about 0.14% difference), and the period is FY2018."
+  },
+  "request_key": "898c353865a2966734ce77c8385cace392599966270b884282657e570400a586",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00050455",
+    "input_tokens": 153,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 64
+  }
+}

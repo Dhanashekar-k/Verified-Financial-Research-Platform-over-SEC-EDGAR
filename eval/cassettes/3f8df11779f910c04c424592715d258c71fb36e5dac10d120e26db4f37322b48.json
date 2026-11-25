@@ -1,0 +1,28 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "I can't answer this from the passages. They give W.W. Grainger's capital expenditures for 2020 ($197 million) [7], but contain no capital expenditure figure for TE Connectivity. The TE Connectivity passages only show stock performance graph data.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "W.W. Grainger's capital expenditures were $197 million for the year ended December 31, 2020 [7].",
+        "The TE Connectivity passages contain only cumulative stock performance graph data, not capital expenditures."
+      ],
+      "missing": [
+        "TE Connectivity's capital expenditures (purchases of property, plant and equipment) for fiscal year 2020"
+      ],
+      "reason": "The passages do not include TE Connectivity plc's capital expenditures for fiscal year 2020, so the difference cannot be calculated."
+    }
+  },
+  "request_key": "3f8df11779f910c04c424592715d258c71fb36e5dac10d120e26db4f37322b48",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2394,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00460170",
+    "input_tokens": 2647,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 367
+  }
+}
