@@ -4,8 +4,10 @@ which the compiler returns a value in a fiscal year, and why it does not for the
     uv run python -m eval.coverage_report --dsn "$EDGARQA_SERVING_DSN"   # read-only, no LLM
 
 The denominator is the tracked companies (data/targets/tracked_ciks.csv) that have at least one
-full-year fact from a 10-K in that fiscal year; the count of all tracked companies is recorded too.
-A fiscal year is reported when at least ``--min-companies`` of them filed one. "Found" means the
+full-year us-gaap fact, as originally filed, from a 10-K in that fiscal year; the count of all
+tracked companies is recorded too. A fiscal year is reported from ``--min-year`` on (earlier years
+exist only as comparative columns of later 10-Ks, since the data starts at FSDS 2020q1) and when at
+least ``--min-companies`` have such a fact. "Found" means the
 compiler's own rules returned a number (ADR-043 abstentions count as not found, with the reason).
 Output: `eval/results/coverage/<run_id>.json` (a subdirectory: the results report reads only the
 top level of `eval/results`).
@@ -28,15 +30,21 @@ from app.engine.plan.catalog import MetricDef, load_catalog
 from app.engine.plan.compiler import ANNUAL_FORM_PREFIX, compile_plan
 from app.engine.plan.schema import CompanyRef, PeriodRef, QueryPlan
 
+MIN_FISCAL_YEAR = 2020  # the first fiscal year the loaded FSDS quarters report natively
+
 FILERS = (
     "SELECT fiscal_year, array_agg(DISTINCT cik) FROM facts "
     "WHERE cik = ANY(%s) AND qtrs = 4 AND fiscal_period = 'FY' AND form LIKE %s "
+    "AND taxonomy = 'us-gaap' AND is_original AND fiscal_year >= %s "
     "GROUP BY fiscal_year ORDER BY fiscal_year"
 )
 
 
-def filers_by_year(conn: Any, ciks: Collection[int], min_companies: int) -> dict[int, list[int]]:
-    rows = conn.execute(FILERS, (sorted(ciks), ANNUAL_FORM_PREFIX + "%")).fetchall()
+def filers_by_year(
+    conn: Any, ciks: Collection[int], min_companies: int, min_year: int = MIN_FISCAL_YEAR
+) -> dict[int, list[int]]:
+    params = (sorted(ciks), ANNUAL_FORM_PREFIX + "%", min_year)
+    rows = conn.execute(FILERS, params).fetchall()
     return {int(y): sorted(c) for y, c in rows if len(c) >= min_companies}
 
 
@@ -108,6 +116,7 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--dsn", default=os.environ.get("EDGARQA_SERVING_DSN"))
     ap.add_argument("--out", type=Path, default=Path("eval/results/coverage"))
     ap.add_argument("--min-companies", type=int, default=100)
+    ap.add_argument("--min-year", type=int, default=MIN_FISCAL_YEAR)
     args = ap.parse_args(argv)
     if not args.dsn:
         raise SystemExit("needs the serving DSN (--dsn or EDGARQA_SERVING_DSN)")
@@ -118,7 +127,7 @@ def main(argv: list[str] | None = None) -> int:
     catalog = load_catalog()
     with psycopg.connect(args.dsn, autocommit=True) as conn:
         state = conn.execute("SELECT live_version FROM corpus_state").fetchone()
-        filers = filers_by_year(conn, tracked, args.min_companies)
+        filers = filers_by_year(conn, tracked, args.min_companies, args.min_year)
         cells = coverage(conn, catalog, filers)
     run_id = f"{datetime.now(UTC).strftime('%Y-%m-%dT%H-%M-%SZ')}_coverage"
     doc = {
@@ -129,6 +138,7 @@ def main(argv: list[str] | None = None) -> int:
             "tracked_companies": len(tracked),
             "denominator": "tracked companies with a full-year 10-K fact in that fiscal year",
             "min_companies_per_year": args.min_companies,
+            "min_fiscal_year": args.min_year,
         },
         "filers_per_year": {str(y): len(c) for y, c in filers.items()},
         "by_metric": by_metric(cells),

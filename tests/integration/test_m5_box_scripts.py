@@ -80,5 +80,16 @@ def test_coverage_gives_one_outcome_per_company_and_names_the_reasons(conn: Any)
     json.dumps(pooled)  # the file must serialize
 
 
+def test_a_10q_full_year_row_does_not_make_a_company_a_filer(conn: Any) -> None:
+    """The synthetic 10-Q row's company is asked about, so the form filter is really tested."""
+    filers = filers_by_year(conn, [*CIKS, 9_999_999], min_companies=1, min_year=2000)
+    assert all(9_999_999 not in c for c in filers.values())
+
+
+def test_years_before_the_floor_are_left_out(conn: Any) -> None:
+    """Earlier years exist only as comparatives in later 10-Ks."""
+    assert min(filers_by_year(conn, CIKS, min_companies=1, min_year=2022)) == 2022
+
+
 def test_a_year_with_too_few_filers_is_left_out(conn: Any) -> None:
     assert filers_by_year(conn, CIKS, min_companies=99) == {}

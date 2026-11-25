@@ -241,6 +241,7 @@ def main(argv: list[str] | None = None) -> int:
             "reranker": reranker_name,
             "ks": list(KS),
             "n_questions": len(questions),
+            "sample": args.sample,  # None for a full run; the report skips sampled ones
             "latency_note": "client-side wall time per call, including the tunnel and the "
             "query embedding; not the serving box's own speed",
         },

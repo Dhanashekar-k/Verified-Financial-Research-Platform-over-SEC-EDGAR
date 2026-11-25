@@ -106,6 +106,9 @@ def test_pareto_lists_each_engine_composer_with_cost_and_latency() -> None:
         per_q=0.011,
         run_id="2026-12-02T01-00-00Z_engine_sonnet",
     )
+    for doc, each in ((h, "0.002"), (s, "0.011")):
+        for q in doc["per_question"]:
+            q["system_cost_usd"] = each
     md = "\n".join(report.render_pareto([h, s, run("baseline", "sonnet", "dev", {"a": True})]))
     assert "claude-haiku-5-5 | 50.0% | NOT MEASURED | NOT MEASURED | 0.00200 | 900 |" in md
     assert (
@@ -185,13 +188,15 @@ def test_the_ablation_heading_shows_the_split_it_was_run_on() -> None:
 
 def latency_doc(composer: str, rid: str, p95: float, n: int = 40) -> dict[str, Any]:
     doc = run("engine", composer, "dev", {f"q{i}": None for i in range(n)}, run_id=rid)
+    assert doc["config"]["system"] == "engine"
     doc["config"].update(mode="live", sample=10)
     doc["latency_ms"] = {"p50": p95 / 2, "p95": p95}
     return doc
 
 
 def planner_doc(mode: str, cost: float, rid: str, n: int = 147) -> dict[str, Any]:
-    return {"run_id": rid, "config": {"mode": mode, "n_questions": n}, "cost_usd": cost}
+    config = {"mode": mode, "split": "dev", "n_questions": n}
+    return {"run_id": rid, "config": config, "cost_usd": cost}
 
 
 def test_pareto_takes_p95_from_the_live_sample_of_the_same_composer_and_says_what_it_is() -> None:
@@ -205,7 +210,7 @@ def test_pareto_takes_p95_from_the_live_sample_of_the_same_composer_and_says_wha
     haiku, sonnet = (
         next(line for line in md.splitlines() if line.startswith(f"| `{r}`")) for r in ("h1", "s1")
     )
-    assert haiku.endswith("| 4321 (live sample) |"), "the newest sample of that composer"
+    assert haiku.endswith("| 4321 (dev live sample, n=38) |"), "the newest of that composer"
     assert sonnet.endswith("| NOT MEASURED |"), "no sample for this composer"
     assert "2026-12-04T00-00-00Z_new" in md and "n=38" in md and "old" not in md
     assert "network" in md and "not a server-side" in md
@@ -230,3 +235,106 @@ def test_a_latency_sample_never_replaces_a_full_run_in_the_tables(tmp_path: Any)
     sample = latency_doc("claude-haiku-5-5", "2026-b", 10.0, n=1)
     (tmp_path / "latency" / "b.json").write_text(json.dumps(sample))
     assert [r["run_id"] for r in report.select_runs(tmp_path)] == ["2026-a"]
+
+
+# --- review before the paid runs: what may stand for a run ------------------------------------
+
+
+def write_all(folder: Any, *docs: dict[str, Any]) -> None:
+    for d in docs:
+        (folder / f"{d['run_id']}.json").write_text(json.dumps(d))
+
+
+def with_config(doc: dict[str, Any], **kw: Any) -> dict[str, Any]:
+    doc["config"].update(kw)
+    return doc
+
+
+def test_a_newer_replay_does_not_replace_the_paid_run(tmp_path: Any) -> None:
+    paid = with_config(run("engine", "h", "dev", {"a": True}, run_id="2026-1"), mode="batch")
+    replay = with_config(run("engine", "h", "dev", {"a": True}, run_id="2026-2"), mode="replay")
+    write_all(tmp_path, paid, replay)
+    assert [r["run_id"] for r in report.select_runs(tmp_path)] == ["2026-1"]
+
+
+def test_a_replay_still_shows_when_it_is_the_only_run(tmp_path: Any) -> None:
+    write_all(tmp_path, with_config(run("baseline", "s", "test", {"a": True}, run_id="r1")))
+    assert [r["run_id"] for r in report.select_runs(tmp_path)] == ["r1"]
+
+
+def test_a_newer_paid_run_replaces_an_older_paid_run(tmp_path: Any) -> None:
+    old = with_config(run("engine", "h", "dev", {"a": True}, run_id="2026-1"), mode="batch")
+    new = with_config(run("engine", "h", "dev", {"a": False}, run_id="2026-2"), mode="batch")
+    write_all(tmp_path, old, new)
+    assert [r["run_id"] for r in report.select_runs(tmp_path)] == ["2026-2"]
+
+
+def test_a_sampled_run_in_the_top_folder_never_replaces_or_enters_the_comparisons(
+    tmp_path: Any,
+) -> None:
+    full = with_config(run("engine", "h", "dev", {"a": True}, run_id="2026-1"), mode="batch")
+    sample = with_config(
+        run("engine", "h", "dev", {"a": False}, run_id="2026-2"), mode="live", sample=10
+    )
+    write_all(tmp_path, full, sample)
+    chosen = report.select_runs(tmp_path)
+    assert "2026-1" in [r["run_id"] for r in chosen]
+    assert "2026-2" not in "\n".join(report.render_pareto(chosen))
+
+
+def test_only_an_engine_sample_with_the_same_settings_fills_p95() -> None:
+    row = run("engine", "claude-sonnet-5-5", "test", {"a": True}, run_id="e1")
+    row["config"].update(system_version="0.6.0", ef_search=800, top_k=8)
+    row["corpus_version"] = 1
+
+    def sample(rid: str, p95: float, system: str = "engine", **over: Any) -> dict[str, Any]:
+        d = latency_doc("claude-sonnet-5-5", rid, p95)
+        d["config"].update(system=system, system_version="0.6.0", ef_search=800, top_k=8)
+        d["corpus_version"] = 1
+        for k, v in over.items():
+            if k == "corpus_version":
+                d[k] = v
+            else:
+                d["config"][k] = v
+        return d
+
+    wrong = [
+        sample("2026-9a", 1111.0, system="baseline"),
+        sample("2026-9b", 2222.0, ef_search=200),
+        sample("2026-9c", 3333.0, system_version="0.5.0"),
+        sample("2026-9d", 4444.0, corpus_version=2),
+        sample("2026-9e", 5555.0, top_k=20),
+    ]
+    md = "\n".join(report.render_pareto([row], latency=wrong))
+    (cell,) = [line for line in md.splitlines() if line.startswith("| `e1`")]
+    assert "live sample" not in md and cell.endswith("| NOT MEASURED |")
+    md = "\n".join(report.render_pareto([row], latency=[*wrong, sample("2026-1", 9000.0)]))
+    assert "| 9000 (dev live sample, n=40) |" in md, "the cell names the sample's split and size"
+
+
+def test_pareto_cost_is_the_systems_own_spend_not_the_judges() -> None:
+    e = run("engine", "claude-haiku-5-5", "dev", {"a": True, "b": True}, run_id="e1", per_q=0.9)
+    for q, cost in zip(e["per_question"], ("0.0010", "0.0030"), strict=True):
+        q["system_cost_usd"], q["judge_cost_usd"] = cost, "0.5"
+    md = "\n".join(report.render_pareto([e]))
+    assert "| 0.00200 |" in md and "0.90000" not in md
+    assert "judge" in md
+
+
+def test_a_sampled_ablation_never_replaces_the_full_one() -> None:
+    full, smoke = ablation_doc(), ablation_doc()
+    full["run_id"], smoke["run_id"] = "2026-1_full", "2026-2_smoke"
+    smoke["config"]["sample"] = 3
+    md = "\n".join(report.render_ablation([full, smoke]))
+    assert "2026-1_full" in md and "2026-2_smoke" not in md
+
+
+def test_the_ablation_table_says_what_its_figures_do_not_mean() -> None:
+    md = " ".join("\n".join(report.render_ablation([ablation_doc()])).split())
+    for needle in (
+        "PDF copy",
+        "one query",
+        "do not isolate",
+        "not each one added component",
+    ):
+        assert needle in md, needle

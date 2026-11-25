@@ -438,3 +438,11 @@ def test_a_bracketed_note_is_ignored_when_the_full_text_matches_nothing(
 @pytest.mark.parametrize("mention", ["Zorblax (Apple)", "()", "Zorblax Corp (AAPL)"])
 def test_the_text_inside_brackets_is_never_matched(mention: str, index: CompanyIndex) -> None:
     assert ciks(mention, index) == []
+
+
+@pytest.mark.parametrize("mention", ["GE (GE Vernova)", "Apple (Microsoft)"])
+def test_a_bracket_naming_another_company_asks_instead_of_choosing(
+    mention: str, index: CompanyIndex
+) -> None:
+    found = ciks(mention, index)
+    assert len(found) >= 2, "ambiguous, never silently the outside name"

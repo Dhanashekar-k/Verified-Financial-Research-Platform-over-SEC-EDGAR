@@ -166,9 +166,18 @@ class CompanyIndex:
         if found or "(" not in text:
             return found
         # "Block (formerly Square)": a bracketed note is a gloss, so try the name without it.
-        # Only the name outside the brackets is ever matched, never what is inside them.
+        # The bracket never resolves on its own; when it names ANOTHER company ("GE (GE
+        # Vernova)") both are returned, so the user is asked.
         outside = _BRACKETED.sub(" ", text).strip()
-        return self._resolve_text(outside) if outside else []
+        matches = self._resolve_text(outside) if outside else []
+        if not matches:
+            return []
+        named = {m.cik for m in matches}
+        for note in _BRACKETED.findall(text):
+            inner = self._resolve_text(note.strip().strip("()").strip())
+            matches += [m for m in inner if m.cik not in named]
+            named |= {m.cik for m in inner}
+        return self._sorted(matches)
 
     def _resolve_text(self, text: str) -> list[CompanyMatch]:
         # 1. exact ticker. Only a mention written as a ticker counts (ALL CAPS, or with a share
