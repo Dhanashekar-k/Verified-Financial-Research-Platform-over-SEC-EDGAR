@@ -53,6 +53,9 @@ kappa: ## Cohen's kappa of the judge vs YOUR labels in eval/judges/calibration.j
 	@test -n "$(RESULTS)" || { echo "usage: make kappa RESULTS=eval/results/<run>.json"; exit 2; }
 	$(PY) python -m eval.judges.calibrate kappa --results $(RESULTS) --all --report eval/judges/drafts/calibration_disagreements.md
 
+promote-gold: ## YOU run this after reviewing a draft: make promote-gold SET=narrative VERIFIED_BY=<name> | SET=unanswerable (no reviewer field; VERIFIED_BY ignored) (M4)
+	@test -n "$(SET)" || { echo "usage: make promote-gold SET=narrative VERIFIED_BY=<name> | SET=unanswerable"; exit 2; }
+	$(PY) python -m eval.gen.promote_gold $(SET) $(if $(VERIFIED_BY),--verified-by "$(VERIFIED_BY)",)
 gold-checksums: ## YOU run this after curating gold files; writes eval/sets/CHECKSUMS (M4)
 	$(PY) python -m eval.check_gold --write
 
