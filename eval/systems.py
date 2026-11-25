@@ -7,12 +7,14 @@ and retrieval are observed around the call, not returned by it:
   billed-but-failed responses), so per-question cost comes from accounting, not estimates.
 - ``record_retrieval(ids)`` lets a system report the chunk ids it retrieved, in rank order, for
   recall@k; it writes into a context variable that ``eval.run`` sets per question.
+- ``record_compiled_facts(ids)`` lets the engine report the fact ids its compiler returned, so the
+  harness can reject a claim that cites any other id. It is used in memory only.
 """
 
 from __future__ import annotations
 
 import contextvars
-from collections.abc import Callable
+from collections.abc import Callable, Iterable
 from dataclasses import dataclass, field
 from typing import Any, Protocol
 
@@ -73,6 +75,27 @@ def retrieval_sink() -> tuple[list[str], contextvars.Token[list[str] | None]]:
 
 def reset_retrieval(token: contextvars.Token[list[str] | None]) -> None:
     _RETRIEVED.reset(token)
+
+
+_COMPILED: contextvars.ContextVar[set[int] | None] = contextvars.ContextVar(
+    "eval_compiled_facts", default=None
+)
+
+
+def record_compiled_facts(fact_ids: Iterable[int]) -> None:
+    """Called by a system with every fact id its compiler handed to the composer."""
+    sink = _COMPILED.get()
+    if sink is not None:
+        sink.update(fact_ids)
+
+
+def compiled_facts_sink() -> tuple[set[int], contextvars.Token[set[int] | None]]:
+    sink: set[int] = set()
+    return sink, _COMPILED.set(sink)
+
+
+def reset_compiled_facts(token: contextvars.Token[set[int] | None]) -> None:
+    _COMPILED.reset(token)
 
 
 _ROUTE: contextvars.ContextVar[dict[str, str] | None] = contextvars.ContextVar(

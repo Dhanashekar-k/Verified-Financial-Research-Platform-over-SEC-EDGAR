@@ -747,3 +747,15 @@ def test_a_year_in_the_question_that_the_plan_dropped_is_not_replaced_by_a_relat
     ans = engine(spy).answer("Apple net income in 2020 and the year before", cfg(llm))
     assert ans.refusal is not None and "2020" in ans.refusal.reason
     assert not spy.compile_calls
+
+
+def test_the_engine_reports_the_ids_it_compiled_to_the_harness() -> None:
+    from eval.systems import compiled_facts_sink, reset_compiled_facts
+
+    llm = ScriptedLLM(numeric_plan(periods=[PeriodRef(fiscal_year=2024)]), numeric_answer())
+    sink, token = compiled_facts_sink()
+    try:
+        engine(Spy(CompileOutcome(results=[result()]))).answer("q", cfg(llm))
+    finally:
+        reset_compiled_facts(token)
+    assert sink == {111}

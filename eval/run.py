@@ -22,7 +22,7 @@ import os
 import random
 import subprocess
 import time
-from collections.abc import Callable, Sequence
+from collections.abc import Callable, Collection, Sequence
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
 from decimal import Decimal
@@ -57,6 +57,8 @@ from eval.systems import (
     SYSTEMS,
     AccountingLLM,
     EvalCfg,
+    compiled_facts_sink,
+    reset_compiled_facts,
     reset_retrieval,
     reset_route,
     retrieval_sink,
@@ -84,6 +86,8 @@ class Outcome:
     judge_usage: list[Usage] = field(default_factory=list)
     scores: dict[str, Any] = field(default_factory=dict)
     route: str = "n/a"
+    # fact ids the system's compiler returned for this answer; checked, never written out
+    compiled_facts: set[int] = field(default_factory=set)
 
 
 def _unimplemented(fn: Callable[..., Any], *args: Any) -> Any:
@@ -220,14 +224,27 @@ def aggregate(outcomes: list[Outcome], kappa: float | None) -> dict[str, Any]:
 MAX_SCORING_ERROR_SHARE = 0.10
 
 
-def provenance_gaps(answer: Answer, *, strict: bool = False) -> list[str]:
+def provenance_gaps(
+    answer: Answer, *, strict: bool = False, compiled: Collection[int] | None = None
+) -> list[str]:
     """Claims whose provenance is present in shape but empty in substance: an `expr` claim with no
     fact ids, a `chunk` claim with no chunk id or a blank quote. 05 section 4.3 gives every claim
     exactly one provenance; DoD M5 asserts that none is missing. ``strict`` (the engine) also
-    flags an answer that has prose, no claim and no refusal: nothing in it carries provenance."""
+    flags an answer that has prose, no claim and no refusal: nothing in it carries provenance.
+
+    ``compiled``: the fact ids the compiler returned for this answer. When given, every `expr`
+    claim may cite only those (an invented id is a gap), and a numeric claim must cite fact ids.
+    It checks the ids, not that the expression is one the compiler built."""
     gaps: list[str] = []
     for c in answer.claims:
         p = c.provenance
+        if compiled is not None:
+            if isinstance(p, ExprProvenance):
+                unknown = sorted(set(p.fact_ids) - set(compiled))
+                if unknown:
+                    gaps.append(f"{c.id}: cites fact ids the compiler did not return: {unknown}")
+            elif c.kind != "text":
+                gaps.append(f"{c.id}: a numeric claim without fact-id provenance")
         if isinstance(p, ExprProvenance):
             if not p.fact_ids:
                 gaps.append(f"{c.id}: expr provenance without fact ids")
@@ -239,10 +256,15 @@ def provenance_gaps(answer: Answer, *, strict: bool = False) -> list[str]:
 
 
 def provenance_breaches(outcomes: list[Outcome], *, strict: bool = False) -> dict[str, list[str]]:
-    """``{question id: gaps}`` over every answered question (the harness asserts this is empty)."""
+    """``{question id: gaps}`` over every answered question (the harness asserts this is empty).
+    ``strict`` (the engine) also holds each answer to the fact ids compiled for it; an answer for
+    which none were reported may cite none."""
     out: dict[str, list[str]] = {}
     for o in outcomes:
-        if o.answer is not None and (gaps := provenance_gaps(o.answer, strict=strict)):
+        if o.answer is None:
+            continue
+        compiled = getattr(o, "compiled_facts", set()) if strict else None
+        if gaps := provenance_gaps(o.answer, strict=strict, compiled=compiled):
             out[o.row.id] = gaps  # type: ignore[attr-defined]
     return out
 
@@ -334,12 +356,14 @@ def run_questions(
             if o.answer is None and o.error is None:
                 sink, token = retrieval_sink()
                 route_sink, route_token = route_sink_set()
+                compiled, compiled_token = compiled_facts_sink()
                 mark = len(cfg.llm.ledger)
                 start = time.monotonic()
                 try:
                     o.answer = system.answer(o.row.question, cfg)  # type: ignore[attr-defined]
                     o.latency_ms = int((time.monotonic() - start) * 1000)
                     o.retrieved = list(sink) if getattr(system, "retrieves", True) else None
+                    o.compiled_facts = set(compiled)
                 except BatchPending:
                     pending.append(qid)
                 except Exception as err:  # noqa: BLE001
@@ -349,6 +373,7 @@ def run_questions(
                 finally:
                     o.system_usage += cfg.llm.ledger[mark:]
                     reset_retrieval(token)
+                    reset_compiled_facts(compiled_token)
                     o.route = route_sink.get("route", "n/a")
                     reset_route(route_token)
                 if qid in pending:
@@ -654,7 +679,7 @@ def main(argv: list[str] | None = None) -> int:
     gaps = provenance_breaches(outcomes, strict=True) if args.system == "engine" else {}
     if gaps:  # the file is written first; a claim without provenance breaks the contract
         for qid, why in list(gaps.items())[:10]:
-            print(f"FAIL: {qid} has a claim without provenance: {why}")
+            print(f"FAIL: {qid} breaks the provenance contract: {why}")
         return 2
     breaches = scoring_error_breaches(outcomes)
     if breaches:  # the file is written first: the run's cost and answers are not lost

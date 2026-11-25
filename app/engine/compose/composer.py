@@ -62,6 +62,27 @@ Rules, all of them binding:
 """
 
 
+def _shows_latest(r: NumericResult) -> bool:
+    """Whether a restated note's latest value and fact id go to the composer. On a ratio or growth
+    result the restated figure is an INPUT in a unit the note does not carry: showing it in the
+    result's unit would be wrong."""
+    return r.unit != "ratio"
+
+
+def citable_fact_ids(results: Sequence[NumericResult]) -> set[int]:
+    """Every fact id the composer is handed: each result's ``fact_ids``, and the id of a restated
+    value it is shown. The harness rejects a claim citing any other id."""
+    ids = {i for r in results for i in r.fact_ids}
+    ids |= {
+        n.latest_fact_id
+        for r in results
+        if _shows_latest(r)
+        for n in r.notes
+        if n.latest_fact_id is not None
+    }
+    return ids
+
+
 def _label(fiscal_year: int, fiscal_period: str) -> str:
     return f"FY{fiscal_year}" if fiscal_period == "FY" else f"{fiscal_period} FY{fiscal_year}"
 
@@ -112,11 +133,9 @@ def result_view(
                             "fact_ids": [n.latest_fact_id],
                         },
                     }
-                    # On a ratio or growth result the restated figure is an INPUT in a unit
-                    # the note does not carry: showing it in the result's unit would be wrong.
                     if n.latest_value is not None
                     and n.latest_fact_id is not None
-                    and r.unit != "ratio"
+                    and _shows_latest(r)
                     else {}
                 ),
             }

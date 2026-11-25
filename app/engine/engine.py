@@ -28,7 +28,7 @@ from pathlib import Path
 from typing import Any
 
 from app.engine.answer import Answer, Refusal
-from app.engine.compose.composer import compose
+from app.engine.compose.composer import citable_fact_ids, compose
 from app.engine.compose.grounding import Violation, check_grounding, check_markdown
 from app.engine.entities.resolve_company import CompanyIndex
 from app.engine.plan.compiler import compile_plan
@@ -218,7 +218,7 @@ class EngineSystem:
         return asyncio.run(self.aanswer(question, cfg))
 
     async def aanswer(self, question: str, cfg: Any) -> Answer:
-        from eval.systems import record_retrieval, record_route
+        from eval.systems import record_compiled_facts, record_retrieval, record_route
 
         diag = Diagnostics()
         self.diagnostics[question] = diag
@@ -296,6 +296,7 @@ class EngineSystem:
         if outcome is not None:
             diag.results, diag.not_found = list(outcome.results), list(outcome.not_found)
         diag.retrieval = retrieved
+        record_compiled_facts(citable_fact_ids(diag.results))
         chunks = list(retrieved.chunks) if retrieved else []
         record_retrieval([c.chunk_id for c in chunks])
 
