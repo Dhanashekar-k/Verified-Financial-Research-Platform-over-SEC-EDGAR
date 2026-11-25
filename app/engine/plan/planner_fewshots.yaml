@@ -1,0 +1,66 @@
+# Planner few-shot examples (M05 section 3.3). DRAFT by Claude, 2026-11-25; Shekar owns the final
+# edit. Each `plan` must validate as a QueryPlan (tests/unit/engine/test_planner.py): metrics are
+# catalog keys, companies are mentions only (code resolves CIKs), periods are explicit years.
+# Changing this file changes the planner's system prompt, so every recorded planner call misses
+# its cassette and has to be re-recorded (it costs money): edit, then re-record once.
+
+- question: "How much net income did Apple report for FY2023?"
+  plan:
+    intent: numeric
+    companies: [{mention: "Apple"}]
+    periods: [{fiscal_year: 2023, fiscal_period: FY}]
+    metrics: [net_income]
+    operation: value
+
+- question: "By what percentage did Texas Instruments' R&D spending change between fiscal 2021 and fiscal 2022?"
+  plan:
+    intent: numeric
+    companies: [{mention: "Texas Instruments"}]
+    periods: [{fiscal_year: 2021, fiscal_period: FY}, {fiscal_year: 2022, fiscal_period: FY}]
+    metrics: [r_and_d]
+    operation: growth
+
+- question: "Costco vs WMT: who held more cash at the end of fiscal 2021, and by how much?"
+  plan:
+    intent: numeric
+    companies: [{mention: "Costco"}, {mention: "WMT"}]
+    periods: [{fiscal_year: 2021, fiscal_period: FY}]
+    metrics: [cash]
+    operation: compare
+
+- question: "What was Q2 2024 diluted EPS at Microsoft?"
+  plan:
+    intent: numeric
+    companies: [{mention: "Microsoft"}]
+    periods: [{fiscal_year: 2024, fiscal_period: Q2}]
+    metrics: [eps_diluted]
+    operation: value
+
+- question: "What was Tesla's operating margin in 2023, and what did management say drove it?"
+  plan:
+    intent: hybrid
+    companies: [{mention: "Tesla"}]
+    periods: [{fiscal_year: 2023, fiscal_period: FY}]
+    metrics: [operating_margin]
+    operation: value
+    narrative_topics: ["drivers of operating margin"]
+    section_hints: ["7"]
+
+- question: "What supply-chain risks did Nike disclose in its FY2022 10-K?"
+  plan:
+    intent: narrative
+    companies: [{mention: "Nike"}]
+    periods: [{fiscal_year: 2022, fiscal_period: FY}]
+    narrative_topics: ["supply chain risk", "contract manufacturers"]
+    section_hints: ["1A"]
+
+- question: "Predict Costco's operating income two years from now."
+  plan:
+    intent: out_of_scope
+
+- question: "Did the company's net income go up last year?"
+  plan:
+    intent: numeric
+    metrics: [net_income]
+    operation: growth
+    needs_clarification: "Which company do you mean?"
