@@ -1,0 +1,9 @@
+{
+  "kappa": 0.645608628659476,
+  "n": 46,
+  "judge_model": "claude-sonnet-5-5",
+  "rubric_version": "correctness-v2",
+  "labels_sha256": "494b5d39528147af24644d2bfd6d7c662f1792ec2bef691c0b34355bb5385bff",
+  "computed_at": "2026-11-25T02:57:26+00:00",
+  "results_run_id": "2026-11-25T00-43-10Z_baseline-0.2.0_sonnet"
+}
