@@ -1,0 +1,48 @@
+{
+  "measured_at": "2026-11-25T09:24:35Z",
+  "source": "local warehouse/curated/facts, current Iceberg snapshot (NOT the serving database)",
+  "snapshot_id": 3355594346342027933,
+  "metadata_file": "v4.metadata.json",
+  "scope": "tracked CIKs (data/targets/tracked_ciks.csv), us-gaap, catalog duration tags, qtrs=4, fiscal_period=FY, is_original",
+  "catalog_duration_tags": [
+    "CostOfGoodsAndServicesSold",
+    "CostOfRevenue",
+    "EarningsPerShareBasic",
+    "EarningsPerShareDiluted",
+    "GrossProfit",
+    "IncomeTaxExpenseBenefit",
+    "InterestExpense",
+    "NetCashProvidedByUsedInOperatingActivities",
+    "NetIncomeLoss",
+    "OperatingIncomeLoss",
+    "PaymentsOfDividendsCommonStock",
+    "PaymentsToAcquirePropertyPlantAndEquipment",
+    "ResearchAndDevelopmentExpense",
+    "RevenueFromContractWithCustomerExcludingAssessedTax",
+    "RevenueFromContractWithCustomerIncludingAssessedTax",
+    "Revenues",
+    "RevenuesNetOfInterestExpense",
+    "SellingGeneralAndAdministrativeExpense"
+  ],
+  "queries": {
+    "original_fy_rows_by_form": "select form, count(*) from f where taxonomy='us-gaap' and qtrs=4 and fiscal_period='FY' and is_original and tag in (select tag from t) and cik in (select cik from trk) group by 1 order by 2 desc",
+    "keys_with_no_annual_form_row": "select count(*) from (select cik,tag,fiscal_year from f where taxonomy='us-gaap' and qtrs=4 and fiscal_period='FY' and is_original and tag in (select tag from t) and cik in (select cik from trk) group by all having not bool_or((form like '10-K%' or form like '20-F%' or form like '40-F%')))",
+    "keys_with_only_10q_rows": "select count(*) from (select cik,tag,fiscal_year from f where taxonomy='us-gaap' and qtrs=4 and fiscal_period='FY' and is_original and tag in (select tag from t) and cik in (select cik from trk) group by all having bool_and(form like '10-Q%'))",
+    "keys_with_both_10q_and_10k_rows": "select count(*) from (select cik,tag,fiscal_year from f where taxonomy='us-gaap' and qtrs=4 and fiscal_period='FY' and is_original and tag in (select tag from t) and cik in (select cik from trk) group by all having bool_or(form like '10-Q%') and bool_or(form like '10-K%'))"
+  },
+  "original_fy_rows_by_form": {
+    "10-K": 22524,
+    "10-K/A": 33,
+    "10-Q": 14
+  },
+  "keys_with_no_annual_form_row": 2,
+  "keys_with_only_10q_rows": 2,
+  "keys_with_both_10q_and_10k_rows": 6,
+  "numeric_gold": {
+    "file": "eval/sets/numeric_auto.jsonl (read only)",
+    "distinct_gold_fact_ids": 341,
+    "found_in_this_snapshot": 143,
+    "found_and_fy_from_a_non_annual_form": 0,
+    "not_checked": 198
+  }
+}
