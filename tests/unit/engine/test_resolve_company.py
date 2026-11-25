@@ -410,3 +410,31 @@ def test_names_registered_unlike_their_common_form(
     mention: str, cik: int, index: CompanyIndex
 ) -> None:
     assert ciks(mention, index) == [cik]
+
+
+@pytest.mark.parametrize(
+    ("mention", "cik"),
+    [("JnJ", 200406), ("JNJ", 200406), ("AMEX", 4962), ("Uber", 1543151), ("Uber's", 1543151)],
+)
+def test_common_short_names(mention: str, cik: int, index: CompanyIndex) -> None:
+    assert ciks(mention, index) == [cik]
+
+
+@pytest.mark.parametrize(
+    ("mention", "same_as"),
+    [
+        ("Block (formerly Square)", "Block"),
+        ("Expand Energy (Chesapeake)", "Expand Energy"),
+        ("Apple (AAPL)", "Apple"),
+        ("Meta Platforms (formerly Facebook)", "Meta Platforms"),
+    ],
+)
+def test_a_bracketed_note_is_ignored_when_the_full_text_matches_nothing(
+    mention: str, same_as: str, index: CompanyIndex
+) -> None:
+    assert ciks(mention, index) == ciks(same_as, index) != []
+
+
+@pytest.mark.parametrize("mention", ["Zorblax (Apple)", "()", "Zorblax Corp (AAPL)"])
+def test_the_text_inside_brackets_is_never_matched(mention: str, index: CompanyIndex) -> None:
+    assert ciks(mention, index) == []

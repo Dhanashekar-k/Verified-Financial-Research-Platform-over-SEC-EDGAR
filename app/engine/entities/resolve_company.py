@@ -35,6 +35,7 @@ FUZZY_CUTOFF = 90
 MIN_FUZZY_LEN = 3  # a 1-2 letter fragment is a subset of too many names to mean anything
 MIN_TYPO_WORD = 6  # a shorter word is one edit from too many other names (roper/cooper)
 ALIASES_PATH = Path(__file__).resolve().parent / "aliases.csv"
+_BRACKETED = re.compile(r"\s*\([^()]*\)")
 
 # Words that never tell two companies apart: dropped anywhere in a name.
 _NOISE = frozenset(
@@ -161,6 +162,15 @@ class CompanyIndex:
         text = mention.strip()
         if not text:
             return []
+        found = self._resolve_text(text)
+        if found or "(" not in text:
+            return found
+        # "Block (formerly Square)": a bracketed note is a gloss, so try the name without it.
+        # Only the name outside the brackets is ever matched, never what is inside them.
+        outside = _BRACKETED.sub(" ", text).strip()
+        return self._resolve_text(outside) if outside else []
+
+    def _resolve_text(self, text: str) -> list[CompanyMatch]:
         # 1. exact ticker. Only a mention written as a ticker counts (ALL CAPS, or with a share
         #    class dot or dash, "BRK.b"): "all", "key", "now" are words, not Allstate or KeyCorp.
         bare = text.lstrip("$")

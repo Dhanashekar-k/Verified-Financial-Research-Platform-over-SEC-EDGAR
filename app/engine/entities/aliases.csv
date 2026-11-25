@@ -29,3 +29,6 @@ Verizon,732712,FinanceBench company name
 Meta,1326801,Meta Platforms short name
 CRH PLC,849395,SEC legal name is CRH PUBLIC LTD CO (missed in the planner dev run)
 D.R. Horton,882184,SEC legal name is HORTON D R INC /DE/ (missed in the planner dev run)
+JnJ,200406,Johnson & Johnson written without the ampersand
+AMEX,4962,American Express short name
+Uber,1543151,Uber Technologies short name
