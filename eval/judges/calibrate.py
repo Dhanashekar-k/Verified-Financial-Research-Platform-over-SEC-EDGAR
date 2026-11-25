@@ -8,7 +8,9 @@ Workflow:
    judge, so including it would inflate kappa with trivial agreement. Shekar labels the rows
    correct/incorrect blind and saves the result as ``eval/judges/calibration.jsonl``
    (protected gold; this module refuses to write it and never overwrites a template without
-   ``--force``).
+   ``--force``). ``template --all`` writes every answered row of a run (any split) to
+   ``eval/judges/drafts/calibration_worksheet.jsonl`` instead; ``kappa --allow-n`` then scores
+   that n.
 2. ``kappa``: read Shekar's labels and the judge's labels, taken from the same results file
    (``judge_label`` / ``judge_reason`` per question, ``--results``) or from a JSONL of
    ``{"id", "label", "reason"}`` (``--judge``). It prints Cohen's kappa, writes
@@ -36,6 +38,7 @@ from typing import Any
 LABELS: tuple[str, ...] = ("correct", "incorrect", "refused")
 LABELS_PATH = Path("eval/judges/calibration.jsonl")
 TEMPLATE_PATH = Path("eval/judges/drafts/calibration_template.jsonl")
+WORKSHEET_PATH = Path("eval/judges/drafts/calibration_worksheet.jsonl")
 KAPPA_PATH = Path("eval/judges/kappa.json")
 TARGET_N = 30
 # Only these fields reach the labeler: nothing the judge produced.
@@ -74,8 +77,8 @@ def _read_jsonl(path: Path) -> list[dict[str, Any]]:
 
 def make_label_template(
     results_json: Path,
-    split: str = "dev",
-    n: int = 30,
+    split: str | None = "dev",
+    n: int | None = 30,
     seed: int = 13,
     out: Path = TEMPLATE_PATH,
     *,
@@ -83,6 +86,8 @@ def make_label_template(
 ) -> list[dict[str, Any]]:
     """Sample ``n`` FinanceBench answers of ``split`` and write a blind labeling template.
 
+    ``split=None`` takes every split and ``n=None`` takes every answered row (a worksheet over
+    all of a run's answers, shuffled by ``seed`` so the order carries no hint).
     Errored rows and refused answers are excluded before sampling (see module docstring).
     Rows are sorted by id before seeded sampling, so the sample depends only on the results
     file's contents and the seed, not on row order. A row's split is its own ``split`` field
@@ -99,14 +104,16 @@ def make_label_template(
         row
         for row in results["per_question"]
         if row.get("set") == "financebench"
-        and row.get("split", run_split) == split
+        and (split is None or row.get("split", run_split) == split)
         and not row.get("error")
         and row.get("answer_markdown") is not None
         and row.get("refusal") is None
     ]
     pool.sort(key=lambda row: str(row["id"]))
-    if len(pool) < n:
-        raise ValueError(f"only {len(pool)} FinanceBench {split} answers, need {n}")
+    if n is None:
+        n = len(pool)
+    if n < 1 or len(pool) < n:
+        raise ValueError(f"only {len(pool)} FinanceBench {split or 'all'} answers, need {n}")
     missing = [f for f in TEMPLATE_FIELDS if f != "refusal" and any(f not in r for r in pool)]
     if missing:
         raise ValueError(f"results rows lack fields needed for labeling: {missing}")
@@ -115,6 +122,52 @@ def make_label_template(
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows))
     return rows
+
+
+def answered_financebench_rows(results: dict[str, Any]) -> list[dict[str, Any]]:
+    """The FinanceBench rows a worksheet covers: answered, not errored, not refused."""
+    return [
+        r
+        for r in results["per_question"]
+        if r.get("set") == "financebench"
+        and not r.get("error")
+        and r.get("answer_markdown") is not None
+        and r.get("refusal") is None
+    ]
+
+
+def check_labels_match_results(
+    human_rows: list[dict[str, Any]], results_json: Path, *, cover_all: bool
+) -> None:
+    """Fail unless the labelled answers ARE this results file's answers.
+
+    Joining by id alone would pair labels written against one run's answers with another
+    run's judge labels (a rerun keeps the ids) and print a plausible kappa. Each labelled
+    row's ``answer_markdown`` must equal the results row's; with ``cover_all`` the labels must
+    also cover exactly the answered FinanceBench rows of the run (a worksheet, not a subset).
+    """
+    results = json.loads(Path(results_json).read_text())
+    by_id = {str(r["id"]): r for r in results["per_question"]}
+    stale = sorted(
+        str(h["id"])
+        for h in human_rows
+        if str(h["id"]) not in by_id
+        or by_id[str(h["id"])].get("answer_markdown") != h.get("answer_markdown")
+    )
+    if stale:
+        raise ValueError(
+            f"labels do not match run {results.get('run_id')}: answers differ or ids missing "
+            f"for {stale[:5]}{' ...' if len(stale) > 5 else ''} (label the worksheet made from "
+            "THIS results file)"
+        )
+    if cover_all:
+        want = {str(r["id"]) for r in answered_financebench_rows(results)}
+        have = {str(h["id"]) for h in human_rows}
+        if want != have:
+            raise ValueError(
+                f"labels cover {len(have)} rows but the run has {len(want)} answered "
+                f"FinanceBench rows (missing {len(want - have)}, extra {len(have - want)})"
+            )
 
 
 def judge_rows_from_results(results_json: Path) -> tuple[list[dict[str, Any]], dict[str, Any]]:
@@ -202,7 +255,12 @@ def main(argv: Sequence[str] | None = None) -> int:
     t.add_argument("--split", default="dev")
     t.add_argument("--n", type=int, default=TARGET_N)
     t.add_argument("--seed", type=int, default=13)
-    t.add_argument("--out", type=Path, default=TEMPLATE_PATH)
+    t.add_argument("--out", type=Path, default=None, help="default: template, or worksheet --all")
+    t.add_argument(
+        "--all",
+        action="store_true",
+        help="every answered FinanceBench row of any split (the worksheet), not a sample",
+    )
     t.add_argument("--force", action="store_true", help="replace an existing template")
     k = sub.add_parser("kappa", help="Cohen's kappa of the judge against Shekar's labels")
     src = k.add_mutually_exclusive_group(required=True)
@@ -212,31 +270,49 @@ def main(argv: Sequence[str] | None = None) -> int:
     k.add_argument("--report", type=Path, default=None, help="write the disagreement report")
     k.add_argument("--kappa-out", type=Path, default=KAPPA_PATH)
     k.add_argument("--allow-n", action="store_true", help=f"accept n != {TARGET_N}")
+    k.add_argument(
+        "--all",
+        action="store_true",
+        help="labels are the full worksheet (template --all): they must match the results "
+        "file's answers and cover every answered FinanceBench row; n is then not limited to 30",
+    )
     args = parser.parse_args(argv)
 
     if args.cmd == "template":
+        out = args.out or (WORKSHEET_PATH if args.all else TEMPLATE_PATH)
         rows = make_label_template(
-            args.results, args.split, args.n, args.seed, args.out, force=args.force
+            args.results,
+            None if args.all else args.split,
+            None if args.all else args.n,
+            args.seed,
+            out,
+            force=args.force,
         )
-        print(f"wrote {len(rows)} blind rows to {args.out}; label them, save as {LABELS_PATH}")
+        print(f"wrote {len(rows)} blind rows to {out}; label them, save as {LABELS_PATH}")
         return 0
 
     if not args.labels.exists():
         print(
             f"{args.labels} not found: kappa needs Shekar's labels. Label the template "
-            f"({TEMPLATE_PATH}) and save it as {args.labels} first.",
+            f"({TEMPLATE_PATH}) or the worksheet ({WORKSHEET_PATH}) and save it as "
+            f"{args.labels} first.",
             file=sys.stderr,
         )
         return 2
     human_rows = _read_jsonl(args.labels)
     run_info: dict[str, Any] = {}
     if args.results is not None:
+        try:
+            check_labels_match_results(human_rows, args.results, cover_all=args.all)
+        except ValueError as err:
+            print(f"refusing: {err}", file=sys.stderr)
+            return 4
         judge_rows, run_info = judge_rows_from_results(args.results)
         judge_rows = [r for r in judge_rows if str(r["id"]) in {str(h["id"]) for h in human_rows}]
     else:
         judge_rows = _read_jsonl(args.judge)
     _, human, judge = paired_labels(human_rows, judge_rows)
-    if len(human) != TARGET_N and not args.allow_n:
+    if len(human) != TARGET_N and not (args.allow_n or args.all):
         print(
             f"n={len(human)} but the calibration target is {TARGET_N}; refusing to report a "
             "kappa from a different sample size (pass --allow-n to override)",

@@ -44,6 +44,13 @@ check-gold: ## Verify gold eval files match eval/sets/CHECKSUMS (M4; runs in CI)
 label-sections: ## YOU run this: pick section starts from candidates; resumes where you left off (M2)
 	$(PY) python -m eval.label_sections
 
+calibration-worksheet: ## Blind worksheet of every answered FinanceBench row of a run, e.g. make calibration-worksheet RESULTS=eval/results/<run>.json (M4; label it, then YOU promote it)
+	@test -n "$(RESULTS)" || { echo "usage: make calibration-worksheet RESULTS=eval/results/<run>.json"; exit 2; }
+	$(PY) python -m eval.judges.calibrate template --results $(RESULTS) --all
+kappa: ## Cohen's kappa of the judge vs YOUR labels in eval/judges/calibration.jsonl (same RESULTS run as the worksheet); writes eval/judges/kappa.json + a disagreement report (M4)
+	@test -n "$(RESULTS)" || { echo "usage: make kappa RESULTS=eval/results/<run>.json"; exit 2; }
+	$(PY) python -m eval.judges.calibrate kappa --results $(RESULTS) --all --report eval/judges/drafts/calibration_disagreements.md
+
 gold-checksums: ## YOU run this after curating gold files; writes eval/sets/CHECKSUMS (M4)
 	$(PY) python -m eval.check_gold --write
 

@@ -142,6 +142,7 @@ def build_messages(question: str, passages: list[Passage]) -> list[dict[str, Any
 class BaselineSystem:
     name = "baseline"
     version = VERSION
+    reads_corpus = True  # retrieval goes through the serving DB: the run records its version
 
     def __init__(
         self,

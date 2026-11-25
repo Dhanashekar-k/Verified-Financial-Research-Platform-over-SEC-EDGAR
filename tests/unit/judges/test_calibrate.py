@@ -259,6 +259,9 @@ def test_kappa_cli_prints_undefined_when_no_label_variation(
     assert json.loads(kappa_out.read_text())["kappa"] is None
 
 
+_ANS = {f"fb-{i}": {"answer_markdown": f"answer {i}"} for i in (1, 2, 3)}
+
+
 def test_kappa_cli_reads_judge_labels_from_a_results_file(
     tmp_path: Path, capsys: pytest.CaptureFixture[str]
 ) -> None:
@@ -269,15 +272,20 @@ def test_kappa_cli_reads_judge_labels_from_a_results_file(
                 "run_id": "r1",
                 "config": {"judge": "claude-sonnet-5-5", "judge_rubrics": {"correctness": "cv9"}},
                 "per_question": [
-                    {"id": "fb-1", "judge_label": "correct", "judge_reason": "ok"},
-                    {"id": "fb-2", "judge_label": "incorrect", "judge_reason": "no"},
-                    {"id": "fb-3", "judge_label": "correct", "judge_reason": "not labelled"},
+                    {"id": "fb-1", "judge_label": "correct", "judge_reason": "ok", **_ANS["fb-1"]},
+                    {
+                        "id": "fb-2",
+                        "judge_label": "incorrect",
+                        "judge_reason": "no",
+                        **_ANS["fb-2"],
+                    },
+                    {"id": "fb-3", "judge_label": "correct", "judge_reason": "x", **_ANS["fb-3"]},
                 ],
             }
         )
     )
     labels, kappa_out = tmp_path / "l.jsonl", tmp_path / "kappa.json"
-    labels.write_text("".join(json.dumps(r) + "\n" for r in _human()))
+    labels.write_text("".join(json.dumps({**r, **_ANS[str(r["id"])]}) + "\n" for r in _human()))
     code = main(
         [
             "kappa",
@@ -337,3 +345,103 @@ def test_template_skips_errored_and_refused_rows(tmp_path: Path) -> None:
     ids = {r["id"] for r in out}
     assert not ids & {"fb-00000", "fb-00001", "fb-00002", "fb-00003"}
     assert len(out) == 30  # exactly the 30 clean dev rows remain
+
+
+def test_worksheet_takes_every_answered_row_of_every_split_and_stays_blind(
+    tmp_path: Path,
+) -> None:
+    """--all: all answered FinanceBench rows (dev and test, rows whose split is null, as in a
+    ``--split all`` run), no numeric rows, no refused or errored rows, no judge output."""
+    path = _results(tmp_path, n_dev=20, n_test=10)
+    data = json.loads(path.read_text())
+    rows = data["per_question"]
+    for r in rows:
+        r["split"] = None  # a --split all run records no per-row split
+    rows[0]["refusal"] = {"reason": "no data"}
+    rows[1]["error"] = "boom"
+    path.write_text(json.dumps(data))
+    out = tmp_path / "w.jsonl"
+    got = make_label_template(path, split=None, n=None, out=out)
+    ids = {r["id"] for r in got}
+    assert len(got) == 28 and not ids & {"fb-00000", "fb-00001", "num-0001"}
+    assert all(r["human_label"] == "" and set(r) == {*TEMPLATE_FIELDS, "human_label"} for r in got)
+    assert "LEAK" not in out.read_text()
+
+
+def test_worksheet_cli_defaults_to_the_worksheet_path_and_refuses_the_labels_file(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    path = _results(tmp_path, n_dev=5, n_test=0)
+    monkeypatch.chdir(tmp_path)
+    assert main(["template", "--results", str(path), "--all"]) == 0
+    assert (tmp_path / "eval/judges/drafts/calibration_worksheet.jsonl").exists()
+    with pytest.raises(ValueError, match="refusing to write"):
+        main(["template", "--results", str(path), "--all", "--out", str(LABELS_PATH)])
+
+
+def _worksheet_run(tmp_path: Path, answers: dict[str, str]) -> tuple[Path, Path]:
+    """A results file with three answered FinanceBench rows, and labels for exactly those."""
+    results = tmp_path / "run.json"
+    per_q = [
+        {
+            "id": f"fb-{i}",
+            "set": "financebench",
+            "refusal": None,
+            "judge_label": "correct",
+            "judge_reason": "ok",
+            "answer_markdown": answers[f"fb-{i}"],
+        }
+        for i in (1, 2, 3)
+    ]
+    results.write_text(json.dumps({"run_id": "rB", "config": {}, "per_question": per_q}))
+    labels = tmp_path / "labels.jsonl"
+    labels.write_text(
+        "".join(
+            json.dumps({"id": f"fb-{i}", "answer_markdown": f"answer {i}", "human_label": lab})
+            + "\n"
+            for i, lab in ((1, "correct"), (2, "incorrect"), (3, "correct"))
+        )
+    )
+    return results, labels
+
+
+def test_kappa_refuses_labels_written_against_a_different_runs_answers(
+    tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    """A rerun keeps the ids but not the answers; joining by id would print a plausible kappa."""
+    answers = {f"fb-{i}": f"answer {i}" for i in (1, 2, 3)}
+    answers["fb-2"] = "a different answer from the rerun"
+    results, labels = _worksheet_run(tmp_path, answers)
+    out = tmp_path / "kappa.json"
+    code = main(
+        ["kappa", "--results", str(results), "--labels", str(labels), "--kappa-out", str(out),
+         "--all"]
+    )  # fmt: skip
+    assert code == 4 and not out.exists()
+    assert "fb-2" in capsys.readouterr().err
+
+
+def test_kappa_all_requires_labels_to_cover_every_answered_row(
+    tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    answers = {f"fb-{i}": f"answer {i}" for i in (1, 2, 3)}
+    results, labels = _worksheet_run(tmp_path, answers)
+    labels.write_text(labels.read_text().splitlines()[0] + "\n")  # a 1-row subset
+    out = tmp_path / "kappa.json"
+    code = main(
+        ["kappa", "--results", str(results), "--labels", str(labels), "--kappa-out", str(out),
+         "--all"]
+    )  # fmt: skip
+    assert code == 4 and not out.exists()
+    assert "cover 1 rows" in capsys.readouterr().err
+
+
+def test_kappa_all_accepts_the_full_worksheet_at_any_n(tmp_path: Path) -> None:
+    answers = {f"fb-{i}": f"answer {i}" for i in (1, 2, 3)}
+    results, labels = _worksheet_run(tmp_path, answers)
+    out = tmp_path / "kappa.json"
+    code = main(
+        ["kappa", "--results", str(results), "--labels", str(labels), "--kappa-out", str(out),
+         "--all"]
+    )  # fmt: skip
+    assert code == 0 and json.loads(out.read_text())["n"] == 3

@@ -423,6 +423,53 @@ def build_results(
     )
 
 
+def _read_live_corpus_version(dsn: str) -> int | None:
+    """``corpus_state.live_version`` from the serving DB (read-only session). Retrieval goes
+    through the ``chunks`` view, which follows this value, so it is the version a run used."""
+    import psycopg
+
+    with psycopg.connect(
+        dsn, autocommit=True, options="-c default_transaction_read_only=on"
+    ) as conn:
+        # the table does not exist before the first swap
+        if conn.execute("SELECT to_regclass('corpus_state')").fetchone() == (None,):
+            return None
+        row = conn.execute("SELECT live_version FROM corpus_state").fetchone()
+    return None if row is None else int(row[0])
+
+
+def resolve_corpus_version(system: object, dsn: str | None, explicit: int | None) -> int | None:
+    """The corpus version to record in the results file.
+
+    A system that reads the corpus (``reads_corpus``) is stamped with the live version from the
+    DB. An explicit ``--corpus-version`` is accepted only when it equals the live one: retrieval
+    cannot be pointed at another version, so a different value would mislabel the run. A system
+    that reads no corpus (long-context, stub) records ``explicit`` as given, usually None.
+    """
+    if not getattr(system, "reads_corpus", False):
+        return explicit
+    if not dsn:
+        raise RuntimeError("cannot record corpus_version: no serving DSN (EDGARQA_SERVING_DSN)")
+    live = _read_live_corpus_version(dsn)
+    if live is None:
+        raise RuntimeError("corpus_state is empty: no live corpus version to record")
+    if explicit is not None and explicit != live:
+        raise SystemExit(
+            f"--corpus-version {explicit} but the serving DB's live version is {live}; "
+            "retrieval reads the live version, so the run would be mislabeled"
+        )
+    return live
+
+
+def corpus_version_drifted(system: object, dsn: str | None, started: int | None) -> int | None:
+    """The live version now, when it differs from the one the run started under (a swap or
+    rollback mid-run: later questions retrieved from another corpus); else None."""
+    if not getattr(system, "reads_corpus", False) or not dsn or started is None:
+        return None
+    now = _read_live_corpus_version(dsn)
+    return None if now == started else now
+
+
 def _kappa(path: Path, judge_model: str | None, rubric: str) -> float | None:
     """Judge-vs-human kappa written by ``eval.judges.calibrate kappa``, used only when it was
     measured for this run's judge model and correctness rubric version (else None)."""
@@ -517,6 +564,8 @@ def main(argv: list[str] | None = None) -> int:
     if args.gold_chunks.exists():
         gold_chunks = json.loads(args.gold_chunks.read_text()).get("gold_chunk_ids", {})
     items = _load_rows(set_names, args.split, args.sets_dir, args.splits)
+    corpus_version = resolve_corpus_version(system, args.dsn, args.corpus_version)
+    cfg.corpus_version = corpus_version
     if args.sample is not None:
         items = sample_items(items, args.sample, args.sample_seed)
     try:
@@ -551,7 +600,7 @@ def main(argv: list[str] | None = None) -> int:
     results = build_results(
         outcomes,
         config,
-        args.corpus_version,
+        corpus_version,
         _kappa(
             args.kappa_file,
             None if args.no_judge else client.resolve("judge"),
@@ -563,6 +612,13 @@ def main(argv: list[str] | None = None) -> int:
     path = args.out / f"{results.run_id}.json"
     path.write_text(results.model_dump_json(indent=2) + "\n")
     print(f"wrote {path} ({len(outcomes)} questions, ${results.cost.total_usd:.4f})")
+    drifted = corpus_version_drifted(system, args.dsn, corpus_version)
+    if drifted is not None:  # the file is written first: cost and answers are not lost
+        print(
+            f"FAIL: the live corpus version changed from {corpus_version} to {drifted} during "
+            "the run; later questions may have retrieved from another corpus. Rerun."
+        )
+        return 2
     breaches = scoring_error_breaches(outcomes)
     if breaches:  # the file is written first: the run's cost and answers are not lost
         for name, (bad, n) in breaches.items():

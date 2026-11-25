@@ -515,3 +515,124 @@ def test_results_config_records_the_sample_and_timeout() -> None:
     back = run.RunConfig.model_validate_json(cfg.model_dump_json())
     assert (back.sample, back.sample_seed, back.request_timeout_s) == (30, 13, 600.0)
     assert run.RunConfig(system="s", composer="c", mode="m", split="all", sets=[]).sample is None
+
+
+class _CorpusReader:
+    reads_corpus = True
+
+
+def test_corpus_version_is_the_live_version_from_corpus_state(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setattr(run, "_read_live_corpus_version", lambda dsn: 7)
+    assert run.resolve_corpus_version(_CorpusReader(), "dsn", None) == 7
+    assert run.resolve_corpus_version(_CorpusReader(), "dsn", 7) == 7  # an explicit match is fine
+
+
+def test_an_explicit_corpus_version_that_is_not_live_is_refused(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setattr(run, "_read_live_corpus_version", lambda dsn: 7)
+    with pytest.raises(SystemExit, match="live version is 7"):
+        run.resolve_corpus_version(_CorpusReader(), "dsn", 3)
+
+
+def test_a_corpus_reading_system_needs_a_dsn_and_a_live_row(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    with pytest.raises(RuntimeError, match="no serving DSN"):
+        run.resolve_corpus_version(_CorpusReader(), None, None)
+    monkeypatch.setattr(run, "_read_live_corpus_version", lambda dsn: None)
+    with pytest.raises(RuntimeError, match="corpus_state is empty"):
+        run.resolve_corpus_version(_CorpusReader(), "dsn", None)
+
+
+def test_a_system_that_reads_no_corpus_never_touches_the_db(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    def boom(dsn: str) -> int:
+        raise AssertionError("the DB must not be read")
+
+    monkeypatch.setattr(run, "_read_live_corpus_version", boom)
+    assert run.resolve_corpus_version(object(), "dsn", None) is None
+    assert run.resolve_corpus_version(object(), "dsn", 1) == 1
+
+
+def test_the_baseline_declares_that_it_reads_the_corpus() -> None:
+    from app.engine.baseline import BaselineSystem
+
+    assert BaselineSystem.reads_corpus is True
+
+
+def _corpus_system_main(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, versions: list[int | None], extra: list[str]
+) -> tuple[int, Path]:
+    """run.main over a tiny unanswerable set with a stub system that declares reads_corpus;
+    the DB read returns ``versions`` in order (the last one repeats)."""
+    from eval.systems import StubSystem
+
+    class CorpusStub(StubSystem):
+        reads_corpus = True
+
+    calls = iter(versions)
+    last: list[int | None] = [versions[-1]]
+
+    def read(dsn: str) -> int | None:
+        last[0] = next(calls, last[0])
+        return last[0]
+
+    monkeypatch.setitem(run.SYSTEMS, "stub", CorpusStub)
+    monkeypatch.setattr(run, "_read_live_corpus_version", read)
+    sets = tmp_path / "sets"
+    sets.mkdir()
+    rows = [
+        {
+            "id": f"un-{i:03d}",
+            "question": f"Q{i}?",
+            "reason": "future_guidance",
+            "expected": "refuse",
+        }
+        for i in range(4)
+    ]
+    (sets / "unanswerable.jsonl").write_text("\n".join(json.dumps(r) for r in rows) + "\n")
+    out = tmp_path / "out"
+    code = run.main(
+        [
+            "--system", "stub", "--mode", "stub", "--allow-stub-results", "--no-judge",
+            "--sets", "unanswerable", "--split", "all", "--sets-dir", str(sets),
+            "--splits", str(tmp_path / "none.json"), "--out", str(out),
+            "--cassettes", str(tmp_path / "cass"), "--dsn", "postgresql://x/y", *extra,
+        ]
+    )  # fmt: skip
+    return code, out
+
+
+def test_main_stamps_the_live_corpus_version_into_the_results_file(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    code, out = _corpus_system_main(tmp_path, monkeypatch, [7], [])
+    assert code == 0
+    (written,) = out.glob("*.json")
+    assert json.loads(written.read_text())["corpus_version"] == 7
+
+
+def test_main_refuses_a_non_live_corpus_version_before_running_anything(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    with pytest.raises(SystemExit, match="live version is 7"):
+        _corpus_system_main(tmp_path, monkeypatch, [7], ["--corpus-version", "3"])
+    assert not (tmp_path / "out").exists()  # nothing was written, nothing was run
+
+
+def test_a_corpus_swap_during_the_run_fails_it_but_keeps_the_results(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    code, out = _corpus_system_main(tmp_path, monkeypatch, [7, 8], [])
+    assert code == 2
+    (written,) = out.glob("*.json")  # cost and answers are not lost
+    assert json.loads(written.read_text())["corpus_version"] == 7
+
+
+def test_corpus_version_drift_check_is_off_for_systems_that_read_no_corpus() -> None:
+    assert run.corpus_version_drifted(object(), "dsn", 7) is None
+    assert run.corpus_version_drifted(_CorpusReader(), None, 7) is None

@@ -1,0 +1,59 @@
+diff --git a/eval/metrics.py b/eval/metrics.py
+index fbf856f..7f72bd7 100644
+--- a/eval/metrics.py
++++ b/eval/metrics.py
+@@ -28,6 +28,7 @@ _SCALES: dict[str, Decimal] = {
+ }
+ _MONEY = {"usd", "$", "dollars"}
+ _PERCENT = {"percent", "%", "pct"}
++_GOLD_UNITS = {"USD", "shares", "USD/shares", "ratio"}  # the units a NumericRow gold may carry
+ _PER_SHARE = {"usd/shares", "usd/share", "usd per share", "$/share", "usd", "$", "dollars"}
+ 
+ 
+@@ -56,8 +57,8 @@ def normalize_value(value: Decimal, unit: str | None, gold_unit: str) -> Decimal
+ 
+     The claim's unit LABEL decides, never the size of the number (ADR-044 dropped scale
+     inference): a bare 383285 is taken as 383,285 base units, not guessed to be millions. A
+-    missing or blank label (``None``, ``""``) means the gold unit, no conversion. Scale words apply to
+-    ``USD`` and ``shares`` golds only; ``percent`` applies to a ``ratio`` gold only.
++    missing or blank label (``None``, ``""``) means the gold unit, no conversion. Scale words
++    apply to ``USD`` and ``shares`` golds only; ``percent`` applies to a ``ratio`` gold only.
+     """
+     if unit is None or not unit.strip():  # a blank label is a missing label
+         return value
+@@ -92,8 +93,12 @@ def numeric_correct(answer: Answer, row: NumericRow) -> bool:
+     ``gold_value`` is the as-filed value (ADR-017): a claim equal to ``latest_value`` on a
+     restated row is incorrect. At gold == 0 the relative term is 0, so ``tolerance_abs`` alone
+     decides. A refusal, a missing primary claim, a claim without a value, or units that can't be
+-    reconciled are all incorrect.
++    reconciled are all incorrect. A row whose own gold unit is not one of ``_GOLD_UNITS`` is
++    malformed: it raises ValueError (a scoring error, unscored, counted by the 10% guard in
++    ``eval/run.py``) for every system, instead of scoring them all incorrect.
+     """
++    if row.unit not in _GOLD_UNITS:
++        raise ValueError(f"{row.id}: gold unit {row.unit!r} is not one of {sorted(_GOLD_UNITS)}")
+     if refused(answer):
+         return False
+     claim = answer.primary_claim()
+diff --git a/tests/unit/eval/test_metrics.py b/tests/unit/eval/test_metrics.py
+index 0244512..1e03212 100644
+--- a/tests/unit/eval/test_metrics.py
++++ b/tests/unit/eval/test_metrics.py
+@@ -172,6 +172,17 @@ def test_exact_and_four_sig_fig_answers_are_correct() -> None:
+     assert not metrics.numeric_correct(ans("380", "USD billions"), r)  # 0.86% off
+ 
+ 
++def test_a_row_with_an_unknown_gold_unit_is_a_scoring_error_not_a_wrong_answer() -> None:
++    """The row is malformed, so it raises for every system (even a refusal) rather than scoring
++    all of them incorrect; the harness records it as a scoring_error."""
++    bad = row(unit="pure")
++    with pytest.raises(ValueError, match="gold unit 'pure'"):
++        metrics.numeric_correct(ans("1", "USD"), bad)
++    refusal = Answer(answer_markdown="no", refusal=Refusal(reason="no data"))
++    with pytest.raises(ValueError, match="gold unit 'pure'"):
++        metrics.numeric_correct(refusal, bad)
++
++
+ def test_boundary_is_inclusive() -> None:
+     r = row(gold="1000000", tolerance_rel=D("0.001"), tolerance_abs=D(0))
+     assert metrics.numeric_correct(ans("1001000", "USD"), r)  # exactly 0.1%
