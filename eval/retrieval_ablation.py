@@ -51,6 +51,24 @@ ROWS: list[tuple[str, RetrievalConfig]] = [
 ]
 
 
+# A second row set with the company and year filter on throughout. The six rows above add the
+# filter last, so they cannot show what a component adds once it is on (and rows without it run
+# a full-text search over every chunk).
+_FILTERED = replace(_BASE, section_boost=False)
+FILTERED_ROWS: list[tuple[str, RetrievalConfig]] = [
+    ("lexical + filters", replace(_FILTERED, dense=False, rerank=False)),
+    ("dense + filters", replace(_FILTERED, lexical=False, rerank=False)),
+    ("hybrid + filters", replace(_FILTERED, rerank=False)),
+    ("lexical + filters + rerank", replace(_FILTERED, dense=False)),
+    ("hybrid + filters + rerank", _FILTERED),
+]
+ROW_SETS = {"cumulative": ROWS, "filtered": FILTERED_ROWS}
+OUT_DIRS = {
+    "cumulative": Path("eval/results/ablation"),
+    "filtered": Path("eval/results/ablation_filtered"),
+}
+
+
 @dataclass(frozen=True)
 class Question:
     id: str
@@ -188,7 +206,8 @@ def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="Retrieval ablation on the dev split.")
     ap.add_argument("--split", default="dev", choices=["dev", "all"])
     ap.add_argument("--dsn", default=os.environ.get("EDGARQA_SERVING_DSN"))
-    ap.add_argument("--out", type=Path, default=Path("eval/results/ablation"))
+    ap.add_argument("--rows", default="cumulative", choices=sorted(ROW_SETS))
+    ap.add_argument("--out", type=Path, default=None, help="default: one folder per row set")
     ap.add_argument("--sets-dir", type=Path, default=Path("eval/sets"))
     ap.add_argument("--splits", type=Path, default=Path("eval/sets/splits.json"))
     ap.add_argument("--model-dir", type=Path, default=default_model_dir())
@@ -219,7 +238,7 @@ def main(argv: list[str] | None = None) -> int:
         corpus_version = None if state is None else int(state[0])
         rows = run_ablation(
             questions,
-            ROWS,
+            ROW_SETS[args.rows],
             retrieve_fn=retrieve,
             conn=conn,
             embedder=get_embedder(
@@ -228,13 +247,14 @@ def main(argv: list[str] | None = None) -> int:
             reranker=CrossEncoderReranker(reranker_name),
         )
     stamp = datetime.now(UTC).strftime("%Y-%m-%dT%H-%M-%SZ")
-    run_id = f"{stamp}_retrieval-ablation"
+    run_id = f"{stamp}_retrieval-ablation-{args.rows}"
     doc = {
         "run_id": run_id,
         "git_sha": _git_sha(),
         "corpus_version": corpus_version,
         "config": {
             "split": args.split,
+            "row_set": args.rows,
             "plan_source": "oracle: the gold company and fiscal year, not the planner; "
             "narrative rows also get their gold chunk's section as the hint (a best case for "
             "the boost; FinanceBench PDFs have no section, so that row repeats the one before)",
@@ -247,8 +267,9 @@ def main(argv: list[str] | None = None) -> int:
         },
         "rows": summarize(rows),
     }
-    args.out.mkdir(parents=True, exist_ok=True)
-    path = args.out / f"{run_id}.json"
+    out_dir = args.out or OUT_DIRS[args.rows]
+    out_dir.mkdir(parents=True, exist_ok=True)
+    path = out_dir / f"{run_id}.json"
     path.write_text(json.dumps(doc, indent=2) + "\n")
     print(f"wrote {path}")
     return 0

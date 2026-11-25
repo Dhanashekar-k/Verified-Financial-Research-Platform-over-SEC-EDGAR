@@ -338,3 +338,15 @@ def test_the_ablation_table_says_what_its_figures_do_not_mean() -> None:
         "not each one added component",
     ):
         assert needle in md, needle
+
+
+def test_the_filtered_ablation_is_a_second_table_that_does_not_replace_the_first() -> None:
+    main_doc, extra = ablation_doc(), ablation_doc()
+    main_doc["run_id"], extra["run_id"] = "2026-1_cumulative", "2026-2_filtered"
+    md = report.render([], None, [main_doc], filtered=[extra])
+    assert "2026-1_cumulative" in md and "2026-2_filtered" in md
+    full = report.render(
+        [run("engine", "h", "dev", {"a": True})], None, [main_doc], filtered=[extra]
+    )
+    assert "2026-1_cumulative" in full and "2026-2_filtered" in full
+    assert report.FILTERED_TITLE in full

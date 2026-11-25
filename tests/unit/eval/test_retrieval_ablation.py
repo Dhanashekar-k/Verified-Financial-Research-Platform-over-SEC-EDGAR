@@ -166,3 +166,14 @@ def test_the_oracle_section_hint_is_the_gold_chunks_own_section() -> None:
     row = nar_row().model_copy(update={"gold_chunk_ids": ["acc#7#0001"]})
     (q,) = ab.build_questions([("narrative", row, "dev")], {}, {}, {5: "Five Inc"})
     assert q.plan.section_hints == ["7"], "otherwise the boost row is a copy of the row before it"
+
+
+def test_every_row_of_the_filtered_set_filters_and_each_set_has_its_own_folder() -> None:
+    from eval.retrieval_ablation import FILTERED_ROWS, OUT_DIRS, ROW_SETS
+
+    assert all(cfg.filters and not cfg.section_boost for _, cfg in FILTERED_ROWS)
+    assert len({name for name, _ in FILTERED_ROWS}) == len(FILTERED_ROWS)
+    assert set(OUT_DIRS) == set(ROW_SETS) and len(set(OUT_DIRS.values())) == len(OUT_DIRS)
+    by_name = dict(FILTERED_ROWS)
+    assert by_name["lexical + filters"].lexical and not by_name["lexical + filters"].dense
+    assert by_name["hybrid + filters + rerank"].rerank

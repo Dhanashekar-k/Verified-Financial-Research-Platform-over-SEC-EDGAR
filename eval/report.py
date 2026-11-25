@@ -283,6 +283,8 @@ def render_pareto(
     return out
 
 
+FILTERED_TITLE = "Retrieval components with the company and year filter on"
+
 ABLATION_CAVEATS = (
     "\nRead with care. FinanceBench hit@k counts only the chunks of the FinanceBench PDF copy: "
     "the same passage retrieved from the EDGAR copy of that filing counts as a miss, so these "
@@ -294,15 +296,15 @@ ABLATION_CAVEATS = (
 )
 
 
-def render_ablation(docs: list[dict[str, Any]]) -> list[str]:
+def render_ablation(docs: list[dict[str, Any]], title: str = "Retrieval ablation") -> list[str]:
     """The newest retrieval ablation: recall@k per component, latency, and each row's paired
     difference from the row before it (recall@8)."""
     docs = [d for d in docs if not d["config"].get("sample")]
     if not docs:
-        return ["### Retrieval ablation\n", f"{NM}: no ablation run yet."]
+        return [f"### {title}\n", f"{NM}: no ablation run yet."]
     doc = sorted(docs, key=lambda d: d["run_id"])[-1]
     out = [
-        f"### Retrieval ablation ({doc['config'].get('split', NM)} split)\n",
+        f"### {title} ({doc['config'].get('split', NM)} split)\n",
         f"Run `{doc['run_id']}`, corpus version {doc.get('corpus_version') or NM}, "
         f"{doc['config']['n_questions']} questions, plan: {doc['config']['plan_source']}; "
         f"reranker `{doc['config']['reranker']}`. Latency is {doc['config']['latency_note']}.\n",
@@ -347,12 +349,16 @@ def render(
     ablation: list[dict[str, Any]] | None = None,
     latency: list[dict[str, Any]] | None = None,
     planner: list[dict[str, Any]] | None = None,
+    filtered: list[dict[str, Any]] | None = None,
 ) -> str:
     if not runs and not ablation:
         return "_No results files yet: every metric is NOT MEASURED._"
     out: list[str] = []
     if not runs:
-        return "\n".join(render_ablation(ablation or []))
+        only = render_ablation(ablation or [])
+        if filtered:
+            only += ["", *render_ablation(filtered, FILTERED_TITLE)]
+        return "\n".join(only)
     out.append("### Accuracy by set\n")
     out.append(
         "| run | split | set | n | n scored | errors | metric | value | 95% CI | judge |\n"
@@ -489,6 +495,9 @@ def render(
     out += render_pareto(runs, latency, planner)
     out.append("")
     out += render_ablation(ablation or [])
+    if filtered:
+        out.append("")
+        out += render_ablation(filtered, FILTERED_TITLE)
     return "\n".join(out)
 
 
@@ -513,7 +522,14 @@ def main(argv: list[str] | None = None) -> int:
     def subdir(name: str) -> list[dict[str, Any]]:
         return [json.loads(p.read_text()) for p in sorted((args.results / name).glob("*.json"))]
 
-    body = render(runs, kappa, subdir("ablation"), subdir("latency"), subdir("intent"))
+    body = render(
+        runs,
+        kappa,
+        subdir("ablation"),
+        subdir("latency"),
+        subdir("intent"),
+        subdir("ablation_filtered"),
+    )
     args.page.write_text(splice(args.page.read_text(), body))
     print(f"updated {args.page} from {len(runs)} run(s)")
     return 0
