@@ -61,7 +61,8 @@ class QueryPlan(BaseModel):
 
     intent: Literal["numeric", "narrative", "hybrid", "out_of_scope"]
     companies: list[CompanyRef] = []
-    periods: list[PeriodRef] = []
+    periods: list[PeriodRef] = []  # only fiscal periods the user names explicitly
+    period_text: str | None = None  # relative wording; periods.py resolves it, never the LLM
     metrics: list[MetricName] = []
     operation: Literal["value", "growth", "ratio", "compare", "rank", "trend"] | None = None
     narrative_topics: list[str] = []  # "supply chain risk", "drivers of gross margin decline"

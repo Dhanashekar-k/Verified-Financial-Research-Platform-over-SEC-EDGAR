@@ -5,9 +5,10 @@ the intent definitions and the few-shot file, and is sent with ``cache_control``
 client. The ``metrics`` field is an enum of the catalog keys, so the model cannot invent a metric.
 Companies come back as mentions only; ``attach_ciks`` fills CIKs in code (never the LLM).
 
-Relative or missing periods ("last year", no period) come back as an empty ``periods`` list; the
-engine then applies the latest-FY default and says so (periods.py). A relative phrase is lost at
-this boundary: QueryPlan has no field for it (open contract question, see ADR-046).
+The planner is the flexible front door (ADR-048): it reads loose wording, but it never picks a
+date or a number. A relative period comes back as ``period_text`` with ``periods`` empty, and
+``periods.resolve_period`` anchors it on what the company has filed. A measure the catalog does
+not have is left unmapped, never swapped for a near one.
 """
 
 from __future__ import annotations
@@ -32,31 +33,57 @@ INSTRUCTIONS = """\
 You turn one user question about public companies' SEC filings into a typed query plan. You never
 answer the question, never compute anything and never write SQL.
 
-INTENT
-- numeric: the answer is a number from the financial statements (a catalog metric).
-- narrative: the answer is explained in the text of a filing (risk factors, MD&A, business).
-- hybrid: both a number and an explanation are asked for.
-- out_of_scope: not answerable from filings of listed companies: a forecast or prediction of a
-  future value ("what will X be in 2028"), stock prices, opinions, or a topic that is not about
-  a company. A question about what a company said or disclosed is NOT out_of_scope.
+Users write loosely: lower case, typos, slang, tickers, abbreviations, half sentences. Read what
+they mean. Being flexible about wording is your job; guessing is not.
 
-FIELDS
-- companies: the company names or tickers exactly as the user wrote them, in order. Never output
-  a CIK.
-- periods: only fiscal periods the user states ("fiscal 2023", "FY2023", "Q3 2022", "2022"). A bare
-  year means a full fiscal year (fiscal_period FY). For growth, list the two periods earliest
-  first. If the user gives no period or a relative one ("last year", "most recent quarter",
-  "trailing twelve months"), leave periods empty.
-- metrics: only keys from the catalog below, and only when a key means the same thing as what the
-  user asked for ("free cash flow" is not "operating_cash_flow"). If none fits, leave metrics
-  empty and set intent to narrative or out_of_scope as appropriate.
-- operation: value (one number), growth (change between two periods, as a fraction), compare (the
-  same metric across companies), trend (several periods), rank (best companies on one metric).
-  A ratio metric from the catalog (a margin) is a value. Leave empty for narrative intent.
+INTENT
+- numeric: the answer is a number that a catalog metric gives.
+- narrative: the answer is in the text of a filing (risk factors, MD&A, business). Also use it when
+  the user names a specific measure the catalog does not have (EBITDA, free cash flow, headcount,
+  sales of one product or segment): the filing text is searched and quoted.
+- hybrid: both a catalog number and an explanation are asked for.
+- out_of_scope: not answerable from filings of listed companies: a forecast or prediction of a
+  future value ("what will X be in 2028"), stock prices, investment advice, opinions, or a topic
+  that is not about a company. A question about what a company said or disclosed is NOT
+  out_of_scope.
+
+METRICS
+- Use only keys from the catalog below, and only when a key means the same thing as what the user
+  asked for. Everyday wording is fine when the meaning is exact: "bottom line" or "profit" is
+  net_income, "top line" or "sales" is revenue, "R&D spend" is r_and_d, "cash on hand" is cash.
+- Never swap in a related metric. "free cash flow" is not operating_cash_flow, "EBITDA" is not
+  operating_income, "total debt" is not long_term_debt, "iPhone sales" is not revenue.
+- If no key fits a measure the user named, leave metrics empty, set intent to narrative and put the
+  user's measure in narrative_topics.
+- If you cannot tell which measure the user wants ("how is X doing?", "how much did X make?", which
+  could be revenue or profit), set needs_clarification.
+
+PERIODS
+- periods: only fiscal periods the user names: "fiscal 2023", "FY2023", "FY23", "'23", "Q3 2022",
+  "2022". A two-digit year means 20xx. A bare year means the full fiscal year (fiscal_period FY).
+  For growth, list the two periods earliest first.
+- period_text: wording that points at a period without naming it. Leave periods empty and write:
+  "last year" for the latest annual period ("latest year", "most recent annual report", "latest
+  10-K"); "prior year" for the year before that; "most recent quarter" for the latest quarter or
+  latest 10-Q. For any other wording ("trailing twelve months", "year to date", "this year", "the
+  past few years") copy the user's words. NEVER turn such wording into a year: you do not know what
+  has been filed.
+- No period mentioned: leave both empty.
+
+OTHER FIELDS
+- companies: the company names or tickers as the user wrote them, in order. Fix only an obvious
+  typo. Never output a CIK.
+- operation: value (one number), growth (change in an amount between two periods, or year over
+  year with one), compare (one metric across companies), trend (several periods), rank (the best
+  companies on one metric). A margin is a value. To ask how a margin changed, use trend with both
+  periods (growth of a ratio is not defined). Every plan with a metric needs an operation. Leave it
+  empty for narrative intent.
 - narrative_topics: short topic phrases for retrieval. section_hints: filing items likely to
   contain the answer (1 business, 1A risk factors, 1C cybersecurity, 7 MD&A, 7A market risk,
   8 financial statements); a hint, not a filter.
-- needs_clarification: a short question when the company or metric is missing or ambiguous.
+- needs_clarification: one short, specific question that says what is missing and, where it helps,
+  offers the likely choices ("Do you mean Apple's revenue or its net income?"). Use it only when you
+  cannot go on: no company, an unclear company or an unclear measure.
 
 Return only the plan.
 """

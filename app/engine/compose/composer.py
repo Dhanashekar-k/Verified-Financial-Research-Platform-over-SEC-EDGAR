@@ -21,6 +21,10 @@ from app.llm.types import Usage
 
 COMPOSER_ROLE = "composer"
 MAX_ANSWER_TOKENS = 2048
+TEXT_ONLY_NOTE = (
+    "The question's measure is not one that is computed from XBRL facts, so there are no NUMERIC "
+    "RESULTS. Rule 9 applies."
+)
 
 COMPOSER_SYSTEM = """\
 You answer a question about public companies from two kinds of material only: NUMERIC RESULTS
@@ -41,27 +45,44 @@ Rules, all of them binding:
    contiguous substring of that passage>}. Copy the quote character for character.
 5. A result with a note marked must_mention (restated, derived fallback, derived Q4) must be
    mentioned in the answer. A restated value is as originally reported; state the latest
-   restated value only through the note's own latest_provenance.
+   restated value only through the note's own latest_provenance, and when a note has none, say
+   that it was restated without giving a number. For a growth result, say which period it is
+   measured from (`growth_from`).
 6. If the material does not answer the question, or answers only part of it, say what is
    missing: set `refusal` {"reason": one sentence, "found": [what the material does support],
    "missing": [what would have been needed]}. List a NOT FOUND result under "missing". Never
    fill a gap from memory or guess. You may keep supported claims in a partial answer.
 7. `answer_markdown` cites claims with [n] markers in the order of `claims`. Mark the claim that
    answers the question directly with "primary": true (one claim).
-8. State a period the user did not name only when the PERIOD NOTE says it was assumed: then say
-   which fiscal year the figures are for.
+8. State a period the user did not name only when a PERIOD NOTE says how it was chosen: then say
+   which fiscal period the figures are for.
+9. When TEXT ONLY is present, no computed figure exists for what was asked. Answer from PASSAGES
+   with claims of kind "text" and verbatim quotes (rules 3 and 4); write no numeric claim. Set
+   `refusal` only if the passages do not answer the question.
 """
 
 
-def result_view(r: NumericResult, names: Mapping[int, str], rid: str) -> dict[str, Any]:
+def _label(fiscal_year: int, fiscal_period: str) -> str:
+    return f"FY{fiscal_year}" if fiscal_period == "FY" else f"{fiscal_period} FY{fiscal_year}"
+
+
+def growth_base(r: NumericResult, plan: QueryPlan) -> str:
+    """The period a growth rate is measured from, as the compiler chose it (05 4.5): the earlier
+    of two named periods, else the same period a year before."""
+    years = sorted({p.fiscal_year for p in plan.periods})
+    year = years[0] if len(years) == 2 else r.fiscal_year - 1
+    return _label(year, r.fiscal_period)
+
+
+def result_view(
+    r: NumericResult, names: Mapping[int, str], rid: str, compared_with: str | None = None
+) -> dict[str, Any]:
     prov = r.provenance()
     view: dict[str, Any] = {
         "id": rid,
         "metric": r.metric,
         "company": names.get(r.cik, f"CIK {r.cik}"),
-        "period": f"FY{r.fiscal_year}"
-        if r.fiscal_period == "FY"
-        else f"{r.fiscal_period} FY{r.fiscal_year}",
+        "period": _label(r.fiscal_year, r.fiscal_period),
         "operation": r.operation,
         "value": str(r.value),
         "unit": r.unit,
@@ -69,6 +90,8 @@ def result_view(r: NumericResult, names: Mapping[int, str], rid: str) -> dict[st
         "kind": "numeric" if r.kind == "reported" else "numeric_derived",
         "provenance": {"type": prov.type, "expr": prov.expr, "fact_ids": prov.fact_ids},
     }
+    if compared_with is not None:
+        view["growth_from"] = compared_with
     if r.compare_cik is not None:
         view["minus_company"] = names.get(r.compare_cik, f"CIK {r.compare_cik}")
     if r.rank is not None:
@@ -89,7 +112,11 @@ def result_view(r: NumericResult, names: Mapping[int, str], rid: str) -> dict[st
                             "fact_ids": [n.latest_fact_id],
                         },
                     }
-                    if n.latest_value is not None and n.latest_fact_id is not None
+                    # On a ratio or growth result the restated figure is an INPUT in a unit
+                    # the note does not carry: showing it in the result's unit would be wrong.
+                    if n.latest_value is not None
+                    and n.latest_fact_id is not None
+                    and r.unit != "ratio"
                     else {}
                 ),
             }
@@ -107,12 +134,23 @@ def build_messages(
     names: Mapping[int, str],
     assumed_period: str | None = None,
     unsupported: str | None = None,
+    text_only: bool = False,
 ) -> list[dict[str, Any]]:
     parts = [f"QUESTION\n{question}"]
+    if text_only:
+        parts.append(f"TEXT ONLY\n{TEXT_ONLY_NOTE}")
     if assumed_period:
         parts.append(f"PERIOD NOTE\n{assumed_period}")
     if results:
-        views = [result_view(r, names, f"r{i}") for i, r in enumerate(results, start=1)]
+        views = [
+            result_view(
+                r,
+                names,
+                f"r{i}",
+                growth_base(r, plan) if r.operation == "growth" else None,
+            )
+            for i, r in enumerate(results, start=1)
+        ]
         parts.append("NUMERIC RESULTS\n" + json.dumps(views, indent=1, ensure_ascii=False))
     if not_found or unsupported:
         nf = [
@@ -157,13 +195,22 @@ def compose(
     *,
     assumed_period: str | None = None,
     unsupported: str | None = None,
+    text_only: bool = False,
     role: str = COMPOSER_ROLE,
 ) -> tuple[Answer, Usage]:
     answer, usage = llm.structured(
         role,
         COMPOSER_SYSTEM,
         build_messages(
-            question, plan, results, not_found, chunks, names, assumed_period, unsupported
+            question,
+            plan,
+            results,
+            not_found,
+            chunks,
+            names,
+            assumed_period,
+            unsupported,
+            text_only,
         ),
         Answer,
         max_tokens=MAX_ANSWER_TOKENS,

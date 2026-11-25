@@ -15,7 +15,7 @@ exists, and the verifier later has its work cut out in numbers rather than guess
 from __future__ import annotations
 
 import re
-from collections.abc import Mapping, Sequence
+from collections.abc import Collection, Mapping, Sequence
 from dataclasses import dataclass
 from decimal import Decimal
 
@@ -47,10 +47,12 @@ def _allowed_numbers(r: NumericResult) -> set[str]:
     """Numbers a claim about ``r`` may say: its value, its display, its fiscal year and quarter."""
     out = numbers_in(format_value(r.value, r.unit)) | numbers_in(str(r.value))
     out.add(str(r.fiscal_year))
+    if r.operation == "growth":
+        out.add(str(r.fiscal_year - 1))  # year over year; a named base year arrives via `years`
     if r.fiscal_period != "FY":
         out.add(r.fiscal_period[1:])
     for n in r.notes:
-        if n.latest_value is not None:
+        if n.latest_value is not None and r.unit != "ratio":
             out |= numbers_in(format_value(n.latest_value, r.unit)) | numbers_in(
                 str(n.latest_value)
             )
@@ -58,14 +60,17 @@ def _allowed_numbers(r: NumericResult) -> set[str]:
 
 
 def check_grounding(
-    answer: Answer, results: Sequence[NumericResult], passages: Mapping[str, str]
+    answer: Answer,
+    results: Sequence[NumericResult],
+    passages: Mapping[str, str],
+    years: Collection[int] = (),
 ) -> list[Violation]:
     by_prov = {(r.expr, tuple(sorted(r.fact_ids))): r for r in results}
     # a restated note's latest value is citable too: expr "f:<latest_fact_id>"
     latest: dict[tuple[str, tuple[int, ...]], Decimal] = {}
     for r in results:
         for n in r.notes:
-            if n.latest_fact_id is not None and n.latest_value is not None:
+            if n.latest_fact_id is not None and n.latest_value is not None and r.unit != "ratio":
                 latest[(f"f:{n.latest_fact_id}", (n.latest_fact_id,))] = n.latest_value
     out: list[Violation] = []
     for c in answer.claims:
@@ -83,7 +88,7 @@ def check_grounding(
                 shown = format_value(r.value, r.unit)
                 if c.display is not None and c.display != shown:
                     out.append(Violation(c.id, "display_changed", f"{c.display!r} != {shown!r}"))
-                stray = numbers_in(c.text) - _allowed_numbers(r)
+                stray = numbers_in(c.text) - _allowed_numbers(r) - {str(y) for y in years}
                 if stray:
                     out.append(Violation(c.id, "number_not_in_result", ",".join(sorted(stray))))
             elif key in latest:
@@ -113,12 +118,15 @@ _MARKERS = re.compile(r"\[\d+\]|\b10-[KQ]\b|\bItem \d+[A-C]?\b|\bQ[1-4]\b", re.I
 
 
 def check_markdown(
-    answer: Answer, results: Sequence[NumericResult], passages: Mapping[str, str]
+    answer: Answer,
+    results: Sequence[NumericResult],
+    passages: Mapping[str, str],
+    years: Collection[int] = (),
 ) -> list[Violation]:
     """Numbers in ``answer_markdown`` that no claim, result or cited quote supports (citation
     markers, "10-K", "Item 7" and "Q2" are ignored). A diagnostic, like the claim checks: the
     prose is where a model most easily slips in a figure of its own."""
-    allowed: set[str] = set()
+    allowed: set[str] = {str(y) for y in years}  # the periods the plan names
     for r in results:
         allowed |= _allowed_numbers(r)
     for c in answer.claims:

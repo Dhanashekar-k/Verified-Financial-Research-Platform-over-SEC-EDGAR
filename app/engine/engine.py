@@ -2,8 +2,10 @@
 
     plan (Haiku) -> attach CIKs by code
       out_of_scope / needs_clarification -> a templated refusal, no composer call
+      periods: explicit ones as named; relative wording resolved by periods.py on filed periods
       numeric / hybrid  : compile_plan over `facts`   \\ run in parallel (asyncio.gather)
       narrative / hybrid: retrieve over `chunks`      /
+      numeric / hybrid with no catalog metric: nothing to compile, so search the text (ADR-048)
     -> compose (Sonnet or Haiku) -> grounding check -> verify (pass-through until M6)
 
 The LLM never writes SQL here and never does arithmetic: numbers come from the compiler with
@@ -18,6 +20,7 @@ from __future__ import annotations
 import asyncio
 import csv
 import os
+import re
 import time
 from collections.abc import Callable, Collection, Mapping, Sequence
 from dataclasses import dataclass, field, replace
@@ -29,6 +32,7 @@ from app.engine.compose.composer import compose
 from app.engine.compose.grounding import Violation, check_grounding, check_markdown
 from app.engine.entities.resolve_company import CompanyIndex
 from app.engine.plan.compiler import compile_plan
+from app.engine.plan.periods import LatestFiled, resolve_period
 from app.engine.plan.planner import attach_ciks, build_system_prompt, plan_question
 from app.engine.plan.schema import (
     CompileOutcome,
@@ -42,7 +46,7 @@ from app.engine.retrieval.query import RetrievalConfig, RetrievalResult, retriev
 from app.engine.retrieval.rerank import CrossEncoderReranker, Reranker
 from app.engine.telemetry import record_usage, stage
 
-VERSION = "0.5.0"
+VERSION = "0.6.0"
 SQL_FALLBACK_ENV = "ENGINE_SQL_FALLBACK"
 MIN_COMPANIES_FOR_A_FISCAL_YEAR = 100
 TRACKED_CIKS_PATH = Path("data/targets/tracked_ciks.csv")
@@ -50,6 +54,21 @@ OUT_OF_SCOPE_REASON = (
     "This question is outside what SEC filings can answer (a forecast, a price or a topic that is "
     "not about a listed company's reported results)."
 )
+
+# The anchors for relative periods: the newest period in an annual and in a quarterly filing.
+# `period_end <= filed` keeps out forward-looking amounts.
+_LATEST_ANNUAL = (
+    "SELECT fiscal_year, fiscal_period, period_end FROM facts "
+    "WHERE cik = %s AND fiscal_period = 'FY' AND qtrs = 4 AND form LIKE '10-K%%' "
+    "AND period_end <= filed ORDER BY period_end DESC, fiscal_year DESC LIMIT 1"
+)
+_LATEST_QUARTERLY = (
+    "SELECT fiscal_year, fiscal_period, period_end FROM facts "
+    "WHERE cik = %s AND fiscal_period IN ('Q1', 'Q2', 'Q3') AND qtrs = 1 AND form LIKE '10-Q%%' "
+    "AND period_end <= filed ORDER BY period_end DESC, fiscal_year DESC LIMIT 1"
+)
+_PERIOD_ORDER = {"Q1": 1, "Q2": 2, "Q3": 3, "Q4": 4, "FY": 5}
+_YEAR = re.compile(r"(?<![0-9])(?:19|20)[0-9]{2}(?![0-9])")
 
 CompileFn = Callable[..., CompileOutcome]
 RetrieveFn = Callable[..., RetrievalResult]
@@ -64,6 +83,7 @@ class Diagnostics:
     results: list[NumericResult] = field(default_factory=list)
     not_found: list[NotFound] = field(default_factory=list)
     unsupported: str | None = None
+    text_only_fallback: bool = False  # no catalog metric: answered from filing text (ADR-048)
     retrieval: RetrievalResult | None = None
     violations: list[Violation] = field(default_factory=list)
     composed: bool = False
@@ -81,6 +101,21 @@ def refusal_answer(reason: str, found: Sequence[str] = (), missing: Sequence[str
         claims=[],
         refusal=Refusal(reason=reason, found=list(found), missing=list(missing)),
     )
+
+
+def period_label(period: PeriodRef) -> str:
+    if period.fiscal_period == "FY":
+        return f"FY{period.fiscal_year}"
+    return f"{period.fiscal_period} FY{period.fiscal_year}"
+
+
+@dataclass(frozen=True)
+class PeriodDecision:
+    """The periods to use, what the answer must say about them, or the question to ask."""
+
+    plan: QueryPlan
+    note: str | None = None
+    clarification: str | None = None
 
 
 def describe_missing(not_found: Sequence[NotFound], names: Mapping[int, str]) -> list[str]:
@@ -208,11 +243,19 @@ class EngineSystem:
                 plan.needs_clarification, missing=["a company, metric or period to answer for"]
             )
 
-        want_numbers = plan.intent in ("numeric", "hybrid")
-        want_text = plan.intent in ("narrative", "hybrid")
-        if want_numbers:
-            plan, diag.assumed_period = self._default_period(plan, cfg.dsn)
-            diag.plan = plan
+        asks_numbers = plan.intent in ("numeric", "hybrid")
+        # No catalog key means what was asked: nothing to compile, so quote the filings instead.
+        # A mapped metric the compiler abstains on does NOT come here: text must not route
+        # around an abstention.
+        diag.text_only_fallback = asks_numbers and not plan.metrics
+        want_numbers = asks_numbers and bool(plan.metrics)
+        want_text = plan.intent in ("narrative", "hybrid") or diag.text_only_fallback
+
+        decision = self._resolve_periods(question, plan, cfg.dsn, want_numbers=want_numbers)
+        if decision.clarification:
+            return refusal_answer(decision.clarification, missing=["a fiscal period to answer for"])
+        plan, diag.assumed_period = decision.plan, decision.note
+        diag.plan = plan
 
         async def numbers() -> CompileOutcome | None:
             if not want_numbers:
@@ -279,14 +322,16 @@ class EngineSystem:
                 cfg.llm,
                 assumed_period=diag.assumed_period,
                 unsupported=diag.unsupported,
+                text_only=diag.text_only_fallback,
                 role=cfg.composer,
             )
             record_usage(span, usage)
             diag.timings_ms["compose"] = (time.perf_counter() - t0) * 1000
         diag.composed = True
         by_id = {c.chunk_id: c.text for c in chunks}
-        diag.violations = check_grounding(answer, diag.results, by_id) + check_markdown(
-            answer, diag.results, by_id
+        years = {p.fiscal_year for p in plan.periods}
+        diag.violations = check_grounding(answer, diag.results, by_id, years) + check_markdown(
+            answer, diag.results, by_id, years
         )
         with stage("verify") as span:  # pass-through until M6 (the verifier fills this slot)
             span.set_attribute("verifier", "off")
@@ -302,44 +347,113 @@ class EngineSystem:
             self._tracked = load_tracked_ciks()
         return sorted(self._tracked)
 
-    def _default_period(self, plan: QueryPlan, dsn: str | None) -> tuple[QueryPlan, str | None]:
-        """No period named: use the latest fiscal year every named company has filed, and say so
-        (M05 section 3.2). Relative phrases ("last year") are not in QueryPlan yet, so they land
-        here too (ADR-046 open question). Shekar's ``resolve_period`` replaces this once written."""
+    # --- periods -------------------------------------------------------------------------
+
+    def _resolve_periods(
+        self, question: str, plan: QueryPlan, dsn: str | None, *, want_numbers: bool
+    ) -> PeriodDecision:
+        """05 4.1 / ADR-048. Named periods stand. Relative wording is resolved by ``periods.py``
+        against what each company has filed; numbers are never computed for a guessed period."""
+        wording = (plan.period_text or "").strip()
+        if not wording and (plan.periods or not want_numbers):
+            return PeriodDecision(plan)  # named periods, or a text search over all years
+        if wording and want_numbers and not plan.periods:
+            dropped = sorted(set(_YEAR.findall(question)) - set(_YEAR.findall(wording)))
+            if dropped:
+                return PeriodDecision(
+                    plan,
+                    clarification=(
+                        f"The question names {', '.join(dropped)} and also says '{wording}'. "
+                        "Which fiscal periods do you mean?"
+                    ),
+                )
+        anchors = self._anchors(plan, dsn)
+        if not anchors:
+            if wording and want_numbers:  # cannot check the wording, so do not compute
+                return PeriodDecision(
+                    plan,
+                    clarification=(
+                        f"I could not find the latest filings needed to read '{wording}'. Which "
+                        "fiscal period do you mean (for example FY2023 or Q3 2022)?"
+                    ),
+                )
+            return PeriodDecision(plan)  # nothing filed: the compiler reports what is missing
+        resolutions = [resolve_period(wording or None, latest) for latest in anchors]
+        questions = [r.clarification for r in resolutions if r.clarification]
+        if questions:
+            if not want_numbers:
+                return PeriodDecision(plan)
+            return PeriodDecision(plan, clarification=questions[0])
+        found = [r.periods[0] for r in resolutions]
+        # The earliest of them: the latest period every named company has filed.
+        chosen = min(found, key=lambda p: (p.fiscal_year, _PERIOD_ORDER[p.fiscal_period]))
         if plan.periods:
-            return plan, None
+            # Beside named periods, wording is accepted only when it restates one of them
+            # ("fiscal 2023"). "FY2023 and the year before" must not collapse into one year.
+            restates = chosen in plan.periods and str(chosen.fiscal_year) in wording
+            if restates or not want_numbers:
+                return PeriodDecision(plan)
+            named = ", ".join(period_label(p) for p in plan.periods)
+            return PeriodDecision(
+                plan,
+                clarification=(
+                    f"I read '{wording}' as {period_label(chosen)}, but the question also names "
+                    f"{named}. Which periods do you mean?"
+                ),
+            )
+        differ = (
+            " The companies' latest filed periods differ; this is the latest one all of them "
+            "have filed."
+            if any(p != found[0] for p in found)
+            else ""
+        )
+        if wording:
+            note = (
+                f"'{wording}' was read as {period_label(chosen)}, from the latest filings on "
+                f"record.{differ} Say which fiscal period the figures are for."
+            )
+        elif any(c.cik is not None for c in plan.companies):
+            note = (
+                "The question named no period; the latest fiscal year filed by every company "
+                f"asked about ({period_label(chosen)}) is used. Say so in the answer."
+            )
+        else:
+            note = (
+                "The question named no period; the latest fiscal year most companies have filed "
+                f"({period_label(chosen)}) is used. Say so in the answer."
+            )
+        return PeriodDecision(plan.model_copy(update={"periods": [chosen]}), note)
+
+    def _anchors(self, plan: QueryPlan, dsn: str | None) -> list[LatestFiled]:
+        """One ``LatestFiled`` per named company; with none named (a rank over the tracked set),
+        the latest fiscal year most companies have filed, not one early filer's. Empty when a
+        company has no annual filing in the facts."""
         ciks = sorted({c.cik for c in plan.companies if c.cik is not None})
         conn = self._conn("meta", dsn)
         if not ciks:
-            # No company named (a rank over the tracked set): the latest fiscal year most
-            # companies have filed, not one early filer's.
             row = conn.execute(
                 "SELECT fiscal_year FROM facts WHERE fiscal_period = 'FY' GROUP BY fiscal_year "
                 "HAVING count(DISTINCT cik) >= %s ORDER BY fiscal_year DESC LIMIT 1",
                 [MIN_COMPANIES_FOR_A_FISCAL_YEAR],
             ).fetchone()
             if row is None or row[0] is None:
-                return plan, None
-            fy = int(row[0])
-            note = (
-                f"The question named no period; the latest fiscal year most companies have filed "
-                f"(FY{fy}) is used. Say so in the answer."
-            )
-            return plan.model_copy(update={"periods": [PeriodRef(fiscal_year=fy)]}), note
-        years = []
+                return []
+            year = int(row[0])
+            return [LatestFiled(fiscal_year=year, latest=PeriodRef(fiscal_year=year))]
+        anchors = []
         for cik in ciks:
-            row = conn.execute(
-                "SELECT max(fiscal_year) FROM facts WHERE cik = %s AND fiscal_period = 'FY'", [cik]
-            ).fetchone()
-            if row is None or row[0] is None:
-                return plan, None  # nothing filed: the compiler reports NotFound
-            years.append(int(row[0]))
-        fy = min(years)
-        note = (
-            f"The question named no period; the latest fiscal year filed by every company "
-            f"asked about (FY{fy}) is used. Say so in the answer."
-        )
-        return plan.model_copy(update={"periods": [PeriodRef(fiscal_year=fy)]}), note
+            annual = conn.execute(_LATEST_ANNUAL, [cik]).fetchone()
+            if annual is None:
+                return []
+            quarter = conn.execute(_LATEST_QUARTERLY, [cik]).fetchone()
+            newest = quarter if quarter is not None and quarter[2] > annual[2] else annual
+            anchors.append(
+                LatestFiled(
+                    fiscal_year=int(annual[0]),
+                    latest=PeriodRef(fiscal_year=int(newest[0]), fiscal_period=newest[1]),
+                )
+            )
+        return anchors
 
 
 def _default_connect(dsn: str) -> Any:

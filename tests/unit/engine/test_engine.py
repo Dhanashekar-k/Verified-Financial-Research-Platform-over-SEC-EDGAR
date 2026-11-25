@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import asyncio
 import threading
+from datetime import date
 from decimal import Decimal
 from pathlib import Path
 from typing import Any
@@ -45,20 +46,35 @@ APPLE = 320193
 
 
 class Conn:
-    """A database connection that answers the one query the engine runs itself."""
+    """A database connection that answers the period-anchor queries the engine runs itself."""
 
     closed = False
 
-    def __init__(self, latest_fy: int | None = 2024) -> None:
+    def __init__(
+        self,
+        latest_fy: int | None = 2024,
+        quarters: dict[int, tuple[int, str, date]] | None = None,
+        annual: dict[int, int] | None = None,
+    ) -> None:
         self.latest_fy = latest_fy
+        self.quarters = quarters or {}  # cik -> its newest 10-Q period
+        self.annual = annual or {}  # cik -> latest annual fiscal year, if not latest_fy
         self.queries: list[str] = []
+        self._row: tuple[Any, ...] | None = None
 
     def execute(self, sql: str, params: Any = None) -> Conn:
         self.queries.append(sql)
+        if "10-Q" in sql:
+            self._row = self.quarters.get(params[0])
+        elif "10-K" in sql:
+            year = self.annual.get(params[0], self.latest_fy)
+            self._row = None if year is None else (year, "FY", date(year, 12, 31))
+        else:
+            self._row = (self.latest_fy,)
         return self
 
-    def fetchone(self) -> tuple[int | None]:
-        return (self.latest_fy,)
+    def fetchone(self) -> tuple[Any, ...] | None:
+        return self._row
 
     def close(self) -> None:
         self.closed = True
@@ -417,7 +433,7 @@ def test_batch_pending_at_the_composer_propagates_after_the_lookups() -> None:
 def test_the_engine_is_registered_with_the_harness() -> None:
     system = SYSTEMS["engine"]()
     assert system.name == "engine" and getattr(system, "reads_corpus", False) is True
-    assert system.version == "0.5.0"  # type: ignore[attr-defined]
+    assert system.version == "0.6.0"  # type: ignore[attr-defined]
 
 
 def test_connections_are_opened_lazily_reused_and_closed() -> None:
@@ -511,3 +527,223 @@ def test_with_no_company_named_the_period_defaults_to_the_latest_widely_filed_ye
     eng.answer("q", cfg(llm))
     assert [p.fiscal_year for p in spy.compile_calls[0][0].periods] == [2023]
     assert "most companies" in llm.calls[1]["messages"][0]["content"]
+
+
+# --- the flexible front door (ADR-048) ---------------------------------------------------------
+
+MSFT = 789019
+
+
+def engine_with(spy: Spy, conn_factory: Any) -> EngineSystem:
+    return EngineSystem(
+        index=CompanyIndex.from_csv(FIXTURE),
+        compile_fn=spy.compile,
+        retrieve_fn=spy.retrieve,
+        connect=lambda dsn: conn_factory(),
+        embedder=object(),
+        reranker=object(),
+        tracked_ciks=[APPLE],  # type: ignore[arg-type]
+    )
+
+
+def compiled_periods(spy: Spy) -> list[tuple[int, str]]:
+    return [(p.fiscal_year, p.fiscal_period) for p in spy.compile_calls[0][0].periods]
+
+
+def run_periods(plan: QueryPlan, conn_factory: Any = Conn) -> tuple[Spy, EngineSystem, Answer]:
+    spy = Spy(CompileOutcome(results=[result()]))
+    eng = engine_with(spy, conn_factory)
+    ans = eng.answer("q", cfg(ScriptedLLM(plan, numeric_answer())))
+    return spy, eng, ans
+
+
+@pytest.mark.parametrize(
+    ("wording", "expected"),
+    [
+        ("last year", (2024, "FY")),
+        ("prior year", (2023, "FY")),
+        ("most recent quarter", (2025, "Q2")),
+    ],
+)
+def test_relative_wording_is_resolved_from_filed_periods(
+    wording: str, expected: tuple[int, str]
+) -> None:
+    spy, eng, _ = run_periods(
+        numeric_plan(period_text=wording),
+        lambda: Conn(2024, quarters={APPLE: (2025, "Q2", date(2025, 3, 31))}),
+    )
+    assert compiled_periods(spy) == [expected]
+    note = eng.diagnostics["q"].assumed_period
+    assert note is not None and wording in note
+
+
+def test_a_quarter_older_than_the_annual_filing_is_not_the_most_recent_one() -> None:
+    spy, _, ans = run_periods(
+        numeric_plan(period_text="most recent quarter"),
+        lambda: Conn(2024, quarters={APPLE: (2024, "Q3", date(2024, 6, 30))}),
+    )
+    assert ans.refusal is not None and "quarter" in ans.refusal.reason.lower()
+    assert not spy.compile_calls, "nothing is computed for a period nobody can name"
+
+
+def test_unsupported_wording_asks_instead_of_computing() -> None:
+    llm = ScriptedLLM(numeric_plan(period_text="trailing twelve months"))
+    spy = Spy()
+    ans = engine(spy).answer("q", cfg(llm))
+    assert ans.refusal is not None and "Trailing" in ans.refusal.reason
+    assert not spy.compile_calls and [c["role"] for c in llm.calls] == ["planner"]
+
+
+def test_a_year_the_model_invented_for_relative_wording_is_caught() -> None:
+    """The model does not know what has been filed: if its year disagrees with the filed one,
+    ask rather than trust either."""
+    spy, _, ans = run_periods(
+        numeric_plan(period_text="last year", periods=[PeriodRef(fiscal_year=2022)])
+    )
+    assert ans.refusal is not None and "FY2022" in ans.refusal.reason
+    assert not spy.compile_calls
+
+
+def test_companies_with_different_latest_years_use_the_one_all_have_filed() -> None:
+    plan = numeric_plan(
+        companies=[CompanyRef(mention="Apple"), CompanyRef(mention="Microsoft")],
+        operation="compare",
+        period_text="last year",
+    )
+    spy, eng, _ = run_periods(plan, lambda: Conn(2024, annual={MSFT: 2025}))
+    assert compiled_periods(spy) == [(2024, "FY")]
+    assert "differ" in (eng.diagnostics["q"].assumed_period or "")
+
+
+def test_the_clarifying_question_is_the_refusal_reason() -> None:
+    question = "Do you mean Apple's revenue or its net income?"
+    llm = ScriptedLLM(numeric_plan(metrics=[], needs_clarification=question))
+    spy = Spy()
+    ans = engine(spy).answer("how much did apple make", cfg(llm))
+    assert ans.refusal is not None and ans.refusal.reason == question
+    assert not spy.compile_calls and not spy.retrieve_calls
+
+
+def text_answer(c: RankedChunk) -> Answer:
+    return Answer(
+        answer_markdown="Services revenue grew [1].",
+        claims=[
+            Claim(
+                id="c1",
+                kind="text",
+                text="Services revenue grew.",
+                primary=True,
+                provenance=ChunkProvenance(
+                    type="chunk", chunk_id=c.chunk_id, quote="Services revenue grew."
+                ),
+            )
+        ],
+    )
+
+
+def test_a_measure_with_no_catalog_metric_falls_through_to_the_text() -> None:
+    plan = numeric_plan(metrics=[], operation=None, narrative_topics=["EBITDA"])
+    c = chunk()
+    llm = ScriptedLLM(plan, text_answer(c))
+    spy = Spy(retrieved=retrieved(c))
+    eng = engine(spy)
+    ans = eng.answer("What was Apple's EBITDA?", cfg(llm))
+    assert ans.refusal is None and ans.claims[0].kind == "text"
+    assert not spy.compile_calls and spy.retrieve_calls
+    content = llm.calls[1]["messages"][0]["content"]
+    assert "TEXT ONLY" in content and "NUMERIC RESULTS" not in content.split("TEXT ONLY\n")[0]
+    assert "PERIOD NOTE" not in content, "a text search assumes no year"
+    diag = eng.diagnostics["What was Apple's EBITDA?"]
+    assert diag.text_only_fallback and diag.violations == []
+
+
+def test_an_abstained_metric_never_falls_back_to_the_text() -> None:
+    """Text must not route around a compiler abstention (ADR-048)."""
+    nf = NotFound(
+        metric="revenue",
+        cik=APPLE,
+        fiscal_year=2024,
+        fiscal_period="FY",
+        reason="conflicting_candidates",
+    )
+    plan = numeric_plan(metrics=["revenue"], periods=[PeriodRef(fiscal_year=2024)])
+    llm = ScriptedLLM(plan)
+    spy = Spy(CompileOutcome(not_found=[nf]), retrieved(chunk()))
+    eng = engine(spy)
+    ans = eng.answer("q", cfg(llm))
+    assert ans.refusal is not None and not spy.retrieve_calls
+    assert not eng.diagnostics["q"].text_only_fallback
+
+
+def test_an_ordinary_narrative_question_is_not_marked_text_only() -> None:
+    plan = QueryPlan(intent="narrative", companies=[CompanyRef(mention="Apple")])
+    c = chunk()
+    llm = ScriptedLLM(plan, text_answer(c))
+    engine(Spy(retrieved=retrieved(c))).answer("q", cfg(llm))
+    assert "TEXT ONLY" not in llm.calls[1]["messages"][0]["content"]
+
+
+def test_relative_wording_filters_a_text_search_and_unknown_wording_does_not_block_it() -> None:
+    c = chunk()
+    for wording, years in (("last year", [2024]), ("in recent memory", [])):
+        plan = QueryPlan(
+            intent="narrative", companies=[CompanyRef(mention="Apple")], period_text=wording
+        )
+        spy = Spy(retrieved=retrieved(c))
+        ans = engine_with(spy, Conn).answer("q", cfg(ScriptedLLM(plan, text_answer(c))))
+        assert ans.refusal is None
+        assert [p.fiscal_year for p in spy.retrieve_calls[0][0].periods] == years
+
+
+# --- second review pass (ADR-048) --------------------------------------------------------------
+
+
+def two_companies(**kw: Any) -> QueryPlan:
+    return numeric_plan(
+        companies=[CompanyRef(mention="Apple"), CompanyRef(mention="Microsoft")],
+        operation="compare",
+        **kw,
+    )
+
+
+@pytest.mark.parametrize(
+    ("wording", "periods"),
+    [("trailing twelve months", [2023]), ("last year", [2019]), ("last year", [])],
+)
+def test_one_company_without_an_anchor_does_not_switch_the_period_checks_off(
+    wording: str, periods: list[int]
+) -> None:
+    plan = two_companies(period_text=wording, periods=[PeriodRef(fiscal_year=y) for y in periods])
+    spy, _, ans = run_periods(plan, lambda: Conn(None, annual={APPLE: 2024}))
+    assert ans.refusal is not None and wording in ans.refusal.reason
+    assert not spy.compile_calls
+
+
+@pytest.mark.parametrize(
+    ("wording", "periods"),
+    [
+        ("prior year", [2023]),  # "FY2023 and the year before": FY2022 would be dropped
+        ("last year", [2023, 2024]),
+        ("last year", [2024]),
+    ],
+)
+def test_relative_wording_beside_named_years_asks(wording: str, periods: list[int]) -> None:
+    plan = numeric_plan(period_text=wording, periods=[PeriodRef(fiscal_year=y) for y in periods])
+    spy, _, ans = run_periods(plan)
+    assert ans.refusal is not None and "Which periods" in ans.refusal.reason
+    assert not spy.compile_calls
+
+
+def test_wording_that_only_restates_a_named_year_goes_through() -> None:
+    plan = numeric_plan(period_text="fiscal 2023", periods=[PeriodRef(fiscal_year=2023)])
+    spy, _, ans = run_periods(plan)
+    assert ans.refusal is None and compiled_periods(spy) == [(2023, "FY")]
+
+
+def test_a_year_in_the_question_that_the_plan_dropped_is_not_replaced_by_a_relative_one() -> None:
+    """ "FY2020 and the year before", planned as period_text only, would compute latest - 1."""
+    llm = ScriptedLLM(numeric_plan(period_text="prior year"))
+    spy = Spy()
+    ans = engine(spy).answer("Apple net income in 2020 and the year before", cfg(llm))
+    assert ans.refusal is not None and "2020" in ans.refusal.reason
+    assert not spy.compile_calls

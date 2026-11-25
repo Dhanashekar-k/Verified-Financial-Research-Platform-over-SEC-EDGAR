@@ -238,3 +238,43 @@ def test_a_cik_written_by_the_model_is_discarded() -> None:
     wrote = QueryPlan(intent="numeric", companies=[CompanyRef(mention="Apple", cik=789019)])
     got, _ = plan_question("q", FakeLLM(wrote))
     assert [c.cik for c in got.companies] == [None]
+
+
+# --- the front door (ADR-048) ------------------------------------------------------------------
+
+
+def test_fewshots_teach_relative_wording_unmapped_measures_and_vague_questions() -> None:
+    shots = load_fewshots()
+    relative = [s.plan for s in shots if s.plan.period_text]
+    assert relative and all(not p.periods for p in relative), "wording never becomes a year"
+    assert any(p.period_text == "most recent quarter" for p in relative)
+    unmapped = [s for s in shots if s.plan.intent == "narrative" and "ebitda" in s.question.lower()]
+    assert unmapped and not unmapped[0].plan.metrics, "a near metric is never swapped in"
+    assert any(
+        p.plan.needs_clarification and not p.plan.metrics and p.plan.companies for p in shots
+    ), "a vague measure asks a specific question"
+
+
+def test_every_fewshot_wording_resolves_or_asks() -> None:
+    from app.engine.plan.periods import LatestFiled, resolve_period
+    from app.engine.plan.schema import PeriodRef
+
+    latest = LatestFiled(fiscal_year=2024, latest=PeriodRef(fiscal_year=2025, fiscal_period="Q2"))
+    for s in load_fewshots():
+        if s.plan.period_text:
+            assert resolve_period(s.plan.period_text, latest).clarification is None, s.question
+
+
+def test_the_canonical_wordings_in_the_prompt_are_ones_periods_py_understands() -> None:
+    from app.engine.plan.periods import LatestFiled, resolve_period
+    from app.engine.plan.schema import PeriodRef
+
+    latest = LatestFiled(fiscal_year=2024, latest=PeriodRef(fiscal_year=2025, fiscal_period="Q2"))
+    prompt = build_system_prompt()
+    for wording in ("last year", "prior year", "most recent quarter"):
+        assert f'"{wording}"' in prompt
+        assert resolve_period(wording, latest).periods, wording
+
+
+def test_period_text_survives_the_structured_output_transform() -> None:
+    assert "period_text" in QueryPlan.model_json_schema()["properties"]

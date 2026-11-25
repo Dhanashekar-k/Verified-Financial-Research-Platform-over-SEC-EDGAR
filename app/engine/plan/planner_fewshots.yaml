@@ -1,52 +1,13 @@
-# Planner few-shot examples (M05 section 3.3). DRAFT by Claude, 2026-11-25; Shekar owns the final
-# edit. Each `plan` must validate as a QueryPlan (tests/unit/engine/test_planner.py): metrics are
-# catalog keys, companies are mentions only (code resolves CIKs), periods are explicit years.
+# Planner few-shot examples (M05 section 3.3, ADR-048). DRAFT by Claude, 2026-11-25; awaiting
+# Shekar's sign-off. Each `plan` must validate as a QueryPlan (tests/unit/engine/test_planner.py):
+# metrics are catalog keys, companies are mentions only (code resolves CIKs), `periods` holds only
+# periods the question names, relative wording goes to `period_text`. The questions are messy on
+# purpose, and none may be (or nearly be) an eval question.
 # Changing this file changes the planner's system prompt, so every recorded planner call misses
-# its cassette and has to be re-recorded (it costs money): edit, then re-record once.
+# its cassette and has to be re-recorded (it costs money): edit, then record once.
 
-- question: "How much net income did Apple report for FY2023?"
-  plan:
-    intent: numeric
-    companies: [{mention: "Apple"}]
-    periods: [{fiscal_year: 2023, fiscal_period: FY}]
-    metrics: [net_income]
-    operation: value
-
-- question: "By what percentage did Texas Instruments' R&D spending change between fiscal 2021 and fiscal 2022?"
-  plan:
-    intent: numeric
-    companies: [{mention: "Texas Instruments"}]
-    periods: [{fiscal_year: 2021, fiscal_period: FY}, {fiscal_year: 2022, fiscal_period: FY}]
-    metrics: [r_and_d]
-    operation: growth
-
-- question: "Costco vs WMT: who held more cash at the end of fiscal 2021, and by how much?"
-  plan:
-    intent: numeric
-    companies: [{mention: "Costco"}, {mention: "WMT"}]
-    periods: [{fiscal_year: 2021, fiscal_period: FY}]
-    metrics: [cash]
-    operation: compare
-
-- question: "What was Q2 2024 diluted EPS at Microsoft?"
-  plan:
-    intent: numeric
-    companies: [{mention: "Microsoft"}]
-    periods: [{fiscal_year: 2024, fiscal_period: Q2}]
-    metrics: [eps_diluted]
-    operation: value
-
-- question: "What was Tesla's operating margin in 2023, and what did management say drove it?"
-  plan:
-    intent: hybrid
-    companies: [{mention: "Tesla"}]
-    periods: [{fiscal_year: 2023, fiscal_period: FY}]
-    metrics: [operating_margin]
-    operation: value
-    narrative_topics: ["drivers of operating margin"]
-    section_hints: ["7"]
-
-- question: "What supply-chain risks did Nike disclose in its FY2022 10-K?"
+# 1. loose wording, two-digit year, plain narrative
+- question: "what did nike flag as supply chain risks in the FY22 10k??"
   plan:
     intent: narrative
     companies: [{mention: "Nike"}]
@@ -54,13 +15,62 @@
     narrative_topics: ["supply chain risk", "contract manufacturers"]
     section_hints: ["1A"]
 
-- question: "Predict Costco's operating income two years from now."
-  plan:
-    intent: out_of_scope
-
-- question: "Did the company's net income go up last year?"
+# 2. ticker, abbreviation, growth between two named years
+- question: "TXN R&D spend - how much did it move from 2021 to 2022?"
   plan:
     intent: numeric
-    metrics: [net_income]
+    companies: [{mention: "TXN"}]
+    periods: [{fiscal_year: 2021, fiscal_period: FY}, {fiscal_year: 2022, fiscal_period: FY}]
+    metrics: [r_and_d]
     operation: growth
-    needs_clarification: "Which company do you mean?"
+
+# 3. slang, a typo, compare
+- question: "who was sitting on more cash at the end of fiscal 2021, costco or wallmart"
+  plan:
+    intent: numeric
+    companies: [{mention: "Costco"}, {mention: "Walmart"}]
+    periods: [{fiscal_year: 2021, fiscal_period: FY}]
+    metrics: [cash]
+    operation: compare
+
+# 4. relative period: period_text, never a year
+- question: "msft diluted eps, latest quarter pls"
+  plan:
+    intent: numeric
+    companies: [{mention: "msft"}]
+    period_text: "most recent quarter"
+    metrics: [eps_diluted]
+    operation: value
+
+# 5. number plus explanation; a margin change is a trend, not growth
+- question: "did tesla's op margin slip from 2022 to 2023 and why"
+  plan:
+    intent: hybrid
+    companies: [{mention: "Tesla"}]
+    periods: [{fiscal_year: 2022, fiscal_period: FY}, {fiscal_year: 2023, fiscal_period: FY}]
+    metrics: [operating_margin]
+    operation: trend
+    narrative_topics: ["drivers of operating margin change"]
+    section_hints: ["7"]
+
+# 6. a measure the catalog does not have: no metric, search the text (never swap in a near one)
+- question: "whats the adjusted EBITDA at Uber for '23"
+  plan:
+    intent: narrative
+    companies: [{mention: "Uber"}]
+    periods: [{fiscal_year: 2023, fiscal_period: FY}]
+    narrative_topics: ["adjusted EBITDA"]
+    section_hints: ["7"]
+
+# 7. vague: ask a specific question
+- question: "how much did netflix make last year"
+  plan:
+    intent: numeric
+    companies: [{mention: "Netflix"}]
+    period_text: "last year"
+    needs_clarification: "Do you mean Netflix's revenue (sales) or its net income (profit)?"
+
+# 8. advice and forecasts are out of scope
+- question: "should i buy costco stock, where's it headed next year"
+  plan:
+    intent: out_of_scope

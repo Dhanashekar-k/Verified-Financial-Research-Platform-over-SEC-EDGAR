@@ -1640,6 +1640,27 @@ def test_a_fallback_note_names_the_periods_it_applies_to(conn: Any) -> None:
     assert "FY2022" in n.text and "FY2021" in n.text
 
 
+def test_the_engine_period_anchors_run_on_postgres(conn: Any, pg_url: str) -> None:
+    """The anchor SQL (annual and quarterly) against a real server, not a fake connection."""
+    from app.engine.engine import EngineSystem
+
+    rows = [
+        _fake(TI_NI_FY22, 7_600_000_001, fiscal_year=2023, period_end="2023-12-31",
+              filed="2024-02-01"),
+        _fake(TI_NI_FY22, 7_600_000_002, fiscal_year=2024, fiscal_period="Q2", qtrs=1,
+              form="10-Q", period_end="2024-06-30", filed="2024-07-30"),
+        # a later-ending twelve-month figure in a 10-Q must not become "the latest year"
+        _fake(TI_NI_FY22, 7_600_000_003, fiscal_year=2024, form="10-Q",
+              period_end="2024-06-30", filed="2024-07-30"),
+    ]  # fmt: skip
+    with _scratch(pg_url, rows, "anchors") as c:
+        eng = EngineSystem(connect=lambda dsn: c)
+        plan = make_plan(["net_income"], [FAKE_CIK], [])
+        (anchor,) = eng._anchors(plan, "postgres://unused")
+    assert anchor.fiscal_year == 2023
+    assert (anchor.latest.fiscal_year, anchor.latest.fiscal_period) == (2024, "Q2")
+
+
 CONTRACT_TAG = "RevenueFromContractWithCustomerExcludingAssessedTax"
 
 

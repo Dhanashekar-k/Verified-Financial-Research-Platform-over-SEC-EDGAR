@@ -19,7 +19,7 @@ from app.engine.compose.composer import (
 )
 from app.engine.compose.format import format_value
 from app.engine.compose.grounding import check_grounding, check_markdown, numbers_in
-from app.engine.plan.schema import Note, NotFound, NumericResult, QueryPlan
+from app.engine.plan.schema import Note, NotFound, NumericResult, PeriodRef, QueryPlan
 from app.engine.retrieval.query import RankedChunk
 from app.llm.types import Usage
 
@@ -412,3 +412,68 @@ def test_a_figure_quoted_from_a_passage_is_supported_in_the_prose() -> None:
     )
     ans = Answer(answer_markdown="Services revenue was $85,200 million [1].", claims=[c])
     assert check_markdown(ans, [], {"a#7#0001": quote}) == []
+
+
+# --- review findings, 2026-11-25 (ADR-047) -----------------------------------------------------
+
+RESTATED_INPUT = Note(
+    code="restated",
+    text="Revenue for FY2023 was later restated; the figure used is as originally filed.",
+    latest_value=D("800000000"),
+    latest_fact_id=-9,
+)
+
+
+def _ratio_result() -> NumericResult:
+    return res(
+        "0.2",
+        "f:1 / f:2",
+        [1, 2],
+        metric="net_margin",
+        unit="ratio",
+        kind="derived",
+        notes=[RESTATED_INPUT],
+    )
+
+
+def test_a_restated_input_of_a_ratio_is_never_shown_in_the_ratios_unit() -> None:
+    """800,000,000 dollars formatted as a ratio read '80000000000.0%'."""
+    (note,) = result_view(_ratio_result(), NAMES, "r1")["notes"]
+    assert note["must_mention"] is True and "Revenue" in note["text"]
+    assert not {"latest_value", "latest_display", "latest_provenance"} & set(note)
+
+
+def test_grounding_does_not_admit_a_ratios_restated_input() -> None:
+    answer = Answer(
+        answer_markdown="Margin was 20.0%, later 80000000000.0%.",
+        claims=[
+            Claim(
+                id="c1",
+                kind="numeric",
+                text="Later restated to 800000000.",
+                value=D("800000000"),
+                provenance=ExprProvenance(type="expr", expr="f:-9", fact_ids=[-9]),
+            )
+        ],
+    )
+    result = _ratio_result()
+    assert [v.rule for v in check_grounding(answer, [result], {})] == ["not_a_provided_result"]
+    assert [v.rule for v in check_markdown(answer, [result], {})] == ["number_not_supported"]
+
+
+@pytest.mark.parametrize(
+    ("years", "base"), [([2023], "FY2022"), ([2019, 2023], "FY2019"), ([2023, 2019], "FY2019")]
+)
+def test_a_growth_result_says_what_it_is_measured_from(years: list[int], base: str) -> None:
+    """Without it, four-year growth labelled 'FY2023' reads as year over year."""
+    growth = res("2", "(f:1 - f:2) / f:2", [1, 2], operation="growth", unit="ratio", kind="derived")
+    plan = QueryPlan(
+        intent="numeric",
+        metrics=["net_income"],
+        operation="growth",
+        periods=[PeriodRef(fiscal_year=y) for y in years],
+    )
+    content = build_messages("q", plan, [growth], [], [], NAMES)[0]["content"]
+    assert f'"growth_from": "{base}"' in content
+    said = Answer(answer_markdown=f"Net income grew 200.0% from {base} to FY2023.", claims=[])
+    assert check_markdown(said, [growth], {}, set(years)) == []
