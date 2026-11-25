@@ -127,3 +127,11 @@ the day-to-day calls and progress. Append one dated entry at the end of each wor
 - Two reviewer-agent passes found real defects that every test passed, among them a 10-Q trailing-twelve-month figure served as a fiscal year, a missing revenue pair guard, a SQL guard bypass through Postgres attribute notation, and a period check one company could switch off. Fixed with regression tests; the second-pass fixes were not re-reviewed. One original spec test was changed (Insulet Q4 2021 now abstains).
 - Open for Shekar: `Note` has no metric/unit; `NumericResult` has no base period; negative or tiny ratio denominators are computed (gold abstains); `inputs_verified` ignores the gold allow-list; the gold generator does not filter 10-Q twelve-month rows (198 of 341 gold fact ids not checked, `docs/m5/fy_form_check.json`); the harness provenance gate only checks for non-empty fields and grounding violations are not written to results.
 - No spend, no box, no reranker download. Planner quality is NOT MEASURED. Next: few-shot sign-off, then the planner dev run.
+
+## 2026-11-25 (pre-benchmark): three correctness fixes and a third review pass
+- Harness: the engine-only gate now rejects a claim citing a fact id the compiler did not return, and a numeric claim with no fact ids. It checks ids, not expressions; the results format is unchanged.
+- `gross_profit` fallback honors `inputs_verified`; with today's list it never fires. Margins over reported facts still divide by the (unlisted) resolved revenue. Coverage cost NOT MEASURED.
+- Margins and growth abstain on negative denominators and sub-$1M dollar bases, as gold does; `NotFound.reason` gained `nonpositive_denominator` and `near_zero_denominator` (05 §4.5).
+- A new reviewer pass found nothing in those three, and found two more guard routes to unbounded output plus gaps in the dropped-year check. Fixed with tests; those last fixes were not re-reviewed. Treat the guard's output size as unbounded.
+- Incident: a reviewer's SQL stress probe in an uncapped throwaway Postgres probably got another project's container (`stream-aml-flink-taskmanager-1`) killed at 09:49 UTC (inferred from timing). Docker restarted it and it reports healthy; its Flink job was not checked. Throwaway containers need memory limits.
+- No spend, no box, no reranker download.
