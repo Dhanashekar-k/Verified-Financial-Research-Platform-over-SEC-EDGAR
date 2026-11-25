@@ -1,0 +1,462 @@
+{
+  "metadata_file": "v13.metadata.json",
+  "rows_scanned": 662011,
+  "source": "warehouse/raw/fsds_tag",
+  "tags": {
+    "Assets": {
+      "custom": false,
+      "custom_values": [
+        0
+      ],
+      "exists": true,
+      "taxonomies": [
+        "ifrs",
+        "us-gaap"
+      ],
+      "versions": [
+        "ifrs/2020",
+        "ifrs/2021",
+        "ifrs/2022",
+        "ifrs/2023",
+        "us-gaap/2020",
+        "us-gaap/2021",
+        "us-gaap/2022",
+        "us-gaap/2023",
+        "us-gaap/2024"
+      ]
+    },
+    "CashAndCashEquivalentsAtCarryingValue": {
+      "custom": true,
+      "custom_values": [
+        0,
+        1
+      ],
+      "exists": true,
+      "taxonomies": [
+        "0001654954-22-014335",
+        "us-gaap"
+      ],
+      "versions": [
+        "0001654954-22-014335",
+        "us-gaap/2020",
+        "us-gaap/2021",
+        "us-gaap/2022",
+        "us-gaap/2023",
+        "us-gaap/2024"
+      ]
+    },
+    "CommonStockSharesOutstanding": {
+      "custom": false,
+      "custom_values": [
+        0
+      ],
+      "exists": true,
+      "taxonomies": [
+        "us-gaap"
+      ],
+      "versions": [
+        "us-gaap/2020",
+        "us-gaap/2021",
+        "us-gaap/2022",
+        "us-gaap/2023",
+        "us-gaap/2024"
+      ]
+    },
+    "CostOfGoodsAndServicesSold": {
+      "custom": false,
+      "custom_values": [
+        0
+      ],
+      "exists": true,
+      "taxonomies": [
+        "us-gaap"
+      ],
+      "versions": [
+        "us-gaap/2020",
+        "us-gaap/2021",
+        "us-gaap/2022",
+        "us-gaap/2023",
+        "us-gaap/2024"
+      ]
+    },
+    "CostOfRevenue": {
+      "custom": true,
+      "custom_values": [
+        0,
+        1
+      ],
+      "exists": true,
+      "taxonomies": [
+        "0001193125-23-230110",
+        "us-gaap"
+      ],
+      "versions": [
+        "0001193125-23-230110",
+        "us-gaap/2020",
+        "us-gaap/2021",
+        "us-gaap/2022",
+        "us-gaap/2023",
+        "us-gaap/2024"
+      ]
+    },
+    "EarningsPerShareBasic": {
+      "custom": false,
+      "custom_values": [
+        0
+      ],
+      "exists": true,
+      "taxonomies": [
+        "us-gaap"
+      ],
+      "versions": [
+        "us-gaap/2020",
+        "us-gaap/2021",
+        "us-gaap/2022",
+        "us-gaap/2023"
+      ]
+    },
+    "EarningsPerShareDiluted": {
+      "custom": false,
+      "custom_values": [
+        0
+      ],
+      "exists": true,
+      "taxonomies": [
+        "us-gaap"
+      ],
+      "versions": [
+        "us-gaap/2020",
+        "us-gaap/2021",
+        "us-gaap/2022",
+        "us-gaap/2023"
+      ]
+    },
+    "GrossProfit": {
+      "custom": false,
+      "custom_values": [
+        0
+      ],
+      "exists": true,
+      "taxonomies": [
+        "ifrs",
+        "us-gaap"
+      ],
+      "versions": [
+        "ifrs/2021",
+        "ifrs/2022",
+        "ifrs/2023",
+        "us-gaap/2020",
+        "us-gaap/2021",
+        "us-gaap/2022",
+        "us-gaap/2023",
+        "us-gaap/2024"
+      ]
+    },
+    "IncomeTaxExpenseBenefit": {
+      "custom": false,
+      "custom_values": [
+        0
+      ],
+      "exists": true,
+      "taxonomies": [
+        "us-gaap"
+      ],
+      "versions": [
+        "us-gaap/2020",
+        "us-gaap/2021",
+        "us-gaap/2022",
+        "us-gaap/2023",
+        "us-gaap/2024"
+      ]
+    },
+    "InterestExpense": {
+      "custom": false,
+      "custom_values": [
+        0
+      ],
+      "exists": true,
+      "taxonomies": [
+        "ifrs",
+        "us-gaap"
+      ],
+      "versions": [
+        "ifrs/2020",
+        "ifrs/2021",
+        "ifrs/2022",
+        "ifrs/2023",
+        "us-gaap/2020",
+        "us-gaap/2021",
+        "us-gaap/2022",
+        "us-gaap/2023",
+        "us-gaap/2024"
+      ]
+    },
+    "Liabilities": {
+      "custom": false,
+      "custom_values": [
+        0
+      ],
+      "exists": true,
+      "taxonomies": [
+        "ifrs",
+        "us-gaap"
+      ],
+      "versions": [
+        "ifrs/2020",
+        "ifrs/2021",
+        "ifrs/2022",
+        "ifrs/2023",
+        "us-gaap/2020",
+        "us-gaap/2021",
+        "us-gaap/2022",
+        "us-gaap/2023",
+        "us-gaap/2024"
+      ]
+    },
+    "LongTermDebtNoncurrent": {
+      "custom": false,
+      "custom_values": [
+        0
+      ],
+      "exists": true,
+      "taxonomies": [
+        "us-gaap"
+      ],
+      "versions": [
+        "us-gaap/2020",
+        "us-gaap/2021",
+        "us-gaap/2022",
+        "us-gaap/2023",
+        "us-gaap/2024"
+      ]
+    },
+    "NetCashProvidedByUsedInOperatingActivities": {
+      "custom": false,
+      "custom_values": [
+        0
+      ],
+      "exists": true,
+      "taxonomies": [
+        "us-gaap"
+      ],
+      "versions": [
+        "us-gaap/2020",
+        "us-gaap/2021",
+        "us-gaap/2022",
+        "us-gaap/2023",
+        "us-gaap/2024"
+      ]
+    },
+    "NetIncomeLoss": {
+      "custom": true,
+      "custom_values": [
+        0,
+        1
+      ],
+      "exists": true,
+      "taxonomies": [
+        "0001654954-22-011326",
+        "0001654954-23-009851",
+        "0001654954-23-013226",
+        "0001654954-24-002404",
+        "us-gaap"
+      ],
+      "versions": [
+        "0001654954-22-011326",
+        "0001654954-23-009851",
+        "0001654954-23-013226",
+        "0001654954-24-002404",
+        "us-gaap/2020",
+        "us-gaap/2021",
+        "us-gaap/2022",
+        "us-gaap/2023",
+        "us-gaap/2024"
+      ]
+    },
+    "OperatingIncomeLoss": {
+      "custom": true,
+      "custom_values": [
+        0,
+        1
+      ],
+      "exists": true,
+      "taxonomies": [
+        "0001640334-22-001775",
+        "0001640334-22-002477",
+        "0001640334-23-001575",
+        "0001640334-23-002155",
+        "us-gaap"
+      ],
+      "versions": [
+        "0001640334-22-001775",
+        "0001640334-22-002477",
+        "0001640334-23-001575",
+        "0001640334-23-002155",
+        "us-gaap/2020",
+        "us-gaap/2021",
+        "us-gaap/2022",
+        "us-gaap/2023",
+        "us-gaap/2024"
+      ]
+    },
+    "PaymentsOfDividendsCommonStock": {
+      "custom": false,
+      "custom_values": [
+        0
+      ],
+      "exists": true,
+      "taxonomies": [
+        "us-gaap"
+      ],
+      "versions": [
+        "us-gaap/2020",
+        "us-gaap/2021",
+        "us-gaap/2022",
+        "us-gaap/2023"
+      ]
+    },
+    "PaymentsToAcquirePropertyPlantAndEquipment": {
+      "custom": false,
+      "custom_values": [
+        0
+      ],
+      "exists": true,
+      "taxonomies": [
+        "us-gaap"
+      ],
+      "versions": [
+        "us-gaap/2020",
+        "us-gaap/2021",
+        "us-gaap/2022",
+        "us-gaap/2023",
+        "us-gaap/2024"
+      ]
+    },
+    "ResearchAndDevelopmentExpense": {
+      "custom": false,
+      "custom_values": [
+        0
+      ],
+      "exists": true,
+      "taxonomies": [
+        "ifrs",
+        "us-gaap"
+      ],
+      "versions": [
+        "ifrs/2020",
+        "ifrs/2021",
+        "ifrs/2022",
+        "ifrs/2023",
+        "us-gaap/2020",
+        "us-gaap/2021",
+        "us-gaap/2022",
+        "us-gaap/2023",
+        "us-gaap/2024"
+      ]
+    },
+    "RevenueFromContractWithCustomerExcludingAssessedTax": {
+      "custom": false,
+      "custom_values": [
+        0
+      ],
+      "exists": true,
+      "taxonomies": [
+        "us-gaap"
+      ],
+      "versions": [
+        "us-gaap/2020",
+        "us-gaap/2021",
+        "us-gaap/2022",
+        "us-gaap/2023"
+      ]
+    },
+    "RevenueFromContractWithCustomerIncludingAssessedTax": {
+      "custom": false,
+      "custom_values": [
+        0
+      ],
+      "exists": true,
+      "taxonomies": [
+        "us-gaap"
+      ],
+      "versions": [
+        "us-gaap/2020",
+        "us-gaap/2021",
+        "us-gaap/2022",
+        "us-gaap/2023"
+      ]
+    },
+    "Revenues": {
+      "custom": false,
+      "custom_values": [
+        0
+      ],
+      "exists": true,
+      "taxonomies": [
+        "us-gaap"
+      ],
+      "versions": [
+        "us-gaap/2020",
+        "us-gaap/2021",
+        "us-gaap/2022",
+        "us-gaap/2023",
+        "us-gaap/2024"
+      ]
+    },
+    "RevenuesNetOfInterestExpense": {
+      "custom": false,
+      "custom_values": [
+        0
+      ],
+      "exists": true,
+      "taxonomies": [
+        "us-gaap"
+      ],
+      "versions": [
+        "us-gaap/2020",
+        "us-gaap/2021",
+        "us-gaap/2022",
+        "us-gaap/2023"
+      ]
+    },
+    "SellingGeneralAndAdministrativeExpense": {
+      "custom": false,
+      "custom_values": [
+        0
+      ],
+      "exists": true,
+      "taxonomies": [
+        "ifrs",
+        "us-gaap"
+      ],
+      "versions": [
+        "ifrs/2020",
+        "ifrs/2021",
+        "ifrs/2022",
+        "ifrs/2023",
+        "us-gaap/2020",
+        "us-gaap/2021",
+        "us-gaap/2022",
+        "us-gaap/2023",
+        "us-gaap/2024"
+      ]
+    },
+    "StockholdersEquity": {
+      "custom": false,
+      "custom_values": [
+        0
+      ],
+      "exists": true,
+      "taxonomies": [
+        "us-gaap"
+      ],
+      "versions": [
+        "us-gaap/2020",
+        "us-gaap/2021",
+        "us-gaap/2022",
+        "us-gaap/2023",
+        "us-gaap/2024"
+      ]
+    }
+  }
+}
