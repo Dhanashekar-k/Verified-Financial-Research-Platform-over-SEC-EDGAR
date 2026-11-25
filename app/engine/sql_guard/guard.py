@@ -36,6 +36,7 @@ from sqlglot import exp
 MAX_LIMIT = 200
 MAX_SQL_CHARS = 10_000
 MAX_PAREN_DEPTH = 32
+MAX_IDENTIFIER_CHARS = 63  # Postgres silently cuts a longer name, so it could name another thing
 ALLOWED_TABLES: frozenset[str] = frozenset({"facts", "companies"})
 ALLOWED_FUNCTIONS: frozenset[str] = frozenset(
     {"sum", "avg", "min", "max", "count", "round", "abs", "coalesce"}
@@ -324,6 +325,10 @@ def _check_column(column: exp.Column) -> None:
     if column.args.get("db") or column.args.get("catalog"):
         raise _Reject("table_not_allowed", "schema-qualified column names are not accepted")
     if isinstance(name, exp.Star):
+        # `SELECT f.*` lists columns. Anywhere else (a cast, a function, parentheses) `f.*`
+        # is the whole row as one value, which doubles per level of nesting.
+        if not (isinstance(column.parent, exp.Select) and column.arg_key == "expressions"):
+            raise _Reject("other", f"'{column.table}.*' is only accepted as a SELECT item")
         return
     if column.table:
         if _pg_name(name) not in ALLOWED_COLUMNS:
@@ -356,6 +361,9 @@ def _check_tree(root: exp.Expr) -> None:
             raise _Reject("not_select", "UNION, INTERSECT and EXCEPT are not accepted")
         if isinstance(node, exp.With) and node.args.get("recursive"):
             raise _Reject("other", "recursive CTEs are not accepted")
+    for identifier in root.find_all(exp.Identifier):
+        if len(str(identifier.this)) > MAX_IDENTIFIER_CHARS:
+            raise _Reject("other", f"a name is longer than {MAX_IDENTIFIER_CHARS} characters")
     for node in root.walk():
         if isinstance(node, exp.Func) and not isinstance(node, _NOT_CALLS + _ALLOWED_CALLS):
             name = node.name if isinstance(node, exp.Anonymous) else node.sql_name()

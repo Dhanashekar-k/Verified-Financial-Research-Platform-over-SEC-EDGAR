@@ -285,6 +285,24 @@ EXTRA_REJECTED: list[tuple[str, str]] = [
     ("whole_row_of_table", "SELECT facts FROM facts"),
     ("whole_row_of_alias", "SELECT f FROM facts f"),
     ("whole_row_of_cte", "WITH r AS (SELECT cik FROM facts) SELECT r FROM r"),
+    # third review pass: `alias.*` inside an expression is the whole row too. These are only
+    # parsed here; do NOT run nested forms against a server (the output doubles per level).
+    ("star_in_cast", "SELECT CAST(a.* AS TEXT) AS x FROM (SELECT name FROM companies) a"),
+    ("star_in_colon_cast", "SELECT a.*::text FROM (SELECT name FROM companies) a"),
+    ("star_in_coalesce", "SELECT coalesce(facts.*) FROM facts"),
+    ("star_in_parens", "SELECT (a.*) AS x FROM (SELECT name FROM companies) a"),
+    ("star_in_count", "SELECT count(f.*) FROM facts f"),
+    ("star_in_where", "SELECT 1 FROM facts f WHERE CAST(f.* AS TEXT) LIKE 'a%'"),
+    (
+        "star_of_join_alias",
+        "SELECT CAST(j.* AS TEXT) FROM (facts f JOIN companies c ON c.cik = f.cik) AS j",
+    ),
+    # Postgres cuts identifiers to 63 characters, so a longer spelling names the same relation
+    (
+        "truncated_identifier_whole_row",
+        "SELECT " + "a" * 63 + "y AS x FROM companies AS " + "a" * 63 + "z",
+    ),
+    ("overlong_identifier", "SELECT cik AS " + "b" * 64 + " FROM facts"),
 ]
 
 
@@ -338,6 +356,12 @@ ACCEPTED: list[tuple[str, str]] = [
     ("semicolon_inside_literal", "SELECT * FROM facts WHERE tag = 'a;b'"),
     ("leading_trailing_whitespace", "  \n SELECT value FROM facts \n\t "),
     ("order_by_limit", "SELECT value FROM facts ORDER BY value DESC LIMIT 5"),
+    (
+        "qualified_star_in_select_list",
+        "SELECT f.*, c.name FROM facts f JOIN companies c ON c.cik = f.cik",
+    ),
+    ("count_star", "SELECT count(*) FROM facts"),
+    ("identifier_of_63_characters", "SELECT cik AS " + "b" * 63 + " FROM facts"),
 ]
 
 
