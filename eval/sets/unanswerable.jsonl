@@ -1,0 +1,50 @@
+{"id": "un-001", "question": "What will Apple's total net sales be in fiscal 2028?", "reason": "future_guidance_not_in_filings", "expected": "refuse"}
+{"id": "un-002", "question": "What revenue guidance has Microsoft given for fiscal year 2029?", "reason": "future_guidance_not_in_filings", "expected": "refuse"}
+{"id": "un-003", "question": "How many vehicles will Tesla deliver in 2028?", "reason": "future_guidance_not_in_filings", "expected": "refuse"}
+{"id": "un-004", "question": "What quarterly dividend per share will Johnson & Johnson declare in 2028?", "reason": "future_guidance_not_in_filings", "expected": "refuse"}
+{"id": "un-005", "question": "What is Amazon's planned capital expenditure for fiscal 2029?", "reason": "future_guidance_not_in_filings", "expected": "refuse"}
+{"id": "un-006", "question": "What diluted EPS will Nvidia report for its fiscal year 2028?", "reason": "future_guidance_not_in_filings", "expected": "refuse"}
+{"id": "un-007", "question": "How much will Walmart spend on share repurchases in fiscal 2029?", "reason": "future_guidance_not_in_filings", "expected": "refuse"}
+{"id": "un-008", "question": "What annual dividend per share will Exxon Mobil pay in 2029?", "reason": "future_guidance_not_in_filings", "expected": "refuse"}
+{"id": "un-009", "question": "What operating margin will JPMorgan Chase achieve in 2028?", "reason": "future_guidance_not_in_filings", "expected": "refuse"}
+{"id": "un-010", "question": "How many paid subscribers will Netflix have at the end of 2029?", "reason": "future_guidance_not_in_filings", "expected": "refuse"}
+{"id": "un-011", "question": "How many employees work at Walmart's Bentonville headquarters office?", "reason": "not_disclosed", "expected": "refuse"}
+{"id": "un-012", "question": "What is the dollar value of Apple's supply agreement with TSMC?", "reason": "not_disclosed", "expected": "refuse"}
+{"id": "un-013", "question": "What price does Amazon pay per unit to its suppliers for Echo devices?", "reason": "not_disclosed", "expected": "refuse"}
+{"id": "un-014", "question": "What was the gross margin on Costco's Kirkland Signature products alone?", "reason": "not_disclosed", "expected": "refuse"}
+{"id": "un-015", "question": "How many Salesforce customers are located in the city of Chicago?", "reason": "not_disclosed", "expected": "refuse"}
+{"id": "un-016", "question": "What are the individual base salaries of the engineers on Tesla's Autopilot team?", "reason": "not_disclosed", "expected": "refuse"}
+{"id": "un-017", "question": "What are the complete ingredients of Coca-Cola's secret formula?", "reason": "not_disclosed", "expected": "refuse"}
+{"id": "un-018", "question": "What was Microsoft's profit margin on its single contract with the U.S. Army for HoloLens headsets?", "reason": "not_disclosed", "expected": "refuse"}
+{"id": "un-019", "question": "What was Pfizer's internal manufacturing cost for one dose of its COVID-19 vaccine?", "reason": "not_disclosed", "expected": "refuse"}
+{"id": "un-020", "question": "How many monthly active users does Google Maps have in Germany?", "reason": "not_disclosed", "expected": "refuse"}
+{"id": "un-021", "question": "What is Apple's stock price today?", "reason": "out_of_scope", "expected": "refuse"}
+{"id": "un-022", "question": "Should I buy Tesla shares now?", "reason": "out_of_scope", "expected": "refuse"}
+{"id": "un-023", "question": "Which is the better investment, Microsoft or Alphabet?", "reason": "out_of_scope", "expected": "refuse"}
+{"id": "un-024", "question": "What is the capital of Australia?", "reason": "out_of_scope", "expected": "refuse"}
+{"id": "un-025", "question": "What will the weather be in Chicago tomorrow?", "reason": "out_of_scope", "expected": "refuse"}
+{"id": "un-026", "question": "Write a short poem about the stock market.", "reason": "out_of_scope", "expected": "refuse"}
+{"id": "un-027", "question": "What was Cargill's total revenue in 2023?", "reason": "out_of_scope", "expected": "refuse"}
+{"id": "un-028", "question": "How much profit did Koch Industries earn in 2022?", "reason": "out_of_scope", "expected": "refuse"}
+{"id": "un-029", "question": "What is the current federal funds rate target?", "reason": "out_of_scope", "expected": "refuse"}
+{"id": "un-030", "question": "How do I file my personal income taxes?", "reason": "out_of_scope", "expected": "refuse"}
+{"id": "un-031", "question": "Why did Apple report a net loss in fiscal 2023?", "reason": "false_premise", "expected": "refuse"}
+{"id": "un-032", "question": "How did Amazon's 2022 spin-off of AWS change its consolidated revenue?", "reason": "false_premise", "expected": "refuse"}
+{"id": "un-033", "question": "What did Microsoft disclose about its acquisition of Tesla?", "reason": "false_premise", "expected": "refuse"}
+{"id": "un-034", "question": "Why did Walmart file for Chapter 11 bankruptcy in fiscal 2022?", "reason": "false_premise", "expected": "refuse"}
+{"id": "un-035", "question": "Why did Berkshire Hathaway split its Class A shares ten-for-one in 2022?", "reason": "false_premise", "expected": "refuse"}
+{"id": "un-036", "question": "What goodwill impairment did Meta record when it sold Instagram in 2022?", "reason": "false_premise", "expected": "refuse"}
+{"id": "un-037", "question": "How did Nvidia's negative gross margin in fiscal 2024 affect its cash flow?", "reason": "false_premise", "expected": "refuse"}
+{"id": "un-038", "question": "What synergies did Coca-Cola report from its 2021 acquisition of PepsiCo?", "reason": "false_premise", "expected": "refuse"}
+{"id": "un-039", "question": "Why did Costco stop charging membership fees in fiscal 2023?", "reason": "false_premise", "expected": "refuse"}
+{"id": "un-040", "question": "How did Ford's 2023 merger with General Motors change its segment reporting?", "reason": "false_premise", "expected": "refuse"}
+{"id": "un-041", "question": "What was Airbnb's total revenue for fiscal year 2012?", "reason": "wrong_entity_period", "expected": "refuse"}
+{"id": "un-042", "question": "What was Uber's net loss in fiscal 2010?", "reason": "wrong_entity_period", "expected": "refuse"}
+{"id": "un-043", "question": "What was Facebook's annual revenue in fiscal 2005?", "reason": "wrong_entity_period", "expected": "refuse"}
+{"id": "un-044", "question": "What was Tesla's net income in fiscal 2004?", "reason": "wrong_entity_period", "expected": "refuse"}
+{"id": "un-045", "question": "What was Zoom Video Communications' operating income in fiscal 2013?", "reason": "wrong_entity_period", "expected": "refuse"}
+{"id": "un-046", "question": "What were Apple's total assets at the end of fiscal year 2031?", "reason": "wrong_entity_period", "expected": "refuse"}
+{"id": "un-047", "question": "What was Microsoft's revenue in the fifth fiscal quarter of 2023?", "reason": "wrong_entity_period", "expected": "refuse"}
+{"id": "un-048", "question": "What was Pinterest's revenue in fiscal 2009?", "reason": "wrong_entity_period", "expected": "refuse"}
+{"id": "un-049", "question": "What was the net income of Zorblax Technologies Corp. in fiscal 2023?", "reason": "wrong_entity_period", "expected": "refuse"}
+{"id": "un-050", "question": "What were Moderna's annual vaccine sales in fiscal 2008?", "reason": "wrong_entity_period", "expected": "refuse"}
