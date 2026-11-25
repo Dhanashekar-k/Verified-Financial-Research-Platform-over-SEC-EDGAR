@@ -1,0 +1,15 @@
+{
+  "measured_at": "2026-11-25T11:33:03Z",
+  "source": "serving `facts` view",
+  "corpus_version": 1,
+  "gold_file": "eval/sets/numeric_auto.jsonl",
+  "query": "SELECT fact_id, cik, tag, qtrs, fiscal_year, fiscal_period, form, period_end FROM facts WHERE fact_id = ANY(%s)",
+  "gold_rows": 240,
+  "distinct_gold_fact_ids": 341,
+  "found": 341,
+  "missing": 0,
+  "missing_fact_ids": [],
+  "gold_rows_with_a_missing_id": [],
+  "fy_facts_from_a_non_10k_form": [],
+  "affected_gold_rows": []
+}
