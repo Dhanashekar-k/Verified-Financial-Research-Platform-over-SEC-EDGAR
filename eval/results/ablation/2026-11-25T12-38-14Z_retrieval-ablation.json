@@ -1,0 +1,4766 @@
+{
+  "run_id": "2026-11-25T12-38-14Z_retrieval-ablation",
+  "git_sha": "5f1c92a",
+  "corpus_version": 1,
+  "config": {
+    "split": "dev",
+    "plan_source": "oracle: the gold company and fiscal year, not the planner; narrative rows also get their gold chunk's section as the hint (a best case for the boost; FinanceBench PDFs have no section, so that row repeats the one before)",
+    "reranker": "Xenova/ms-marco-MiniLM-L-6-v2",
+    "ks": [
+      1,
+      3,
+      5,
+      8
+    ],
+    "n_questions": 60,
+    "latency_note": "client-side wall time per call, including the tunnel and the query embedding; not the serving box's own speed"
+  },
+  "rows": [
+    {
+      "name": "lexical only",
+      "config": {
+        "lexical": true,
+        "dense": false,
+        "rerank": false,
+        "filters": false,
+        "section_boost": false,
+        "second_query": true,
+        "per_list": 50,
+        "rerank_cap": 30,
+        "top_k": 8,
+        "ef_search": 800,
+        "section_bonus": 0.0008062348830959419
+      },
+      "per_question": [
+        {
+          "id": "fb-00216",
+          "set": "financebench",
+          "latency_ms": 28136.82,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00283",
+          "set": "financebench",
+          "latency_ms": 8665.59,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00288",
+          "set": "financebench",
+          "latency_ms": 5151.56,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00382",
+          "set": "financebench",
+          "latency_ms": 1293.96,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00438",
+          "set": "financebench",
+          "latency_ms": 13884.47,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00494",
+          "set": "financebench",
+          "latency_ms": 6361.64,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00499",
+          "set": "financebench",
+          "latency_ms": 7545.31,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00517",
+          "set": "financebench",
+          "latency_ms": 7548.13,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00603",
+          "set": "financebench",
+          "latency_ms": 8558.9,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00605",
+          "set": "financebench",
+          "latency_ms": 10917.15,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00651",
+          "set": "financebench",
+          "latency_ms": 4555.63,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00669",
+          "set": "financebench",
+          "latency_ms": 14846.22,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00685",
+          "set": "financebench",
+          "latency_ms": 19676.68,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00711",
+          "set": "financebench",
+          "latency_ms": 17513.27,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00723",
+          "set": "financebench",
+          "latency_ms": 16670.2,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00724",
+          "set": "financebench",
+          "latency_ms": 10314.61,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00735",
+          "set": "financebench",
+          "latency_ms": 6984.5,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00746",
+          "set": "financebench",
+          "latency_ms": 7824.28,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00941",
+          "set": "financebench",
+          "latency_ms": 9960.65,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-01163",
+          "set": "financebench",
+          "latency_ms": 14211.53,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-01319",
+          "set": "financebench",
+          "latency_ms": 14591.19,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-01328",
+          "set": "financebench",
+          "latency_ms": 12919.56,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-01346",
+          "set": "financebench",
+          "latency_ms": 9218.52,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-01474",
+          "set": "financebench",
+          "latency_ms": 6164.33,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-01858",
+          "set": "financebench",
+          "latency_ms": 3253.2,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-01912",
+          "set": "financebench",
+          "latency_ms": 2796.4,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-01930",
+          "set": "financebench",
+          "latency_ms": 22452.21,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-01936",
+          "set": "financebench",
+          "latency_ms": 5574.36,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-02119",
+          "set": "financebench",
+          "latency_ms": 17445.77,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-02419",
+          "set": "financebench",
+          "latency_ms": 7437.43,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-02608",
+          "set": "financebench",
+          "latency_ms": 29247.83,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-03282",
+          "set": "financebench",
+          "latency_ms": 24584.95,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-03473",
+          "set": "financebench",
+          "latency_ms": 26909.98,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-03718",
+          "set": "financebench",
+          "latency_ms": 30889.04,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-03838",
+          "set": "financebench",
+          "latency_ms": 28715.77,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-04171",
+          "set": "financebench",
+          "latency_ms": 20011.78,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-04302",
+          "set": "financebench",
+          "latency_ms": 31945.12,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-04412",
+          "set": "financebench",
+          "latency_ms": 28423.71,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-04417",
+          "set": "financebench",
+          "latency_ms": 26694.78,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-04672",
+          "set": "financebench",
+          "latency_ms": 29788.51,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-04784",
+          "set": "financebench",
+          "latency_ms": 27393.06,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-04980",
+          "set": "financebench",
+          "latency_ms": 24396.01,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-06272",
+          "set": "financebench",
+          "latency_ms": 28866.58,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-07507",
+          "set": "financebench",
+          "latency_ms": 27375.38,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-10420",
+          "set": "financebench",
+          "latency_ms": 34047.2,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-002",
+          "set": "narrative",
+          "latency_ms": 23839.25,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-003",
+          "set": "narrative",
+          "latency_ms": 14802.42,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-019",
+          "set": "narrative",
+          "latency_ms": 15199.19,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-021",
+          "set": "narrative",
+          "latency_ms": 35805.34,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-025",
+          "set": "narrative",
+          "latency_ms": 27917.96,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-026",
+          "set": "narrative",
+          "latency_ms": 30285.66,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-029",
+          "set": "narrative",
+          "latency_ms": 22001.48,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-032",
+          "set": "narrative",
+          "latency_ms": 27417.27,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-033",
+          "set": "narrative",
+          "latency_ms": 38675.45,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-036",
+          "set": "narrative",
+          "latency_ms": 21132.58,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-039",
+          "set": "narrative",
+          "latency_ms": 33741.17,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-040",
+          "set": "narrative",
+          "latency_ms": 33052.66,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-043",
+          "set": "narrative",
+          "latency_ms": 30669.12,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-046",
+          "set": "narrative",
+          "latency_ms": 24638.83,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-049",
+          "set": "narrative",
+          "latency_ms": 27017.76,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        }
+      ],
+      "sets": {
+        "financebench": {
+          "n": 45,
+          "recall_at_1": 0.0,
+          "recall_at_1_ci95": [
+            0.0,
+            0.0
+          ],
+          "recall_at_3": 0.0,
+          "recall_at_3_ci95": [
+            0.0,
+            0.0
+          ],
+          "recall_at_5": 0.0,
+          "recall_at_5_ci95": [
+            0.0,
+            0.0
+          ],
+          "recall_at_8": 0.0,
+          "recall_at_8_ci95": [
+            0.0,
+            0.0
+          ]
+        },
+        "narrative": {
+          "n": 15,
+          "recall_at_1": 0.0,
+          "recall_at_1_ci95": [
+            0.0,
+            0.0
+          ],
+          "recall_at_3": 0.0,
+          "recall_at_3_ci95": [
+            0.0,
+            0.0
+          ],
+          "recall_at_5": 0.0,
+          "recall_at_5_ci95": [
+            0.0,
+            0.0
+          ],
+          "recall_at_8": 0.0,
+          "recall_at_8_ci95": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "latency_ms": {
+        "p50": 19844.23,
+        "p95": 33756.4715
+      },
+      "n_relaxed_year_filter": 0
+    },
+    {
+      "name": "dense only",
+      "config": {
+        "lexical": false,
+        "dense": true,
+        "rerank": false,
+        "filters": false,
+        "section_boost": false,
+        "second_query": true,
+        "per_list": 50,
+        "rerank_cap": 30,
+        "top_k": 8,
+        "ef_search": 800,
+        "section_bonus": 0.0008062348830959419
+      },
+      "per_question": [
+        {
+          "id": "fb-00216",
+          "set": "financebench",
+          "latency_ms": 10635.28,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00283",
+          "set": "financebench",
+          "latency_ms": 9655.74,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00288",
+          "set": "financebench",
+          "latency_ms": 4048.16,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00382",
+          "set": "financebench",
+          "latency_ms": 7118.01,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00438",
+          "set": "financebench",
+          "latency_ms": 6607.95,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00494",
+          "set": "financebench",
+          "latency_ms": 5570.77,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-00499",
+          "set": "financebench",
+          "latency_ms": 6186.92,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00517",
+          "set": "financebench",
+          "latency_ms": 2836.87,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-00603",
+          "set": "financebench",
+          "latency_ms": 3689.76,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00605",
+          "set": "financebench",
+          "latency_ms": 3179.3,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00651",
+          "set": "financebench",
+          "latency_ms": 3450.08,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-00669",
+          "set": "financebench",
+          "latency_ms": 1638.48,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00685",
+          "set": "financebench",
+          "latency_ms": 1921.51,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00711",
+          "set": "financebench",
+          "latency_ms": 1816.49,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00723",
+          "set": "financebench",
+          "latency_ms": 982.24,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00724",
+          "set": "financebench",
+          "latency_ms": 1128.04,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00735",
+          "set": "financebench",
+          "latency_ms": 2548.84,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00746",
+          "set": "financebench",
+          "latency_ms": 2008.55,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-00941",
+          "set": "financebench",
+          "latency_ms": 1477.14,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-01163",
+          "set": "financebench",
+          "latency_ms": 1054.18,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-01319",
+          "set": "financebench",
+          "latency_ms": 1176.39,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-01328",
+          "set": "financebench",
+          "latency_ms": 534.09,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-01346",
+          "set": "financebench",
+          "latency_ms": 968.68,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-01474",
+          "set": "financebench",
+          "latency_ms": 727.24,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-01858",
+          "set": "financebench",
+          "latency_ms": 958.68,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-01912",
+          "set": "financebench",
+          "latency_ms": 579.74,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-01930",
+          "set": "financebench",
+          "latency_ms": 613.33,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-01936",
+          "set": "financebench",
+          "latency_ms": 1025.39,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-02119",
+          "set": "financebench",
+          "latency_ms": 1010.45,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-02419",
+          "set": "financebench",
+          "latency_ms": 555.08,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-02608",
+          "set": "financebench",
+          "latency_ms": 533.21,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-03282",
+          "set": "financebench",
+          "latency_ms": 884.41,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-03473",
+          "set": "financebench",
+          "latency_ms": 503.85,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-03718",
+          "set": "financebench",
+          "latency_ms": 502.29,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-03838",
+          "set": "financebench",
+          "latency_ms": 531.99,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-04171",
+          "set": "financebench",
+          "latency_ms": 475.19,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-04302",
+          "set": "financebench",
+          "latency_ms": 512.42,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-04412",
+          "set": "financebench",
+          "latency_ms": 502.56,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-04417",
+          "set": "financebench",
+          "latency_ms": 370.15,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-04672",
+          "set": "financebench",
+          "latency_ms": 453.58,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-04784",
+          "set": "financebench",
+          "latency_ms": 385.55,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-04980",
+          "set": "financebench",
+          "latency_ms": 440.21,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-06272",
+          "set": "financebench",
+          "latency_ms": 524.52,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-07507",
+          "set": "financebench",
+          "latency_ms": 296.24,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-10420",
+          "set": "financebench",
+          "latency_ms": 656.75,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-002",
+          "set": "narrative",
+          "latency_ms": 564.88,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-003",
+          "set": "narrative",
+          "latency_ms": 309.28,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-019",
+          "set": "narrative",
+          "latency_ms": 500.06,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-021",
+          "set": "narrative",
+          "latency_ms": 528.62,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "nar-025",
+          "set": "narrative",
+          "latency_ms": 489.68,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-026",
+          "set": "narrative",
+          "latency_ms": 378.77,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "nar-029",
+          "set": "narrative",
+          "latency_ms": 455.34,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "nar-032",
+          "set": "narrative",
+          "latency_ms": 338.97,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "nar-033",
+          "set": "narrative",
+          "latency_ms": 443.49,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-036",
+          "set": "narrative",
+          "latency_ms": 485.49,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-039",
+          "set": "narrative",
+          "latency_ms": 431.01,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-040",
+          "set": "narrative",
+          "latency_ms": 451.59,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "nar-043",
+          "set": "narrative",
+          "latency_ms": 544.47,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-046",
+          "set": "narrative",
+          "latency_ms": 419.74,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-049",
+          "set": "narrative",
+          "latency_ms": 361.14,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        }
+      ],
+      "sets": {
+        "financebench": {
+          "n": 45,
+          "recall_at_1": 0.1111111111111111,
+          "recall_at_1_ci95": [
+            0.022222222222222223,
+            0.2
+          ],
+          "recall_at_3": 0.15555555555555556,
+          "recall_at_3_ci95": [
+            0.044444444444444446,
+            0.26666666666666666
+          ],
+          "recall_at_5": 0.15555555555555556,
+          "recall_at_5_ci95": [
+            0.044444444444444446,
+            0.26666666666666666
+          ],
+          "recall_at_8": 0.2,
+          "recall_at_8_ci95": [
+            0.08888888888888889,
+            0.3333333333333333
+          ]
+        },
+        "narrative": {
+          "n": 15,
+          "recall_at_1": 0.2,
+          "recall_at_1_ci95": [
+            0.0,
+            0.4
+          ],
+          "recall_at_3": 0.26666666666666666,
+          "recall_at_3_ci95": [
+            0.06666666666666667,
+            0.4666666666666667
+          ],
+          "recall_at_5": 0.26666666666666666,
+          "recall_at_5_ci95": [
+            0.06666666666666667,
+            0.4666666666666667
+          ],
+          "recall_at_8": 0.3333333333333333,
+          "recall_at_8_ci95": [
+            0.13333333333333333,
+            0.6
+          ]
+        }
+      },
+      "latency_ms": {
+        "p50": 572.31,
+        "p95": 6633.452999999999
+      },
+      "n_relaxed_year_filter": 0
+    },
+    {
+      "name": "hybrid (RRF)",
+      "config": {
+        "lexical": true,
+        "dense": true,
+        "rerank": false,
+        "filters": false,
+        "section_boost": false,
+        "second_query": true,
+        "per_list": 50,
+        "rerank_cap": 30,
+        "top_k": 8,
+        "ef_search": 800,
+        "section_bonus": 0.0008062348830959419
+      },
+      "per_question": [
+        {
+          "id": "fb-00216",
+          "set": "financebench",
+          "latency_ms": 21719.91,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00283",
+          "set": "financebench",
+          "latency_ms": 14075.61,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00288",
+          "set": "financebench",
+          "latency_ms": 7966.67,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00382",
+          "set": "financebench",
+          "latency_ms": 4910.04,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00438",
+          "set": "financebench",
+          "latency_ms": 18418.5,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00494",
+          "set": "financebench",
+          "latency_ms": 9408.98,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-00499",
+          "set": "financebench",
+          "latency_ms": 11474.27,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00517",
+          "set": "financebench",
+          "latency_ms": 9874.63,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-00603",
+          "set": "financebench",
+          "latency_ms": 11660.9,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00605",
+          "set": "financebench",
+          "latency_ms": 14352.39,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00651",
+          "set": "financebench",
+          "latency_ms": 7571.82,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-00669",
+          "set": "financebench",
+          "latency_ms": 17326.97,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00685",
+          "set": "financebench",
+          "latency_ms": 22315.21,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00711",
+          "set": "financebench",
+          "latency_ms": 19642.49,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00723",
+          "set": "financebench",
+          "latency_ms": 18148.38,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00724",
+          "set": "financebench",
+          "latency_ms": 11572.49,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00735",
+          "set": "financebench",
+          "latency_ms": 7897.11,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00746",
+          "set": "financebench",
+          "latency_ms": 8359.54,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-00941",
+          "set": "financebench",
+          "latency_ms": 10776.49,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-01163",
+          "set": "financebench",
+          "latency_ms": 15115.23,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-01319",
+          "set": "financebench",
+          "latency_ms": 15397.19,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-01328",
+          "set": "financebench",
+          "latency_ms": 13204.25,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-01346",
+          "set": "financebench",
+          "latency_ms": 9339.55,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-01474",
+          "set": "financebench",
+          "latency_ms": 6398.87,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-01858",
+          "set": "financebench",
+          "latency_ms": 3748.51,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-01912",
+          "set": "financebench",
+          "latency_ms": 3291.68,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-01930",
+          "set": "financebench",
+          "latency_ms": 24445.86,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-01936",
+          "set": "financebench",
+          "latency_ms": 6307.24,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-02119",
+          "set": "financebench",
+          "latency_ms": 18320.21,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-02419",
+          "set": "financebench",
+          "latency_ms": 7919.58,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-02608",
+          "set": "financebench",
+          "latency_ms": 32165.18,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-03282",
+          "set": "financebench",
+          "latency_ms": 27018.54,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-03473",
+          "set": "financebench",
+          "latency_ms": 29391.43,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-03718",
+          "set": "financebench",
+          "latency_ms": 33728.01,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-03838",
+          "set": "financebench",
+          "latency_ms": 32839.94,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-04171",
+          "set": "financebench",
+          "latency_ms": 21227.49,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-04302",
+          "set": "financebench",
+          "latency_ms": 33974.59,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-04412",
+          "set": "financebench",
+          "latency_ms": 28645.67,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-04417",
+          "set": "financebench",
+          "latency_ms": 27190.13,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-04672",
+          "set": "financebench",
+          "latency_ms": 31781.42,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-04784",
+          "set": "financebench",
+          "latency_ms": 28532.1,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-04980",
+          "set": "financebench",
+          "latency_ms": 25244.02,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-06272",
+          "set": "financebench",
+          "latency_ms": 30471.34,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-07507",
+          "set": "financebench",
+          "latency_ms": 27844.09,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-10420",
+          "set": "financebench",
+          "latency_ms": 34220.25,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-002",
+          "set": "narrative",
+          "latency_ms": 24411.81,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-003",
+          "set": "narrative",
+          "latency_ms": 15196.91,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-019",
+          "set": "narrative",
+          "latency_ms": 15655.28,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-021",
+          "set": "narrative",
+          "latency_ms": 37352.03,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-025",
+          "set": "narrative",
+          "latency_ms": 29252.99,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-026",
+          "set": "narrative",
+          "latency_ms": 30724.67,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-029",
+          "set": "narrative",
+          "latency_ms": 22298.16,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "nar-032",
+          "set": "narrative",
+          "latency_ms": 28827.22,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-033",
+          "set": "narrative",
+          "latency_ms": 40628.7,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-036",
+          "set": "narrative",
+          "latency_ms": 21701.36,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-039",
+          "set": "narrative",
+          "latency_ms": 35156.34,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-040",
+          "set": "narrative",
+          "latency_ms": 34074.83,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "nar-043",
+          "set": "narrative",
+          "latency_ms": 32460.08,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-046",
+          "set": "narrative",
+          "latency_ms": 24914.74,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-049",
+          "set": "narrative",
+          "latency_ms": 27971.14,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        }
+      ],
+      "sets": {
+        "financebench": {
+          "n": 45,
+          "recall_at_1": 0.0,
+          "recall_at_1_ci95": [
+            0.0,
+            0.0
+          ],
+          "recall_at_3": 0.08888888888888889,
+          "recall_at_3_ci95": [
+            0.022222222222222223,
+            0.17777777777777778
+          ],
+          "recall_at_5": 0.15555555555555556,
+          "recall_at_5_ci95": [
+            0.044444444444444446,
+            0.26666666666666666
+          ],
+          "recall_at_8": 0.15555555555555556,
+          "recall_at_8_ci95": [
+            0.044444444444444446,
+            0.26666666666666666
+          ]
+        },
+        "narrative": {
+          "n": 15,
+          "recall_at_1": 0.0,
+          "recall_at_1_ci95": [
+            0.0,
+            0.0
+          ],
+          "recall_at_3": 0.13333333333333333,
+          "recall_at_3_ci95": [
+            0.0,
+            0.3333333333333333
+          ],
+          "recall_at_5": 0.13333333333333333,
+          "recall_at_5_ci95": [
+            0.0,
+            0.3333333333333333
+          ],
+          "recall_at_8": 0.13333333333333333,
+          "recall_at_8_ci95": [
+            0.0,
+            0.3333333333333333
+          ]
+        }
+      },
+      "latency_ms": {
+        "p50": 21464.425000000003,
+        "p95": 34267.0545
+      },
+      "n_relaxed_year_filter": 0
+    },
+    {
+      "name": "hybrid + rerank",
+      "config": {
+        "lexical": true,
+        "dense": true,
+        "rerank": true,
+        "filters": false,
+        "section_boost": false,
+        "second_query": true,
+        "per_list": 50,
+        "rerank_cap": 30,
+        "top_k": 8,
+        "ef_search": 800,
+        "section_bonus": 0.0008062348830959419
+      },
+      "per_question": [
+        {
+          "id": "fb-00216",
+          "set": "financebench",
+          "latency_ms": 16515.61,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00283",
+          "set": "financebench",
+          "latency_ms": 10156.06,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00288",
+          "set": "financebench",
+          "latency_ms": 6789.4,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00382",
+          "set": "financebench",
+          "latency_ms": 2235.68,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00438",
+          "set": "financebench",
+          "latency_ms": 15838.06,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00494",
+          "set": "financebench",
+          "latency_ms": 7383.7,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-00499",
+          "set": "financebench",
+          "latency_ms": 8770.61,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00517",
+          "set": "financebench",
+          "latency_ms": 8689.62,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-00603",
+          "set": "financebench",
+          "latency_ms": 9853.1,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00605",
+          "set": "financebench",
+          "latency_ms": 12221.2,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00651",
+          "set": "financebench",
+          "latency_ms": 5559.79,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-00669",
+          "set": "financebench",
+          "latency_ms": 15956.8,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00685",
+          "set": "financebench",
+          "latency_ms": 20252.58,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00711",
+          "set": "financebench",
+          "latency_ms": 17832.51,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00723",
+          "set": "financebench",
+          "latency_ms": 17867.03,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00724",
+          "set": "financebench",
+          "latency_ms": 11423.34,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00735",
+          "set": "financebench",
+          "latency_ms": 7836.48,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00746",
+          "set": "financebench",
+          "latency_ms": 8548.49,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-00941",
+          "set": "financebench",
+          "latency_ms": 10929.85,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-01163",
+          "set": "financebench",
+          "latency_ms": 15055.03,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-01319",
+          "set": "financebench",
+          "latency_ms": 15529.6,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-01328",
+          "set": "financebench",
+          "latency_ms": 13651.29,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-01346",
+          "set": "financebench",
+          "latency_ms": 9957.93,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-01474",
+          "set": "financebench",
+          "latency_ms": 6780.56,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-01858",
+          "set": "financebench",
+          "latency_ms": 4136.37,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-01912",
+          "set": "financebench",
+          "latency_ms": 3774.73,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-01930",
+          "set": "financebench",
+          "latency_ms": 23802.58,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-01936",
+          "set": "financebench",
+          "latency_ms": 6365.0,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-02119",
+          "set": "financebench",
+          "latency_ms": 18278.11,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-02419",
+          "set": "financebench",
+          "latency_ms": 8232.72,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-02608",
+          "set": "financebench",
+          "latency_ms": 31523.55,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-03282",
+          "set": "financebench",
+          "latency_ms": 25640.97,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-03473",
+          "set": "financebench",
+          "latency_ms": 29826.55,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-03718",
+          "set": "financebench",
+          "latency_ms": 33875.58,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-03838",
+          "set": "financebench",
+          "latency_ms": 31379.13,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-04171",
+          "set": "financebench",
+          "latency_ms": 21152.59,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-04302",
+          "set": "financebench",
+          "latency_ms": 34196.87,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-04412",
+          "set": "financebench",
+          "latency_ms": 30844.12,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-04417",
+          "set": "financebench",
+          "latency_ms": 28401.11,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-04672",
+          "set": "financebench",
+          "latency_ms": 31492.47,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-04784",
+          "set": "financebench",
+          "latency_ms": 29381.19,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-04980",
+          "set": "financebench",
+          "latency_ms": 26950.89,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-06272",
+          "set": "financebench",
+          "latency_ms": 31098.74,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-07507",
+          "set": "financebench",
+          "latency_ms": 28646.66,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-10420",
+          "set": "financebench",
+          "latency_ms": 36600.56,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-002",
+          "set": "narrative",
+          "latency_ms": 25027.5,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-003",
+          "set": "narrative",
+          "latency_ms": 15976.14,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-019",
+          "set": "narrative",
+          "latency_ms": 16017.89,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-021",
+          "set": "narrative",
+          "latency_ms": 37761.17,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-025",
+          "set": "narrative",
+          "latency_ms": 29719.2,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-026",
+          "set": "narrative",
+          "latency_ms": 32444.19,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "nar-029",
+          "set": "narrative",
+          "latency_ms": 22986.64,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "nar-032",
+          "set": "narrative",
+          "latency_ms": 29542.06,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "nar-033",
+          "set": "narrative",
+          "latency_ms": 41778.54,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-036",
+          "set": "narrative",
+          "latency_ms": 22209.31,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-039",
+          "set": "narrative",
+          "latency_ms": 34887.8,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-040",
+          "set": "narrative",
+          "latency_ms": 34575.24,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "nar-043",
+          "set": "narrative",
+          "latency_ms": 32048.61,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-046",
+          "set": "narrative",
+          "latency_ms": 26044.25,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-049",
+          "set": "narrative",
+          "latency_ms": 29067.02,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 1.0
+          }
+        }
+      ],
+      "sets": {
+        "financebench": {
+          "n": 45,
+          "recall_at_1": 0.08888888888888889,
+          "recall_at_1_ci95": [
+            0.022222222222222223,
+            0.17777777777777778
+          ],
+          "recall_at_3": 0.15555555555555556,
+          "recall_at_3_ci95": [
+            0.06666666666666667,
+            0.26666666666666666
+          ],
+          "recall_at_5": 0.15555555555555556,
+          "recall_at_5_ci95": [
+            0.06666666666666667,
+            0.26666666666666666
+          ],
+          "recall_at_8": 0.17777777777777778,
+          "recall_at_8_ci95": [
+            0.06666666666666667,
+            0.28888888888888886
+          ]
+        },
+        "narrative": {
+          "n": 15,
+          "recall_at_1": 0.13333333333333333,
+          "recall_at_1_ci95": [
+            0.0,
+            0.3333333333333333
+          ],
+          "recall_at_3": 0.2,
+          "recall_at_3_ci95": [
+            0.0,
+            0.4
+          ],
+          "recall_at_5": 0.2,
+          "recall_at_5_ci95": [
+            0.0,
+            0.4
+          ],
+          "recall_at_8": 0.3333333333333333,
+          "recall_at_8_ci95": [
+            0.13333333333333333,
+            0.6
+          ]
+        }
+      },
+      "latency_ms": {
+        "p50": 19265.345,
+        "p95": 34973.437999999995
+      },
+      "n_relaxed_year_filter": 0
+    },
+    {
+      "name": "hybrid + rerank + filters",
+      "config": {
+        "lexical": true,
+        "dense": true,
+        "rerank": true,
+        "filters": true,
+        "section_boost": false,
+        "second_query": true,
+        "per_list": 50,
+        "rerank_cap": 30,
+        "top_k": 8,
+        "ef_search": 800,
+        "section_bonus": 0.0008062348830959419
+      },
+      "per_question": [
+        {
+          "id": "fb-00216",
+          "set": "financebench",
+          "latency_ms": 1027.64,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00283",
+          "set": "financebench",
+          "latency_ms": 1012.16,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-00288",
+          "set": "financebench",
+          "latency_ms": 945.32,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-00382",
+          "set": "financebench",
+          "latency_ms": 901.88,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00438",
+          "set": "financebench",
+          "latency_ms": 989.22,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-00494",
+          "set": "financebench",
+          "latency_ms": 966.29,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-00499",
+          "set": "financebench",
+          "latency_ms": 1043.36,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00517",
+          "set": "financebench",
+          "latency_ms": 1008.9,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-00603",
+          "set": "financebench",
+          "latency_ms": 986.17,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00605",
+          "set": "financebench",
+          "latency_ms": 945.54,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00651",
+          "set": "financebench",
+          "latency_ms": 902.77,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-00669",
+          "set": "financebench",
+          "latency_ms": 960.56,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00685",
+          "set": "financebench",
+          "latency_ms": 1312.72,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00711",
+          "set": "financebench",
+          "latency_ms": 1281.24,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00723",
+          "set": "financebench",
+          "latency_ms": 1051.73,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00724",
+          "set": "financebench",
+          "latency_ms": 1059.88,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00735",
+          "set": "financebench",
+          "latency_ms": 996.91,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00746",
+          "set": "financebench",
+          "latency_ms": 1059.73,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-00941",
+          "set": "financebench",
+          "latency_ms": 1058.72,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-01163",
+          "set": "financebench",
+          "latency_ms": 1091.13,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-01319",
+          "set": "financebench",
+          "latency_ms": 1142.2,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-01328",
+          "set": "financebench",
+          "latency_ms": 1188.86,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-01346",
+          "set": "financebench",
+          "latency_ms": 885.96,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-01474",
+          "set": "financebench",
+          "latency_ms": 1023.38,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-01858",
+          "set": "financebench",
+          "latency_ms": 1011.61,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-01912",
+          "set": "financebench",
+          "latency_ms": 971.88,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-01930",
+          "set": "financebench",
+          "latency_ms": 1231.03,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-01936",
+          "set": "financebench",
+          "latency_ms": 1036.22,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-02119",
+          "set": "financebench",
+          "latency_ms": 980.28,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-02419",
+          "set": "financebench",
+          "latency_ms": 1095.04,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-02608",
+          "set": "financebench",
+          "latency_ms": 1551.04,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-03282",
+          "set": "financebench",
+          "latency_ms": 1480.87,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-03473",
+          "set": "financebench",
+          "latency_ms": 1175.62,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-03718",
+          "set": "financebench",
+          "latency_ms": 1542.11,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-03838",
+          "set": "financebench",
+          "latency_ms": 1499.13,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-04171",
+          "set": "financebench",
+          "latency_ms": 1297.44,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-04302",
+          "set": "financebench",
+          "latency_ms": 1414.61,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-04412",
+          "set": "financebench",
+          "latency_ms": 1603.98,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-04417",
+          "set": "financebench",
+          "latency_ms": 1508.84,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-04672",
+          "set": "financebench",
+          "latency_ms": 1573.6,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-04784",
+          "set": "financebench",
+          "latency_ms": 1531.42,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-04980",
+          "set": "financebench",
+          "latency_ms": 1403.23,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-06272",
+          "set": "financebench",
+          "latency_ms": 1095.05,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-07507",
+          "set": "financebench",
+          "latency_ms": 1458.37,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-10420",
+          "set": "financebench",
+          "latency_ms": 1573.99,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-002",
+          "set": "narrative",
+          "latency_ms": 1294.49,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-003",
+          "set": "narrative",
+          "latency_ms": 1254.45,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "nar-019",
+          "set": "narrative",
+          "latency_ms": 1195.38,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-021",
+          "set": "narrative",
+          "latency_ms": 1576.73,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-025",
+          "set": "narrative",
+          "latency_ms": 1453.84,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "nar-026",
+          "set": "narrative",
+          "latency_ms": 1372.4,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "nar-029",
+          "set": "narrative",
+          "latency_ms": 1400.79,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "nar-032",
+          "set": "narrative",
+          "latency_ms": 1034.55,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "nar-033",
+          "set": "narrative",
+          "latency_ms": 1582.53,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-036",
+          "set": "narrative",
+          "latency_ms": 1235.23,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "nar-039",
+          "set": "narrative",
+          "latency_ms": 1529.46,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "nar-040",
+          "set": "narrative",
+          "latency_ms": 1546.75,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "nar-043",
+          "set": "narrative",
+          "latency_ms": 1403.94,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "nar-046",
+          "set": "narrative",
+          "latency_ms": 1293.6,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-049",
+          "set": "narrative",
+          "latency_ms": 1498.87,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        }
+      ],
+      "sets": {
+        "financebench": {
+          "n": 45,
+          "recall_at_1": 0.2,
+          "recall_at_1_ci95": [
+            0.08888888888888889,
+            0.3111111111111111
+          ],
+          "recall_at_3": 0.37777777777777777,
+          "recall_at_3_ci95": [
+            0.24444444444444444,
+            0.5111111111111111
+          ],
+          "recall_at_5": 0.4444444444444444,
+          "recall_at_5_ci95": [
+            0.28888888888888886,
+            0.5777777777777777
+          ],
+          "recall_at_8": 0.4666666666666667,
+          "recall_at_8_ci95": [
+            0.3111111111111111,
+            0.6
+          ]
+        },
+        "narrative": {
+          "n": 15,
+          "recall_at_1": 0.4,
+          "recall_at_1_ci95": [
+            0.13333333333333333,
+            0.6666666666666666
+          ],
+          "recall_at_3": 0.5333333333333333,
+          "recall_at_3_ci95": [
+            0.26666666666666666,
+            0.8
+          ],
+          "recall_at_5": 0.6,
+          "recall_at_5_ci95": [
+            0.3333333333333333,
+            0.8666666666666667
+          ],
+          "recall_at_8": 0.6666666666666666,
+          "recall_at_8_ci95": [
+            0.4,
+            0.8666666666666667
+          ]
+        }
+      },
+      "latency_ms": {
+        "p50": 1192.12,
+        "p95": 1574.127
+      },
+      "n_relaxed_year_filter": 0
+    },
+    {
+      "name": "hybrid + rerank + filters + section boost (oracle hint)",
+      "config": {
+        "lexical": true,
+        "dense": true,
+        "rerank": true,
+        "filters": true,
+        "section_boost": true,
+        "second_query": true,
+        "per_list": 50,
+        "rerank_cap": 30,
+        "top_k": 8,
+        "ef_search": 800,
+        "section_bonus": 0.0008062348830959419
+      },
+      "per_question": [
+        {
+          "id": "fb-00216",
+          "set": "financebench",
+          "latency_ms": 1181.59,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00283",
+          "set": "financebench",
+          "latency_ms": 1125.41,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-00288",
+          "set": "financebench",
+          "latency_ms": 1039.82,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-00382",
+          "set": "financebench",
+          "latency_ms": 921.43,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00438",
+          "set": "financebench",
+          "latency_ms": 1239.31,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-00494",
+          "set": "financebench",
+          "latency_ms": 970.25,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-00499",
+          "set": "financebench",
+          "latency_ms": 1079.68,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00517",
+          "set": "financebench",
+          "latency_ms": 901.87,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-00603",
+          "set": "financebench",
+          "latency_ms": 1090.37,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00605",
+          "set": "financebench",
+          "latency_ms": 1158.75,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00651",
+          "set": "financebench",
+          "latency_ms": 1040.66,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-00669",
+          "set": "financebench",
+          "latency_ms": 1220.33,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00685",
+          "set": "financebench",
+          "latency_ms": 1244.93,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00711",
+          "set": "financebench",
+          "latency_ms": 1325.43,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00723",
+          "set": "financebench",
+          "latency_ms": 959.01,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00724",
+          "set": "financebench",
+          "latency_ms": 1139.59,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00735",
+          "set": "financebench",
+          "latency_ms": 1080.61,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-00746",
+          "set": "financebench",
+          "latency_ms": 1105.13,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-00941",
+          "set": "financebench",
+          "latency_ms": 1113.92,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-01163",
+          "set": "financebench",
+          "latency_ms": 1086.08,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-01319",
+          "set": "financebench",
+          "latency_ms": 1108.71,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-01328",
+          "set": "financebench",
+          "latency_ms": 1210.22,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-01346",
+          "set": "financebench",
+          "latency_ms": 1051.57,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-01474",
+          "set": "financebench",
+          "latency_ms": 1034.65,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-01858",
+          "set": "financebench",
+          "latency_ms": 932.39,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-01912",
+          "set": "financebench",
+          "latency_ms": 977.89,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-01930",
+          "set": "financebench",
+          "latency_ms": 1279.95,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-01936",
+          "set": "financebench",
+          "latency_ms": 1027.32,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-02119",
+          "set": "financebench",
+          "latency_ms": 1372.08,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-02419",
+          "set": "financebench",
+          "latency_ms": 1099.0,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-02608",
+          "set": "financebench",
+          "latency_ms": 1509.51,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-03282",
+          "set": "financebench",
+          "latency_ms": 1373.77,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-03473",
+          "set": "financebench",
+          "latency_ms": 1398.51,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-03718",
+          "set": "financebench",
+          "latency_ms": 1424.66,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-03838",
+          "set": "financebench",
+          "latency_ms": 1472.67,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-04171",
+          "set": "financebench",
+          "latency_ms": 1200.1,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-04302",
+          "set": "financebench",
+          "latency_ms": 1589.73,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-04412",
+          "set": "financebench",
+          "latency_ms": 1563.81,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-04417",
+          "set": "financebench",
+          "latency_ms": 1516.15,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-04672",
+          "set": "financebench",
+          "latency_ms": 1377.99,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-04784",
+          "set": "financebench",
+          "latency_ms": 1389.12,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "fb-04980",
+          "set": "financebench",
+          "latency_ms": 1441.42,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-06272",
+          "set": "financebench",
+          "latency_ms": 1461.12,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-07507",
+          "set": "financebench",
+          "latency_ms": 1395.73,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "fb-10420",
+          "set": "financebench",
+          "latency_ms": 1491.97,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-002",
+          "set": "narrative",
+          "latency_ms": 1345.11,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-003",
+          "set": "narrative",
+          "latency_ms": 1163.3,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "nar-019",
+          "set": "narrative",
+          "latency_ms": 1260.52,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-021",
+          "set": "narrative",
+          "latency_ms": 1423.68,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-025",
+          "set": "narrative",
+          "latency_ms": 1447.18,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "nar-026",
+          "set": "narrative",
+          "latency_ms": 1462.44,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "nar-029",
+          "set": "narrative",
+          "latency_ms": 1385.37,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "nar-032",
+          "set": "narrative",
+          "latency_ms": 1396.82,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "nar-033",
+          "set": "narrative",
+          "latency_ms": 1552.53,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-036",
+          "set": "narrative",
+          "latency_ms": 1427.95,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "nar-039",
+          "set": "narrative",
+          "latency_ms": 1591.5,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "nar-040",
+          "set": "narrative",
+          "latency_ms": 1637.4,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "nar-043",
+          "set": "narrative",
+          "latency_ms": 1489.37,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        },
+        {
+          "id": "nar-046",
+          "set": "narrative",
+          "latency_ms": 1410.1,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "8": 0.0
+          }
+        },
+        {
+          "id": "nar-049",
+          "set": "narrative",
+          "latency_ms": 1331.36,
+          "relaxed_year_filter": false,
+          "hits": {
+            "1": 0.0,
+            "3": 1.0,
+            "5": 1.0,
+            "8": 1.0
+          }
+        }
+      ],
+      "sets": {
+        "financebench": {
+          "n": 45,
+          "recall_at_1": 0.2,
+          "recall_at_1_ci95": [
+            0.08888888888888889,
+            0.3111111111111111
+          ],
+          "recall_at_3": 0.37777777777777777,
+          "recall_at_3_ci95": [
+            0.24444444444444444,
+            0.5111111111111111
+          ],
+          "recall_at_5": 0.4444444444444444,
+          "recall_at_5_ci95": [
+            0.28888888888888886,
+            0.5777777777777777
+          ],
+          "recall_at_8": 0.4666666666666667,
+          "recall_at_8_ci95": [
+            0.3111111111111111,
+            0.6
+          ]
+        },
+        "narrative": {
+          "n": 15,
+          "recall_at_1": 0.4,
+          "recall_at_1_ci95": [
+            0.13333333333333333,
+            0.6666666666666666
+          ],
+          "recall_at_3": 0.5333333333333333,
+          "recall_at_3_ci95": [
+            0.26666666666666666,
+            0.8
+          ],
+          "recall_at_5": 0.6,
+          "recall_at_5_ci95": [
+            0.3333333333333333,
+            0.8666666666666667
+          ],
+          "recall_at_8": 0.6666666666666666,
+          "recall_at_8_ci95": [
+            0.4,
+            0.8666666666666667
+          ]
+        }
+      },
+      "latency_ms": {
+        "p50": 1270.2350000000001,
+        "p95": 1565.1059999999998
+      },
+      "n_relaxed_year_filter": 0
+    }
+  ]
+}
