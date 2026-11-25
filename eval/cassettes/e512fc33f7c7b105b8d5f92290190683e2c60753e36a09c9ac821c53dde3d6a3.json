@@ -1,0 +1,36 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Genuine Parts Co generated $1.4 billion in operating cash flow in fiscal 2023 [1].",
+    "claims": [
+      {
+        "display": "$1.4 billion",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:1911473324735788941",
+          "fact_ids": [
+            1911473324735788941
+          ],
+          "type": "expr"
+        },
+        "text": "Genuine Parts Co generated $1.4 billion in operating cash flow in fiscal 2023.",
+        "unit": "USD",
+        "value": "1435610000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "e512fc33f7c7b105b8d5f92290190683e2c60753e36a09c9ac821c53dde3d6a3",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00007265",
+    "input_tokens": 234,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 193
+  }
+}

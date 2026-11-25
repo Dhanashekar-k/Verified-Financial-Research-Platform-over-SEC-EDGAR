@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Willis Towers Watson's interest expense decreased by 1.1% in FY2025, measured from FY2024 [1].",
+    "claims": [
+      {
+        "display": "-1.1%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:5530568224688655961 - f:6415760821182281849) / f:6415760821182281849",
+          "fact_ids": [
+            5530568224688655961,
+            6415760821182281849
+          ],
+          "type": "expr"
+        },
+        "text": "WTW interest expense growth, FY2025 vs FY2024: -1.1%",
+        "unit": "ratio",
+        "value": "-0.01140684410646387832699619772"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "35dcdb61abc032994eb39027445066d5e82ebce39006327ac608a743996abd3c",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00014595",
+    "input_tokens": 285,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 476
+  }
+}

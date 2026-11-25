@@ -1,0 +1,57 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Johnson & Johnson's August 2023 guidance expects 2023 adjusted reported EPS growth of 12.5% at the mid-point [1], on EPS of $10.00 - $10.10 [2]. The material does not give prior-year adjusted EPS growth, so it cannot show whether this rate is an acceleration.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:JOHNSON_JOHNSON_2023_8K_dated-2023-08-30#p4#0000",
+          "quote": "12.5% at the mid-point",
+          "type": "chunk"
+        },
+        "text": "Company expects 2023 adjusted reported EPS growth of 12.5% at the mid-point",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:JOHNSON_JOHNSON_2023_8K_dated-2023-08-30#p4#0000",
+          "quote": "Company expects 2023 Adjusted Reported Earnings Per Share (EPS) of $10.00 - $10.10",
+          "type": "chunk"
+        },
+        "text": "Company expects 2023 Adjusted Reported Earnings Per Share (EPS) of $10.00 - $10.10",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Company expects 2023 adjusted reported EPS growth of 12.5% at the mid-point",
+        "Company expects 2023 Adjusted Reported Earnings Per Share (EPS) of $10.00 - $10.10"
+      ],
+      "missing": [
+        "Adjusted EPS growth for FY2022 or earlier periods to compare with the 2023 guided growth"
+      ],
+      "reason": "The material gives 2023 adjusted EPS guidance and says it reflects increased growth, but does not give prior-year adjusted EPS growth to show whether growth accelerates."
+    }
+  },
+  "request_key": "fbcea06c1de74a558919a181371fa44aebc4fb8fa8c46eb9c0e2ee1f6935e78d",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00074425",
+    "input_tokens": 4666,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1993
+  }
+}

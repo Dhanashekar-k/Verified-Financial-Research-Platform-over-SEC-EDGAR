@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Martin Marietta Materials' interest expense decreased 5.2% from Q1 FY2023 to Q1 FY2024, measured against the Q1 FY2023 figure as originally filed [1]. That Q1 FY2023 figure was later restated, but no restated value is given here [1].",
+    "claims": [
+      {
+        "display": "-5.2%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:7705312080764696309 - f:2635512975289383381) / f:2635512975289383381",
+          "fact_ids": [
+            7705312080764696309,
+            2635512975289383381
+          ],
+          "type": "expr"
+        },
+        "text": "Martin Marietta Materials' interest expense changed by -5.2% from Q1 FY2023 to Q1 FY2024, as originally filed.",
+        "unit": "ratio",
+        "value": "-0.05213270142180094786729857820"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "2f7f66470d41ce3dd5b052ea4cf7fb1ab0d35caa9c5ffffac6b5e75679879edc",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00023370",
+    "input_tokens": 395,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 805
+  }
+}

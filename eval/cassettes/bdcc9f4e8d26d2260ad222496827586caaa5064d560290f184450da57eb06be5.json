@@ -1,0 +1,23 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The FY2023 Form 10-K cover page lists no debt securities. Under Section 12(b), the only security listed is common stock, which trades on The NASDAQ Global Select Market [1]. Under Section 12(g), the filing states ",
+    "claims": [],
+    "refusal": {
+      "found": [],
+      "missing": [],
+      "reason": "x"
+    }
+  },
+  "request_key": "bdcc9f4e8d26d2260ad222496827586caaa5064d560290f184450da57eb06be5",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0005160",
+    "input_tokens": 5001,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1013
+  }
+}

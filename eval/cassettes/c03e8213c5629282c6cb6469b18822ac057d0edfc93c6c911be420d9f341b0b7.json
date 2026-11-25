@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The passages do not give Pfizer's Q2 2023 revenue by geographic region. The only geographic analysis provided covers the first six months of 2023 [1].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:Pfizer_2023Q2_10Q#p46#0000",
+          "quote": "The following provides an analysis of the worldwide change in revenues by geographic areas in the first six months of 2023:",
+          "type": "chunk"
+        },
+        "text": "The geographic revenue analysis in the passages covers the first six months of 2023.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "A geographic revenue analysis covering the first six months of 2023 only."
+      ],
+      "missing": [
+        "Pfizer's total Q2 2023 versus Q2 2022 revenues by geographic region (U.S. and International) with percentage changes."
+      ],
+      "reason": "The material gives no company-wide Q2 2023 year-over-year revenue change by geographic region, so no region's percentage drop can be identified."
+    }
+  },
+  "request_key": "c03e8213c5629282c6cb6469b18822ac057d0edfc93c6c911be420d9f341b0b7",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00060425",
+    "input_tokens": 4171,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1532
+  }
+}

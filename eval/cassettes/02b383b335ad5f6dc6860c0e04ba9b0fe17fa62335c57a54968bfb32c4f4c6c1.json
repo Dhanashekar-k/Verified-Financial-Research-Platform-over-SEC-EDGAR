@@ -1,0 +1,43 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The passages describe how People & Places Solutions delivers work: [1]",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000052988-23-000084#1#0013",
+          "quote": "Solutions are delivered as standalone professional service engagements, comprehensive program management partnerships, and selective progressive design-build and construction management at-risk delivery services.",
+          "type": "chunk"
+        },
+        "text": "Solutions are delivered as standalone professional service engagements, comprehensive program management partnerships, and selective progressive design-build and construction management at-risk delivery services.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Delivery models for People & Places Solutions: standalone professional service engagements, comprehensive program management partnerships, and design-build and construction management at-risk services."
+      ],
+      "missing": [
+        "Risk factor text describing how competition could affect Jacobs' business",
+        "Description of how projects are typically awarded or procured"
+      ],
+      "reason": "The supplied passages contain no fiscal 2023 risk factor text on competition and no description of how projects are awarded."
+    }
+  },
+  "request_key": "02b383b335ad5f6dc6860c0e04ba9b0fe17fa62335c57a54968bfb32c4f4c6c1",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00059860",
+    "input_tokens": 5523,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1239
+  }
+}

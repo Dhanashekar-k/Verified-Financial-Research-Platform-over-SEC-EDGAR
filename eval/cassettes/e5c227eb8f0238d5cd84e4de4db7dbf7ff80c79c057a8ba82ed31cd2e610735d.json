@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "incorrect",
+    "reason": "The gold answer is $411 million, but the system answer concludes 0 for the income statement, even though it mentions 411 as appearing only in the cash flow statement; the final answer contradicts the gold."
+  },
+  "request_key": "e5c227eb8f0238d5cd84e4de4db7dbf7ff80c79c057a8ba82ed31cd2e610735d",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00065355",
+    "input_tokens": 222,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 80
+  }
+}

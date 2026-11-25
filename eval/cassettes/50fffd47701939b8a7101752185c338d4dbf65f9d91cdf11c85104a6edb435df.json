@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "PulteGroup's net cash from operating activities decreased by 44.0% from Q1 FY2024 to Q1 FY2025 [1].",
+    "claims": [
+      {
+        "display": "-44.0%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:5685327768097955412 - f:-2900702319505943851) / f:-2900702319505943851",
+          "fact_ids": [
+            5685327768097955412,
+            -2900702319505943851
+          ],
+          "type": "expr"
+        },
+        "text": "Net cash from operating activities changed by -44.0% from Q1 FY2024 to Q1 FY2025.",
+        "unit": "ratio",
+        "value": "-0.4402198617940088495206162136"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "50fffd47701939b8a7101752185c338d4dbf65f9d91cdf11c85104a6edb435df",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00017580",
+    "input_tokens": 337,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 585
+  }
+}

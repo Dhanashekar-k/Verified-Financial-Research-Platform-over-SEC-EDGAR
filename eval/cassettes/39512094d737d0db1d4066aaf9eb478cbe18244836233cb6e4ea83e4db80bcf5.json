@@ -1,0 +1,74 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The passages identify one financial-market factor: global market volatility, including from COVID-19, inflation and Russia's invasion of Ukraine, exposes the company to foreign currency fluctuations [1]. The company also says those fluctuations could be compounded by the seasonality of its business [2]. The passages do not describe investment-related or equity-compensation factors that cause quarterly results to vary, nor a stock price reaction to missed quarterly expectations. The only stock price statement concerns failing to achieve the anticipated benefits of the Slack acquisition [3].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001108524-22-000013#7#0004",
+          "quote": "expose us to the risk of fluctuations in foreign currency markets",
+          "type": "chunk"
+        },
+        "text": "Heightened volatility of global markets, including from COVID-19, inflation and Russia's invasion of Ukraine, exposes the company to the risk of fluctuations in foreign currency markets.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001108524-22-000013#7#0004",
+          "quote": "The impact of these fluctuations could also be compounded by the seasonality of our business",
+          "type": "chunk"
+        },
+        "text": "The impact of currency fluctuations could be compounded by the seasonality of the business.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001108524-22-000013#1A#0014",
+          "quote": "negatively impact the price of our common stock",
+          "type": "chunk"
+        },
+        "text": "Failure to achieve the anticipated benefits of the Slack acquisition could negatively impact the price of the company's common stock.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Global market volatility and foreign currency fluctuations are cited as risks to future results.",
+        "Seasonality could compound the impact of currency fluctuations.",
+        "Failure to achieve Slack acquisition benefits could negatively impact the stock price."
+      ],
+      "missing": [
+        "Risk factor text on quarterly results varying due to investment or financial-market factors.",
+        "Risk factor text on equity-compensation factors affecting quarterly results.",
+        "Risk factor text on the stock price effect of missing quarterly expectations."
+      ],
+      "reason": "The passages do not describe investment-related or equity-compensation factors that cause quarterly operating results to vary, or a stock price reaction to missed quarterly expectations."
+    }
+  },
+  "request_key": "39512094d737d0db1d4066aaf9eb478cbe18244836233cb6e4ea83e4db80bcf5",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00076460",
+    "input_tokens": 4863,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 2035
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "As of FY2022, Johnson & Johnson's gross margin was 67.3% [1], using gross profit and revenue as originally filed. Both figures were later restated, and this figure does not reflect the restated values; the restated amounts are not provided here. The material does not include a prior-year gross margin, so the change cannot be measured, and it does not break down the cost of products or revenue drivers behind any change. The filings do state a general aim: the company strives to maintain its profit margins through cost reduction programs, productivity improvements and periodic price increases [2], but this does not quantify or attribute a gross margin change.",
+    "claims": [
+      {
+        "display": "67.3%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "f:-4263930307550363979 / f:3634032647140568781",
+          "fact_ids": [
+            -4263930307550363979,
+            3634032647140568781
+          ],
+          "type": "expr"
+        },
+        "text": "FY2022 gross margin was 67.3%, as originally filed (gross profit and revenue were later restated).",
+        "unit": "ratio",
+        "value": "0.6725508989604288889122947453"
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000200406-23-000016#7#0055",
+          "quote": "In the face of increasing costs, the Company strives to maintain its profit margins through cost reduction programs, productivity improvements and periodic price increases.",
+          "type": "chunk"
+        },
+        "text": "The company strives to maintain its profit margins through cost reduction programs, productivity improvements and periodic price increases.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "FY2022 gross margin of 67.3% as originally filed",
+        "General statement that the company aims to maintain profit margins through cost reduction, productivity improvements and periodic price increases"
+      ],
+      "missing": [
+        "FY2021 gross margin or another comparison period to measure the change",
+        "Cost of products sold and revenue breakdown explaining the change",
+        "Latest restated gross profit and revenue values for FY2022"
+      ],
+      "reason": "The material gives only the FY2022 gross margin level, not the change, and does not identify the drivers of any change."
+    }
+  },
+  "request_key": "477c5045bf8a916cb0cf7c341751924beca213f5f8a87f79c76d1f122a5d3446",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00073335",
+    "input_tokens": 4838,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1915
+  }
+}

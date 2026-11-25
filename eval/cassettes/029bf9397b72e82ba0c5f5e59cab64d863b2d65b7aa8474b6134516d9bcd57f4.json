@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The passages do not describe any ongoing legal battles. The only related statement is in the FY2021 10-K about environmental remediation obligations [1].",
+    "claims": [
+      {
+        "display": null,
+        "id": "C1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000077476-22-000010#1#0020",
+          "quote": "While these environmental remediation and indemnification obligations cannot be predicted with certainty, such obligations have not had, and are not expected to have, a material impact on our capital expenditures, earnings or competitive position.",
+          "type": "chunk"
+        },
+        "text": "PepsiCo states that its environmental remediation and indemnification obligations have not had, and are not expected to have, a material impact on its capital expenditures, earnings or competitive position.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "The FY2021 10-K states that environmental remediation and indemnification obligations have not had, and are not expected to have, a material impact on capital expenditures, earnings or competitive position."
+      ],
+      "missing": [
+        "Legal proceedings or litigation disclosures for FY2022 and FY2021, such as the Item 3 Legal Proceedings section or the contingencies note in each 10-K."
+      ],
+      "reason": "The passages contain no litigation or legal proceedings disclosures for FY2022 or FY2021, so they cannot show whether any legal battles were ongoing."
+    }
+  },
+  "request_key": "029bf9397b72e82ba0c5f5e59cab64d863b2d65b7aa8474b6134516d9bcd57f4",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00058570",
+    "input_tokens": 5080,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1276
+  }
+}

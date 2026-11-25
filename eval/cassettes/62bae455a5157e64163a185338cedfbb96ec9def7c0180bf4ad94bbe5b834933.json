@@ -1,0 +1,36 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Dollar General Corp reported interest expense of $326.8 million for fiscal year 2023 [1].",
+    "claims": [
+      {
+        "display": "$326.8 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:510997718901426480",
+          "fact_ids": [
+            510997718901426480
+          ],
+          "type": "expr"
+        },
+        "text": "Dollar General Corp reported interest expense of $326.8 million for fiscal year 2023.",
+        "unit": "USD",
+        "value": "326781000.0000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "62bae455a5157e64163a185338cedfbb96ec9def7c0180bf4ad94bbe5b834933",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00013035",
+    "input_tokens": 228,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 425
+  }
+}

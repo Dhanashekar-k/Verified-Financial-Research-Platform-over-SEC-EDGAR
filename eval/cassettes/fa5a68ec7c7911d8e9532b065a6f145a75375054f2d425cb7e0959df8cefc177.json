@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "CRH PLC's interest expense grew by 9.3% from FY2022 to FY2023 [1].",
+    "claims": [
+      {
+        "display": "9.3%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:-4879754384667902001 - f:8673127979887008913) / f:8673127979887008913",
+          "fact_ids": [
+            -4879754384667902001,
+            8673127979887008913
+          ],
+          "type": "expr"
+        },
+        "text": "CRH PLC's interest expense grew by 9.3% from FY2022 to FY2023.",
+        "unit": "ratio",
+        "value": "0.09302325581395348837209302326"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "fa5a68ec7c7911d8e9532b065a6f145a75375054f2d425cb7e0959df8cefc177",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0001575",
+    "input_tokens": 306,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 518
+  }
+}

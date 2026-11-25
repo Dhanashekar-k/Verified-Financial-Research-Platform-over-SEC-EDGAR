@@ -1,0 +1,36 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Cisco Systems' capital expenditures for fiscal 2025 were $905.0 million [1].",
+    "claims": [
+      {
+        "display": "$905.0 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:989620509759626690",
+          "fact_ids": [
+            989620509759626690
+          ],
+          "type": "expr"
+        },
+        "text": "Cisco Systems' capital expenditures for fiscal 2025 were $905.0 million.",
+        "unit": "USD",
+        "value": "905000000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "cac69e42fadef5567ecac21e9287f3a1bf766f0873ae86ef75db12a2d7cf54e3",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00006970",
+    "input_tokens": 225,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 183
+  }
+}

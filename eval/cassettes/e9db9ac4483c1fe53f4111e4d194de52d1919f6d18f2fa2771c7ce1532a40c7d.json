@@ -1,0 +1,36 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Crown Castle Inc. spent $750.0 million on selling, general and administrative expenses in FY2022 [1].",
+    "claims": [
+      {
+        "display": "$750.0 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:-4058817378124257779",
+          "fact_ids": [
+            -4058817378124257779
+          ],
+          "type": "expr"
+        },
+        "text": "Crown Castle Inc. spent $750.0 million on selling, general and administrative expenses in FY2022.",
+        "unit": "USD",
+        "value": "750000000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "e9db9ac4483c1fe53f4111e4d194de52d1919f6d18f2fa2771c7ce1532a40c7d",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00007360",
+    "input_tokens": 233,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 197
+  }
+}

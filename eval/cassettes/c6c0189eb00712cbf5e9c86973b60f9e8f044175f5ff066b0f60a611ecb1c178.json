@@ -1,0 +1,27 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The supplied material does not address interest rate risk or hedging. No passage discusses these topics.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "The passages describe lululemon's products, seasonality, lululemon Studio goodwill and intangible impairments, and inventory provisions."
+      ],
+      "missing": [
+        "The market risk disclosure from the fiscal 2022 10-K (Item 7A or equivalent) describing interest rate exposure and hedging policy."
+      ],
+      "reason": "The passages cover the business description, seasonality, and impairment charges but contain nothing on interest rate exposure or hedging."
+    }
+  },
+  "request_key": "c6c0189eb00712cbf5e9c86973b60f9e8f044175f5ff066b0f60a611ecb1c178",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0004180",
+    "input_tokens": 5366,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 548
+  }
+}

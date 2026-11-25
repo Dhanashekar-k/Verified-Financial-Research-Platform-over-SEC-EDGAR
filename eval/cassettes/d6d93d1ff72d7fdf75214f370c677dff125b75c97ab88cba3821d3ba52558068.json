@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "WEC Energy Group's operating income changed by -0.8% from fiscal year 2022 to fiscal year 2023, measured from FY2022 [1].",
+    "claims": [
+      {
+        "display": "-0.8%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:4380582594074077590 - f:-4125168078041530738) / f:-4125168078041530738",
+          "fact_ids": [
+            4380582594074077590,
+            -4125168078041530738
+          ],
+          "type": "expr"
+        },
+        "text": "WEC Energy Group's operating income changed by -0.8% from FY2022 to FY2023.",
+        "unit": "ratio",
+        "value": "-0.008419083255378858746492048644"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "d6d93d1ff72d7fdf75214f370c677dff125b75c97ab88cba3821d3ba52558068",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0001755",
+    "input_tokens": 311,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 589
+  }
+}

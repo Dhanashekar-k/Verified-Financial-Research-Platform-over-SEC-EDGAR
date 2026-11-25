@@ -1,0 +1,69 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Jacobs Solutions Inc.'s FY2023 operating income as originally reported was $1.1 billion [1]; this figure was later restated, and the comparison uses the original filing. Comfort Systems USA Inc.'s FY2023 operating income was $418.4 million [2]. Jacobs' operating income exceeded Comfort Systems' by $656.8 million [3].",
+    "claims": [
+      {
+        "display": "$1.1 billion",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:-8882288579690922654",
+          "fact_ids": [
+            -8882288579690922654
+          ],
+          "type": "expr"
+        },
+        "text": "Jacobs Solutions Inc. FY2023 operating income as originally reported was $1.1 billion; it was later restated.",
+        "unit": "USD",
+        "value": "1075237000.0000"
+      },
+      {
+        "display": "$418.4 million",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:-3398690385481802862",
+          "fact_ids": [
+            -3398690385481802862
+          ],
+          "type": "expr"
+        },
+        "text": "Comfort Systems USA Inc. FY2023 operating income was $418.4 million.",
+        "unit": "USD",
+        "value": "418388000.0000"
+      },
+      {
+        "display": "$656.8 million",
+        "id": "c3",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "f:-8882288579690922654 - f:-3398690385481802862",
+          "fact_ids": [
+            -8882288579690922654,
+            -3398690385481802862
+          ],
+          "type": "expr"
+        },
+        "text": "Jacobs Solutions Inc.'s FY2023 operating income exceeded that of Comfort Systems USA Inc. by $656.8 million, using originally reported figures.",
+        "unit": "USD",
+        "value": "656849000.0000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "1824bbd3b8f52fa2215984d85331fb057ccf43ca914a3a9172f3bb7821a83adf",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00048265",
+    "input_tokens": 1024,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1675
+  }
+}

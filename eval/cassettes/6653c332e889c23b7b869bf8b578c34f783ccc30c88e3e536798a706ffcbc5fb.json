@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The answer identifies operations as the activity with the highest cash flow for Nike in FY2023, matching the gold answer, and the supporting figures are consistent with that conclusion."
+  },
+  "request_key": "6653c332e889c23b7b869bf8b578c34f783ccc30c88e3e536798a706ffcbc5fb",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 631,
+    "cost_usd": "0.00133175",
+    "input_tokens": 188,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 71
+  }
+}

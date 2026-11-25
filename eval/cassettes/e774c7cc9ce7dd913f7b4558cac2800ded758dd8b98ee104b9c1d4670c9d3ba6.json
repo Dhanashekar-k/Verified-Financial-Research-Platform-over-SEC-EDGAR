@@ -1,0 +1,36 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Cincinnati Financial Corp's total assets at the end of fiscal year 2024 were $36.5 billion [1].",
+    "claims": [
+      {
+        "display": "$36.5 billion",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:-4328017443240052689",
+          "fact_ids": [
+            -4328017443240052689
+          ],
+          "type": "expr"
+        },
+        "text": "Cincinnati Financial Corp's total assets at the end of fiscal year 2024 were $36.5 billion.",
+        "unit": "USD",
+        "value": "36501000000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "e774c7cc9ce7dd913f7b4558cac2800ded758dd8b98ee104b9c1d4670c9d3ba6",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00007555",
+    "input_tokens": 247,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 202
+  }
+}

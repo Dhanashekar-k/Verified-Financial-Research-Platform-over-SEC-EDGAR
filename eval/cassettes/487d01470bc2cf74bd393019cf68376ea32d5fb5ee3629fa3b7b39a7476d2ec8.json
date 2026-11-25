@@ -1,0 +1,36 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Host Hotels & Resorts, Inc. reported stockholders' equity of $6.8 billion at the end of Q3 FY2022 [1].",
+    "claims": [
+      {
+        "display": "$6.8 billion",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:8086840654104523806",
+          "fact_ids": [
+            8086840654104523806
+          ],
+          "type": "expr"
+        },
+        "text": "Stockholders' equity at the end of Q3 FY2022 was $6.8 billion.",
+        "unit": "USD",
+        "value": "6812000000.0000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "487d01470bc2cf74bd393019cf68376ea32d5fb5ee3629fa3b7b39a7476d2ec8",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00011410",
+    "input_tokens": 248,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 356
+  }
+}

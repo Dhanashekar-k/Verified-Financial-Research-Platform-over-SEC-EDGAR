@@ -1,0 +1,69 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Quanta Services' fiscal 2023 capital expenditures exceeded those of D.R. Horton by $286.2 million [1]. Quanta's capex was $434.8 million [2] and D.R. Horton's was $148.6 million [3].",
+    "claims": [
+      {
+        "display": "$286.2 million",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "f:-4385298720005219267 - f:-191407361656035475",
+          "fact_ids": [
+            -4385298720005219267,
+            -191407361656035475
+          ],
+          "type": "expr"
+        },
+        "text": "Quanta Services' FY2023 capex exceeded D.R. Horton's FY2023 capex by $286.2 million.",
+        "unit": "USD",
+        "value": "286203000"
+      },
+      {
+        "display": "$434.8 million",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:-4385298720005219267",
+          "fact_ids": [
+            -4385298720005219267
+          ],
+          "type": "expr"
+        },
+        "text": "Quanta Services' FY2023 capex was $434.8 million.",
+        "unit": "USD",
+        "value": "434803000"
+      },
+      {
+        "display": "$148.6 million",
+        "id": "c3",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:-191407361656035475",
+          "fact_ids": [
+            -191407361656035475
+          ],
+          "type": "expr"
+        },
+        "text": "D.R. Horton's FY2023 capex was $148.6 million.",
+        "unit": "USD",
+        "value": "148600000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "33ff3ae413b2fe686f557b7bb5555f102c5f959f0e84d4b3fb9cbb1dc814388f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00016780",
+    "input_tokens": 647,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 491
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Cardinal Health's interest expense grew by 151.4% from Q2 FY2025 to Q2 FY2026 [1].",
+    "claims": [
+      {
+        "display": "151.4%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:-6158467336546791699 - f:7899296165624194726) / f:7899296165624194726",
+          "fact_ids": [
+            -6158467336546791699,
+            7899296165624194726
+          ],
+          "type": "expr"
+        },
+        "text": "Cardinal Health's interest expense grew by 151.4% in Q2 FY2026, measured from Q2 FY2025.",
+        "unit": "ratio",
+        "value": "1.514285714285714285714285714"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "332d7ced8acb1cc416596110a14c05e51af813aaea3a48e0884188962da1fecf",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00014260",
+    "input_tokens": 323,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 455
+  }
+}

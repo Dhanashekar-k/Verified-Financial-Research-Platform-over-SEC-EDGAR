@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The passages do not give FY2022 topline revenue for each region, so the worst-performing region cannot be identified. Regional Operations rooms revenue was $284 million in 2022, compared to $221 million in 2021 [1].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000789570-23-000008#7#0022",
+          "quote": "Regional Operations rooms revenue was $284 million in 2022, compared to $221 million in 2021, an increase of 29%",
+          "type": "chunk"
+        },
+        "text": "Regional Operations rooms revenue was $284 million in 2022, compared to $221 million in 2021, an increase of 29%",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Regional Operations rooms revenue was $284 million in 2022, compared to $221 million in 2021, an increase of 29%"
+      ],
+      "missing": [
+        "FY2022 net revenue for each region (Las Vegas Strip Resorts, Regional Operations, MGM China) to compare"
+      ],
+      "reason": "The material does not report FY2022 topline revenue by region, so it cannot show which region performed worst."
+    }
+  },
+  "request_key": "5a761b75f9088f6d17421152cf9599215bf3a0801b91d493bfb7db09eb465a35",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00061840",
+    "input_tokens": 4894,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1444
+  }
+}

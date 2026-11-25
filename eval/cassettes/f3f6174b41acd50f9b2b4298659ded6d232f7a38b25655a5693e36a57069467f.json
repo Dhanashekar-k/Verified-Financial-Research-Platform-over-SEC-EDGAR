@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The provided material does not state an expected future payment for the Upjohn spin-off. It reports past separation costs of $434 million in 2020 [1].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000078003-23-000024#8#0060",
+          "quote": "we incurred separation-related costs of $434 million in 2020",
+          "type": "chunk"
+        },
+        "text": "Pfizer incurred separation-related costs of $434 million in 2020.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Pfizer incurred separation-related costs of $434 million in 2020."
+      ],
+      "missing": [
+        "A stated expected future payment amount for the Upjohn spin-off, from a filing passage or a NUMERIC RESULTS figure."
+      ],
+      "reason": "The passages report past Upjohn spin-off costs and distributions but do not give any amount Pfizer expects to pay in the future for the spin-off."
+    }
+  },
+  "request_key": "f3f6174b41acd50f9b2b4298659ded6d232f7a38b25655a5693e36a57069467f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00064065",
+    "input_tokens": 4979,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1516
+  }
+}

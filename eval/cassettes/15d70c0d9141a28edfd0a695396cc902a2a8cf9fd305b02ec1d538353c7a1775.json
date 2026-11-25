@@ -1,0 +1,59 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "3M's FY2022 filings report about $317 million spent on environmental capital projects [1]. The filings also give a 2023 capital spending outlook of $1.5 billion to $1.8 billion [2].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:3M_2022_10K#p7#0001",
+          "quote": "In 2022, 3M expended approximately $317 million on capital projects for environmental purposes",
+          "type": "chunk"
+        },
+        "text": "3M expended approximately $317 million on capital projects for environmental purposes in 2022.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000066740-23-000014#7#0064",
+          "quote": "The Company expects 2023 capital spending to be approximately $1.5 billion to $1.8 billion",
+          "type": "chunk"
+        },
+        "text": "3M expects 2023 capital spending to be approximately $1.5 billion to $1.8 billion.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "About $317 million spent in 2022 on capital projects for environmental purposes",
+        "Expected 2023 capital spending of approximately $1.5 billion to $1.8 billion"
+      ],
+      "missing": [
+        "FY2022 total capital expenditures (purchases of property, plant and equipment)",
+        "FY2022 revenue or total assets to relate capital spending to the business",
+        "A computed capital intensity measure for FY2022"
+      ],
+      "reason": "The material gives only a partial environmental capital spending figure for 2022 and a 2023 outlook, with no FY2022 total capital expenditure or revenue or asset base, so capital intensity cannot be assessed."
+    }
+  },
+  "request_key": "15d70c0d9141a28edfd0a695396cc902a2a8cf9fd305b02ec1d538353c7a1775",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00069970",
+    "input_tokens": 5175,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1713
+  }
+}

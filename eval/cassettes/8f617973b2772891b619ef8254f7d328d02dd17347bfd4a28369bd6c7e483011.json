@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The passages do not outline any restructuring costs in AES Corporation's FY2022 income statement. The Adjusted PTC reconciliation lists its adjustments without a restructuring item [1].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000874761-23-000010#7#0029",
+          "quote": "Total Adjusted PTC | $1,567 | $1,418 | $1,247",
+          "type": "chunk"
+        },
+        "text": "The Adjusted PTC reconciliation lists no restructuring item among its adjustments.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "The Adjusted PTC reconciliation for 2022 to 2020 lists its adjustments and none is a restructuring item."
+      ],
+      "missing": [
+        "The FY2022 consolidated statement of operations (income statement) showing any restructuring cost line."
+      ],
+      "reason": "The passages do not state a restructuring cost figure for AES's FY2022 income statement, so no amount can be given and the requested zero is not confirmed by the material."
+    }
+  },
+  "request_key": "8f617973b2772891b619ef8254f7d328d02dd17347bfd4a28369bd6c7e483011",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00058260",
+    "input_tokens": 3563,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1567
+  }
+}

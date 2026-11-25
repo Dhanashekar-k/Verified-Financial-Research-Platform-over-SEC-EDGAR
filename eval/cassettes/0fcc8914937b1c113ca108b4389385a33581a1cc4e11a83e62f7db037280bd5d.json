@@ -1,0 +1,36 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Brown-Forman's income tax expense in Q3 FY2024 was $57.0 million [1].",
+    "claims": [
+      {
+        "display": "$57.0 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:-8244037098238805260",
+          "fact_ids": [
+            -8244037098238805260
+          ],
+          "type": "expr"
+        },
+        "text": "Brown-Forman's income tax expense in Q3 FY2024 was $57.0 million.",
+        "unit": "USD",
+        "value": "57000000.0000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "0fcc8914937b1c113ca108b4389385a33581a1cc4e11a83e62f7db037280bd5d",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00011070",
+    "input_tokens": 230,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 346
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Cash and cash equivalents were $2.6 billion at December 31, 2022 [1]. Management states that its sources of funds are sufficient to meet ongoing operating and investing requirements over the next 12 months and beyond [2].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000732712-23-000012#7#0056",
+          "quote": "Our cash and cash equivalents balance is $2.6 billion as of December 31, 2022.",
+          "type": "chunk"
+        },
+        "text": "Our cash and cash equivalents balance is $2.6 billion as of December 31, 2022.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000732712-23-000012#7#0056",
+          "quote": "Our sources of funds, primarily from operations and, to the extent necessary, from external financing arrangements, are sufficient to meet ongoing operating and investing requirements over the next 12 months and beyond.",
+          "type": "chunk"
+        },
+        "text": "Management states that sources of funds are sufficient to meet ongoing operating and investing requirements over the next 12 months and beyond.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Cash and cash equivalents of $2.6 billion as of December 31, 2022.",
+        "Management's statement that sources of funds are sufficient to meet ongoing operating and investing requirements over the next 12 months and beyond."
+      ],
+      "missing": [
+        "FY 2022 balance sheet current assets, inventories, and prepaid expenses needed for the quick ratio numerator.",
+        "FY 2022 current liabilities needed for the quick ratio denominator.",
+        "Any computed quick ratio figure for FY 2022."
+      ],
+      "reason": "The material gives no current assets, inventory, prepaid, or current liabilities figures, so a quick ratio for FY 2022 cannot be computed or assessed from it."
+    }
+  },
+  "request_key": "b323845b912f6bc258ca787e35b0a33abe7b21d7179f560eeb5be7d8f449db0e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00072325",
+    "input_tokens": 5196,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1803
+  }
+}

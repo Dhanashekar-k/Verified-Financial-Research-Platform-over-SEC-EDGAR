@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "ON Semiconductor's interest expense increased by 22.2% from Q1 FY2022 to Q1 FY2023 [1].",
+    "claims": [
+      {
+        "display": "22.2%",
+        "id": "r1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:-8905319118681677468 - f:-361940208386760910) / f:-361940208386760910",
+          "fact_ids": [
+            -8905319118681677468,
+            -361940208386760910
+          ],
+          "type": "expr"
+        },
+        "text": "ON Semiconductor's interest expense grew 22.2% from Q1 FY2022 to Q1 FY2023.",
+        "unit": "ratio",
+        "value": "0.2222222222222222222222222222"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "33418ef76e2a74ff5b3ecfb8e8e0dea11c276e255e52a2c1dec526eda360e91a",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00018445",
+    "input_tokens": 325,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 622
+  }
+}

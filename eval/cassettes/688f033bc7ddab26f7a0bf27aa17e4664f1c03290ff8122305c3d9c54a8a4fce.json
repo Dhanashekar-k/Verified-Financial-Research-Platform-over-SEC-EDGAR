@@ -1,0 +1,57 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The Q2 2023 passages describe a spin-off that was already completed: Pfizer and Mylan spun off the Upjohn Business and combined it with Mylan to form Viatris in November 2020 [1]. Business Innovation is an operating segment established in the first quarter of 2023 that includes PC1 [2]. The passages do not describe any planned spin-off.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:Pfizer_2023Q2_10Q#p37#0001",
+          "quote": "in November 2020, we and Mylan completed the transaction to spin-off our Upjohn Business and combine it with Mylan to form Viatris",
+          "type": "chunk"
+        },
+        "text": "Pfizer and Mylan completed the spin-off of the Upjohn Business in November 2020 to form Viatris.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:Pfizer_2023Q2_10Q#p37#0001",
+          "quote": "Business Innovation, an operating segment established in the first quarter of 2023 that includes PC1, our contract development and manufacturing organization",
+          "type": "chunk"
+        },
+        "text": "Business Innovation is an operating segment established in the first quarter of 2023 that includes PC1, a contract development and manufacturing organization.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "The Upjohn Business was spun off and combined with Mylan to form Viatris in November 2020.",
+        "Business Innovation is an operating segment established in the first quarter of 2023 that includes PC1."
+      ],
+      "missing": [
+        "A passage stating whether Pfizer had any planned or announced spin-off of a large business segment as of Q2 2023."
+      ],
+      "reason": "The Q2 2023 10-Q passages describe the completed 2020 Upjohn spin-off and the 2023 Business Innovation segment but do not mention any planned or announced spin-off."
+    }
+  },
+  "request_key": "688f033bc7ddab26f7a0bf27aa17e4664f1c03290ff8122305c3d9c54a8a4fce",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00070125",
+    "input_tokens": 4821,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1790
+  }
+}

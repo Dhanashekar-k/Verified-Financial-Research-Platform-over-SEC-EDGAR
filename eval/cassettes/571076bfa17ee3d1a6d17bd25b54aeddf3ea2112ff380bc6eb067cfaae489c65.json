@@ -1,0 +1,43 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The material does not give Ulta Beauty's dollar spend on stock repurchases for fiscal 2023 or for Q4 fiscal 2023, so the percentage cannot be computed. The filing does show that 352,005 shares were repurchased under the publicly announced program in the 14 weeks ended February 3, 2024 [1].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001558370-24-003941#5#0002",
+          "quote": "There were 352,005 shares repurchased as part of our publicly announced share repurchase program during the 14 weeks ended February 3, 2024",
+          "type": "chunk"
+        },
+        "text": "352,005 shares were repurchased as part of the publicly announced share repurchase program during the 14 weeks ended February 3, 2024.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "352,005 shares repurchased under the publicly announced program in the 14 weeks ended February 3, 2024"
+      ],
+      "missing": [
+        "Dollar amount of total stock repurchase spend for fiscal 2023",
+        "Dollar amount of stock repurchase spend in Q4 of fiscal 2023"
+      ],
+      "reason": "The material gives share counts for the fourth quarter but no dollar amounts of repurchase spend, so the share of total fiscal 2023 spend in Q4 cannot be determined."
+    }
+  },
+  "request_key": "571076bfa17ee3d1a6d17bd25b54aeddf3ea2112ff380bc6eb067cfaae489c65",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00060125",
+    "input_tokens": 4426,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1469
+  }
+}

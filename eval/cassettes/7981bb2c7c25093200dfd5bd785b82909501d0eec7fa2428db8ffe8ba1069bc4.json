@@ -1,0 +1,73 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Fiscal 2023 net sales were in line with the prior year on a comparable constant currency basis [1], largely reflecting price/mix benefits of approximately 3% [2]. Reported net sales rose 1%, which included price increases of approximately $775 million from passing through higher raw material costs [3]. The material does not give a real sales change that also excludes passthrough costs and one-off items, so that figure cannot be stated.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:AMCOR_2023Q4_EARNINGS#p2#0002",
+          "quote": "Net sales on a comparable constant currency basis were in line with the prior year",
+          "type": "chunk"
+        },
+        "text": "Net sales on a comparable constant currency basis were in line with the prior year for fiscal 2023.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:AMCOR_2023Q4_EARNINGS#p2#0002",
+          "quote": "largely reflecting price/mix benefits of approximately 3%",
+          "type": "chunk"
+        },
+        "text": "The comparable constant currency result largely reflected price/mix benefits of approximately 3%.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:AMCOR_2023Q4_EARNINGS#p2#0001",
+          "quote": "price increases of approximately $775 million (representing 5% growth) related to the pass through of higher raw material costs",
+          "type": "chunk"
+        },
+        "text": "Reported net sales growth included price increases of approximately $775 million (representing 5% growth) related to the pass through of higher raw material costs.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Fiscal 2023 net sales were in line with the prior year on a comparable constant currency basis.",
+        "Price/mix benefits were approximately 3% on that basis.",
+        "Reported net sales growth of 1% included approximately $775 million of raw material passthrough price increases and other items affecting comparability."
+      ],
+      "missing": [
+        "A net sales change for fiscal 2023 excluding FX, passthrough costs and one-off items, computed from NUMERIC RESULTS.",
+        "A quantified value for the one-off items affecting comparability in fiscal 2023 net sales."
+      ],
+      "reason": "The material gives comparable constant currency net sales for fiscal 2023 but does not give a sales change that also excludes passthrough costs and one-off items."
+    }
+  },
+  "request_key": "7981bb2c7c25093200dfd5bd785b82909501d0eec7fa2428db8ffe8ba1069bc4",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00074430",
+    "input_tokens": 4832,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1960
+  }
+}

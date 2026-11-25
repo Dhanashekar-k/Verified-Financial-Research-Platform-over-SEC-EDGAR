@@ -1,0 +1,58 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The filings provided do not describe a 2022 spin-off of AWS, so they cannot show how one would have changed consolidated revenue. They do state that Amazon organizes its operations into three segments, North America, International, and AWS [1]. They also describe net sales as including product and service sales [2].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001018724-23-000004#7#0013",
+          "quote": "We have organized our operations into three segments: North America, International, and AWS.",
+          "type": "chunk"
+        },
+        "text": "Amazon organizes its operations into three segments: North America, International, and AWS.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001018724-23-000004#7#0013",
+          "quote": "Net sales include product and service sales.",
+          "type": "chunk"
+        },
+        "text": "Net sales include product and service sales.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "AWS is reported as one of three segments alongside North America and International.",
+        "Net sales include product and service sales, with AWS sales among the service sales."
+      ],
+      "missing": [
+        "Any disclosure of a 2022 spin-off or separation of AWS from Amazon.",
+        "Consolidated net sales figures comparing the periods before and after such a spin-off, or a statement that no spin-off occurred."
+      ],
+      "reason": "The provided material does not mention a 2022 spin-off of AWS or any effect of such a spin-off on consolidated net sales."
+    }
+  },
+  "request_key": "53d16ced83affd7944484ad3956b7b987d9127adc762da690e05cd0c23ef2f7c",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00059645",
+    "input_tokens": 4405,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1454
+  }
+}

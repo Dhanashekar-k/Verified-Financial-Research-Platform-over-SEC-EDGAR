@@ -1,0 +1,69 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "TE Connectivity plc's capital expenditures were $363.0 million higher than W.W. Grainger, Inc.'s in fiscal year 2020 [1]. For context, TE Connectivity's capital expenditures were $560.0 million [2] and Grainger's were $197.0 million [3].",
+    "claims": [
+      {
+        "display": "$363.0 million",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "f:7691147774743466733 - f:5336649706821863269",
+          "fact_ids": [
+            7691147774743466733,
+            5336649706821863269
+          ],
+          "type": "expr"
+        },
+        "text": "TE Connectivity plc's FY2020 capital expenditures were $363.0 million higher than W.W. Grainger, Inc.'s.",
+        "unit": "USD",
+        "value": "363000000.0000"
+      },
+      {
+        "display": "$560.0 million",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:7691147774743466733",
+          "fact_ids": [
+            7691147774743466733
+          ],
+          "type": "expr"
+        },
+        "text": "TE Connectivity plc's FY2020 capital expenditures were $560.0 million.",
+        "unit": "USD",
+        "value": "560000000.0000"
+      },
+      {
+        "display": "$197.0 million",
+        "id": "c3",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:5336649706821863269",
+          "fact_ids": [
+            5336649706821863269
+          ],
+          "type": "expr"
+        },
+        "text": "W.W. Grainger, Inc.'s FY2020 capital expenditures were $197.0 million.",
+        "unit": "USD",
+        "value": "197000000.0000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "875ed239b5541c11a04f874c38fa07f7f53eae3365191ed30e6248006b321eac",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00027285",
+    "input_tokens": 638,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 913
+  }
+}

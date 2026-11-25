@@ -1,0 +1,69 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "At the end of fiscal 2022, NextEra Energy had total liabilities of $109.5 billion [1], and Kinder Morgan had $38.0 billion [2]. NextEra therefore had $71.5 billion more in total liabilities than Kinder Morgan [3].",
+    "claims": [
+      {
+        "display": "$109.5 billion",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:-6858922358882386646",
+          "fact_ids": [
+            -6858922358882386646
+          ],
+          "type": "expr"
+        },
+        "text": "NextEra Energy total liabilities, FY2022: $109.5 billion",
+        "unit": "USD",
+        "value": "109499000000.0000"
+      },
+      {
+        "display": "$38.0 billion",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:-8062226269064983841",
+          "fact_ids": [
+            -8062226269064983841
+          ],
+          "type": "expr"
+        },
+        "text": "Kinder Morgan total liabilities, FY2022: $38.0 billion",
+        "unit": "USD",
+        "value": "37964000000.0000"
+      },
+      {
+        "display": "$71.5 billion",
+        "id": "c3",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "f:-6858922358882386646 - f:-8062226269064983841",
+          "fact_ids": [
+            -6858922358882386646,
+            -8062226269064983841
+          ],
+          "type": "expr"
+        },
+        "text": "NextEra Energy had $71.5 billion more total liabilities than Kinder Morgan at the end of FY2022",
+        "unit": "USD",
+        "value": "71535000000.0000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "7605e9a6823cddd6336ff17909e64568990c599db78713491dfb2db2f3824a81",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0003240",
+    "input_tokens": 686,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1108
+  }
+}
