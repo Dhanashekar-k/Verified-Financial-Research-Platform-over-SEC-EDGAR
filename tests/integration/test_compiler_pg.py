@@ -727,14 +727,16 @@ def test_insulet_conflicts_settled_by_identity(
     assert res.resolution == "reconciles_with_gross_profit"
 
 
-def test_derived_q4_conflict_settles_and_only_cited_fact_notes_apply(conn: Any) -> None:
-    """Insulet Q4 2021 (derived rows): contract revenue's ORIGINAL Q4 is 327.0M (and is restated to
-    268.8M) while Revenues Q4 is 307.7M; 307.7 - 94.5 = 213.2 = GrossProfit, so Revenues wins. The
-    result carries q4_derived and NO restated note: the restated fact is the candidate that lost."""
-    res = one(run(conn, ["revenue"], [INSULET], [(2021, "Q4")]))
-    assert res.value == INS_REVT_Q4_21_V and res.fact_ids == [INS_REVT_Q4_21]
-    assert res.value != INS_REVC_Q4_21_V
-    assert len(note(res, "q4_derived")) == 1 and note(res, "restated") == []
+def test_a_derived_q4_with_the_total_below_its_component_abstains(conn: Any) -> None:
+    """Insulet Q4 2021 (derived rows): `Revenues` is 307.7M, under contract revenue's original
+    327.0M. The identity would close on `Revenues` (307.7 - 94.5 = 213.2 = GrossProfit), but
+    ADR-043 abstains on a total below its component before any other rule, as the gold resolver
+    does (`total_below_component`).
+
+    CHANGED 2026-11-25 (ADR-047): this test first expected the identity to pick `Revenues`, which
+    contradicted the ADR; the pre-commit review found the guard missing."""
+    nf = only_not_found(run(conn, ["revenue"], [INSULET], [(2021, "Q4")]))
+    assert nf.reason == "conflicting_candidates" and "below" in nf.detail
 
 
 def test_conflict_with_no_cost_or_gross_profit_to_check_abstains(conn: Any) -> None:
@@ -1468,3 +1470,206 @@ def test_property_difference_is_antisymmetric(
         values = {r.cik: r.value for r in ab.results if r.operation == "value"}
         assert d_ab[0].value == values[a] - values[b] == -d_ba[0].value
         check_provenance(d_ab[0])
+
+
+# ======================================================================
+# 11. Rules added with the implementation (ADR-047)
+# ======================================================================
+
+
+@pytest.mark.parametrize(
+    ("metrics", "ciks", "periods", "op"),
+    [
+        (["net_income"], [TI], [(2022, "FY")], "rank"),  # a rank of one company means nothing
+        (["gross_margin"], [TI], [(2022, "FY")], "growth"),  # growth of a ratio
+        (["revenue"], [TI], [(2020, "FY"), (2021, "FY"), (2022, "FY")], "growth"),
+        (["revenue"], [TI], [(2021, "FY"), (2022, "Q2")], "growth"),  # unlike periods
+        (["revenue"], [], [(2022, "FY")], "value"),  # no company outside a rank
+        (["revenue"], [], [(2022, "FY")], "rank"),  # no company and no universe
+    ],
+)
+def test_plans_with_no_defensible_reading_are_unsupported(
+    conn: Any, metrics: list[str], ciks: list[int], periods: list[Period], op: str
+) -> None:
+    with pytest.raises(UnsupportedPlan):
+        run(conn, metrics, ciks, periods, op)
+
+
+def test_a_catalog_formula_cycle_is_unsupported_not_a_recursion_error(conn: Any) -> None:
+    cat = dict(load_catalog())
+    cat["gross_margin"] = MetricDef(unit="ratio", formula="operating_margin + 1")
+    cat["operating_margin"] = MetricDef(unit="ratio", formula="gross_margin + 1")
+    with pytest.raises(UnsupportedPlan):
+        run(conn, ["gross_margin"], [TI], [(2022, "FY")], catalog=cat)
+
+
+def test_repeating_a_company_or_period_does_not_duplicate_results(conn: Any) -> None:
+    out = run(conn, ["net_income"], [TI, TI], [(2022, "FY"), (2022, "FY")])
+    assert len(out.results) == 1 and not out.not_found
+
+
+def test_difference_of_ratios_re_executes(conn: Any) -> None:
+    out = run(conn, ["operating_margin"], [TI, INSULET], [(2022, "FY")], "compare")
+    diff = pick(out, op="difference")
+    assert diff.unit == "ratio"
+    assert diff.value == pick(out, cik=TI).value - pick(out, cik=INSULET).value
+
+
+def test_growth_of_a_fallback_metric_re_executes_with_nested_parentheses(conn: Any) -> None:
+    res = one(run(conn, ["gross_profit"], [DT], [(2022, "FY")], "growth"))
+    assert res.value == ((DT_REVC_FY22_V - DT_COGS_FY22_V) - (DT_REVC_FY21_V - DT_COGS_FY21_V)) / (
+        DT_REVC_FY21_V - DT_COGS_FY21_V
+    )
+    assert len(res.fact_ids) == 4 and len(note(res, "derived_fallback")) == 1
+
+
+def _scratch(pg_url: str, extra: list[dict[str, Any]], schema: str) -> Any:
+    """A private schema holding the real fixture rows plus synthetic ones."""
+    c = psycopg.connect(pg_url, autocommit=True, options=f"-c search_path={schema}")
+    c.execute(f"CREATE SCHEMA IF NOT EXISTS {schema}")
+    c.execute(f"DROP TABLE IF EXISTS {schema}.facts_v1 CASCADE")
+    load_into(c, RAW + extra)
+    return c
+
+
+def test_a_custom_taxonomy_tag_with_the_same_name_is_ignored(conn: Any, pg_url: str) -> None:
+    """A company's own tag called Revenues is a different concept (ADR-044 scope)."""
+    base = next(r for r in RAW if r["fact_id"] == TI_NI_FY22)
+    custom = dict(base, fact_id=7_100_000_000, fact_key=7_100_000_000, taxonomy="custom")
+    custom["value"] = "1"
+    with _scratch(pg_url, [custom], "custom_tax") as c:
+        assert one(run(c, ["net_income"], [TI], [(2022, "FY")])).value == TI_NI_FY22_V
+
+
+def test_one_tag_with_two_period_ends_abstains(conn: Any, pg_url: str) -> None:
+    """Two original facts for one (tag, fiscal period) cannot both be that period's number."""
+    base = next(r for r in RAW if r["fact_id"] == TI_NI_FY22)
+    other = dict(base, fact_id=7_200_000_000, fact_key=7_200_000_000, period_end="2022-12-30")
+    with _scratch(pg_url, [other], "two_ends") as c:
+        nf = only_not_found(run(c, ["net_income"], [TI], [(2022, "FY")]))
+    assert nf.reason == "conflicting_candidates"
+
+
+# ======================================================================
+# 12. Regressions from the pre-commit review (2026-11-25)
+# ======================================================================
+
+FAKE_CIK = 9_999_999
+
+
+def _fake(template_id: int, fact_id: int, **kw: Any) -> dict[str, Any]:
+    """A synthetic row for a clearly fake company, shaped like a real fixture row."""
+    row = dict(next(r for r in RAW if r["fact_id"] == template_id))
+    row.update(fact_id=fact_id, fact_key=fact_id, cik=FAKE_CIK, is_restated=False)
+    row.update(is_original=True, is_latest=True, derived_from=None)
+    row.update(kw)
+    return row
+
+
+def test_a_trailing_twelve_month_figure_from_a_10q_is_not_the_fiscal_year(
+    conn: Any, pg_url: str
+) -> None:
+    """A 10-Q's twelve-month figure is also labelled FY with qtrs = 4 in the lake (real case:
+    Amazon FY2022). Served as the year, it would be a wrong number."""
+    ttm = _fake(TI_NI_FY22, 7_300_000_001, form="10-Q", period_end="2022-06-30", value="116")
+    with _scratch(pg_url, [ttm], "ttm_only") as c:
+        nf = only_not_found(run(c, ["net_income"], [FAKE_CIK], [(2022, "FY")]))
+    assert nf.reason == "no_fact"
+
+
+def test_a_10q_twelve_month_figure_does_not_hide_the_annual_one(conn: Any, pg_url: str) -> None:
+    ttm = _fake(TI_NI_FY22, 7_300_000_002, form="10-Q", period_end="2022-06-30", value="116")
+    annual = _fake(TI_NI_FY22, 7_300_000_003, value="-27")
+    with _scratch(pg_url, [ttm, annual], "ttm_and_annual") as c:
+        res = compile_plan(make_plan(["net_income"], [FAKE_CIK], [(2022, "FY")]), c)
+    assert [r.value for r in res.results] == [D("-27")] and not res.not_found
+
+
+def test_a_total_below_its_component_abstains_even_when_the_identity_closes(
+    conn: Any, pg_url: str
+) -> None:
+    """ADR-043: `Revenues` under contract revenue is inconsistent, so no later rule picks."""
+    rows = [
+        _fake(TI_REV_FY22, 7_400_000_001, tag="Revenues", value="100000000"),
+        _fake(
+            TI_REV_FY22,
+            7_400_000_002,
+            tag="RevenueFromContractWithCustomerExcludingAssessedTax",
+            value="150000000",
+        ),
+        _fake(TI_COST_C1_FY21, 7_400_000_003, fiscal_year=2022, value="40000000"),
+        _fake(TI_GP_FY22, 7_400_000_004, value="60000000"),
+    ]
+    with _scratch(pg_url, rows, "below_component") as c:
+        nf = only_not_found(run(c, ["revenue"], [FAKE_CIK], [(2022, "FY")]))
+    assert nf.reason == "conflicting_candidates" and "below" in nf.detail
+
+
+def test_growth_across_two_tags_that_never_agree_abstains(conn: Any, pg_url: str) -> None:
+    """50M contract revenue one year and 900M `Revenues` the next is not 1,700% growth."""
+    rows = [
+        _fake(
+            TI_REV_FY21,
+            7_500_000_001,
+            tag="RevenueFromContractWithCustomerExcludingAssessedTax",
+            value="50000000",
+        ),
+        _fake(TI_REV_FY22, 7_500_000_002, tag="Revenues", value="900000000"),
+    ]
+    with _scratch(pg_url, rows, "growth_tags") as c:
+        nf = only_not_found(run(c, ["revenue"], [FAKE_CIK], [(2022, "FY")], "growth"))
+    assert nf.reason == "conflicting_candidates" and "different tags" in nf.detail
+
+
+def test_restated_notes_on_a_ratio_name_the_restated_input(conn: Any) -> None:
+    """The note must not say the margin was restated: net income and revenue were."""
+    res = one(run(conn, ["net_margin"], [AFLAC], [(2021, "FY")]))
+    texts = sorted(n.text for n in note(res, "restated"))
+    assert [t.split(" for FY2021")[0] for t in texts] == ["Net income", "Revenue"]
+
+
+def test_restated_notes_on_growth_name_the_period_of_each_input(conn: Any) -> None:
+    res = one(run(conn, ["net_income"], [AFLAC], [(2021, "FY")], "growth"))
+    (n,) = note(res, "restated")
+    assert n.text.startswith("Net income for FY2021")
+
+
+def test_a_fallback_note_names_the_periods_it_applies_to(conn: Any) -> None:
+    res = one(run(conn, ["gross_profit"], [DT], [(2022, "FY")], "growth"))
+    (n,) = note(res, "derived_fallback")
+    assert "FY2022" in n.text and "FY2021" in n.text
+
+
+CONTRACT_TAG = "RevenueFromContractWithCustomerExcludingAssessedTax"
+
+
+def _gp_history(*, reported_2022: bool) -> list[dict[str, Any]]:
+    """FY2021: contract revenue 50, cost 20, no GrossProfit. FY2022: `Revenues` 900, cost 400."""
+    rows = [
+        _fake(TI_REV_FY21, 7_700_000_001, tag=CONTRACT_TAG, value="50000000"),
+        _fake(TI_COST_C1_FY21, 7_700_000_002, value="20000000"),
+        _fake(TI_REV_FY22, 7_700_000_003, tag="Revenues", value="900000000"),
+        _fake(TI_COST_C1_FY21, 7_700_000_004, fiscal_year=2022, value="400000000",
+              period_end="2022-12-31"),
+    ]  # fmt: skip
+    if reported_2022:
+        rows.append(_fake(TI_GP_FY22, 7_700_000_005, value="500000000"))
+    return rows
+
+
+@pytest.mark.parametrize("reported_2022", [False, True])
+def test_growth_through_a_fallback_cannot_mix_concepts(
+    conn: Any, pg_url: str, reported_2022: bool
+) -> None:
+    """Computed vs computed from unrelated revenue tags, and reported vs computed, are both
+    not comparisons of one quantity."""
+    schema = f"gp_growth_{int(reported_2022)}"
+    with _scratch(pg_url, _gp_history(reported_2022=reported_2022), schema) as c:
+        nf = only_not_found(run(c, ["gross_profit"], [FAKE_CIK], [(2022, "FY")], "growth"))
+    assert nf.reason == "conflicting_candidates"
+
+
+def test_the_derived_quarter_note_names_the_metric(conn: Any) -> None:
+    res = one(run(conn, ["revenue"], [TI], [(2022, "Q4")]))
+    (n,) = note(res, "q4_derived")
+    assert n.text.startswith("Revenue for Q4 FY2022")
