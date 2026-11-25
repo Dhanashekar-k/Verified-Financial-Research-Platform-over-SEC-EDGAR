@@ -28,6 +28,7 @@ from pathlib import Path
 from typing import Any
 
 from app.engine.answer import Answer, Refusal
+from app.engine.baseline import DEFAULT_MODEL_DIR, MODEL_DIR_ENV
 from app.engine.compose.composer import citable_fact_ids, compose
 from app.engine.compose.grounding import Violation, check_grounding, check_markdown
 from app.engine.entities.resolve_company import CompanyIndex
@@ -92,6 +93,11 @@ class Diagnostics:
     violations: list[Violation] = field(default_factory=list)
     composed: bool = False
     timings_ms: dict[str, float] = field(default_factory=dict)
+
+
+def default_model_dir() -> Path:
+    """Where the query embedder lives: the same place, and override, as the baseline's."""
+    return Path(os.environ.get(MODEL_DIR_ENV, DEFAULT_MODEL_DIR))
 
 
 def load_tracked_ciks(path: Path = TRACKED_CIKS_PATH) -> list[int]:
@@ -216,7 +222,7 @@ class EngineSystem:
         if self._embedder is None:
             from pipelines.common.embedding import ARTIFACT_ONNX_SHA256, get_embedder
 
-            model_dir = self._model_dir or Path(os.environ.get("EDGARQA_MODEL_DIR", "data/models"))
+            model_dir = self._model_dir or default_model_dir()
             self._embedder = get_embedder(
                 model_dir, threads=2, expected_onnx_sha256=ARTIFACT_ONNX_SHA256
             )

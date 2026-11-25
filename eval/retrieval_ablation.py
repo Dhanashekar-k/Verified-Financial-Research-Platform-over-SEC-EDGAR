@@ -28,6 +28,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
+from app.engine.engine import default_model_dir
 from app.engine.plan.schema import QueryPlan
 from app.engine.retrieval.query import RetrievalConfig, RetrievalResult, retrieve
 from eval.metrics import recall_at_k
@@ -190,7 +191,7 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--out", type=Path, default=Path("eval/results/ablation"))
     ap.add_argument("--sets-dir", type=Path, default=Path("eval/sets"))
     ap.add_argument("--splits", type=Path, default=Path("eval/sets/splits.json"))
-    ap.add_argument("--model-dir", type=Path, default=Path("data/models"))
+    ap.add_argument("--model-dir", type=Path, default=default_model_dir())
     ap.add_argument("--reranker", default=None, help="fastembed cross-encoder model name")
     ap.add_argument("--sample", type=int, default=None, help="first N questions (smoke runs)")
     args = ap.parse_args(argv)

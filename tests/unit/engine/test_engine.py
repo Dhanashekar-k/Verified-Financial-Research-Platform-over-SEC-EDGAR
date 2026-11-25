@@ -853,3 +853,19 @@ def test_a_quarter_ranking_over_all_companies_says_why_it_cannot_date_it() -> No
     spy, ans = asked("which companies had the highest net income last quarter", plan)
     assert ans.refusal is not None and "name the quarter" in ans.refusal.reason.lower()
     assert "annual report" not in ans.refusal.reason and not spy.compile_calls
+
+
+def test_the_engine_looks_for_the_embedder_where_the_baseline_does(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Found at the first run against the serving corpus: the engine and the ablation defaulted
+    to the parent folder, which the tests' fake embedder could not show."""
+    from app.engine.baseline import DEFAULT_MODEL_DIR, MODEL_DIR_ENV
+    from app.engine.engine import default_model_dir
+    from pipelines.common.embedding_artifact import ARTIFACT_ONNX_FILE
+
+    monkeypatch.delenv(MODEL_DIR_ENV, raising=False)
+    assert default_model_dir() == DEFAULT_MODEL_DIR
+    assert DEFAULT_MODEL_DIR.name == "bge-small-en-v1.5" and ARTIFACT_ONNX_FILE.endswith(".onnx")
+    monkeypatch.setenv(MODEL_DIR_ENV, "/elsewhere")
+    assert default_model_dir() == Path("/elsewhere")
