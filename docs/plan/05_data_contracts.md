@@ -437,7 +437,7 @@ Fields added by the M4 catalog review (all optional; ADR-042):
   "refusal": null
 }
 ```
-Rules: every claim has exactly one provenance. `expr` may only use `f:<fact_id>`, numbers, and `+ - * /` and parentheses, and the `f:<id>` tokens must be exactly `fact_ids` (`app/engine/answer.py` parses it). `quote` must be an exact substring of the chunk text (after whitespace normalization).
+Rules: every claim has exactly one provenance. `expr` may only use `f:<fact_id>`, numbers, and `+ - * /` and parentheses, and the `f:<id>` tokens must be exactly `fact_ids` (`app/engine/answer.py` parses it). A `fact_id` is a signed 64-bit hash (xxhash64), so it can be negative: `f:-6651281536542086215` is one token, and `f:5 - f:-3` is a subtraction of two facts (widened 2026-11-25, ADR-046; before that a negative id could not be cited, and 179 of the 360 `gold_fact_ids` in `numeric_auto.jsonl` are negative). The id is ASCII digits within the signed 64-bit range (a bigint lookup would overflow outside it); any name (letters, underscore) outside an `f:` token is rejected. Numeric literals (`100`, `1e3`) stay valid. `quote` must be an exact substring of the chunk text (after whitespace normalization).
 
 **Refusal** (ADR-041): `refusal` is `null` or an object with three fields, the same shape everywhere it appears (composer output, the M6 verifier's sufficiency refusal, the API response):
 
@@ -459,6 +459,62 @@ A refused answer may keep `claims` (partial answer) or leave it empty. Eval trea
             "quote_substring": "pass", "entailment": "supported"},
  "action": "keep|drop|rewrite", "reason": "..."}
 ```
+
+### 4.5 Plan compiler contract (M5, ADR-046; models in `app/engine/plan/schema.py`)
+
+```python
+def compile_plan(plan: QueryPlan, conn: psycopg.Connection[Any], *,
+                 catalog: Mapping[str, MetricDef] | None = None,
+                 universe: Collection[int] | None = None) -> CompileOutcome: ...
+# raises UnsupportedPlan; every other failure is a NotFound inside the outcome
+
+class CompileOutcome(BaseModel):
+    results: list[NumericResult] = []
+    not_found: list[NotFound] = []
+
+class NumericResult(BaseModel):
+    metric: str                        # catalog key
+    cik: int
+    fiscal_year: int                   # facts.fiscal_year, never the filing's (M1 bug)
+    fiscal_period: Literal["FY", "Q1", "Q2", "Q3", "Q4"]
+    operation: Literal["value", "growth", "difference"]
+    value: Decimal                     # base units: USD, shares, USD/shares; ratios and growth are fractions
+    unit: Literal["USD", "ratio", "USD/shares", "shares"]   # growth and ratio metrics: "ratio"
+    expr: str                          # 4.3 grammar over fact ids: "f:111", "f:111 / f:222", "(f:2 - f:1) / f:1"
+    fact_ids: list[int]                # the f: tokens of expr, as a set (a repeated id in expr is listed once)
+    kind: Literal["reported", "derived"]   # derived = any arithmetic, incl. a fallback_formula (gold's value_kind)
+    resolution: Literal["single_candidate", "candidates_agree", "reconciles_with_gross_profit"] | None = None
+    compare_cik: int | None = None     # "difference" only: value = result for `cik` minus result for `compare_cik`
+    rank: int | None = None            # "rank" rows only, 1 = best
+    notes: list[Note] = []
+
+class Note(BaseModel):
+    code: Literal["restated", "derived_fallback", "q4_derived"]
+    text: str
+    must_mention: bool = True          # the composer must carry it into the answer
+    latest_value: Decimal | None = None      # "restated": the latest restated value
+    latest_fact_id: int | None = None        # "restated": cite with expr "f:<latest_fact_id>"
+
+class NotFound(BaseModel):
+    metric: str
+    cik: int
+    fiscal_year: int
+    fiscal_period: Literal["FY", "Q1", "Q2", "Q3", "Q4"]
+    reason: Literal["no_fact", "conflicting_candidates", "missing_input", "growth_base_missing",
+                    "growth_base_nonpositive", "division_by_zero", "fallback_not_allowed"]
+    detail: str = ""
+    missing_inputs: list[str] = []     # formula operands that had no value ("missing_input")
+
+class UnsupportedPlan(Exception):      # `reason: str`; the plan cannot be compiled at all
+```
+**Semantics (the compiler tests encode these):**
+- **Facts read:** the consolidated `facts` view only, `is_original` rows (the value as originally filed, ADR-017), parameterized SQL. Period filter: `fiscal_year` and `fiscal_period` of the fact; instants use `qtrs = 0`; duration metrics use `qtrs = 4` for FY and `qtrs = 1` for Q1 to Q4 (a derived Q4 is a `facts` row with `q4_derived`); `uom` equals the metric's `unit`.
+- **Tag metrics (ADR-043, not first-wins).** One tag: that fact. Two or more tags: candidates that agree within the gold generator's tolerance (`eval.gen.numeric_policy.agree`: 4 significant figures for USD, ADR-044) are one number (`candidates_agree`, the chain order only picks the tag to cite); on a material disagreement the candidate that satisfies the gross-profit identity wins (`reconciles_with_gross_profit`); otherwise `NotFound(reason="conflicting_candidates")`. The presentation step of ADR-043 is **not available** in serving (`fsds_pre` is not exported) and the `Revenues`-as-top-line step (ADR-043 step 6) is **not applied**: it has not been re-audited (ADR-043, Path B). So the engine abstains in cases the gold generator may have resolved; revenue is outside M4 gold, so no gold row is affected.
+- **Formula metrics:** `formula` is parsed to an AST (`+ - * /`, numbers, catalog keys); operands compile recursively; `expr` substitutes leaf facts, parenthesizing each sub-expression; the value is `Decimal` arithmetic in the default context, never `float`. A missing operand gives `NotFound(missing_input, missing_inputs=[...])`; a zero divisor gives `division_by_zero`. `fallback_formula` is used only when no tag has a value, only when every `only_if` condition holds, and its result carries `kind="derived"` and a `derived_fallback` note; a fallback with no `only_if` is never used (`fallback_not_allowed`).
+- **Operations:** `value` (and `ratio`, treated as `value` for a ratio-unit metric; `UnsupportedPlan` otherwise); `growth` = (v_t − v_{t−1}) / v_{t−1} with `expr = "(f:t - f:p) / f:p"`, refused when the base is missing (`growth_base_missing`) or ≤ 0 (`growth_base_nonpositive`); `compare` = one `value` result per company, plus one `difference` result (first company minus second) when exactly two companies are named; `trend` = one `value` result per period; `rank` = one `value` result per row, ordered, `rank` set, over the named companies or over `universe` (the tracked S&P 500 CIKs, passed in by the engine) with `LIMIT 10`.
+- **Restated:** the `is_original` value is returned with a `restated` note carrying the latest value and its `fact_id`. A derived Q4 is one `facts` row, so it is `kind="reported"` with expr `f:<id>` and a `q4_derived` note (the verifier re-executes FY - 9M from `derived_from`).
+- **UnsupportedPlan** is raised for: no operation on a numeric plan, no metric, no company without a CIK, no period, an unsupported operation for the metric. The engine then refuses, or uses the guarded SQL fallback when `ENGINE_SQL_FALLBACK=on` (off by default). Fallback rows are fact lookups cited with `expr` provenance; a separate `sql` provenance type is **deferred** because adding a variant to `Answer` changes its JSON schema and with it every cassette key (ADR-046).
+- **Units and display:** values stay in base units; formatting happens only in the composer and UI.
 
 ---
 

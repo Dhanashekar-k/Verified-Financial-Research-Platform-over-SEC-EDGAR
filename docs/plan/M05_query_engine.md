@@ -35,6 +35,8 @@ Write `metric_catalog.yaml` (format in `05_data_contracts.md` §4.2) for about 5
 - Until M7 exists, `plan.intent` is the router. Measure intent accuracy on whatever labels you have (numeric set = numeric; your narrative set = narrative). **Start hand-labeling `eval/sets/router_test.jsonl` now** (M7 needs about 250 real questions).
 
 ### 3.4 Plan compiler (6 h; **you**, the heart of the project)
+> **Superseded in part (2026-11-25, 05 §4.5 + ADR-046):** the entry point is `compile_plan(plan, conn, ...) -> CompileOutcome` (results + `not_found`), not `compile(plan) -> list[NumericResult]`; "the first tag with a value wins" is replaced by ADR-043 resolve-or-abstain; the `sql` provenance type is deferred (fallback rows cite `expr`). Text below is kept as written.
+
 `compile(plan) -> list[NumericResult]`, with `NumericResult{metric, cik, fiscal_year, fiscal_period, value: Decimal, unit, expr, fact_ids, notes}`.
 - **Tag metrics:** a parameterized query over the ordered fallback tags. The first tag with a value wins:
   ```sql
