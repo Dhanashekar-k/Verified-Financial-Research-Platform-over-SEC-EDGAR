@@ -5,6 +5,7 @@ The inputs are small synthetic results files with known answers; nothing here is
 
 from __future__ import annotations
 
+import json
 from typing import Any
 
 from eval import report
@@ -180,3 +181,52 @@ def test_the_ablation_heading_shows_the_split_it_was_run_on() -> None:
     doc = ablation_doc()
     doc["config"]["split"] = "all"
     assert "### Retrieval ablation (all split)" in "\n".join(report.render_ablation([doc]))
+
+
+def latency_doc(composer: str, rid: str, p95: float, n: int = 40) -> dict[str, Any]:
+    doc = run("engine", composer, "dev", {f"q{i}": None for i in range(n)}, run_id=rid)
+    doc["config"].update(mode="live", sample=10)
+    doc["latency_ms"] = {"p50": p95 / 2, "p95": p95}
+    return doc
+
+
+def planner_doc(mode: str, cost: float, rid: str, n: int = 147) -> dict[str, Any]:
+    return {"run_id": rid, "config": {"mode": mode, "n_questions": n}, "cost_usd": cost}
+
+
+def test_pareto_takes_p95_from_the_live_sample_of_the_same_composer_and_says_what_it_is() -> None:
+    h = run("engine", "claude-haiku-5-5", "dev", {"a": True}, run_id="h1")
+    s = run("engine", "claude-sonnet-5-5", "dev", {"a": True}, run_id="s1")
+    samples = [
+        latency_doc("claude-haiku-5-5", "2026-12-03T00-00-00Z_old", 7000.0),
+        latency_doc("claude-haiku-5-5", "2026-12-04T00-00-00Z_new", 4321.0, n=38),
+    ]
+    md = "\n".join(report.render_pareto([h, s], latency=samples))
+    haiku, sonnet = (
+        next(line for line in md.splitlines() if line.startswith(f"| `{r}`")) for r in ("h1", "s1")
+    )
+    assert haiku.endswith("| 4321 (live sample) |"), "the newest sample of that composer"
+    assert sonnet.endswith("| NOT MEASURED |"), "no sample for this composer"
+    assert "2026-12-04T00-00-00Z_new" in md and "n=38" in md and "old" not in md
+    assert "network" in md and "not a server-side" in md
+
+
+def test_pareto_says_dev_cost_leaves_the_cached_planner_out_and_gives_its_price() -> None:
+    e = run("engine", "claude-haiku-5-5", "dev", {"a": True}, run_id="h1")
+    docs = [
+        planner_doc("batch", 0.0147, "2026-12-01T00-00-00Z_intent"),
+        planner_doc("replay", 0.0, "2026-12-02T00-00-00Z_intent"),  # a replay costs nothing
+    ]
+    md = "\n".join(report.render_pareto([e], planner=docs))
+    assert "2026-12-01T00-00-00Z_intent" in md and "$0.00010 per question" in md
+    assert "replay" not in md and "2026-12-02" not in md
+
+
+def test_a_latency_sample_never_replaces_a_full_run_in_the_tables(tmp_path: Any) -> None:
+    """Same system, composer and split as the full run and newer: it must live in latency/."""
+    full = run("engine", "claude-haiku-5-5", "dev", {"a": True, "b": True}, run_id="2026-a")
+    (tmp_path / "latency").mkdir()
+    (tmp_path / "a.json").write_text(json.dumps(full))
+    sample = latency_doc("claude-haiku-5-5", "2026-b", 10.0, n=1)
+    (tmp_path / "latency" / "b.json").write_text(json.dumps(sample))
+    assert [r["run_id"] for r in report.select_runs(tmp_path)] == ["2026-a"]

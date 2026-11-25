@@ -169,8 +169,21 @@ def render_comparison(runs: list[dict[str, Any]]) -> list[str]:
     ]
 
 
-def render_pareto(runs: list[dict[str, Any]]) -> list[str]:
-    """One row per engine run: what each composer costs and gets (ADR-012's input)."""
+def render_pareto(
+    runs: list[dict[str, Any]],
+    latency: list[dict[str, Any]] | None = None,
+    planner: list[dict[str, Any]] | None = None,
+) -> list[str]:
+    """One row per engine run: what each composer costs and gets (ADR-012's input).
+
+    Batch runs measure no latency, so p95 comes from the newest live sample of the same composer
+    (``eval/results/latency/``, kept apart so a sample never replaces a full run). ``planner``:
+    the intent-accuracy files, for the planner price that cached replies leave out of a run."""
+    samples: dict[Any, dict[str, Any]] = {}
+    for doc in sorted(latency or [], key=lambda d: d["run_id"]):
+        if doc["config"].get("mode") in ("live", "record") and doc["latency_ms"].get("p95"):
+            samples[doc["config"].get("composer")] = doc
+    used: dict[str, dict[str, Any]] = {}
     engines = sorted(
         (r for r in runs if r["config"].get("system") == "engine"),
         key=lambda r: (str(r["config"].get("split")), r["run_id"]),
@@ -189,11 +202,37 @@ def render_pareto(runs: list[dict[str, Any]]) -> list[str]:
             v = sets.get(name)
             return _pct(v.get(key)) if isinstance(v, dict) else NM
 
-        p95 = NM if lat.get("p95") is None else f"{lat['p95']:.0f}"
+        sample = samples.get(r["config"].get("composer"))
+        if lat.get("p95") is not None:
+            p95 = f"{lat['p95']:.0f}"
+        elif sample is not None:
+            p95 = f"{sample['latency_ms']['p95']:.0f} (live sample)"
+            used[sample["run_id"]] = sample
+        else:
+            p95 = NM
         out.append(
             f"| `{r['run_id']}` | {r['config'].get('split')} | {r['config'].get('composer')} "
             f"| {acc('numeric')} | {acc('financebench')} | {acc('narrative', 'coverage')} "
             f"| {float(r['cost']['per_question_usd']):.5f} | {p95} |"
+        )
+    for rid, doc in used.items():
+        answered = sum(1 for q in doc["per_question"] if not q.get("error"))
+        lat = doc["latency_ms"]
+        out.append(
+            f"\nLatency sample `{rid}` ({doc['config'].get('composer')}, "
+            f"{doc['config'].get('split')} split, n={answered} answered): p50 {lat['p50']:.0f} ms, "
+            f"p95 {lat['p95']:.0f} ms. Live calls from a laptop that runs the whole engine "
+            "(embedding and reranking included) against the box's database, so it includes the "
+            "laptop-to-box network delay and is not a server-side number."
+        )
+    paid = [d for d in planner or [] if d["config"].get("mode") == "batch" and d.get("cost_usd")]
+    if paid:
+        doc = sorted(paid, key=lambda d: d["run_id"])[-1]
+        each = float(doc["cost_usd"]) / doc["config"]["n_questions"]
+        out.append(
+            "\n$ / question counts only calls a run paid for: planner replies already recorded "
+            f"are served from cassettes at no cost. The planner cost ${each:.5f} per question in "
+            f"`{doc['run_id']}` (batch)."
         )
     return out
 
@@ -247,6 +286,8 @@ def render(
     runs: list[dict[str, Any]],
     kappa_record: dict[str, Any] | None = None,
     ablation: list[dict[str, Any]] | None = None,
+    latency: list[dict[str, Any]] | None = None,
+    planner: list[dict[str, Any]] | None = None,
 ) -> str:
     if not runs and not ablation:
         return "_No results files yet: every metric is NOT MEASURED._"
@@ -386,7 +427,7 @@ def render(
     out.append("")
     out += render_comparison(runs)
     out.append("")
-    out += render_pareto(runs)
+    out += render_pareto(runs, latency, planner)
     out.append("")
     out += render_ablation(ablation or [])
     return "\n".join(out)
@@ -409,13 +450,12 @@ def main(argv: list[str] | None = None) -> int:
     args = ap.parse_args(argv)
     runs = select_runs(args.results, args.runs) if args.results.exists() else []
     kappa = json.loads(args.kappa_file.read_text()) if args.kappa_file.exists() else None
-    ablation_dir = args.results / "ablation"
-    ablation = (
-        [json.loads(p.read_text()) for p in sorted(ablation_dir.glob("*.json"))]
-        if ablation_dir.exists()
-        else []
-    )
-    args.page.write_text(splice(args.page.read_text(), render(runs, kappa, ablation)))
+
+    def subdir(name: str) -> list[dict[str, Any]]:
+        return [json.loads(p.read_text()) for p in sorted((args.results / name).glob("*.json"))]
+
+    body = render(runs, kappa, subdir("ablation"), subdir("latency"), subdir("intent"))
+    args.page.write_text(splice(args.page.read_text(), body))
     print(f"updated {args.page} from {len(runs)} run(s)")
     return 0
 
