@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import decimal
 import json
 from decimal import Decimal
 from pathlib import Path
@@ -100,8 +101,9 @@ def test_unscored_when_metrics_are_unimplemented(
     assert all(o.scores["refused"] is None for o in outcomes)
 
 
+@pytest.mark.parametrize("exc", [ValueError("malformed row"), decimal.Overflow("malformed row")])
 def test_a_metric_valueerror_leaves_that_row_unscored_and_the_run_continues(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, exc: Exception
 ) -> None:
     """A metric may reject a malformed row (e.g. no gold points). One bad row must not abort a
     paid run: it is recorded as a scoring error, unscored, and every other row is still scored."""
@@ -110,7 +112,7 @@ def test_a_metric_valueerror_leaves_that_row_unscored_and_the_run_continues(
     def refused(answer: Answer) -> bool:
         calls["n"] += 1
         if calls["n"] == 3:
-            raise ValueError("malformed row")
+            raise exc
         return answer.refusal is not None
 
     monkeypatch.setattr(metrics, "refused", refused)

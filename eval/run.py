@@ -331,9 +331,10 @@ def run_questions(
             except (LLMResponseError, BatchGaveUp, InvalidJudgeOutput) as err:
                 # billed judge failures are already on the ledger (sliced in score's finally)
                 o.scores["judge_error"] = f"{type(err).__name__}: {err}"
-            except ValueError as err:
+            except (ValueError, ArithmeticError) as err:
                 # A metric rejected this row (e.g. narrative_coverage on a row with no gold
                 # points). Unscored and recorded; one bad row must not abort a paid run.
+                # ArithmeticError: decimal.Overflow on a huge model-emitted exponent, say.
                 # After the judge errors above: InvalidJudgeOutput is a ValueError.
                 o.scores["scoring_error"] = f"{type(err).__name__}: {err}"
         if not pending:
