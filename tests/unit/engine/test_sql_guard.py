@@ -262,6 +262,29 @@ EXTRA_REJECTED: list[tuple[str, str]] = [
     ("comment_inside_after_literal", "SELECT * FROM facts WHERE tag = 'a' -- 'b'"),
     ("stacked_after_literal_semicolon", "SELECT * FROM facts WHERE tag = 'a'; DELETE FROM facts"),
     ("dollar_quoted_body", "SELECT $$x$$; DROP TABLE facts"),
+    # Postgres reads t.f as f(t) when t has no column f (found in review, 2026-11-25):
+    # aggregates that dodge LIMIT, and functions outside the allow-list
+    ("attribute_call_json_agg", "SELECT facts.json_agg FROM facts"),
+    ("attribute_call_array_agg", "SELECT f.array_agg FROM facts f"),
+    ("attribute_call_on_subquery", "SELECT s.json_agg FROM (SELECT * FROM facts) s"),
+    ("attribute_call_to_json", "SELECT f.to_json FROM facts f"),
+    ("attribute_call_in_where", "SELECT 1 FROM facts f WHERE f.pg_column_size > 0"),
+    ("attribute_call_quoted", 'SELECT facts."json_agg" FROM facts'),
+    (
+        "attribute_call_alias_elsewhere",
+        "SELECT facts.json_agg FROM facts WHERE cik IN (SELECT cik AS json_agg FROM companies)",
+    ),
+    # string concatenation can double a value per nesting level, whatever LIMIT says
+    ("concat_operator", "SELECT x || x FROM (SELECT name AS x FROM companies) a"),
+    ("in_a_bare_relation", "SELECT 1 FROM facts WHERE cik IN pg_authid"),
+    # other ways to make one value huge or double it per level (second review pass)
+    ("char_padding", "SELECT CAST(tag AS CHAR(10485760)) FROM facts"),
+    ("varchar_length", "SELECT tag::varchar(10) FROM facts"),
+    ("row_constructor", "SELECT (x, x) AS x FROM (SELECT name AS x FROM companies) a"),
+    ("whole_row_of_subquery", "SELECT a AS x, a AS y FROM (SELECT name FROM companies) a"),
+    ("whole_row_of_table", "SELECT facts FROM facts"),
+    ("whole_row_of_alias", "SELECT f FROM facts f"),
+    ("whole_row_of_cte", "WITH r AS (SELECT cik FROM facts) SELECT r FROM r"),
 ]
 
 
