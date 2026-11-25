@@ -251,7 +251,7 @@ DuckDB's time grows faster than the data (2 to 7 quarters); not investigated. Ag
 
 
 ## ADR-042: Metric catalog after the M4 accounting review: six concept calls (2026-11-23)
-**Status:** proposed (Shekar applies the catalog diff; `metric_catalog.yaml` is his file)
+**Status:** accepted (approved by Shekar 2026-11-24; he applies the catalog diff, `metric_catalog.yaml` is his file)
 **Context:** The tag-chain review packet (`docs/m4/catalog_review_packet.md`) went to an accounting reviewer. Her memo, distilled in `docs/m4/m4_catalog_decisions.md`, makes one point: verifying that a number *exists* in EDGAR is not verifying that it *means* what the question asks. Her term for a source-only match is "source-matched"; "verified" is reserved for a match on scope, period, unit, entity and interpretation as well. The initial catalog treated `tags` as a first-populated-wins chain and mixed concepts inside chains.
 **Options considered:** (a) keep the chains and rely on the companyfacts second-source check. Rejected: the same tag sits on both sides, so a wrong concept passes. (b) narrow every chain to one tag. Rejected: it loses real coverage where two tags are the same concept. (c) make the six calls below, give distinct presentation bases their own metrics, and resolve multi-tag chains instead of taking the first tag (ADR-043). Chosen.
 **Decision:** The six calls:
@@ -270,7 +270,7 @@ The catalog model (`eval/gen/catalog_review.py` `MetricDef`, 05 §4.2) gains the
 **How to revisit:** if the resolver audit shows `RevenueFromContractWithCustomerExcludingAssessedTax` and `Revenues` disagree for structural reasons in one sector (for example insurers), split that sector's revenue into its own metric, as was done for banks.
 
 ## ADR-043: Multi-tag metrics are resolved by statement presentation and the gross-profit identity, or abstain (2026-11-23)
-**Status:** proposed (drafted by Claude, pending Shekar). Binds M4 gold generation; M5 decides the engine's own resolution, and M05 §3.4's "first tag with a value wins" (`ORDER BY array_position ... LIMIT 1`) is superseded for Shekar to edit
+**Status:** accepted (drafted by Claude, approved by Shekar 2026-11-24). Binds M4 gold generation; M5 decides the engine's own resolution, and M05 §3.4's "first tag with a value wins" (`ORDER BY array_position ... LIMIT 1`) is superseded for Shekar to edit
 **Context:** The review found that even the top two revenue tags are not synonyms: `...ExcludingAssessedTax` and `Revenues` differ by more than 1% in 849 of 1,328 same-period pairs (63.9%, per the memo in `docs/m4/m4_catalog_decisions.md`). An unconditional priority chain therefore puts a component or a different scope into gold whenever the first tag happens to be populated.
 **Options considered:** (a) first populated tag wins (the old contract text). Rejected for the reason above. (b) always the largest value. Rejected: it picks tax-inclusive or gross-of-something figures. (c) the review's selection sequence: candidates for the exact entity and period, the statement presentation, a calculation check, then abstain (chosen).
 **Decision:** `eval/gen/revenue_resolver.py` implements the sequence. It applies to every metric with two or more tags (after ADR-042, `revenue` and `cost_of_revenue`), for one (cik, fiscal_year, fiscal_period):
@@ -303,7 +303,7 @@ The catalog model (`eval/gen/catalog_review.py` `MetricDef`, 05 §4.2) gains the
 - **How to revisit:** after the project ships. Re-run `--resolver-audit` with option (a) in place, and read the sample by hand before adding any revenue-family metric to the allowlist.
 
 ## ADR-044: Data-quality policies for numeric gold: scope, periods, versions, tolerances (2026-11-23)
-**Status:** proposed (drafted by Claude, pending Shekar). Supersedes M04 §3.3 "Keep `tolerance_rel = 0.01`" and §3.7's "within `tolerance_rel`" for Shekar to edit
+**Status:** accepted (drafted by Claude, approved by Shekar 2026-11-24). Supersedes M04 §3.3 "Keep `tolerance_rel = 0.01`" and §3.7's "within `tolerance_rel`" for Shekar to edit
 **Context:** The review listed safeguards that a source match does not provide. The cases: 22 FY rows with `qtrs = 0` on duration metrics (revenue 1, net_income 1, income_tax 2, capex 1, dividends 17); EPS facts that may carry `USD` instead of `USD/shares`; restatements; segment values; margins from -1,399% to 9,587%; and a flat 1% tolerance that hides material errors on large values and misjudges rounded per-share figures.
 **Options considered:** fix the rows in the lake (rejected: M4 must not rebuild M1 at this stage), or screen at generation time and log every rejection (chosen). For tolerance: a flat 1% (rejected), exact match (rejected: answers round), or metric-aware tolerances (chosen).
 **Decision:** `eval/gen/numeric_policy.py`, applied by `make_numeric_set.py`:
@@ -335,7 +335,7 @@ Contract 05 §6 gains `tolerance_abs`, `tolerance_basis`, `value_basis`, `latest
 **How to revisit:** if the composer's rounding fails rows that a human would accept, widen `rel` for that unit with the evidence; never widen a tolerance after seeing a score.
 
 ## ADR-045: Paraphrase diversity from seeded style variants, not temperature (2026-11-23)
-**Status:** proposed (drafted by Claude, pending Shekar)
+**Status:** accepted (drafted by Claude, approved by Shekar 2026-11-24)
 **Context:** M04 §3.3 says to paraphrase with Haiku 5.5 at temperature 0.7. A non-default `temperature` returns 400 on Haiku/Sonnet 5.5 (the M4 docs check).
 **Options considered:** (a) no paraphrase (rejected: template questions are too uniform for a router or planner). (b) several samples per question at the default temperature (rejected: costly and not reproducible). (c) one call per question with a style picked deterministically from six by a hash of (seed, row id) (chosen).
 **Decision:** `make_numeric_set.py` (`STYLES`, `style_for`). A code guard rejects any paraphrase that loses the company (first word of the name, or the ticker), a fiscal year, the quarter, or "as originally reported" / "restated". The row then keeps its template text and is marked `paraphrased: false`, and the reason is logged.
