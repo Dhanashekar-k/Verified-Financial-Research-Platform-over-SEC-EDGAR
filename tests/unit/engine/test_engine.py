@@ -759,3 +759,97 @@ def test_the_engine_reports_the_ids_it_compiled_to_the_harness() -> None:
     finally:
         reset_compiled_facts(token)
     assert sink == {111}
+
+
+# --- third review pass: a year in the question that the plan does not cover ----------------------
+
+
+def asked(question: str, plan: QueryPlan) -> tuple[Spy, Answer]:
+    spy = Spy(CompileOutcome(results=[result()]))
+    ans = engine_with(spy, Conn).answer(question, cfg(ScriptedLLM(plan, numeric_answer())))
+    return spy, ans
+
+
+def years(*ys: int) -> list[PeriodRef]:
+    return [PeriodRef(fiscal_year=y) for y in ys]
+
+
+@pytest.mark.parametrize(
+    ("question", "plan_kw", "dropped"),
+    [
+        ("Apple net income in 2020", {}, "2020"),
+        ("Apple net income in 2020", {"period_text": ""}, "2020"),
+        ("Apple net income in 2021 and 2023", {"periods": years(2023)}, "2021"),
+        (
+            "Apple net income for 2020 and fiscal 2023",
+            {"periods": years(2023), "period_text": "fiscal 2023"},
+            "2020",
+        ),
+        (
+            "apple net income in FY20 and the year before",
+            {"period_text": "the year before"},
+            "2020",
+        ),
+        ("apple net income in '20 vs last year", {"period_text": "last year"}, "2020"),
+        ("apple net income fy 21 and FY23", {"periods": years(2023)}, "2021"),
+        ("apple net income Q3'21", {"periods": years(2023)}, "2021"),
+        (
+            "Did Apple net income grow from 2019 to 2023?",
+            {"periods": years(2023), "operation": "growth"},
+            "2019",
+        ),
+    ],
+)
+def test_a_year_the_plan_does_not_cover_asks(
+    question: str, plan_kw: dict[str, Any], dropped: str
+) -> None:
+    spy, ans = asked(question, numeric_plan(**plan_kw))
+    assert ans.refusal is not None and dropped in ans.refusal.reason
+    assert not spy.compile_calls
+
+
+@pytest.mark.parametrize(
+    ("question", "plan_kw"),
+    [
+        ("Apple net income in FY2023", {"periods": years(2023)}),
+        ("apple net income FY23", {"periods": years(2023)}),
+        ("apple net income in '23", {"periods": years(2023)}),
+        (
+            "Apple net income from 2021 to 2023",
+            {"periods": years(2021, 2023), "operation": "growth"},
+        ),
+        # year over year: one period, and the year before it is the implied base
+        (
+            "How much did Apple net income grow in 2023 over 2022?",
+            {"periods": years(2023), "operation": "growth"},
+        ),
+        ("Apple net income last year", {"period_text": "last year"}),
+        ("Apple net income in fiscal 2023", {"periods": years(2023), "period_text": "fiscal 2023"}),
+        # numbers that are not years
+        ("Did Apple's net income top $2000 million in 2023?", {"periods": years(2023)}),
+        ("Apple's 10-K net income, 2,000 employees later, 2023", {"periods": years(2023)}),
+    ],
+)
+def test_a_covered_year_or_a_non_year_does_not_ask(question: str, plan_kw: dict[str, Any]) -> None:
+    spy, ans = asked(question, numeric_plan(**plan_kw))
+    assert ans.refusal is None, ans.refusal
+    assert spy.compile_calls
+
+
+def test_a_text_question_is_never_stopped_over_a_year() -> None:
+    plan = QueryPlan(intent="narrative", companies=[CompanyRef(mention="Apple")])
+    c = chunk()
+    spy = Spy(retrieved=retrieved(c))
+    ans = engine_with(spy, Conn).answer(
+        "what has Apple said since 2019?", cfg(ScriptedLLM(plan, text_answer(c)))
+    )
+    assert ans.refusal is None and spy.retrieve_calls
+
+
+def test_a_quarter_ranking_over_all_companies_says_why_it_cannot_date_it() -> None:
+    """No quarter was looked up for a ranking over the tracked set, so the refusal must not
+    claim the latest filing is annual."""
+    plan = numeric_plan(companies=[], operation="rank", period_text="most recent quarter")
+    spy, ans = asked("which companies had the highest net income last quarter", plan)
+    assert ans.refusal is not None and "name the quarter" in ans.refusal.reason.lower()
+    assert "annual report" not in ans.refusal.reason and not spy.compile_calls

@@ -32,7 +32,7 @@ from app.engine.compose.composer import citable_fact_ids, compose
 from app.engine.compose.grounding import Violation, check_grounding, check_markdown
 from app.engine.entities.resolve_company import CompanyIndex
 from app.engine.plan.compiler import compile_plan
-from app.engine.plan.periods import LatestFiled, resolve_period
+from app.engine.plan.periods import ASK_NO_QUARTER, LatestFiled, resolve_period
 from app.engine.plan.planner import attach_ciks, build_system_prompt, plan_question
 from app.engine.plan.schema import (
     CompileOutcome,
@@ -68,7 +68,11 @@ _LATEST_QUARTERLY = (
     "AND period_end <= filed ORDER BY period_end DESC, fiscal_year DESC LIMIT 1"
 )
 _PERIOD_ORDER = {"Q1": 1, "Q2": 2, "Q3": 3, "Q4": 4, "FY": 5}
-_YEAR = re.compile(r"(?<![0-9])(?:19|20)[0-9]{2}(?![0-9])")
+# A year as users type one: 2023, FY23, fy 23, '23. Not part of an amount ($2000, 2,000, 2000.5).
+_FULL_YEAR = re.compile(r"(?<![0-9$,.])(?:19|20)[0-9]{2}(?![0-9]|[,.][0-9])")
+_SHORT_YEAR = re.compile(
+    r"(?:\bfy ?['\u2019]?|(?<![a-z])['\u2019])([0-9]{2})(?![0-9])", re.IGNORECASE
+)
 
 CompileFn = Callable[..., CompileOutcome]
 RetrieveFn = Callable[..., RetrievalResult]
@@ -116,6 +120,23 @@ class PeriodDecision:
     plan: QueryPlan
     note: str | None = None
     clarification: str | None = None
+
+
+def years_named(text: str) -> set[int]:
+    """The calendar-style years written in ``text``; two digits read as the planner reads them."""
+    full = {int(y) for y in _FULL_YEAR.findall(text)}
+    short = {int(y) for y in _SHORT_YEAR.findall(text)}
+    return full | {1900 + y if y >= 93 else 2000 + y for y in short}
+
+
+def uncovered_years(question: str, plan: QueryPlan) -> list[int]:
+    """Years the question names that nothing in the plan accounts for: its periods, the implied
+    base of a one-period growth rate, or a year inside ``period_text``."""
+    covered = {p.fiscal_year for p in plan.periods}
+    if plan.operation == "growth" and len(covered) == 1:
+        covered |= {y - 1 for y in covered}
+    covered |= years_named(plan.period_text or "")
+    return sorted(years_named(question) - covered)
 
 
 def describe_missing(not_found: Sequence[NotFound], names: Mapping[int, str]) -> list[str]:
@@ -356,18 +377,20 @@ class EngineSystem:
         """05 4.1 / ADR-048. Named periods stand. Relative wording is resolved by ``periods.py``
         against what each company has filed; numbers are never computed for a guessed period."""
         wording = (plan.period_text or "").strip()
-        if not wording and (plan.periods or not want_numbers):
-            return PeriodDecision(plan)  # named periods, or a text search over all years
-        if wording and want_numbers and not plan.periods:
-            dropped = sorted(set(_YEAR.findall(question)) - set(_YEAR.findall(wording)))
+        if want_numbers:  # whatever the plan did, never answer for fewer or other years
+            dropped = uncovered_years(question, plan)
             if dropped:
+                named = ", ".join(str(y) for y in dropped)
+                also = f" and also says '{wording}'" if wording else ""
                 return PeriodDecision(
                     plan,
                     clarification=(
-                        f"The question names {', '.join(dropped)} and also says '{wording}'. "
-                        "Which fiscal periods do you mean?"
+                        f"The question names {named}{also}, which I could not place in the "
+                        "periods to compute. Which fiscal periods do you mean?"
                     ),
                 )
+        if not wording and (plan.periods or not want_numbers):
+            return PeriodDecision(plan)  # named periods, or a text search over all years
         anchors = self._anchors(plan, dsn)
         if not anchors:
             if wording and want_numbers:  # cannot check the wording, so do not compute
@@ -384,7 +407,14 @@ class EngineSystem:
         if questions:
             if not want_numbers:
                 return PeriodDecision(plan)
-            return PeriodDecision(plan, clarification=questions[0])
+            ask = questions[0]
+            if ask == ASK_NO_QUARTER and not any(c.cik is not None for c in plan.companies):
+                # the all-companies anchor looks up no quarter, so do not claim there is none
+                ask = (
+                    "A relative quarter cannot be dated when ranking all tracked companies. "
+                    "Please name the quarter (for example Q3 2022)."
+                )
+            return PeriodDecision(plan, clarification=ask)
         found = [r.periods[0] for r in resolutions]
         # The earliest of them: the latest period every named company has filed.
         chosen = min(found, key=lambda p: (p.fiscal_year, _PERIOD_ORDER[p.fiscal_period]))
