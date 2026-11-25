@@ -28,6 +28,7 @@ _SCALES: dict[str, Decimal] = {
 }
 _MONEY = {"usd", "$", "dollars"}
 _PERCENT = {"percent", "%", "pct"}
+_GOLD_UNITS = {"USD", "shares", "USD/shares", "ratio"}  # the units a NumericRow gold may carry
 _PER_SHARE = {"usd/shares", "usd/share", "usd per share", "$/share", "usd", "$", "dollars"}
 
 
@@ -56,8 +57,8 @@ def normalize_value(value: Decimal, unit: str | None, gold_unit: str) -> Decimal
 
     The claim's unit LABEL decides, never the size of the number (ADR-044 dropped scale
     inference): a bare 383285 is taken as 383,285 base units, not guessed to be millions. A
-    missing or blank label (``None``, ``""``) means the gold unit, no conversion. Scale words apply to
-    ``USD`` and ``shares`` golds only; ``percent`` applies to a ``ratio`` gold only.
+    missing or blank label (``None``, ``""``) means the gold unit, no conversion. Scale words
+    apply to ``USD`` and ``shares`` golds only; ``percent`` applies to a ``ratio`` gold only.
     """
     if unit is None or not unit.strip():  # a blank label is a missing label
         return value
@@ -92,8 +93,12 @@ def numeric_correct(answer: Answer, row: NumericRow) -> bool:
     ``gold_value`` is the as-filed value (ADR-017): a claim equal to ``latest_value`` on a
     restated row is incorrect. At gold == 0 the relative term is 0, so ``tolerance_abs`` alone
     decides. A refusal, a missing primary claim, a claim without a value, or units that can't be
-    reconciled are all incorrect.
+    reconciled are all incorrect. A row whose own gold unit is not one of ``_GOLD_UNITS`` is
+    malformed: it raises ValueError (a scoring error, unscored, counted by the 10% guard in
+    ``eval/run.py``) for every system, instead of scoring them all incorrect.
     """
+    if row.unit not in _GOLD_UNITS:
+        raise ValueError(f"{row.id}: gold unit {row.unit!r} is not one of {sorted(_GOLD_UNITS)}")
     if refused(answer):
         return False
     claim = answer.primary_claim()

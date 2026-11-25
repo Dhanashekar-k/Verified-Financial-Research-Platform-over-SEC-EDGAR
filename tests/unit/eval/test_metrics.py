@@ -172,6 +172,17 @@ def test_exact_and_four_sig_fig_answers_are_correct() -> None:
     assert not metrics.numeric_correct(ans("380", "USD billions"), r)  # 0.86% off
 
 
+def test_a_row_with_an_unknown_gold_unit_is_a_scoring_error_not_a_wrong_answer() -> None:
+    """The row is malformed, so it raises for every system (even a refusal) rather than scoring
+    all of them incorrect; the harness records it as a scoring_error."""
+    bad = row(unit="pure")
+    with pytest.raises(ValueError, match="gold unit 'pure'"):
+        metrics.numeric_correct(ans("1", "USD"), bad)
+    refusal = Answer(answer_markdown="no", refusal=Refusal(reason="no data"))
+    with pytest.raises(ValueError, match="gold unit 'pure'"):
+        metrics.numeric_correct(refusal, bad)
+
+
 def test_boundary_is_inclusive() -> None:
     r = row(gold="1000000", tolerance_rel=D("0.001"), tolerance_abs=D(0))
     assert metrics.numeric_correct(ans("1001000", "USD"), r)  # exactly 0.1%
