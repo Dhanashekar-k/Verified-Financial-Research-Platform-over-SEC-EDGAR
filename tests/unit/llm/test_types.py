@@ -6,8 +6,9 @@ from decimal import Decimal
 from enum import StrEnum
 
 import pytest
-from app.llm.types import LLMMode, Usage
 from pydantic import ValidationError
+
+from app.llm.types import LLMMode, Usage
 
 
 def _usage(**over: object) -> Usage:

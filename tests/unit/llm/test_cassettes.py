@@ -10,6 +10,7 @@ import json
 from pathlib import Path
 
 import pytest
+
 from app.llm.client import CassetteMissError, LLMClient
 from app.llm.types import LLMMode
 

@@ -8,6 +8,7 @@ in ``tests/integration/test_embed_chunks.py``.
 from __future__ import annotations
 
 import pytest
+
 from pipelines.spark.embed_chunks import main
 
 FLAGS = [

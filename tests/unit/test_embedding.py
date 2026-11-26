@@ -21,6 +21,8 @@ import pytest
 from hypothesis import given, settings
 from hypothesis import strategies as st
 from hypothesis.extra import numpy as hnp
+
+from pipelines.common import embedding
 from pipelines.common.embedding import (
     ARTIFACT_HF_REPO,
     ARTIFACT_ONNX_FILE,
@@ -36,8 +38,6 @@ from pipelines.common.embedding import (
     sha256_file,
     verify_model_dir,
 )
-
-from pipelines.common import embedding
 
 QUERY = "what are the supply chain risks"
 SUPPLY_PASSAGE = (
