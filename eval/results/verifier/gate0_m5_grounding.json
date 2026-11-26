@@ -323,5 +323,18 @@
         "judge_label": "supported"
       }
     ]
+  },
+  "bare_number_over_scaled_table": {
+    "definition": "text claims that repeat a number from a pipe-delimited quote with no scale word (or %) after it, while the cited passage says 'in thousands/millions/billions'; a regex count over gate0_dev_trace.json, not a verifier result",
+    "n": 1,
+    "claims": [
+      {
+        "id": "fb-01328/c2",
+        "judge_label": "partial",
+        "bare_numbers": [
+          "411"
+        ]
+      }
+    ]
   }
 }
