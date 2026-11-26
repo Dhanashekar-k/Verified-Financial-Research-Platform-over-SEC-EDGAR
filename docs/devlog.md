@@ -172,3 +172,10 @@ the day-to-day calls and progress. Append one dated entry at the end of each wor
 - Review (by reading and dev-data checks, no tests run) found no two pinned tests that one implementation could not both satisfy, and added pins: "3M" is not three million, possessive company names, K's missing direction rule, G binding inside a quote, C before M.
 - Not executed: the code in the new tests that runs after the first stub call. A dry run with dummy returns was denied and not retried.
 - **Next (Shekar):** the open items in `docs/m6/spec-questions.md`, the adversarial rows, then `numbers.py` first.
+
+## 2026-11-26: M6 test validation, second decision round, CI repaired
+- **Tests validated against wrong implementations** (scratch copy only; core files untouched): accept-all and reject-all. Seven core tests passed a wrong stub and were fixed; after the new pins no core test passes both, and each test passing accept-all expects a claim to be kept.
+- **Second decision round** (ADR-049): values not digits (rounding supported again), scale only from the same passage, signed tokens, missing unit fails closed, comparisons follow the first-named company, company names checked on numeric claims only.
+- **H0 in the pipeline:** the policy is given neither the composer's `answer_markdown` nor its refusal wording. (Review caught that the markdown, where the composer also words refusals, was still passed.)
+- **A conflict in the new pins** (caught in review): `fb-01328 c2` could not both pass and obey the declared-scale rule. Resolved toward the newer rule, for Shekar to confirm.
+- **CI had been failing** on every push of this branch and of `feat/m5-query-engine`: a stale local ruff cache hid six import-order errors, and the dev-trace helpers read the gitignored tracked-CIK file. Both fixed; `make lint` now runs without the cache. Earlier "all checks pass" reports were local only.

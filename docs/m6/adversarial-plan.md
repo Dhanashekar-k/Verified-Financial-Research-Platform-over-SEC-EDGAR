@@ -22,7 +22,7 @@ The text states a fiscal year in a form decision C pins (`fiscal YYYY` or `FYYYY
 
 ## `wrong_company` (expected: drop)
 
-The claim names its company. Change only the name. The compare pairs test the hardest case: both companies are allowed, so only the named-company rule (D3) can catch a swap.
+**Numeric claims only:** text claims are not checked by company name, so a renamed text claim is kept by design. Change only the name. The compare pairs test the hardest case: both companies are allowed, so only the named-company rule (D3) can catch a swap.
 
 | `question_id` | `claim_id` | Claim (copied from the trace) | Why this base |
 |---|---|---|---|
@@ -47,7 +47,7 @@ Change only the scale word (and `display` too, if you want the value check to se
 
 ## `sign_flip` (expected: drop)
 
-Flip a direction word on a **growth** claim, or flip the sign of a negative figure in the text. Do not flip only "higher" or "lower" on a difference: decision G keeps relational phrasing, so that row is expected to pass and would count as a miss.
+Flip a direction word on a growth claim, the relation (`higher than` to `lower than`) on a comparison whose first-named company is clear, or the sign of a negative figure in the text. A comparison with no bindable subject, or worded with `exceeds`, is kept by design and would count as a miss.
 
 | `question_id` | `claim_id` | Claim (copied from the trace) | Why this base |
 |---|---|---|---|
@@ -56,6 +56,7 @@ Flip a direction word on a **growth** claim, or flip the sign of a negative figu
 | `num-0146` | `c1` | AppLovin's operating cash flow grew 14.1% in FY2022, measured from FY2021. | `grew 14.1%` |
 | `num-0139` | `c1` | Net cash from operating activities changed by -44.0% from Q1 FY2024 to Q1 FY2025. | signed `-44.0%` with neutral wording: flip the sign |
 | `num-0083` | `c1` | Robinhood Markets, Inc.'s basic EPS for FY2022 was -$1.17 per share. | negative EPS, `-$1.17` |
+| `num-0220` | `c3` | Costco Wholesale's total liabilities were $33.8 billion higher than Carvana's at the end of FY2022. | comparison `higher than`: flip to `lower than` |
 
 ## `absent_quote` (expected: drop)
 
@@ -71,7 +72,7 @@ Text claims with no digits, so only the quote rule can drop them. **Keep `chunk_
 
 ## `changed_number` (expected: drop)
 
-Change one digit in the claim text only. Numeric bases test `numeric.py`; text bases test the number-in-quote rule.
+Change one digit in the claim text only, by more than the written precision (values are compared, so a change inside the rounding is kept). Numeric bases test `numeric.py`; text bases test the number-in-quote rule.
 
 | `question_id` | `claim_id` | Claim (copied from the trace) | Why this base |
 |---|---|---|---|
@@ -94,15 +95,14 @@ Replace `provenance` (whole) with an expression the compiler did not build, **us
 | `num-0154` | `c1` | WEC Energy Group's operating income growth from FY2022 to FY2023 was -0.8%. | growth over two facts |
 | `num-0172` | `c1` | Cardinal Health Inc's dividends paid changed by -5.0% in FY2024, measured from FY2023. | growth over two facts |
 
-## Your 2 or 3 semantic rows (expected: keep, the documented limit)
+## Your 2 semantic rows (expected: keep, the documented limit)
 
-Real over-claims the judge marked **partial**; leave `change` empty. `fb-01328 c1` is **not** suitable: it should be dropped for its unquoted "0".
+Real over-claims the judge marked **partial**; leave `change` empty. Neither `fb-01328` claim is suitable: `c1` should be dropped for its unquoted "0", and `c2` for writing "411" over a table in millions.
 
 | `question_id` | `claim_id` | Claim (copied from the trace) | Why this base |
 |---|---|---|---|
 | `fb-00723` | `c1` | Operating expenses increased 24 percent year-over-year in 2022, driven by net losses on Amex Ventures equity investments. | `added_cause`: one driver stated where the passage gives more |
 | `fb-00651` | `c1` | The 2023 guidance reflects increased growth of 12.5% at the mid-point. | `invalid_inference`: drops which EPS grew 12.5% |
-| `fb-01328` | `c2` | Restructuring and impairment charges of 411 for 2022 appear in the Consolidated Statement of Cash Flows, not in the income statement. | `invalid_inference`: asserts an absence the passage cannot show |
 
 ## Controls (`correct`, expected: keep)
 
@@ -117,7 +117,8 @@ Add 2 or 3, with an empty `change`. Without them, a verifier that drops too much
 
 ## Notes before writing
 
-- A `unit`-only change has no category of its own. Decision D is covered by unit tests.
+- A `unit`-only change has no category of its own. The unit rules are covered by unit tests.
+- Do not use `num-0213 c1` as a base: it has no unit, so the verifier drops it unchanged.
 - A change to `display` alone can be missed by design: D1 gives the display 0.5% tolerance.
 - Aim for 15 to 20 rows in total. Several bases may appear in two categories (`num-0056 c1`, `num-0057 c1`, `num-0166 c1`, `num-0083 c1`).
 - Write the rows before reading the verifier's results on them. If a rule changes after you see a score, report that score as in-sample.

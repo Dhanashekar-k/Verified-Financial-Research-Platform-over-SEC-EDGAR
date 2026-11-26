@@ -436,9 +436,30 @@ Contract 05 §6 gains `tolerance_abs`, `tolerance_basis`, `value_basis`, `latest
 2. **A beside D3.** D3 stays: a numeric claim names the matched result's company, so two compare claims with swapped names still fail. "An allowed company" alone would keep both.
 3. **A against `fb-00746 c1`**, which must be kept. Its "The NASDAQ Global Select Market" matches the tracked company NASDAQ, INC. while its filer is another company, so an exchange's name is not a company mention.
 4. **J against H0.** J's "append to the composer's `missing`" gives way to H0's "build `missing` from slots".
-5. **G against older tests.** "higher" over a negative difference and "lower" over a positive one are relational phrasing: kept, although such a sentence can be false.
+5. *(Superseded by the second round: clear comparisons are now checked.)* **G against older tests.** "higher" over a negative difference and "lower" over a positive one are relational phrasing: kept, although such a sentence can be false.
 
-**Documented limitation.** Semantic over-claiming is **not caught**: `fb-00651`, `fb-00723` and `fb-01328` (see the consequences above for the exact claims). G's relational phrasing and a wrong metric name are further known misses.
+**Second round (2026-11-26, Shekar). Later wins: this replaces parts of the list and readings above.**
+- **Values, not digits (replaces E's digit sequence).** Numbers are compared as parsed values, with unit and scale applied, within the claim number's own precision, never as digit substrings: 5.5% is not 55%, and 3 is not 3%. A bare table cell takes its passage's declared scale and is then compared. So a rounding at the claim's precision ("$55.9 billion" over "$55,893 million") is supported again.
+- **Scale.** Only a scale declared in the same passage is applied. A bare number with no declared scale cannot support a scaled claim (fail closed).
+- **Signed tokens.** A numeric token includes its leading sign or opening parenthesis; a quote may not cut it ("3%" out of "-3%").
+- **Missing unit.** Fail closed unless the metric is unitless in the catalog. `num-0213 c1` is dropped.
+- **Comparisons (replaces G's "keep relational phrasing" for the clear case).** "higher / lower / more / less than" must agree with the sign of (first-named company minus comparator). Lenient only where the subject cannot be bound; documented.
+- **Company (replaces A on text claims, and reading 3's text-claim case).** The name rule applies to **numeric claims only**; a text claim's company check is its passage's `cik`, so `fb-02419 c1` passes. D3's swapped-name binding stays, exchange names are not companies, and possessive names use `name_variants`.
+- **H0 enforcement.** `pipeline.py` hands `policy.apply` the answer without the composer's own prose: its `answer_markdown` and its refusal's `reason`, `found` and `missing` (it sees only that the composer refused), and it rejects a refusal that passes the placeholder through. The claims, texts included, are still passed: keeping a dropped claim's text out of a refusal rests on the policy and its tests.
+
+**How the second round was read (drafted by Claude; change the tests if wrong).**
+1. Applying a declared scale means a claim with **no** scale word cannot state a scaled cell ("$32,502" over a cell in millions).
+2. A number's own scale word wins over the header. A scale mentioned in running prose ("a $5 billion buyback") declares nothing. "In millions, except per share data" leaves per-share cells unscaled.
+3. "Unitless in the catalog" is `unit: ratio`, the only dimensionless unit there. The rule reads the **metric's** unit, so growth of a USD metric may not omit its unit. `num-0213 c1` is a judge-supported claim that this drops.
+4. A comparison's subject is bound when a company is named before the relation and the comparator follows "than". Otherwise it is lenient, including a false "Revenue was $171.4 billion lower than Microsoft's" that names no subject. "exceeds" is not among the four words, so it stays lenient.
+
+5. A declared scale applies to **table cells** (numbers in a pipe-delimited row, as the corpus writes tables), not to figures in prose: `fb-00651 c2`'s "adjusted EPS of $2.80" sits in a passage headed "$ in Millions, except EPS". A "(in thousands)" after a claim's number is that number's scale (`fb-03282 c1`).
+
+**A conflict this created, resolved toward the newer rule (for Shekar to confirm).** `fb-01328 c2` was on the "expected to pass" list. It writes "411" for a cell in a table declared "(in millions)", and a bare cell takes its declared scale, so it is now expected to **drop** on `number_in_text`. It is the one dev text claim of this shape, and the judge marked it partial (`eval/results/verifier/gate0_m5_grounding.json`, `bare_number_over_scaled_table`). Its over-claim is still not detected: of the four partial claims, `fb-00651 c1` and `fb-00723 c1` pass, and both `fb-01328` claims are dropped for their numbers alone. This replaces the earlier sentences that expected `c2` to pass. A likely source of the same drop later: composer rule 3 tells the writer to state a passage number exactly as the quote shows it, which for a table cell is without its scale.
+
+**Limits added by the second round:** a text claim that attributes one company's passage to another is **not caught**; a false comparison with no bindable subject is kept.
+
+**Documented limitation.** Semantic over-claiming is **not caught**: `fb-00651`, `fb-00723` and `fb-01328` (see the consequences above for the exact claims). A wrong metric name and a comparison with no bindable subject are further known misses.
 
 **How to revisit:** add the entailment pass; or after a calibrated judge or a hand audit; or if the dev ablation shows the verifier adds false refusals out of proportion to what it removes.
 
