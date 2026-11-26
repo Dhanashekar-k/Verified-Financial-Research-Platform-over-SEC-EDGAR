@@ -1,0 +1,37 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Martin Marietta Materials' interest expense changed by -5.2% in Q1 FY2024, measured from Q1 FY2023 [1]. The Q1 FY2023 interest expense was later restated; the comparison uses the figure as originally filed, and no restated number is given here.",
+    "claims": [
+      {
+        "display": "-5.2%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:7705312080764696309 - f:2635512975289383381) / f:2635512975289383381",
+          "fact_ids": [
+            7705312080764696309,
+            2635512975289383381
+          ],
+          "type": "expr"
+        },
+        "text": "Interest expense changed by -5.2% from Q1 FY2023 to Q1 FY2024, using the Q1 FY2023 figure as originally filed (that figure was later restated).",
+        "unit": "ratio",
+        "value": "-0.05213270142180094786729857820"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "63e1a60f7da262100ef12c0a9e1ab0d468d9082dee0677178b6f0127f5273af7",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0020620",
+    "input_tokens": 395,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 308
+  }
+}

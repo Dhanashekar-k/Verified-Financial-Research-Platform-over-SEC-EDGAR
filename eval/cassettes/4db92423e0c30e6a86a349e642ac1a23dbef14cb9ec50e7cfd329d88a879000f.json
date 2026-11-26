@@ -1,0 +1,42 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The supplied passages do not include the full Consolidated Statements of Operations for FY2022, so I cannot confirm a restructuring cost line item or give a figure for it. The excerpts only show summary statement of operations data, and none of them lists restructuring costs [1].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000874761-23-000010#6#0001",
+          "quote": "Statement of Operations Data for the Years Ended December 31: | (in millions, except per share amounts)",
+          "type": "chunk"
+        },
+        "text": "The statement of operations data in the passages shows revenue, income from continuing operations and net income measures, with no restructuring cost line visible in the excerpt.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Summary statement of operations data for AES, which shows no restructuring cost line in the excerpt."
+      ],
+      "missing": [
+        "The complete FY2022 Consolidated Statements of Operations line items, to confirm whether restructuring costs are explicitly outlined."
+      ],
+      "reason": "The passages do not contain the full FY2022 income statement, so the absence of a restructuring cost line cannot be confirmed and no restructuring figure is given."
+    }
+  },
+  "request_key": "4db92423e0c30e6a86a349e642ac1a23dbef14cb9ec50e7cfd329d88a879000f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.008015",
+    "input_tokens": 3563,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 865
+  }
+}

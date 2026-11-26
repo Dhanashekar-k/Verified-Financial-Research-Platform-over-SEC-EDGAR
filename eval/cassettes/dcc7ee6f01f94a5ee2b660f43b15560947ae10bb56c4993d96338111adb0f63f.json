@@ -1,0 +1,69 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Cardinal Health's dividends paid in fiscal year 2025 were $27.0 million higher than W.W. Grainger's [1]. Cardinal Health paid $494.0 million [2], compared with $467.0 million for W.W. Grainger [3].",
+    "claims": [
+      {
+        "display": "$27.0 million",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "f:6832645275392474085 - f:1172612544828886667",
+          "fact_ids": [
+            6832645275392474085,
+            1172612544828886667
+          ],
+          "type": "expr"
+        },
+        "text": "Cardinal Health's FY2025 dividends paid exceeded W.W. Grainger's by $27.0 million.",
+        "unit": "USD",
+        "value": "27000000.0000"
+      },
+      {
+        "display": "$494.0 million",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:6832645275392474085",
+          "fact_ids": [
+            6832645275392474085
+          ],
+          "type": "expr"
+        },
+        "text": "Cardinal Health's dividends paid in FY2025 were $494.0 million.",
+        "unit": "USD",
+        "value": "494000000.0000"
+      },
+      {
+        "display": "$467.0 million",
+        "id": "c3",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:1172612544828886667",
+          "fact_ids": [
+            1172612544828886667
+          ],
+          "type": "expr"
+        },
+        "text": "W.W. Grainger's dividends paid in FY2025 were $467.0 million.",
+        "unit": "USD",
+        "value": "467000000.0000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "dcc7ee6f01f94a5ee2b660f43b15560947ae10bb56c4993d96338111adb0f63f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0033160",
+    "input_tokens": 649,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 508
+  }
+}

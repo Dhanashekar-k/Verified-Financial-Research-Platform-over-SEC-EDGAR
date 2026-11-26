@@ -1,0 +1,58 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The filings do not support the premise of the question: Meta did not sell Instagram in 2022. The passages describe FTC litigation seeking divestiture of Instagram and WhatsApp, which is only a requested remedy [2]. Meta's 10-K also states that no goodwill impairment had been identified as of December 31, 2022 [1]. The material has no goodwill impairment figure tied to an Instagram sale.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0001326801-23-000013#8#0041",
+          "quote": "As of December 31, 2022, no impairment of goodwill has been identified.",
+          "type": "chunk"
+        },
+        "text": "As of December 31, 2022, no impairment of goodwill has been identified.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001326801-23-000013#8#0103",
+          "quote": "including divestiture or reconstruction of Instagram and WhatsApp",
+          "type": "chunk"
+        },
+        "text": "The FTC and attorneys general complaints sought a permanent injunction and other equitable relief, including divestiture or reconstruction of Instagram and WhatsApp.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "As of December 31, 2022, no impairment of goodwill has been identified.",
+        "The FTC and attorneys general complaints sought divestiture or reconstruction of Instagram and WhatsApp as a remedy."
+      ],
+      "missing": [
+        "Any disclosure that Meta sold Instagram in 2022",
+        "Any goodwill impairment amount related to an Instagram sale"
+      ],
+      "reason": "The filings show no sale of Instagram in 2022 and no goodwill impairment associated with one."
+    }
+  },
+  "request_key": "97ef526165f23e3bebfc975fbb7ca812cbe19835744ed59092aa31c114481795",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0070730",
+    "input_tokens": 4111,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 567
+  }
+}

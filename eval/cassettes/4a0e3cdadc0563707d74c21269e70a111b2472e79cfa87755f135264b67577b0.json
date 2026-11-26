@@ -1,0 +1,36 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "contradiction": false,
+    "points": [
+      {
+        "covered": true,
+        "index": 0
+      },
+      {
+        "covered": true,
+        "index": 1
+      },
+      {
+        "covered": true,
+        "index": 2
+      },
+      {
+        "covered": true,
+        "index": 3
+      }
+    ],
+    "reason": "The answer states all four gold points: the non-financial end user margin exemption, higher cost or reduced availability of derivatives, greater volatility and less predictable cash flows, and impaired capital expenditure planning and funding, with no contradictions."
+  },
+  "request_key": "4a0e3cdadc0563707d74c21269e70a111b2472e79cfa87755f135264b67577b0",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 683,
+    "cost_usd": "0.00205075",
+    "input_tokens": 462,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 147
+  }
+}

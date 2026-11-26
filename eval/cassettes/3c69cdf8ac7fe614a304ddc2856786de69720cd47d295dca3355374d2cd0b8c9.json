@@ -1,0 +1,37 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Newmont's dividends paid changed by -19.0% in FY2023, measured from FY2022 [1].",
+    "claims": [
+      {
+        "display": "-19.0%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:-1616909695844356840 - f:-2346844124892402504) / f:-2346844124892402504",
+          "fact_ids": [
+            -1616909695844356840,
+            -2346844124892402504
+          ],
+          "type": "expr"
+        },
+        "text": "Newmont's dividends paid changed by -19.0% from FY2022 to FY2023.",
+        "unit": "ratio",
+        "value": "-0.1895761741122565864833906071"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "3c69cdf8ac7fe614a304ddc2856786de69720cd47d295dca3355374d2cd0b8c9",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0015490",
+    "input_tokens": 292,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 226
+  }
+}

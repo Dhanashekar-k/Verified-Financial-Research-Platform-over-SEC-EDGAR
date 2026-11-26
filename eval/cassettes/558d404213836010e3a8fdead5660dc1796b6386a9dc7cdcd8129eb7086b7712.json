@@ -1,0 +1,57 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The material does not give a computed change in Corning's effective tax rate, so I cannot state the difference. The FY2022 10K's tax-rate reconciliation shows an effective tax rate of 22.9% for 2022 and 20.2% for 2021 [1]. The FY2021 10K originally reported 20.5% for 2021, so the 2021 figure differs between the two filings [2].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:CORNING_2022_10K#p77#0000",
+          "quote": "Effective tax rate | 22.9% | 20.2% | 17.5%",
+          "type": "chunk"
+        },
+        "text": "The FY2022 10K reconciliation shows an effective tax rate of 22.9% for 2022 and 20.2% for 2021.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:CORNING_2021_10K#p29#0000",
+          "quote": "Effective tax rate | 20.5% | 17.8% | 21.1%",
+          "type": "chunk"
+        },
+        "text": "The FY2021 10K originally reported an effective tax rate of 20.5% for 2021.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "FY2022 10K: effective tax rate of 22.9% for 2022 and 20.2% for 2021",
+        "FY2021 10K: effective tax rate of 20.5% for 2021 as originally reported"
+      ],
+      "missing": [
+        "A computed figure for the change in effective tax rate between FY2021 and FY2022"
+      ],
+      "reason": "The material gives the effective tax rate for each year but no computed change between FY2021 and FY2022, and I may not do the arithmetic myself."
+    }
+  },
+  "request_key": "558d404213836010e3a8fdead5660dc1796b6386a9dc7cdcd8129eb7086b7712",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0096010",
+    "input_tokens": 4644,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 966
+  }
+}

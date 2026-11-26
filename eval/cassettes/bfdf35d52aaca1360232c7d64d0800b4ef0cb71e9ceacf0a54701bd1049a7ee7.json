@@ -1,0 +1,52 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Sysco's net cash from operating activities in fiscal 2023, as originally reported, was $2.9 billion [1]. This figure was later restated; the latest restated value is also $2.9 billion [2].",
+    "claims": [
+      {
+        "display": "$2.9 billion",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:-7237626144651123771",
+          "fact_ids": [
+            -7237626144651123771
+          ],
+          "type": "expr"
+        },
+        "text": "Sysco's net cash from operating activities for FY2023, as originally reported, was $2.9 billion.",
+        "unit": "USD",
+        "value": "2867602000.0000"
+      },
+      {
+        "display": "$2.9 billion",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:1198493006657084901",
+          "fact_ids": [
+            1198493006657084901
+          ],
+          "type": "expr"
+        },
+        "text": "The FY2023 net cash from operating activities was later restated; the latest restated value is $2.9 billion.",
+        "unit": "USD",
+        "value": "2868000000.0000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "bfdf35d52aaca1360232c7d64d0800b4ef0cb71e9ceacf0a54701bd1049a7ee7",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0022880",
+    "input_tokens": 406,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 351
+  }
+}

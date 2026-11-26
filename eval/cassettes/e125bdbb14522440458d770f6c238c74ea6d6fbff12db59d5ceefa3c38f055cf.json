@@ -1,0 +1,58 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The question rests on a false premise: the filing does not describe any 2022 spin-off of AWS. Amazon still reports AWS as one of its three segments (North America, International, and AWS) [1]. The only 2022 corporate action described in the passages is a 20-for-1 stock split on May 27, 2022 [2]. Because no spin-off is described, the material cannot show how a spin-off changed consolidated revenue. The material includes no NUMERIC RESULTS, so I do not state any consolidated revenue figures.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0001018724-23-000004#8#0020",
+          "quote": "We have organized our operations into three segments: North America, International, and AWS.",
+          "type": "chunk"
+        },
+        "text": "Amazon states that it has organized its operations into three segments: North America, International, and AWS, so AWS remains part of the company.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001018724-23-000004#8#0020",
+          "quote": "On May 27, 2022, we effected a 20-for-1 stock split of our common stock",
+          "type": "chunk"
+        },
+        "text": "The 2022 corporate action the filing describes is a stock split, not a spin-off: on May 27, 2022, Amazon effected a 20-for-1 stock split of its common stock.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Amazon reports AWS as one of its three segments in its 2022 Form 10-K.",
+        "In 2022 Amazon effected a 20-for-1 stock split, not a spin-off."
+      ],
+      "missing": [
+        "Any disclosure of an AWS spin-off",
+        "Computed consolidated revenue results (NUMERIC RESULTS) for the question"
+      ],
+      "reason": "The filings describe no 2022 spin-off of AWS, so there is no spin-off effect on consolidated revenue to report, and no numeric results were provided."
+    }
+  },
+  "request_key": "e125bdbb14522440458d770f6c238c74ea6d6fbff12db59d5ceefa3c38f055cf",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0077170",
+    "input_tokens": 4405,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 637
+  }
+}

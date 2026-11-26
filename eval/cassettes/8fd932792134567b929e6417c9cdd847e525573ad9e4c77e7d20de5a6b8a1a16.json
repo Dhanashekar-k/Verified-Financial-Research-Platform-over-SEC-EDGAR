@@ -1,0 +1,52 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Global Payments' SG&A expense for Q1 FY2025, as originally reported, was $1.0 billion [1]. This figure was later restated; the latest restated value is $943.7 million [2].",
+    "claims": [
+      {
+        "display": "$1.0 billion",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:-8975953057143209454",
+          "fact_ids": [
+            -8975953057143209454
+          ],
+          "type": "expr"
+        },
+        "text": "Global Payments' SG&A expense for Q1 FY2025, as originally reported, was $1.0 billion.",
+        "unit": "USD",
+        "value": "1024011000.0000"
+      },
+      {
+        "display": "$943.7 million",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:9071238092117057395",
+          "fact_ids": [
+            9071238092117057395
+          ],
+          "type": "expr"
+        },
+        "text": "The Q1 FY2025 SG&A expense was later restated to $943.7 million.",
+        "unit": "USD",
+        "value": "943719000.0000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "8fd932792134567b929e6417c9cdd847e525573ad9e4c77e7d20de5a6b8a1a16",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.002260",
+    "input_tokens": 413,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 344
+  }
+}

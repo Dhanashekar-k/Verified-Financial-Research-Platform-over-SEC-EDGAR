@@ -1,0 +1,71 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "**Share of revenue:** The material does not give a percentage. It says the financial statements include net sales of approximately $4.4 billion in 2023 from operations outside North America [1]. That figure is for outside North America, not strictly non-U.S., and no total-revenue or share result is available to turn it into a percentage.\n\n**Risks:** Occidental says it has experienced and may continue to experience adverse consequences, such as risk of loss or production limitations, because some international operations are in countries affected by political instability, nationalizations, corruption, armed conflict, terrorism, insurgency, civil unrest, security problems, labor unrest, OPEC production restrictions, equipment import restrictions and sanctions [2]. It adds that exposure to these risks may increase if a greater percentage of future oil and gas production or revenue comes from international sources [3].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000797468-24-000034#8#0029",
+          "quote": "net sales of approximately $4.4 billion in 2023, relating to Occidental\u2019s operations in countries outside North America",
+          "type": "chunk"
+        },
+        "text": "The financial statements include net sales of approximately $4.4 billion in 2023 relating to Occidental's operations in countries outside North America.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000797468-24-000034#8#0029",
+          "quote": "certain of its international operations are located in countries affected by political instability, nationalizations, corruption, armed conflict, terrorism, insurgency, civil unrest, security problems, labor unrest, OPEC production restrictions, equipment import restrictions and sanctions",
+          "type": "chunk"
+        },
+        "text": "Some of Occidental's international operations are in countries affected by political instability, nationalizations, corruption, armed conflict, terrorism, insurgency, civil unrest, security problems, labor unrest, OPEC production restrictions, equipment import restrictions and sanctions.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000797468-24-000034#8#0029",
+          "quote": "Exposure to such risks may increase if a greater percentage of Occidental\u2019s future oil and gas production or revenue comes from international sources.",
+          "type": "chunk"
+        },
+        "text": "Exposure to such risks may increase if a greater percentage of future oil and gas production or revenue comes from international sources.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Net sales of approximately $4.4 billion in 2023 relate to operations outside North America.",
+        "The filing lists political, regulatory and government-imposed risks in international operations, including political instability, nationalizations, corruption, armed conflict, sanctions, OPEC production restrictions and equipment import restrictions."
+      ],
+      "missing": [
+        "Total 2023 revenue as a computed result, and the share of revenue from non-U.S. operations (the passage covers countries outside North America)."
+      ],
+      "reason": "The material gives a dollar figure for net sales outside North America but no computed share of total revenue from non-U.S. operations."
+    }
+  },
+  "request_key": "3431dc75f13ec09e9bb9efe65f6423785c982a02ecc32e4bf869a2799b87d169",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0134410",
+    "input_tokens": 5249,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 1613
+  }
+}

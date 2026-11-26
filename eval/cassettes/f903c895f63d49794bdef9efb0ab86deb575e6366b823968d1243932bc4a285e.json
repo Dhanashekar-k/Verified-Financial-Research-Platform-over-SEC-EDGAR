@@ -1,0 +1,57 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The filings do not state any future amount Pfizer expects to pay for the Upjohn spin-off. They describe costs already incurred: Pfizer incurred separation-related costs of $434 million in 2020 [1]. Pfizer also states that it is no longer the obligor or guarantor of any Upjohn debt or financing arrangements [2].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000078003-23-000024#8#0060",
+          "quote": "we incurred separation-related costs of $434 million in 2020",
+          "type": "chunk"
+        },
+        "text": "Pfizer incurred separation-related costs of $434 million in 2020 as a result of the separation of Upjohn.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000078003-22-000027#8#0060",
+          "quote": "Following the Separation and Combination of the Upjohn Business with Mylan, we are no longer the obligor or guarantor of any Upjohn debt or Upjohn financing arrangements.",
+          "type": "chunk"
+        },
+        "text": "Following the Separation and Combination of the Upjohn Business with Mylan, Pfizer is no longer the obligor or guarantor of any Upjohn debt or Upjohn financing arrangements.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Pfizer incurred separation-related costs of $434 million in 2020.",
+        "Pfizer is no longer the obligor or guarantor of any Upjohn debt or Upjohn financing arrangements."
+      ],
+      "missing": [
+        "Any stated forecast or expected future payment amount (in USD million) for the Upjohn spin-off"
+      ],
+      "reason": "The passages report only costs already incurred for the completed 2020 Upjohn spin-off and give no expected future payment."
+    }
+  },
+  "request_key": "f903c895f63d49794bdef9efb0ab86deb575e6366b823968d1243932bc4a285e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0103710",
+    "input_tokens": 4979,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 1053
+  }
+}

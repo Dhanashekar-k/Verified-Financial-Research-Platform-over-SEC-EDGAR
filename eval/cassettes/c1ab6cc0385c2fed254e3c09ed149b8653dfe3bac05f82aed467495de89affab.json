@@ -1,0 +1,69 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Costco's total liabilities at the end of fiscal year 2022 were $33.8 billion higher than Carvana's [1]. Costco reported $43.5 billion [2], while Carvana reported $9.8 billion [3].",
+    "claims": [
+      {
+        "display": "$33.8 billion",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "f:-551684965889321106 - f:3883070622856576520",
+          "fact_ids": [
+            -551684965889321106,
+            3883070622856576520
+          ],
+          "type": "expr"
+        },
+        "text": "Costco's total liabilities exceeded Carvana's by $33.8 billion at the end of FY2022.",
+        "unit": "USD",
+        "value": "33768000000.0000"
+      },
+      {
+        "display": "$43.5 billion",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:-551684965889321106",
+          "fact_ids": [
+            -551684965889321106
+          ],
+          "type": "expr"
+        },
+        "text": "Costco's total liabilities at FY2022 were $43.5 billion.",
+        "unit": "USD",
+        "value": "43519000000.0000"
+      },
+      {
+        "display": "$9.8 billion",
+        "id": "c3",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:3883070622856576520",
+          "fact_ids": [
+            3883070622856576520
+          ],
+          "type": "expr"
+        },
+        "text": "Carvana's total liabilities at FY2022 were $9.8 billion.",
+        "unit": "USD",
+        "value": "9751000000.0000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "c1ab6cc0385c2fed254e3c09ed149b8653dfe3bac05f82aed467495de89affab",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0032470",
+    "input_tokens": 655,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 493
+  }
+}

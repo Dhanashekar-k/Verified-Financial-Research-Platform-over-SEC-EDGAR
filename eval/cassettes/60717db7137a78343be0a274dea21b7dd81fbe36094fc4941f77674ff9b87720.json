@@ -1,0 +1,36 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Robinhood Markets, Inc.'s basic earnings per share for fiscal year 2022 was -$1.17 per share [1].",
+    "claims": [
+      {
+        "display": "-$1.17 per share",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:5587488814985843155",
+          "fact_ids": [
+            5587488814985843155
+          ],
+          "type": "expr"
+        },
+        "text": "Robinhood Markets, Inc.'s basic EPS for FY2022 was -$1.17 per share.",
+        "unit": "USD/shares",
+        "value": "-1.1700"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "60717db7137a78343be0a274dea21b7dd81fbe36094fc4941f77674ff9b87720",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0013690",
+    "input_tokens": 247,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 199
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "PulteGroup's net cash from operating activities changed by -44.0% from Q1 FY2024 to Q1 FY2025 (growth measured from Q1 FY2024) [1].",
+    "claims": [
+      {
+        "display": "-44.0%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:5685327768097955412 - f:-2900702319505943851) / f:-2900702319505943851",
+          "fact_ids": [
+            5685327768097955412,
+            -2900702319505943851
+          ],
+          "type": "expr"
+        },
+        "text": "PulteGroup's net cash from operating activities changed by -44.0% in Q1 FY2025, measured from Q1 FY2024.",
+        "unit": "ratio",
+        "value": "-0.4402198617940088495206162136"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "266de3a75408d0c2de901a59fc831e35bb549205af7f73f23c5205f62cc7cce7",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0017890",
+    "input_tokens": 337,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 265
+  }
+}

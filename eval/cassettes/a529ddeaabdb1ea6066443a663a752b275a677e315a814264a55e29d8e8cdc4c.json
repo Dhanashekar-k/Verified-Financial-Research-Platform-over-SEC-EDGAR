@@ -1,0 +1,42 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The material does not report Moderna's vaccine sales for fiscal 2008. The passages cover later years only, and Moderna's first commercial product (Spikevax) was authorized in December 2020 [1]. No NUMERIC RESULTS were provided for 2008.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0001682852-23-000011#8#0020",
+          "quote": "On December 18, 2020, we received an Emergency Use Authorization (EUA) from the U.S. Food and Drug Administration (FDA) for the emergency use of the Moderna COVID-19 Vaccine",
+          "type": "chunk"
+        },
+        "text": "Moderna's first commercial product, Spikevax (its COVID-19 vaccine), received Emergency Use Authorization from the FDA on December 18, 2020.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Moderna's first commercial product, Spikevax, received FDA Emergency Use Authorization on December 18, 2020."
+      ],
+      "missing": [
+        "Moderna's fiscal 2008 vaccine sales or net product sales figure"
+      ],
+      "reason": "The provided material contains no figures or passages on Moderna's vaccine sales in fiscal 2008."
+    }
+  },
+  "request_key": "a529ddeaabdb1ea6066443a663a752b275a677e315a814264a55e29d8e8cdc4c",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0070590",
+    "input_tokens": 4842,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 418
+  }
+}

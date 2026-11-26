@@ -1,0 +1,36 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "contradiction": false,
+    "points": [
+      {
+        "covered": false,
+        "index": 0
+      },
+      {
+        "covered": true,
+        "index": 1
+      },
+      {
+        "covered": true,
+        "index": 2
+      },
+      {
+        "covered": true,
+        "index": 3
+      }
+    ],
+    "reason": "The answer covers the capitalized-interest exclusion, the securitization and Root Warrants fair value items, and the 2023 Tax Receivable Agreement reserve, but it never lists the notes, Floor Plan Facility and Finance Receivable Facilities as interest expense components, and nothing it says contradicts the gold points."
+  },
+  "request_key": "07017c83babc31d83c83bc009561aac2f176f0c0d8d4c8989724e5798f3626aa",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 683,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00146215",
+    "input_tokens": 543,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 177
+  }
+}

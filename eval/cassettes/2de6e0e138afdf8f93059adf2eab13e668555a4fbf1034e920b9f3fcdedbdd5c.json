@@ -1,0 +1,48 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Sysco says the COVID-19 pandemic may change its mix of earnings by jurisdiction and has increased the risk of operating losses in certain jurisdictions. If those losses are prolonged beyond current expectations, they could lead to valuation allowances against certain deferred tax assets in the future. [1] Sysco states that these effects would negatively impact its income tax expense, net earnings, and balance sheet. [2]",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000096021-21-000093#7#0017",
+          "quote": "The impact of the COVID-19 pandemic may change our mix of earnings by jurisdiction and has increased the risk that operating losses may occur within certain of our jurisdictions that could\nlead to the recognition of valuation allowances against certain deferred tax assets in the future, if these losses are prolonged beyond our current expectations.",
+          "type": "chunk"
+        },
+        "text": "Sysco says the pandemic may change its mix of earnings by jurisdiction and has increased the risk that operating losses may occur within certain jurisdictions, which could lead to the recognition of valuation allowances against certain deferred tax assets in the future if the losses are prolonged beyond current expectations.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000096021-21-000093#7#0017",
+          "quote": "These effects would negatively impact our income tax expense, net earnings, and balance sheet.",
+          "type": "chunk"
+        },
+        "text": "Sysco states that these effects would negatively impact its income tax expense, net earnings, and balance sheet.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "2de6e0e138afdf8f93059adf2eab13e668555a4fbf1034e920b9f3fcdedbdd5c",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0081570",
+    "input_tokens": 5305,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 545
+  }
+}

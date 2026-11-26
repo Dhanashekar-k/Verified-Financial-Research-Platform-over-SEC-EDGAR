@@ -1,0 +1,45 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The material does not give a 2-year CAGR. It gives only the cumulative change in Lockheed Martin's total revenue, which was 0.9% growth in FY2022 measured from FY2020 [1]. I cannot annualize this figure myself, so the CAGR is not stated.",
+    "claims": [
+      {
+        "display": "0.9%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:-1099502775890552652 - f:-7918166101698765105) / f:-7918166101698765105",
+          "fact_ids": [
+            -1099502775890552652,
+            -7918166101698765105
+          ],
+          "type": "expr"
+        },
+        "text": "Lockheed Martin's total revenue grew 0.9% in FY2022, measured from FY2020 (cumulative, not annualized).",
+        "unit": "ratio",
+        "value": "0.008960518670295727698094742959"
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Cumulative total revenue growth from FY2020 to FY2022 of 0.9%"
+      ],
+      "missing": [
+        "A computed 2-year revenue CAGR (annualized growth rate) from FY2020 to FY2022"
+      ],
+      "reason": "The material provides only the cumulative FY2020-to-FY2022 revenue growth, not an annualized 2-year CAGR, and I may not compute one myself."
+    }
+  },
+  "request_key": "0c1c06b46bd53efe6a18e482c015678f3fe7da560385969475e057aec7f6ecff",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0038160",
+    "input_tokens": 334,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 671
+  }
+}

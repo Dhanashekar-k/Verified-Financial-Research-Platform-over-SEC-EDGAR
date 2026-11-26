@@ -1,0 +1,37 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Comfort Systems USA's selling, general and administrative expense grew by 5.2% in fiscal year 2021, measured from fiscal year 2020 [1].",
+    "claims": [
+      {
+        "display": "5.2%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:3367517090591630896 - f:2211940363904622677) / f:2211940363904622677",
+          "fact_ids": [
+            3367517090591630896,
+            2211940363904622677
+          ],
+          "type": "expr"
+        },
+        "text": "Comfort Systems USA's SG&A expense grew 5.2% from FY2020 to FY2021.",
+        "unit": "ratio",
+        "value": "0.05179762813148972684102108297"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "8a217b6a3f2f977c1b5bb175da8da2361ff063a1a8b578794bfc75b7885d7128",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0016490",
+    "input_tokens": 312,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 242
+  }
+}

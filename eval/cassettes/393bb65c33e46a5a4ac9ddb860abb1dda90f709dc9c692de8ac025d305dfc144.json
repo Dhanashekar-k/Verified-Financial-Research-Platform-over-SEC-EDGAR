@@ -1,0 +1,37 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Cardinal Health's dividends paid changed by -5.0% in fiscal year 2024, measured from fiscal year 2023 [1].",
+    "claims": [
+      {
+        "display": "-5.0%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:-3532178409370186084 - f:9117949540290423706) / f:9117949540290423706",
+          "fact_ids": [
+            -3532178409370186084,
+            9117949540290423706
+          ],
+          "type": "expr"
+        },
+        "text": "Cardinal Health's dividends paid changed by -5.0% from FY2023 to FY2024.",
+        "unit": "ratio",
+        "value": "-0.04952380952380952380952380952"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "393bb65c33e46a5a4ac9ddb860abb1dda90f709dc9c692de8ac025d305dfc144",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.001620",
+    "input_tokens": 308,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 237
+  }
+}

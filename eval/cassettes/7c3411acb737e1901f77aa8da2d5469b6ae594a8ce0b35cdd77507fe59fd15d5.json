@@ -1,0 +1,69 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "ADM's FY2025 interest expense was $140.7 million higher than Viatris's [1]. ADM reported $612.0 million [2] versus $471.3 million for Viatris [3].",
+    "claims": [
+      {
+        "display": "$140.7 million",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "f:8779927225621875897 - f:5015197209897332021",
+          "fact_ids": [
+            8779927225621875897,
+            5015197209897332021
+          ],
+          "type": "expr"
+        },
+        "text": "ADM's FY2025 interest expense exceeded Viatris's by $140.7 million.",
+        "unit": "USD",
+        "value": "140700000.0000"
+      },
+      {
+        "display": "$612.0 million",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:8779927225621875897",
+          "fact_ids": [
+            8779927225621875897
+          ],
+          "type": "expr"
+        },
+        "text": "ADM's FY2025 interest expense was $612.0 million.",
+        "unit": "USD",
+        "value": "612000000.0000"
+      },
+      {
+        "display": "$471.3 million",
+        "id": "c3",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:5015197209897332021",
+          "fact_ids": [
+            5015197209897332021
+          ],
+          "type": "expr"
+        },
+        "text": "Viatris's FY2025 interest expense was $471.3 million.",
+        "unit": "USD",
+        "value": "471300000.0000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "7c3411acb737e1901f77aa8da2d5469b6ae594a8ce0b35cdd77507fe59fd15d5",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0030690",
+    "input_tokens": 622,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 464
+  }
+}

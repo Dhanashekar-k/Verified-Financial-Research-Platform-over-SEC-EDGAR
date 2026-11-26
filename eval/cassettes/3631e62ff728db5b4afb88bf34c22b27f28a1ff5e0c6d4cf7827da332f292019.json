@@ -1,0 +1,73 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The passages do not give the restructuring liability as of the close of Q2 FY2023. They are from the fiscal year-end (June 30, 2023) 10-K, and the liability roll-forward table is not included. What they do show is the nature and purpose of the restructuring activity under Amcor's Other Restructuring Plans. In fiscal 2023 the charges were employee-related, fixed asset-related, other restructuring and restructuring-related expenses [1]. In fiscal 2022 the charges were triggered by the Russia-Ukraine conflict, to help mitigate the impact of earnings disposed of in the Russian sale [2]. The filing also refers to an analysis of the restructuring plan liability, but the table itself is not in the material [3].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0001748790-23-000030#8#0049",
+          "quote": "During fiscal year 2023, the Company recorded $17 million in restructuring and related expenses classified within Other Restructuring Plans of which $3 million relate to employee related expenses, $5 million to fixed asset related expenses, $5 million to other restructuring expenses, and $4 million to restructuring related expenses.",
+          "type": "chunk"
+        },
+        "text": "During fiscal year 2023, Amcor recorded $17 million in restructuring and related expenses within Other Restructuring Plans, of which $3 million relate to employee related expenses, $5 million to fixed asset related expenses, $5 million to other restructuring expenses, and $4 million to restructuring related expenses.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001748790-23-000030#8#0049",
+          "quote": "triggered by the Russia-Ukraine conflict to help mitigate the impact of disposed earnings from the Russian sale",
+          "type": "chunk"
+        },
+        "text": "In fiscal year 2022, the restructuring expenses under Other Restructuring Plans were triggered by the Russia-Ukraine conflict to help mitigate the impact of disposed earnings from the Russian sale.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001748790-23-000030#8#0053",
+          "quote": "An analysis of the Company's restructuring plan liability, not including restructuring related liabilities, is as follows:",
+          "type": "chunk"
+        },
+        "text": "The filing includes an analysis of the restructuring plan liability, not including restructuring related liabilities, but the table is not in the provided material.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Fiscal 2023 Other Restructuring Plans expenses were employee-related, fixed asset-related, other restructuring and restructuring-related.",
+        "Fiscal 2022 Other Restructuring Plans charges were triggered by the Russia-Ukraine conflict to mitigate the impact of disposed earnings from the Russian sale."
+      ],
+      "missing": [
+        "Restructuring liability balance as of the close of Q2 FY2023 (December 31, 2022)",
+        "Q2 FY2023 interim filing (10-Q) disclosures on the nature and purpose of the liability",
+        "The restructuring plan liability roll-forward table"
+      ],
+      "reason": "The material is fiscal year-end 2023 filing text and contains no Q2 FY2023 restructuring liability balance or description."
+    }
+  },
+  "request_key": "3631e62ff728db5b4afb88bf34c22b27f28a1ff5e0c6d4cf7827da332f292019",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0128980",
+    "input_tokens": 3931,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 1768
+  }
+}

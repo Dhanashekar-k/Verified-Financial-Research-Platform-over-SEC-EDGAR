@@ -1,0 +1,37 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "EchoStar's operating cash flow grew 63.9% in Q1 FY2021, measured from Q1 FY2020 [1].",
+    "claims": [
+      {
+        "display": "63.9%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:-2522981443572401078 - f:-6981185608547439301) / f:-6981185608547439301",
+          "fact_ids": [
+            -2522981443572401078,
+            -6981185608547439301
+          ],
+          "type": "expr"
+        },
+        "text": "EchoStar's operating cash flow grew 63.9% in Q1 FY2021 compared with Q1 FY2020.",
+        "unit": "ratio",
+        "value": "0.6394838347710218107861701382"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "f5a18a50ce562cdbdc0d4d309a789c3c53f4a06bd44bb3a5a1411f6c2f0c2c2c",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.001655",
+    "input_tokens": 308,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 244
+  }
+}

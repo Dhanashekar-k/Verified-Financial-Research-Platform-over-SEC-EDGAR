@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The system answer states net PP&E of $8.7 billion for FY2018, which matches the gold answer of $8.70 billion."
+  },
+  "request_key": "4c1d2265ff28f9be013c29cb79823daeea1e696674a5f09bfbeb1107ffc706e5",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00046955",
+    "input_tokens": 158,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 56
+  }
+}

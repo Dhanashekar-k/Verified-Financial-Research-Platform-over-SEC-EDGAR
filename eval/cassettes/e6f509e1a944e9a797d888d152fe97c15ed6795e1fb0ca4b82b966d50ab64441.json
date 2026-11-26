@@ -1,0 +1,36 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "contradiction": false,
+    "points": [
+      {
+        "covered": true,
+        "index": 0
+      },
+      {
+        "covered": false,
+        "index": 1
+      },
+      {
+        "covered": true,
+        "index": 2
+      },
+      {
+        "covered": true,
+        "index": 3
+      }
+    ],
+    "reason": "The answer covers oversupply from added capacity or imports, the opposing effects of higher cement prices on the two businesses, and both $ figures, but it says cement is a key input to ready mixed concrete without stating that cost increases may not be passed on to customers."
+  },
+  "request_key": "e6f509e1a944e9a797d888d152fe97c15ed6795e1fb0ca4b82b966d50ab64441",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 683,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00126515",
+    "input_tokens": 476,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 151
+  }
+}

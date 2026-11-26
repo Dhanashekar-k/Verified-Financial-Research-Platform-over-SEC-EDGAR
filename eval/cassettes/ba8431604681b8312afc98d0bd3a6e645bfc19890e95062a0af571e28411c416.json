@@ -1,0 +1,69 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "At the end of fiscal 2022, NextEra Energy had about $71.5 billion more in total liabilities than Kinder Morgan [1]. NextEra Energy's total liabilities were $109.5 billion [2], compared with $38.0 billion for Kinder Morgan [3].",
+    "claims": [
+      {
+        "display": "$71.5 billion",
+        "id": "r3",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "f:-6858922358882386646 - f:-8062226269064983841",
+          "fact_ids": [
+            -6858922358882386646,
+            -8062226269064983841
+          ],
+          "type": "expr"
+        },
+        "text": "NextEra Energy's total liabilities at the end of FY2022 exceeded Kinder Morgan's by $71.5 billion.",
+        "unit": "USD",
+        "value": "71535000000.0000"
+      },
+      {
+        "display": "$109.5 billion",
+        "id": "r1",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:-6858922358882386646",
+          "fact_ids": [
+            -6858922358882386646
+          ],
+          "type": "expr"
+        },
+        "text": "NextEra Energy's total liabilities at the end of FY2022 were $109.5 billion.",
+        "unit": "USD",
+        "value": "109499000000.0000"
+      },
+      {
+        "display": "$38.0 billion",
+        "id": "r2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:-8062226269064983841",
+          "fact_ids": [
+            -8062226269064983841
+          ],
+          "type": "expr"
+        },
+        "text": "Kinder Morgan's total liabilities at the end of FY2022 were $38.0 billion.",
+        "unit": "USD",
+        "value": "37964000000.0000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "ba8431604681b8312afc98d0bd3a6e645bfc19890e95062a0af571e28411c416",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0035330",
+    "input_tokens": 686,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 544
+  }
+}

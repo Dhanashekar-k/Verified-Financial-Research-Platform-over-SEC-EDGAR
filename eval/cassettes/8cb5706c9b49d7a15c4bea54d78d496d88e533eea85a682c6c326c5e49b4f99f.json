@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The system answer states total revenue growth of 101.5% from FY2019 to FY2020, matching the gold answer."
+  },
+  "request_key": "8cb5706c9b49d7a15c4bea54d78d496d88e533eea85a682c6c326c5e49b4f99f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00047255",
+    "input_tokens": 181,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 52
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The system answer states that PepsiCo raised its 2023 guidance because of its strong start to the year, which matches the gold answer's key fact; the extra context is not contradictory."
+  },
+  "request_key": "058981295117354311cbb3c246f54720c77072a48946fb24a7a93b6366bf0612",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00061755",
+    "input_tokens": 231,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 71
+  }
+}

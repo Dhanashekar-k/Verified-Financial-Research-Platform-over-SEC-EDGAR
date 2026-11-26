@@ -1,0 +1,42 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "MGM Resorts' consolidated balance sheet reports accounts payable of $302,578 thousand at December 31, 2018 [1]. The balance sheet is stated in thousands, and no figure in millions was provided, so I have not converted it.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:MGMRESORTS_2018_10K#p57#0000",
+          "quote": "Accounts payable | $ | 302,578 | $ | 255,028",
+          "type": "chunk"
+        },
+        "text": "The consolidated balance sheet shows accounts payable of $302,578 (in thousands) at December 31, 2018.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Accounts payable at December 31, 2018 were $302,578 thousand per the consolidated balance sheet."
+      ],
+      "missing": [
+        "A pre-computed accounts payable figure expressed in USD millions."
+      ],
+      "reason": "The balance sheet gives accounts payable in thousands, and a USD millions figure is not available without a unit conversion I may not do."
+    }
+  },
+  "request_key": "1f22c6f362146edd9bc0c24a5699359cb93c68b520c18c3a64d1f0fa2feb0f30",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0085170",
+    "input_tokens": 4725,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 733
+  }
+}

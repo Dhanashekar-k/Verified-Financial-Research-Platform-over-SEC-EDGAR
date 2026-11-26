@@ -1,0 +1,90 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Martin Marietta says cement is a commodity whose price competition is highly sensitive to supply and demand [1]. Added industry capacity or higher cement imports tend to cause oversupply, which can hurt prices [2]. A hypothetical 10% change in cement sales price would change cement product line revenues by $60.2 million [3]. For ready mixed concrete, cement is a key input, and a hypothetical 10% change in cement costs would change that product line's cost of sales by $26.2 million [4]. Higher cement prices may hurt ready mixed concrete profitability but would benefit the cement business, though not necessarily in direct proportion [5].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000950170-23-004361#7A#0001",
+          "quote": "Cement is a commodity and competition is based principally on price, which is highly sensitive to changes in supply and demand.",
+          "type": "chunk"
+        },
+        "text": "Cement is a commodity, and competition is based principally on price, which is highly sensitive to changes in supply and demand.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000950170-23-004361#7A#0002",
+          "quote": "Increases in the production capacity of industry participants or increases in cement imports tend to create an oversupply of such products leading to an imbalance between supply and demand, which can have a negative impact on product prices.",
+          "type": "chunk"
+        },
+        "text": "Increases in industry production capacity or in cement imports tend to create an oversupply and a supply-demand imbalance, which can negatively affect product prices.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000950170-23-004361#7A#0002",
+          "quote": "A hypothetical 10% change in sales price of the cement product line would impact cement product line revenues by $60.2 million.",
+          "type": "chunk"
+        },
+        "text": "A hypothetical 10% change in the sales price of the cement product line would impact cement product line revenues by $60.2 million.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c4",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000950170-23-004361#7A#0002",
+          "quote": "A hypothetical 10% change in cement costs in 2023 compared with 2022, assuming constant volumes, would change the ready mixed concrete product line cost of sales by $26.2 million.",
+          "type": "chunk"
+        },
+        "text": "A hypothetical 10% change in cement costs in 2023 compared with 2022, assuming constant volumes, would change the ready mixed concrete product line cost of sales by $26.2 million.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c5",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000950170-23-004361#7A#0002",
+          "quote": "While increases in cement pricing may negatively impact the profitability of the ready mixed concrete operations, the cement business would benefit, although the positive impact may not reflect a direct correlation to the impact to the ready mixed concrete business.",
+          "type": "chunk"
+        },
+        "text": "Increases in cement pricing may negatively impact the profitability of ready mixed concrete operations while the cement business would benefit, although the positive impact may not directly correlate with the impact on ready mixed concrete.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "93496711893c3e31347c8933b5f3a3a8af1e7e1cbd0d0359bbb336d99a6b5efe",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0139210",
+    "input_tokens": 5309,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 1697
+  }
+}

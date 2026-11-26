@@ -1,0 +1,42 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The Consolidated Balance Sheet reports Netflix's total current liabilities at December 31, 2017 as 5,466,312, in thousands of USD [1]. I can't restate this in millions, because no computed figure in millions is available and unit conversions of my own are not allowed.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:NETFLIX_2017_10K#p45#0000",
+          "quote": "Total current liabilities | 5,466,312 | 4,586,657",
+          "type": "chunk"
+        },
+        "text": "Netflix's total current liabilities as of December 31, 2017 were 5,466,312 (in thousands of USD) per the consolidated balance sheet.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Total current liabilities at December 31, 2017 were 5,466,312 (in thousands of USD)."
+      ],
+      "missing": [
+        "A computed figure in USD millions for FY2017 total current liabilities"
+      ],
+      "reason": "The balance sheet gives the figure in thousands of USD, and no computed value in USD millions is available."
+    }
+  },
+  "request_key": "cae503b65bc53f2f632d09dd6fef9bd2744b29782346ecfd74bb635a2e09ce3e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0083640",
+    "input_tokens": 4337,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 780
+  }
+}

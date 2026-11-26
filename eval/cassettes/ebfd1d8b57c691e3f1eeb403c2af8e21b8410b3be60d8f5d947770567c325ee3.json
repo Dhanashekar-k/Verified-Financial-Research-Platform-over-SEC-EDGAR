@@ -1,0 +1,45 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The material does not answer which region had the worst topline performance in FY2022. No segment-level net revenue figures (Las Vegas Strip Resorts, Regional Operations, MGM China) are provided to compare. The passages only give consolidated net revenues and descriptions of segments, so I can only say that MGM's reportable segments are Las Vegas Strip Resorts, Regional Operations and MGM China [1].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000789570-23-000008#8#0161",
+          "quote": "MGM China. MGM China consists of MGM Macau and MGM Cotai.",
+          "type": "chunk"
+        },
+        "text": "MGM's regional segments include Regional Operations and MGM China, and the filing describes MGM China as consisting of MGM Macau and MGM Cotai.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "MGM's operations are organized into Las Vegas Strip Resorts, Regional Operations and MGM China, plus Corporate and other.",
+        "Consolidated net revenues and some Regional Operations revenue components are given, but not segment net revenue totals."
+      ],
+      "missing": [
+        "FY2022 net revenue for Las Vegas Strip Resorts",
+        "FY2022 net revenue for Regional Operations",
+        "FY2022 net revenue for MGM China"
+      ],
+      "reason": "The material contains no segment-level net revenue figures for FY2022, so the weakest region by topline cannot be determined."
+    }
+  },
+  "request_key": "ebfd1d8b57c691e3f1eeb403c2af8e21b8410b3be60d8f5d947770567c325ee3",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0074810",
+    "input_tokens": 4894,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 492
+  }
+}

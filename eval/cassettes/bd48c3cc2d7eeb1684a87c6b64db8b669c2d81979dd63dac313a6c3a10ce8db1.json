@@ -1,0 +1,42 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The material does not say what price Amazon pays its suppliers per unit for Echo devices. The passages only state that Amazon manufactures and sells electronic devices, including Echo [1]. No supplier unit-cost figure for Echo is provided.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0001018724-21-000004#1#0001",
+          "quote": "We also manufacture and sell electronic devices, including Kindle, Fire tablet, Fire TV, Echo, Ring, and other devices, and we develop and produce media content.",
+          "type": "chunk"
+        },
+        "text": "Amazon states that it manufactures and sells electronic devices, including Kindle, Fire tablet, Fire TV, Echo, Ring, and other devices.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Amazon manufactures and sells electronic devices, including Echo."
+      ],
+      "missing": [
+        "Per-unit supplier purchase price or unit cost for Echo devices"
+      ],
+      "reason": "The filings provided do not disclose the per-unit price Amazon pays suppliers for Echo devices."
+    }
+  },
+  "request_key": "bd48c3cc2d7eeb1684a87c6b64db8b669c2d81979dd63dac313a6c3a10ce8db1",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0073980",
+    "input_tokens": 5406,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 373
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The material does not support a Q2 2023 year-over-year percentage change by geographic region, so I cannot say which region dropped most. The only regional figures for 2023 cover the first six months. They show dollar declines of (5,448) million for the U.S. and (16,939) million for International [1]. These are not Q2 figures and not percentages.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:Pfizer_2023Q2_10Q#p46#0000",
+          "quote": "Revenues increase/(decrease) | $ | (22,387) | $ | (5,448) | $ | (16,939)",
+          "type": "chunk"
+        },
+        "text": "For the first six months of 2023 (ended July 2, 2023), the revenue change was (5,448) million for the U.S. and (16,939) million for International, in dollars rather than percentages.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "For the first six months of 2023, revenues changed by (5,448) million in the U.S. and (16,939) million in International (dollar change, not percentage)."
+      ],
+      "missing": [
+        "Q2 2023 (three months ended July 2, 2023) revenues by region, with the Q2 2022 comparison",
+        "Percentage change in revenues for each geographic region for Q2 2023 versus Q2 2022"
+      ],
+      "reason": "The material gives no Q2 2023 year-over-year percentage revenue change by geographic region, only six-month dollar changes for the U.S. and International."
+    }
+  },
+  "request_key": "563e4b6be6efc3ea1dfe3b1ff43b9de5daedf031437317fee45c37f1a4c1b9d3",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0092230",
+    "input_tokens": 4171,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 985
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Cardinal Health's interest expense for fiscal 2024 was $51.0 million [1].",
+    "claims": [
+      {
+        "display": "$51.0 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:-315814832361743210",
+          "fact_ids": [
+            -315814832361743210
+          ],
+          "type": "expr"
+        },
+        "text": "Cardinal Health's interest expense for FY2024 was $51.0 million.",
+        "unit": "USD",
+        "value": "51000000.0000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "b619826e62c29bdab0f487bc4b6881b1fac2432fe791b61e59f29c59a4a974bf",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.001230",
+    "input_tokens": 243,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 172
+  }
+}

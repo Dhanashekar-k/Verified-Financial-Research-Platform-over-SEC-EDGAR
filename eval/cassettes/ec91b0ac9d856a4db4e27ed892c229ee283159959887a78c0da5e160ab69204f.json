@@ -1,0 +1,37 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Mastercard's net cash provided by operating activities grew 21.8% in Q1 FY2022, measured from Q1 FY2021 [1].",
+    "claims": [
+      {
+        "display": "21.8%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:2108652692338052372 - f:-1582193840280962019) / f:-1582193840280962019",
+          "fact_ids": [
+            2108652692338052372,
+            -1582193840280962019
+          ],
+          "type": "expr"
+        },
+        "text": "Mastercard's net cash provided by operating activities grew 21.8% in Q1 FY2022 compared with Q1 FY2021.",
+        "unit": "ratio",
+        "value": "0.2180451127819548872180451128"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "ec91b0ac9d856a4db4e27ed892c229ee283159959887a78c0da5e160ab69204f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0017040",
+    "input_tokens": 327,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 250
+  }
+}

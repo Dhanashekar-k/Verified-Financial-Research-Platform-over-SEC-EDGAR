@@ -1,0 +1,43 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The provided material does not identify any specific ongoing legal proceedings or litigation for PepsiCo in FY2021 or FY2022. The only related disclosure is in the FY2021 filing, which says environmental remediation and indemnification obligations are not expected to have a material impact [1]. The other passages are auditor consents, powers of attorney, exhibit lists and cash flow statements. None of them describes legal proceedings or contingencies, so this answer is partial.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000077476-22-000010#1#0020",
+          "quote": "such obligations have not had, and are not expected to have, a material impact on our capital expenditures, earnings or competitive position",
+          "type": "chunk"
+        },
+        "text": "In the FY2021 filing, PepsiCo said its environmental remediation and indemnification obligations have not had, and are not expected to have, a material impact on its capital expenditures, earnings or competitive position.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "The FY2021 filing states that environmental remediation and indemnification obligations have not had, and are not expected to have, a material impact on capital expenditures, earnings or competitive position."
+      ],
+      "missing": [
+        "Legal Proceedings section (Item 3) of the FY2021 and FY2022 Form 10-K",
+        "Contingencies or litigation note in the financial statements for FY2021 and FY2022"
+      ],
+      "reason": "The passages contain no legal proceedings or litigation disclosure for PepsiCo for FY2021 or FY2022."
+    }
+  },
+  "request_key": "4bfebb9e27c19e083f73889f6d95ed87ba719ca95fe6254c23303186499144e9",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0096020",
+    "input_tokens": 5080,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 879
+  }
+}

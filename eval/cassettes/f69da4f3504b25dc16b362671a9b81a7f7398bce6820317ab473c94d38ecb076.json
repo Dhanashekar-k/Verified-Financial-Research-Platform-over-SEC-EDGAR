@@ -1,0 +1,36 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "EXPAND ENERGY Corp paid dividends of $1.2 billion in FY2022 [1].",
+    "claims": [
+      {
+        "display": "$1.2 billion",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:7083542109152805140",
+          "fact_ids": [
+            7083542109152805140
+          ],
+          "type": "expr"
+        },
+        "text": "EXPAND ENERGY Corp dividends paid in FY2022 were $1.2 billion.",
+        "unit": "USD",
+        "value": "1212000000.0000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "f69da4f3504b25dc16b362671a9b81a7f7398bce6820317ab473c94d38ecb076",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0012780",
+    "input_tokens": 226,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 185
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The Q2 2023 filing material does not show Pfizer spinning off any business segment. The only spin-off it mentions is the Upjohn Business, which was completed earlier [1]. As of Q2 2023, Pfizer managed its commercial operations through two operating segments, Biopharma and Business Innovation [2]. The passages do not say whether a spin-off was planned or pending.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:Pfizer_2023Q2_10Q#p37#0001",
+          "quote": "in November 2020, we and Mylan completed the transaction to spin-off our Upjohn Business and combine it with Mylan to form Viatris",
+          "type": "chunk"
+        },
+        "text": "In November 2020, Pfizer and Mylan completed the transaction to spin-off Pfizer's Upjohn Business and combine it with Mylan to form Viatris, so this spin-off was already completed before Q2 2023.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:Pfizer_2023Q2_10Q#p13#0000",
+          "quote": "We manage our commercial operations through two operating segments, each led by a single manager: Biopharma and Business Innovation.",
+          "type": "chunk"
+        },
+        "text": "Pfizer managed its commercial operations through two operating segments, Biopharma and Business Innovation.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "The Upjohn Business spin-off, combined with Mylan to form Viatris, was completed in November 2020.",
+        "As of Q2 2023, Pfizer operated two segments, Biopharma and Business Innovation."
+      ],
+      "missing": [
+        "An explicit statement in the Q2 2023 filing about any planned or pending spin-off of a business segment."
+      ],
+      "reason": "The passages show no pending or announced spin-off of a segment as of Q2 2023, but they contain no explicit statement ruling one out."
+    }
+  },
+  "request_key": "ddc75c89b87dd0bad06f94edc8d8939f6dff3b33cdfd5ac80632f4f0aa3ad9c7",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0111730",
+    "input_tokens": 4821,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 1245
+  }
+}

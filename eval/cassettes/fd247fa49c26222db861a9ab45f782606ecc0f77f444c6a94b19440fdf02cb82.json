@@ -1,0 +1,36 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Genuine Parts Co's capital expenditures in fiscal year 2022 were $339.6 million [1].",
+    "claims": [
+      {
+        "display": "$339.6 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:1202011896176290009",
+          "fact_ids": [
+            1202011896176290009
+          ],
+          "type": "expr"
+        },
+        "text": "Genuine Parts Co's capital expenditures in fiscal year 2022 were $339.6 million.",
+        "unit": "USD",
+        "value": "339632000.0000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "fd247fa49c26222db861a9ab45f782606ecc0f77f444c6a94b19440fdf02cb82",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0012860",
+    "input_tokens": 234,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 185
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Hartford Insurance Group's net income grew by 23.8% from Q2 FY2022 to Q2 FY2023 [1]. Net income for Q2 FY2022 was later restated, and this growth figure uses the amount as originally filed.",
+    "claims": [
+      {
+        "display": "23.8%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:-9078646360532939454 - f:-6978844667715352050) / f:-6978844667715352050",
+          "fact_ids": [
+            -9078646360532939454,
+            -6978844667715352050
+          ],
+          "type": "expr"
+        },
+        "text": "Net income growth from Q2 FY2022 to Q2 FY2023 was 23.8%, with Q2 FY2022 as originally filed (later restated).",
+        "unit": "ratio",
+        "value": "0.2375565610859728506787330317"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "59bfc0a20139e8b1e60465b6dd88beef0e17d4e3d0055eefcb02c8c4233d8c61",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0019820",
+    "input_tokens": 400,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 291
+  }
+}

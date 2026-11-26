@@ -1,0 +1,87 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The filings do not give a forward-looking FY2023 production rate forecast. They only describe actual rate status and changes:\n\n- The 787 production rate was increased to 5 per month beginning in October 2023 [1].\n- Boeing is currently producing the 737 at a rate of 38 per month [2].\n- The FAA stated on January 24, 2024 that it will not approve 737 MAX production rate increases until Boeing is in full compliance with quality control procedures [3].\n- The 777X program resumed production in the fourth quarter of 2023 [4].\n\nThe material does not include any forecast of planned production rate changes for FY2023.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000012927-24-000010#7#0035",
+          "quote": "increased the production rate to 5 per month beginning in October 2023",
+          "type": "chunk"
+        },
+        "text": "The 787 production rate was increased to 5 per month beginning in October 2023.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000012927-24-000010#7#0032",
+          "quote": "We are currently producing at a rate of 38 per month.",
+          "type": "chunk"
+        },
+        "text": "Boeing is currently producing the 737 at a rate of 38 per month.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000012927-24-000010#7#0032",
+          "quote": "On January 24, 2024, the FAA stated that it will not approve production rate increases or additional production lines for the 737 MAX until it is satisfied that Boeing is in full compliance with required quality control procedures.",
+          "type": "chunk"
+        },
+        "text": "On January 24, 2024, the FAA stated that it will not approve production rate increases or additional production lines for the 737 MAX until it is satisfied that Boeing is in full compliance with required quality control procedures.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c4",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000012927-24-000010#7#0035",
+          "quote": "In the fourth quarter of 2023, the 777X program resumed production.",
+          "type": "chunk"
+        },
+        "text": "The 777X program resumed production in the fourth quarter of 2023.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "The 787 production rate was increased to 5 per month beginning in October 2023.",
+        "Boeing is currently producing the 737 at 38 per month.",
+        "The FAA will not approve 737 MAX production rate increases until Boeing is in full compliance with quality control procedures.",
+        "The 777X program resumed production in the fourth quarter of 2023."
+      ],
+      "missing": [
+        "Boeing's forward-looking production rate targets or forecasts for FY2023 by program"
+      ],
+      "reason": "The passages describe actual production rate status and changes in 2023, not a forecast of production rate changes for FY2023."
+    }
+  },
+  "request_key": "d4e6dfe60849792034d1c24264a373e72a4de3b046a3086a1c11f35e33a7301e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0131210",
+    "input_tokens": 5234,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 1552
+  }
+}

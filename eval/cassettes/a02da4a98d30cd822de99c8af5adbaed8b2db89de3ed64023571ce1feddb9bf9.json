@@ -1,0 +1,89 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The material does not give a computed capital-intensity measure for FY2022, such as capex to revenue or PP&E to assets, so I cannot say definitively whether 3M is capital-intensive. The filings do show that 3M is a manufacturer that invests in property, plant and equipment [1]. They say those investments support growth and manufacturing efficiency [2]. In 2022 3M spent approximately $317 million on capital projects for environmental purposes alone [3]. It expects 2023 capital spending of approximately $1.5 billion to $1.8 billion [4].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:3M_2022_10K#p53#0000",
+          "quote": "3M is a diversified global manufacturer, technology innovator and marketer of a wide variety of products.",
+          "type": "chunk"
+        },
+        "text": "3M describes itself as a diversified global manufacturer, technology innovator and marketer of a wide variety of products.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000066740-23-000014#7#0064",
+          "quote": "Investments in property, plant and equipment enable growth across many diverse markets, helping to meet product demand and increasing manufacturing efficiency.",
+          "type": "chunk"
+        },
+        "text": "3M states that investments in property, plant and equipment enable growth across many diverse markets, help meet product demand and increase manufacturing efficiency.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000066740-23-000014#1#0008",
+          "quote": "In 2022, 3M expended approximately $317 million on capital projects for environmental purposes",
+          "type": "chunk"
+        },
+        "text": "In 2022, 3M expended approximately $317 million on capital projects for environmental purposes.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c4",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000066740-23-000014#7#0064",
+          "quote": "The Company expects 2023 capital spending to be approximately $1.5 billion to $1.8 billion",
+          "type": "chunk"
+        },
+        "text": "3M expects 2023 capital spending to be approximately $1.5 billion to $1.8 billion.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "3M is a diversified global manufacturer.",
+        "3M invests in property, plant and equipment to support growth and manufacturing efficiency.",
+        "3M spent approximately $317 million on environmental capital projects in 2022.",
+        "3M expects 2023 capital spending of approximately $1.5 billion to $1.8 billion."
+      ],
+      "missing": [
+        "FY2022 total capital expenditures",
+        "FY2022 revenue and total assets, or a computed capex-to-revenue or PP&E-to-assets ratio",
+        "FY2022 net PP&E"
+      ],
+      "reason": "The material contains no computed FY2022 capital-intensity figures, only qualitative and partial capex statements, so a definitive conclusion cannot be drawn."
+    }
+  },
+  "request_key": "a02da4a98d30cd822de99c8af5adbaed8b2db89de3ed64023571ce1feddb9bf9",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0126620",
+    "input_tokens": 5175,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 1472
+  }
+}

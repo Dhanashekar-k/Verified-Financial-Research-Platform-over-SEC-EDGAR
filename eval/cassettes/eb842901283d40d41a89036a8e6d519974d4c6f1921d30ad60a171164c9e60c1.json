@@ -1,0 +1,62 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "PulteGroup's net cash used in financing activities fell from $733.6 million in 2019 to $295.6 million in 2020 [1]. In 2020 the main uses were share repurchases, debt repayments and dividends: $170.7 million to repurchase 4.5 million shares, $65.3 million of debt repayments, and $130.2 million of cash dividends [2]. In 2019 the main uses were the same three categories: $274.3 million to repurchase 8.4 million shares, $310.0 million of debt repayments, and $122.4 million of cash dividends [3].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000822416-21-000007#7#0035",
+          "quote": "Net cash used in financing activities was $295.6 million in 2020 compared with $733.6 million during 2019.",
+          "type": "chunk"
+        },
+        "text": "Net cash used in financing activities was $295.6 million in 2020 compared with $733.6 million during 2019.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000822416-21-000007#7#0035",
+          "quote": "The net cash used in financing activities for 2020 resulted primarily from the repurchase of 4.5 million common shares for $170.7 million under our repurchase authorization, repayments of debt of $65.3 million, and cash dividends of $130.2 million.",
+          "type": "chunk"
+        },
+        "text": "The net cash used in financing activities for 2020 resulted primarily from the repurchase of 4.5 million common shares for $170.7 million, repayments of debt of $65.3 million, and cash dividends of $130.2 million.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000822416-21-000007#7#0035",
+          "quote": "Net cash used in financing activities for 2019 resulted primarily from the repurchase of 8.4 million common shares for $274.3 million under our repurchase authorization, repayments of debt of $310.0 million, and cash dividends of $122.4 million.",
+          "type": "chunk"
+        },
+        "text": "Net cash used in financing activities for 2019 resulted primarily from the repurchase of 8.4 million common shares for $274.3 million, repayments of debt of $310.0 million, and cash dividends of $122.4 million.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "eb842901283d40d41a89036a8e6d519974d4c6f1921d30ad60a171164c9e60c1",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.010755",
+    "input_tokens": 4628,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 1200
+  }
+}

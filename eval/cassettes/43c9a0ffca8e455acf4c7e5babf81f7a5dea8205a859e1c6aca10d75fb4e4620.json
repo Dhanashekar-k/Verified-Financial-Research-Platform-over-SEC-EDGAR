@@ -1,0 +1,42 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The material does not identify which debt securities of 3M are registered to trade on a national securities exchange as of Q2 2023. The passages only cover 3M's shelf registration, its medium-term notes program, and its common stock listings, not a list of exchange-listed debt securities. [1]",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:3M_2023Q2_10Q#p70#0002",
+          "quote": "Effective February 8, 2023, the Company updated its \u201cwell-known seasoned issuer\u201d (WKSI) shelf registration statement, which registers an indeterminate amount of debt or equity securities for future issuance and sale.",
+          "type": "chunk"
+        },
+        "text": "Effective February 8, 2023, the Company updated its \u201cwell-known seasoned issuer\u201d (WKSI) shelf registration statement, which registers an indeterminate amount of debt or equity securities for future issuance and sale.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "As of Q2 2023, 3M had a WKSI shelf registration statement (effective February 8, 2023) registering an indeterminate amount of debt or equity securities, and a medium-term notes program (Series F)."
+      ],
+      "missing": [
+        "The Section 12(b) registered securities table (titles of each class of debt securities, trading symbols, and exchange names) from the cover page of the Q2 2023 Form 10-Q or related filing"
+      ],
+      "reason": "The passages do not list any 3M debt securities registered on a national securities exchange as of Q2 2023."
+    }
+  },
+  "request_key": "43c9a0ffca8e455acf4c7e5babf81f7a5dea8205a859e1c6aca10d75fb4e4620",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0073010",
+    "input_tokens": 4619,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 511
+  }
+}

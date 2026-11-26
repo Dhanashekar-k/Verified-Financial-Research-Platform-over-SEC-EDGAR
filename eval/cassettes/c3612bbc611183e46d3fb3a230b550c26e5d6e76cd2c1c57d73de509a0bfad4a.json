@@ -1,0 +1,36 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Allegion plc's total assets at the end of Q3 FY2021 were $3.1 billion [1].",
+    "claims": [
+      {
+        "display": "$3.1 billion",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:-5050247430817518852",
+          "fact_ids": [
+            -5050247430817518852
+          ],
+          "type": "expr"
+        },
+        "text": "Allegion plc total assets at the end of Q3 FY2021 were $3.1 billion.",
+        "unit": "USD",
+        "value": "3116700000.0000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "c3612bbc611183e46d3fb3a230b550c26e5d6e76cd2c1c57d73de509a0bfad4a",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0012680",
+    "input_tokens": 221,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 184
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The supplied material does not include the competition risk factor from Jacobs' fiscal 2023 10-K, so it cannot say how competition could affect the business or how projects are typically awarded.",
+    "claims": [],
+    "refusal": {
+      "found": [],
+      "missing": [
+        "The fiscal 2023 10-K risk factor text on how competition in Jacobs' markets could affect its business",
+        "The 10-K text describing how projects are typically awarded, such as competitive bidding"
+      ],
+      "reason": "The provided passages do not contain the risk-factor discussion of competition or of how projects are awarded."
+    }
+  },
+  "request_key": "c5b3df0a916b72eb708e54e6e71bbd7eb39cbae0566e8aed3137497758d23898",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00760",
+    "input_tokens": 5523,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 390
+  }
+}

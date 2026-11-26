@@ -1,0 +1,42 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The FY2023 10-K cover page (fiscal year ended January 28, 2023) lists only common stock under Section 12(b), traded as ULTA on The NASDAQ Global Select Market [1]. No debt securities are listed as registered on a national securities exchange in the material provided.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:ULTABEAUTY_2023_10K#p1#0000",
+          "quote": "Common stock, par value $0.01 per share | ULTA | The NASDAQ Global Select Market",
+          "type": "chunk"
+        },
+        "text": "Ulta Beauty's Section 12(b) registration table lists only common stock, par value $0.01 per share, trading as ULTA on The NASDAQ Global Select Market; no debt securities are listed.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Only common stock (ULTA) is registered under Section 12(b) on The NASDAQ Global Select Market."
+      ],
+      "missing": [
+        "Any listing of debt securities registered on a national securities exchange"
+      ],
+      "reason": "The cover page lists only common stock as registered under Section 12(b); no debt securities are listed."
+    }
+  },
+  "request_key": "2d2933e8a727a83e6a348ae708914ccc402154611f70e3a27bdf26a61e233424",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0071130",
+    "input_tokens": 5001,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 397
+  }
+}

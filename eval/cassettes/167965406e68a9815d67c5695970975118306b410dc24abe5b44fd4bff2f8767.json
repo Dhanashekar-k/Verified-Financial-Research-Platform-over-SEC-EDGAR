@@ -1,0 +1,85 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "McKesson's FY2023 SG&A, as originally reported, was $3.8 billion higher than Cardinal Health's [1]. McKesson reported $8.7 billion [2] and Cardinal Health reported $4.8 billion [3]. Cardinal Health's FY2023 SG&A was later restated; the figures here are as originally filed, and the latest restated Cardinal figure is $4.8 billion [4].",
+    "claims": [
+      {
+        "display": "$3.8 billion",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "f:6695739178021592149 - f:5892834296694400593",
+          "fact_ids": [
+            6695739178021592149,
+            5892834296694400593
+          ],
+          "type": "expr"
+        },
+        "text": "McKesson's FY2023 SG&A was higher than Cardinal Health's by $3.8 billion (as originally reported).",
+        "unit": "USD",
+        "value": "3823000000.0000"
+      },
+      {
+        "display": "$8.7 billion",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:6695739178021592149",
+          "fact_ids": [
+            6695739178021592149
+          ],
+          "type": "expr"
+        },
+        "text": "McKesson's FY2023 SG&A was $8.7 billion.",
+        "unit": "USD",
+        "value": "8657000000.0000"
+      },
+      {
+        "display": "$4.8 billion",
+        "id": "c3",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:5892834296694400593",
+          "fact_ids": [
+            5892834296694400593
+          ],
+          "type": "expr"
+        },
+        "text": "Cardinal Health's FY2023 SG&A as originally filed was $4.8 billion.",
+        "unit": "USD",
+        "value": "4834000000.0000"
+      },
+      {
+        "display": "$4.8 billion",
+        "id": "c4",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:-5239250781496621022",
+          "fact_ids": [
+            -5239250781496621022
+          ],
+          "type": "expr"
+        },
+        "text": "Cardinal Health's latest restated FY2023 SG&A is $4.8 billion.",
+        "unit": "USD",
+        "value": "4800000000.0000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "167965406e68a9815d67c5695970975118306b410dc24abe5b44fd4bff2f8767",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0045210",
+    "input_tokens": 994,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 680
+  }
+}

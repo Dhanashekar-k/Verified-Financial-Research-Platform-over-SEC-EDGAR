@@ -1,0 +1,37 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "AppLovin's operating cash flow grew by 14.1% in fiscal 2022, measured from fiscal 2021 [1].",
+    "claims": [
+      {
+        "display": "14.1%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:532357956231109204 - f:3562431354299416787) / f:3562431354299416787",
+          "fact_ids": [
+            532357956231109204,
+            3562431354299416787
+          ],
+          "type": "expr"
+        },
+        "text": "AppLovin's operating cash flow grew 14.1% in FY2022, measured from FY2021.",
+        "unit": "ratio",
+        "value": "0.1407264315975360023877231236"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "88b9575c8a2ef86a42deda1ea1b4772a0ba102d062f33214f6bdd0f2be37b82e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0015630",
+    "input_tokens": 296,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 228
+  }
+}

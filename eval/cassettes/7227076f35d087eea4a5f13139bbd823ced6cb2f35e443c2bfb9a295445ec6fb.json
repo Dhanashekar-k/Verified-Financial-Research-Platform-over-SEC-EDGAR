@@ -1,0 +1,37 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Alphabet Inc.'s operating income grew by 90.9% in fiscal year 2021, measured from fiscal year 2020 [1].",
+    "claims": [
+      {
+        "display": "90.9%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:7306271368761608070 - f:5058060837306160859) / f:5058060837306160859",
+          "fact_ids": [
+            7306271368761608070,
+            5058060837306160859
+          ],
+          "type": "expr"
+        },
+        "text": "Alphabet Inc.'s operating income grew 90.9% in FY2021, measured from FY2020.",
+        "unit": "ratio",
+        "value": "0.9094216960993595963516398215"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "7227076f35d087eea4a5f13139bbd823ced6cb2f35e443c2bfb9a295445ec6fb",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0016030",
+    "input_tokens": 296,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 236
+  }
+}

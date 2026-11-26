@@ -1,0 +1,76 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "IQVIA described 2024 as another year of strong operating results, with income from operations up over 11 percent and operating cash flow up over 26 percent from 2023 [1]. On segments, Technology & Analytics Solutions saw revenue and profit growth improve in the second half as clients increased spending, while Research & Development Solutions also produced revenue and segment profit growth in 2024 but faced challenges in the latter half that management expects to partly persist into 2025 and considers short-term [2]. Remaining performance obligations were a record of about $33.5 billion at December 31, 2024 [3]. On liquidity, IQVIA said it continues to maintain strong liquidity, with cash and cash equivalents of $1,702 million and $825 million drawn under its $2,000 million revolving credit facility, and it was in compliance with its financial covenants in all material respects [4].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0001478242-25-000045#7#0001",
+          "quote": "We delivered another year of strong operating results in 2024 with our income from operations increasing over 11 percent and our cash flow from operating activities increasing over 26 percent from 2023.",
+          "type": "chunk"
+        },
+        "text": "IQVIA said it delivered another year of strong operating results in 2024, with income from operations increasing over 11 percent and cash flow from operating activities increasing over 26 percent from 2023.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001478242-25-000045#7#0001",
+          "quote": "Our Technology & Analytics Solutions segment revenues and profit growth improved in the second half of the year as we captured opportunities relating to our clients increasing their spending.",
+          "type": "chunk"
+        },
+        "text": "Technology & Analytics Solutions revenue and profit growth improved in the second half of the year as clients increased spending, while Research & Development Solutions also produced revenue and segment profit growth in 2024 but faced challenges in the latter half that are expected to persist partly into 2025 and are considered short-term.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001478242-25-000045#7#0001",
+          "quote": "We ended the year with our highest ever total company remaining performance obligations of approximately $33.5 billion as of December 31, 2024.",
+          "type": "chunk"
+        },
+        "text": "The company ended the year with its highest ever total company remaining performance obligations of approximately $33.5 billion as of December 31, 2024.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c4",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001478242-25-000045#7#0001",
+          "quote": "As of December 31, 2024, cash and cash equivalents were $1,702 million and we had $825 million drawn under our $2,000 million revolving credit facility.",
+          "type": "chunk"
+        },
+        "text": "IQVIA stated it continues to maintain strong liquidity, with cash and cash equivalents of $1,702 million and $825 million drawn under its $2,000 million revolving credit facility as of December 31, 2024, and compliance with financial covenants in all material respects.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "87ba6161aae5efa3e6cbb7c8b0b6f98824318d4ede93b9cbfb07117c282095b3",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0103710",
+    "input_tokens": 5064,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 1036
+  }
+}

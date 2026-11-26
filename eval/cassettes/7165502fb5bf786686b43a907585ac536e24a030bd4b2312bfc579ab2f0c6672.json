@@ -1,0 +1,48 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "The FY2022 consolidated statement of income has no separate restructuring line. It shows cost of sales, SG&A, the Juice Transaction gain and impairment of intangible assets. On a direct-line-item basis the answer is therefore zero [1]. Restructuring and impairment charges are disclosed only in the notes, where the total is $411 (in millions) and is spread across cost of sales, SG&A and other pension expense [2].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:PEPSICO_2022_10K#p62#0000",
+          "quote": "Gain associated with the Juice Transaction (see Note 13) | (3,321) | \u2014 | \u2014",
+          "type": "chunk"
+        },
+        "text": "The FY2022 Consolidated Statement of Income has no separate restructuring line item, so the explicitly outlined amount is zero.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000077476-23-000007#7#0124",
+          "quote": "Total restructuring and impairment charges | $411 | $247 | $289",
+          "type": "chunk"
+        },
+        "text": "The notes show total restructuring and impairment charges of $411 for 2022, which are included within other income statement lines rather than shown on their own line.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "7165502fb5bf786686b43a907585ac536e24a030bd4b2312bfc579ab2f0c6672",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0108730",
+    "input_tokens": 4096,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 1330
+  }
+}

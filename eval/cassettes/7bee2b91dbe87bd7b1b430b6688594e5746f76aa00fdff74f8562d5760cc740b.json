@@ -1,0 +1,85 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "answer_markdown": "Jacobs Solutions Inc.'s FY2023 operating income, as originally reported, exceeded that of Comfort Systems USA Inc. by $656.8 million [1]. This is based on Jacobs' originally reported operating income of $1.1 billion [2] and Comfort Systems' operating income of $418.4 million [3]. Jacobs' FY2023 operating income was later restated; the latest restated figure is $676.5 million [4].",
+    "claims": [
+      {
+        "display": "$656.8 million",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "f:-8882288579690922654 - f:-3398690385481802862",
+          "fact_ids": [
+            -8882288579690922654,
+            -3398690385481802862
+          ],
+          "type": "expr"
+        },
+        "text": "Jacobs' FY2023 operating income exceeded Comfort Systems' by $656.8 million, as originally reported.",
+        "unit": "USD",
+        "value": "656849000.0000"
+      },
+      {
+        "display": "$1.1 billion",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:-8882288579690922654",
+          "fact_ids": [
+            -8882288579690922654
+          ],
+          "type": "expr"
+        },
+        "text": "Jacobs' originally reported FY2023 operating income was $1.1 billion.",
+        "unit": "USD",
+        "value": "1075237000.0000"
+      },
+      {
+        "display": "$418.4 million",
+        "id": "c3",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:-3398690385481802862",
+          "fact_ids": [
+            -3398690385481802862
+          ],
+          "type": "expr"
+        },
+        "text": "Comfort Systems' FY2023 operating income was $418.4 million.",
+        "unit": "USD",
+        "value": "418388000.0000"
+      },
+      {
+        "display": "$676.5 million",
+        "id": "c4",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:6241909525706399394",
+          "fact_ids": [
+            6241909525706399394
+          ],
+          "type": "expr"
+        },
+        "text": "Jacobs' FY2023 operating income was later restated to $676.5 million.",
+        "unit": "USD",
+        "value": "676484000.0000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "7bee2b91dbe87bd7b1b430b6688594e5746f76aa00fdff74f8562d5760cc740b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0046460",
+    "input_tokens": 1024,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 699
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "contradiction": false,
+    "points": [
+      {
+        "covered": false,
+        "index": 0
+      },
+      {
+        "covered": true,
+        "index": 1
+      },
+      {
+        "covered": true,
+        "index": 2
+      },
+      {
+        "covered": false,
+        "index": 3
+      }
+    ],
+    "reason": "The answer names interest rate and stock price risk but omits that no trading instruments are held (point 0 not covered), covers the fixed vs. variable effects and the $7.25 billion fixed-rate debt with no variable-rate debt, and never mentions that the instruments are U.S. dollar denominated."
+  },
+  "request_key": "86a1d7412a1b5b57b9c07483ecf0f8a7e33ebe7e133cd6965e5c6298519888cf",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 683,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00136115",
+    "input_tokens": 492,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 167
+  }
+}
