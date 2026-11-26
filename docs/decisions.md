@@ -2,7 +2,7 @@
 
 Rewrite each seeded ADR in your own words before M1. Add new ones with `/adr "<title>"`. Record disagreements with the manual here too; a recorded "I chose differently because…" is worth more in an interview than a silent default.
 
-Planned ADRs (fill in as you reach them): 005 one EC2 box vs Lambda + Aurora (M9) · 006 no NAT gateway (M9) · 007 DuckDB vs Spark (M1) · 008 chunk size and the embedder limit (M2) · 009 hybrid retrieval components (M5) · 010 verifier operating point (M6) · 011 router cascade threshold (M7) · 012 composer model tier (M5) · 013 daily orchestration choice (M10) · 014 embedding model and halfvec (M3) · 015 public-demo abuse protection (M8/M9) · 016 no MinIO; file-based local catalog (M0) · 017 as-originally-reported vs restated values (M1) · 018 versioned tables + view swap (M3) · 019 spend-guard concurrency (M8)
+Planned ADRs (fill in as you reach them): 005 one EC2 box vs Lambda + Aurora (M9) · 006 no NAT gateway (M9) · 007 DuckDB vs Spark (M1) · 008 chunk size and the embedder limit (M2) · 009 hybrid retrieval components (M5) · 010 verifier operating point (M6; not needed, see ADR-010) · 011 router cascade threshold (M7) · 012 composer model tier (M5) · 013 daily orchestration choice (M10) · 014 embedding model and halfvec (M3) · 015 public-demo abuse protection (M8/M9) · 016 no MinIO; file-based local catalog (M0) · 017 as-originally-reported vs restated values (M1) · 018 versioned tables + view swap (M3) · 019 spend-guard concurrency (M8)
 
 ---
 
@@ -417,4 +417,34 @@ Contract 05 §6 gains `tolerance_abs`, `tolerance_basis`, `value_basis`, `latest
 
 **Consequences recorded at Shekar's direction (2026-11-26; wording drafted by Claude):** Gate 0 showed 0 unsupported claims (text 0 of 118, all claims 0 of 220), but the error mode that is live on dev is **semantic over-claiming**: `fb-00651 c1`, `fb-00723 c1` and `fb-01328` (c1 and c2), the four claims the uncalibrated judge marked partial (`eval/results/verifier/gate0_dev_pre.json`). The deterministic verifier **cannot catch this kind of error**; it needs the cut entailment pass. This is a documented limitation. Precisely: under the rules as specified, `fb-00651 c1`, `fb-00723 c1` and `fb-01328 c2` are expected to pass. `fb-01328 c1` is expected to be dropped, but only because the "0" it asserts is not in its quote: the invalid inference itself is not detected, and the same inference over a quote containing a 0 would pass. Whether an entailment pass would catch any of the four is `NOT MEASURED`.
 
+**Spec decisions (2026-11-26, Shekar), pinned in the tests.** Where a stub docstring in `app/engine/verify` says otherwise, **this list wins** (the docstrings were not edited). The verifier stays **deterministic**: no `entail.py`, no LLM.
+- **A, company.** Primary check: the evidence's `cik` (cited fact or passage) is among the plan's resolved CIKs. Text guard, for numeric and text claims: a company mention must normalize through `resolve_company.normalize_name` (suffixes stripped) to an allowed company, or be an allowed company's ALL-CAPS ticker; a ticker of one letter or a common English word names nobody. With no company restriction the guard restricts nothing; D3 still holds a numeric claim to its own fact's company. Possessives need both name forms (`resolve_company.name_variants`: "McDonald's" against `MCDONALDS CORP`). Digits inside a company name ("3M") are not a number.
+- **B, cut numbers.** A quote span may not begin or end inside a numeric token ("$298" from "$298,085"; "6%" from "16%").
+- **C, fiscal years.** "fiscal YYYY" / "FYYYYY" must equal a cited fact's `fiscal_year` exactly. A four-digit year inside a date is a label.
+- **D, unit.** A numeric claim's `unit` is checked against the fact's `uom` (per-share metrics: `USD/shares` over `USD` is allowed).
+- **E, number in quote.** A value matches by its significant-digit sequence (trailing zeros count: "30%" is not "3%"); when the claim writes a scale word, the same chunk must declare that scale. This replaces matching at the claim's own precision for text claims: a rounded restatement of a quoted figure is not supported.
+- **F, numeric claims.** Supported numbers: `v*`, each cited fact's value and the restated `latest_value` (at least one still states `v*`). Ordinals and "52-week" are labels.
+- **G, direction.** A direction word binds to its number; in quotes, parentheses and decline wording read as negative. Drop only on a clear contradiction (a claimed increase over a negative result, or the reverse); keep relational or ambiguous phrasing.
+- **H0, refusals.** The reason is always a template and `missing` is built from slots. The composer's reason text is never shown. (This replaces D6's "keep a clean reason".)
+- **H1.** A text claim carrying `value` or `display` fails `number_in_text`.
+- **I.** A numeric plan with no results (and no text-only fallback) is refused, even with a kept text claim.
+- **M.** A number followed by a unit word is not a year.
+- **Accepted suggestions:** **H** (no text that only a dropped claim has appears in a refusal), **J** (when only the primary claim failed, `missing` names its metric and period), **K** (a restated-note claim on a difference is held to its own fact's company; no direction rule), **L** (unlisted number forms are decided in `numbers.py`; nothing pinned), **N** (a scale header inside a quote is part of the chunk, so E covers it), **O** (`locate_quote` returns the smallest stripped span).
+
+**How the conflicts among these were read (drafted by Claude; change the tests if wrong).**
+1. **D against ratios.** A ratio or growth claim has unit `ratio` while its facts are `USD` (28 of 102 numeric dev claims have unit `ratio`, a count over `gate0_dev_trace.json`). For those, the claim is held to the compiled result's unit.
+2. **A beside D3.** D3 stays: a numeric claim names the matched result's company, so two compare claims with swapped names still fail. "An allowed company" alone would keep both.
+3. **A against `fb-00746 c1`**, which must be kept. Its "The NASDAQ Global Select Market" matches the tracked company NASDAQ, INC. while its filer is another company, so an exchange's name is not a company mention.
+4. **J against H0.** J's "append to the composer's `missing`" gives way to H0's "build `missing` from slots".
+5. **G against older tests.** "higher" over a negative difference and "lower" over a positive one are relational phrasing: kept, although such a sentence can be false.
+
+**Documented limitation.** Semantic over-claiming is **not caught**: `fb-00651`, `fb-00723` and `fb-01328` (see the consequences above for the exact claims). G's relational phrasing and a wrong metric name are further known misses.
+
 **How to revisit:** add the entailment pass; or after a calibrated judge or a hand audit; or if the dev ablation shows the verifier adds false refusals out of proportion to what it removes.
+
+## ADR-010: not needed (2026-11-26)
+**Status:** not needed (Shekar, 2026-11-26).
+**Context:** ADR-010 was to pick the verifier's operating point from a strictness sweep (M06 section 4.3).
+**Decision:** none to make. The sweep was cut (ADR-049) and the verifier is deterministic: no entailment strictness and no PARTIAL policy to trade off. Its constants (`VerifyConfig`: 0.5% on a claim's value, quotes of at least three words) are set by D1 and D4, not tuned.
+**Consequences:** there is no unsupported-rate against false-refusal curve; `NOT MEASURED`. The M06 definition-of-done item "the sweep curve and the chosen operating point" is closed as not done.
+**How to revisit:** if an entailment stage or a tunable threshold is added.
