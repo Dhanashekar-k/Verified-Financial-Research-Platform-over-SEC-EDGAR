@@ -1,0 +1,1103 @@
+{
+  "run_id": "2026-11-26T00-59-58Z_engine-0.6.1_haiku",
+  "git_sha": "102dd1d",
+  "corpus_version": 1,
+  "config": {
+    "system": "engine",
+    "system_version": "0.6.1",
+    "composer": "claude-haiku-5-5",
+    "mode": "live",
+    "split": "dev",
+    "sets": [
+      "numeric",
+      "financebench",
+      "narrative",
+      "unanswerable"
+    ],
+    "embedder": "Qdrant/bge-small-en-v1.5-onnx-Q/model_optimized.onnx (quantized) + BGE query instruction",
+    "ef_search": 800,
+    "top_k": 8,
+    "judge": null,
+    "judge_rubrics": {
+      "correctness": "correctness-v2",
+      "narrative": "narrative-v1",
+      "support": "support-v1"
+    },
+    "batches": [],
+    "failed_usage_usd": "0",
+    "latency_note": null,
+    "sample": 8,
+    "sample_seed": 13,
+    "request_timeout_s": 600.0
+  },
+  "sets": {
+    "numeric": {
+      "n": 8,
+      "accuracy": 1.0,
+      "ci95": [
+        1.0,
+        1.0
+      ],
+      "n_scored": 8,
+      "errors": 0,
+      "judge_errors": 0,
+      "scoring_errors": 0
+    },
+    "financebench": {
+      "n": 8,
+      "accuracy": null,
+      "ci95": null,
+      "n_scored": 0,
+      "judge_kappa": null,
+      "judge_kappa_source": null,
+      "refusal_rate": 0.875,
+      "refusal_rate_ci95": [
+        0.625,
+        1.0
+      ],
+      "recall_at_5": 0.25,
+      "recall_at_5_ci95": [
+        0.0,
+        0.625
+      ],
+      "recall_at_5_n": 8,
+      "recall_at_10": 0.375,
+      "recall_at_10_ci95": [
+        0.0,
+        0.75
+      ],
+      "recall_at_10_n": 8,
+      "recall_at_20": 0.375,
+      "recall_at_20_ci95": [
+        0.0,
+        0.75
+      ],
+      "recall_at_20_n": 8,
+      "errors": 0,
+      "judge_errors": 0,
+      "scoring_errors": 0
+    },
+    "narrative": {
+      "n": 8,
+      "coverage": null,
+      "coverage_ci95": null,
+      "coverage_n": 0,
+      "contradiction": null,
+      "contradiction_ci95": null,
+      "contradiction_n": 0,
+      "judge": "uncalibrated",
+      "recall_at_5": 0.625,
+      "recall_at_5_ci95": [
+        0.25,
+        1.0
+      ],
+      "recall_at_5_n": 8,
+      "recall_at_10": 0.75,
+      "recall_at_10_ci95": [
+        0.375,
+        1.0
+      ],
+      "recall_at_10_n": 8,
+      "recall_at_20": 0.75,
+      "recall_at_20_ci95": [
+        0.375,
+        1.0
+      ],
+      "recall_at_20_n": 8,
+      "errors": 0,
+      "judge_errors": 0,
+      "scoring_errors": 0
+    },
+    "unanswerable": {
+      "n": 8,
+      "refusal_rate": 1.0,
+      "refusal_rate_ci95": [
+        1.0,
+        1.0
+      ],
+      "n_scored": 8,
+      "errors": 0,
+      "judge_errors": 0,
+      "scoring_errors": 0
+    },
+    "answerable_false_refusal": 0.375,
+    "claims": {
+      "n": 49,
+      "unsupported_rate_pre": null,
+      "unsupported_rate_post": null
+    }
+  },
+  "latency_ms": {
+    "p50": 5735.5,
+    "p95": 14099.65
+  },
+  "cost": {
+    "total_usd": 0.02818872,
+    "per_question_usd": 0.0008808975
+  },
+  "per_question": [
+    {
+      "id": "num-0082",
+      "set": "numeric",
+      "correct": true,
+      "route": "numeric",
+      "cost_usd": 0.00052971,
+      "latency_ms": 4134,
+      "trace_id": null,
+      "split": "dev",
+      "question": "Can you tell me what Cincinnati Financial Corp's total assets were at the end of fiscal year 2024?",
+      "system_cost_usd": "0.00052971",
+      "judge_cost_usd": "0",
+      "input_tokens": 290,
+      "output_tokens": 277,
+      "retrieved_top20": [],
+      "error": null,
+      "refused": false,
+      "answer_markdown": "Cincinnati Financial Corp's total assets at the end of fiscal year 2024 were $36.5 billion [1].",
+      "refusal": null
+    },
+    {
+      "id": "num-0086",
+      "set": "numeric",
+      "correct": true,
+      "route": "numeric",
+      "cost_usd": 0.00022081,
+      "latency_ms": 3181,
+      "trace_id": null,
+      "split": "dev",
+      "question": "EXPAND ENERGY dividends paid FY2022?",
+      "system_cost_usd": "0.00022081",
+      "judge_cost_usd": "0",
+      "input_tokens": 252,
+      "output_tokens": 251,
+      "retrieved_top20": [],
+      "error": null,
+      "refused": false,
+      "answer_markdown": "Expand Energy paid dividends of $1.2 billion in FY2022 [1].",
+      "refusal": null
+    },
+    {
+      "id": "num-0098",
+      "set": "numeric",
+      "correct": true,
+      "route": "numeric",
+      "cost_usd": 0.00023171,
+      "latency_ms": 3380,
+      "trace_id": null,
+      "split": "dev",
+      "question": "How much did Crown Castle Inc. spend on selling, general and administrative expenses in 2022?",
+      "system_cost_usd": "0.00023171",
+      "judge_cost_usd": "0",
+      "input_tokens": 271,
+      "output_tokens": 269,
+      "retrieved_top20": [],
+      "error": null,
+      "refused": false,
+      "answer_markdown": "Crown Castle Inc. spent $750.0 million on selling, general and administrative expenses in fiscal 2022 [1].",
+      "refusal": null
+    },
+    {
+      "id": "num-0110",
+      "set": "numeric",
+      "correct": true,
+      "route": "numeric",
+      "cost_usd": 0.00022961,
+      "latency_ms": 2365,
+      "trace_id": null,
+      "split": "dev",
+      "question": "Allegion total assets end of Q3 FY2021?",
+      "system_cost_usd": "0.00022961",
+      "judge_cost_usd": "0",
+      "input_tokens": 245,
+      "output_tokens": 270,
+      "retrieved_top20": [],
+      "error": null,
+      "refused": false,
+      "answer_markdown": "Allegion plc's total assets at the end of Q3 FY2021 were $3.1 billion [1].",
+      "refusal": null
+    },
+    {
+      "id": "num-0131",
+      "set": "numeric",
+      "correct": true,
+      "route": "numeric",
+      "cost_usd": 0.00040141,
+      "latency_ms": 3345,
+      "trace_id": null,
+      "split": "dev",
+      "question": "How much did Martin Marietta Materials' interest expense change in percentage terms from Q1 2023 to Q1 2024, as originally reported?",
+      "system_cost_usd": "0.00040141",
+      "judge_cost_usd": "0",
+      "input_tokens": 448,
+      "output_tokens": 573,
+      "retrieved_top20": [],
+      "error": null,
+      "refused": false,
+      "answer_markdown": "Martin Marietta Materials' interest expense decreased by 5.2% from Q1 FY2023 to Q1 FY2024, measured from the originally filed Q1 FY2023 figure [1]. The Q1 FY2023 figure was later restated; the growth above uses the figure as originally filed, and no restated value is stated here.",
+      "refusal": null
+    },
+    {
+      "id": "num-0154",
+      "set": "numeric",
+      "correct": true,
+      "route": "numeric",
+      "cost_usd": 0.00039831,
+      "latency_ms": 5551,
+      "trace_id": null,
+      "split": "dev",
+      "question": "Can you tell me by what percentage WEC Energy Group's operating income changed from fiscal year 2022 to fiscal year 2023?",
+      "system_cost_usd": "0.00039831",
+      "judge_cost_usd": "0",
+      "input_tokens": 362,
+      "output_tokens": 584,
+      "retrieved_top20": [],
+      "error": null,
+      "refused": false,
+      "answer_markdown": "WEC Energy Group's operating income declined by 0.8% from FY2022 to FY2023 [1].",
+      "refusal": null
+    },
+    {
+      "id": "num-0172",
+      "set": "numeric",
+      "correct": true,
+      "route": "numeric",
+      "cost_usd": 0.00042441,
+      "latency_ms": 5834,
+      "trace_id": null,
+      "split": "dev",
+      "question": "What was the percentage change in Cardinal Health Inc's dividends paid between fiscal year 2023 and fiscal year 2024?",
+      "system_cost_usd": "0.00042441",
+      "judge_cost_usd": "0",
+      "input_tokens": 358,
+      "output_tokens": 637,
+      "retrieved_top20": [],
+      "error": null,
+      "refused": false,
+      "answer_markdown": "Cardinal Health Inc's dividends paid decreased by 5.0% from FY2023 to FY2024 [1].",
+      "refusal": null
+    },
+    {
+      "id": "num-0224",
+      "set": "numeric",
+      "correct": true,
+      "route": "numeric",
+      "cost_usd": 0.00063971,
+      "latency_ms": 5141,
+      "trace_id": null,
+      "split": "dev",
+      "question": "PNC vs VICI total assets FY2024 - how much higher is PNC's? terse",
+      "system_cost_usd": "0.00063971",
+      "judge_cost_usd": "0",
+      "input_tokens": 691,
+      "output_tokens": 1001,
+      "retrieved_top20": [],
+      "error": null,
+      "refused": false,
+      "answer_markdown": "PNC's FY2024 total assets are $514.7 billion higher than VICI's [3], at $560.0 billion [1] versus $45.4 billion [2].",
+      "refusal": null
+    },
+    {
+      "id": "fb-00746",
+      "set": "financebench",
+      "correct": null,
+      "route": "narrative",
+      "cost_usd": 0.00143361,
+      "latency_ms": 9447,
+      "trace_id": null,
+      "split": "dev",
+      "question": "Which debt securities are registered to trade on a national securities exchange under Ulta Beauty's name as of FY2023?",
+      "system_cost_usd": "0.00143361",
+      "judge_cost_usd": "0",
+      "input_tokens": 5045,
+      "output_tokens": 1718,
+      "retrieved_top20": [
+        "fb:ULTABEAUTY_2023_10K#p1#0000",
+        "0001558370-24-003941#15#0006",
+        "fb:ULTABEAUTY_2023_10K#p80#0000",
+        "fb:ULTABEAUTY_2023_10K#p83#0000",
+        "fb:ULTABEAUTY_2023_10K#p52#0000",
+        "0001558370-24-003941#15#0003",
+        "fb:ULTABEAUTY_2023_10K#p101#0000",
+        "fb:ULTABEAUTY_2023_10K#p102#0000"
+      ],
+      "error": null,
+      "refused": true,
+      "recall_at_5": 1.0,
+      "recall_at_10": 1.0,
+      "recall_at_20": 1.0,
+      "gold_answer": "There are none",
+      "answer_markdown": "The material does not show any debt securities registered under Ulta Beauty's name on a national securities exchange. The FY2023 cover page lists only common stock under Section 12(b) [1]. It also states that no securities are registered under Section 12(g) [2].",
+      "refusal": {
+        "reason": "The cover page lists only common stock under Section 12(b) and no Section 12(g) securities, so no debt securities are shown as registered.",
+        "found": [
+          "Common stock, par value $0.01 per share, trading as ULTA on The NASDAQ Global Select Market, is the only security registered under Section 12(b)."
+        ],
+        "missing": [
+          "A cover-page or exchange listing under Section 12(b) identifying any debt securities registered under Ulta Beauty's name."
+        ]
+      }
+    },
+    {
+      "id": "fb-01163",
+      "set": "financebench",
+      "correct": null,
+      "route": "narrative",
+      "cost_usd": 0.00145581,
+      "latency_ms": 9580,
+      "trace_id": null,
+      "split": "dev",
+      "question": "Among operations, investing, and financing activities, which brought in the most (or lost the least) cash flow for Nike in FY2023?",
+      "system_cost_usd": "0.00145581",
+      "judge_cost_usd": "0",
+      "input_tokens": 5027,
+      "output_tokens": 1766,
+      "retrieved_top20": [
+        "0000320187-23-000039#7#0054",
+        "fb:NIKE_2023_10K#p62#0000",
+        "fb:NIKE_2023_10K#p48#0002",
+        "fb:NIKE_2023_10K#p49#0000",
+        "0000320187-23-000039#8#0086",
+        "0000320187-23-000039#1A#0020",
+        "fb:NIKE_2023_10K#p19#0001",
+        "0000320187-23-000039#8#0119"
+      ],
+      "error": null,
+      "refused": false,
+      "recall_at_5": 1.0,
+      "recall_at_10": 1.0,
+      "recall_at_20": 1.0,
+      "gold_answer": "Among the three, cash flow from operations was the highest for Nike in FY2023.",
+      "answer_markdown": "Operations brought in the most cash in fiscal 2023, with an inflow of $5,841 million [1]. Investing activities brought in $564 million [2]. Financing activities was an outflow of $7,447 million, so it lost the most cash [3].",
+      "refusal": null
+    },
+    {
+      "id": "fb-01319",
+      "set": "financebench",
+      "correct": null,
+      "route": "narrative",
+      "cost_usd": 0.00096121,
+      "latency_ms": 7762,
+      "trace_id": null,
+      "split": "dev",
+      "question": "What is the quantity of restructuring costs directly outlined in AES Corporation's income statements for FY2022? If restructuring costs are not explicitly outlined then state 0.",
+      "system_cost_usd": "0.00096121",
+      "judge_cost_usd": "0",
+      "input_tokens": 3571,
+      "output_tokens": 1068,
+      "retrieved_top20": [
+        "0000874761-23-000010#6#0002",
+        "fb:AES_2022_10K#p86#0002",
+        "0000874761-23-000010#8#0016",
+        "0000874761-23-000010#7#0029",
+        "0000874761-23-000010#6#0001",
+        "0000874761-23-000010#8#0138",
+        "fb:AES_2022_10K#p202#0001",
+        "fb:AES_2022_10K#p132#0002"
+      ],
+      "error": null,
+      "refused": true,
+      "recall_at_5": 0.0,
+      "recall_at_10": 1.0,
+      "recall_at_20": 1.0,
+      "gold_answer": "0",
+      "answer_markdown": "The provided material does not show a restructuring costs line in AES Corporation's FY2022 income statement, so no restructuring amount can be stated. Under the instruction to state 0 when restructuring costs are not explicitly outlined, the figure would be 0, but no NUMERIC RESULT supports a numeric claim, so none is made here.",
+      "refusal": {
+        "reason": "The passages contain AES's FY2022 statement of operations figures but no restructuring costs line, and no computed numeric result addresses restructuring costs.",
+        "found": [
+          "The passages give AES's 2022 statement of operations data, including revenue and net income attributable to The AES Corporation, but no restructuring costs item."
+        ],
+        "missing": [
+          "A restructuring costs line item from AES's FY2022 consolidated statement of operations, or a NUMERIC RESULT for restructuring costs, to confirm whether the amount is explicitly outlined or zero."
+        ]
+      }
+    },
+    {
+      "id": "fb-01936",
+      "set": "financebench",
+      "correct": null,
+      "route": "narrative",
+      "cost_usd": 0.00151001,
+      "latency_ms": 11045,
+      "trace_id": null,
+      "split": "dev",
+      "question": "What is the nature & purpose of AMCOR's restructuring liability as oF Q2 of FY2023 close?",
+      "system_cost_usd": "0.00151001",
+      "judge_cost_usd": "0",
+      "input_tokens": 3974,
+      "output_tokens": 2085,
+      "retrieved_top20": [
+        "0001748790-23-000030#8#0049",
+        "fb:AMCOR_2023_10K#p37#0001",
+        "fb:AMCOR_2023_10K#p104#0000",
+        "0001748790-23-000030#8#0053",
+        "0001748790-23-000030#7#0032",
+        "0001748790-23-000030#8#0136",
+        "0001748790-23-000030#8#0175",
+        "fb:AMCOR_2023_10K#p37#0002"
+      ],
+      "error": null,
+      "refused": true,
+      "recall_at_5": 0.0,
+      "recall_at_10": 0.0,
+      "recall_at_20": 0.0,
+      "gold_answer": "87% of the total restructuring liability is related Employee liabilities.",
+      "answer_markdown": "The material describes Amcor's Other Restructuring Plans, which were triggered by the Russia-Ukraine conflict to help mitigate the impact of disposed earnings from the Russian sale [1]. It does not give the nature or purpose of the restructuring liability as of Q2 FY2023, and it contains no Q2 FY2023 liability balance.",
+      "refusal": {
+        "reason": "The passages describe Other Restructuring Plans and their expenses but do not give the restructuring plan liability or its purpose as of Q2 FY2023.",
+        "found": [
+          "Other Restructuring Plans were triggered by the Russia-Ukraine conflict to help mitigate the impact of disposed earnings from the Russian sale."
+        ],
+        "missing": [
+          "The restructuring plan liability balance and its components as of Q2 FY2023 (the referenced liability analysis table is not reproduced in the passages).",
+          "A description of the liability's nature and purpose stated for the Q2 FY2023 quarter-end, as opposed to the fiscal year ended June 30, 2023."
+        ]
+      }
+    },
+    {
+      "id": "fb-03473",
+      "set": "financebench",
+      "correct": null,
+      "route": "numeric",
+      "cost_usd": 0.00025431,
+      "latency_ms": 2295,
+      "trace_id": null,
+      "split": "dev",
+      "question": "What is the FY2017 return on assets (ROA) for Coca Cola? ROA is defined as: FY2017 net income / (average total assets between FY2016 and FY2017). Round your answer to two decimal places. Give a response to the question by relying on the details shown in the balance sheet and the P&L statement.",
+      "system_cost_usd": "0.00025431",
+      "judge_cost_usd": "0",
+      "input_tokens": 106,
+      "output_tokens": 398,
+      "retrieved_top20": [],
+      "error": null,
+      "refused": true,
+      "recall_at_5": 0.0,
+      "recall_at_10": 0.0,
+      "recall_at_20": 0.0,
+      "gold_answer": "0.01",
+      "answer_markdown": "The filings in the corpus do not support an answer to this question.",
+      "refusal": {
+        "reason": "The filings in the corpus do not support an answer to this question.",
+        "found": [],
+        "missing": [
+          "a supported way to compute this ('ratio' applies only to a ratio metric in the catalog)"
+        ]
+      }
+    },
+    {
+      "id": "fb-04412",
+      "set": "financebench",
+      "correct": null,
+      "route": "numeric",
+      "cost_usd": 0.00026941,
+      "latency_ms": 2357,
+      "trace_id": null,
+      "split": "dev",
+      "question": "We need to calculate a reasonable approximation (or exact number if possible) of a financial metric. Basing your judgment by information plainly provided in the balance sheet and the P&L statement, what is Lockheed Martin's FY2020 asset turnover ratio? Asset turnover ratio is defined as: FY2020 revenue / (average total assets between FY2019 and FY2020). Round your answer to two decimal places.",
+      "system_cost_usd": "0.00026941",
+      "judge_cost_usd": "0",
+      "input_tokens": 142,
+      "output_tokens": 421,
+      "retrieved_top20": [],
+      "error": null,
+      "refused": true,
+      "recall_at_5": 0.0,
+      "recall_at_10": 0.0,
+      "recall_at_20": 0.0,
+      "gold_answer": "1.33",
+      "answer_markdown": "The filings in the corpus do not support an answer to this question.",
+      "refusal": {
+        "reason": "The filings in the corpus do not support an answer to this question.",
+        "found": [],
+        "missing": [
+          "a supported way to compute this ('ratio' applies only to a ratio metric in the catalog)"
+        ]
+      }
+    },
+    {
+      "id": "fb-04784",
+      "set": "financebench",
+      "correct": null,
+      "route": "numeric",
+      "cost_usd": 0.00015851,
+      "latency_ms": 1790,
+      "trace_id": null,
+      "split": "dev",
+      "question": "Based on the information provided primarily in the statement of income, what is the FY2018 - FY2019 change in unadjusted operating income % margin for Walmart? Answer in units of percents and round to one decimal place.",
+      "system_cost_usd": "0.00015851",
+      "judge_cost_usd": "0",
+      "input_tokens": 73,
+      "output_tokens": 213,
+      "retrieved_top20": [],
+      "error": null,
+      "refused": true,
+      "recall_at_5": 0.0,
+      "recall_at_10": 0.0,
+      "recall_at_20": 0.0,
+      "gold_answer": "0.2%",
+      "answer_markdown": "The filings in the corpus do not support an answer to this question.",
+      "refusal": {
+        "reason": "The filings in the corpus do not support an answer to this question.",
+        "found": [],
+        "missing": [
+          "operating_margin for Walmart Inc., FY2018 (missing_input)",
+          "operating_margin for Walmart Inc., FY2019 (missing_input)"
+        ]
+      }
+    },
+    {
+      "id": "fb-07507",
+      "set": "financebench",
+      "correct": null,
+      "route": "numeric",
+      "cost_usd": 0.00015281,
+      "latency_ms": 2253,
+      "trace_id": null,
+      "split": "dev",
+      "question": "What is Adobe's year-over-year change in unadjusted operating income from FY2015 to FY2016 (in units of percents and round to one decimal place)? Give a solution to the question by using the income statement.",
+      "system_cost_usd": "0.00015281",
+      "judge_cost_usd": "0",
+      "input_tokens": 71,
+      "output_tokens": 202,
+      "retrieved_top20": [],
+      "error": null,
+      "refused": true,
+      "recall_at_5": 0.0,
+      "recall_at_10": 0.0,
+      "recall_at_20": 0.0,
+      "gold_answer": "65.4%",
+      "answer_markdown": "The filings in the corpus do not support an answer to this question.",
+      "refusal": {
+        "reason": "The filings in the corpus do not support an answer to this question.",
+        "found": [],
+        "missing": [
+          "operating_income for ADOBE INC., FY2016 (no_fact)"
+        ]
+      }
+    },
+    {
+      "id": "nar-003",
+      "set": "narrative",
+      "correct": null,
+      "route": "narrative",
+      "cost_usd": 0.00161761,
+      "latency_ms": 10342,
+      "trace_id": null,
+      "split": "dev",
+      "question": "How did PulteGroup's financing cash outflows in fiscal 2020 compare with 2019, and what were the main uses of cash in each year?",
+      "system_cost_usd": "0.00161761",
+      "judge_cost_usd": "0",
+      "input_tokens": 4840,
+      "output_tokens": 2127,
+      "retrieved_top20": [
+        "0000822416-21-000007#7#0035",
+        "0000822416-21-000007#8#0018",
+        "0000822416-21-000007#8#0012",
+        "0000822416-21-000007#7#0034",
+        "0000822416-21-000007#8#0060",
+        "0000822416-21-000007#7#0033",
+        "0000822416-21-000007#5#0002",
+        "0000822416-21-000007#8#0064"
+      ],
+      "error": null,
+      "refused": false,
+      "recall_at_5": 1.0,
+      "recall_at_10": 1.0,
+      "recall_at_20": 1.0,
+      "answer_markdown": "Net cash used in financing activities was $295.6 million in 2020, compared with $733.6 million in 2019, so the outflow was smaller in 2020 [1]. In 2020 the main uses were repurchases of 4.5 million common shares for $170.7 million, repayments of debt of $65.3 million, and cash dividends of $130.2 million [2]. In 2019 the main uses were repurchases of 8.4 million common shares for $274.3 million, repayments of debt of $310.0 million, and cash dividends of $122.4 million [3].",
+      "refusal": null
+    },
+    {
+      "id": "nar-025",
+      "set": "narrative",
+      "correct": null,
+      "route": "narrative",
+      "cost_usd": 0.00214521,
+      "latency_ms": 14065,
+      "trace_id": null,
+      "split": "dev",
+      "question": "In its fiscal 2020 10-K, how does Expand Energy (Chesapeake) describe its approach to managing commodity price risk with derivatives, including how it values them and handles counterparty non-performance risk?",
+      "system_cost_usd": "0.00214521",
+      "judge_cost_usd": "0",
+      "input_tokens": 5286,
+      "output_tokens": 3093,
+      "retrieved_top20": [
+        "0000895126-21-000078#1A#0012",
+        "0000895126-21-000078#8#0168",
+        "0000895126-21-000078#8#0156",
+        "0000895126-21-000078#8#0057",
+        "0000895126-21-000078#8#0158",
+        "0000895126-21-000078#7A#0000",
+        "0000895126-21-000078#8#0039",
+        "0000895126-21-000078#1A#0013"
+      ],
+      "error": null,
+      "refused": false,
+      "recall_at_5": 0.0,
+      "recall_at_10": 1.0,
+      "recall_at_20": 1.0,
+      "answer_markdown": "Chesapeake uses oil, natural gas and NGL derivatives to reduce exposure to price swings and to stabilize cash flows [1]. It settles all of these instruments net and did not designate any open derivatives for hedge accounting as of December 31, 2020 [2]. It values them using established index prices, volatility curves and discount factors, and compares these estimates with counterparty valuations for reasonableness [3]. Non-performance risk is considered in that valuation, but has not had a material impact to date [4]. For counterparty risk, it enters into derivative contracts only with highly rated or acceptable-credit counterparties and attempts to limit exposure to any single counterparty [5]. Counterparty obligations must be secured by cash or letters of credit when mark-to-market amounts owed to Chesapeake exceed defined thresholds [6]. The filing also warns that a counterparty default could hurt Chesapeake's ability to fund its planned activities [7].",
+      "refusal": null
+    },
+    {
+      "id": "nar-026",
+      "set": "narrative",
+      "correct": null,
+      "route": "narrative",
+      "cost_usd": 0.00193371,
+      "latency_ms": 15160,
+      "trace_id": null,
+      "split": "dev",
+      "question": "In Martin Marietta Materials' fiscal 2022 10-K market risk disclosures, how do cement price changes and industry supply conditions affect the company's cement and ready mixed concrete businesses?",
+      "system_cost_usd": "0.00193371",
+      "judge_cost_usd": "0",
+      "input_tokens": 5381,
+      "output_tokens": 2651,
+      "retrieved_top20": [
+        "0000950170-23-004361#7A#0002",
+        "0000950170-23-004361#7#0000",
+        "0000950170-23-004361#1#0000",
+        "0000950170-23-004361#7#0002",
+        "0000950170-23-004361#8#0025",
+        "0000950170-23-004361#7A#0001",
+        "0000950170-23-004361#7#0005",
+        "0000950170-23-004361#7#0052"
+      ],
+      "error": null,
+      "refused": false,
+      "recall_at_5": 1.0,
+      "recall_at_10": 1.0,
+      "recall_at_20": 1.0,
+      "answer_markdown": "Cement is a commodity priced on supply and demand, and industry oversupply can pressure cement prices [2]. A hypothetical 10% change in cement sales price would change cement product line revenues by $60.2 million [1]. Cement is a key raw material for ready mixed concrete, and the Company may be unable to pass cement cost increases to customers; a hypothetical 10% change in cement costs in 2023 compared with 2022 would change ready mixed concrete cost of sales by $26.2 million [3]. Higher cement pricing may hurt ready mixed concrete profitability while benefiting the cement business, though the effects are not directly correlated [4].",
+      "refusal": null
+    },
+    {
+      "id": "nar-033",
+      "set": "narrative",
+      "correct": null,
+      "route": "narrative",
+      "cost_usd": 0.00172011,
+      "latency_ms": 12736,
+      "trace_id": null,
+      "split": "dev",
+      "question": "In Salesforce's fiscal 2021 10-K risk factors, what financial-market, investment, and equity-compensation related factors does the company say could cause its quarterly operating results to vary widely, and what could happen to its stock price if it misses expectations?",
+      "system_cost_usd": "0.00172011",
+      "judge_cost_usd": "0",
+      "input_tokens": 4555,
+      "output_tokens": 2389,
+      "retrieved_top20": [
+        "0001108524-22-000013#8#0018",
+        "0001108524-22-000013#8#0028",
+        "0001108524-22-000013#8#0002",
+        "0001108524-22-000013#5#0001",
+        "0001108524-22-000013#8#0030",
+        "0001108524-22-000013#1A#0014",
+        "0001108524-22-000013#7#0004",
+        "0001108524-22-000013#1#0017"
+      ],
+      "error": null,
+      "refused": true,
+      "recall_at_5": 0.0,
+      "recall_at_10": 0.0,
+      "recall_at_20": 0.0,
+      "answer_markdown": "The passages cover only part of the question. They say that heightened volatility of global markets exposes Salesforce to fluctuations in foreign currency markets [1]. They also say the fourth quarter has historically been the strongest for new business and renewals, so seasonality can compound currency effects [2]. Slower growth in new business could negatively affect future revenues [3]. Failure to achieve the anticipated benefits of the Slack acquisition could negatively impact the price of the common stock [4]. The passages do not list the financial-market, investment, or equity-compensation factors that cause quarterly results to vary, and do not describe the stock price effect of missing expectations.",
+      "refusal": {
+        "reason": "The passages do not contain the risk factor text on financial-market, investment, and equity-compensation factors causing quarterly variation, nor a statement on stock price reaction to missing expectations.",
+        "found": [
+          "Foreign currency fluctuations from volatile global markets",
+          "Seasonality with a strong fourth quarter for new business and renewals",
+          "Slower growth in new business could affect future revenues",
+          "Failure to achieve acquisition benefits could negatively impact the stock price"
+        ],
+        "missing": [
+          "Risk factor text listing financial-market, investment, or equity-compensation factors that cause quarterly results to vary widely",
+          "Risk factor text describing the stock price effect if Salesforce misses expectations"
+        ]
+      }
+    },
+    {
+      "id": "nar-036",
+      "set": "narrative",
+      "correct": null,
+      "route": "narrative",
+      "cost_usd": 0.00187621,
+      "latency_ms": 12842,
+      "trace_id": null,
+      "split": "dev",
+      "question": "How did IQVIA Holdings describe its overall operating performance, segment trends, and liquidity position in its fiscal year 2024 10-K MD&A?",
+      "system_cost_usd": "0.00187621",
+      "judge_cost_usd": "0",
+      "input_tokens": 5121,
+      "output_tokens": 2588,
+      "retrieved_top20": [
+        "0001478242-25-000045#8#0021",
+        "0001478242-25-000045#5#0005",
+        "0001478242-25-000045#1#0003",
+        "0001478242-25-000045#7#0001",
+        "0001478242-25-000045#1A#0061",
+        "0001478242-25-000045#7#0040",
+        "0001478242-25-000045#7#0000",
+        "0001478242-25-000045#15#0002"
+      ],
+      "error": null,
+      "refused": false,
+      "recall_at_5": 1.0,
+      "recall_at_10": 1.0,
+      "recall_at_20": 1.0,
+      "answer_markdown": "IQVIA described strong 2024 operating results, with income from operations increasing over 11 percent and cash flow from operating activities increasing over 26 percent from 2023 [1]. Its Technology & Analytics Solutions segment revenues and profit growth improved in the second half of the year as clients increased their spending [2]. Research & Development Solutions also produced revenues and segment profit growth in 2024 [3]. The company stated that it continues to maintain strong liquidity: as of December 31, 2024, cash and cash equivalents were $1,702 million and $825 million was drawn under its $2,000 million revolving credit facility [4].",
+      "refusal": null
+    },
+    {
+      "id": "nar-039",
+      "set": "narrative",
+      "correct": null,
+      "route": "narrative",
+      "cost_usd": 0.00161151,
+      "latency_ms": 14142,
+      "trace_id": null,
+      "split": "dev",
+      "question": "In Targa Resources Corp.'s fiscal 2024 10-K, how does the company say Dodd-Frank derivatives regulation could affect its hedging activities and financial results, and what margin treatment applies to its current hedges?",
+      "system_cost_usd": "0.00161151",
+      "judge_cost_usd": "0",
+      "input_tokens": 5119,
+      "output_tokens": 2059,
+      "retrieved_top20": [
+        "0000950170-25-023983#1#0000",
+        "0000950170-25-023983#1A#0043",
+        "0000950170-25-023983#1A#0042",
+        "0000950170-25-023983#15#0026",
+        "0000950170-25-023983#15#0030",
+        "0000950170-25-023983#15#0027",
+        "0000950170-25-023983#15#0029",
+        "0000950170-25-023983#15#0028"
+      ],
+      "error": null,
+      "refused": false,
+      "recall_at_5": 1.0,
+      "recall_at_10": 1.0,
+      "recall_at_20": 1.0,
+      "answer_markdown": "The filing says Dodd-Frank and any new regulations could increase the cost of derivative contracts or reduce the availability of derivatives used to protect against risks [1]. If the company reduces its derivative use as a result, its results of operations may become more volatile and its cash flows less predictable [2]. Its current hedging activities would qualify for the non-financial end user exemption from the margin requirements [3].",
+      "refusal": null
+    },
+    {
+      "id": "nar-046",
+      "set": "narrative",
+      "correct": null,
+      "route": "narrative",
+      "cost_usd": 0.00167711,
+      "latency_ms": 11145,
+      "trace_id": null,
+      "split": "dev",
+      "question": "In Sysco's fiscal 2021 10-K, how does the company say the COVID-19 pandemic could affect its income taxes and the valuation of its assets even after the pandemic subsides?",
+      "system_cost_usd": "0.00167711",
+      "judge_cost_usd": "0",
+      "input_tokens": 5445,
+      "output_tokens": 2125,
+      "retrieved_top20": [
+        "0000096021-21-000093#7#0005",
+        "0000096021-21-000093#7#0017",
+        "0000096021-21-000093#7#0012",
+        "0000096021-21-000093#7#0015",
+        "0000096021-21-000093#7#0006",
+        "0000096021-21-000093#7#0043",
+        "0000096021-21-000093#1#0012",
+        "0000096021-21-000093#1A#0002"
+      ],
+      "error": null,
+      "refused": true,
+      "recall_at_5": 0.0,
+      "recall_at_10": 0.0,
+      "recall_at_20": 0.0,
+      "answer_markdown": "The filing says COVID-19 may change Sysco's mix of earnings by jurisdiction and has increased the risk of operating losses that could lead to valuation allowances against certain deferred tax assets, which would negatively affect income tax expense, net earnings and the balance sheet [1]. The material does not say whether these effects continue after the pandemic subsides, and it does not address valuation of assets beyond deferred tax assets.",
+      "refusal": {
+        "reason": "The passages describe tax and balance-sheet effects tied to prolonged operating losses and do not say whether COVID-19 effects on asset valuation continue after the pandemic subsides.",
+        "found": [
+          "Valuation allowances against certain deferred tax assets could be recognized if operating losses in certain jurisdictions are prolonged beyond current expectations."
+        ],
+        "missing": [
+          "Passage text stating whether COVID-19 effects on asset valuation (such as goodwill or other assets) persist after the pandemic subsides."
+        ]
+      }
+    },
+    {
+      "id": "nar-049",
+      "set": "narrative",
+      "correct": null,
+      "route": "narrative",
+      "cost_usd": 0.00149251,
+      "latency_ms": 9297,
+      "trace_id": null,
+      "split": "dev",
+      "question": "In Ferguson Enterprises' fiscal 2024 10-K market risk disclosures, how does the company describe its exposure to fuel price fluctuations and the steps it takes to mitigate commodity-related risks?",
+      "system_cost_usd": "0.00149251",
+      "judge_cost_usd": "0",
+      "input_tokens": 5099,
+      "output_tokens": 1825,
+      "retrieved_top20": [
+        "0002011641-24-000005#7A#0000",
+        "0002011641-24-000005#7A#0001",
+        "0002011641-24-000005#8#0131",
+        "0002011641-24-000005#8#0127",
+        "0002011641-24-000005#8#0121",
+        "0002011641-24-000005#8#0128",
+        "0002011641-24-000005#1#0001",
+        "0002011641-24-000005#15#0019"
+      ],
+      "error": null,
+      "refused": false,
+      "recall_at_5": 1.0,
+      "recall_at_10": 1.0,
+      "recall_at_20": 1.0,
+      "answer_markdown": "Ferguson states that it is exposed to fluctuations in fuel prices, which could affect transportation costs [1]. It says this price volatility could potentially have a material impact on its financial condition and/or results of operations [2]. To mitigate commodity-related risks, it regularly monitors commodity trends and has alternative sourcing plans in place to mitigate supplier concentration risk, pass commodity-related inflation to customers or suppliers, and continue scaling its distribution networks, including its transportation infrastructure [3].",
+      "refusal": null
+    },
+    {
+      "id": "un-007",
+      "set": "unanswerable",
+      "correct": true,
+      "route": "out_of_scope",
+      "cost_usd": 0.00005571,
+      "latency_ms": 1047,
+      "trace_id": null,
+      "split": "dev",
+      "question": "How much will Walmart spend on share repurchases in fiscal 2029?",
+      "system_cost_usd": "0.00005571",
+      "judge_cost_usd": "0",
+      "input_tokens": 30,
+      "output_tokens": 16,
+      "retrieved_top20": [],
+      "error": null,
+      "refused": true,
+      "answer_markdown": "This question is outside what SEC filings can answer (a forecast, a price or a topic that is not about a listed company's reported results).",
+      "refusal": {
+        "reason": "This question is outside what SEC filings can answer (a forecast, a price or a topic that is not about a listed company's reported results).",
+        "found": [],
+        "missing": []
+      }
+    },
+    {
+      "id": "un-010",
+      "set": "unanswerable",
+      "correct": true,
+      "route": "out_of_scope",
+      "cost_usd": 0.00005551,
+      "latency_ms": 1750,
+      "trace_id": null,
+      "split": "dev",
+      "question": "How many paid subscribers will Netflix have at the end of 2029?",
+      "system_cost_usd": "0.00005551",
+      "judge_cost_usd": "0",
+      "input_tokens": 28,
+      "output_tokens": 16,
+      "retrieved_top20": [],
+      "error": null,
+      "refused": true,
+      "answer_markdown": "This question is outside what SEC filings can answer (a forecast, a price or a topic that is not about a listed company's reported results).",
+      "refusal": {
+        "reason": "This question is outside what SEC filings can answer (a forecast, a price or a topic that is not about a listed company's reported results).",
+        "found": [],
+        "missing": []
+      }
+    },
+    {
+      "id": "un-015",
+      "set": "unanswerable",
+      "correct": true,
+      "route": "narrative",
+      "cost_usd": 0.00080041,
+      "latency_ms": 5637,
+      "trace_id": null,
+      "split": "dev",
+      "question": "How many Salesforce customers are located in the city of Chicago?",
+      "system_cost_usd": "0.00080041",
+      "judge_cost_usd": "0",
+      "input_tokens": 5078,
+      "output_tokens": 445,
+      "retrieved_top20": [
+        "0001108524-22-000013#1#0002",
+        "0001108524-22-000008#1#0001",
+        "0001108524-20-000014#1#0001",
+        "0001108524-25-000006#1#0014",
+        "0001108524-20-000014#1#0000",
+        "0001108524-26-000060#1#0016",
+        "0001108524-22-000013#1#0000",
+        "0001108524-23-000011#1#0000"
+      ],
+      "error": null,
+      "refused": true,
+      "answer_markdown": "The provided material does not state how many Salesforce customers are located in the city of Chicago. The passages describe Salesforce's principal offices in San Francisco and that it sells to businesses of all sizes worldwide, but give no customer counts by city.",
+      "refusal": {
+        "reason": "The passages do not report the number of Salesforce customers located in Chicago, and no numeric result addresses this.",
+        "found": [
+          "Salesforce sells to businesses of all sizes and in almost every industry worldwide.",
+          "Salesforce's principal executive offices are located in San Francisco, California."
+        ],
+        "missing": [
+          "A count of Salesforce customers located in the city of Chicago, from a filing or computed figure."
+        ]
+      }
+    },
+    {
+      "id": "un-022",
+      "set": "unanswerable",
+      "correct": true,
+      "route": "out_of_scope",
+      "cost_usd": 0.00005461,
+      "latency_ms": 816,
+      "trace_id": null,
+      "split": "dev",
+      "question": "Should I buy Tesla shares now?",
+      "system_cost_usd": "0.00005461",
+      "judge_cost_usd": "0",
+      "input_tokens": 19,
+      "output_tokens": 16,
+      "retrieved_top20": [],
+      "error": null,
+      "refused": true,
+      "answer_markdown": "This question is outside what SEC filings can answer (a forecast, a price or a topic that is not about a listed company's reported results).",
+      "refusal": {
+        "reason": "This question is outside what SEC filings can answer (a forecast, a price or a topic that is not about a listed company's reported results).",
+        "found": [],
+        "missing": []
+      }
+    },
+    {
+      "id": "un-030",
+      "set": "unanswerable",
+      "correct": true,
+      "route": "out_of_scope",
+      "cost_usd": 0.00005451,
+      "latency_ms": 922,
+      "trace_id": null,
+      "split": "dev",
+      "question": "How do I file my personal income taxes?",
+      "system_cost_usd": "0.00005451",
+      "judge_cost_usd": "0",
+      "input_tokens": 18,
+      "output_tokens": 16,
+      "retrieved_top20": [],
+      "error": null,
+      "refused": true,
+      "answer_markdown": "This question is outside what SEC filings can answer (a forecast, a price or a topic that is not about a listed company's reported results).",
+      "refusal": {
+        "reason": "This question is outside what SEC filings can answer (a forecast, a price or a topic that is not about a listed company's reported results).",
+        "found": [],
+        "missing": []
+      }
+    },
+    {
+      "id": "un-036",
+      "set": "unanswerable",
+      "correct": true,
+      "route": "narrative",
+      "cost_usd": 0.00144441,
+      "latency_ms": 11880,
+      "trace_id": null,
+      "split": "dev",
+      "question": "What goodwill impairment did Meta record when it sold Instagram in 2022?",
+      "system_cost_usd": "0.00144441",
+      "judge_cost_usd": "0",
+      "input_tokens": 4143,
+      "output_tokens": 1920,
+      "retrieved_top20": [
+        "0001326801-23-000013#8#0041",
+        "0001326801-23-000013#7#0025",
+        "0001326801-23-000013#5#0000",
+        "0001326801-23-000013#8#0066",
+        "0001326801-23-000013#8#0103",
+        "0001326801-23-000013#3#0006",
+        "0001326801-23-000013#8#0079",
+        "0001326801-23-000013#7#0006"
+      ],
+      "error": null,
+      "refused": true,
+      "answer_markdown": "No goodwill impairment has been identified as of December 31, 2022 [1]. In 2022 Meta recorded $447 million of impairment and downward adjustments on non-marketable equity securities, which is not a goodwill impairment [2]. The material does not describe any sale of Instagram, so it does not support a goodwill impairment tied to such a sale [1].",
+      "refusal": {
+        "reason": "The passages do not describe a sale of Instagram or any goodwill impairment connected to one.",
+        "found": [
+          "As of December 31, 2022, no impairment of goodwill has been identified.",
+          "During 2022 Meta recorded $447 million of impairment and downward adjustments on non-marketable equity securities."
+        ],
+        "missing": [
+          "Passages or figures describing a 2022 sale of Instagram.",
+          "A goodwill impairment amount associated with any Instagram sale."
+        ]
+      }
+    },
+    {
+      "id": "un-039",
+      "set": "unanswerable",
+      "correct": true,
+      "route": "narrative",
+      "cost_usd": 0.00139941,
+      "latency_ms": 8879,
+      "trace_id": null,
+      "split": "dev",
+      "question": "Why did Costco stop charging membership fees in fiscal 2023?",
+      "system_cost_usd": "0.00139941",
+      "judge_cost_usd": "0",
+      "input_tokens": 4843,
+      "output_tokens": 1690,
+      "retrieved_top20": [
+        "0000909832-23-000042#8#0040",
+        "0000909832-23-000042#6#0009",
+        "0000909832-23-000042#1#0000",
+        "0000909832-23-000042#6#0005",
+        "0000909832-23-000042#8#0022",
+        "0000909832-23-000042#8#0039",
+        "0000909832-23-000042#6#0004",
+        "0000909832-23-000042#1#0004"
+      ],
+      "error": null,
+      "refused": true,
+      "answer_markdown": "The material does not support the premise that Costco stopped charging membership fees in fiscal 2023. The passages show membership fee revenue continuing to grow in 2023 [1], and the annual fee for these memberships is $60 in the U.S. [2]. No passage gives a reason for any change in fees.",
+      "refusal": {
+        "reason": "The passages describe membership fees continuing in fiscal 2023 and do not say that Costco stopped charging them.",
+        "found": [
+          "Membership fee revenue increased 8% in 2023, driven by new member sign-ups, upgrades to Executive membership, and the benefit of an additional week.",
+          "Our annual fee for these memberships is $60 in the U.S."
+        ],
+        "missing": [
+          "A passage stating that Costco discontinued or changed membership fees in fiscal 2023",
+          "A passage explaining the reason for any such change"
+        ]
+      }
+    },
+    {
+      "id": "un-050",
+      "set": "unanswerable",
+      "correct": true,
+      "route": "narrative",
+      "cost_usd": 0.00097881,
+      "latency_ms": 7195,
+      "trace_id": null,
+      "split": "dev",
+      "question": "What were Moderna's annual vaccine sales in fiscal 2008?",
+      "system_cost_usd": "0.00097881",
+      "judge_cost_usd": "0",
+      "input_tokens": 4872,
+      "output_tokens": 843,
+      "retrieved_top20": [
+        "0001682852-26-000033#7#0005",
+        "0001682852-24-000015#1#0000",
+        "0001682852-25-000022#1#0000",
+        "0001682852-23-000011#8#0020",
+        "0001682852-26-000033#1#0000",
+        "0001682852-21-000006#8#0023",
+        "0001682852-22-000012#8#0020",
+        "0001682852-23-000011#1#0000"
+      ],
+      "error": null,
+      "refused": true,
+      "answer_markdown": "The provided material does not contain Moderna's fiscal 2008 vaccine sales. Moderna was founded in 2010, and the passages cover only later periods.",
+      "refusal": {
+        "reason": "The material contains no figure for Moderna's fiscal 2008 vaccine sales, and no NUMERIC RESULTS were supplied.",
+        "found": [
+          "The passages report later periods only, such as 2023 net product sales of $6.7 billion and 2024 net product sales of $3.1 billion."
+        ],
+        "missing": [
+          "Moderna's fiscal 2008 vaccine sales figure from XBRL facts or an SEC filing covering fiscal 2008"
+        ]
+      }
+    }
+  ]
+}
