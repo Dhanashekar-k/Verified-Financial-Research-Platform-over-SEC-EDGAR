@@ -14,7 +14,7 @@ from typing import Literal
 
 from pydantic import BaseModel, ConfigDict
 
-from app.engine.answer import Claim, Refusal
+from app.engine.answer import Answer, Claim, Refusal
 from app.engine.entities.resolve_company import CompanyRecord
 from app.engine.plan.catalog import MetricDef
 from app.engine.plan.schema import NotFound, NumericResult, QueryPlan
@@ -155,6 +155,19 @@ class VerificationReport(BaseModel):
     claims_dropped: int
     results: list[VerifierResult]
     dropped_by_check: dict[str, int] = {}
+
+
+# What the policy sees in place of a composer's refusal wording (H0, ADR-049).
+WITHHELD_REASON = "[composer refusal wording withheld]"
+
+
+def without_composer_wording(answer: Answer) -> Answer:
+    """``answer`` as the policy receives it, with the composer's own prose removed: the
+    ``answer_markdown`` (where it also words its refusals) and, for a refusal, ``reason``,
+    ``found`` and ``missing``. A refusal stays a refusal. The policy cannot show, or paraphrase,
+    wording it never sees. The claims are passed unchanged, their texts included."""
+    refusal = None if answer.refusal is None else Refusal(reason=WITHHELD_REASON)
+    return answer.model_copy(update={"answer_markdown": "", "refusal": refusal})
 
 
 def allowed_ciks(plan: QueryPlan, universe: Collection[int] | None = None) -> frozenset[int]:

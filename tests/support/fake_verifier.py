@@ -72,8 +72,7 @@ class FakeVerifier:
         if answer.refusal is None and kept:
             status = "verified" if len(kept) == len(answer.claims) else "partially_verified"
             return PolicyDecision(kept=kept, status=status)
-        reason = answer.refusal.reason if answer.refusal else "fake refusal"
-        refusal = Refusal(reason=reason, found=[c.text for c in kept])
+        refusal = Refusal(reason="fake refusal", found=[c.text for c in kept])
         return PolicyDecision(kept=kept, refusal=refusal, status="refused")
 
     def verifier(self) -> Verifier:

@@ -17,6 +17,7 @@ from app.engine.plan.schema import CompanyRef, Note, NumericResult, PeriodRef, Q
 from app.engine.verify import numbers, numeric, policy, quotes
 from app.engine.verify.evidence import load_evidence
 from app.engine.verify.models import (
+    WITHHELD_REASON,
     CheckOutcome,
     Checks,
     Evidence,
@@ -25,6 +26,7 @@ from app.engine.verify.models import (
     VerifyContext,
     allowed_ciks,
     company_names,
+    without_composer_wording,
 )
 from app.engine.verify.pipeline import (
     VerifierContractError,
@@ -115,7 +117,8 @@ def test_all_dropped_becomes_a_refusal_with_no_claim_text() -> None:
 def test_a_refusal_lists_only_what_survives() -> None:
     answer = TWO.model_copy(update={"refusal": Refusal(reason="Only part is known.")})
     out, _ = verify_answer(answer, Evidence(), context(), verifier=FakeVerifier().verifier())
-    assert out.answer_markdown.startswith("Only part is known.")
+    assert out.answer_markdown.startswith("fake refusal")  # the policy's own reason
+    assert "Only part is known." not in out.model_dump_json()
     assert "- Net income was $5. [1]" in out.answer_markdown
     assert out.refusal and out.refusal.found == ["Net income was $5.", "Costs rose."]
 
@@ -201,6 +204,61 @@ def test_preflight_names_every_stubbed_core(monkeypatch: pytest.MonkeyPatch) -> 
     for module in (numbers, quotes, policy):
         monkeypatch.setattr(module, "IMPLEMENTED", True)
     require_implemented()
+
+
+# --- H0: the composer's refusal wording ------------------------------------------------------
+
+COMPOSER = Refusal(
+    reason="Weak Chinese demand hurt margins, but the forecast is not disclosed.",
+    found=["Margins fell on softness in China."],
+    missing=["why demand in China softened"],
+)
+
+
+def test_the_policy_never_sees_the_composers_refusal_wording() -> None:
+    seen: list[Answer] = []
+    fake = FakeVerifier()
+    v = fake.verifier()
+
+    def spy(answer: Answer, *args: Any) -> PolicyDecision:
+        seen.append(answer)
+        return fake.apply(answer, *args)
+
+    prose = "The material does not say how weak Chinese demand was [1]."
+    refused = TWO.model_copy(update={"refusal": COMPOSER, "answer_markdown": prose})
+    out, _ = verify_answer(
+        refused, Evidence(), context(), verifier=type(v)(v.check_numeric, v.check_text,
+        v.decide, spy))  # fmt: skip
+    [handed] = seen
+    assert handed.refusal == Refusal(reason=WITHHELD_REASON)  # still a refusal, no wording
+    assert handed.claims == refused.claims
+    assert handed.answer_markdown == ""  # the composer words its refusals here too
+    assert refused.refusal == COMPOSER  # the composer's answer is not edited in place
+    assert "Chin" not in out.model_dump_json() and "material does not" not in out.answer_markdown
+
+
+def test_an_unrefused_answer_loses_its_prose_and_gains_no_refusal() -> None:
+    handed = without_composer_wording(TWO)
+    assert (handed.answer_markdown, handed.refusal, handed.claims) == ("", None, TWO.claims)
+    assert TWO.answer_markdown  # the original is untouched
+
+
+@pytest.mark.parametrize("where", ["reason", "missing"])
+def test_passing_the_composers_refusal_through_breaks_the_contract(where: str) -> None:
+    """A policy that "keeps the composer's reason" (the old D6) echoes what it was handed."""
+
+    def pass_through(answer: Answer, *_: Any) -> PolicyDecision:
+        assert answer.refusal is not None
+        text = answer.refusal.reason
+        refusal = Refusal(
+            reason=text if where == "reason" else "A template.",
+            missing=[f"also: {text}"] if where == "missing" else [],
+            found=[c.text for c in answer.claims],
+        )
+        return PolicyDecision(kept=list(answer.claims), refusal=refusal, status="refused")
+
+    with pytest.raises(VerifierContractError, match="H0"):
+        breach(apply=pass_through, answer=TWO.model_copy(update={"refusal": COMPOSER}))
 
 
 # --- render ----------------------------------------------------------------------------------

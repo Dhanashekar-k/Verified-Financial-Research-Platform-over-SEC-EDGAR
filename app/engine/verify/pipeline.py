@@ -4,6 +4,10 @@ No LLM anywhere (ADR-049). A numeric claim goes to ``numeric.py``, a text claim 
 ``policy.py`` decides what survives and whether that answers the question; ``render.py`` writes
 the answer from the survivors.
 
+A composer's own prose never reaches the user (H0): the policy is handed the answer without the
+composer's ``answer_markdown`` or refusal wording, so it cannot copy them into a refusal. It does
+receive the claims; that no dropped claim's text appears in a refusal is the policy's rule.
+
 The pipeline also holds the policy to its contract and raises ``VerifierContractError`` rather
 than pass a breach on: a claim is kept only with a "pass" on each check of its kind, kept claims
 are the answer's own and unchanged, ``found`` is only kept claims, and a composer's refusal
@@ -21,6 +25,7 @@ from app.engine.answer import Answer, Claim
 from app.engine.verify import numbers, numeric, policy, quotes
 from app.engine.verify.models import (
     POLICY_DROP,
+    WITHHELD_REASON,
     CheckOutcome,
     Evidence,
     PolicyDecision,
@@ -28,6 +33,7 @@ from app.engine.verify.models import (
     VerifierResult,
     VerifyConfig,
     VerifyContext,
+    without_composer_wording,
 )
 from app.engine.verify.render import render
 
@@ -109,6 +115,11 @@ def _enforce(answer: Answer, results: Sequence[VerifierResult], decision: Policy
             raise VerifierContractError("an answer with no kept claim must be refused")
     elif refusal.found != [c.text for c in decision.kept]:
         raise VerifierContractError("refusal.found must be the texts of the kept claims")
+    elif any(WITHHELD_REASON in text for text in (refusal.reason, *refusal.missing)):
+        raise VerifierContractError(
+            "the refusal reason must be a template and missing built from slots (H0), not "
+            "passed through from the composer's refusal"
+        )
     if (refusal is not None) != (decision.status == "refused"):
         raise VerifierContractError(f"status {decision.status!r} does not match the refusal")
     dropped = len(answer.claims) - len(decision.kept)
@@ -126,7 +137,7 @@ def verify_answer(
     """The verified ``Answer`` (same schema) and the report beside it."""
     cfg = cfg or VerifyConfig()
     results = [verify_claim(c, evidence, ctx, cfg, verifier) for c in answer.claims]
-    decision = verifier.apply(answer, results, ctx, cfg)
+    decision = verifier.apply(without_composer_wording(answer), results, ctx, cfg)
     _enforce(answer, results, decision)
     first_failed = Counter(
         (r.checks.failed() or [POLICY_DROP])[0] for r in results if r.action == "drop"

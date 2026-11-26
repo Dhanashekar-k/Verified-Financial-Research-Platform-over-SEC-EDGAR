@@ -1,10 +1,10 @@
 """``answer_markdown`` rebuilt from the claims that survive (M06 3.4).
 
-The composer's ``answer_markdown`` is never shown: a dropped claim cannot leave its sentence
-behind. What is written here is a kept claim's text, the compiler's own note about a kept figure,
-a period line built from the plan, or the ``reason`` of the refusal the policy decided. That
-reason can be the composer's own sentence (D6 keeps it unless it adds an unsupported number), so
-for a refused answer unverified composer wording can still appear: ``docs/m6/spec-questions.md``.
+The composer's prose is not shown. Its ``answer_markdown`` is discarded here, so a dropped claim
+cannot leave its sentence behind, and neither it nor the composer's refusal wording is given to
+the policy (H0, ``pipeline.py``), so a refusal's ``reason`` cannot be copied from them. What is
+written is a kept claim's text, the compiler's own note about a kept figure, a period line built
+from the plan, or the policy's reason.
 """
 
 from __future__ import annotations
