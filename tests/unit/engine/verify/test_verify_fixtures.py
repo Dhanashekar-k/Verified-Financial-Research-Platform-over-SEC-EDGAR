@@ -85,6 +85,7 @@ MUST_PASS = [
     ("fb-00723", "c1"),
     ("fb-01328", "c2"),
     ("fb-01328", "c1"),
+    ("fb-02419", "c1"),
 ]
 
 
@@ -158,3 +159,13 @@ def test_real_records_are_the_hard_case_for_company_names() -> None:
     tickers = {t for c in companies.values() for t in [c.ticker, *c.tickers] if t}
     assert {"A", "C", "ALL", "IT", "ON", "NOW", "MSFT"} <= tickers
     assert any(c.name == "NASDAQ, INC." for c in companies.values())
+
+
+def test_num_0213_has_no_unit_on_a_metric_that_has_one() -> None:
+    """The premise of the missing-unit pin: a USD metric, and a claim with no unit."""
+    case = vc.dev_case("num-0213", "c1")
+    assert case.claim.unit is None
+    [res] = [r for r in case.ctx.results if r.expr == case.claim.provenance.expr]  # type: ignore[union-attr]
+    assert (res.metric, res.operation) == ("capex", "difference")
+    assert vc.catalog()["capex"].unit == "USD"
+    assert {m.unit for m in vc.catalog().values()} == {"USD", "ratio", "USD/shares", "shares"}

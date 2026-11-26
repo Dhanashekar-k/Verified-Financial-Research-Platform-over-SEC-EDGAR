@@ -17,11 +17,13 @@ from app.engine.verify.models import (
     DETERMINISTIC_CHECKS,
     CheckOutcome,
     Checks,
+    Evidence,
     PolicyDecision,
     VerifierResult,
     VerifyConfig,
     VerifyContext,
 )
+from app.engine.verify.pipeline import Verifier, verify_answer
 from app.engine.verify.policy import apply, decide
 from tests.unit.engine.verify import verify_cases as vc
 
@@ -669,3 +671,75 @@ def test_a_refusal_for_the_primary_claim_alone_names_its_metric_and_period() -> 
     refusal = assert_refused(decision)
     entries = " | ".join(refusal.missing).lower()
     assert refusal.missing and "revenue" in entries and "2023" in entries
+
+
+# --- the real policy through the pipeline (H0 and the pipeline's contract) ------------------------
+
+
+def through_pipeline(
+    claims: Sequence[Claim],
+    ctx: VerifyContext,
+    *,
+    drop: Collection[int] = (),
+    refusal: Refusal | None = None,
+) -> Answer:
+    """The real ``decide`` and ``apply`` inside ``verify_answer``, with the claim checks replaced:
+    the claim at each position in ``drop`` fails. A decision that breaks the pipeline's
+    contract (H0 among it) raises ``VerifierContractError``."""
+    answer = Answer(answer_markdown="composer prose", claims=list(claims), refusal=refusal)
+    failing = {id(answer.claims[i]) for i in drop}
+
+    def check(claim: Claim, *_: object) -> CheckOutcome:
+        first = "fail" if id(claim) in failing else "pass"
+        if claim.kind == "text":
+            checks = Checks(quote_substring=first, metadata_match="pass", number_in_text="pass")
+        else:
+            checks = Checks(provenance_exec=first, metadata_match="pass", number_in_text="pass")
+        return CheckOutcome(checks=checks, reason="" if first == "pass" else "A check failed.")
+
+    verifier = Verifier(check_numeric=check, check_text=check, decide=decide, apply=apply)
+    verified, _ = verify_answer(answer, Evidence(), ctx, CFG, verifier)
+    return verified
+
+
+def test_through_the_pipeline_no_composer_wording_reaches_the_answer() -> None:
+    bad = vc.text_claim("Margins fell because China demand collapsed.", "a quote of words",
+                        claim_id="t9")  # fmt: skip
+    composer = Refusal(
+        reason="Weak Chinese demand hurt margins, but the forecast is not disclosed.",
+        found=["Softness in China persisted."],
+        missing=["why demand in China softened"],
+    )
+    out = through_pipeline(
+        [narrative_claims()[0], bad], narrative_ctx(), drop={1}, refusal=composer
+    )
+    dumped = out.model_dump_json()  # the markdown and the refusal
+    assert out.refusal is not None
+    assert "Chin" not in dumped and "demand" not in dumped.lower()
+    assert "composer prose" not in dumped
+    assert out.answer_markdown.startswith(out.refusal.reason)
+
+
+@pytest.mark.parametrize(
+    ("build", "drop", "composer_refused", "status"),
+    [
+        (lambda: (trend_claims(), trend_ctx()), set(), False, "answered"),
+        (lambda: (trend_claims(), trend_ctx()), {2}, False, "refused"),
+        (lambda: (trend_claims(), trend_ctx()), set(), True, "refused"),
+        (lambda: (narrative_claims(), narrative_ctx()), {0, 1}, False, "refused"),
+        (lambda: ([value_claim()], value_ctx(not_found=[not_found()])), set(), False,
+         "refused"),
+        (lambda: (compare_claims(primary=2), vc.compare_context()), {2}, False, "refused"),
+        (lambda: (rank_claims(), rank_ctx()), set(), False, "answered"),
+    ],
+    ids=["verified", "slot_dropped", "composer_refusal", "no_text_left", "not_found",
+         "primary_dropped", "universe_rank"],
+)  # fmt: skip
+def test_the_policy_satisfies_the_pipelines_contract(
+    build, drop: set[int], composer_refused: bool, status: str
+) -> None:
+    claims, ctx = build()
+    composer = Refusal(reason="The filings do not say.") if composer_refused else None
+    out = through_pipeline(claims, ctx, drop=drop, refusal=composer)
+    assert (out.refusal is None) is (status == "answered")
+    assert out.claims == [c for i, c in enumerate(claims) if i not in drop]

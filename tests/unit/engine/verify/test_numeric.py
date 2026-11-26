@@ -1,6 +1,6 @@
 """``verify/numeric.py``: provenance re-execution, number-in-text, metadata and wording checks
-(M06 3.2, 4.1; ADR-049 D1-D3, D7 and the spec decisions A to O, which win where the stub's
-docstring disagrees). Written before the implementation."""
+(M06 3.2, 4.1; ADR-049 D1-D3, D7 and its spec decisions, later rounds winning over earlier
+ones and all of them over the stub's docstring). Written before the implementation."""
 
 from __future__ import annotations
 
@@ -333,23 +333,75 @@ def test_lower_over_a_negative_difference_passes() -> None:
     assert_passes(run(case))
 
 
+def compare_build(which: str, text: str) -> vc.Case:
+    """ "compare": Apple minus Microsoft is positive. "reverse": Microsoft minus Apple."""
+    return vc.compare_case(2, text) if which == "compare" else vc.reverse_compare_case(text)
+
+
 @pytest.mark.parametrize(
-    ("build", "text"),
+    ("which", "text"),
     [
-        (
-            "reverse",
-            "Microsoft's FY2023 revenue was $171.4 billion higher than Apple's.",
-        ),
+        ("reverse", "Microsoft's FY2023 revenue was $171.4 billion higher than Apple's."),
         ("compare", "Apple's FY2023 revenue was $171.4 billion lower than Microsoft's."),
-        ("compare", "Microsoft's FY2023 revenue was $171.4 billion lower than Apple's."),
+        ("compare", "Apple had $171.4 billion less revenue than Microsoft in FY2023."),
+        ("compare", "Microsoft had $171.4 billion more revenue than Apple in FY2023."),
+        ("compare", "Microsoft's FY2023 revenue was higher than Apple's by $171.4 billion."),
     ],
 )
-def test_relational_phrasing_over_a_difference_is_kept(build: str, text: str) -> None:
-    """Decision G: drop only on a clear contradiction; keep relational phrasing, where which
-    side is "lower" depends on the sentence. DOCUMENTS A LIMIT: the first two rows are false
-    and are kept. The unsigned magnitude states the difference in either direction."""
-    case = vc.reverse_compare_case(text) if build == "reverse" else vc.compare_case(2, text)
-    assert_passes(run(case))
+def test_a_false_comparison_with_a_clear_subject_fails(which: str, text: str) -> None:
+    """ "higher / lower / more / less ... than" must agree with the sign of (first-named
+    company minus the comparator)."""
+    outcome = run(compare_build(which, text))
+    assert_fails(outcome, "metadata_match", others_pass=("provenance_exec",))
+
+
+@pytest.mark.parametrize(
+    ("which", "text"),
+    [
+        ("reverse", "Apple's FY2023 revenue was $171.4 billion higher than Microsoft's."),
+        ("compare", "Microsoft's FY2023 revenue was $171.4 billion lower than Apple's."),
+        ("compare", "Apple had $171.4 billion more revenue than Microsoft in FY2023."),
+        ("compare", "Microsoft had $171.4 billion less revenue than Apple in FY2023."),
+        ("compare", "Apple's FY2023 revenue was higher than Microsoft's by $171.4 billion."),
+    ],
+)
+def test_a_true_comparison_is_kept_in_either_order(which: str, text: str) -> None:
+    """The sentence's order need not be the compiled difference's order: the unsigned
+    magnitude states the difference when the relation is true."""
+    assert_passes(run(compare_build(which, text)))
+
+
+@pytest.mark.parametrize(
+    "text",
+    [
+        "FY2023 revenue was $171.4 billion lower than Microsoft's.",
+        "Compared with Microsoft's, Apple's FY2023 revenue was $171.4 billion higher.",
+        "Compared with Microsoft's, Apple's FY2023 revenue was $171.4 billion lower.",
+    ],
+    ids=["no_named_subject", "comparator_first_true", "comparator_first_false"],
+)
+def test_a_comparison_with_no_bindable_subject_is_kept(text: str) -> None:
+    """DOCUMENTS A LIMIT: lenient only where the subject cannot be bound (no company before
+    the relation, or no "than" after it). The first and third sentences are false and pass."""
+    assert_passes(run(vc.compare_case(2, text)))
+
+
+@pytest.mark.parametrize(
+    ("question_id", "claim_id"),
+    [
+        ("num-0202", "c1"),  # "more ... than"
+        ("num-0206", "c1"),  # "higher than"
+        ("num-0217", "c3"),  # "higher than ... by"
+        ("num-0220", "c3"),
+        ("num-0227", "c1"),
+        ("num-0232", "c3"),  # two possessives, one a ticker
+        ("num-0240", "c3"),  # "more in ... than"
+    ],
+)
+def test_real_true_dev_comparisons_are_kept(question_id: str, claim_id: str) -> None:
+    """Real judge-supported comparisons whose first-named company is the minuend and whose
+    difference is positive: the rule must not drop them."""
+    assert_passes(run(vc.dev_case(question_id, claim_id)))
 
 
 def test_a_claimed_decrease_over_a_positive_growth_fails() -> None:
@@ -990,3 +1042,56 @@ def test_a_restated_value_under_a_difference_has_no_direction_rule() -> None:
         "Apple's FY2023 revenue was restated and fell to $390.0 billion."
     )
     assert_passes(run(case))
+
+
+# --- a missing unit fails closed -----------------------------------------------------------------
+
+
+@pytest.mark.parametrize(
+    "build", [vc.revenue_case, vc.eps_case, vc.growth_case], ids=["usd", "eps", "growth_of_usd"]
+)
+def test_a_missing_unit_fails_closed_when_the_metric_has_a_unit(build) -> None:
+    """Only a catalog-unitless metric (unit "ratio") may omit its unit. The rule reads the
+    metric's unit, so growth of a USD metric may not omit it either."""
+    case = with_claim(build(), unit=None)
+    assert_fails(run(case), "metadata_match", others_pass=("provenance_exec", "number_in_text"))
+
+
+def test_a_ratio_metric_may_omit_its_unit() -> None:
+    assert_passes(run(with_claim(vc.margin_case(), unit=None)))
+
+
+def test_dev_num_0213_without_a_unit_is_dropped() -> None:
+    """num-0213 c1: judge-supported, but capex is a USD metric and the claim has no unit."""
+    outcome = run(vc.dev_case("num-0213", "c1"))
+    assert_fails(outcome, "metadata_match", others_pass=("provenance_exec", "number_in_text"))
+
+
+# --- values, not digits --------------------------------------------------------------------------
+
+
+def test_a_percentage_written_without_its_sign_fails() -> None:
+    """3 is not 3%: "decreased 36.7" does not state -0.367."""
+    case = vc.growth_case("Apple's revenue decreased 36.7 in fiscal 2023.")
+    assert_fails(run(case), "number_in_text")
+
+
+# --- exchange names are not companies ------------------------------------------------------------
+
+
+@pytest.mark.parametrize(
+    "text",
+    [
+        "Apple, listed on The NASDAQ Global Select Market, had FY2023 revenue of $383.3 billion.",
+        "Apple (NASDAQ: AAPL) reported FY2023 revenue of $383.3 billion.",
+    ],
+)
+def test_an_exchange_name_names_no_company(text: str) -> None:
+    """NASDAQ, INC. is a tracked company, but the exchange's name is not a mention of it."""
+    assert_passes(run(vc.with_real_companies(vc.revenue_case(text))))
+
+
+def test_the_exchange_operator_named_as_a_company_is_still_a_company() -> None:
+    case = vc.revenue_case("NASDAQ, Inc.'s FY2023 revenue was $383.3 billion.")
+    outcome = run(vc.with_real_companies(case))
+    assert_fails(outcome, "metadata_match", others_pass=("provenance_exec", "number_in_text"))

@@ -256,6 +256,12 @@ def test_dev_claim_tokens_are_classified(
         ("$383.3 million", "383285000000", False),  # million for billion
         ("0", "0.4", True),
         ("0", "1", False),
+        ("5.5%", "0.055", True),
+        ("5.5%", "0.55", False),  # equal digits, another value
+        ("55%", "0.055", False),
+        ("3%", "0.03", True),
+        ("3%", "3", False),  # a percentage is not a count
+        ("3", "0.03", False),
     ],
 )
 def test_text_match_uses_only_the_precision_shown(
