@@ -123,6 +123,11 @@ def _retry_after_s(err: Exception) -> float | None:
         return None
 
 
+def _rejected(err: Exception) -> bool:
+    """The API refused the request before accepting it (rate limit, overload)."""
+    return isinstance(err, anthropic.APIStatusError) and err.status_code in (429, 529)
+
+
 class LLMClient:
     def __init__(
         self,
@@ -290,7 +295,10 @@ class LLMClient:
                     requests=[
                         {"custom_id": key, "params": req} for key, (_, req, _) in queued.items()
                     ]
-                )
+                ),
+                # Creating a batch is not idempotent: after a timeout or a 5xx it may exist
+                # already, and a second create would be billed too. Only a rejection retries.
+                retryable=_rejected,
             )
             batch_id = str(batch.id)
             self._save_batch_state(batch_id, set(queued))
@@ -358,13 +366,15 @@ class LLMClient:
                 return str(saved["batch_id"])
         return None
 
-    def _with_retries(self, fn: Callable[[], R]) -> R:
+    def _with_retries(
+        self, fn: Callable[[], R], *, retryable: Callable[[Exception], bool] | None = None
+    ) -> R:
         attempt = 0
         while True:
             try:
                 return fn()
             except (anthropic.APIStatusError, anthropic.APIConnectionError) as err:
-                if not _retryable(err) or attempt >= self._max_retries:
+                if not (retryable or _retryable)(err) or attempt >= self._max_retries:
                     raise
                 backoff = min(BACKOFF_BASE_S * 2**attempt, MAX_BACKOFF_S)
                 hinted = _retry_after_s(err)

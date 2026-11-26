@@ -8,13 +8,23 @@ from pathlib import Path
 from types import SimpleNamespace
 from typing import Any
 
+import anthropic
 import pytest
 
 from app.llm.client import BatchPending, LLMClient
 from app.llm.prices import cost_usd
 from app.llm.types import LLMMode
 
-from .fakes import GOOD, MESSAGES, SYSTEM, Answer, Sleeper, make_response
+from .fakes import (
+    GOOD,
+    MESSAGES,
+    SYSTEM,
+    Answer,
+    DefaultedAnswer,
+    Sleeper,
+    api_error,
+    make_response,
+)
 
 
 class FakeBatches:
@@ -330,3 +340,35 @@ def test_oversized_queue_fails_loudly(tmp_path: Path, monkeypatch: pytest.Monkey
     with pytest.raises(ValueError, match="batch limit"):
         client.run_pending_batch()
     assert batches.created == []
+
+
+@pytest.mark.parametrize(
+    ("error", "creates"),
+    [
+        (api_error(anthropic.RateLimitError, 429), 2),  # rejected: safe to send again
+        (api_error(anthropic.InternalServerError, 500), 1),  # it may exist: never resend
+    ],
+)
+def test_batch_create_is_retried_only_when_the_api_rejected_it(
+    tmp_path: Path, error: Exception, creates: int
+) -> None:
+    attempts: list[int] = []
+
+    class Batches:
+        def create(self, requests: list[dict[str, Any]]) -> Any:
+            attempts.append(len(requests))
+            raise error
+
+    sdk = SimpleNamespace(messages=SimpleNamespace(batches=Batches()))
+    client = LLMClient(
+        mode=LLMMode.batch,
+        cassette_dir=tmp_path,
+        sdk_client=sdk,
+        max_retries=1,
+        sleep=lambda _: None,
+    )
+    with pytest.raises(BatchPending):
+        client.structured("planner", SYSTEM, MESSAGES, DefaultedAnswer)
+    with pytest.raises(type(error)):
+        client.run_pending_batch()
+    assert len(attempts) == creates
