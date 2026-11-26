@@ -2,18 +2,18 @@
 
 Written 2026-11-26 by `/dod M5`. Numbers are copied from the files named beside them. Where no source exists the report says `NOT MEASURED`. The numbers table keeps the JSON values unrounded; percentages elsewhere are rounded from those JSON values. Command results are saved in `docs/m5/dod_checks.txt`, the test run's session output in `docs/m5/test_run_log.txt`, and box times (hand-recorded) in `docs/m5/box_sessions.json`.
 
-**Verdict: M5 is NOT done against its own checklist.** Four of the five items pass. Item 1 fails: the engine beats the baseline on numeric, but **not on FinanceBench** (test: engine lower, difference not distinguishable from zero). Whether to close M5 under the CLAUDE.md completeness bar with this shortfall logged is Shekar's call; this report does not make it.
+**Verdict: M5 is CLOSED under the CLAUDE.md completeness bar, with a logged shortfall (Shekar's decision, 2026-11-26).** It does not pass its own checklist: four of the five items pass and item 1 stays **FAIL**. The engine beats the baseline on numeric, but **not on FinanceBench**. This test result stands as the **first and only look**: for M5 there is no further dev tuning followed by a second test run.
 
 ## Definition of done (M05 §6)
 
 | # | Item | Result | Evidence |
 |---|---|---|---|
-| 1a | Engine beats baseline on numeric, test split, paired-bootstrap CI | **PASS** | `docs/results.md`, "Engine vs baseline": n 168, 96.4% vs 5.4%, +91.1 pp, 95% CI [86.3, 95.2]. Read with the independence caveat below |
-| 1b | Engine beats baseline on FinanceBench, test split, paired-bootstrap CI | **FAIL** | Same table: n 105, 17.1% vs 23.8%, **−6.7 pp**, 95% CI [−15.2, 1.9], p 0.1658, "no difference shown" |
+| 1a | Engine beats baseline on numeric, test split, paired-bootstrap CI | **PASS** | `docs/results.md`, "Engine vs baseline": n 168, 96.4% vs 5.4%, +91.1 pp, 95% CI [86.3, 95.2]. **This is agreement with the source, not independent accuracy** (note 1) |
+| 1b | Engine beats baseline on FinanceBench, test split, paired-bootstrap CI | **FAIL** | Same table: n 105, 17.1% vs 23.8%, **−6.7 pp**, 95% CI [−15.2, 1.9], p 0.1658, "no difference shown". See "FinanceBench: why it fails" |
 | 2 | 100% of claims carry provenance (asserted in the harness) | **PASS**, with limits | `eval/run.py` returns 2 on any engine claim with empty provenance, a numeric claim without fact ids, or a fact id the compiler did not return. The test run exited 0 (`docs/m5/test_run_log.txt`; the results file does not store the gate's outcome); `sets.claims.n` = 498. `uv run pytest tests/unit/eval -k provenance`: 24 passed (`docs/m5/dod_checks.txt`). **Limits:** it checks ids, not that the expression is the compiler's; for text claims it checks that a chunk id and quote exist, not that the quote is in the chunk. Unsupported-claim rate: `NOT MEASURED` (M6) |
 | 3 | Coverage report and intent accuracy recorded | **PASS** | `eval/results/coverage/2026-11-26T02-19-54Z_coverage.json`; `eval/results/intent/2026-11-25T11-00-52Z_intent_planner-claude-haiku-5-5.json` (dev only; test intent accuracy `NOT MEASURED`) |
 | 4 | Retrieval ablation and composer Pareto tables auto-generated in `docs/results.md` | **PASS** | `make report` wrote both inside the AUTO markers |
-| 5 | SQL guard rejects 30/30; fallback off by default, measured separately if enabled | **PASS**, with a gap | `uv run pytest tests/unit/engine/test_sql_guard.py -k corpus`: 31 passed (30 cases + the count check); whole file 159 passed (`docs/m5/dod_checks.txt`). **The fallback is not built:** the engine never calls the guard, `ENGINE_SQL_FALLBACK` has no effect, and the read-only role and statement timeout do not exist. So it is off, and there is nothing to measure. Docstrings in `schema.py` and `guard.py` read as if the switch worked |
+| 5 | SQL guard rejects 30/30; fallback off by default, measured separately if enabled | **PASS**, with a gap | `uv run pytest tests/unit/engine/test_sql_guard.py -k corpus`: 31 passed (30 cases + the count check); whole file 159 passed (`docs/m5/dod_checks.txt`). **The guard is tested (30/30) but not wired into the engine.** The fallback is not built: the engine never calls the guard, `ENGINE_SQL_FALLBACK` has no effect, and the read-only role and statement timeout do not exist. So it is off, and there is nothing to measure. Docstrings in `schema.py` and `guard.py` read as if the switch worked |
 
 ## Other checks (run 2026-11-26; output in `docs/m5/dod_checks.txt`)
 
@@ -27,15 +27,34 @@ Written 2026-11-26 by `/dod M5`. Numbers are copied from the files named beside 
 
 ## How to read the headline numbers
 
-1. **Numeric accuracy is not independent evidence.** The numeric gold is generated from the same XBRL facts with closely related tag rules. A high score shows the planner, resolver, compiler and writer carry those values through; it does not show the tag rules are right. The dev score of 100% has a degenerate CI. Revenue and revenue-dependent margins are **not** on the gold-verified list: the engine reports them and nothing here scores them.
+1. **Numeric is agreement with the source, not independent accuracy.** The numeric gold is generated from the same XBRL facts with closely related tag rules. A high score shows the planner, resolver, compiler and writer carry those values through; it does not show the tag rules are right. The dev score of 100% has a degenerate CI. Revenue and revenue-dependent margins are **not** on the gold-verified list: the engine reports them and nothing here scores them.
 2. **All six numeric test misses are company-resolution clarifications** (`num-0052`, `0066`, `0075`, `0076`, `0107`, `0176`; `per_question[].refusal` in the test file). Nothing was changed in response.
 3. **Company resolution was tuned on dev.** The untuned figure is the paid planner run's company field, 95.8%. The 100% after adding aliases is in-sample.
 4. **The test comparison changes two things at once:** the system, and the writer (engine on Haiku, baseline on Sonnet). No Haiku baseline was run.
-5. **FinanceBench.** On test the engine refused 79.0% (baseline 69.5%) although its recall@5 was higher (34.3% vs 17.1%). On **dev with the Sonnet writer on both sides** (so not the chosen writer), an ad-hoc comparison of `per_question` refusals found 9 questions the baseline got right and the engine did not, all refusals: 6 needed a unit conversion or calculation the engine did not supply (`fb-03282`, `fb-04171`, `fb-00517`, `fb-01346`, `fb-03718`, `fb-06272`); in 3 the writer judged the material insufficient (`fb-00494`, `fb-00746`, `fb-01319`). The writer is forbidden to calculate (CLAUDE.md rule 6) and the compiler covers only catalog metrics. In the other direction, the engine got 3 right that the baseline did not (`fb-01163`, `fb-03838`, `fb-04672`). The calculation limit is a likely contributor, **not** an established cause of the test gap; test refusals were not analysed.
+5. **FinanceBench** has its own section below.
 6. **Test was run once**, after the reply limit, the writer choice and everything else had been fixed on dev. The only code change after it is the CLI default writer (ADR-012); that run passed `--composer haiku` explicitly.
 7. **Judges.** The FinanceBench judge's kappa is 0.646 (target 0.70), measured on baseline answers, answered rows only. The narrative judge is uncalibrated.
 8. **Latency** is a live sample of 32 dev questions per writer, timed from a laptop that runs embedding and reranking and reaches the box over a tunnel. It is not server latency. The p95 shown beside the test row in the Pareto table is that dev sample. Test latency: `NOT MEASURED`.
 9. **Cost per question in the Pareto table is not like for like across rows.** The two dev runs replayed recorded planner replies, so their figures are writer-only. The test run paid for its planner calls, so its figure includes them.
+
+## FinanceBench: why it fails
+
+**What the test run shows** (`per_question` in the two test results files):
+
+- The engine **over-refuses**: it refused 79.0% of the 105 questions (83) against the baseline's 69.5% (73), and answered 18 correctly against 25.
+- This is a gap in **answering**, not in retrieval recall: the engine's recall@5 was higher, 34.3% vs 17.1%.
+- By engine route: narrative (text) 81 questions, 62 refused; numeric 17, 14 refused; hybrid 7, 7 refused.
+
+**Leading cause: refusals on questions that need a calculation or a unit conversion. It is supported by dev only and was NOT verified on test**, whose refusal reasons were not analysed. On dev, with the **Sonnet** writer on both sides (not the chosen writer), an ad-hoc comparison found 9 questions the baseline got right and the engine did not, all refusals: 6 needed a unit conversion or calculation the engine did not supply (`fb-03282`, `fb-04171`, `fb-00517`, `fb-01346`, `fb-03718`, `fb-06272`); in 3 the writer judged the material insufficient (`fb-00494`, `fb-00746`, `fb-01319`). The engine got 3 right that the baseline did not (`fb-01163`, `fb-03838`, `fb-04672`). The writer is forbidden to calculate (CLAUDE.md rule 6) and the compiler covers only catalog metrics. The test gap also compares two different writers (note 4).
+
+## Future work (M6 or later; nothing here was built)
+
+Two levers against the over-refusal. Neither has been tried, so their effect is `NOT MEASURED`.
+
+1. **Deterministic unit conversion.** Code, not the model, converts a reported figure to the unit the question asks for (for example thousands to millions) and keeps its provenance. This covers 2 of the 6 dev cases above (`fb-03282`, `fb-04171`); the other 4 need other calculations. How it applies to a figure read from a passage, and any contract change, are not designed.
+2. **Route more FinanceBench questions to the text path**, for example when a numeric plan returns no result (today a numeric-only compiler abstention never falls back to text, ADR-048). **Its reach is limited:** on test, 69 of the 83 refusals were on the narrative or hybrid routes, which already search filing text when they get as far as retrieval. At most the 14 numeric-route refusals could be newly sent there. Clarification and period refusals return before retrieval on any route, and the route counts do not show how many of either group got that far.
+
+**Test discipline:** develop either lever on dev. The test split has now been seen, and these notes include its route counts, so any later test run must be reported as a second look, not as a fresh held-out result.
 
 ## Retrieval
 
@@ -67,10 +86,11 @@ Tables are in `docs/results.md` (corpus version 1, oracle company and year, dev:
 
 The AUTO blocks of `docs/results.md` were checked separately: `make report` produced no diff.
 
-## Decisions that need Shekar
+## Decisions
 
-- Whether to close M5 with item 1b failing, or open a dev round on FinanceBench. Test has now been seen once; any later change should be developed on dev, and a second test run reported as a second run.
-- ADR-012: status is `proposed`; its Consequences are a draft to rewrite. ADR-047 and ADR-048 have no new decision here.
+- **Closed** under the completeness bar with item 1b failing (Shekar, 2026-11-26). No dev tuning and no second test run for M5.
+- **ADR-012:** accepted, with Haiku the default composer. Its Consequences section is a `TODO(Shekar)`.
+- `/interview-me` is Shekar's to run.
 
 ## Spend
 

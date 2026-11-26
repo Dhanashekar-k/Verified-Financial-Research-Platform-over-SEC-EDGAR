@@ -144,3 +144,4 @@ the day-to-day calls and progress. Append one dated entry at the end of each wor
 - Found while checking the DoD: the SQL fallback was never connected; `ENGINE_SQL_FALLBACK` does nothing.
 - API spend $1.5870 by the harness's accounting ($1.3882 dev, $0.1988 test); box dollars NOT MEASURED. Details: `docs/milestones/M05-report.md`.
 - Next: Shekar decides whether to close M5 with the shortfall or open a FinanceBench dev round; reviews ADR-012; runs `/interview-me`. Follow-ups: retrieval setup with filters on (dev), a Haiku baseline for a like-for-like comparison, wire or drop the SQL fallback.
+- **2026-11-26, M5 closed** under the completeness bar (Shekar): numeric passes (agreement with source, not independent accuracy), FinanceBench fails (17.1% vs 23.8%, over-refusal); this test result is the first and only look (`docs/milestones/M05-report.md`).
