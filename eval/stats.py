@@ -1,4 +1,5 @@
-"""Bootstrap confidence intervals and the paired bootstrap for system-vs-system differences.
+"""Bootstrap confidence intervals, the paired bootstrap for system-vs-system differences, and
+the Wilson interval for a proportion.
 
 Percentile bootstrap, 10,000 resamples and a fixed seed by default (.claude/rules/eval.md).
 The paired bootstrap resamples question indices once and applies them to both systems, so the
@@ -14,6 +15,7 @@ import numpy as np
 
 DEFAULT_RESAMPLES = 10_000
 DEFAULT_SEED = 13
+Z_95 = 1.959963984540054  # two-sided 95% normal quantile
 
 
 @dataclass(frozen=True)
@@ -78,3 +80,17 @@ def paired_bootstrap(
 def percentile(values: Sequence[float], q: float) -> float:
     """Linear-interpolated percentile (q in [0, 100]) for latency summaries."""
     return float(np.percentile(_as_array(values), q))
+
+
+def wilson_ci(successes: int, n: int, *, z: float = Z_95) -> tuple[float, float]:
+    """Wilson score interval for a proportion. Unlike a percentile bootstrap it does not collapse
+    to a point when the count is 0 or n. It assumes independent trials: claims that share a
+    question are not, so on claim rates it is probably too narrow."""
+    if n <= 0 or not 0 <= successes <= n:
+        raise ValueError(f"need 0 <= successes <= n and n > 0, got {successes} of {n}")
+    p = successes / n
+    denom = 1 + z * z / n
+    center = (p + z * z / (2 * n)) / denom
+    half = z * ((p * (1 - p) / n + z * z / (4 * n * n)) ** 0.5) / denom
+    # clamp rounding noise so the interval always holds the estimate
+    return max(0.0, min(p, center - half)), min(1.0, max(p, center + half))

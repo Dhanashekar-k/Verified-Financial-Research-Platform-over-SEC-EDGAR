@@ -16,6 +16,8 @@ from app.llm.client import LLMClient
 from app.llm.types import Usage
 
 RUBRIC_VERSION = "support-v1"
+# Thinking counts toward the limit; 1024 risked cutting a verdict off (ADR-049). Not the rubric.
+MAX_TOKENS = 8192
 
 SYSTEM = f"""You audit claims made by a question-answering system about SEC filings.
 Rubric version: {RUBRIC_VERSION}
@@ -45,4 +47,4 @@ def judge_support(
     client: LLMClient, claim_text: str, evidence_text: str
 ) -> tuple[SupportVerdict, Usage]:
     messages = [{"role": "user", "content": build_user_message(claim_text, evidence_text)}]
-    return client.structured("judge", SYSTEM, messages, SupportVerdict, max_tokens=1024)
+    return client.structured("judge", SYSTEM, messages, SupportVerdict, max_tokens=MAX_TOKENS)
