@@ -578,7 +578,7 @@ def dev_trace() -> Trace:
 def dev_reference() -> Reference:
     return load_reference(
         ROOT / "eval/results/verifier/gate0_dev_companies.json",
-        ROOT / "data/targets/tracked_ciks.csv",
+        ROOT / "eval/results/verifier/gate0_dev_tracked_ciks.csv",
     )
 
 

@@ -27,7 +27,9 @@ from eval.verifier_trace import DEFAULT_OUT as TRACE_PATH
 from eval.verifier_trace import Trace, TraceRow
 
 COMPANIES_PATH = Path("eval/results/verifier/gate0_dev_companies.json")
-TRACKED_PATH = Path("data/targets/tracked_ciks.csv")
+# A committed copy of data/targets/tracked_ciks.csv as it was at the capture: ``data/`` is
+# gitignored, and the offline runners and tests must work from a fresh checkout.
+TRACKED_PATH = Path("eval/results/verifier/gate0_dev_tracked_ciks.csv")
 
 
 @dataclass(frozen=True)
