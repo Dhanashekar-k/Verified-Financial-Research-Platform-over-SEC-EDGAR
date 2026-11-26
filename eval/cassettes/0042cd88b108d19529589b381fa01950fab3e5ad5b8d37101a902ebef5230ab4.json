@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Yum Brands' income tax expense decreased by 2.8% in Q1 FY2024 compared with Q1 FY2023 [1].",
+    "claims": [
+      {
+        "display": "-2.8%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:-5598386795967749141 - f:8247880453940966095) / f:8247880453940966095",
+          "fact_ids": [
+            -5598386795967749141,
+            8247880453940966095
+          ],
+          "type": "expr"
+        },
+        "text": "Yum Brands' income tax expense growth for Q1 FY2024, measured from Q1 FY2023, was -2.8%.",
+        "unit": "ratio",
+        "value": "-0.02816901408450704225352112676"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "0042cd88b108d19529589b381fa01950fab3e5ad5b8d37101a902ebef5230ab4",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00017645",
+    "input_tokens": 315,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 592
+  }
+}

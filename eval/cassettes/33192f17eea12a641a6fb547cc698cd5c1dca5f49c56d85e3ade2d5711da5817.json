@@ -1,0 +1,57 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The material does not support the premise that Costco stopped charging membership fees in fiscal 2023. Membership fee revenue increased 8% to $4,580 in 2023 [1]. The annual fee for these memberships is $60 in the U.S. [2].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000909832-23-000042#6#0005",
+          "quote": "Membership fee revenue increased 8% to $4,580",
+          "type": "chunk"
+        },
+        "text": "Membership fee revenue increased 8% to $4,580 in 2023.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000909832-23-000042#1#0004",
+          "quote": "Our annual fee for these memberships is $60 in the U.S.",
+          "type": "chunk"
+        },
+        "text": "The annual fee for these memberships is $60 in the U.S.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Membership fee revenue increased 8% to $4,580 in 2023.",
+        "The annual fee for these memberships is $60 in the U.S."
+      ],
+      "missing": [
+        "A passage stating that Costco discontinued membership fees in fiscal 2023 and explaining why."
+      ],
+      "reason": "The passages do not say Costco stopped charging membership fees in fiscal 2023; they show membership fees were still charged and their revenue rose in 2023."
+    }
+  },
+  "request_key": "33192f17eea12a641a6fb547cc698cd5c1dca5f49c56d85e3ade2d5711da5817",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00059740",
+    "input_tokens": 4814,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1376
+  }
+}

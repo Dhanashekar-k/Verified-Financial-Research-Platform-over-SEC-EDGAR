@@ -1,0 +1,90 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Interest expense includes amortization of capitalized debt issuance costs, offset by amortization of debt premium and interest income earned on cash and cash equivalents [1]. It excludes interest incurred on construction projects to build, upgrade, or remodel certain facilities, because that interest is capitalized to property and equipment [2]. Other (income) expense, net includes changes in fair value on beneficial interests in securitizations, purchase price adjustment receivables, and fair value adjustments related to Root Warrants [3], along with other general expenses such as gains or losses from disposals of long-lived assets [4]. For the year ended December 31, 2023, it also newly includes expense from the recognition of the Tax Receivable Agreement reserve [5].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001690820-24-000093#7#0017",
+          "quote": "Interest expense also includes amortization of capitalized debt issuance costs, which is offset by amortization of debt premium and interest income earned on cash and cash equivalents",
+          "type": "chunk"
+        },
+        "text": "Interest expense includes amortization of capitalized debt issuance costs, offset by amortization of debt premium and interest income on cash and cash equivalents.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001690820-24-000093#7#0017",
+          "quote": "Interest expense excludes the interest incurred during various construction projects to build, upgrade, or remodel certain facilities, which is capitalized to property and equipment",
+          "type": "chunk"
+        },
+        "text": "Interest expense excludes interest incurred on construction projects to build, upgrade, or remodel certain facilities, which is capitalized to property and equipment.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0001690820-24-000093#7#0017",
+          "quote": "Other (income) expense, net includes changes in fair value on our beneficial interests in securitizations, purchase price adjustment receivables, and fair value adjustments related to our Root Warrants",
+          "type": "chunk"
+        },
+        "text": "Other (income) expense, net includes changes in fair value on beneficial interests in securitizations, purchase price adjustment receivables, and fair value adjustments related to Root Warrants.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c4",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001690820-24-000093#7#0017",
+          "quote": "along with other general expenses such as gains or losses from disposals of long-lived assets",
+          "type": "chunk"
+        },
+        "text": "Other (income) expense, net also includes other general expenses such as gains or losses from disposals of long-lived assets.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c5",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001690820-24-000093#7#0017",
+          "quote": "During the year ended December 31, 2023, other (income) expense, net also includes expense related to the recognition of our Tax Receivable Agreement reserve.",
+          "type": "chunk"
+        },
+        "text": "During the year ended December 31, 2023, other (income) expense, net also includes expense related to the recognition of the Tax Receivable Agreement reserve.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "8f5b36a802c6b5021a666edd1205961b672d227dac2c7389e9ee686f2e538f9f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00099415",
+    "input_tokens": 4239,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 3078
+  }
+}

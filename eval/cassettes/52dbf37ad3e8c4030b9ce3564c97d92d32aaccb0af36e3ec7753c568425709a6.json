@@ -1,0 +1,36 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Expand Energy paid $1.2 billion in dividends in FY2022 [1].",
+    "claims": [
+      {
+        "display": "$1.2 billion",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:7083542109152805140",
+          "fact_ids": [
+            7083542109152805140
+          ],
+          "type": "expr"
+        },
+        "text": "Expand Energy paid dividends of $1.2 billion in FY2022.",
+        "unit": "USD",
+        "value": "1212000000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "52dbf37ad3e8c4030b9ce3564c97d92d32aaccb0af36e3ec7753c568425709a6",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00006775",
+    "input_tokens": 226,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 175
+  }
+}

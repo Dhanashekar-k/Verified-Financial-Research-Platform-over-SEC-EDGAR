@@ -1,0 +1,72 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The passages do not describe any 2022 spin-off of AWS. They show AWS as one of Amazon's three reported segments [1]. Consolidated net sales were $469,822 in 2021 and $513,983 in 2022 [2], and AWS net sales were $62,202 and $80,096 for those years [3]. The material does not show how the AWS figures relate to any spin-off.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001018724-23-000004#7#0013",
+          "quote": "We have organized our operations into three segments: North America, International, and AWS.",
+          "type": "chunk"
+        },
+        "text": "Amazon organized its operations into three segments: North America, International, and AWS.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001018724-23-000004#7#0014",
+          "quote": "Consolidated | $469,822 | $513,983",
+          "type": "chunk"
+        },
+        "text": "Consolidated net sales were $469,822 in 2021 and $513,983 in 2022.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001018724-23-000004#7#0014",
+          "quote": "AWS | 62,202 | 80,096",
+          "type": "chunk"
+        },
+        "text": "AWS net sales were $62,202 in 2021 and $80,096 in 2022.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "AWS is reported as one of three segments: North America, International, and AWS.",
+        "Consolidated net sales were $469,822 in 2021 and $513,983 in 2022.",
+        "AWS net sales were $62,202 in 2021 and $80,096 in 2022."
+      ],
+      "missing": [
+        "A disclosure of a 2022 AWS spin-off or its effect on consolidated net sales, such as pro forma or separately reported figures without AWS."
+      ],
+      "reason": "The passages do not mention any 2022 spin-off of AWS, so they cannot show how such a spin-off changed consolidated revenue."
+    }
+  },
+  "request_key": "9b87b1f3462b8c82b3153ddf86c6dd694c9f7370d3c74c5c248e57cf2fc026b2",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00080520",
+    "input_tokens": 4405,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 2289
+  }
+}

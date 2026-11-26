@@ -1,0 +1,43 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The material does not identify which region had the largest percentage drop in Q2 2023 year-over-year revenues. The passages only describe the Q2 2023 decline in general terms [1].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:Pfizer_2023Q2_10Q#p49#0000",
+          "quote": "QTD decline primarily driven by lower net price and lower volumes in certain",
+          "type": "chunk"
+        },
+        "text": "The Q2 2023 quarter-to-date decline was primarily driven by lower net price and lower volumes in certain markets.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "The Q2 2023 quarter-to-date decline was primarily driven by lower net price and lower volumes in certain markets."
+      ],
+      "missing": [
+        "NUMERIC RESULTS giving Pfizer's total Q2 2023 and Q2 2022 revenues by geographic region",
+        "Computed year-over-year percentage change for each region in Q2 2023"
+      ],
+      "reason": "The passages give quarter-to-date regional figures for a single product and general commentary, but no computed company-wide year-over-year percentage change by region for Q2 2023."
+    }
+  },
+  "request_key": "82fea73813ad11a63b68cfea392af350899190db68a7c61230eb61730dc388b6",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0006685",
+    "input_tokens": 4171,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1789
+  }
+}

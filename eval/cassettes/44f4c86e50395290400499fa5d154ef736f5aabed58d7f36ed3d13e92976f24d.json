@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Hartford Insurance Group's net income changed by 23.8% from Q2 FY2022 to Q2 FY2023, measured from the Q2 FY2022 figure as originally filed [1]. The Q2 FY2022 net income was later restated, but the restated value is not provided in the material, so it is not stated here.",
+    "claims": [
+      {
+        "display": "23.8%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:-9078646360532939454 - f:-6978844667715352050) / f:-6978844667715352050",
+          "fact_ids": [
+            -9078646360532939454,
+            -6978844667715352050
+          ],
+          "type": "expr"
+        },
+        "text": "Hartford Insurance Group's net income changed by 23.8% from Q2 FY2022 to Q2 FY2023, measured from the as-originally-filed Q2 FY2022 figure.",
+        "unit": "ratio",
+        "value": "0.2375565610859728506787330317"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "44f4c86e50395290400499fa5d154ef736f5aabed58d7f36ed3d13e92976f24d",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00019220",
+    "input_tokens": 400,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 638
+  }
+}

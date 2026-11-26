@@ -1,0 +1,69 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "At the end of fiscal 2025, D.R. Horton's total liabilities were $10.7 billion [1], compared with $5.1 billion for PulteGroup [2]. Horton's total liabilities were $5.7 billion larger [3].",
+    "claims": [
+      {
+        "display": "$10.7 billion",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:3218532896988046432",
+          "fact_ids": [
+            3218532896988046432
+          ],
+          "type": "expr"
+        },
+        "text": "D.R. Horton total liabilities, FY2025: $10.7 billion",
+        "unit": "USD",
+        "value": "10729000000.0000"
+      },
+      {
+        "display": "$5.1 billion",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:5171570860338939095",
+          "fact_ids": [
+            5171570860338939095
+          ],
+          "type": "expr"
+        },
+        "text": "PulteGroup total liabilities, FY2025: $5.1 billion",
+        "unit": "USD",
+        "value": "5062981000.0000"
+      },
+      {
+        "display": "$5.7 billion",
+        "id": "c3",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "f:3218532896988046432 - f:5171570860338939095",
+          "fact_ids": [
+            3218532896988046432,
+            5171570860338939095
+          ],
+          "type": "expr"
+        },
+        "text": "Difference in total liabilities, D.R. Horton minus PulteGroup, FY2025: $5.7 billion",
+        "unit": "USD",
+        "value": "5666019000.0000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "7e363209fa83c63c444db7e8901b851f316bc754b9870a1548bb7e9782be1363",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00026925",
+    "input_tokens": 666,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 893
+  }
+}

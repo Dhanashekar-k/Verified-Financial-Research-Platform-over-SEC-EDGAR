@@ -1,0 +1,58 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The passages only partly answer this. They say global market volatility, including from COVID-19, inflation and Russia's invasion of Ukraine, exposes the company to foreign currency fluctuation risk [1]. They also say that failing to achieve the anticipated benefits of the Slack acquisition could negatively impact the price of common stock [2]. They do not identify the factors that make quarterly operating results vary widely, or say what happens to the stock price when quarterly expectations are missed.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001108524-22-000013#7#0004",
+          "quote": "The expanding global scope of our business and the heightened volatility of global markets, including as a result of COVID-19, inflation and Russia\u2019s recent invasion of Ukraine, expose us to the risk of fluctuations in foreign currency markets.",
+          "type": "chunk"
+        },
+        "text": "Heightened volatility of global markets exposes the company to the risk of fluctuations in foreign currency markets.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001108524-22-000013#1A#0014",
+          "quote": "Failure to achieve the anticipated benefits of the acquisition could adversely affect our results of operations or cash flows, cause dilution to our earnings per share, decrease or delay any accretive effect of the acquisition and negatively impact the price of our common stock.",
+          "type": "chunk"
+        },
+        "text": "Failure to achieve the anticipated benefits of the Slack acquisition could negatively impact the price of the company's common stock.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Heightened volatility of global markets exposes the company to the risk of fluctuations in foreign currency markets.",
+        "Failure to achieve the anticipated benefits of the Slack acquisition could negatively impact the price of the company's common stock."
+      ],
+      "missing": [
+        "The risk factor text listing the financial-market, investment and equity-compensation factors that could cause quarterly operating results to vary.",
+        "The risk factor text stating how the stock price could react if quarterly results miss expectations."
+      ],
+      "reason": "The passages do not describe the factors that cause quarterly operating results to vary widely, or the stock price effect of missing quarterly expectations."
+    }
+  },
+  "request_key": "5bf9de2f28a433cc5c2d1e430fba1f03fa672b3fc2fa6317aec7b3edb7f3e6d0",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00079435",
+    "input_tokens": 4863,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 2154
+  }
+}

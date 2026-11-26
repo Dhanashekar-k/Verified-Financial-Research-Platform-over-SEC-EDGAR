@@ -1,0 +1,60 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Adobe's FY2022 operating margin was 34.6% [1]. Operating income was 6,098 million in fiscal 2022 and 5,802 million in fiscal 2021 [2]. The material has no prior-year operating margin, so it cannot show whether the margin is improving. Operating margin is a usable metric for a software company like Adobe, so the gap is the missing comparison period, not the metric.",
+    "claims": [
+      {
+        "display": "34.6%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "f:2678972348270745012 / f:-3968225930511295910",
+          "fact_ids": [
+            2678972348270745012,
+            -3968225930511295910
+          ],
+          "type": "expr"
+        },
+        "text": "Adobe's FY2022 operating margin was 34.6%.",
+        "unit": "ratio",
+        "value": "0.3463591957287288424400772464"
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:ADOBE_2022_10K#p54#0000",
+          "quote": "Operating income | 6,098 | 5,802 | 4,237",
+          "type": "chunk"
+        },
+        "text": "Operating income was 6,098 million in fiscal 2022 and 5,802 million in fiscal 2021.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "FY2022 operating margin of 34.6%",
+        "Operating income of 6,098 million in fiscal 2022 and 5,802 million in fiscal 2021"
+      ],
+      "missing": [
+        "Operating margin for FY2021 (and earlier years) computed on the same basis, needed to compare the trend"
+      ],
+      "reason": "The material gives a margin for FY2022 only, so it cannot establish whether the operating margin is improving over time."
+    }
+  },
+  "request_key": "544c1348ef1427b92192afc9553ce24ad813f7a3654d0e6a9f419945a9bb7eeb",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00084415",
+    "input_tokens": 5564,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 2213
+  }
+}

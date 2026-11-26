@@ -1,0 +1,36 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "contradiction": false,
+    "points": [
+      {
+        "covered": false,
+        "index": 0
+      },
+      {
+        "covered": true,
+        "index": 1
+      },
+      {
+        "covered": true,
+        "index": 2
+      },
+      {
+        "covered": false,
+        "index": 3
+      }
+    ],
+    "reason": "The answer names interest rate and stock price risks but omits that Fox holds no trading instruments, so point 0 is not fully covered. It covers the fixed- versus variable-rate effects and the $7.25 billion fixed-rate debt with no variable-rate debt, but it never says the instruments are denominated in U.S. dollars. Nothing in it contradicts the gold points."
+  },
+  "request_key": "6f1f8ad1e83763ce701e8ec8dded25fa0518be57ca645290c0a255eaeb2e7047",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 683,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00148315",
+    "input_tokens": 489,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 192
+  }
+}

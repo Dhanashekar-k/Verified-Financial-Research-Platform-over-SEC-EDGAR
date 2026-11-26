@@ -1,0 +1,69 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "PNC's FY2024 total assets are higher by $514.7 billion [3]: $560.0 billion [1] versus VICI's $45.4 billion [2].",
+    "claims": [
+      {
+        "display": "$560.0 billion",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:1152987725965966938",
+          "fact_ids": [
+            1152987725965966938
+          ],
+          "type": "expr"
+        },
+        "text": "PNC total assets FY2024: $560.0 billion",
+        "unit": "USD",
+        "value": "560038000000.0000"
+      },
+      {
+        "display": "$45.4 billion",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:-7528339727762896464",
+          "fact_ids": [
+            -7528339727762896464
+          ],
+          "type": "expr"
+        },
+        "text": "VICI total assets FY2024: $45.4 billion",
+        "unit": "USD",
+        "value": "45368940000.0000"
+      },
+      {
+        "display": "$514.7 billion",
+        "id": "c3",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "f:1152987725965966938 - f:-7528339727762896464",
+          "fact_ids": [
+            1152987725965966938,
+            -7528339727762896464
+          ],
+          "type": "expr"
+        },
+        "text": "PNC total assets exceed VICI's by $514.7 billion in FY2024",
+        "unit": "USD",
+        "value": "514669060000.0000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "d2c6b6d706b11629b4dbaecbdc4221278ed83e27156909c3e8503f59d052b8d3",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0002590",
+    "input_tokens": 656,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 854
+  }
+}

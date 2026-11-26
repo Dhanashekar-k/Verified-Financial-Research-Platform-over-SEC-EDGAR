@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "incorrect",
+    "reason": "The gold answer says restructuring costs were $411 million, but the system answer states the amount outlined in the income statement is 0, which contradicts the gold even though it mentions 411 as a cash flow item."
+  },
+  "request_key": "6c80e99a620f5982a8300a1433e13f09cd35c594387e7648c34a24a9a58343b8",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00065755",
+    "input_tokens": 221,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 81
+  }
+}

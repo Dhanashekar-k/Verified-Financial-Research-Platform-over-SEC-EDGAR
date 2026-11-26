@@ -1,0 +1,43 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The provided material does not give the dollar amount of Ulta Beauty's stock repurchases for fiscal 2023 or for the fourth quarter, so the Q4 share of total spend cannot be computed. The filings do report that $99.9 million remained available under the 2022 share repurchase program as of February 3, 2024 [1].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001558370-24-003941#5#0002",
+          "quote": "As of February 3, 2024, the amount remaining available was $99.9 million.",
+          "type": "chunk"
+        },
+        "text": "The 2022 share repurchase program had $99.9 million remaining available as of February 3, 2024.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "The 2022 share repurchase program had $99.9 million remaining available as of February 3, 2024."
+      ],
+      "missing": [
+        "Total dollar amount spent on stock repurchases in fiscal 2023.",
+        "Dollar amount spent on stock repurchases in the fourth quarter of fiscal 2023."
+      ],
+      "reason": "The material contains no figures for total or quarterly dollar amounts spent on stock repurchases in fiscal 2023, so the Q4 percentage cannot be determined."
+    }
+  },
+  "request_key": "5dadb8e273dae9a08bd200429b00222a1e73b2e9ee9d52b697d2e3e1b4dda542",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0005470",
+    "input_tokens": 4426,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1252
+  }
+}

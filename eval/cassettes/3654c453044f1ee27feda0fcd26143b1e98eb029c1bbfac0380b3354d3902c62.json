@@ -1,0 +1,69 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "McKesson Corp generated $1.2 billion more net cash from operating activities than TE Connectivity plc in fiscal year 2023 [1]. McKesson's operating cash flow was $4.3 billion [2], and TE Connectivity's was $3.1 billion [3].",
+    "claims": [
+      {
+        "display": "$1.2 billion",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "f:-8838857592968174165 - f:1926526570905595428",
+          "fact_ids": [
+            -8838857592968174165,
+            1926526570905595428
+          ],
+          "type": "expr"
+        },
+        "text": "McKesson Corp generated $1.2 billion more net cash from operating activities than TE Connectivity plc in FY2023.",
+        "unit": "USD",
+        "value": "1182000000.0000"
+      },
+      {
+        "display": "$4.3 billion",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:-8838857592968174165",
+          "fact_ids": [
+            -8838857592968174165
+          ],
+          "type": "expr"
+        },
+        "text": "McKesson Corp net cash from operating activities in FY2023 was $4.3 billion.",
+        "unit": "USD",
+        "value": "4314000000.0000"
+      },
+      {
+        "display": "$3.1 billion",
+        "id": "c3",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:1926526570905595428",
+          "fact_ids": [
+            1926526570905595428
+          ],
+          "type": "expr"
+        },
+        "text": "TE Connectivity plc net cash from operating activities in FY2023 was $3.1 billion.",
+        "unit": "USD",
+        "value": "3132000000.0000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "3654c453044f1ee27feda0fcd26143b1e98eb029c1bbfac0380b3354d3902c62",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00027035",
+    "input_tokens": 648,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 901
+  }
+}

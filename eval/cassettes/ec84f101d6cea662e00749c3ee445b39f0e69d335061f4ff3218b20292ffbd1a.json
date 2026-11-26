@@ -1,0 +1,69 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "McKesson's FY2023 SG&A was $3.8 billion higher than Cardinal Health's, as originally reported [1]. McKesson's figure was $8.7 billion [2], and Cardinal Health's was $4.8 billion as originally filed [3]. Cardinal Health's FY2023 SG&A was later restated, so the originally reported figure is used here.",
+    "claims": [
+      {
+        "display": "$3.8 billion",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "f:6695739178021592149 - f:5892834296694400593",
+          "fact_ids": [
+            6695739178021592149,
+            5892834296694400593
+          ],
+          "type": "expr"
+        },
+        "text": "McKesson's FY2023 SG&A was $3.8 billion higher than Cardinal Health's, as originally reported.",
+        "unit": "USD",
+        "value": "3823000000.0000"
+      },
+      {
+        "display": "$8.7 billion",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:6695739178021592149",
+          "fact_ids": [
+            6695739178021592149
+          ],
+          "type": "expr"
+        },
+        "text": "McKesson's FY2023 SG&A was $8.7 billion.",
+        "unit": "USD",
+        "value": "8657000000.0000"
+      },
+      {
+        "display": "$4.8 billion",
+        "id": "c3",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:5892834296694400593",
+          "fact_ids": [
+            5892834296694400593
+          ],
+          "type": "expr"
+        },
+        "text": "Cardinal Health's FY2023 SG&A was $4.8 billion as originally filed.",
+        "unit": "USD",
+        "value": "4834000000.0000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "ec84f101d6cea662e00749c3ee445b39f0e69d335061f4ff3218b20292ffbd1a",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00047290",
+    "input_tokens": 994,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1642
+  }
+}

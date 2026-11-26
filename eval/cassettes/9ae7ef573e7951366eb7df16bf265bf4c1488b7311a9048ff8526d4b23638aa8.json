@@ -1,0 +1,36 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "contradiction": false,
+    "points": [
+      {
+        "covered": true,
+        "index": 0
+      },
+      {
+        "covered": true,
+        "index": 1
+      },
+      {
+        "covered": true,
+        "index": 2
+      },
+      {
+        "covered": true,
+        "index": 3
+      }
+    ],
+    "reason": "The answer states all four gold points: higher cost and reduced availability of hedges, greater volatility and less predictable cash flows, impaired capital expenditure planning and funding, and the non-financial end user margin exemption for current hedges."
+  },
+  "request_key": "9ae7ef573e7951366eb7df16bf265bf4c1488b7311a9048ff8526d4b23638aa8",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 683,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00111415",
+    "input_tokens": 360,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 144
+  }
+}

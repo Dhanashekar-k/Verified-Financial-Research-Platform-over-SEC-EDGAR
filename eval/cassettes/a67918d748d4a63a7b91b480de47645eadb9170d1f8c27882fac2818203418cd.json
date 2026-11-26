@@ -1,0 +1,36 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Quanta Services, Inc. reported capital expenditures of $434.8 million in fiscal year 2023 [1].",
+    "claims": [
+      {
+        "display": "$434.8 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:-4385298720005219267",
+          "fact_ids": [
+            -4385298720005219267
+          ],
+          "type": "expr"
+        },
+        "text": "Quanta Services, Inc. capital expenditures in fiscal year 2023 were $434.8 million.",
+        "unit": "USD",
+        "value": "434803000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "a67918d748d4a63a7b91b480de47645eadb9170d1f8c27882fac2818203418cd",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00007340",
+    "input_tokens": 234,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 196
+  }
+}

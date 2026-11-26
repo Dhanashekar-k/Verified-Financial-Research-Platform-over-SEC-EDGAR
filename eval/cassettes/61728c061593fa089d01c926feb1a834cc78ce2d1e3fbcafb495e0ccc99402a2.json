@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Accounts payable at December 31, 2018 was $302,578 thousand [1]. The balance sheet reports this figure in thousands, and no figure in USD millions is available, so I have not converted it.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:MGMRESORTS_2018_10K#p57#0000",
+          "quote": "Accounts payable | $ | 302,578 | $ | 255,028",
+          "type": "chunk"
+        },
+        "text": "Accounts payable at December 31, 2018 was $302,578 thousand.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Accounts payable of $302,578 thousand at December 31, 2018"
+      ],
+      "missing": [
+        "A USD millions figure for year-end FY2018 accounts payable from NUMERIC RESULTS"
+      ],
+      "reason": "The material gives the year-end FY2018 accounts payable only in thousands, and no computed figure in USD millions is available."
+    }
+  },
+  "request_key": "61728c061593fa089d01c926feb1a834cc78ce2d1e3fbcafb495e0ccc99402a2",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00055445",
+    "input_tokens": 4725,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1222
+  }
+}

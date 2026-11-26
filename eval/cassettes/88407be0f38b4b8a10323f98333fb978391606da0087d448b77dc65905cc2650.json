@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The material does not give the number of Salesforce customers located in Chicago. The filings say only that [1] Salesforce sells to businesses of all sizes and in almost every industry worldwide.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001108524-25-000006#1#0014",
+          "quote": "We sell to businesses of all sizes and in almost every industry worldwide.",
+          "type": "chunk"
+        },
+        "text": "We sell to businesses of all sizes and in almost every industry worldwide.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Salesforce sells to businesses of all sizes and in almost every industry worldwide."
+      ],
+      "missing": [
+        "A count of customers by location, specifically for the city of Chicago, from the filings or from XBRL-derived numeric results."
+      ],
+      "reason": "The passages and numeric results contain no count of Salesforce customers located in the city of Chicago."
+    }
+  },
+  "request_key": "88407be0f38b4b8a10323f98333fb978391606da0087d448b77dc65905cc2650",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00048880",
+    "input_tokens": 5052,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 894
+  }
+}

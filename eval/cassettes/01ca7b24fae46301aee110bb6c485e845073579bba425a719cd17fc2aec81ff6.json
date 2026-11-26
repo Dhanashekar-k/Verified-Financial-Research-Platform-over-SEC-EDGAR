@@ -1,0 +1,58 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The material does not show whether adjusted EPS growth accelerates in FY2023. The August 2023 guidance reflects increased growth of 12.5% at the mid-point [1]. Q2 2023 adjusted EPS of $2.80 increased by 8.1% [2]. Neither passage gives the prior-year adjusted EPS growth rate needed for a comparison.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:JOHNSON_JOHNSON_2023_8K_dated-2023-08-30#p4#0000",
+          "quote": "12.5% at the mid-point and Adjusted Operational EPS of $9.90 - $10.00, reflecting increased growth of 11.5% at the mid- point",
+          "type": "chunk"
+        },
+        "text": "The 2023 guidance reflects increased growth of 12.5% at the mid-point.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:JOHNSON_JOHNSON_2023Q2_EARNINGS#p1#0000",
+          "quote": "adjusted EPS of $2.80 increasing by 8.1%",
+          "type": "chunk"
+        },
+        "text": "Q2 2023 adjusted EPS of $2.80 increased by 8.1%.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "2023 guidance reflects increased growth of 12.5% at the mid-point for adjusted EPS.",
+        "Q2 2023 adjusted EPS of $2.80 increased by 8.1%."
+      ],
+      "missing": [
+        "FY2022 adjusted EPS growth rate to compare with the FY2023 guidance growth.",
+        "A statement of whether FY2023 adjusted EPS growth is expected to exceed the prior year's growth rate."
+      ],
+      "reason": "The passages give FY2023 guidance growth and Q2 2023 growth but no prior-year adjusted EPS growth rate, so acceleration cannot be determined."
+    }
+  },
+  "request_key": "01ca7b24fae46301aee110bb6c485e845073579bba425a719cd17fc2aec81ff6",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00109925",
+    "input_tokens": 4666,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 3413
+  }
+}

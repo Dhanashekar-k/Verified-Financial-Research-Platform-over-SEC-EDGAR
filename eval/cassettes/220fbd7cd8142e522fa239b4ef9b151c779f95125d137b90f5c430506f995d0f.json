@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "AppLovin's operating cash flow grew 14.1% from FY2021 to FY2022 [1].",
+    "claims": [
+      {
+        "display": "14.1%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:532357956231109204 - f:3562431354299416787) / f:3562431354299416787",
+          "fact_ids": [
+            532357956231109204,
+            3562431354299416787
+          ],
+          "type": "expr"
+        },
+        "text": "AppLovin's operating cash flow grew 14.1% in FY2022, measured from FY2021.",
+        "unit": "ratio",
+        "value": "0.1407264315975360023877231236"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "220fbd7cd8142e522fa239b4ef9b151c779f95125d137b90f5c430506f995d0f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0001460",
+    "input_tokens": 296,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 474
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The filings report 2022 sales of products of $55,893 million [1] and sales of services of 10,715 million [2], against total revenues of 66,608 million [3]. The material does not provide a computed share of total revenue for either category, so I cannot say whether any category exceeds 20%.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:BOEING_2022_10K#p55#0000",
+          "quote": "Sales of products | $55,893 | $51,386 | $47,142",
+          "type": "chunk"
+        },
+        "text": "Sales of products were $55,893 million in 2022.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:BOEING_2022_10K#p55#0000",
+          "quote": "Sales of services | 10,715 | 10,900 | 11,016",
+          "type": "chunk"
+        },
+        "text": "Sales of services were 10,715 million in 2022.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:BOEING_2022_10K#p55#0000",
+          "quote": "Total revenues | 66,608 | 62,286 | 58,158",
+          "type": "chunk"
+        },
+        "text": "Total revenues were 66,608 million in 2022.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Sales of products $55,893 million in 2022",
+        "Sales of services 10,715 million in 2022",
+        "Total revenues 66,608 million in 2022"
+      ],
+      "missing": [
+        "A computed share of FY2022 total revenue for each product or service category (no numeric result was provided)"
+      ],
+      "reason": "The material gives 2022 sales of products and services and total revenues, but no computed share of total revenue for any category, so the 20% test cannot be answered."
+    }
+  },
+  "request_key": "5abb2da047a2c37690b9250056578254fdf4c2ec13a541211fed6ff0bac26e8c",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00074545",
+    "input_tokens": 4835,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1964
+  }
+}

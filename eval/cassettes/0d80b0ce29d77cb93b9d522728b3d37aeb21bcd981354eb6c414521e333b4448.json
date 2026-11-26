@@ -1,0 +1,36 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "contradiction": false,
+    "points": [
+      {
+        "covered": true,
+        "index": 0
+      },
+      {
+        "covered": true,
+        "index": 1
+      },
+      {
+        "covered": true,
+        "index": 2
+      },
+      {
+        "covered": true,
+        "index": 3
+      }
+    ],
+    "reason": "The answer covers all four gold points: derivatives used to mitigate price exposure, fair value from index prices, volatility curves and discount factors checked against counterparty valuations, non-performance risk considered with no material impact, and collateral requirements above defined thresholds; nothing contradicts them."
+  },
+  "request_key": "0d80b0ce29d77cb93b9d522728b3d37aeb21bcd981354eb6c414521e333b4448",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 683,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00140115",
+    "input_tokens": 552,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 163
+  }
+}

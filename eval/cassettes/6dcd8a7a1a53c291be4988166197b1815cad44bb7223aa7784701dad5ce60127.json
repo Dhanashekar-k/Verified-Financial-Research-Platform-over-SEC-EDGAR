@@ -1,0 +1,72 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Occidental reports net sales of approximately $4.4 billion in 2023 from operations outside North America [1], but the material gives no total revenue figure and no numeric result, so the share of revenue from non-U.S. operations cannot be stated. The company says its international operations face political instability, nationalizations, corruption, armed conflict, terrorism, insurgency, civil unrest, security problems, labor unrest, OPEC production restrictions, equipment import restrictions and sanctions, which could cause loss or production limitations [2]. It also notes that exposure to these risks may increase if a greater share of production or revenue comes from international sources [3].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000797468-24-000034#8#0029",
+          "quote": "net sales of approximately $4.4 billion in 2023, relating to Occidental\u2019s operations in countries outside North America",
+          "type": "chunk"
+        },
+        "text": "Net sales outside North America were approximately $4.4 billion in 2023.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000797468-24-000034#8#0029",
+          "quote": "certain of its international operations are located in countries affected by political instability, nationalizations, corruption, armed conflict, terrorism, insurgency, civil unrest, security problems, labor unrest, OPEC production restrictions, equipment import restrictions and sanctions",
+          "type": "chunk"
+        },
+        "text": "Certain international operations are in countries affected by political instability, nationalizations, corruption, armed conflict, terrorism, insurgency, civil unrest, security problems, labor unrest, OPEC production restrictions, equipment import restrictions and sanctions, which can cause risk of loss or production limitations.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000797468-24-000034#8#0029",
+          "quote": "Exposure to such risks may increase if a greater percentage of Occidental\u2019s future oil and gas production or revenue comes from international sources.",
+          "type": "chunk"
+        },
+        "text": "Exposure to these risks may increase if a greater percentage of future oil and gas production or revenue comes from international sources.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Net sales of approximately $4.4 billion in 2023 relating to operations in countries outside North America",
+        "Political, regulatory and government-imposed risks in international operations, including nationalizations, sanctions and import restrictions"
+      ],
+      "missing": [
+        "Total 2023 consolidated revenue, needed to compute the non-U.S. share",
+        "A numeric result giving the non-U.S. share of revenue"
+      ],
+      "reason": "The material gives non-U.S. net sales in dollars but no total revenue figure or numeric result, so the share of revenue from non-U.S. operations cannot be computed."
+    }
+  },
+  "request_key": "6dcd8a7a1a53c291be4988166197b1815cad44bb7223aa7784701dad5ce60127",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00084440",
+    "input_tokens": 5249,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 2277
+  }
+}

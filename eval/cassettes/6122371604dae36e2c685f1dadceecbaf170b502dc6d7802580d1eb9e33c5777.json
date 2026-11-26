@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The material does not identify any debt securities registered to trade on a national securities exchange under 3M's name as of Q2 2023 [1]. The only exchange-listing passage concerns 3M's common stock in a later annual filing, not debt securities or the Q2 2023 period [1].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000066740-24-000016#5#0000",
+          "quote": "3M\u2019s stock ticker symbol is MMM and is listed on the New York Stock Exchange, Inc. (NYSE), the Chicago Stock Exchange, Inc., and the SIX Swiss Exchange.",
+          "type": "chunk"
+        },
+        "text": "3M's common stock (ticker MMM) is listed on the New York Stock Exchange, the Chicago Stock Exchange and the SIX Swiss Exchange, according to a later annual filing.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "3M's common stock (ticker MMM) is listed on the NYSE, Chicago Stock Exchange and SIX Swiss Exchange, per a later annual filing."
+      ],
+      "missing": [
+        "A Q2 2023 Form 10-Q cover page or Item 5 listing of registered debt securities and their exchanges, which would name the debt securities registered under Section 12(b)."
+      ],
+      "reason": "The passages do not list any debt securities registered under Section 12(b) or traded on an exchange in 3M's name as of June 30, 2023."
+    }
+  },
+  "request_key": "6122371604dae36e2c685f1dadceecbaf170b502dc6d7802580d1eb9e33c5777",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00061740",
+    "input_tokens": 4619,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1495
+  }
+}

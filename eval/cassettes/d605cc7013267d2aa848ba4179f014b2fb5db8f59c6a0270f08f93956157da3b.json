@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Block, Inc. (formerly Square) total revenue grew 101.5% in FY2020 compared with FY2019, the growth measured from FY2019 [1].",
+    "claims": [
+      {
+        "display": "101.5%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:-4865144004443266525 - f:-2596637729094699084) / f:-2596637729094699084",
+          "fact_ids": [
+            -4865144004443266525,
+            -2596637729094699084
+          ],
+          "type": "expr"
+        },
+        "text": "Block, Inc. total revenue growth in FY2020, measured from FY2019, was 101.5%.",
+        "unit": "ratio",
+        "value": "1.014973586506842049432481171"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "d605cc7013267d2aa848ba4179f014b2fb5db8f59c6a0270f08f93956157da3b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00018035",
+    "input_tokens": 343,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 602
+  }
+}

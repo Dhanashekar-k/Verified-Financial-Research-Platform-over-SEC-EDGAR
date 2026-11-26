@@ -1,0 +1,57 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The passages do not show that Pfizer is spinning off any business segment as of Q2 2023. The only spin-off they describe is the Upjohn Business, completed in November 2020 to form Viatris [1]. Business Innovation was established as an operating segment in the first quarter of 2023 and is not described as being spun off [2].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:Pfizer_2023Q2_10Q#p37#0001",
+          "quote": "in November 2020, we and Mylan completed the transaction to spin-off our Upjohn Business and combine it with Mylan to form Viatris",
+          "type": "chunk"
+        },
+        "text": "The Upjohn Business was spun off in November 2020 and combined with Mylan to form Viatris.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:Pfizer_2023Q2_10Q#p37#0001",
+          "quote": "Business Innovation, an operating segment established in the first quarter of 2023 that includes PC1, our contract development and manufacturing organization",
+          "type": "chunk"
+        },
+        "text": "Business Innovation is an operating segment established in the first quarter of 2023 that includes PC1.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "The Upjohn Business spin-off was completed in November 2020 to form Viatris.",
+        "Business Innovation was established as an operating segment in the first quarter of 2023."
+      ],
+      "missing": [
+        "Disclosure of any announced or planned spin-off of a business segment as of Q2 2023."
+      ],
+      "reason": "The Q2 2023 passages describe only a spin-off completed in 2020 and do not report any planned or pending spin-off of a business segment."
+    }
+  },
+  "request_key": "afed64ea14b420ff9b893836f1da2ebe13f1f29071e99a903ba66fa5977b0830",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0008020",
+    "input_tokens": 4821,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 2193
+  }
+}

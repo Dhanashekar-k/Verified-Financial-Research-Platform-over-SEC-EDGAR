@@ -1,0 +1,36 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "contradiction": false,
+    "points": [
+      {
+        "covered": true,
+        "index": 0
+      },
+      {
+        "covered": true,
+        "index": 1
+      },
+      {
+        "covered": true,
+        "index": 2
+      },
+      {
+        "covered": false,
+        "index": 3
+      }
+    ],
+    "reason": "The answer covers the end-of-FY2020 cash equivalents exposure, the end-of-FY2019 variable rate debt exposure, and the $1.5B notes driver, but omits that fixed rate debt rate changes affect fair value rather than earnings or cash flows."
+  },
+  "request_key": "56c492612737b82d62620e4d1a4d81bc5eeaf037d9b6d0fc1734329e857eba64",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 683,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00123415",
+    "input_tokens": 405,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 159
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Las Vegas Strip Resorts had the highest Adjusted Property EBITDAR in 2022, at $3.1 billion [1]. Regional Operations was next at $1.3 billion [2]. MGM China reported a loss of $203 million [3].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000789570-23-000008#7#0026",
+          "quote": "Las Vegas Strip Resorts Adjusted Property EBITDAR was $3.1 billion in 2022 compared to $1.7 billion in 2021",
+          "type": "chunk"
+        },
+        "text": "Las Vegas Strip Resorts Adjusted Property EBITDAR was $3.1 billion in 2022",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000789570-23-000008#7#0026",
+          "quote": "Regional Operations Adjusted Property EBITDAR was $1.3 billion in 2022 compared to $1.2 billion in 2021",
+          "type": "chunk"
+        },
+        "text": "Regional Operations Adjusted Property EBITDAR was $1.3 billion in 2022",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000789570-23-000008#7#0026",
+          "quote": "MGM China\u2019s Adjusted Property EBITDAR was a loss of $203 million in 2022",
+          "type": "chunk"
+        },
+        "text": "MGM China\u2019s Adjusted Property EBITDAR was a loss of $203 million in 2022",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "fee68d028da4b7bc0a9b98e2773bf7e2194b88f7a7b5b2ebf10c06ca203c5e41",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00069885",
+    "input_tokens": 4873,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1770
+  }
+}

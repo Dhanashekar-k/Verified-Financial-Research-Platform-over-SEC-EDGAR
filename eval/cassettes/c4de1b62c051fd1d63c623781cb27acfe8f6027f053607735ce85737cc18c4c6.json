@@ -1,0 +1,36 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "contradiction": false,
+    "points": [
+      {
+        "covered": true,
+        "index": 0
+      },
+      {
+        "covered": true,
+        "index": 1
+      },
+      {
+        "covered": true,
+        "index": 2
+      },
+      {
+        "covered": true,
+        "index": 3
+      }
+    ],
+    "reason": "The answer covers all four gold points: fuel price exposure affecting transportation costs, potential material impact, monitoring commodity trends with alternative sourcing plans, and passing inflation on while scaling distribution networks, with no contradictions."
+  },
+  "request_key": "c4de1b62c051fd1d63c623781cb27acfe8f6027f053607735ce85737cc18c4c6",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 683,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00117915",
+    "input_tokens": 410,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 147
+  }
+}

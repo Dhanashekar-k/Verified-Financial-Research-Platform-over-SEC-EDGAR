@@ -1,0 +1,48 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "PepsiCo's FY2022 Consolidated Statement of Income has no restructuring line, so the restructuring costs directly outlined there are 0 [1]. The related restructuring and impairment charges of 411 appear in the Consolidated Statement of Cash Flows instead [2].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:PEPSICO_2022_10K#p62#0000",
+          "quote": "Consolidated Statement of Income PepsiCo, Inc. and Subsidiaries",
+          "type": "chunk"
+        },
+        "text": "The FY2022 Consolidated Statement of Income has no separate restructuring line item, so restructuring costs directly outlined there are 0.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:PEPSICO_2022_10K#p64#0000",
+          "quote": "Restructuring and impairment charges | 411 | 247 | 289",
+          "type": "chunk"
+        },
+        "text": "Restructuring and impairment charges of 411 for 2022 appear in the Consolidated Statement of Cash Flows, not in the income statement.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "c0d0a62b70055da28526982f6c01e94e52226492d9fd745d6dc10ddece1357f4",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00072925",
+    "input_tokens": 4096,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 2047
+  }
+}

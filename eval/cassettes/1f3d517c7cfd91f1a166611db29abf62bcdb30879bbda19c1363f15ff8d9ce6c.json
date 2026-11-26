@@ -1,0 +1,43 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The passages describe only how People & Places Solutions delivers its work [1], not the fiscal 2023 risk factors on competition or how projects are awarded.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000052988-23-000084#1#0013",
+          "quote": "Solutions are delivered as standalone professional service engagements, comprehensive program management partnerships, and selective progressive design-build and construction management at-risk delivery services.",
+          "type": "chunk"
+        },
+        "text": "People & Places Solutions delivers solutions as standalone professional service engagements, comprehensive program management partnerships, and selective progressive design-build and construction management at-risk delivery services.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "People & Places Solutions delivers solutions as standalone professional service engagements, comprehensive program management partnerships, and selective progressive design-build and construction management at-risk delivery services."
+      ],
+      "missing": [
+        "Fiscal 2023 risk factor text on how competition in Jacobs' markets could affect its business",
+        "Description of how Jacobs' projects are typically awarded, such as the bidding or procurement process"
+      ],
+      "reason": "The passages do not include the risk factor discussion of competition or any description of how projects are awarded."
+    }
+  },
+  "request_key": "1f3d517c7cfd91f1a166611db29abf62bcdb30879bbda19c1363f15ff8d9ce6c",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00063335",
+    "input_tokens": 5523,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1378
+  }
+}

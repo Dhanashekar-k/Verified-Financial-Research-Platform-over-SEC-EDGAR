@@ -1,0 +1,52 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Diamondback Energy's diluted EPS for FY2021, as originally filed, was $12.30 per share [1]. This figure was later restated, and the latest restated value is $12.24 per share [2].",
+    "claims": [
+      {
+        "display": "$12.30 per share",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:1050380114985927328",
+          "fact_ids": [
+            1050380114985927328
+          ],
+          "type": "expr"
+        },
+        "text": "Diamondback Energy's diluted EPS for FY2021, as originally filed, was $12.30 per share.",
+        "unit": "USD/shares",
+        "value": "12.3000"
+      },
+      {
+        "display": "$12.24 per share",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:3853801244800750662",
+          "fact_ids": [
+            3853801244800750662
+          ],
+          "type": "expr"
+        },
+        "text": "Diamondback Energy's FY2021 diluted EPS was later restated to $12.24 per share.",
+        "unit": "USD/shares",
+        "value": "12.2400"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "1c90722c2e1ee789006965546de36a7413b9125c3aeef6c17cf564ecdc4476af",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00027430",
+    "input_tokens": 397,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 967
+  }
+}

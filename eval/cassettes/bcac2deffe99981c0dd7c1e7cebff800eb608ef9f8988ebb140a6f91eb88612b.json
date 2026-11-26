@@ -1,0 +1,52 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Occidental Petroleum reported capital expenditures of $6.3 billion for fiscal 2023 as originally filed [1]. That figure was later restated to $5.7 billion [2].",
+    "claims": [
+      {
+        "display": "$6.3 billion",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:-4074339094931331830",
+          "fact_ids": [
+            -4074339094931331830
+          ],
+          "type": "expr"
+        },
+        "text": "Occidental Petroleum's originally reported 2023 capital expenditures were $6.3 billion.",
+        "unit": "USD",
+        "value": "6270000000.0000"
+      },
+      {
+        "display": "$5.7 billion",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:-6037241551376231470",
+          "fact_ids": [
+            -6037241551376231470
+          ],
+          "type": "expr"
+        },
+        "text": "Occidental Petroleum's FY2023 capital expenditures were later restated to $5.7 billion.",
+        "unit": "USD",
+        "value": "5696000000.0000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "bcac2deffe99981c0dd7c1e7cebff800eb608ef9f8988ebb140a6f91eb88612b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00026080",
+    "input_tokens": 417,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 909
+  }
+}

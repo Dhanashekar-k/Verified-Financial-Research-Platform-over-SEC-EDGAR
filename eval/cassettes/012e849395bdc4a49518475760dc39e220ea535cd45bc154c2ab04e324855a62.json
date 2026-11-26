@@ -1,0 +1,30 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The material does not identify which region had the weakest topline performance for MGM in FY2022.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Regional Operations rooms, food and beverage, and entertainment, retail and other revenues increased in 2022 compared to 2021, attributed to higher business volume and travel activity.",
+        "MGM China VIP table games turnover and win declined in 2022 compared to 2021.",
+        "Consolidated net revenues for 2022 are reported in the summary operating results table."
+      ],
+      "missing": [
+        "Net revenue by region (Las Vegas Strip Resorts, Regional Operations, MGM China) for FY2022 and FY2021 to compare growth.",
+        "NUMERIC RESULTS computing regional net revenue and growth for FY2022."
+      ],
+      "reason": "The passages describe Regional Operations revenue lines rising in 2022 but give no per-region net revenue figures for Las Vegas Strip Resorts, Regional Operations, or MGM China, and no numeric results were supplied to compare them."
+    }
+  },
+  "request_key": "012e849395bdc4a49518475760dc39e220ea535cd45bc154c2ab04e324855a62",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00049640",
+    "input_tokens": 4894,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 956
+  }
+}

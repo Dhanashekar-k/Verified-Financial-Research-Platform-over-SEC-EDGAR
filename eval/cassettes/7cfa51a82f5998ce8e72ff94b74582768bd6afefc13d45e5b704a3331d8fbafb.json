@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Best Buy's merchandise inventories were $5.2 billion at February 1, 2020 [1]. The material gives this only in billions, not as the balance-sheet figure in USD millions.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000764478-20-000017#7#0042",
+          "quote": "Our merchandise inventories were $5.2 billion at February 1, 2020.",
+          "type": "chunk"
+        },
+        "text": "Best Buy's merchandise inventories were $5.2 billion at February 1, 2020.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Merchandise inventories were $5.2 billion at February 1, 2020."
+      ],
+      "missing": [
+        "The consolidated balance sheet total inventories for fiscal 2019 stated in USD millions."
+      ],
+      "reason": "The passages give fiscal 2019 year-end merchandise inventories only as a rounded billions figure, not the balance-sheet total in USD millions."
+    }
+  },
+  "request_key": "7cfa51a82f5998ce8e72ff94b74582768bd6afefc13d45e5b704a3331d8fbafb",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00052890",
+    "input_tokens": 4514,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1162
+  }
+}

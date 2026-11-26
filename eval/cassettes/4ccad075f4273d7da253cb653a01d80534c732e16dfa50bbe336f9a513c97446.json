@@ -1,0 +1,26 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "",
+    "claims": [],
+    "refusal": {
+      "found": [],
+      "missing": [
+        "Item 7A or other passages describing interest rate risk exposure in the fiscal 2022 10-K",
+        "Passages describing the company's approach to hedging interest rate risk"
+      ],
+      "reason": "The provided passages and numeric results do not discuss lululemon's interest rate risk exposure or its hedging approach, so the question cannot be answered from the material."
+    }
+  },
+  "request_key": "4ccad075f4273d7da253cb653a01d80534c732e16dfa50bbe336f9a513c97446",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00040375",
+    "input_tokens": 5366,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 491
+  }
+}

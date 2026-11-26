@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Newmont's dividends paid fell 19.0% from FY2022 to FY2023 [1]. The change is measured from FY2022.",
+    "claims": [
+      {
+        "display": "-19.0%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:-1616909695844356840 - f:-2346844124892402504) / f:-2346844124892402504",
+          "fact_ids": [
+            -1616909695844356840,
+            -2346844124892402504
+          ],
+          "type": "expr"
+        },
+        "text": "Newmont's dividends paid decreased 19.0% from FY2022 to FY2023.",
+        "unit": "ratio",
+        "value": "-0.1895761741122565864833906071"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "3e32e611832d07171ae653e5ce5f95a15f23736ce16cc6703bb5d969465c061b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00014005",
+    "input_tokens": 292,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 451
+  }
+}

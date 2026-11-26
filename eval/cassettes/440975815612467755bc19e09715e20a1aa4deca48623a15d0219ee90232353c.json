@@ -1,0 +1,90 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Fox Corporation described two types of market risk, changes in interest rates and stock prices [1]. Fixed-rate and variable-rate debt respond differently: a change in rates affects only the fair value of fixed-rate debt, while a change in the rate on variable-rate debt affects interest expense and the cash required to service that debt [2]. Fox had $7.25 billion of outstanding fixed-rate debt, before adjustments for unamortized discount and debt issuance costs, at June 30, 2022 [3]. No variable-rate debt was outstanding as of June 30, 2022 [4]. There were also no borrowings outstanding under the Revolving Credit Agreement as of June 30, 2022 [5].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001628280-22-022584#7A#0000",
+          "quote": "The Company has exposure to two types of market risk: changes in interest rates and stock prices.",
+          "type": "chunk"
+        },
+        "text": "Fox Corporation has exposure to two types of market risk: changes in interest rates and stock prices.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0001628280-22-022584#7A#0000",
+          "quote": "A change in the interest rate or yield of fixed-rate debt will only impact the fair market value of such debt, while a change in the interest rate of variable-rate debt will impact interest expense, as well as the amount of cash required to service",
+          "type": "chunk"
+        },
+        "text": "A change in the interest rate or yield of fixed-rate debt affects only the fair market value of such debt, while a change in the interest rate of variable-rate debt affects interest expense and the amount of cash required to service such debt.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001628280-22-022584#7A#0000",
+          "quote": "The Company's current financing arrangements and facilities include $7.25 billion of outstanding fixed-rate debt, before adjustments for unamortized discount and debt issuance costs",
+          "type": "chunk"
+        },
+        "text": "Fox had $7.25 billion of outstanding fixed-rate debt, before adjustments for unamortized discount and debt issuance costs.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c4",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001628280-22-022584#7A#0000",
+          "quote": "As of June 30, 2022, all the Company's financial instruments with exposure to interest rate risk were denominated in U.S. dollars and no variable-rate debt was outstanding.",
+          "type": "chunk"
+        },
+        "text": "As of June 30, 2022, no variable-rate debt was outstanding.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c5",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001628280-22-022584#8#0068",
+          "quote": "As of June 30, 2022, there were no borrowings outstanding under the Revolving Credit Agreement.",
+          "type": "chunk"
+        },
+        "text": "As of June 30, 2022, there were no borrowings outstanding under the Revolving Credit Agreement.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "440975815612467755bc19e09715e20a1aa4deca48623a15d0219ee90232353c",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00082230",
+    "input_tokens": 4152,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 2408
+  }
+}

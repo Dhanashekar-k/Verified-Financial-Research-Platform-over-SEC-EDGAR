@@ -1,0 +1,48 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "PepsiCo raised its full-year 2023 guidance because of a strong start to the year, according to management. CEO Ramon Laguarta tied the higher outlook to the first-quarter performance [1]. He also credited the start to categories and geographies that remained resilient during the first quarter [2]. The passages do not quantify how much each factor contributed.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:PEPSICO_2023Q1_EARNINGS#p1#0000",
+          "quote": "Given our strong start to the year, we",
+          "type": "chunk"
+        },
+        "text": "PepsiCo's CEO tied the raised full-year 2023 outlook to a strong start to the year.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:PEPSICO_2023Q1_EARNINGS#p1#0000",
+          "quote": "geographies remained resilient during the first quarter.",
+          "type": "chunk"
+        },
+        "text": "Management said its categories and geographies remained resilient during the first quarter.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "f84866fb30f10995ac6f95002d18e15e654584663d666c2f9cb980ce7f547c20",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00065040",
+    "input_tokens": 4254,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1700
+  }
+}

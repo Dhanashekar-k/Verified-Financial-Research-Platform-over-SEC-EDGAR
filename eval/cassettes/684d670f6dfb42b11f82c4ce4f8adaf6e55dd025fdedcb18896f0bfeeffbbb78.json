@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The system answer states PepsiCo raised full-year 2023 guidance because of a strong start to the year, matching the gold answer's key fact."
+  },
+  "request_key": "684d670f6dfb42b11f82c4ce4f8adaf6e55dd025fdedcb18896f0bfeeffbbb78",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00053755",
+    "input_tokens": 206,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 60
+  }
+}

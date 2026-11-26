@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "S&P Global Inc.'s dividends paid rose by 37.8% in fiscal 2022, measured from fiscal 2021 [1].",
+    "claims": [
+      {
+        "display": "37.8%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:2064869277168824697 - f:3576841052931443275) / f:3576841052931443275",
+          "fact_ids": [
+            2064869277168824697,
+            3576841052931443275
+          ],
+          "type": "expr"
+        },
+        "text": "S&P Global Inc. dividends paid grew 37.8% in FY2022, growth measured from FY2021.",
+        "unit": "ratio",
+        "value": "0.3781965006729475100942126514"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "dc4fef3d245e7c54ee8ff0de66c254abaa5d706be1958ab1ad19071ac3ef6330",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00017020",
+    "input_tokens": 300,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 570
+  }
+}

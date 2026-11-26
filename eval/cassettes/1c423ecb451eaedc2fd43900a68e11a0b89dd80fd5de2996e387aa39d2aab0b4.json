@@ -1,0 +1,36 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "DTE Energy Co had 193.7 million common shares outstanding at the end of fiscal year 2021 [1].",
+    "claims": [
+      {
+        "display": "193.7 million shares",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:-1510683636709301799",
+          "fact_ids": [
+            -1510683636709301799
+          ],
+          "type": "expr"
+        },
+        "text": "DTE Energy Co had 193.7 million common shares outstanding at the end of fiscal year 2021.",
+        "unit": "shares",
+        "value": "193747509"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "1c423ecb451eaedc2fd43900a68e11a0b89dd80fd5de2996e387aa39d2aab0b4",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00007380",
+    "input_tokens": 242,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 196
+  }
+}

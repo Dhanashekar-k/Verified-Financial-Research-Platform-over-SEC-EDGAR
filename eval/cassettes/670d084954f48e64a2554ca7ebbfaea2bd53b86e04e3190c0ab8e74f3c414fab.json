@@ -1,0 +1,131 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "IQVIA described 2024 as another year of strong operating results, with income from operations up over 11 percent and operating cash flow up over 26 percent from 2023 [1]. It said it ended the year with its highest ever total company remaining performance obligations, at approximately $33.5 billion as of December 31, 2024 [2]. Technology & Analytics Solutions revenue and profit growth improved in the second half of the year as clients increased their spending [3]. Research & Development Solutions also produced revenue and segment profit growth in 2024 [4], though it faced challenges in the latter half of 2024 that it expects to persist into 2025 but considers more short-term in nature [5]. On liquidity, IQVIA reported cash and cash equivalents of $1,702 million and $825 million drawn under its $2,000 million revolving credit facility at December 31, 2024 [6]. It stated it was in compliance with its financial covenants in all material respects and did not see material uncertainty about meeting them [7]. The passages do not give segment-level figures or describe Contract Sales & Medical Solutions trends.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001478242-25-000045#7#0001",
+          "quote": "We delivered another year of strong operating results in 2024 with our income from operations increasing over 11 percent and our cash flow from operating activities increasing over 26 percent from 2023.",
+          "type": "chunk"
+        },
+        "text": "We delivered another year of strong operating results in 2024 with our income from operations increasing over 11 percent and our cash flow from operating activities increasing over 26 percent from 2023.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001478242-25-000045#7#0001",
+          "quote": "We ended the year with our highest ever total company remaining performance obligations of approximately $33.5 billion as of December 31, 2024.",
+          "type": "chunk"
+        },
+        "text": "We ended the year with our highest ever total company remaining performance obligations of approximately $33.5 billion as of December 31, 2024.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001478242-25-000045#7#0001",
+          "quote": "Our Technology & Analytics Solutions segment revenues and profit growth improved in the second half of the year as we captured opportunities relating to our clients increasing their spending.",
+          "type": "chunk"
+        },
+        "text": "Our Technology & Analytics Solutions segment revenues and profit growth improved in the second half of the year as we captured opportunities relating to our clients increasing their spending.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c4",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001478242-25-000045#7#0001",
+          "quote": "Our Research & Development Solutions segment also produced revenues and segment profit growth in 2024.",
+          "type": "chunk"
+        },
+        "text": "Our Research & Development Solutions segment also produced revenues and segment profit growth in 2024.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c5",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001478242-25-000045#7#0001",
+          "quote": "Although we faced some challenges in our Research & Development Solutions segment in the latter half of 2024, and while we anticipate some of these challenges will persist into 2025, we consider these to be more short-term in nature.",
+          "type": "chunk"
+        },
+        "text": "Although we faced some challenges in our Research & Development Solutions segment in the latter half of 2024, and while we anticipate some of these challenges will persist into 2025, we consider these to be more short-term in nature.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c6",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001478242-25-000045#7#0001",
+          "quote": "As of December 31, 2024, cash and cash equivalents were $1,702 million and we had $825 million drawn under our $2,000 million revolving credit facility.",
+          "type": "chunk"
+        },
+        "text": "As of December 31, 2024, cash and cash equivalents were $1,702 million and we had $825 million drawn under our $2,000 million revolving credit facility.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c7",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001478242-25-000045#7#0001",
+          "quote": "As of December 31, 2024, we were in compliance with the financial covenants under our debt agreements in all material respects and do not have material uncertainty about ongoing ability to meet the covenants of our credit arrangements.",
+          "type": "chunk"
+        },
+        "text": "As of December 31, 2024, we were in compliance with the financial covenants under our debt agreements in all material respects and do not have material uncertainty about ongoing ability to meet the covenants of our credit arrangements.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Overall operating results and cash flow growth were described as strong for 2024.",
+        "Remaining performance obligations were described as the highest ever at December 31, 2024.",
+        "Technology & Analytics Solutions and Research & Development Solutions segment growth trends were described qualitatively.",
+        "Cash, revolver drawings, and covenant compliance were described as of December 31, 2024."
+      ],
+      "missing": [
+        "Segment-level revenue and profit figures for each reportable segment.",
+        "Trend description for Contract Sales & Medical Solutions.",
+        "Specific figures for the operating income and operating cash flow growth rates."
+      ],
+      "reason": "The passages give qualitative MD&A statements and some consolidated liquidity figures but no segment-level figures or Contract Sales & Medical Solutions trend data."
+    }
+  },
+  "request_key": "670d084954f48e64a2554ca7ebbfaea2bd53b86e04e3190c0ab8e74f3c414fab",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00116215",
+    "input_tokens": 5064,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 3585
+  }
+}

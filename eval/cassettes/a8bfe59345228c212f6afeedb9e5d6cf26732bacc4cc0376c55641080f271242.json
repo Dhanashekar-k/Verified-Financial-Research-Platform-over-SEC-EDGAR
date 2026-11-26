@@ -1,0 +1,36 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Cardinal Health Inc. reported capital expenditures of $78.0 million in Q1 of fiscal year 2021 [1].",
+    "claims": [
+      {
+        "display": "$78.0 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:750861475313324579",
+          "fact_ids": [
+            750861475313324579
+          ],
+          "type": "expr"
+        },
+        "text": "Cardinal Health Inc. capital expenditures in Q1 FY2021 were $78.0 million.",
+        "unit": "USD",
+        "value": "78000000.0000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "a8bfe59345228c212f6afeedb9e5d6cf26732bacc4cc0376c55641080f271242",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00012410",
+    "input_tokens": 238,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 398
+  }
+}

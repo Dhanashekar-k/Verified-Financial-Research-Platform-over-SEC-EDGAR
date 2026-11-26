@@ -1,0 +1,62 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Targa says Dodd-Frank could raise the cost of its hedges and reduce their availability. If it cuts back on derivatives because of the Act, its results could become more volatile and its cash flows less predictable, which could hurt its ability to plan for and fund capital expenditures [1][2]. Its current hedging activities would qualify for the non-financial end user exemption from the margin requirements [3].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000950170-25-023983#1A#0043",
+          "quote": "The Dodd-Frank Act and any new regulations could increase the cost of derivative contracts or potentially reduce the availability of derivatives to protect against risks we encounter.",
+          "type": "chunk"
+        },
+        "text": "The Dodd-Frank Act and any new regulations could increase the cost of derivative contracts or potentially reduce the availability of derivatives to protect against risks we encounter.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000950170-25-023983#1A#0043",
+          "quote": "If we reduce our use of derivatives as a result of the Dodd-Frank Act and regulations implementing the Dodd-Frank Act, our results of operations may become more volatile and our cash flows may be less predictable, which could adversely affect our ability to plan for and fund capital expenditures.",
+          "type": "chunk"
+        },
+        "text": "If Targa reduces its use of derivatives as a result of the Dodd-Frank Act, its results of operations may become more volatile and its cash flows may be less predictable, which could adversely affect its ability to plan for and fund capital expenditures.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000950170-25-023983#1A#0043",
+          "quote": "However, our current hedging activities would qualify for the non-financial end user exemption from the margin requirements.",
+          "type": "chunk"
+        },
+        "text": "Targa's current hedging activities would qualify for the non-financial end user exemption from the margin requirements.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "df5c47d253b0142af48235f3759d6b5c15365d0cd50b1e91aaebc38bcc4165e2",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00062935",
+    "input_tokens": 5038,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1459
+  }
+}

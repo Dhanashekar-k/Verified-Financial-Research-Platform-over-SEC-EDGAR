@@ -1,0 +1,59 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The passages do not answer whether 3M is capital-intensive in FY2022. They state that 3M expended approximately $317 million on environmental capital projects in 2022 [1] and expect 2023 capital spending of approximately $1.5 billion to $1.8 billion [2]. Total FY2022 capital expenditure, revenue and total assets are not in the material, so no intensity measure can be formed.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000066740-23-000014#1#0008",
+          "quote": "In 2022, 3M expended approximately $317 million on capital projects for environmental purposes as defined below.",
+          "type": "chunk"
+        },
+        "text": "In 2022, 3M expended approximately $317 million on capital projects for environmental purposes.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000066740-23-000014#7#0064",
+          "quote": "The Company expects 2023 capital spending to be approximately $1.5 billion to $1.8 billion",
+          "type": "chunk"
+        },
+        "text": "The Company expects 2023 capital spending to be approximately $1.5 billion to $1.8 billion.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "3M expended approximately $317 million on capital projects for environmental purposes in 2022.",
+        "The Company expects 2023 capital spending to be approximately $1.5 billion to $1.8 billion."
+      ],
+      "missing": [
+        "Total FY2022 capital expenditures (purchases of property, plant and equipment)",
+        "FY2022 revenue or net sales",
+        "FY2022 total assets or net property, plant and equipment"
+      ],
+      "reason": "The passages give only a partial environmental capital figure for 2022 and a 2023 spending outlook, not total FY2022 capital expenditure or the revenue or asset base needed to judge capital intensity."
+    }
+  },
+  "request_key": "8100278fa359da01308e9cd2264eb720a86cc7cce0ee7a6a90b898a502baa290",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00073520",
+    "input_tokens": 5175,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1855
+  }
+}

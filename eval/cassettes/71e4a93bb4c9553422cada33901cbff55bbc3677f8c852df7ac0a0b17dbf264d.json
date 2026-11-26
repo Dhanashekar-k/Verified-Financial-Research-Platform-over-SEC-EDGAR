@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Measured from Q1 FY2023, Gilead Sciences' net income changed by -512.9% to Q1 FY2024 [1].",
+    "claims": [
+      {
+        "display": "-512.9%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:-8259891191884170435 - f:-9192521476523468454) / f:-9192521476523468454",
+          "fact_ids": [
+            -8259891191884170435,
+            -9192521476523468454
+          ],
+          "type": "expr"
+        },
+        "text": "Gilead Sciences' net income growth in Q1 FY2024, measured from Q1 FY2023, was -512.9%.",
+        "unit": "ratio",
+        "value": "-5.128712871287128712871287129"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "71e4a93bb4c9553422cada33901cbff55bbc3677f8c852df7ac0a0b17dbf264d",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00018740",
+    "input_tokens": 314,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 636
+  }
+}

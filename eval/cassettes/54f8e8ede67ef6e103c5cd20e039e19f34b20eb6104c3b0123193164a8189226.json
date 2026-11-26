@@ -1,0 +1,52 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Global Payments' selling, general and administrative expense for Q1 FY2025 was $1.0 billion as originally reported [1]. This figure was later restated to $943.7 million [2].",
+    "claims": [
+      {
+        "display": "$1.0 billion",
+        "id": "r1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:-8975953057143209454",
+          "fact_ids": [
+            -8975953057143209454
+          ],
+          "type": "expr"
+        },
+        "text": "Global Payments' Q1 FY2025 SG&A expense, as originally reported, was $1.0 billion.",
+        "unit": "USD",
+        "value": "1024011000.0000"
+      },
+      {
+        "display": "$943.7 million",
+        "id": "r1_latest",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:9071238092117057395",
+          "fact_ids": [
+            9071238092117057395
+          ],
+          "type": "expr"
+        },
+        "text": "Global Payments' Q1 FY2025 SG&A expense, as later restated, was $943.7 million.",
+        "unit": "USD",
+        "value": "943719000.0000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "54f8e8ede67ef6e103c5cd20e039e19f34b20eb6104c3b0123193164a8189226",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00030260",
+    "input_tokens": 413,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1077
+  }
+}

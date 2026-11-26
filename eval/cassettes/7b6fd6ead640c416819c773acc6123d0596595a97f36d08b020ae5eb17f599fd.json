@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The passages do not describe any ongoing legal battles for FY2022 or FY2021. The only related text concerns environmental remediation and indemnification obligations, which the filing says have not had a material impact on PepsiCo's capital expenditures, earnings or competitive position [1].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000077476-22-000010#1#0020",
+          "quote": "While these environmental remediation and indemnification obligations cannot be predicted with certainty, such obligations have not had, and are not expected to have, a material impact on our capital expenditures, earnings or competitive position.",
+          "type": "chunk"
+        },
+        "text": "Environmental remediation and indemnification obligations have not had, and are not expected to have, a material impact on capital expenditures, earnings or competitive position.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Environmental remediation and indemnification obligations have not had, and are not expected to have, a material impact on capital expenditures, earnings or competitive position."
+      ],
+      "missing": [
+        "Legal Proceedings disclosures (Item 3 or the commitments and contingencies note) from the FY2022 and FY2021 annual reports describing ongoing litigation."
+      ],
+      "reason": "The passages contain no litigation or legal proceedings disclosures for FY2022 or FY2021, so the question cannot be answered from the material."
+    }
+  },
+  "request_key": "7b6fd6ead640c416819c773acc6123d0596595a97f36d08b020ae5eb17f599fd",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00054670",
+    "input_tokens": 5080,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1120
+  }
+}

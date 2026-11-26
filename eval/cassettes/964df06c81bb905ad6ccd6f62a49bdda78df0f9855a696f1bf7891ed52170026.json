@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The provided material does not report Moderna's vaccine sales for fiscal 2008. The filings say the company was founded in 2010 [1], so the 2008 period falls before its founding.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001682852-23-000011#1#0000",
+          "quote": "Since our founding in 2010, we have transformed",
+          "type": "chunk"
+        },
+        "text": "Moderna's filings state it was founded in 2010.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Moderna was founded in 2010 according to its filings."
+      ],
+      "missing": [
+        "Moderna's vaccine sales for fiscal 2008, which would need a filing covering that year."
+      ],
+      "reason": "The material contains no figures or passages on Moderna's fiscal 2008 vaccine sales, and the company was founded in 2010."
+    }
+  },
+  "request_key": "964df06c81bb905ad6ccd6f62a49bdda78df0f9855a696f1bf7891ed52170026",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00044405",
+    "input_tokens": 4842,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 757
+  }
+}

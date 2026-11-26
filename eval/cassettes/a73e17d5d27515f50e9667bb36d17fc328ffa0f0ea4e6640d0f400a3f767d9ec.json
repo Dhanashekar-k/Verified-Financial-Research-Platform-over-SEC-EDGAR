@@ -1,0 +1,118 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Chesapeake uses oil, natural gas and NGL derivatives to mitigate a portion of its exposure to adverse price changes [1]. It determines the fair value of its derivatives using established index prices, volatility curves and discount factors, and compares these estimates to counterparty valuations for reasonableness [2]. Counterparty non-performance risk is considered in the valuation of its derivatives but has not had a material impact on their values to date [3]. To limit credit risk, it enters derivative contracts only with highly rated counterparties or those it deems to have acceptable credit strength, and attempts to limit exposure to non-performance by any single counterparty [4]. As of December 31, 2020, its derivative instruments were spread among 7 counterparties [5]. Collateral requirements above defined thresholds partially mitigate future counterparty risk [6]. As of December 31, 2020, none of its open derivative instruments were designated as cash flow hedges [7].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000895126-21-000078#7A#0000",
+          "quote": "We determine the fair value of our derivative instruments utilizing established index prices, volatility curves and discount factors. These estimates are compared to counterparty valuations for reasonableness.",
+          "type": "chunk"
+        },
+        "text": "Chesapeake determines the fair value of its derivative instruments using established index prices, volatility curves and discount factors, and compares these estimates to counterparty valuations for reasonableness.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000895126-21-000078#7A#0000",
+          "quote": "This non-performance risk is considered in the valuation of our derivative instruments, but to date has not had a material impact on the values of our derivatives.",
+          "type": "chunk"
+        },
+        "text": "Counterparty non-performance risk is considered in the valuation of its derivative instruments but has not had a material impact on their values to date.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000895126-21-000078#8#0168",
+          "quote": "we enter into derivative contracts only with counterparties that are highly rated or deemed by us to have acceptable credit strength and deemed by management to be competent and competitive market-makers, and we attempt to limit our exposure to non-performance by any single counterparty.",
+          "type": "chunk"
+        },
+        "text": "Chesapeake enters derivative contracts only with counterparties that are highly rated or deemed to have acceptable credit strength, and attempts to limit exposure to non-performance by any single counterparty.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c4",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000895126-21-000078#8#0168",
+          "quote": "As of December 31, 2020, our oil, natural gas and NGL derivative instruments were spread among 7 counterparties.",
+          "type": "chunk"
+        },
+        "text": "Chesapeake's oil, natural gas and NGL derivative instruments were spread among 7 counterparties.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c5",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000895126-21-000078#7A#0000",
+          "quote": "To mitigate a portion of our exposure to adverse price changes, we enter into various derivative instruments.",
+          "type": "chunk"
+        },
+        "text": "Chesapeake enters into various derivative instruments to mitigate a portion of its exposure to adverse commodity price changes.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c6",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000895126-21-000078#7A#0000",
+          "quote": "Future risk related to counterparties not being able to meet their obligations has been partially mitigated under our commodity hedging arrangements that require counterparties to post collateral if their obligations to us are in excess of defined thresholds.",
+          "type": "chunk"
+        },
+        "text": "Future counterparty risk has been partially mitigated by arrangements requiring counterparties to post collateral if their obligations to Chesapeake exceed defined thresholds.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c7",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000895126-21-000078#8#0039",
+          "quote": "As of December 31, 2020, none of our open derivative instruments were designated as cash flow hedges.",
+          "type": "chunk"
+        },
+        "text": "As of December 31, 2020, none of Chesapeake's open derivative instruments were designated as cash flow hedges.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "a73e17d5d27515f50e9667bb36d17fc328ffa0f0ea4e6640d0f400a3f767d9ec",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00107075",
+    "input_tokens": 5211,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 3190
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Cardinal Health's dividends paid in fiscal year 2025 were $27.0 million higher than W.W. Grainger's [1].",
+    "claims": [
+      {
+        "display": "$27.0 million",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "f:6832645275392474085 - f:1172612544828886667",
+          "fact_ids": [
+            6832645275392474085,
+            1172612544828886667
+          ],
+          "type": "expr"
+        },
+        "text": "Cardinal Health's FY2025 dividends paid were $27.0 million higher than W.W. Grainger's.",
+        "unit": "USD",
+        "value": "27000000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "52bb04d3c398a86ee96cfae2c17110289586a7e3597068a796c7eb614e0980ca",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00009990",
+    "input_tokens": 649,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 219
+  }
+}
