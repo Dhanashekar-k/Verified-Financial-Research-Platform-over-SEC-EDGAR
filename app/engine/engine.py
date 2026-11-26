@@ -47,7 +47,7 @@ from app.engine.retrieval.query import RetrievalConfig, RetrievalResult, retriev
 from app.engine.retrieval.rerank import CrossEncoderReranker, Reranker
 from app.engine.telemetry import record_usage, stage
 
-VERSION = "0.6.0"
+VERSION = "0.6.1"
 SQL_FALLBACK_ENV = "ENGINE_SQL_FALLBACK"
 MIN_COMPANIES_FOR_A_FISCAL_YEAR = 100
 TRACKED_CIKS_PATH = Path("data/targets/tracked_ciks.csv")

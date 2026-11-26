@@ -20,7 +20,9 @@ from app.engine.retrieval.query import RankedChunk
 from app.llm.types import Usage
 
 COMPOSER_ROLE = "composer"
-MAX_ANSWER_TOKENS = 2048
+# Thinking counts toward this limit. At 2048, 31 of the Haiku writer's dev replies were cut off and
+# 12 questions failed after a retry. A higher limit costs nothing unless a reply uses it.
+MAX_ANSWER_TOKENS = 8192
 TEXT_ONLY_NOTE = (
     "The question's measure is not one that is computed from XBRL facts, so there are no NUMERIC "
     "RESULTS. Rule 9 applies."

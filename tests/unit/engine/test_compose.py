@@ -212,7 +212,8 @@ class FakeLLM:
 def test_compose_calls_the_composer_role_with_the_answer_schema() -> None:
     llm = FakeLLM(Answer(answer_markdown="x"))
     got, _ = compose("q", QueryPlan(intent="numeric"), [res()], [], [], NAMES, llm)
-    role, system, _, schema, _ = llm.calls[0]
+    role, system, _, schema, max_tokens = llm.calls[0]
+    assert max_tokens == 8192  # thinking counts toward it: 2048 cut dev replies off
     assert (role, system, schema) == (
         COMPOSER_ROLE,
         COMPOSER_SYSTEM,
