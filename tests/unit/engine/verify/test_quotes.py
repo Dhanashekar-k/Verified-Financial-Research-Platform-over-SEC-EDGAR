@@ -60,7 +60,6 @@ def assert_fails(outcome: CheckOutcome, check: str, *, others_pass: tuple[str, .
         ("\u2018a\u2019 \u201cb\u201d", "'a' \"b\""),
         ("a\u2010b\u2011c\u2012d\u2013e\u2014f\u2015g\u2212h", "a-b-c-d-e-f-g-h"),
         ("STRA\u00dfE", "strasse"),
-        ("", ""),
         (" \u00a0\u200b ", ""),
     ],
 )
@@ -77,8 +76,10 @@ def test_normalize_folds_only_presentation_differences(raw: str, expected: str) 
 )
 def test_normalize_is_not_nfkc(marked: str, plain: str) -> None:
     """NFKC would turn a footnote mark into a digit and let it support a number, so the
-    character map must leave compatibility characters alone."""
+    character map must leave compatibility characters alone. Presentation still folds, so a
+    function that changes nothing does not pass."""
     assert normalize(marked) != normalize(plain)
+    assert normalize(f"  {plain.upper()} ") == normalize(plain)
 
 
 # --- locate_quote -------------------------------------------------------------------------------

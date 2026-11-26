@@ -85,8 +85,11 @@ def test_numbers_come_in_order_with_their_spans() -> None:
 
 
 def test_text_without_digits_has_no_numbers() -> None:
-    """No digits, no numbers (a spelled-out quarter is not a parsed number)."""
+    """No digits, no numbers (a spelled-out quarter is not a parsed number). The second half
+    keeps this from passing on a parser that never finds anything."""
     assert parse_numbers("Management cited demand in the second quarter.") == []
+    found = parse_numbers("Management cited 5 reasons in the second quarter.")
+    assert [n.value for n in found if n.kind == "value"] == [D(5)]
 
 
 def test_direction_word_does_not_change_the_parsed_sign() -> None:
@@ -367,13 +370,18 @@ def test_a_number_followed_by_a_unit_word_is_not_a_year(written: str) -> None:
 
 
 @pytest.mark.parametrize(
-    "text",
-    ["3M Co reported higher liabilities.", "In its filing, 3M described the plan."],
+    ("text", "value"),
+    [
+        ("3M Co reported liabilities of $35.4 billion.", "35400000000"),
+        ("In its filing, 3M described a plan costing $1.5 billion.", "1500000000"),
+    ],
 )
-def test_3m_is_a_name_not_three_million(text: str) -> None:
+def test_3m_is_a_name_not_three_million(text: str, value: str) -> None:
     """ "3M" is the company. Read with the letter scale M it would be an unsupported value and
-    drop true claims (dev: num-0043 c1, fb-00499 c1)."""
-    assert not [n for n in parse_numbers(text) if n.kind in ("value", "year")]
+    drop true claims (dev: num-0043 c1, fb-00499 c1). The real figure must still be found."""
+    found = parse_numbers(text)
+    assert [n.value for n in found if n.kind == "value"] == [D(value)]
+    assert not [n for n in found if n.kind == "year"]
 
 
 def test_dev_3m_claim_holds_one_value() -> None:

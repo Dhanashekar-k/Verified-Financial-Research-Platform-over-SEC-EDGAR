@@ -241,7 +241,8 @@ def test_apply_does_not_change_the_answer_it_was_given() -> None:
     answer = Answer(answer_markdown="composer prose", claims=trend_claims())
     before = answer.model_copy(deep=True)
     results = [verdict(c, keep=i != 2) for i, c in enumerate(answer.claims)]
-    apply(answer, results, trend_ctx(), CFG)
+    decision = apply(answer, results, trend_ctx(), CFG)
+    assert decision.kept == before.claims[:2]  # it did decide: the dropped claim is gone
     assert answer == before
 
 
