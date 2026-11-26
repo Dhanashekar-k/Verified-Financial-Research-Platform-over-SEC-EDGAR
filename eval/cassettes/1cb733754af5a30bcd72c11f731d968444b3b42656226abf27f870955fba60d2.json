@@ -1,0 +1,36 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Pfizer"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "acquisitions",
+      "business combinations"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": "this 10K report",
+    "periods": [],
+    "section_hints": [
+      "1",
+      "8"
+    ]
+  },
+  "request_key": "1cb733754af5a30bcd72c11f731d968444b3b42656226abf27f870955fba60d2",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000126705",
+    "input_tokens": 32,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 411
+  }
+}

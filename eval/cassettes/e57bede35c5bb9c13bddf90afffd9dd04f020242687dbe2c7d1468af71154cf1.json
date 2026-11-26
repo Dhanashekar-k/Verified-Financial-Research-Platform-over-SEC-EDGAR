@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Cardinal Health Inc."
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "interest_expense"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "value",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "Q2",
+        "fiscal_year": 2026
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "e57bede35c5bb9c13bddf90afffd9dd04f020242687dbe2c7d1468af71154cf1",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000046755",
+    "input_tokens": 48,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 88
+  }
+}

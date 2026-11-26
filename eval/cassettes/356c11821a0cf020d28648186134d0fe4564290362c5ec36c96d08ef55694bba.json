@@ -1,0 +1,25 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [],
+    "intent": "out_of_scope",
+    "metrics": [],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [],
+    "section_hints": []
+  },
+  "request_key": "356c11821a0cf020d28648186134d0fe4564290362c5ec36c96d08ef55694bba",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000027255",
+    "input_tokens": 18,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 16
+  }
+}

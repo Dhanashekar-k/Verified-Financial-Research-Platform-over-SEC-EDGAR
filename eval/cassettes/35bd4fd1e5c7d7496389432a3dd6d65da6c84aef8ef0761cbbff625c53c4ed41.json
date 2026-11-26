@@ -1,0 +1,36 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "NetApp's operating income for Q2 of fiscal 2025 was $345.0 million [1].",
+    "claims": [
+      {
+        "display": "$345.0 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:-3159864724517804994",
+          "fact_ids": [
+            -3159864724517804994
+          ],
+          "type": "expr"
+        },
+        "text": "NetApp's operating income for Q2 FY2025 was $345.0 million.",
+        "unit": "USD",
+        "value": "345000000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "35bd4fd1e5c7d7496389432a3dd6d65da6c84aef8ef0761cbbff625c53c4ed41",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00006760",
+    "input_tokens": 228,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 174
+  }
+}

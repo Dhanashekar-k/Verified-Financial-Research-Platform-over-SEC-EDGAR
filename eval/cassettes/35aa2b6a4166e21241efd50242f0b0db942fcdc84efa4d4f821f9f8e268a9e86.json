@@ -1,0 +1,36 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Quanta Services, Inc.'s operating income for fiscal year 2023 was $1.1 billion [1].",
+    "claims": [
+      {
+        "display": "$1.1 billion",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:-3267876705241723260",
+          "fact_ids": [
+            -3267876705241723260
+          ],
+          "type": "expr"
+        },
+        "text": "Quanta Services, Inc.'s operating income for fiscal year 2023 was $1.1 billion.",
+        "unit": "USD",
+        "value": "1127976000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "35aa2b6a4166e21241efd50242f0b0db942fcdc84efa4d4f821f9f8e268a9e86",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00007360",
+    "input_tokens": 238,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 196
+  }
+}

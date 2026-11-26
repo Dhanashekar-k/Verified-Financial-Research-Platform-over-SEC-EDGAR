@@ -1,0 +1,90 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Iron Mountain describes several strategies for managing foreign currency risk. One is to finance certain international subsidiaries with local-currency debt as a natural hedge [1]. Another is for IMI or IMIM to borrow in foreign currencies to hedge intercompany financing [2]. On occasion it uses currency swaps to hedge an overseas investment [3]. It has also entered into cross-currency swap agreements to hedge dollar-euro exchange rate variability [4]. It may use foreign-currency borrowings to hedge its international investments [5].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0001020569-22-000035#7A#0002",
+          "quote": "One strategy is to finance certain of our international subsidiaries with debt that is denominated in local currencies, thereby providing a natural hedge.",
+          "type": "chunk"
+        },
+        "text": "Iron Mountain finances certain of its international subsidiaries with debt denominated in local currencies, which provides a natural hedge.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001020569-22-000035#7A#0002",
+          "quote": "Another strategy we utilize is for IMI or IMIM, a wholly-owned subsidiary of IMI, to borrow in foreign currencies to hedge our intercompany financing activities.",
+          "type": "chunk"
+        },
+        "text": "IMI or IMIM, a wholly-owned subsidiary of IMI, borrows in foreign currencies to hedge intercompany financing activities.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001020569-22-000035#7A#0002",
+          "quote": "on occasion, we enter into currency swaps to temporarily or permanently hedge an overseas investment, such as a major acquisition, to lock in certain transaction economics.",
+          "type": "chunk"
+        },
+        "text": "On occasion, Iron Mountain enters into currency swaps to temporarily or permanently hedge an overseas investment.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c4",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001020569-22-000035#7A#0002",
+          "quote": "We have entered into cross-currency swap agreements to hedge the variability of exchange rate impacts between the United States dollar and the Euro.",
+          "type": "chunk"
+        },
+        "text": "Iron Mountain has entered into cross-currency swap agreements to hedge the variability of exchange rate impacts between the United States dollar and the Euro.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c5",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001020569-22-000035#15#0064",
+          "quote": "We may also use borrowings in foreign currencies, either obtained in the United States or by our foreign subsidiaries, to hedge foreign currency risk associated with our international investments.",
+          "type": "chunk"
+        },
+        "text": "Iron Mountain may use borrowings in foreign currencies, obtained in the United States or by its foreign subsidiaries, to hedge foreign currency risk associated with its international investments.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "7b255ca960c901796966830c3d5e9892a2d34cb3c57894ac9eb94445a3f52a37",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00077815",
+    "input_tokens": 5139,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 2034
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Best Buy"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "number of stores",
+      "store count change"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2023
+      },
+      {
+        "fiscal_period": "Q2",
+        "fiscal_year": 2024
+      }
+    ],
+    "section_hints": [
+      "1",
+      "7"
+    ]
+  },
+  "request_key": "83208345a76aa461466085d4f802d208649bcdfc5b61759f3931d312c07d5f2c",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000104305",
+    "input_tokens": 39,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 320
+  }
+}

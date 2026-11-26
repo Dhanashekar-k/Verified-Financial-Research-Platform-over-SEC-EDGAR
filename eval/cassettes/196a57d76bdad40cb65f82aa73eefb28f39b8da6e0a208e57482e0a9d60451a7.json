@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Intuit"
+      },
+      {
+        "cik": null,
+        "mention": "AppLovin"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "total_liabilities"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "compare",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2022
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "196a57d76bdad40cb65f82aa73eefb28f39b8da6e0a208e57482e0a9d60451a7",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000076105",
+    "input_tokens": 40,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 207
+  }
+}

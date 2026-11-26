@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The system answer states total current assets of 16,525 USD millions at May 31, 2019 (end of FY2019), which matches the gold answer of $16525.00."
+  },
+  "request_key": "fa44bea4180831ad9135fd70f512d507d3a5ae3967d08eabcacb8b79ebaeadc6",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00050455",
+    "input_tokens": 143,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 66
+  }
+}

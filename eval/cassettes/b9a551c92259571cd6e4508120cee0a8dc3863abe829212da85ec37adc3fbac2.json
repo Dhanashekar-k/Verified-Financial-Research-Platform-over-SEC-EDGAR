@@ -1,0 +1,58 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "GoDaddy says its quarterly and annual operating results may be adversely affected by a variety of factors, which could make future results difficult to predict and could cause operating results to fall below investor or analyst expectations [1]. The filing also says that a reduction in renewals, or an inability to attract new customers, could reduce operating margins in the near term even if offset by an increase in other revenue [2].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001609711-25-000023#1A#0002",
+          "quote": "Our quarterly and annual operating results may be adversely affected due to a variety of factors, which could make our future results difficult to predict and could cause our operating results to fall below investor or analyst expectations.",
+          "type": "chunk"
+        },
+        "text": "Quarterly and annual operating results may be adversely affected by a variety of factors, which could make future results difficult to predict and could cause operating results to fall below investor or analyst expectations.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001609711-25-000023#1A#0003",
+          "quote": "Therefore, our inability to attract new customers, or a reduction in renewals, even if offset by an increase in other revenue could reduce our operating margins in the near term",
+          "type": "chunk"
+        },
+        "text": "A reduction in renewals or an inability to attract new customers could reduce operating margins in the near term even if offset by an increase in other revenue.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Operating results may be adversely affected and could fall below investor or analyst expectations, and results could be harder to predict.",
+        "A reduction in renewals or an inability to attract new customers could reduce operating margins in the near term even if offset by other revenue."
+      ],
+      "missing": [
+        "The full risk factor text listing the factors that cause quarterly and annual operating results to fluctuate.",
+        "An explanation of the cost or operating constraints that prevent the company from easily offsetting revenue shortfalls."
+      ],
+      "reason": "The passages state the consequences of fluctuating operating results but do not fully explain why revenue shortfalls cannot be easily offset."
+    }
+  },
+  "request_key": "b9a551c92259571cd6e4508120cee0a8dc3863abe829212da85ec37adc3fbac2",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00093585",
+    "input_tokens": 4948,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 2703
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Pfizer"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "non-recurring events that increased net income",
+      "gains on divestitures",
+      "one-time items",
+      "unusual or infrequent gains"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2019
+      }
+    ],
+    "section_hints": [
+      "7",
+      "8"
+    ]
+  },
+  "request_key": "6da32ccda76ee7368f8bd3fce962137dd321a715a3fab4feba9e9d2602059d65",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000086405",
+    "input_tokens": 41,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 248
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Block (formerly Square)"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "working capital ratio",
+      "total current assets",
+      "total current liabilities"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2016
+      }
+    ],
+    "section_hints": [
+      "8",
+      "7"
+    ]
+  },
+  "request_key": "3d2ab31852fe238c4639d394e8ed55b9d447d0d8ea5021b5b785aeb15aca3adc",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000092605",
+    "input_tokens": 80,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 265
+  }
+}

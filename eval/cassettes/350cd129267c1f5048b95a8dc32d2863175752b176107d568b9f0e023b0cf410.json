@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Genuine Parts Co"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "net_income"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "growth",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "Q1",
+        "fiscal_year": 2020
+      },
+      {
+        "fiscal_period": "Q1",
+        "fiscal_year": 2021
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "350cd129267c1f5048b95a8dc32d2863175752b176107d568b9f0e023b0cf410",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000052455",
+    "input_tokens": 42,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 112
+  }
+}

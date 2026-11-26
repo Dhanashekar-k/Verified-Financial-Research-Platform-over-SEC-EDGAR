@@ -1,0 +1,36 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Comfort Systems USA's long-term debt at the end of Q3 FY2021 was $266.8 million [1].",
+    "claims": [
+      {
+        "display": "$266.8 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:-972898777301375992",
+          "fact_ids": [
+            -972898777301375992
+          ],
+          "type": "expr"
+        },
+        "text": "Comfort Systems USA's long-term debt at the end of Q3 FY2021 was $266.8 million.",
+        "unit": "USD",
+        "value": "266772000.0000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "9ece7dfab94d2c97085039553f563bc953088ea166b2a3f078850ea709bb5c0d",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00017205",
+    "input_tokens": 257,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 586
+  }
+}

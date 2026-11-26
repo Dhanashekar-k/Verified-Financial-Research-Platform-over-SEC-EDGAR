@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "PepsiCo"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "unadjusted EBITDA margin",
+      "operating income and depreciation and amortization from cash flow statement"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2022
+      }
+    ],
+    "section_hints": [
+      "7",
+      "8"
+    ]
+  },
+  "request_key": "ca1962ffcea3ec4cdbb12ee68454f84b183db6c249794e413758f838343bd3f9",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000096255",
+    "input_tokens": 103,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 275
+  }
+}

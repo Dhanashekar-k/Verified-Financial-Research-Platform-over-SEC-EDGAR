@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The system answer identifies Amcor as primarily in the packaging industry and a global leader in producing packaging for various end markets, matching the gold answer."
+  },
+  "request_key": "0117cdd67382628b279afe8e326e398259173c216112fb68c5388f103737c5c0",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00050155",
+    "input_tokens": 160,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 62
+  }
+}

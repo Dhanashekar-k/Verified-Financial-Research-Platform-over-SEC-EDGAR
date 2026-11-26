@@ -1,0 +1,26 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "",
+    "claims": [],
+    "refusal": {
+      "found": [],
+      "missing": [
+        "Emend (aprepitant) sales figures for 2021 and 2020 from the Merck 2021 10-K, supplied as NUMERIC RESULTS",
+        "PASSAGES from the 2021 10-K that describe Emend sales performance and the factors behind any declines"
+      ],
+      "reason": "The material does not mention Emend sales for 2021 or 2020, and no NUMERIC RESULTS were provided for this product."
+    }
+  },
+  "request_key": "92c6498828f92f1646f250c344fb1676c429b474fd8d6ee00c37ac6f0665a8f4",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00043695",
+    "input_tokens": 4920,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 713
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The answer identifies operating activities as bringing in the most cash in FY22, matching the gold answer, and the supporting figures are consistent."
+  },
+  "request_key": "812122cb3c435c121e5abb42fef28a7f34344bf719bca6ee63b974bc79788d8e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00119255",
+    "input_tokens": 176,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 197
+  }
+}

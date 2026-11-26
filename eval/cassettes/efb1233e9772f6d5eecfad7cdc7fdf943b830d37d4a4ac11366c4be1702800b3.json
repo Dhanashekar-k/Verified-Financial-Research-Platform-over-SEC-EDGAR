@@ -1,0 +1,36 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Pepsico"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "unsecured revolving credit agreements",
+      "total amount available to borrow under revolving credit"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": "As of May 26, 2023",
+    "periods": [],
+    "section_hints": [
+      "7",
+      "8"
+    ]
+  },
+  "request_key": "efb1233e9772f6d5eecfad7cdc7fdf943b830d37d4a4ac11366c4be1702800b3",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000117405",
+    "input_tokens": 46,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 371
+  }
+}

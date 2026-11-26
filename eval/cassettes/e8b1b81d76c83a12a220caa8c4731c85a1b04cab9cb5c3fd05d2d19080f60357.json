@@ -1,0 +1,43 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "GoDaddy"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "factors causing quarterly and annual operating results to fluctuate",
+      "consequences of operating results fluctuation",
+      "inability to offset revenue shortfalls",
+      "fixed expenses and expense timing"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2024
+      }
+    ],
+    "section_hints": [
+      "1A",
+      "7"
+    ]
+  },
+  "request_key": "e8b1b81d76c83a12a220caa8c4731c85a1b04cab9cb5c3fd05d2d19080f60357",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000059655",
+    "input_tokens": 81,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 133
+  }
+}

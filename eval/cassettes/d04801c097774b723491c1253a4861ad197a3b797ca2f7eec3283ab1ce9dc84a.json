@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "RTX Corp"
+      },
+      {
+        "cik": null,
+        "mention": "Analog Devices Inc"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "cash"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "compare",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2022
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "d04801c097774b723491c1253a4861ad197a3b797ca2f7eec3283ab1ce9dc84a",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000046155",
+    "input_tokens": 51,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 85
+  }
+}

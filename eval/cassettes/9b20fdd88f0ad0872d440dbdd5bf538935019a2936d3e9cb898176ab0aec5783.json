@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "CDW Corp"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "net_income"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "value",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "Q1",
+        "fiscal_year": 2024
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "9b20fdd88f0ad0872d440dbdd5bf538935019a2936d3e9cb898176ab0aec5783",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000044755",
+    "input_tokens": 38,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 82
+  }
+}

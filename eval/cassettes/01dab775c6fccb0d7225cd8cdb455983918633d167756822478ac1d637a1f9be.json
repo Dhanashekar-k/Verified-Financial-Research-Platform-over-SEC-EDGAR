@@ -1,0 +1,58 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Cross currency swaps had the largest notional amount in the table of outstanding derivatives at December 31, 2021, at 32,502 (dollars in millions) [1]. Interest rate swaps followed, at 19,779 [2].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:VERIZON_2021_10K#p85#0001",
+          "quote": "Cross currency swaps | 32,502 | 26,288",
+          "type": "chunk"
+        },
+        "text": "Cross currency swaps had a notional amount of 32,502 (dollars in millions) at December 31, 2021.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:VERIZON_2021_10K#p85#0001",
+          "quote": "Interest rate swaps | $ | 19,779 | $ | 17,768",
+          "type": "chunk"
+        },
+        "text": "Interest rate swaps had a notional amount of 19,779 at December 31, 2021.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Cross currency swaps: 32,502 at December 31, 2021 (dollars in millions)",
+        "Interest rate swaps: 19,779 at December 31, 2021 (dollars in millions)",
+        "Forward starting interest rate swaps: 1,000 at December 31, 2021 (dollars in millions)"
+      ],
+      "missing": [
+        "Notional amounts at December 31, 2021 for treasury rate locks, interest rate caps, swaptions and foreign exchange forwards, which the passages name as instruments but do not quantify in the table"
+      ],
+      "reason": "The notional table in the material lists only three instruments, so the highest notional value among all derivative instruments used for FX and interest rate exposure cannot be confirmed."
+    }
+  },
+  "request_key": "01dab775c6fccb0d7225cd8cdb455983918633d167756822478ac1d637a1f9be",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00076615",
+    "input_tokens": 5149,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1984
+  }
+}

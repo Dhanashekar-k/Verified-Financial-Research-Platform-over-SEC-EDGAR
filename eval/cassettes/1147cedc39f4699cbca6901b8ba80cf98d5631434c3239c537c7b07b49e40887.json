@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Henry Schein's operating cash flow for FY2023 changed by -16.9% from FY2022 [1].",
+    "claims": [
+      {
+        "display": "-16.9%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:-2581205759568011439 - f:-7918129757467276003) / f:-7918129757467276003",
+          "fact_ids": [
+            -2581205759568011439,
+            -7918129757467276003
+          ],
+          "type": "expr"
+        },
+        "text": "Henry Schein's operating cash flow changed by -16.9% in FY2023 compared with FY2022.",
+        "unit": "ratio",
+        "value": "-0.16943521594684385"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "1147cedc39f4699cbca6901b8ba80cf98d5631434c3239c537c7b07b49e40887",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00008725",
+    "input_tokens": 301,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 238
+  }
+}

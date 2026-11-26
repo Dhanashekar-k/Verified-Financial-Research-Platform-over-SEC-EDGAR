@@ -1,0 +1,44 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The filing reports days payable outstanding of 44 for 2020 [1].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:CORNING_2020_10K#p43#0001",
+          "quote": "Days payable outstanding (1) | 44 | 48",
+          "type": "chunk"
+        },
+        "text": "Corning reported days payable outstanding of 44 for 2020.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Corning reported days payable outstanding of 44 for 2020."
+      ],
+      "missing": [
+        "FY2019 and FY2020 accounts payable balances",
+        "FY2020 cost of goods sold from the statement of income",
+        "FY2019 and FY2020 inventory balances needed for the change in inventory"
+      ],
+      "reason": "The material does not contain the accounts payable, COGS and inventory amounts needed to compute the requested FY2020 DPO, so only the company's reported figure can be given."
+    }
+  },
+  "request_key": "adf724740ad7c97d02653bb44d670bf973a15ca4fdf694f4ad1247d9f79ebe90",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00062760",
+    "input_tokens": 4903,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1479
+  }
+}

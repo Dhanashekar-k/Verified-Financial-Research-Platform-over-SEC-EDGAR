@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Truist"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "anti-money laundering enforcement powers of regulators",
+      "sanctions law enforcement",
+      "regulatory and compliance burden changes"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2024
+      }
+    ],
+    "section_hints": [
+      "1",
+      "1A"
+    ]
+  },
+  "request_key": "eee2c5aaaa82535d3bc227611c31118bac56eb43c17dfd7a9edfa71516bce5b3",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000078405",
+    "input_tokens": 71,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 210
+  }
+}

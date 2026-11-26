@@ -1,0 +1,69 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Automatic Data Processing reported FY2021 net cash from operating activities of $3.1 billion [1], and Workday reported $1.7 billion [2], both as originally filed. Workday's FY2021 figure was later restated, and the figure used here is as originally filed. Automatic Data Processing's figure was therefore $1.4 billion higher [3].",
+    "claims": [
+      {
+        "display": "$3.1 billion",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:3085477402552538250",
+          "fact_ids": [
+            3085477402552538250
+          ],
+          "type": "expr"
+        },
+        "text": "Automatic Data Processing reported FY2021 net cash from operating activities of $3.1 billion.",
+        "unit": "USD",
+        "value": "3093300000.0000"
+      },
+      {
+        "display": "$1.7 billion",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:-5122794813176861108",
+          "fact_ids": [
+            -5122794813176861108
+          ],
+          "type": "expr"
+        },
+        "text": "Workday reported FY2021 net cash from operating activities of $1.7 billion as originally filed; this figure was later restated.",
+        "unit": "USD",
+        "value": "1650704000.0000"
+      },
+      {
+        "display": "$1.4 billion",
+        "id": "c3",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "f:3085477402552538250 - f:-5122794813176861108",
+          "fact_ids": [
+            3085477402552538250,
+            -5122794813176861108
+          ],
+          "type": "expr"
+        },
+        "text": "Automatic Data Processing's FY2021 net cash from operating activities exceeded Workday's, as originally filed, by $1.4 billion.",
+        "unit": "USD",
+        "value": "1442596000.0000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "8c02bccde9f87bc61c3bc3e1ca0a45dc7813b7c306e55f6a560125dd7bd56a37",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00047390",
+    "input_tokens": 1034,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1638
+  }
+}

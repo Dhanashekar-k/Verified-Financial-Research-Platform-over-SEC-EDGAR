@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Amazon"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "revenue"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "growth",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2016
+      },
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2017
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "6fa124658321c027e48f633ab3c1fb10cbebfc67e8714e8c5adca88cae1cc1b7",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000046055",
+    "input_tokens": 79,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 79
+  }
+}

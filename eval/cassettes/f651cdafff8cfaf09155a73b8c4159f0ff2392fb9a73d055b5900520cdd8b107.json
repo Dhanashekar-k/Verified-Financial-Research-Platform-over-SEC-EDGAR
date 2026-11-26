@@ -1,0 +1,62 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "CVS Health's FY2022 capital expenditures were $2.7 billion [1] on revenue of $322.5 billion [2]. These two figures do not by themselves establish whether the business is capital-intensive, because the material has no capital intensity measure or peer comparison [1][2].",
+    "claims": [
+      {
+        "display": "$2.7 billion",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:-8983698063715090127",
+          "fact_ids": [
+            -8983698063715090127
+          ],
+          "type": "expr"
+        },
+        "text": "CVS Health's FY2022 capital expenditures were $2.7 billion.",
+        "unit": "USD",
+        "value": "2727000000.0000"
+      },
+      {
+        "display": "$322.5 billion",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:7416721393787699969",
+          "fact_ids": [
+            7416721393787699969
+          ],
+          "type": "expr"
+        },
+        "text": "CVS Health's FY2022 revenue was $322.5 billion.",
+        "unit": "USD",
+        "value": "322467000000.0000"
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Capital expenditures of $2.7 billion in FY2022",
+        "Revenue of $322.5 billion in FY2022"
+      ],
+      "missing": [
+        "A capital intensity measure such as capital expenditures as a share of revenue or of total assets",
+        "Comparison of CVS Health's capital spending with peer or industry levels"
+      ],
+      "reason": "The material gives FY2022 capital expenditures and revenue but no capital intensity measure or peer comparison, so it does not establish whether CVS Health is capital-intensive."
+    }
+  },
+  "request_key": "f651cdafff8cfaf09155a73b8c4159f0ff2392fb9a73d055b5900520cdd8b107",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00059545",
+    "input_tokens": 5555,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1220
+  }
+}

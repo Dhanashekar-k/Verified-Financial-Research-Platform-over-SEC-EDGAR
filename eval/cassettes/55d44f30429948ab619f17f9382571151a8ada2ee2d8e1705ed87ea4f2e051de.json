@@ -1,0 +1,35 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Foot Locker"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "new CEO prior CEO experience",
+      "executive officer biography"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [],
+    "section_hints": [
+      "1"
+    ]
+  },
+  "request_key": "55d44f30429948ab619f17f9382571151a8ada2ee2d8e1705ed87ea4f2e051de",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000108305",
+    "input_tokens": 39,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 336
+  }
+}

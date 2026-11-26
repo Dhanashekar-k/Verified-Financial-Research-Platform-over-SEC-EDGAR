@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "incorrect",
+    "reason": "The answer gives $381.6 million (matching gold $382.00) but then also states a restated value of $173.1 million as the latest figure, hedging between two values."
+  },
+  "request_key": "26207fa545b6b875db346b0598bac891fe85a8ca99dd1655b473d35b73efacff",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00054655",
+    "input_tokens": 180,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 67
+  }
+}

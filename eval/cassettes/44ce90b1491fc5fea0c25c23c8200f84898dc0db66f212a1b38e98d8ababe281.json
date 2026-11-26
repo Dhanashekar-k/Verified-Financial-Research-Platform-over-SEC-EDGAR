@@ -1,0 +1,36 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "contradiction": false,
+    "points": [
+      {
+        "covered": true,
+        "index": 0
+      },
+      {
+        "covered": false,
+        "index": 1
+      },
+      {
+        "covered": false,
+        "index": 2
+      },
+      {
+        "covered": false,
+        "index": 3
+      }
+    ],
+    "reason": "The answer covers operating cash flow as the primary source of funds; it gives the $1.250 billion term loan but not the two $625 million tranches (2024 and 2026), mentions $6.250 billion Senior Notes but not the 2-to-30-year maturities, and omits that the debt financed the Special Cash Payment to DuPont and fees, with no contradictions."
+  },
+  "request_key": "44ce90b1491fc5fea0c25c23c8200f84898dc0db66f212a1b38e98d8ababe281",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 683,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00142715",
+    "input_tokens": 448,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 189
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Domino's Pizza"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "competitive threat to U.S. supply chain segment",
+      "consequences of failing to maintain competitive position"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2020
+      }
+    ],
+    "section_hints": [
+      "1A",
+      "1"
+    ]
+  },
+  "request_key": "ca9f6d6e472374f8dd2b946de9807b6d4ca9166cf1c97e0bc3525706eb00c9ad",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000079255",
+    "input_tokens": 78,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 212
+  }
+}

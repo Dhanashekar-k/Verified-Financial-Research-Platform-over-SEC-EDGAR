@@ -1,0 +1,90 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The U.S. trade accounts receivable securitization facility's interest rate is based on the asset-backed commercial paper rate, which was 4.58% plus 0.75% at December 31, 2022 [1]. The combined rate at that date was 5.33% [2]. The average outstanding balance under the facility during 2022 was approximately $166 million [3]. Based on that average balance, each hypothetical 25 basis point increase in rates would have increased interest expense under the facility by $0.4 million [4][5].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001000228-23-000011#7A#0003",
+          "quote": "the commercial paper rate was 4.58% plus 0.75%,",
+          "type": "chunk"
+        },
+        "text": "The facility's interest rate is based on the asset-backed commercial paper rate, which was 4.58% plus 0.75% at December 31, 2022.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0001000228-23-000011#7A#0003",
+          "quote": "for a combined rate of 5.33%.",
+          "type": "chunk"
+        },
+        "text": "The combined interest rate on the facility at December 31, 2022 was 5.33%.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001000228-23-000011#7A#0003",
+          "quote": "$166 million.",
+          "type": "chunk"
+        },
+        "text": "The average outstanding balance under the facility during 2022 was approximately $166 million.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c4",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001000228-23-000011#7A#0003",
+          "quote": "increase of 25 basis points, our interest expense thereunder would have",
+          "type": "chunk"
+        },
+        "text": "Based on the average outstanding balance, a hypothetical 25 basis point increase in rates would have affected interest expense under the facility.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c5",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001000228-23-000011#7A#0003",
+          "quote": "increased by $0.4 million.",
+          "type": "chunk"
+        },
+        "text": "Interest expense under the facility would have increased by $0.4 million.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "40e1af3752fd2d9af1094f9ffcf856ac931e7da43c1ae91b20ea908ad6b10ab6",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00108680",
+    "input_tokens": 5442,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 3208
+  }
+}

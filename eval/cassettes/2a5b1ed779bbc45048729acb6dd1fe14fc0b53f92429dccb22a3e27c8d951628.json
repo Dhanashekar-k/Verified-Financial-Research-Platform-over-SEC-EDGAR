@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Fastenal's interest expense changed by -48.7% from Q1 FY2023 to Q1 FY2024 [1].",
+    "claims": [
+      {
+        "display": "-48.7%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:5373595379403958099 - f:1914993734949308327) / f:1914993734949308327",
+          "fact_ids": [
+            5373595379403958099,
+            1914993734949308327
+          ],
+          "type": "expr"
+        },
+        "text": "Fastenal's interest expense in Q1 FY2024 changed by -48.7% from Q1 FY2023.",
+        "unit": "ratio",
+        "value": "-0.4871794871794871794871794872"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "2a5b1ed779bbc45048729acb6dd1fe14fc0b53f92429dccb22a3e27c8d951628",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00015625",
+    "input_tokens": 291,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 516
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "U.S. sales increased 3.0% in 2022 [1], while international sales decreased 0.6% in 2022 [2].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000200406-23-000016#7#0004",
+          "quote": "This represents increases of 3.0% in 2022 and 9.3% in 2021.",
+          "type": "chunk"
+        },
+        "text": "U.S. sales increased 3.0% in 2022.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000200406-23-000016#7#0004",
+          "quote": "This represents a decrease of 0.6% in 2022 and an increase of 18.2% in 2021.",
+          "type": "chunk"
+        },
+        "text": "International sales decreased 0.6% in 2022.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "25fcaffb6b25828f05374e9710d3bd64fefa8242ca1716ddc02bf0526d55bad2",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00064955",
+    "input_tokens": 4227,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1702
+  }
+}

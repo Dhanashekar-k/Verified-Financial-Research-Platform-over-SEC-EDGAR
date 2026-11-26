@@ -1,0 +1,50 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Best Buy"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "acquisitions",
+      "business combinations"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2021
+      },
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2022
+      },
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2023
+      }
+    ],
+    "section_hints": [
+      "1",
+      "7",
+      "8"
+    ]
+  },
+  "request_key": "cb946f0d5b363b2d1c031c995f5c5b83413391448ef9161cb8dc9c83512a5edf",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000106305",
+    "input_tokens": 39,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 328
+  }
+}

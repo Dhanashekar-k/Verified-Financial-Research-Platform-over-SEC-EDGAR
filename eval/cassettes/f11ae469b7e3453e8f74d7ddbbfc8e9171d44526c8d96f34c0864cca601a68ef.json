@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Net revenues for 2018 were 11,763,096 thousand [1]. The material does not include the capital expenditure figures needed for the FY2018-FY2020 capex-to-revenue average, so that average cannot be computed.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:MGMRESORTS_2018_10K#p34#0001",
+          "quote": "Net revenues | $ | 11,763,096",
+          "type": "chunk"
+        },
+        "text": "Net revenues for 2018 were 11,763,096 (in thousands).",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Net revenues for 2018 of 11,763,096 thousand appear in the passages."
+      ],
+      "missing": [
+        "Capital expenditures (purchases of property and equipment) for FY2018, FY2019 and FY2020 from the consolidated statements of cash flows, and the computed NUMERIC RESULTS for the three-year average."
+      ],
+      "reason": "The material contains no capital expenditure figures, so the FY2018-FY2020 average of capex as a percent of revenue cannot be computed."
+    }
+  },
+  "request_key": "f11ae469b7e3453e8f74d7ddbbfc8e9171d44526c8d96f34c0864cca601a68ef",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00065825",
+    "input_tokens": 4911,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1600
+  }
+}

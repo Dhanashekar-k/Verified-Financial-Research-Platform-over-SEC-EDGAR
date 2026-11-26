@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "XCEL Energy"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "operating_income"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "growth",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2024
+      },
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2025
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "5bf99da86b7003c37bf49c9a3327e17fc3659cbcf3bb6c711963fae903196d54",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000065505",
+    "input_tokens": 28,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 167
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "CVS Health"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "fixed asset turnover ratio",
+      "property, plant and equipment"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2017
+      },
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2018
+      }
+    ],
+    "section_hints": [
+      "8"
+    ]
+  },
+  "request_key": "1634b63e732f69d9b4f8808b26a6e7cf35713625818a5a40101fb3334cdd16ec",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000139305",
+    "input_tokens": 124,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 443
+  }
+}

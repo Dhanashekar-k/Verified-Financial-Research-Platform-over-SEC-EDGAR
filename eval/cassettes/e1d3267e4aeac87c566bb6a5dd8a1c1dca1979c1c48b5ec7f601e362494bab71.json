@@ -1,0 +1,36 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "EMCOR Group's diluted EPS for fiscal 2021 was $7.06 per share [1].",
+    "claims": [
+      {
+        "display": "$7.06 per share",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:5651608220590172349",
+          "fact_ids": [
+            5651608220590172349
+          ],
+          "type": "expr"
+        },
+        "text": "EMCOR Group diluted EPS for FY2021 was $7.06 per share.",
+        "unit": "USD/shares",
+        "value": "7.0600"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "e1d3267e4aeac87c566bb6a5dd8a1c1dca1979c1c48b5ec7f601e362494bab71",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00010205",
+    "input_tokens": 237,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 310
+  }
+}

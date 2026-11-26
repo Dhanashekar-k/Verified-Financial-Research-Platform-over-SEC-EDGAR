@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Cencora's capital expenditures grew 13.3% in fiscal 2022, measured from fiscal 2021 [1].",
+    "claims": [
+      {
+        "display": "13.3%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:-2031022905230302296 - f:-1310409346560484178) / f:-1310409346560484178",
+          "fact_ids": [
+            -2031022905230302296,
+            -1310409346560484178
+          ],
+          "type": "expr"
+        },
+        "text": "Cencora capital expenditures growth in FY2022, measured from FY2021: 13.3%",
+        "unit": "ratio",
+        "value": "0.1325849978435341394788426738"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "7646fe5eb3cef7efdaf0e992503f9de93119ac5e17e64a051fab28b36d77e32d",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00014675",
+    "input_tokens": 296,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 477
+  }
+}

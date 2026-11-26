@@ -1,0 +1,48 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The 8-K dated August 30, 2023 states that the exchange offer gave Johnson & Johnson a gain of approximately $20 billion in the third quarter of 2023 [1]. A later annual filing reports the non-cash gain on the exchange offer as $21.0 billion, recorded in net earnings from discontinued operations [2].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:JOHNSON_JOHNSON_2023_8K_dated-2023-08-30#p4#0001",
+          "quote": "including a gain of approximately $20 billion in the third quarter of",
+          "type": "chunk"
+        },
+        "text": "Johnson & Johnson's Consumer Health business gain from the exchange offer was approximately $20 billion in the third quarter of 2023.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000200406-25-000038#8#0206",
+          "quote": "This resulted in a non-cash gain on the exchange offer of $21.0 billion",
+          "type": "chunk"
+        },
+        "text": "The non-cash gain on the exchange offer recorded in net earnings from discontinued operations was $21.0 billion.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "fd6e95067070f1d1cf97ecc618d1e8eb0e35f8167ff22e4a18bb5de7be8fafdf",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00063420",
+    "input_tokens": 5085,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1469
+  }
+}

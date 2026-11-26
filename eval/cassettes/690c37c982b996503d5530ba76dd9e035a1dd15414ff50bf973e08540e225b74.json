@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The answer's $1.6 billion matches the gold $1,577 million within rounding (about 1.5% difference, consistent with rounding to one decimal in billions), with the correct company and fiscal year."
+  },
+  "request_key": "690c37c982b996503d5530ba76dd9e035a1dd15414ff50bf973e08540e225b74",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00055455",
+    "input_tokens": 128,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 79
+  }
+}

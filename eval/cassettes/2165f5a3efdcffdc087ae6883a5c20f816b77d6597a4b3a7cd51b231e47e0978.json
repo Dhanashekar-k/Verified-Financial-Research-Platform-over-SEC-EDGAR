@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Jacobs Solutions"
+      },
+      {
+        "cik": null,
+        "mention": "Comfort Systems USA"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "capex"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "compare",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2024
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "2165f5a3efdcffdc087ae6883a5c20f816b77d6597a4b3a7cd51b231e47e0978",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000071955",
+    "input_tokens": 47,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 189
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Amazon"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "days payable outstanding (DPO)",
+      "accounts payable",
+      "inventory"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2016
+      },
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2017
+      }
+    ],
+    "section_hints": [
+      "8",
+      "7"
+    ]
+  },
+  "request_key": "7fcd411240a3a397ba241c9550e05594ea3ec49c8d4e5c12b11106099202620d",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000133355",
+    "input_tokens": 130,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 418
+  }
+}

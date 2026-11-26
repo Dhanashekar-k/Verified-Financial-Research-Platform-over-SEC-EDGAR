@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "DOMINOS PIZZA INC"
+      },
+      {
+        "cik": null,
+        "mention": "HENRY SCHEIN INC"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "interest_expense"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "compare",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2024
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "e06a707753ded3bce742bfa1ea6f2d73f4737cfd7cb5fcb606810ea8e0d547e1",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000086005",
+    "input_tokens": 53,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 244
+  }
+}

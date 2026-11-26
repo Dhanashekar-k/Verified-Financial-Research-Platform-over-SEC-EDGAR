@@ -1,0 +1,35 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Walmart"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "Bentonville headquarters office employees",
+      "headquarters headcount"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [],
+    "section_hints": [
+      "1"
+    ]
+  },
+  "request_key": "307ed1b7a9165205e43c11c6d4bbf28fbbf5c094338d7ec29b9e866037fa9fa7",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000070755",
+    "input_tokens": 28,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 188
+  }
+}

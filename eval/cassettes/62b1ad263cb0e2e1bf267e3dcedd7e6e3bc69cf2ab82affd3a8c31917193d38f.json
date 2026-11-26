@@ -1,0 +1,104 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Dollar General was classified as an essential business and its stores generally stayed open [1]. The pandemic caused supply chain disruptions that made certain products harder to obtain in sufficient quantities and increased distribution and transportation costs [2]. It also disrupted transportation and distribution of goods, causing product delivery delays and higher delivery prices [3]. Increased distribution and transportation costs, partly attributable to the pandemic, were among the factors that partly offset gross profit gains [4]. The company was unable to perform planned physical inventories in its stores from mid-March through mid-May [5]. It also saw heightened customer demand, particularly for consumable products [6].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001558370-21-003245#7#0000",
+          "quote": "We have been classified as an essential business in all locations where we operate, and as such, our stores have generally remained open to serve our customers.",
+          "type": "chunk"
+        },
+        "text": "The company was classified as an essential business in all locations where it operates, and its stores generally remained open to serve customers.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001558370-21-003245#1#0009",
+          "quote": "COVID-19 caused disruptions in our supply chain, making it more difficult to obtain certain products in sufficient quantities to meet customer demand and increasing distribution and transportation costs.",
+          "type": "chunk"
+        },
+        "text": "COVID-19 caused supply chain disruptions that made it more difficult to obtain certain products in sufficient quantities and increased distribution and transportation costs.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001558370-21-003245#1A#0015",
+          "quote": "The COVID-19 pandemic disrupted the global and domestic transportation and distribution of goods and resulted in product delivery delays and higher delivery prices.",
+          "type": "chunk"
+        },
+        "text": "The pandemic disrupted the global and domestic transportation and distribution of goods, resulting in product delivery delays and higher delivery prices.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c4",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001558370-21-003245#7#0018",
+          "quote": "increased distribution and transportation costs which were impacted by increased volume, some of which is attributable to the COVID-19 pandemic, and discretionary employee bonus expense",
+          "type": "chunk"
+        },
+        "text": "Increased distribution and transportation costs, some attributable to the COVID-19 pandemic, partly offset gross profit gains.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c5",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001558370-21-003245#1A#0003",
+          "quote": "Inability to perform physical inventories in our stores from mid-March through mid-May",
+          "type": "chunk"
+        },
+        "text": "The company was unable to perform physical inventories in its stores from mid-March through mid-May.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c6",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001558370-21-003245#7#0000",
+          "quote": "we began seeing heightened demand from customers, particularly for consumable products such as paper, food and cleaning products",
+          "type": "chunk"
+        },
+        "text": "The company began seeing heightened customer demand, particularly for consumable products such as paper, food and cleaning products.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "62b1ad263cb0e2e1bf267e3dcedd7e6e3bc69cf2ab82affd3a8c31917193d38f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00130390",
+    "input_tokens": 4874,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 4190
+  }
+}

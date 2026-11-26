@@ -1,0 +1,36 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Oracle Corp's total assets at the end of Q2 fiscal year 2024 were $134.3 billion [1].",
+    "claims": [
+      {
+        "display": "$134.3 billion",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:-6292063761405012585",
+          "fact_ids": [
+            -6292063761405012585
+          ],
+          "type": "expr"
+        },
+        "text": "Oracle Corp's total assets at the end of Q2 FY2024 were $134.3 billion.",
+        "unit": "USD",
+        "value": "134324000000.0000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "f6b8cf049772a20a9c68ba26f217425ab31f6c28c9749f4467253dce03ce3549",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00014280",
+    "input_tokens": 242,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 472
+  }
+}

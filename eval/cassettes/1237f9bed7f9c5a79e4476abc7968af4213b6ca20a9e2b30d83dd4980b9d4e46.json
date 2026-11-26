@@ -1,0 +1,44 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Merck"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "Emend sales",
+      "factors driving Emend sales decline"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2020
+      },
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2021
+      }
+    ],
+    "section_hints": [
+      "7"
+    ]
+  },
+  "request_key": "1237f9bed7f9c5a79e4476abc7968af4213b6ca20a9e2b30d83dd4980b9d4e46",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000083755",
+    "input_tokens": 48,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 236
+  }
+}

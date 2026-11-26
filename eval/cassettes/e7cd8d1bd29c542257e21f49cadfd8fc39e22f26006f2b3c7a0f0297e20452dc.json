@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Sysco"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "income_tax"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "value",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "Q3",
+        "fiscal_year": 2020
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "e7cd8d1bd29c542257e21f49cadfd8fc39e22f26006f2b3c7a0f0297e20452dc",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000043905",
+    "input_tokens": 26,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 81
+  }
+}

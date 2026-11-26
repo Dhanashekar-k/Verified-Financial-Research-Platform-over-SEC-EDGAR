@@ -1,0 +1,36 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Mastercard's interest expense for Q1 FY2024 was $150.0 million [1].",
+    "claims": [
+      {
+        "display": "$150.0 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:7560852912728613192",
+          "fact_ids": [
+            7560852912728613192
+          ],
+          "type": "expr"
+        },
+        "text": "Mastercard's interest expense for Q1 FY2024 was $150.0 million.",
+        "unit": "USD",
+        "value": "150000000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "c3a8b881e63b21e5e5467e3bafa8e479968a3b92aa0cc0695eab4f2ee3e7440a",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00006830",
+    "input_tokens": 222,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 178
+  }
+}

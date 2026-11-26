@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Netflix"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "eps_diluted"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "value",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "Q1",
+        "fiscal_year": 2021
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "fcd2243778a88acec36fc0c93f72dc66d7100b66f72bd75d89319f46fde3c25b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000044555",
+    "input_tokens": 29,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 83
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "AMCOR"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "primary industry",
+      "business overview"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [],
+    "section_hints": [
+      "1"
+    ]
+  },
+  "request_key": "af5af736b3a028c9b8a42c4fb5a314c25084d9991df9743d392c8edbe341edc4",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000060455",
+    "input_tokens": 22,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 148
+  }
+}

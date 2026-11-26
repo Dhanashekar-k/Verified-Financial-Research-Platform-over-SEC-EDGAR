@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Ulta Beauty"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "wages expense as percent of net sales",
+      "change in wages expense ratio"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2023
+      }
+    ],
+    "section_hints": [
+      "7",
+      "8"
+    ]
+  },
+  "request_key": "0f0cb0028246ffcaab70a9d0364cab98b473982375e2e22dfdba652de03a52a9",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000072655",
+    "input_tokens": 41,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 193
+  }
+}

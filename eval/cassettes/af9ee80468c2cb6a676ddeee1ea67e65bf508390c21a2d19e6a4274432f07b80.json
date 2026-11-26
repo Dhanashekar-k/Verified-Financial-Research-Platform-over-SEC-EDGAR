@@ -1,0 +1,36 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "contradiction": false,
+    "points": [
+      {
+        "covered": false,
+        "index": 0
+      },
+      {
+        "covered": true,
+        "index": 1
+      },
+      {
+        "covered": true,
+        "index": 2
+      },
+      {
+        "covered": true,
+        "index": 3
+      }
+    ],
+    "reason": "The answer covers the $43M impairment due to carrying value exceeding fair value, the write-off risk if NGC gas supply is insufficient or unprofitable, and the $26M carrying value, but it only mentions the New NGC Contract without giving its October 2023 through December 2025 term."
+  },
+  "request_key": "af9ee80468c2cb6a676ddeee1ea67e65bf508390c21a2d19e6a4274432f07b80",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 683,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00124315",
+    "input_tokens": 394,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 163
+  }
+}

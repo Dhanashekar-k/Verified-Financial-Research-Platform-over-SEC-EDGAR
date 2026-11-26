@@ -1,0 +1,48 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "General Mills"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "cash conversion cycle",
+      "inventory",
+      "accounts receivable",
+      "accounts payable",
+      "cost of goods sold",
+      "revenue"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2018
+      },
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2019
+      }
+    ],
+    "section_hints": [
+      "8"
+    ]
+  },
+  "request_key": "e6438699e298abb612322d6a11012ad77791e6d404b59304266ea48ad2e084f8",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000165305",
+    "input_tokens": 234,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 525
+  }
+}

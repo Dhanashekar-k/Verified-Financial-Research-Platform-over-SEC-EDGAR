@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "INTUIT INC."
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "r_and_d"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "growth",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "Q2",
+        "fiscal_year": 2025
+      },
+      {
+        "fiscal_period": "Q2",
+        "fiscal_year": 2026
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "7261f47d1531355cab3895cbc084d6a7ca3cf9ad6a3073f730eb8cc3cfbcf99b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000083305",
+    "input_tokens": 64,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 231
+  }
+}

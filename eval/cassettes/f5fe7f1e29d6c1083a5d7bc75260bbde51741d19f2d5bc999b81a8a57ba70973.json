@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Newmont's R&D expense changed by -1.5% from FY2023 to FY2024 [1].",
+    "claims": [
+      {
+        "display": "-1.5%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:-3287802442354258193 - f:-3688612207964330053) / f:-3688612207964330053",
+          "fact_ids": [
+            -3287802442354258193,
+            -3688612207964330053
+          ],
+          "type": "expr"
+        },
+        "text": "Newmont's R&D expense changed by -1.5% from FY2023 to FY2024.",
+        "unit": "ratio",
+        "value": "-0.015"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "f5fe7f1e29d6c1083a5d7bc75260bbde51741d19f2d5bc999b81a8a57ba70973",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00017070",
+    "input_tokens": 280,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 576
+  }
+}

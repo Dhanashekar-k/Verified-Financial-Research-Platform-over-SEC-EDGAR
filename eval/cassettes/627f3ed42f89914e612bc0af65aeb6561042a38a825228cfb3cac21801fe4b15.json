@@ -1,0 +1,39 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "AMCOR"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "adjusted non-GAAP EBITDA"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2023
+      }
+    ],
+    "section_hints": [
+      "7"
+    ]
+  },
+  "request_key": "627f3ed42f89914e612bc0af65aeb6561042a38a825228cfb3cac21801fe4b15",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000045455",
+    "input_tokens": 37,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 85
+  }
+}

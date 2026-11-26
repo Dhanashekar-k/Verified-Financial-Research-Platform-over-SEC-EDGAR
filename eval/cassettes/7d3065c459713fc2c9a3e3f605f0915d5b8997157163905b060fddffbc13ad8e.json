@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Pinterest"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "revenue"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "value",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2009
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "7d3065c459713fc2c9a3e3f605f0915d5b8997157163905b060fddffbc13ad8e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000084905",
+    "input_tokens": 26,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 245
+  }
+}

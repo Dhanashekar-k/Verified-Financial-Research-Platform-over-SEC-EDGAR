@@ -1,0 +1,58 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Passages show two acquisitions in fiscal 2022: all outstanding shares of Current Health Ltd. and Two Peaks, LLC d/b/a Yardbird Furniture [1]. Passages also mention fiscal 2020 acquisitions of Critical Signal Technologies, Inc. and the predictive healthcare technology business of BioSensics, LLC [2], which fall outside the years asked about.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000764478-23-000006#8#0022",
+          "quote": "In fiscal 2022, we acquired all of the outstanding shares of Current Health Ltd. (\u201cCurrent Health\u201d) and Two Peaks, LLC d/b/a Yardbird Furniture (\u201cYardbird\u201d).",
+          "type": "chunk"
+        },
+        "text": "In fiscal 2022, Best Buy acquired all outstanding shares of Current Health Ltd. and Two Peaks, LLC d/b/a Yardbird Furniture (Yardbird).",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000764478-22-000008#1#0000",
+          "quote": "In fiscal 2020, we acquired all of the outstanding shares of Critical Signal Technologies, Inc. (\u201cCST\u201d) and the predictive healthcare technology business of BioSensics, LLC (\u201cBioSensics\u201d).",
+          "type": "chunk"
+        },
+        "text": "In fiscal 2020, Best Buy acquired all outstanding shares of Critical Signal Technologies, Inc. (CST) and the predictive healthcare technology business of BioSensics, LLC.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Fiscal 2022: Current Health Ltd. and Two Peaks, LLC d/b/a Yardbird Furniture",
+        "Fiscal 2020: Critical Signal Technologies, Inc. and the predictive healthcare technology business of BioSensics, LLC"
+      ],
+      "missing": [
+        "Major acquisitions completed in fiscal 2023",
+        "Major acquisitions completed in fiscal 2021"
+      ],
+      "reason": "The passages describe fiscal 2022 and fiscal 2020 acquisitions but do not describe any acquisition completed in fiscal 2023 or fiscal 2021."
+    }
+  },
+  "request_key": "628ebecbfb0cf21dd188a49c1994e754e98413c2d0a07e2c101c0c2986d2dcc9",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00088135",
+    "input_tokens": 5528,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 2369
+  }
+}

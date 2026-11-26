@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Oracle"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "interest_expense"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "growth",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "Q2",
+        "fiscal_year": 2025
+      },
+      {
+        "fiscal_period": "Q2",
+        "fiscal_year": 2026
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "3fab705214c4069e7f9fda77d7429e08ea0eb4c5987e273261ef18a678bd778b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000052405",
+    "input_tokens": 56,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 109
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "contradiction": true,
+    "points": [
+      {
+        "covered": false,
+        "index": 0
+      },
+      {
+        "covered": false,
+        "index": 1
+      },
+      {
+        "covered": true,
+        "index": 2
+      },
+      {
+        "covered": false,
+        "index": 3
+      }
+    ],
+    "reason": "The answer says the primary exposures are the Canadian dollar and the Mexican peso, which contradicts the gold point that Mexican activities are mainly in U.S. dollars. It covers the no-hedging point but omits the competitive procurement and foreign sales risk and the forgone-benefits-of-hedging point."
+  },
+  "request_key": "4ca3bff1e1029d67f17a46ccfef2a72eced0dbe1fe0ce0bb50e8655ec1bc6ddd",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 683,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00126915",
+    "input_tokens": 375,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 172
+  }
+}

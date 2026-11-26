@@ -1,0 +1,48 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Boeing"
+      }
+    ],
+    "intent": "hybrid",
+    "metrics": [
+      "gross_margin"
+    ],
+    "narrative_topics": [
+      "gross margin trend",
+      "usefulness of gross margin for Boeing",
+      "cost of products and services"
+    ],
+    "needs_clarification": null,
+    "operation": "trend",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2021
+      },
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2022
+      }
+    ],
+    "section_hints": [
+      "7",
+      "8"
+    ]
+  },
+  "request_key": "41e8b1694d067a02e9e099cd03d49d7feaac7e8d5ed5e3cd760500d48c28e8b2",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000165355",
+    "input_tokens": 55,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 561
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "3M's FY2022 operating margin was 19.1% as originally filed [1]. Both FY2022 operating income and revenue were later restated, and the restated figures are not given here. The material does not explain what drove the FY2022 change. The only driver language it contains concerns FY2021, when the margin declined and COVID-19 implications contributed in part [2].",
+    "claims": [
+      {
+        "display": "19.1%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": false,
+        "provenance": {
+          "expr": "f:-5111383894809684293 / f:-8041413208395727654",
+          "fact_ids": [
+            -5111383894809684293,
+            -8041413208395727654
+          ],
+          "type": "expr"
+        },
+        "text": "3M's FY2022 operating margin was 19.1% as originally filed.",
+        "unit": "ratio",
+        "value": "0.1910368401063425750094948728"
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000066740-22-000010#7#0002",
+          "quote": "Various COVID-19 implications contributed in part to these results.",
+          "type": "chunk"
+        },
+        "text": "Various COVID-19 implications contributed in part to the FY2021 operating margin decline.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "FY2022 operating margin of 19.1% as originally filed",
+        "FY2021 operating margin decline partly attributed to COVID-19 implications"
+      ],
+      "missing": [
+        "FY2022 MD&A explanation of the operating margin drivers",
+        "A computed FY2021 to FY2022 margin change with its own provenance",
+        "Restated FY2022 operating income and revenue figures"
+      ],
+      "reason": "The material gives the FY2022 operating margin but contains no passage explaining what drove its change, as the only driver language covers FY2021."
+    }
+  },
+  "request_key": "2253c8d0120ab6b41faa233d5f591f0fe6602e8d814bc1e82b6cedd71442f79c",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0008985",
+    "input_tokens": 5196,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 2504
+  }
+}

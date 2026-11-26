@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Cardinal Health"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "income_tax"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "value",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2023
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "8a12da834e0ed21dce5f2865432b52292204b18cb1c30cfc046f819f9159e72c",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000041355",
+    "input_tokens": 30,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 70
+  }
+}

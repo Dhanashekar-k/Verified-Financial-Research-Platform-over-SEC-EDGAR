@@ -1,0 +1,69 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Target spent $3.3 billion more on capital expenditures than Yum Brands in fiscal 2021 [1]. Target's FY2021 capex was $3.5 billion [2], and Yum Brands' was $230.0 million [3].",
+    "claims": [
+      {
+        "display": "$3.3 billion",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "f:-7567855541445400620 - f:-3262996577838157047",
+          "fact_ids": [
+            -7567855541445400620,
+            -3262996577838157047
+          ],
+          "type": "expr"
+        },
+        "text": "Target spent $3.3 billion more on capital expenditures than Yum Brands in fiscal 2021.",
+        "unit": "USD",
+        "value": "3314000000"
+      },
+      {
+        "display": "$3.5 billion",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:-7567855541445400620",
+          "fact_ids": [
+            -7567855541445400620
+          ],
+          "type": "expr"
+        },
+        "text": "Target's capital expenditures in fiscal 2021 were $3.5 billion.",
+        "unit": "USD",
+        "value": "3544000000"
+      },
+      {
+        "display": "$230.0 million",
+        "id": "c3",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:-3262996577838157047",
+          "fact_ids": [
+            -3262996577838157047
+          ],
+          "type": "expr"
+        },
+        "text": "Yum Brands' capital expenditures in fiscal 2021 were $230.0 million.",
+        "unit": "USD",
+        "value": "230000000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "e5910fc7026439394567efa93703466916334018f7c2953e366838e5c58b542a",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00017225",
+    "input_tokens": 621,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 514
+  }
+}

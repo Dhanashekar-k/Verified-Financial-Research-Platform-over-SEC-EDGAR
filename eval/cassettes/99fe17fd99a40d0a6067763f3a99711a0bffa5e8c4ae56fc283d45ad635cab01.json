@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Henry Schein"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "U.S. trade accounts receivable securitization facility interest rate pricing",
+      "interest rate sensitivity of interest expense",
+      "average usage of securitization facility"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2022
+      }
+    ],
+    "section_hints": [
+      "7A",
+      "7"
+    ]
+  },
+  "request_key": "99fe17fd99a40d0a6067763f3a99711a0bffa5e8c4ae56fc283d45ad635cab01",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000115055",
+    "input_tokens": 69,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 357
+  }
+}

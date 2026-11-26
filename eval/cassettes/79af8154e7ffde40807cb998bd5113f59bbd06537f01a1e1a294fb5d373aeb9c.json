@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Tyler Technologies Inc."
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "total_liabilities"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "value",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2022
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "79af8154e7ffde40807cb998bd5113f59bbd06537f01a1e1a294fb5d373aeb9c",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000043355",
+    "input_tokens": 40,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 76
+  }
+}

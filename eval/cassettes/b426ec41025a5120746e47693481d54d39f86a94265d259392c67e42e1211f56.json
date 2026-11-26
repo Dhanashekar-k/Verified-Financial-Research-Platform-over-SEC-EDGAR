@@ -1,0 +1,36 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "contradiction": false,
+    "points": [
+      {
+        "covered": true,
+        "index": 0
+      },
+      {
+        "covered": false,
+        "index": 1
+      },
+      {
+        "covered": true,
+        "index": 2
+      },
+      {
+        "covered": true,
+        "index": 3
+      }
+    ],
+    "reason": "The answer covers reserve revisions affecting DD&A rate and earnings, and the reserve bases for acquisition costs and for lease and well equipment, but never mentions the unit-of-production method."
+  },
+  "request_key": "b426ec41025a5120746e47693481d54d39f86a94265d259392c67e42e1211f56",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 683,
+    "cost_usd": "0.00194375",
+    "input_tokens": 425,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 133
+  }
+}

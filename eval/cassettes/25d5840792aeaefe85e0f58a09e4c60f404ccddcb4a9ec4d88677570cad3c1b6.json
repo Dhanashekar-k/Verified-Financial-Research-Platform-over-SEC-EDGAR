@@ -1,0 +1,36 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Invesco Ltd.'s capital expenditures in Q1 FY2023 were $38.1 million [1].",
+    "claims": [
+      {
+        "display": "$38.1 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:4841805490405407761",
+          "fact_ids": [
+            4841805490405407761
+          ],
+          "type": "expr"
+        },
+        "text": "Invesco Ltd.'s capital expenditures in Q1 FY2023 were $38.1 million.",
+        "unit": "USD",
+        "value": "38100000.0000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "25d5840792aeaefe85e0f58a09e4c60f404ccddcb4a9ec4d88677570cad3c1b6",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00013670",
+    "input_tokens": 240,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 448
+  }
+}

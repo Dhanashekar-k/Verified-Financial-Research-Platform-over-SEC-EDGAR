@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Verizon"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "long_term_debt"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": "Do you mean Verizon's noncurrent long-term debt or its total debt including the current portion?",
+    "operation": "growth",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2021
+      },
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2022
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "d435c855c3988239b0462edd8071e79a9020fd21a0cff4694283924cf0d3da89",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000202355",
+    "input_tokens": 40,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 712
+  }
+}

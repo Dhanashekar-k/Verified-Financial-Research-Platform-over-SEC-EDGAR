@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Yum Brands' dividends paid increased by 6.4% from Q1 FY2020 to Q1 FY2021 [1].",
+    "claims": [
+      {
+        "display": "6.4%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:-5201084152344831129 - f:-954367114777251887) / f:-954367114777251887",
+          "fact_ids": [
+            -5201084152344831129,
+            -954367114777251887
+          ],
+          "type": "expr"
+        },
+        "text": "Yum Brands' dividends paid grew 6.4% in Q1 FY2021, measured from Q1 FY2020.",
+        "unit": "ratio",
+        "value": "0.06382978723404255319148936170"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "649fbee57411267de8b83d56d2d33dd6d68b81f3b832dd4028317127d002b017",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00016320",
+    "input_tokens": 305,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 541
+  }
+}

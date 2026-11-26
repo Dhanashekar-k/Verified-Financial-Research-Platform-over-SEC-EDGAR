@@ -1,0 +1,58 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Kenvue's initial public offering brought net proceeds of $4.2 billion [1]. The 2023 cash flow statement lists proceeds from the Kenvue initial public offering of 4,241 [2].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000200406-26-000016#8#0035",
+          "quote": "for net proceeds of $4.2 billion",
+          "type": "chunk"
+        },
+        "text": "Kenvue's initial public offering brought net proceeds of $4.2 billion.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000200406-24-000013#8#0017",
+          "quote": "Proceeds from Kenvue initial public offering | 4,241 | \u2014 | \u2014",
+          "type": "chunk"
+        },
+        "text": "The 2023 cash flow statement lists proceeds from the Kenvue initial public offering of 4,241.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Kenvue initial public offering net proceeds of $4.2 billion",
+        "2023 cash flow statement line for proceeds from the Kenvue initial public offering of 4,241"
+      ],
+      "missing": [
+        "The cash proceeds from the Kenvue separation specifically, as of August 30, 2023",
+        "A computed numeric result for separation cash proceeds as of that date"
+      ],
+      "reason": "The material gives Kenvue IPO proceeds but no cash proceeds from the Kenvue separation as of August 30, 2023."
+    }
+  },
+  "request_key": "72bcdaa0a199791af3b4d89151c73fa4d33feec8e57b9455b248f42dad5e8bda",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00086085",
+    "input_tokens": 4883,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 2416
+  }
+}

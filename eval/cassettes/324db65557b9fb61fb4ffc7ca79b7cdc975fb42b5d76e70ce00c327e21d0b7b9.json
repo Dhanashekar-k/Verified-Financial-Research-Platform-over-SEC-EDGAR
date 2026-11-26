@@ -1,0 +1,62 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Restructuring and other decreased by $291 million in 2023 compared to 2022, primarily because of a gain on the sale of a divested business, partially offset by restructuring charges, asset impairment charges, and fair value adjustments on loans and interest receivable held for sale [1]. The gain came from the Happy Returns sale, which was completed in the fourth quarter of 2023 and recorded a pre-tax gain of $339 million, net of transaction costs [2]. The 2023 global workforce reduction added restructuring charges of $122 million [3].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0001633917-24-000024#7#0027",
+          "quote": "Restructuring and other decreased by $291 million in 2023 compared to 2022 primarily resulting from gain on sale of a divested business, partially offset by restructuring charges, asset impairment charges, and fair value adjustments on loans and interest receivable, held for sale.",
+          "type": "chunk"
+        },
+        "text": "Restructuring and other decreased by $291 million in 2023 compared to 2022 primarily resulting from gain on sale of a divested business, partially offset by restructuring charges, asset impairment charges, and fair value adjustments on loans and interest receivable, held for sale.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001633917-24-000024#7#0027",
+          "quote": "In the fourth quarter of 2023, we completed the sale of Happy Returns and recorded a pre-tax gain of $339 million, net of transaction costs.",
+          "type": "chunk"
+        },
+        "text": "In the fourth quarter of 2023, we completed the sale of Happy Returns and recorded a pre-tax gain of $339 million, net of transaction costs.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001633917-24-000024#7#0027",
+          "quote": "The associated restructuring charges during the year ended December 31, 2023 were $122 million.",
+          "type": "chunk"
+        },
+        "text": "The associated restructuring charges of the 2023 global workforce reduction were $122 million.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "324db65557b9fb61fb4ffc7ca79b7cdc975fb42b5d76e70ce00c327e21d0b7b9",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00080790",
+    "input_tokens": 4884,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 2204
+  }
+}

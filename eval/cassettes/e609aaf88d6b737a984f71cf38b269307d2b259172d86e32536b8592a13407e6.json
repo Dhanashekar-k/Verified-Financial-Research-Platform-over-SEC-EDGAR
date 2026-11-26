@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The answer says yes and cites the opioid/controlled substances litigation with the roughly $4.3 billion remediation figure from the gold answer, plus other ongoing matters; it omits usual and customary pricing and PBM litigation but states the key fact."
+  },
+  "request_key": "e609aaf88d6b737a984f71cf38b269307d2b259172d86e32536b8592a13407e6",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00107655",
+    "input_tokens": 565,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 96
+  }
+}

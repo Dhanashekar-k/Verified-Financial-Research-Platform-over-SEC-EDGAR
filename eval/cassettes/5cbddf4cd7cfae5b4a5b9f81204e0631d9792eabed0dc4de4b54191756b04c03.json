@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Koch Industries"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "net_income"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "value",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2022
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "5cbddf4cd7cfae5b4a5b9f81204e0631d9792eabed0dc4de4b54191756b04c03",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000076305",
+    "input_tokens": 24,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 211
+  }
+}

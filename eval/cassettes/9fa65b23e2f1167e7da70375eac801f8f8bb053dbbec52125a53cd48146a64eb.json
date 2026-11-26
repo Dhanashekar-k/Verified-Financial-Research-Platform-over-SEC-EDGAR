@@ -1,0 +1,36 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "contradiction": false,
+    "points": [
+      {
+        "covered": true,
+        "index": 0
+      },
+      {
+        "covered": false,
+        "index": 1
+      },
+      {
+        "covered": false,
+        "index": 2
+      },
+      {
+        "covered": false,
+        "index": 3
+      }
+    ],
+    "reason": "The answer covers supply chain disruptions and heightened demand (point 0), but only mentions higher distribution and transportation costs without the overtime or cleaning/protective equipment costs of point 2, and omits the closings and reduced hours (point 1) and the $167 million bonuses and hiring (point 3); nothing contradicts the gold points."
+  },
+  "request_key": "9fa65b23e2f1167e7da70375eac801f8f8bb053dbbec52125a53cd48146a64eb",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 683,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00137015",
+    "input_tokens": 431,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 181
+  }
+}

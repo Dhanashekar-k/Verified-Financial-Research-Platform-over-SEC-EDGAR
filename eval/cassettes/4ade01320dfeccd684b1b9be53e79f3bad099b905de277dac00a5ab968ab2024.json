@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The answer states US sales rose 3.0% and international sales fell 0.6% in 2022, matching the gold answer exactly."
+  },
+  "request_key": "4ade01320dfeccd684b1b9be53e79f3bad099b905de277dac00a5ab968ab2024",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00044855",
+    "input_tokens": 137,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 56
+  }
+}

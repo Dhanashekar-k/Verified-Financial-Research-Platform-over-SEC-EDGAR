@@ -1,0 +1,36 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "CME Group's stockholders' equity at the end of Q3 FY2020, as originally reported, was $27.0 billion [1]. This figure was later restated, and the value shown is the original filed figure.",
+    "claims": [
+      {
+        "display": "$27.0 billion",
+        "id": "r1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:8248810336162219627",
+          "fact_ids": [
+            8248810336162219627
+          ],
+          "type": "expr"
+        },
+        "text": "CME Group stockholders' equity at the end of Q3 FY2020, as originally reported, was $27.0 billion.",
+        "unit": "USD",
+        "value": "26979600000.0000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "4d0e0628ff2d8eaadfbe0ed9f73aac288c5f013a59d9cccfc340c43bbd9a2943",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00025040",
+    "input_tokens": 409,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 869
+  }
+}

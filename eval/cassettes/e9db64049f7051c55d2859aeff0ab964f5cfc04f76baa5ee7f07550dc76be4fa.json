@@ -1,0 +1,57 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Cost of goods sold for FY2021 was 15,357 million [1], and net operating revenues were 38,655 million [2].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:COCACOLA_2021_10K#p62#0000",
+          "quote": "Cost of goods sold | 15,357 | 13,433 | 14,619",
+          "type": "chunk"
+        },
+        "text": "Cost of goods sold was 15,357 million in 2021.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:COCACOLA_2021_10K#p62#0000",
+          "quote": "Net Operating Revenues | $ | 38,655",
+          "type": "chunk"
+        },
+        "text": "Net operating revenues were 38,655 million in 2021.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Cost of goods sold of 15,357 million in 2021",
+        "Net operating revenues of 38,655 million in 2021"
+      ],
+      "missing": [
+        "A NUMERIC RESULTS figure giving FY2021 cost of goods sold as a percentage of net operating revenues"
+      ],
+      "reason": "The material provides no computed COGS margin figure, and calculating the percentage from the income statement line items is arithmetic that I am not permitted to perform."
+    }
+  },
+  "request_key": "e9db64049f7051c55d2859aeff0ab964f5cfc04f76baa5ee7f07550dc76be4fa",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00068720",
+    "input_tokens": 4600,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1778
+  }
+}

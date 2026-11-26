@@ -1,0 +1,26 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The FY2015 operating cash flow ratio for Adobe cannot be computed from the material provided.",
+    "claims": [],
+    "refusal": {
+      "found": [],
+      "missing": [
+        "FY2015 net cash provided by operating activities (cash from operations) from the cash flow statement",
+        "FY2015 total current liabilities from the statement of financial position"
+      ],
+      "reason": "No NUMERIC RESULTS were supplied, so neither FY2015 cash from operations nor total current liabilities is available to compute the ratio."
+    }
+  },
+  "request_key": "b1fba7d3b08cc1bdcf72917ac19d61725743bebccab3096faf73ff3fa2ac07fb",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00047805",
+    "input_tokens": 5202,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 821
+  }
+}

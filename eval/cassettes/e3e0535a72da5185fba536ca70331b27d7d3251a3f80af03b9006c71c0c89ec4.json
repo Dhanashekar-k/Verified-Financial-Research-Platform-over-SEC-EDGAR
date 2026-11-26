@@ -1,0 +1,73 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Prudential states that equity options, equity total return swaps, and futures are used to manage its exposure to equity markets, which affects the value of assets and liabilities it owns or expects to acquire or sell [1]. It uses combinations of purchased and sold equity index options to hedge adverse equity index changes within a predetermined range [2]. For guarantees of accumulation balances, its primary risk exposures include equity market returns, interest rates, market volatility and contractholder behavior [3]. The passages do not quantify equity price sensitivity or its effect on reported results.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001137774-25-000044#8#0165",
+          "quote": "Equity options, equity total return swaps, and futures are used by the Company to manage its exposure to the equity markets which impacts the value of assets and liabilities it owns or anticipates acquiring or selling.",
+          "type": "chunk"
+        },
+        "text": "Equity options, equity total return swaps, and futures are used to manage its exposure to equity markets, which affects the value of assets and liabilities it owns or anticipates acquiring or selling.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001137774-25-000044#8#0165",
+          "quote": "The Company uses combinations of purchases and sales of equity index options to hedge the effects of adverse changes in equity indices within a predetermined range.",
+          "type": "chunk"
+        },
+        "text": "Equity index options are used to hedge adverse equity index changes within a predetermined range.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001137774-25-000044#8#0376",
+          "quote": "The Company\u2019s primary risk exposures for these contracts relates to actual deviations from, or changes to, the assumptions used in the original pricing of these products, including equity market returns, interest rates, market volatility and contractholder behavior.",
+          "type": "chunk"
+        },
+        "text": "For guarantees of accumulation balances, the primary risk exposures include equity market returns, interest rates, market volatility and contractholder behavior.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Equity derivatives manage exposure to equity markets that affect the value of assets and liabilities",
+        "Equity index options hedge adverse equity index changes within a predetermined range",
+        "Accumulation-balance guarantees have primary exposure to equity market returns"
+      ],
+      "missing": [
+        "The market risk section quantifying equity price sensitivity",
+        "The effect of equity price changes on earnings or other reported results"
+      ],
+      "reason": "The passages describe equity hedging and pricing-assumption exposures but do not give the equity price risk sensitivity disclosure or its effect on results that the question asks for."
+    }
+  },
+  "request_key": "e3e0535a72da5185fba536ca70331b27d7d3251a3f80af03b9006c71c0c89ec4",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0007635",
+    "input_tokens": 3951,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 2213
+  }
+}

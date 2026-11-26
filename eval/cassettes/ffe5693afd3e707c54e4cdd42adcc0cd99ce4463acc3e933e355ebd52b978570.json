@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "PTC Inc."
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "shares_outstanding"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "value",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "Q1",
+        "fiscal_year": 2020
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "ffe5693afd3e707c54e4cdd42adcc0cd99ce4463acc3e933e355ebd52b978570",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000045605",
+    "input_tokens": 35,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 86
+  }
+}

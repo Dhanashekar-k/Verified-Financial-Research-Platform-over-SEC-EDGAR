@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The provided filings do not describe any acquisitions by Ulta Beauty in fiscal 2023 or fiscal 2022. They describe a long-term partnership with Target Corporation for Ulta Beauty at Target shop-in-shops, which is not an acquisition [1].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001558370-23-004581#1#0012",
+          "quote": "we have formed a long-term partnership with Target Corporation to create Ulta Beauty at Target",
+          "type": "chunk"
+        },
+        "text": "Ulta Beauty has formed a long-term partnership with Target Corporation to create Ulta Beauty at Target, a shop-in-shop concept.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "A long-term partnership with Target Corporation to create Ulta Beauty at Target shop-in-shops."
+      ],
+      "missing": [
+        "Descriptions of companies or businesses acquired by Ulta Beauty in fiscal 2023 and fiscal 2022, such as the acquisition dates and terms."
+      ],
+      "reason": "The passages describe partnerships and store concepts but do not identify any acquisitions made in fiscal 2023 or fiscal 2022."
+    }
+  },
+  "request_key": "e58b74b1074671d573d57ee3f2ce4f3a540b14d7fc7e93fe089badc88e4edc5c",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00056055",
+    "input_tokens": 5152,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1161
+  }
+}

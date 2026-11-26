@@ -1,0 +1,62 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Operating activities brought in the most cash in FY22, at $3,565 million [1]. Investing activities provided $1,999 million [2], while financing activities used $3,264 million [3], so operating activities is the answer.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000002488-23-000047#7#0022",
+          "quote": "Operating activities | $3,565 | $3,521",
+          "type": "chunk"
+        },
+        "text": "Operating activities provided 3,565 (in millions) in the December 31, 2022 column.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000002488-23-000047#7#0022",
+          "quote": "Investing activities | 1,999 | (686)",
+          "type": "chunk"
+        },
+        "text": "Investing activities provided 1,999 (in millions) in the December 31, 2022 column.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000002488-23-000047#7#0022",
+          "quote": "Financing activities | (3,264) | (1,895)",
+          "type": "chunk"
+        },
+        "text": "Financing activities used 3,264 (in millions) in the December 31, 2022 column.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "975f94a0f76b39bda677ece0edeb110627d10b4fe0effb0b7a126608f34a3578",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00059960",
+    "input_tokens": 4103,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1527
+  }
+}

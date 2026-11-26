@@ -1,0 +1,36 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Hartford Insurance Group's stockholders' equity at the end of Q3 FY2022 was $13.0 billion as originally reported [1]. This figure was later restated, and the restated value is not stated here [1].",
+    "claims": [
+      {
+        "display": "$13.0 billion",
+        "id": "r1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:-1143845038444912632",
+          "fact_ids": [
+            -1143845038444912632
+          ],
+          "type": "expr"
+        },
+        "text": "Stockholders' equity at the end of Q3 FY2022, as originally reported, was $13.0 billion.",
+        "unit": "USD",
+        "value": "12955000000.0000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "168f3f9d7aa3d6714c83f4fc59b560482ce865d6ebf9498eea2e6cfd818f12d5",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0001960",
+    "input_tokens": 446,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 644
+  }
+}

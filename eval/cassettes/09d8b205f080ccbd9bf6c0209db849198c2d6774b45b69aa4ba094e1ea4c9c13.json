@@ -1,0 +1,69 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Grainger's FY2023 income tax expense was $81.8 million higher than Sysco's, as originally reported [1]. Grainger's figure was $597.0 million [2], and Sysco's was $515.2 million as originally filed [3]. Sysco's FY2023 income tax expense was later restated, so the figure used here is the original filing.",
+    "claims": [
+      {
+        "display": "$81.8 million",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "f:-7063296610517220637 - f:7264880373626458387",
+          "fact_ids": [
+            -7063296610517220637,
+            7264880373626458387
+          ],
+          "type": "expr"
+        },
+        "text": "Grainger's FY2023 income tax expense was $81.8 million higher than Sysco's, as originally reported.",
+        "unit": "USD",
+        "value": "81769000.0000"
+      },
+      {
+        "display": "$597.0 million",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:-7063296610517220637",
+          "fact_ids": [
+            -7063296610517220637
+          ],
+          "type": "expr"
+        },
+        "text": "W.W. Grainger, Inc. income tax expense for FY2023 was $597.0 million.",
+        "unit": "USD",
+        "value": "597000000.0000"
+      },
+      {
+        "display": "$515.2 million",
+        "id": "c3",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:7264880373626458387",
+          "fact_ids": [
+            7264880373626458387
+          ],
+          "type": "expr"
+        },
+        "text": "Sysco Corp income tax expense for FY2023 was $515.2 million as originally filed.",
+        "unit": "USD",
+        "value": "515231000.0000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "09d8b205f080ccbd9bf6c0209db849198c2d6774b45b69aa4ba094e1ea4c9c13",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00040980",
+    "input_tokens": 1002,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1388
+  }
+}

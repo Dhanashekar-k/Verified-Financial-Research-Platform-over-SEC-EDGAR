@@ -1,0 +1,36 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "contradiction": false,
+    "points": [
+      {
+        "covered": true,
+        "index": 0
+      },
+      {
+        "covered": false,
+        "index": 1
+      },
+      {
+        "covered": false,
+        "index": 2
+      },
+      {
+        "covered": false,
+        "index": 3
+      }
+    ],
+    "reason": "The answer covers the interest rate swap objectives (point 0) but omits the fixed-rate debt policy range, the specific currencies hedged, and the four-year hedge horizon. It mentions forwards, options and cross-currency swaps only generally, so points 2 and 3 are not fully covered, and nothing contradicts the gold points."
+  },
+  "request_key": "24e027bc7130cc01c17c63536ddf219b6eae29c439d579abed520603cdfbe73d",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 683,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00142915",
+    "input_tokens": 500,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 179
+  }
+}

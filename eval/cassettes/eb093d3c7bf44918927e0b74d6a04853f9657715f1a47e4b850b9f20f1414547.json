@@ -1,0 +1,36 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Cencora, Inc. spent $5.3 billion on selling, general and administrative expenses in fiscal 2023 [1].",
+    "claims": [
+      {
+        "display": "$5.3 billion",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:-6695533278037942716",
+          "fact_ids": [
+            -6695533278037942716
+          ],
+          "type": "expr"
+        },
+        "text": "Cencora, Inc. SG&A expenses in FY2023 were $5.3 billion.",
+        "unit": "USD",
+        "value": "5309984000.0000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "eb093d3c7bf44918927e0b74d6a04853f9657715f1a47e4b850b9f20f1414547",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00012190",
+    "input_tokens": 239,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 389
+  }
+}

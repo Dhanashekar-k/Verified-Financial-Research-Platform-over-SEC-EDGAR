@@ -1,0 +1,62 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The passages name three companies Pfizer acquired: Array, which brought Braftovi and Mektovi [1], Therachon [2], and Seagen, acquired in December 2023 [3].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:PFIZER_2021_10K#p71#0000",
+          "quote": "Array\u2019s portfolio includes Braftovi (encorafenib) and Mektovi (binimetinib)",
+          "type": "chunk"
+        },
+        "text": "Array\u2019s portfolio includes Braftovi (encorafenib) and Mektovi (binimetinib)",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000078003-21-000038#8#0029",
+          "quote": "including the acquisitions of Array and Therachon",
+          "type": "chunk"
+        },
+        "text": "including the acquisitions of Array and Therachon",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000078003-25-000054#1#0002",
+          "quote": "Seagen (which we acquired in December 2023)",
+          "type": "chunk"
+        },
+        "text": "Seagen (which we acquired in December 2023)",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "209a1207dc75314db332b3be912b945ae35ec6786bc12f2a94970ab69e4b72e3",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00062735",
+    "input_tokens": 5328,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1393
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Mastercard"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "interest_expense"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "growth",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "Q3",
+        "fiscal_year": 2023
+      },
+      {
+        "fiscal_period": "Q3",
+        "fiscal_year": 2024
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "5822f37257e1065cd73e242cea2983b1909f8b9644d052691cc90c94268765f5",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000069655",
+    "input_tokens": 46,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 180
+  }
+}

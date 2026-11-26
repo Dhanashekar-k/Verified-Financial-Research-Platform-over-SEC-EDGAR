@@ -1,0 +1,36 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "JnJ"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "gain on separation of Consumer Health business",
+      "Consumer Health exchange offer gain"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": "as of August 30, 2023",
+    "periods": [],
+    "section_hints": [
+      "7",
+      "8"
+    ]
+  },
+  "request_key": "174817ce3f941de09568d9ee1fb10849d8c84cd27fc9a7323c49d0c81d8e2994",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000119455",
+    "input_tokens": 52,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 378
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "In fiscal 2023, Pinnacle West Capital's operating income exceeded Southwest Airlines' by $600.6 million [1].",
+    "claims": [
+      {
+        "display": "$600.6 million",
+        "id": "r3",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "f:-2514448646774632286 - f:2416498144507079486",
+          "fact_ids": [
+            -2514448646774632286,
+            2416498144507079486
+          ],
+          "type": "expr"
+        },
+        "text": "Pinnacle West Capital's FY2023 operating income exceeded Southwest Airlines' FY2023 operating income by $600.6 million.",
+        "unit": "USD",
+        "value": "600640000.0000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "7785f3ed836903566380affc5677036e68f1498d85ffb58506008a9adb3bf348",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00017145",
+    "input_tokens": 675,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 500
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Verizon"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "expected retiree benefit payments 2024",
+      "pension and postretirement benefits expected future payments"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2021
+      }
+    ],
+    "section_hints": [
+      "8",
+      "7"
+    ]
+  },
+  "request_key": "73d8e9b046d80f2ef614169c098e996fb4a73da972807f364c656948d51a2dbf",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000106655",
+    "input_tokens": 36,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 330
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Corning"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "operating_margin"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "trend",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2019
+      },
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2020
+      },
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2021
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "4e2e5e35d1754b7a05811ea163024a2d76272759fec91850f4bdd1db9e01d2f5",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000085255",
+    "input_tokens": 73,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 237
+  }
+}

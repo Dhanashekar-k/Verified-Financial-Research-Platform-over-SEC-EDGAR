@@ -1,0 +1,35 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "JnJ"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "business segment treated as discontinued operation"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": "from August 30, 2023 onward",
+    "periods": [],
+    "section_hints": [
+      "1",
+      "8"
+    ]
+  },
+  "request_key": "02ce7ed983fd41c9efb38ce505a6959f838bc94d92e448f83fe6c40992d08b7e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000155105",
+    "input_tokens": 40,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 523
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "GWW"
+      },
+      {
+        "cik": null,
+        "mention": "DPZ"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "capex"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "compare",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2022
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "9e31b71555e99119443e9ebfeeca3d3e781cd759b13738b2e616b71f79e3a875",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000068805",
+    "input_tokens": 29,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 180
+  }
+}

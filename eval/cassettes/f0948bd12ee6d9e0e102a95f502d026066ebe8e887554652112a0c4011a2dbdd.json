@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Expeditors International of Washington's operating income grew 7.6% from Q3 FY2021 to Q3 FY2022 [1].",
+    "claims": [
+      {
+        "display": "7.6%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:1927697370690300407 - f:7787389792475200508) / f:7787389792475200508",
+          "fact_ids": [
+            1927697370690300407,
+            7787389792475200508
+          ],
+          "type": "expr"
+        },
+        "text": "Operating income grew 7.6% in Q3 FY2022 compared with Q3 FY2021.",
+        "unit": "ratio",
+        "value": "0.07615029092981127"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "f0948bd12ee6d9e0e102a95f502d026066ebe8e887554652112a0c4011a2dbdd",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0000880",
+    "input_tokens": 321,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 237
+  }
+}

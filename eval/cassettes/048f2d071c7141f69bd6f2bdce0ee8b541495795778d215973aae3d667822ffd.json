@@ -1,0 +1,45 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "JPM"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "value at risk (VaR)",
+      "market risk exposure change"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "Q2",
+        "fiscal_year": 2022
+      },
+      {
+        "fiscal_period": "Q2",
+        "fiscal_year": 2023
+      }
+    ],
+    "section_hints": [
+      "7A",
+      "7"
+    ]
+  },
+  "request_key": "048f2d071c7141f69bd6f2bdce0ee8b541495795778d215973aae3d667822ffd",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000145055",
+    "input_tokens": 54,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 480
+  }
+}

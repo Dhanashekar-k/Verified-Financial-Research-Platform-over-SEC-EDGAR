@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Adobe"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "operating cash flow ratio",
+      "cash from operations",
+      "total current liabilities"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2015
+      }
+    ],
+    "section_hints": [
+      "8",
+      "7"
+    ]
+  },
+  "request_key": "56520d2cbe160a793b81d2c2c14857a8de416a1d998cd5ee9722b573b812ce51",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000176905",
+    "input_tokens": 116,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 595
+  }
+}

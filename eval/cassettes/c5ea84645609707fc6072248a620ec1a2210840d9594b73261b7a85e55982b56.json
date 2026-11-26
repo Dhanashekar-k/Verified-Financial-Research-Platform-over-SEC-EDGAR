@@ -1,0 +1,69 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Flex's noncurrent long-term debt at FY2021 end was $3.2 billion [1], versus $3.0 billion for Dover [2], so Flex's is higher by $229.3 million [3].",
+    "claims": [
+      {
+        "display": "$3.2 billion",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:-2592191654412052699",
+          "fact_ids": [
+            -2592191654412052699
+          ],
+          "type": "expr"
+        },
+        "text": "Flex's noncurrent long-term debt at FY2021 end was $3.2 billion.",
+        "unit": "USD",
+        "value": "3248000000"
+      },
+      {
+        "display": "$3.0 billion",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:4701764934613023697",
+          "fact_ids": [
+            4701764934613023697
+          ],
+          "type": "expr"
+        },
+        "text": "Dover's noncurrent long-term debt at FY2021 end was $3.0 billion.",
+        "unit": "USD",
+        "value": "3018714000"
+      },
+      {
+        "display": "$229.3 million",
+        "id": "c3",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "f:-2592191654412052699 - f:4701764934613023697",
+          "fact_ids": [
+            -2592191654412052699,
+            4701764934613023697
+          ],
+          "type": "expr"
+        },
+        "text": "Flex's noncurrent long-term debt at FY2021 end is higher than Dover's by $229.3 million.",
+        "unit": "USD",
+        "value": "229286000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "c5ea84645609707fc6072248a620ec1a2210840d9594b73261b7a85e55982b56",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00016985",
+    "input_tokens": 628,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 503
+  }
+}

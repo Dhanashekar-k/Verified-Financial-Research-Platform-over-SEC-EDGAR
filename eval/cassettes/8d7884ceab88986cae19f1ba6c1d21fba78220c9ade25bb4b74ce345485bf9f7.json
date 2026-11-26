@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The filings provided do not give a monthly active user figure for Google Maps in Germany. They only state that Google Maps is among Google Services' core products with broad and growing adoption worldwide [1].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001652044-24-000022#1#0006",
+          "quote": "Google Services' core products and platforms include ads, Android, Chrome, devices, Gmail, Google Drive, Google Maps, Google Photos, Google Play, Search, and YouTube, with broad and growing adoption by users around the world.",
+          "type": "chunk"
+        },
+        "text": "Google Services' core products and platforms include ads, Android, Chrome, devices, Gmail, Google Drive, Google Maps, Google Photos, Google Play, Search, and YouTube, with broad and growing adoption by users around the world.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Google Maps is listed among Google Services' core products with broad and growing adoption by users around the world."
+      ],
+      "missing": [
+        "A monthly active user count for Google Maps in Germany, from a filing passage or a computed XBRL result."
+      ],
+      "reason": "The material contains no monthly active user figure for Google Maps in Germany."
+    }
+  },
+  "request_key": "8d7884ceab88986cae19f1ba6c1d21fba78220c9ade25bb4b74ce345485bf9f7",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00055055",
+    "input_tokens": 5182,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1115
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The material provided does not contain the balance sheet figures needed to compute Amcor's quick ratio for FY2023 or FY2022, so I cannot say whether it improved or declined [1]. The fiscal 2023 release reports Adjusted Free Cash Flow of $848 million, which is a cash flow measure, not a liquidity ratio [1].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:AMCOR_2023Q4_EARNINGS#p1#0000",
+          "quote": "Adjusted Free Cash Flow of $848 million, in line with guidance provided in",
+          "type": "chunk"
+        },
+        "text": "Amcor reported Adjusted Free Cash Flow of $848 million in fiscal 2023.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Fiscal 2023 Adjusted Free Cash Flow of $848 million"
+      ],
+      "missing": [
+        "FY2023 and FY2022 balance sheet values for cash and equivalents, short-term investments, receivables, total current assets, inventories, and total current liabilities"
+      ],
+      "reason": "The material contains no current assets, current liabilities, or inventory figures needed to compute a quick ratio for FY2022 or FY2023."
+    }
+  },
+  "request_key": "3bd06ffb40045e55797e95d396d6e4ebacadc780d27656ce4118d98431de558c",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00077365",
+    "input_tokens": 5209,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 2002
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Quest Diagnostics"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "sga"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "value",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "Q1",
+        "fiscal_year": 2025
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "edff560daddfecbe686f0c5ccb300a8712880a83bf476aacbe0195ee7601e0ad",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000045155",
+    "input_tokens": 36,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 84
+  }
+}

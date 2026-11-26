@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Consolidated Edison's income tax expense grew 70.6% from Q2 FY2022 to Q2 FY2023, measured from Q2 FY2022 [1].",
+    "claims": [
+      {
+        "display": "70.6%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:-2200918188988035876 - f:1683907548912773935) / f:1683907548912773935",
+          "fact_ids": [
+            -2200918188988035876,
+            1683907548912773935
+          ],
+          "type": "expr"
+        },
+        "text": "Consolidated Edison's income tax expense grew 70.6% from Q2 FY2022 to Q2 FY2023.",
+        "unit": "ratio",
+        "value": "0.7058823529411765"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "6bd27faf178b6c476258a115053c11a2a2f855ee456dc680c332504e6bb212b0",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00009385",
+    "input_tokens": 328,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 259
+  }
+}

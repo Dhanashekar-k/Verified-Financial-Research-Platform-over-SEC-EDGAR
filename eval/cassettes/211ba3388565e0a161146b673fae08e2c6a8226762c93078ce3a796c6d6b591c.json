@@ -1,0 +1,36 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "contradiction": false,
+    "points": [
+      {
+        "covered": false,
+        "index": 0
+      },
+      {
+        "covered": true,
+        "index": 1
+      },
+      {
+        "covered": true,
+        "index": 2
+      },
+      {
+        "covered": true,
+        "index": 3
+      }
+    ],
+    "reason": "The answer covers the fee structure/conditions precedent tied to MVP in-service date, that timing is outside EQT's control, and the 2024 effects on operating expenses, per unit metrics, average differential, and Henry Hub Cash Bonus, but it omits Equitrans resuming MVP construction in Q3 2023."
+  },
+  "request_key": "211ba3388565e0a161146b673fae08e2c6a8226762c93078ce3a796c6d6b591c",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 683,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00138415",
+    "input_tokens": 470,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 176
+  }
+}

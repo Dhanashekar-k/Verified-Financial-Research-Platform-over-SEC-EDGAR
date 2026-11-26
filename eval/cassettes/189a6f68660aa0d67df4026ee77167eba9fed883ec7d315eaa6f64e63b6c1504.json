@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Adobe"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "free cash flow conversion",
+      "free cash flow",
+      "operating cash flow to net income"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2022
+      }
+    ],
+    "section_hints": [
+      "7",
+      "8"
+    ]
+  },
+  "request_key": "189a6f68660aa0d67df4026ee77167eba9fed883ec7d315eaa6f64e63b6c1504",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000105455",
+    "input_tokens": 32,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 326
+  }
+}

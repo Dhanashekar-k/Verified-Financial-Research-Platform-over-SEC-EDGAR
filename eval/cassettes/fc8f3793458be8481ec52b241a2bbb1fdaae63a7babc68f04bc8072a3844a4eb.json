@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Cardinal Health's selling, general and administrative expense rose 6.1% from fiscal 2022 to fiscal 2023, based on the originally filed figures [1]. Both the FY2023 and FY2022 SG&A figures were later restated, but the restated values are not given here, so this growth rate reflects the originally reported amounts [1].",
+    "claims": [
+      {
+        "display": "6.1%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:5892834296694400593 - f:897475538113093795) / f:897475538113093795",
+          "fact_ids": [
+            5892834296694400593,
+            897475538113093795
+          ],
+          "type": "expr"
+        },
+        "text": "SG&A expense grew 6.1% from FY2022 to FY2023 based on originally reported figures.",
+        "unit": "ratio",
+        "value": "0.06078560456440640772438007461"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "fc8f3793458be8481ec52b241a2bbb1fdaae63a7babc68f04bc8072a3844a4eb",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00022770",
+    "input_tokens": 465,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 767
+  }
+}

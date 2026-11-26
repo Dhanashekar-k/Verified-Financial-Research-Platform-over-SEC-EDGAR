@@ -1,0 +1,57 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Lockheed Martin's FY2021 net working capital cannot be stated from the material provided. The balance sheet reports total current assets of 19,815 million at December 31, 2021 [1] and total current liabilities of 13,997 million at that date [2]. No computed net working capital figure is available, so no difference is stated.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:LOCKHEEDMARTIN_2021_10K#p68#0000",
+          "quote": "Total current assets | 19,815 | 19,378",
+          "type": "chunk"
+        },
+        "text": "Total current assets at December 31, 2021 were 19,815 million.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:LOCKHEEDMARTIN_2021_10K#p68#0000",
+          "quote": "Total current liabilities | 13,997 | 13,933",
+          "type": "chunk"
+        },
+        "text": "Total current liabilities at December 31, 2021 were 13,997 million.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Total current assets at December 31, 2021: 19,815 million",
+        "Total current liabilities at December 31, 2021: 13,997 million"
+      ],
+      "missing": [
+        "A computed FY2021 net working capital figure (total current assets less total current liabilities) in NUMERIC RESULTS"
+      ],
+      "reason": "The material gives total current assets and total current liabilities but no computed net working capital figure for FY2021."
+    }
+  },
+  "request_key": "544ac10ee3c44e6676bf095d11d25ccac44260490741318ef3e4ae4850a13a9c",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00061955",
+    "input_tokens": 5012,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1425
+  }
+}

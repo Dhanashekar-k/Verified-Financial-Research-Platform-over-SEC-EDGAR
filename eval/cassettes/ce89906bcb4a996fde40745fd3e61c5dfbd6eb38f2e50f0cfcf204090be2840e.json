@@ -1,0 +1,58 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Boeing states that it is involved in a number of litigation matters [1]. Its FY2022 10-K also refers to legal proceedings arising from the October 29, 2018 Lion Air Flight 610 accident and the March 10, 2019 Ethiopian Airlines Flight 302 accident [2]. The passages do not describe those proceedings, their status, or whether any of them is material.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:BOEING_2022_10K#p16#0001",
+          "quote": "We are involved in a number of litigation matters.",
+          "type": "chunk"
+        },
+        "text": "We are involved in a number of litigation matters.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:BOEING_2022_10K#p19#0000",
+          "quote": "See Note 21 of the Consolidated Financial Statements for discussion of legal proceedings resulting from the October 29, 2018 accident of Lion Air Flight 610 and the March 10, 2019 accident of Ethiopian Airlines Flight 302.",
+          "type": "chunk"
+        },
+        "text": "See Note 21 of the Consolidated Financial Statements for discussion of legal proceedings resulting from the October 29, 2018 accident of Lion Air Flight 610 and the March 10, 2019 accident of Ethiopian Airlines Flight 302.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Boeing is involved in a number of litigation matters",
+        "Note 21 is cross-referenced for legal proceedings from the Lion Air Flight 610 and Ethiopian Airlines Flight 302 accidents"
+      ],
+      "missing": [
+        "The text of Note 21 describing each proceeding, its status and any amounts at issue",
+        "A statement identifying which litigation matters are material to Boeing"
+      ],
+      "reason": "The passages confirm that Boeing is involved in litigation and cross-reference Note 21 for the Lion Air and Ethiopian Airlines proceedings, but do not describe those matters or establish which are materially important or ongoing."
+    }
+  },
+  "request_key": "ce89906bcb4a996fde40745fd3e61c5dfbd6eb38f2e50f0cfcf204090be2840e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00069815",
+    "input_tokens": 5264,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1689
+  }
+}

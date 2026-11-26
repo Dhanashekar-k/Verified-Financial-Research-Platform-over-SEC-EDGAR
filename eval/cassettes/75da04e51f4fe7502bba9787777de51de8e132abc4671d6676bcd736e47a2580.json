@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "PulteGroup Inc.'s capital expenditures decreased 18.2% in FY2023, measured from FY2022 as the base period [1].",
+    "claims": [
+      {
+        "display": "-18.2%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:-4578201056634945317 - f:-6396334463924179800) / f:-6396334463924179800",
+          "fact_ids": [
+            -4578201056634945317,
+            -6396334463924179800
+          ],
+          "type": "expr"
+        },
+        "text": "PulteGroup Inc.'s capital expenditures changed by -18.2% from FY2022 to FY2023.",
+        "unit": "ratio",
+        "value": "-0.1816067672042676702674394866"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "75da04e51f4fe7502bba9787777de51de8e132abc4671d6676bcd736e47a2580",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00015670",
+    "input_tokens": 310,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 514
+  }
+}

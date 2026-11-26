@@ -1,0 +1,28 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "The passages cover Microsoft segment-level gross margin and operating income changes, but none refers to the U.S. Army HoloLens contract."
+      ],
+      "missing": [
+        "A numeric result or passage giving revenue, cost, or profit figures for Microsoft's U.S. Army HoloLens headset contract",
+        "A filing passage describing that contract and its margin"
+      ],
+      "reason": "The provided numeric results and passages do not mention the U.S. Army HoloLens contract or any profit margin for it."
+    }
+  },
+  "request_key": "df75a2cfdacb177b0a7787d8e2e6f8d0e68561445a79cfc106b717bd2a7155d9",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00045215",
+    "input_tokens": 5809,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 596
+  }
+}

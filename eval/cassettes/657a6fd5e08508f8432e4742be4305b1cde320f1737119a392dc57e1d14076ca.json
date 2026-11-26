@@ -1,0 +1,57 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "On May 26, 2023, PepsiCo entered into a new $4,200,000,000 364 day unsecured revolving credit agreement [1] and a new $4,200,000,000 five year unsecured revolving credit agreement [2].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:PEPSICO_2023_8K_dated-2023-05-30#p2#0000",
+          "quote": "On May 26, 2023, PepsiCo entered into a new $4,200,000,000 364 day unsecured revolving credit agreement",
+          "type": "chunk"
+        },
+        "text": "PepsiCo entered into a new $4,200,000,000 364 day unsecured revolving credit agreement on May 26, 2023.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:PEPSICO_2023_8K_dated-2023-05-30#p2#0001",
+          "quote": "On May 26, 2023, PepsiCo entered into a new $4,200,000,000 five year unsecured revolving credit agreement",
+          "type": "chunk"
+        },
+        "text": "PepsiCo entered into a new $4,200,000,000 five year unsecured revolving credit agreement on May 26, 2023.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "A new $4,200,000,000 364 day unsecured revolving credit agreement was entered on May 26, 2023.",
+        "A new $4,200,000,000 five year unsecured revolving credit agreement was entered on May 26, 2023."
+      ],
+      "missing": [
+        "A stated combined total of the unsecured revolving credit commitments available to PepsiCo as of May 26, 2023, from NUMERIC RESULTS or a passage."
+      ],
+      "reason": "The material gives the size of each new facility entered on May 26, 2023 but does not state the total amount PepsiCo may borrow across its unsecured revolving credit agreements, and that total would require adding figures, which is not done here."
+    }
+  },
+  "request_key": "657a6fd5e08508f8432e4742be4305b1cde320f1737119a392dc57e1d14076ca",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00082305",
+    "input_tokens": 5102,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 2221
+  }
+}

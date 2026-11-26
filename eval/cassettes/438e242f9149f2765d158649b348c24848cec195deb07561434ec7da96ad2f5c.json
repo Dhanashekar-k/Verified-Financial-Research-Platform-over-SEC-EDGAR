@@ -1,0 +1,69 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Expand Energy's total assets were $11.6 billion larger than Vulcan Materials' at FY2025 year-end [1]. Expand Energy reported $28.3 billion [2] and Vulcan Materials reported $16.7 billion [3].",
+    "claims": [
+      {
+        "display": "$11.6 billion",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "f:1400215781174982818 - f:-6178851620428401722",
+          "fact_ids": [
+            1400215781174982818,
+            -6178851620428401722
+          ],
+          "type": "expr"
+        },
+        "text": "Expand Energy's total assets exceeded Vulcan Materials' by $11.6 billion at FY2025 year-end.",
+        "unit": "USD",
+        "value": "11586600000.0000"
+      },
+      {
+        "display": "$28.3 billion",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:1400215781174982818",
+          "fact_ids": [
+            1400215781174982818
+          ],
+          "type": "expr"
+        },
+        "text": "Expand Energy's total assets at FY2025 year-end were $28.3 billion.",
+        "unit": "USD",
+        "value": "28287000000.0000"
+      },
+      {
+        "display": "$16.7 billion",
+        "id": "c3",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:-6178851620428401722",
+          "fact_ids": [
+            -6178851620428401722
+          ],
+          "type": "expr"
+        },
+        "text": "Vulcan Materials' total assets at FY2025 year-end were $16.7 billion.",
+        "unit": "USD",
+        "value": "16700400000.0000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "438e242f9149f2765d158649b348c24848cec195deb07561434ec7da96ad2f5c",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00025940",
+    "input_tokens": 644,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 858
+  }
+}

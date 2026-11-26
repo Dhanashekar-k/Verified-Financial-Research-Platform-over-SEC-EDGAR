@@ -1,0 +1,43 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Comfort Systems USA"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "types of market risk exposure",
+      "interest rate risk",
+      "debt fixed versus variable interest rates"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2022
+      }
+    ],
+    "section_hints": [
+      "7A",
+      "7",
+      "8"
+    ]
+  },
+  "request_key": "a891ddfd53562aaf4ff89f6e743629e938047f6b2d5d17e2643dbdd33add5d8e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000099405",
+    "input_tokens": 56,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 297
+  }
+}

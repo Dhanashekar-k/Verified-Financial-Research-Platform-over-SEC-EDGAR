@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Fastenal"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "capex"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "growth",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "Q1",
+        "fiscal_year": 2021
+      },
+      {
+        "fiscal_period": "Q1",
+        "fiscal_year": 2022
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "5bf3e82826b1ffb05e9e34ac2d445c02abd53cefb7e9434112ca9d00a04d5e80",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000051305",
+    "input_tokens": 44,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 107
+  }
+}

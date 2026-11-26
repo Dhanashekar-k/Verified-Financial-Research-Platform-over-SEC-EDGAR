@@ -1,0 +1,59 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The material does not include FY2022 total current assets or total current liabilities, so positive working capital cannot be determined from it [1]. The passages do show that PayPal classifies the assets underlying customer balances as current [1], and that its loans and interest receivable include merchant receivables from PayPal Working Capital [2].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0001633917-23-000033#15#0040",
+          "quote": "We classify the assets underlying the customer balances as current based on their purpose and availability to fulfill our direct obligation under amounts due to customers.",
+          "type": "chunk"
+        },
+        "text": "PayPal classifies the assets underlying customer balances as current.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:PAYPAL_2022_10K#p70#0002",
+          "quote": "Loans and interest receivable, net represents merchant receivables originated under our PayPal Working Capital",
+          "type": "chunk"
+        },
+        "text": "Loans and interest receivable, net represents merchant receivables originated under PayPal Working Capital.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "PayPal classifies the assets underlying customer balances as current.",
+        "Loans and interest receivable, net represents merchant receivables originated under PayPal Working Capital."
+      ],
+      "missing": [
+        "FY2022 total current assets from the consolidated balance sheet",
+        "FY2022 total current liabilities from the consolidated balance sheet",
+        "A computed FY2022 working capital figure in NUMERIC RESULTS"
+      ],
+      "reason": "The passages and results provided do not include the FY2022 balance sheet totals needed to compute working capital."
+    }
+  },
+  "request_key": "0acda3507790f53f63a6a4df31f0672b12d7ca6c49f318e0ed455e6e6932e774",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00074030",
+    "input_tokens": 5332,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1844
+  }
+}

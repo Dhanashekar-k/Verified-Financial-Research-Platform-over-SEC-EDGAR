@@ -1,0 +1,57 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The passages name the United Kingdom (UK), the European Union (EU), Australia, Japan, Canada and Mexico as jurisdictions that represent a significant portion of American Express's billed business outside the United States [1]. The card network also maintains relationships with third-party banks and other institutions in approximately 103 countries and territories [2]. The material does not state which geographies the company primarily operates in.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:AMERICANEXPRESS_2022_10K#p5#0001",
+          "quote": "Jurisdictions that represent a significant portion of our billed business outside of the United States include the United Kingdom (UK), the European Union (EU), Australia, Japan, Canada and Mexico.",
+          "type": "chunk"
+        },
+        "text": "Jurisdictions that represent a significant portion of our billed business outside of the United States include the United Kingdom (UK), the European Union (EU), Australia, Japan, Canada and Mexico.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000004962-23-000006#1#0003",
+          "quote": "We operate a payments network through which we establish and maintain relationships with third-party banks and other institutions in approximately 103 countries and territories",
+          "type": "chunk"
+        },
+        "text": "We operate a payments network through which we establish and maintain relationships with third-party banks and other institutions in approximately 103 countries and territories.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Jurisdictions with a significant portion of billed business outside the United States: UK, EU, Australia, Japan, Canada, Mexico",
+        "Network relationships with third-party banks in approximately 103 countries and territories"
+      ],
+      "missing": [
+        "An explicit statement, or a geographic revenue or volume breakdown, identifying the geographies the company primarily operates in as of 2022"
+      ],
+      "reason": "The passages identify jurisdictions with significant non-US billed business but do not state which geographies the company primarily operates in as of 2022."
+    }
+  },
+  "request_key": "a313ccb0bd85bf2aa7db5ed0e9b15c37ca93bd481524a2866b0742dc27a526d5",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00075160",
+    "input_tokens": 5383,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1879
+  }
+}

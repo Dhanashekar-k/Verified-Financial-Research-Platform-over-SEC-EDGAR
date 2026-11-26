@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Ferguson Enterprises' income tax expense decreased by 5.6% from FY2022 to FY2023 [1].",
+    "claims": [
+      {
+        "display": "-5.6%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:4400262068484707874 - f:463082274487871354) / f:463082274487871354",
+          "fact_ids": [
+            4400262068484707874,
+            463082274487871354
+          ],
+          "type": "expr"
+        },
+        "text": "Ferguson Enterprises' income tax expense changed by -5.6% in FY2023 compared with FY2022.",
+        "unit": "ratio",
+        "value": "-0.05582922824302135"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "5092521d22fb2165202ca0ee78ff61b3e306a3429bff3b6beeb2d3ad4d26521d",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00008535",
+    "input_tokens": 298,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 231
+  }
+}

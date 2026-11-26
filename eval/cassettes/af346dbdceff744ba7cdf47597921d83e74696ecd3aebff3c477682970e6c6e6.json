@@ -1,0 +1,44 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Costco's total assets at the end of FY2021 were $59.3 billion [1].",
+    "claims": [
+      {
+        "display": "$59.3 billion",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:-8955140927515158172",
+          "fact_ids": [
+            -8955140927515158172
+          ],
+          "type": "expr"
+        },
+        "text": "Costco's total assets at the end of FY2021 were $59.3 billion.",
+        "unit": "USD",
+        "value": "59268000000.0000"
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Costco total assets at FY2021 year end: $59.3 billion"
+      ],
+      "missing": [
+        "Total assets for FY2021 expressed in USD millions"
+      ],
+      "reason": "The material gives total assets only as $59.3 billion, not in USD millions as requested, and converting the unit is not permitted."
+    }
+  },
+  "request_key": "af346dbdceff744ba7cdf47597921d83e74696ecd3aebff3c477682970e6c6e6",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00025510",
+    "input_tokens": 253,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 919
+  }
+}

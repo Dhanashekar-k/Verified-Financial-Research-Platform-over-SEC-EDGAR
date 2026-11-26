@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Host Hotels"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "stockholders_equity"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "value",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "Q1",
+        "fiscal_year": 2020
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "c7fd98219f9cb35d6677470aeae696ef9300b5e4fcc3a6b2253cde7c4c92d6d2",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000045455",
+    "input_tokens": 32,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 86
+  }
+}

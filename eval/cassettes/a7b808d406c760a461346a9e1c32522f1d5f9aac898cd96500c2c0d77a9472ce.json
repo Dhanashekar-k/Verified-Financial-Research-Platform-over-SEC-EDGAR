@@ -1,0 +1,32 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "contradiction": false,
+    "points": [
+      {
+        "covered": false,
+        "index": 0
+      },
+      {
+        "covered": false,
+        "index": 1
+      },
+      {
+        "covered": false,
+        "index": 2
+      }
+    ],
+    "reason": "The system answer is flagged as refused, so under the rubric every gold point is marked not covered and no contradiction is recorded, even though the text itself discusses the topics."
+  },
+  "request_key": "a7b808d406c760a461346a9e1c32522f1d5f9aac898cd96500c2c0d77a9472ce",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 683,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00096615",
+    "input_tokens": 382,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 110
+  }
+}

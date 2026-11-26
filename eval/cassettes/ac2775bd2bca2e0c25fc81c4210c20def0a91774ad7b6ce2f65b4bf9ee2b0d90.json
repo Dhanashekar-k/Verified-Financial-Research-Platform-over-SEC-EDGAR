@@ -1,0 +1,43 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The passages record a dividend declared on February 23, 2023 of $0.6185 per share [1].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001020569-23-000043#15#0171",
+          "quote": "On February 23, 2023, we declared a dividend to our stockholders of record as of March 15, 2023 of $0.6185 per share, payable on April 5, 2023.",
+          "type": "chunk"
+        },
+        "text": "On February 23, 2023, the company declared a dividend of $0.6185 per share, payable on April 5, 2023.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "A dividend of $0.6185 per share was declared on February 23, 2023, payable April 5, 2023."
+      ],
+      "missing": [
+        "Passages describing the board's criteria for setting quarterly cash distributions.",
+        "Passages describing a public dividend growth commitment and the risks that could prevent meeting it."
+      ],
+      "reason": "The passages do not describe the factors the board considers when setting quarterly cash distributions or any dividend growth commitment and why it might not be met."
+    }
+  },
+  "request_key": "ac2775bd2bca2e0c25fc81c4210c20def0a91774ad7b6ce2f65b4bf9ee2b0d90",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00054475",
+    "input_tokens": 4976,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1133
+  }
+}

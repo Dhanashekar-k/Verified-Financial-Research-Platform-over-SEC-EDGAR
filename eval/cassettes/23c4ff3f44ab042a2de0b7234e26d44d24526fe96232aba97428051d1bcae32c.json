@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "MGM"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "interest coverage ratio",
+      "Adjusted EBIT",
+      "interest expense"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2022
+      }
+    ],
+    "section_hints": [
+      "7",
+      "8"
+    ]
+  },
+  "request_key": "23c4ff3f44ab042a2de0b7234e26d44d24526fe96232aba97428051d1bcae32c",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000102355",
+    "input_tokens": 55,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 309
+  }
+}

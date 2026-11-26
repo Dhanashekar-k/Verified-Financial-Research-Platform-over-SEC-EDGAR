@@ -1,0 +1,62 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Visa describes its pension plan market risk as follows: a material adverse decline in pension plan asset values and/or in the discount rate for benefit obligations would decrease the funded status of the pension plans, increase pension cost and increase required funding [1]. For the U.S. plans, a hypothetical 10% decrease in asset values and a 1% decrease in the discount rate as of September 30, 2022 would decrease aggregate funded status by approximately $150 million and increase pension cost by approximately $32 million [2]. For the non-U.S. plans, the same hypothetical scenario as of September 30, 2022 would decrease aggregate funded status by approximately $82 million and increase pension cost by approximately $11 million [3].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0001403161-22-000081#7A#0004",
+          "quote": "A material adverse decline in the value of pension plan assets and/or in the discount rate for benefit obligations would result in a decrease in the funded status of the pension plans, an increase in pension cost and an increase in required funding.",
+          "type": "chunk"
+        },
+        "text": "A material adverse decline in pension plan asset values and/or in the discount rate for benefit obligations would decrease the funded status of the pension plans, increase pension cost and increase required funding.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001403161-22-000081#7A#0004",
+          "quote": "As of September 30, 2022, a hypothetical 10% decrease in the value of pension plan assets and a 1% decrease in the discount rate would result in an aggregate decrease of approximately $150 million in the funded status and an increase of approximately $32 million in pension cost.",
+          "type": "chunk"
+        },
+        "text": "For the U.S. plans, a hypothetical 10% decrease in the value of pension plan assets and a 1% decrease in the discount rate would result in an aggregate decrease of approximately $150 million in the funded status and an increase of approximately $32 million in pension cost.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001403161-22-000081#7A#0004",
+          "quote": "As of September 30, 2022, a hypothetical 10% decrease in the value of pension plan assets and a 1% decrease in the discount rate would result in an aggregate decrease of approximately $82 million in the funded status and an increase of approximately $11 million in pension cost.",
+          "type": "chunk"
+        },
+        "text": "For the non-U.S. plans, a hypothetical 10% decrease in the value of pension plan assets and a 1% decrease in the discount rate would result in an aggregate decrease of approximately $82 million in the funded status and an increase of approximately $11 million in pension cost.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "1f8b35aeb1584836216d2fc11a29b2ae072c9f1a24ac6cc6f69641a55694572d",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00072995",
+    "input_tokens": 3780,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 2113
+  }
+}

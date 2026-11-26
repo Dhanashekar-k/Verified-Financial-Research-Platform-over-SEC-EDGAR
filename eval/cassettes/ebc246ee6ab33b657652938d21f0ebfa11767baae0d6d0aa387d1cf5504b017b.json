@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Newmont Corp /DE/"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "income_tax"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "growth",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "Q1",
+        "fiscal_year": 2022
+      },
+      {
+        "fiscal_period": "Q1",
+        "fiscal_year": 2023
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "ebc246ee6ab33b657652938d21f0ebfa11767baae0d6d0aa387d1cf5504b017b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000090705",
+    "input_tokens": 62,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 261
+  }
+}

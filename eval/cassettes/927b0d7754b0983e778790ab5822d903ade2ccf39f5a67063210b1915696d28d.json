@@ -1,0 +1,34 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "PepsiCo's full-year 2023 guidance for core constant currency EPS growth was raised to 9 percent, previously 8 percent [1]. The passages state both figures but no computed percentage-point difference, so I have not stated one.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:PEPSICO_2023Q1_EARNINGS#p3#0000",
+          "quote": "9 percent core constant currency EPS growth (previously 8 percent)",
+          "type": "chunk"
+        },
+        "text": "For fiscal year 2023, core constant currency EPS growth guidance is now 9 percent (previously 8 percent).",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "927b0d7754b0983e778790ab5822d903ade2ccf39f5a67063210b1915696d28d",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00054835",
+    "input_tokens": 4518,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1239
+  }
+}

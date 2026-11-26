@@ -1,0 +1,52 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Block (formerly Square) generated $381.6 million in net cash from operating activities in FY2020, as originally filed [1]. That figure was later restated; the latest restated value is $173.1 million [2].",
+    "claims": [
+      {
+        "display": "$381.6 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:-544454936959726435",
+          "fact_ids": [
+            -544454936959726435
+          ],
+          "type": "expr"
+        },
+        "text": "Block generated $381.6 million in net cash from operating activities in FY2020, as originally filed.",
+        "unit": "USD",
+        "value": "381603000.0000"
+      },
+      {
+        "display": "$173.1 million",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:-2525942488166807492",
+          "fact_ids": [
+            -2525942488166807492
+          ],
+          "type": "expr"
+        },
+        "text": "Block's FY2020 net cash from operating activities was later restated to $173.1 million.",
+        "unit": "USD",
+        "value": "173110000.0000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "2bb3855dbabba9e54a87767d8ce476007a36ec35770f8df553d801b2831ad072",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00025725",
+    "input_tokens": 436,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 891
+  }
+}

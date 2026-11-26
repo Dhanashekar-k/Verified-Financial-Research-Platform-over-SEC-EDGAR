@@ -1,0 +1,44 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Amcor announced in January 2023 an agreement to acquire a medical device packaging company based in Shanghai, China [1]. This acquisition was still pending at the time of the filing.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:AMCOR_2023Q2_10Q#p32#0000",
+          "quote": "On January 16, 2023, the Company announced it had entered into an agreement to acquire a medical device packaging company based in Shanghai, China",
+          "type": "chunk"
+        },
+        "text": "On January 16, 2023, Amcor announced it had entered into an agreement to acquire a medical device packaging company based in Shanghai, China.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Amcor announced on January 16, 2023 an agreement to acquire a medical device packaging company based in Shanghai, China, expected to close by the end of the third quarter of fiscal year 2023."
+      ],
+      "missing": [
+        "Completed acquisitions for fiscal year 2022",
+        "Completed acquisitions for fiscal year 2021",
+        "Confirmation of whether the Shanghai acquisition closed in fiscal year 2023"
+      ],
+      "reason": "The material describes only one acquisition, a pending FY2023 agreement, and contains no information on acquisitions Amcor made in FY2022 or FY2021."
+    }
+  },
+  "request_key": "3938d739ff42af500481a8893a315b87618adb315b8cc5b03f22c1c5ad0fa9c0",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00066245",
+    "input_tokens": 5055,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1588
+  }
+}

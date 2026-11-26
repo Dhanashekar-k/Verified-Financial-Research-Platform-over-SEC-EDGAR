@@ -1,0 +1,44 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The FY2019 cash conversion cycle cannot be computed from the material provided.[1]",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:GENERALMILLS_2019_10K#p54#0000",
+          "quote": "Consolidated Statements of Comprehensive Income",
+          "type": "chunk"
+        },
+        "text": "The passages include a Consolidated Statements of Comprehensive Income for fiscal 2019, 2018 and 2017.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "The passages include a Consolidated Statements of Comprehensive Income for fiscal 2019, 2018 and 2017."
+      ],
+      "missing": [
+        "Inventory, accounts receivable and accounts payable balances for FY2018 and FY2019 from the consolidated balance sheet",
+        "FY2019 revenue and cost of goods sold from the consolidated statements of earnings",
+        "NUMERIC RESULTS giving the DIO, DSO and DPO components"
+      ],
+      "reason": "The material contains no balance sheet inventory, receivables or payables and no income statement revenue or cost of goods sold, and no computed figures were supplied, so the CCC components cannot be determined."
+    }
+  },
+  "request_key": "e490819ed1206119cff9f2a711d33a24280aa07a90a0a15031f3c9363b5d8ff0",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00060735",
+    "input_tokens": 5488,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1281
+  }
+}

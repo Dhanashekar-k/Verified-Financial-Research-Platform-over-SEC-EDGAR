@@ -1,0 +1,36 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "contradiction": false,
+    "points": [
+      {
+        "covered": true,
+        "index": 0
+      },
+      {
+        "covered": true,
+        "index": 1
+      },
+      {
+        "covered": true,
+        "index": 2
+      },
+      {
+        "covered": true,
+        "index": 3
+      }
+    ],
+    "reason": "The answer covers classification of funding type, estimating purchases-based funding recognized in cost of sales, inventory turn and sell-through, and the stable deferral over three years, with no conflicts against the gold points."
+  },
+  "request_key": "ebfcbf80f1683de7210290553c5c643a40dddaf5192034711f4972370bce12af",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 683,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00111815",
+    "input_tokens": 404,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 136
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Expeditors International of Washington"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "eps_diluted"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "value",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "Q3",
+        "fiscal_year": 2025
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "a52d22755650b9d48392ba92938fa41bfddf8efc7b7d70a5078b54bf085ff8bf",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000046905",
+    "input_tokens": 46,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 89
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The provided material does not give Amcor's fiscal 2023 adjusted EBITDA. It does report full-year fiscal 2023 Adjusted EBIT of $1,608 million [1].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:AMCOR_2023Q4_EARNINGS#p1#0000",
+          "quote": "Adjusted EBIT of $1,608 million",
+          "type": "chunk"
+        },
+        "text": "Adjusted EBIT for fiscal 2023 was $1,608 million.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Adjusted EBIT for fiscal 2023 was $1,608 million."
+      ],
+      "missing": [
+        "A full-year fiscal 2023 adjusted EBITDA figure in NUMERIC RESULTS or in a passage."
+      ],
+      "reason": "The material gives full-year fiscal 2023 Adjusted EBIT but no full-year fiscal 2023 adjusted EBITDA figure."
+    }
+  },
+  "request_key": "0cead026b5209a3d7225a4285880044aaff05ce11cc9a8e58025053d6e1cd2fa",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00058665",
+    "input_tokens": 4579,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1380
+  }
+}

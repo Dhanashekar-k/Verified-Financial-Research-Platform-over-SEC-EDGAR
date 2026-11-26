@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Netflix's capital expenditures decreased by 49.2% in Q3 FY2022 compared with Q3 FY2021, the period the growth is measured from [1].",
+    "claims": [
+      {
+        "display": "-49.2%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:-6741612774603473629 - f:-1654681211896100922) / f:-1654681211896100922",
+          "fact_ids": [
+            -6741612774603473629,
+            -1654681211896100922
+          ],
+          "type": "expr"
+        },
+        "text": "Netflix capital expenditures growth in Q3 FY2022, measured from Q3 FY2021, was -49.2%.",
+        "unit": "ratio",
+        "value": "-0.4922516987694753387080387505"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "55ee75d7b7a4b2559ab3fe4bb49fc129270e209b078d56683029c0b2a48f2eb4",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00016040",
+    "input_tokens": 304,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 530
+  }
+}

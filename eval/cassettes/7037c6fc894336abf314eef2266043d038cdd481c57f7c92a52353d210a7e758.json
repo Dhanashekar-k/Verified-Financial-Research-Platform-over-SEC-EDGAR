@@ -1,0 +1,57 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The filings do not give a headcount for the Bentonville headquarters office. They report total company employment of about 2.3 million associates worldwide [1], and they state that the Bentonville office facilities serve as the principal office [2].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:WALMART_2018_10K#p14#0002",
+          "quote": "employed approximately 2.3 million employees",
+          "type": "chunk"
+        },
+        "text": "Walmart Inc. and its subsidiaries employed approximately 2.3 million employees worldwide as of the end of fiscal 2018.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:WALMART_2018_10K#p30#0000",
+          "quote": "We own office facilities in Bentonville, Arkansas, that serve as our principal office",
+          "type": "chunk"
+        },
+        "text": "Walmart owns office facilities in Bentonville, Arkansas, that serve as its principal office.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Company-wide associate totals for fiscal 2018, split between the U.S. and international operations",
+        "Confirmation that Bentonville office facilities serve as the principal office"
+      ],
+      "missing": [
+        "A headcount specific to the Bentonville headquarters office"
+      ],
+      "reason": "The material gives only company-wide employee totals and does not state how many employees work at the Bentonville headquarters office."
+    }
+  },
+  "request_key": "7037c6fc894336abf314eef2266043d038cdd481c57f7c92a52353d210a7e758",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00045980",
+    "input_tokens": 2447,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1299
+  }
+}

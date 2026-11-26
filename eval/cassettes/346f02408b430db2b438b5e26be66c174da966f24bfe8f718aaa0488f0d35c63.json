@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Block"
+      },
+      {
+        "cik": null,
+        "mention": "Take-Two"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "operating_cash_flow"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "compare",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2022
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "346f02408b430db2b438b5e26be66c174da966f24bfe8f718aaa0488f0d35c63",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000069755",
+    "input_tokens": 43,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 181
+  }
+}

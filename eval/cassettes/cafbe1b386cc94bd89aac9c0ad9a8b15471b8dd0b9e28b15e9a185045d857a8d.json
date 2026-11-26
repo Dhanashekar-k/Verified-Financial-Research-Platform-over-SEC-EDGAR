@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Carnival"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "stockholders_equity"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "value",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2025
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "cafbe1b386cc94bd89aac9c0ad9a8b15471b8dd0b9e28b15e9a185045d857a8d",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000041755",
+    "input_tokens": 38,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 70
+  }
+}

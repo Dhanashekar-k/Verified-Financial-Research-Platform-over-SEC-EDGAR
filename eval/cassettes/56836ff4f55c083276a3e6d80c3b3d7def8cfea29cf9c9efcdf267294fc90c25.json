@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Cencora"
+      },
+      {
+        "cik": null,
+        "mention": "TE Connectivity"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "sga"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "compare",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2020
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "56836ff4f55c083276a3e6d80c3b3d7def8cfea29cf9c9efcdf267294fc90c25",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000077705",
+    "input_tokens": 42,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 213
+  }
+}

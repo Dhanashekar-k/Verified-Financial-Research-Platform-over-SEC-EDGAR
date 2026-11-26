@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "CF Industries Holdings, Inc.'s operating income rose 50.2% in Q1 FY2025 compared with Q1 FY2024, the period it is measured from [1].",
+    "claims": [
+      {
+        "display": "50.2%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:1893775442223825701 - f:-3438696282465787073) / f:-3438696282465787073",
+          "fact_ids": [
+            1893775442223825701,
+            -3438696282465787073
+          ],
+          "type": "expr"
+        },
+        "text": "Operating income growth in Q1 FY2025, measured from Q1 FY2024, was 50.2%.",
+        "unit": "ratio",
+        "value": "0.5016501650165016501650165017"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "45ee3d56894b26307647460d27f5281f7f8527d11c6047f6b14c4f8e27d289c8",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00016630",
+    "input_tokens": 327,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 549
+  }
+}

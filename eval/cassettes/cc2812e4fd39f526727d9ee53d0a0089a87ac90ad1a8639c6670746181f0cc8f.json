@@ -1,0 +1,36 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Aon plc's income tax expense for fiscal year 2020 was $448.0 million [1].",
+    "claims": [
+      {
+        "display": "$448.0 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:1578159819660072042",
+          "fact_ids": [
+            1578159819660072042
+          ],
+          "type": "expr"
+        },
+        "text": "Aon plc's income tax expense for fiscal year 2020 was $448.0 million.",
+        "unit": "USD",
+        "value": "448000000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "cc2812e4fd39f526727d9ee53d0a0089a87ac90ad1a8639c6670746181f0cc8f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00006885",
+    "input_tokens": 223,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 180
+  }
+}

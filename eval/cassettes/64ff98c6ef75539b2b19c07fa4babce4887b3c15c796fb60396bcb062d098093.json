@@ -1,0 +1,104 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "APA's fiscal 2022 risk factors identify a U.K. tax change and a U.S. tax change. In the U.K., the Energy Profits Levy was announced on May 26, 2022 as an additional levy at a 25 percent rate [1]. On November 17, 2022, the U.K. announced an increase in the levy to a 35 percent rate, effective January 1, 2023 [2]. The risk factors say this U.K. tax could adversely affect the Company's future financial condition and cash flows [3]. In the U.S., the Inflation Reduction Act of 2022 introduced a new 15% corporate alternative minimum tax [4]. It applies to corporations whose average annual adjusted financial statement income exceeds $1.0 billion for any three consecutive tax years [5], and any resulting liability could adversely affect the Company's future financial results [6].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001784031-23-000007#1A#0027",
+          "quote": "Under the new law, an additional levy is assessed at a 25 percent rate and is effective for the period of May 26, 2022, through December 31, 2025.",
+          "type": "chunk"
+        },
+        "text": "Under the new U.K. law, the Energy Profits Levy is an additional levy assessed at a 25 percent rate, effective May 26, 2022 through December 31, 2025.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0001784031-23-000007#1A#0027",
+          "quote": "increasing the levy assessed from a 25 percent rate to a 35 percent rate, effective for the period of January 1, 2023, through March 31, 2028",
+          "type": "chunk"
+        },
+        "text": "On November 17, 2022, the U.K. Chancellor announced an increase in the Energy Profits Levy from a 25 percent rate to a 35 percent rate, effective January 1, 2023 through March 31, 2028.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001784031-23-000007#1A#0027",
+          "quote": "The impact of this tax could adversely affect",
+          "type": "chunk"
+        },
+        "text": "The risk factors state that the U.K. tax could adversely affect the Company's future financial condition and cash flows.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c4",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001784031-23-000007#1A#0027",
+          "quote": "the IRA introduced a new 15% corporate alternative minimum tax (Corporate AMT)",
+          "type": "chunk"
+        },
+        "text": "The U.S. Inflation Reduction Act of 2022 introduced a new 15% corporate alternative minimum tax.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c5",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001784031-23-000007#1A#0027",
+          "quote": "exceeds $1.0 billion for any three consecutive tax years",
+          "type": "chunk"
+        },
+        "text": "The Corporate AMT applies to applicable corporations with average annual adjusted financial statement income that exceeds $1.0 billion for any three consecutive tax years.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c6",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001784031-23-000007#1A#0027",
+          "quote": "any resulting Corporate AMT liability could adversely affect the Company",
+          "type": "chunk"
+        },
+        "text": "The risk factors state that any resulting Corporate AMT liability could adversely affect the Company's future financial results.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "64ff98c6ef75539b2b19c07fa4babce4887b3c15c796fb60396bcb062d098093",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00135415",
+    "input_tokens": 5174,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 4331
+  }
+}

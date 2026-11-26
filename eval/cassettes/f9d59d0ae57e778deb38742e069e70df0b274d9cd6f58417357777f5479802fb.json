@@ -1,0 +1,62 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Amcor's gross margin was 18.5% in FY2023 [1], compared with 19.4% in FY2022 [2], so the reported figures do not show an improving gross margin profile. [1]",
+    "claims": [
+      {
+        "display": "18.5%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "f:-5985723330621796412 / f:1181549432000650413",
+          "fact_ids": [
+            -5985723330621796412,
+            1181549432000650413
+          ],
+          "type": "expr"
+        },
+        "text": "Amcor plc gross margin for FY2023 was 18.5%.",
+        "unit": "ratio",
+        "value": "0.1854498434735266095004763849"
+      },
+      {
+        "display": "19.4%",
+        "id": "c2",
+        "kind": "numeric_derived",
+        "primary": false,
+        "provenance": {
+          "expr": "f:6533881760426722458 / f:7744491674810124397",
+          "fact_ids": [
+            6533881760426722458,
+            7744491674810124397
+          ],
+          "type": "expr"
+        },
+        "text": "Amcor plc gross margin for FY2022 was 19.4%.",
+        "unit": "ratio",
+        "value": "0.1938943894389438943894389439"
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Amcor plc gross margin was 19.4% in FY2022 and 18.5% in FY2023."
+      ],
+      "missing": [
+        "Filing passages explaining Amcor's cost of sales and gross profit presentation, and how management and analysts use gross margin for a packaging company like Amcor."
+      ],
+      "reason": "The material supplies only two computed gross margin figures and no passages, so it cannot establish whether gross margin is a useful metric for a company like Amcor."
+    }
+  },
+  "request_key": "f9d59d0ae57e778deb38742e069e70df0b274d9cd6f58417357777f5479802fb",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00037140",
+    "input_tokens": 474,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1340
+  }
+}

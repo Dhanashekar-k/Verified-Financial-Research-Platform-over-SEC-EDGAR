@@ -1,0 +1,36 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "CDW Corp's net income for Q1 of fiscal year 2024 was $216.1 million [1].",
+    "claims": [
+      {
+        "display": "$216.1 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:7324099955291977756",
+          "fact_ids": [
+            7324099955291977756
+          ],
+          "type": "expr"
+        },
+        "text": "CDW Corp net income for Q1 FY2024 was $216.1 million.",
+        "unit": "USD",
+        "value": "216100000.0000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "fec79b38d0114554132fd530a82c6ae27471517f520f2a3bad5821632361e672",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00010945",
+    "input_tokens": 230,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 341
+  }
+}

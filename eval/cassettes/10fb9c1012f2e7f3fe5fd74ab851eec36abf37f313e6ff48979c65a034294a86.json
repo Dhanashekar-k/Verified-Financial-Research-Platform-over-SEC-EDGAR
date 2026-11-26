@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Edison International"
+      },
+      {
+        "cik": null,
+        "mention": "Constellation Energy"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "stockholders_equity"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "compare",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2025
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "10fb9c1012f2e7f3fe5fd74ab851eec36abf37f313e6ff48979c65a034294a86",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000075605",
+    "input_tokens": 45,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 204
+  }
+}

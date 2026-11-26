@@ -1,0 +1,43 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Nvidia"
+      }
+    ],
+    "intent": "hybrid",
+    "metrics": [
+      "gross_margin",
+      "operating_cash_flow"
+    ],
+    "narrative_topics": [
+      "effect of gross margin on operating cash flow"
+    ],
+    "needs_clarification": "Nvidia's gross margin was positive in fiscal 2024, not negative. Do you want its gross margin and operating cash flow figures, or the MD&A explanation of how margin drove cash flow?",
+    "operation": "value",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2024
+      }
+    ],
+    "section_hints": [
+      "7",
+      "8"
+    ]
+  },
+  "request_key": "642097a3c6b9dbad099b7a2f2abbb4a659d02f16daf385528fb38a496a16f984",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000202955",
+    "input_tokens": 37,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 715
+  }
+}

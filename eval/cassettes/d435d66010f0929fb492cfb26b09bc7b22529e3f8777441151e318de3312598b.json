@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Marvell Technology"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "long_term_debt"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "value",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2021
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "d435d66010f0929fb492cfb26b09bc7b22529e3f8777441151e318de3312598b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000042555",
+    "input_tokens": 44,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 72
+  }
+}

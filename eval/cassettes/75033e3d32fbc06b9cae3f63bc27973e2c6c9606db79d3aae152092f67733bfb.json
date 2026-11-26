@@ -1,0 +1,58 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Adobe's FY2017 operating cash flow ratio cannot be determined from the material provided. The passages state net cash flow from operations of $2.91 billion in fiscal 2017 [1], and total current liabilities of 3,527,457 (in thousands) at December 1, 2017 [2]. No computed ratio is available, and the exact net cash provided by operating activities total from the cash flow statement is not in the excerpt.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:ADOBE_2017_10K#p40#0001",
+          "quote": "Net cash flow from operations of $2.91 billion during fiscal 2017",
+          "type": "chunk"
+        },
+        "text": "Net cash flow from operations was $2.91 billion during fiscal 2017.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:ADOBE_2017_10K#p57#0000",
+          "quote": "Total current liabilities | 3,527,457",
+          "type": "chunk"
+        },
+        "text": "Total current liabilities were 3,527,457 (in thousands) at December 1, 2017.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Net cash flow from operations of $2.91 billion during fiscal 2017",
+        "Total current liabilities of 3,527,457 (in thousands) at December 1, 2017"
+      ],
+      "missing": [
+        "The exact net cash provided by operating activities total for fiscal 2017 from the cash flow statement",
+        "A computed numeric result for the FY2017 operating cash flow ratio (operating cash flow divided by total current liabilities)"
+      ],
+      "reason": "The material contains no computed operating cash flow ratio and no exact operating cash flow total from the cash flow statement, so the ratio cannot be derived."
+    }
+  },
+  "request_key": "75033e3d32fbc06b9cae3f63bc27973e2c6c9606db79d3aae152092f67733bfb",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00074325",
+    "input_tokens": 5266,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1869
+  }
+}

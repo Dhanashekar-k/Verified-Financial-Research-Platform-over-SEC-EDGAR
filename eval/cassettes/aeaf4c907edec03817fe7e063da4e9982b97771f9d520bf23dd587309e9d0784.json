@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Dollar General Corp's interest expense grew 54.7% from FY2022 to FY2023 [1].",
+    "claims": [
+      {
+        "display": "54.7%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:510997718901426480 - f:-7447562493821622308) / f:-7447562493821622308",
+          "fact_ids": [
+            510997718901426480,
+            -7447562493821622308
+          ],
+          "type": "expr"
+        },
+        "text": "Dollar General Corp's interest expense grew 54.7% in FY2023, measured from FY2022.",
+        "unit": "ratio",
+        "value": "0.5467239069829083697396259815"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "aeaf4c907edec03817fe7e063da4e9982b97771f9d520bf23dd587309e9d0784",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00014955",
+    "input_tokens": 307,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 486
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The passages report a $20.0 million allowance on the Santerre Mezzanine Loan as of December 31, 2022 [1], and the loan generated $40.0 million in loan interest income to Ventas in 2022 [2]. They also describe a $45.0 million repayment of a Brookdale Senior Living note received in October 2021 [3]. They do not give 2021 allowance or other expense figures, so they cannot explain the year-over-year changes, and they do not mention Brookdale stock warrants.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000740260-23-000070#7#0067",
+          "quote": "As of December 31, 2022, we recognized a $20.0 million allowance on the Santerre Mezzanine Loan.",
+          "type": "chunk"
+        },
+        "text": "As of December 31, 2022, Ventas recognized a $20.0 million allowance on the Santerre Mezzanine Loan.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000740260-23-000070#8#0051",
+          "quote": "The Santerre Mezzanine Loan generated $40.0 million in loan interest income to Ventas in 2022.",
+          "type": "chunk"
+        },
+        "text": "The Santerre Mezzanine Loan generated $40.0 million in loan interest income to Ventas in 2022.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000740260-23-000070#8#0080",
+          "quote": "In October 2021, we received proceeds of $45.0 million in full repayment of a note (which was included above in Non-mortgage loans receivable, net) from Brookdale Senior Living.",
+          "type": "chunk"
+        },
+        "text": "In October 2021, Ventas received $45.0 million in full repayment of a note from Brookdale Senior Living.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "$20.0 million allowance on the Santerre Mezzanine Loan as of December 31, 2022",
+        "$40.0 million Santerre Mezzanine Loan interest income in 2022",
+        "$45.0 million Brookdale note repayment received in October 2021"
+      ],
+      "missing": [
+        "2021 and 2022 allowance on loans receivable figures",
+        "2021 and 2022 other expense figures",
+        "Explanation of the Brookdale stock warrants and their effect on 2022 compared with 2021"
+      ],
+      "reason": "The passages give 2022 Santerre loan figures and a 2021 Brookdale note repayment but no 2021 comparison for the allowance or other expenses and nothing on Brookdale stock warrants."
+    }
+  },
+  "request_key": "5c23ca61acb19b0c1ca79aaf44a53d6d1fb077167980bd360b838bdbbf65792f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00090015",
+    "input_tokens": 5154,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 2519
+  }
+}

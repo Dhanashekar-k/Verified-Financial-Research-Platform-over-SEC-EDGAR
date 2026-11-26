@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Best Buy"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "domestic revenue by product category",
+      "top line by product category USA"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "Q2",
+        "fiscal_year": 2024
+      }
+    ],
+    "section_hints": [
+      "7",
+      "8"
+    ]
+  },
+  "request_key": "15c2c8ab035b35c2d75d97af46d32455adfa4a31f086c1c4d6827f33386477e9",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000103655",
+    "input_tokens": 46,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 316
+  }
+}

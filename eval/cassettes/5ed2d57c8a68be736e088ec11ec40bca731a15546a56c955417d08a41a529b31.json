@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Travelers Companies' interest expense grew by 6.0% in Q2 FY2022, measured from Q2 FY2021 [1].",
+    "claims": [
+      {
+        "display": "6.0%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:2180986292219647963 - f:2776182790171222336) / f:2776182790171222336",
+          "fact_ids": [
+            2180986292219647963,
+            2776182790171222336
+          ],
+          "type": "expr"
+        },
+        "text": "Travelers Companies' interest expense grew by 6.0% in Q2 FY2022, measured from Q2 FY2021.",
+        "unit": "ratio",
+        "value": "0.06024096385542168674698795181"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "5ed2d57c8a68be736e088ec11ec40bca731a15546a56c955417d08a41a529b31",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0001625",
+    "input_tokens": 316,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 536
+  }
+}

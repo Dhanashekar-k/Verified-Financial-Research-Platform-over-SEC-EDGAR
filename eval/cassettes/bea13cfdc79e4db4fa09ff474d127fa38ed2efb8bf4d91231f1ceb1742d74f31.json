@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Williams Companies"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "sources of liquidity",
+      "liquidity expected in 2022",
+      "long-term debt maturities"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2021
+      }
+    ],
+    "section_hints": [
+      "7",
+      "8"
+    ]
+  },
+  "request_key": "bea13cfdc79e4db4fa09ff474d127fa38ed2efb8bf4d91231f1ceb1742d74f31",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000071205",
+    "input_tokens": 67,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 182
+  }
+}

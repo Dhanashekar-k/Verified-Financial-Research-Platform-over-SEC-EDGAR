@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Iron Mountain"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "foreign currency risk management",
+      "local-currency debt",
+      "derivative instruments"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2021
+      }
+    ],
+    "section_hints": [
+      "7A",
+      "7"
+    ]
+  },
+  "request_key": "556934aba41a77a44dfd8dcefa862ff9700b0940bc876e2504d4b2c2a4f98323",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000049755",
+    "input_tokens": 63,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 97
+  }
+}

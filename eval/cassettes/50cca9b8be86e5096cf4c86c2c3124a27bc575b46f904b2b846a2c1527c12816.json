@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Realty Income Corp"
+      },
+      {
+        "cik": null,
+        "mention": "Humana Inc."
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "operating_cash_flow"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "compare",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2024
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "50cca9b8be86e5096cf4c86c2c3124a27bc575b46f904b2b846a2c1527c12816",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000076705",
+    "input_tokens": 52,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 207
+  }
+}

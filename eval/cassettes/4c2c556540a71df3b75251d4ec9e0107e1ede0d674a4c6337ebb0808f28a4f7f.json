@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "American Water Works"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "working capital",
+      "current assets and current liabilities",
+      "liquidity"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2022
+      }
+    ],
+    "section_hints": [
+      "7",
+      "8"
+    ]
+  },
+  "request_key": "4c2c556540a71df3b75251d4ec9e0107e1ede0d674a4c6337ebb0808f28a4f7f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000092655",
+    "input_tokens": 56,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 270
+  }
+}

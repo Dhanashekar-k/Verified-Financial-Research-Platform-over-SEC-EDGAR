@@ -1,0 +1,44 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "AES reported 2022 revenue of $12,617 million [1], but the material does not give cost of sales or inventory balances, so the inventory turnover ratio cannot be calculated.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000874761-23-000010#6#0001",
+          "quote": "Revenue | $12,617 | $11,141 | $9,660 | $10,189 | $10,736",
+          "type": "chunk"
+        },
+        "text": "AES reported 2022 revenue of $12,617 million.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "AES reported 2022 revenue of $12,617 million."
+      ],
+      "missing": [
+        "FY2022 cost of goods sold or cost of sales",
+        "Inventory balances at the start and end of FY2022",
+        "A computed inventory turnover result from XBRL numeric results"
+      ],
+      "reason": "The material does not contain FY2022 cost of sales or inventory balances, so inventory turnover and the approximate number of times inventory was sold cannot be computed."
+    }
+  },
+  "request_key": "476a533f663a9ff3828f30fb9910e1d629a8dcc8736f2c6abf208b6d86e98ff0",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00061830",
+    "input_tokens": 4992,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1424
+  }
+}

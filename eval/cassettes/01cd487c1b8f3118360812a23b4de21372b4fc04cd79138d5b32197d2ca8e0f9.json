@@ -1,0 +1,45 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "AMD"
+      }
+    ],
+    "intent": "hybrid",
+    "metrics": [
+      "operating_margin"
+    ],
+    "narrative_topics": [
+      "drivers of operating margin change"
+    ],
+    "needs_clarification": null,
+    "operation": "trend",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2021
+      },
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2022
+      }
+    ],
+    "section_hints": [
+      "7"
+    ]
+  },
+  "request_key": "01cd487c1b8f3118360812a23b4de21372b4fc04cd79138d5b32197d2ca8e0f9",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000131255",
+    "input_tokens": 53,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 425
+  }
+}

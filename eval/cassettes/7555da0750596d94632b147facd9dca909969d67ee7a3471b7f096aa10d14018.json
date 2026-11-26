@@ -1,0 +1,69 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "At the end of fiscal 2024, Halliburton's total liabilities exceeded Vulcan Materials' by $6.1 billion [1]. Halliburton reported total liabilities of $15.0 billion [2], and Vulcan Materials reported $9.0 billion [3].",
+    "claims": [
+      {
+        "display": "$6.1 billion",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "f:7267394810276383487 - f:-7784347375453541156",
+          "fact_ids": [
+            7267394810276383487,
+            -7784347375453541156
+          ],
+          "type": "expr"
+        },
+        "text": "Halliburton's total liabilities exceeded Vulcan Materials' total liabilities by $6.1 billion at the end of fiscal 2024.",
+        "unit": "USD",
+        "value": "6076700000.0000"
+      },
+      {
+        "display": "$15.0 billion",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:7267394810276383487",
+          "fact_ids": [
+            7267394810276383487
+          ],
+          "type": "expr"
+        },
+        "text": "Halliburton's total liabilities at the end of fiscal 2024 were $15.0 billion.",
+        "unit": "USD",
+        "value": "15039000000.0000"
+      },
+      {
+        "display": "$9.0 billion",
+        "id": "c3",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:-7784347375453541156",
+          "fact_ids": [
+            -7784347375453541156
+          ],
+          "type": "expr"
+        },
+        "text": "Vulcan Materials' total liabilities at the end of fiscal 2024 were $9.0 billion.",
+        "unit": "USD",
+        "value": "8962300000.0000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "7555da0750596d94632b147facd9dca909969d67ee7a3471b7f096aa10d14018",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00031130",
+    "input_tokens": 647,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1065
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Verizon's FY2022 10-K describes its strategy as requiring significant capital investment, and it calls 2022 a peak year of capital investment [1][2][3]. The filing reports $23.1 billion of capital expenditures for 2022 [1]. I could not confirm capital intensity against revenue because no computed capex figure is in the numeric results, so the question is only partly answered.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000732712-23-000012#7#0003",
+          "quote": "$23.1 billion for capital expenditures",
+          "type": "chunk"
+        },
+        "text": "Verizon's 2022 investments included $23.1 billion for capital expenditures.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000732712-23-000012#7#0000",
+          "quote": "2022 was a peak year of capital investment for us as we rapidly deployed C-Band spectrum.",
+          "type": "chunk"
+        },
+        "text": "Verizon describes 2022 as a peak year of capital investment.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000732712-23-000012#7#0000",
+          "quote": "Our strategy requires significant capital investments primarily to acquire wireless spectrum",
+          "type": "chunk"
+        },
+        "text": "Verizon states that its strategy requires significant capital investments.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Verizon's 2022 investments included $23.1 billion for capital expenditures.",
+        "Verizon describes 2022 as a peak year of capital investment.",
+        "Verizon states that its strategy requires significant capital investments."
+      ],
+      "missing": [
+        "A computed FY2022 capex figure from XBRL (PaymentsToAcquirePropertyPlantAndEquipment), which was NOT FOUND.",
+        "A FY2022 revenue or capex-to-revenue figure to measure capital intensity against."
+      ],
+      "reason": "The material gives capital expenditure amounts and describes heavy investment, but no computed capex figure or revenue comparison is available to judge capital intensity."
+    }
+  },
+  "request_key": "b3103f5cfeca8efba45803daaeffe77aa4895707ee1cf3081e85ffbce31433bf",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00073880",
+    "input_tokens": 5367,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1831
+  }
+}

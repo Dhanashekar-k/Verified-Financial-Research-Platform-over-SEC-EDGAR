@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Brown & Brown"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "capex"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "value",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "Q1",
+        "fiscal_year": 2023
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "cb4948b8fbd2b54b345b1bd73b63dadd298b1f73b66dbedbe72688a8558a8773",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 4471,
+    "cost_usd": "0.0003311875",
+    "input_tokens": 30,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 201
+  }
+}

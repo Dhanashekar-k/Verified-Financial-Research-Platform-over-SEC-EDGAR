@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Cencora, Inc."
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "sga"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "value",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2020
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "ba3f94cad536741cfc8942dbe8df5dc8e28784f326585a49fd16cfacf16cbcce",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000041905",
+    "input_tokens": 46,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 69
+  }
+}

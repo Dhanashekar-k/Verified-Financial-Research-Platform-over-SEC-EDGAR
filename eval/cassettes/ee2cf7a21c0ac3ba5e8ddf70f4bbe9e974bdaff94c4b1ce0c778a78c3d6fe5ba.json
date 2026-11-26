@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Cummins Inc."
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "commodity price risk management approach",
+      "commodity hedging results at year-end"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2021
+      }
+    ],
+    "section_hints": [
+      "7A",
+      "7"
+    ]
+  },
+  "request_key": "ee2cf7a21c0ac3ba5e8ddf70f4bbe9e974bdaff94c4b1ce0c778a78c3d6fe5ba",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000090955",
+    "input_tokens": 62,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 262
+  }
+}

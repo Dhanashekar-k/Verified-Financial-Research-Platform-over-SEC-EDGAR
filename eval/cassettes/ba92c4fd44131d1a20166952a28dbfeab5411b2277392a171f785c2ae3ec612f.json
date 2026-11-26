@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "APA Corp's dividends paid grew by 298.1% in FY2022, measured from FY2021 [1].",
+    "claims": [
+      {
+        "display": "298.1%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:-3974756778218578566 - f:-4616753736473141911) / f:-4616753736473141911",
+          "fact_ids": [
+            -3974756778218578566,
+            -4616753736473141911
+          ],
+          "type": "expr"
+        },
+        "text": "Dividends paid for APA Corp in FY2022 grew 298.1% from FY2021.",
+        "unit": "ratio",
+        "value": "2.980769230769230769230769231"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "ba92c4fd44131d1a20166952a28dbfeab5411b2277392a171f785c2ae3ec612f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00014620",
+    "input_tokens": 300,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 474
+  }
+}

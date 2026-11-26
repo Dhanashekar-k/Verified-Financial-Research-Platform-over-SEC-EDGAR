@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Vistra Corp."
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "consequences of default under BCOP Credit Agreement",
+      "Nuveen UPA default consequences",
+      "effects on related interest rate swap agreements"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2024
+      }
+    ],
+    "section_hints": [
+      "7",
+      "8"
+    ]
+  },
+  "request_key": "809415aed5f0c672588980e0b13453c42425dbf7373fe988770a744d2126e52d",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000055755",
+    "input_tokens": 78,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 118
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Edison International had $17.6 billion of stockholders' equity at the end of fiscal 2025, compared with $14.5 billion for Constellation Energy, a difference of $3.1 billion [1][2][3].",
+    "claims": [
+      {
+        "display": "$17.6 billion",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:-6679112315641435919",
+          "fact_ids": [
+            -6679112315641435919
+          ],
+          "type": "expr"
+        },
+        "text": "Edison International stockholders' equity at FY2025 was $17.6 billion.",
+        "unit": "USD",
+        "value": "17579000000"
+      },
+      {
+        "display": "$14.5 billion",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:-2220383077302384641",
+          "fact_ids": [
+            -2220383077302384641
+          ],
+          "type": "expr"
+        },
+        "text": "Constellation Energy stockholders' equity at FY2025 was $14.5 billion.",
+        "unit": "USD",
+        "value": "14517000000"
+      },
+      {
+        "display": "$3.1 billion",
+        "id": "c3",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "f:-6679112315641435919 - f:-2220383077302384641",
+          "fact_ids": [
+            -6679112315641435919,
+            -2220383077302384641
+          ],
+          "type": "expr"
+        },
+        "text": "Edison International had $3.1 billion more stockholders' equity than Constellation Energy at FY2025.",
+        "unit": "USD",
+        "value": "3062000000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "d371a26665fdb75fe29333feb0138f4443f946f9aef7834099bb0f1de58432ba",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00017140",
+    "input_tokens": 654,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 504
+  }
+}

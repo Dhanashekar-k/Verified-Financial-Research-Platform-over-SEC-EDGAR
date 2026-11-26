@@ -1,0 +1,69 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "W.W. Grainger capex was $256.0 million in FY2022 [1]. Domino's Pizza capex was $87.2 million in FY2022 [2]. Grainger's FY2022 capex was $168.8 million higher than Domino's [3].",
+    "claims": [
+      {
+        "display": "$256.0 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:-3337937567673632960",
+          "fact_ids": [
+            -3337937567673632960
+          ],
+          "type": "expr"
+        },
+        "text": "W.W. Grainger capex was $256.0 million in FY2022.",
+        "unit": "USD",
+        "value": "256000000"
+      },
+      {
+        "display": "$87.2 million",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:3890837720957169431",
+          "fact_ids": [
+            3890837720957169431
+          ],
+          "type": "expr"
+        },
+        "text": "Domino's Pizza capex was $87.2 million in FY2022.",
+        "unit": "USD",
+        "value": "87234000"
+      },
+      {
+        "display": "$168.8 million",
+        "id": "c3",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "f:-3337937567673632960 - f:3890837720957169431",
+          "fact_ids": [
+            -3337937567673632960,
+            3890837720957169431
+          ],
+          "type": "expr"
+        },
+        "text": "Grainger's FY2022 capex was $168.8 million higher than Domino's.",
+        "unit": "USD",
+        "value": "168766000.0000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "434a028ede2ad8f681910789f180a5c9d29a3139d33d252daa555212a2857735",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00027325",
+    "input_tokens": 621,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 918
+  }
+}

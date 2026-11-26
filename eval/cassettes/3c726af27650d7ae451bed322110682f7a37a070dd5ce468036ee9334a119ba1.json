@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "PulteGroup"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "inflation risk to business",
+      "drivers of higher labor and materials costs"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2021
+      }
+    ],
+    "section_hints": [
+      "1A",
+      "7"
+    ]
+  },
+  "request_key": "3c726af27650d7ae451bed322110682f7a37a070dd5ce468036ee9334a119ba1",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000098355",
+    "input_tokens": 60,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 292
+  }
+}

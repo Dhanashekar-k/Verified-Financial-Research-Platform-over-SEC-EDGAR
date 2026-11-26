@@ -1,0 +1,36 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Sysco's income tax for Q3 FY2020 was -$25.5 million [1].",
+    "claims": [
+      {
+        "display": "-$25.5 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:6102329600270103960",
+          "fact_ids": [
+            6102329600270103960
+          ],
+          "type": "expr"
+        },
+        "text": "Sysco's income tax for Q3 FY2020 was -$25.5 million.",
+        "unit": "USD",
+        "value": "-25483000.0000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "de8a704ddde7ceebcb568bbe09dee3a75b42481ad1392ff521cd349c92d94a5f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00013110",
+    "input_tokens": 223,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 429
+  }
+}

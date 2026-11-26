@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Kraft Heinz"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "inventory turnover ratio",
+      "inventory",
+      "cost of goods sold"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2019
+      }
+    ],
+    "section_hints": [
+      "8",
+      "7"
+    ]
+  },
+  "request_key": "9592de77e391799f615f0473a704040dbbfe9679028b25fa81d480abad8cad37",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000092955",
+    "input_tokens": 117,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 259
+  }
+}

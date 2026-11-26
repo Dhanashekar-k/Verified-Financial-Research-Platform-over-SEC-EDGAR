@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Vulcan Materials"
+      },
+      {
+        "cik": null,
+        "mention": "EQT"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "dividends_paid"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "compare",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2023
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "7c820019685e06778072ef5695a30c683de7517d5bcca3dcce6a27d4efa4352e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000077705",
+    "input_tokens": 42,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 213
+  }
+}

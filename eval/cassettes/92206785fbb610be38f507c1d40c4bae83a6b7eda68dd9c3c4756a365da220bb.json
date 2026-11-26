@@ -1,0 +1,27 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The provided material does not include property, plant and equipment figures for FY20 or FY21, so I cannot say whether Pfizer's PPNE grew between those years.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "The passages describe Pfizer's business, its 2021 reorganization into the Biopharma and PC1 segments, and its EPS and legal matters, but no PP&E values."
+      ],
+      "missing": [
+        "XBRL-derived PP&E, net values for Pfizer at fiscal year-end 2020 and 2021 (NUMERIC RESULTS with provenance)."
+      ],
+      "reason": "No NUMERIC RESULTS or passage in the material reports Pfizer's property, plant and equipment, net, for FY20 or FY21."
+    }
+  },
+  "request_key": "92206785fbb610be38f507c1d40c4bae83a6b7eda68dd9c3c4756a365da220bb",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0004790",
+    "input_tokens": 5561,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 753
+  }
+}

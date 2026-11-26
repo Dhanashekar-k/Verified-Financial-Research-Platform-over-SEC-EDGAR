@@ -1,0 +1,36 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Workday's operating cash flow for Q2 FY2022 was $114.4 million [1].",
+    "claims": [
+      {
+        "display": "$114.4 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:4733669283008579954",
+          "fact_ids": [
+            4733669283008579954
+          ],
+          "type": "expr"
+        },
+        "text": "Workday's operating cash flow for Q2 FY2022 was $114.4 million.",
+        "unit": "USD",
+        "value": "114358000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "a61f88c8b1f0dfeadef659dc2df95d1ae8df0c99c22df51cd2fcd860b0609e47",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00006840",
+    "input_tokens": 224,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 178
+  }
+}

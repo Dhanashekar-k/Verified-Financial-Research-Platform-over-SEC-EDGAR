@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Chubb Ltd."
+      },
+      {
+        "cik": null,
+        "mention": "KKR & Co. Inc."
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "income_tax"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "compare",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2020
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "4cc853fa78f6501ad95ae153535eb82f81f01107709a35b4baa243d7722edac4",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000069555",
+    "input_tokens": 49,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 179
+  }
+}

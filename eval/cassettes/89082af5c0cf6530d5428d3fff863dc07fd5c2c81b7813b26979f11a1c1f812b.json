@@ -1,0 +1,81 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Corning's unadjusted operating margin was 11.4% in FY2019 [1], 4.5% in FY2020 [2], and 15.0% in FY2021 [3]. The three-year average of these margins is not available in the provided material, so it is not stated here.",
+    "claims": [
+      {
+        "display": "11.4%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": false,
+        "provenance": {
+          "expr": "f:-1431933657433174418 / f:-1518152337107081589",
+          "fact_ids": [
+            -1431933657433174418,
+            -1518152337107081589
+          ],
+          "type": "expr"
+        },
+        "text": "Corning's FY2019 operating margin was 11.4%.",
+        "unit": "ratio",
+        "value": "0.1135355994088498652525428149"
+      },
+      {
+        "display": "4.5%",
+        "id": "c2",
+        "kind": "numeric_derived",
+        "primary": false,
+        "provenance": {
+          "expr": "f:-8446000639681086454 / f:3821520090143851837",
+          "fact_ids": [
+            -8446000639681086454,
+            3821520090143851837
+          ],
+          "type": "expr"
+        },
+        "text": "Corning's FY2020 operating margin was 4.5%.",
+        "unit": "ratio",
+        "value": "0.04503229231177563478722463063"
+      },
+      {
+        "display": "15.0%",
+        "id": "c3",
+        "kind": "numeric_derived",
+        "primary": false,
+        "provenance": {
+          "expr": "f:3864078429077192682 / f:-186063615450548313",
+          "fact_ids": [
+            3864078429077192682,
+            -186063615450548313
+          ],
+          "type": "expr"
+        },
+        "text": "Corning's FY2021 operating margin was 15.0%.",
+        "unit": "ratio",
+        "value": "0.1499786962079250106518960375"
+      }
+    ],
+    "refusal": {
+      "found": [
+        "FY2019 operating margin: 11.4%",
+        "FY2020 operating margin: 4.5%",
+        "FY2021 operating margin: 15.0%"
+      ],
+      "missing": [
+        "A computed FY2019\u2013FY2021 three-year average unadjusted operating margin for Corning"
+      ],
+      "reason": "The material provides the individual FY2019, FY2020 and FY2021 operating margins but no computed three-year average, and averaging is not permitted from these figures."
+    }
+  },
+  "request_key": "89082af5c0cf6530d5428d3fff863dc07fd5c2c81b7813b26979f11a1c1f812b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0003455",
+    "input_tokens": 701,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1191
+  }
+}

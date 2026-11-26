@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Verizon"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "derivative instruments notional value foreign currency exchange rate hedges",
+      "interest rate derivative notional amounts"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2021
+      }
+    ],
+    "section_hints": [
+      "7A",
+      "8"
+    ]
+  },
+  "request_key": "755bc42248852d9f4f5570d80a58cd36748b76f94f4770d1ce847c700fafe983",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000086105",
+    "input_tokens": 70,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 241
+  }
+}

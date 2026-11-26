@@ -1,0 +1,36 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "contradiction": false,
+    "points": [
+      {
+        "covered": true,
+        "index": 0
+      },
+      {
+        "covered": true,
+        "index": 1
+      },
+      {
+        "covered": true,
+        "index": 2
+      },
+      {
+        "covered": false,
+        "index": 3
+      }
+    ],
+    "reason": "The answer gives the 64% to 60% decline in loans as a share of interest-earning assets and names the three segments, but it omits the consumer sub-categories (residential first mortgage, home equity, credit card, other consumer)."
+  },
+  "request_key": "b62828fe3ff925fc68b302d11004fd3847dade0fe4562ec28a0905259d303843",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 683,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00106915",
+    "input_tokens": 325,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 142
+  }
+}

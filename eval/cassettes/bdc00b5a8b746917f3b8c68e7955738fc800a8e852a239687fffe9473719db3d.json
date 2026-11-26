@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The system answer gives FY2020 free cash flow of $3,215.4 million, which matches the gold $3,215.00 million within rounding, with the same period and definition (operating cash flow less capex)."
+  },
+  "request_key": "bdc00b5a8b746917f3b8c68e7955738fc800a8e852a239687fffe9473719db3d",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00061455",
+    "input_tokens": 188,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 79
+  }
+}

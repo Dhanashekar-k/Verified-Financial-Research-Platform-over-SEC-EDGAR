@@ -1,0 +1,44 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Activision Blizzard"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "fixed asset turnover ratio",
+      "property, plant and equipment net"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2018
+      },
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2019
+      }
+    ],
+    "section_hints": [
+      "8"
+    ]
+  },
+  "request_key": "e988b52059de3b4f9fe0a7b6ac3ccd084b75b0bdb57e43070ba6a3945e019e2d",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000139855",
+    "input_tokens": 120,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 446
+  }
+}

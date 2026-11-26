@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Cargill"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "revenue"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "value",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2023
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "9accb888e7eac4efed1891b1446628ec3f6d2a20d9f99c791b57849b18a05b92",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000039955",
+    "input_tokens": 22,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 66
+  }
+}

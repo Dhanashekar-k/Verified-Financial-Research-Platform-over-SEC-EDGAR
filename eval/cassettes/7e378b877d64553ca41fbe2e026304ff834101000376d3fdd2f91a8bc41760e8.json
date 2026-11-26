@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Expand Energy's capital expenditures grew 0.3% from FY2022 to FY2023 [1].",
+    "claims": [
+      {
+        "display": "0.3%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:7763120522956769792 - f:-4905616868333662382) / f:-4905616868333662382",
+          "fact_ids": [
+            7763120522956769792,
+            -4905616868333662382
+          ],
+          "type": "expr"
+        },
+        "text": "Expand Energy's capital expenditures grew 0.3% from FY2022 to FY2023.",
+        "unit": "ratio",
+        "value": "0.003291278113000548546352166758"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "7e378b877d64553ca41fbe2e026304ff834101000376d3fdd2f91a8bc41760e8",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00018030",
+    "input_tokens": 297,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 611
+  }
+}

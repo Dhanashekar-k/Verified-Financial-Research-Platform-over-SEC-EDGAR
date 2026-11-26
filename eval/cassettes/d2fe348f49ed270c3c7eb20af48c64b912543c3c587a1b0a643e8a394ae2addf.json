@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "General Mills"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "working capital ratio",
+      "total current assets",
+      "total current liabilities"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2020
+      }
+    ],
+    "section_hints": [
+      "8"
+    ]
+  },
+  "request_key": "d2fe348f49ed270c3c7eb20af48c64b912543c3c587a1b0a643e8a394ae2addf",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000100255",
+    "input_tokens": 83,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 295
+  }
+}

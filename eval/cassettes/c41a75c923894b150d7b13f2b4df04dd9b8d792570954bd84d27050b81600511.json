@@ -1,0 +1,57 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The passages include balance sheet line items for accounts payable [1] and inventories [2], but no cost of goods sold figure, so the DPO cannot be computed from the material provided.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:AMAZON_2017_10K#p40#0000",
+          "quote": "Accounts payable | $ | 25,309 | $ | 34,616",
+          "type": "chunk"
+        },
+        "text": "Amazon reports an accounts payable line item on its consolidated balance sheet.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:AMAZON_2017_10K#p40#0000",
+          "quote": "Inventories | 11,461 | 16,047",
+          "type": "chunk"
+        },
+        "text": "Amazon reports an inventories line item on its consolidated balance sheet.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Balance sheet line items for accounts payable and inventories at December 31, 2016 and 2017"
+      ],
+      "missing": [
+        "FY2017 cost of goods sold (COGS) from the consolidated statements of operations",
+        "Computed average accounts payable and change in inventory between FY2016 and FY2017 from NUMERIC RESULTS"
+      ],
+      "reason": "The material lacks FY2017 cost of goods sold and any computed figures needed to calculate DPO."
+    }
+  },
+  "request_key": "c41a75c923894b150d7b13f2b4df04dd9b8d792570954bd84d27050b81600511",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00065110",
+    "input_tokens": 5163,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1521
+  }
+}

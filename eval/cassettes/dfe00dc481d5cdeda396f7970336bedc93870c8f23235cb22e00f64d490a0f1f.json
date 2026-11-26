@@ -1,0 +1,57 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Block (formerly Square, Inc.) reported total current assets of 1,001,425 [1] and total current liabilities of 577,464 [2] (in thousands) at December 31, 2016.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:BLOCK_2016_10K#p68#0000",
+          "quote": "Total current assets | 1,001,425 | 705,563",
+          "type": "chunk"
+        },
+        "text": "Total current assets were 1,001,425 (in thousands) at December 31, 2016.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:BLOCK_2016_10K#p68#0000",
+          "quote": "Total current liabilities | 577,464 | 334,202",
+          "type": "chunk"
+        },
+        "text": "Total current liabilities were 577,464 (in thousands) at December 31, 2016.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Total current assets of 1,001,425 (in thousands) at December 31, 2016",
+        "Total current liabilities of 577,464 (in thousands) at December 31, 2016"
+      ],
+      "missing": [
+        "A NUMERIC RESULTS entry computing total current assets divided by total current liabilities for FY2016, rounded to two decimal places"
+      ],
+      "reason": "The working capital ratio is a computed figure, and no NUMERIC RESULTS for it were provided, so I cannot state the ratio from the passages alone."
+    }
+  },
+  "request_key": "dfe00dc481d5cdeda396f7970336bedc93870c8f23235cb22e00f64d490a0f1f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00063775",
+    "input_tokens": 4956,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1509
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Cardinal Health's net income in Q2 of fiscal 2021 was $629.0 million [1].",
+    "claims": [
+      {
+        "display": "$629.0 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:1193088274163127296",
+          "fact_ids": [
+            1193088274163127296
+          ],
+          "type": "expr"
+        },
+        "text": "Cardinal Health's net income in Q2 of fiscal 2021 was $629.0 million.",
+        "unit": "USD",
+        "value": "629000000.0000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "04145e92566cec4cfbb434fa2a5190e9d08ce629b04a644ef42a01ecc7945016",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00011405",
+    "input_tokens": 237,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 358
+  }
+}

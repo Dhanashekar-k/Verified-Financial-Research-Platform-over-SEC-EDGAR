@@ -1,0 +1,36 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Cardinal Health's FY2023 income tax expense, as originally reported, was $376.0 million [1]. This figure was later restated; the restated amount is not stated here.",
+    "claims": [
+      {
+        "display": "$376.0 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:2612915601024947517",
+          "fact_ids": [
+            2612915601024947517
+          ],
+          "type": "expr"
+        },
+        "text": "Cardinal Health FY2023 income tax expense, as originally reported, was $376.0 million.",
+        "unit": "USD",
+        "value": "376000000.0000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "43959313b7538d36417676b4b4765b176ac51896300e5e73a6837d2aaf6c5d27",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00021330",
+    "input_tokens": 392,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 724
+  }
+}

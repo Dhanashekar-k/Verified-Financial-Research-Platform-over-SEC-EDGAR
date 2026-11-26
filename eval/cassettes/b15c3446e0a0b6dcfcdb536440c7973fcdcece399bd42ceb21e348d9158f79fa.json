@@ -1,0 +1,48 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Yes. Boeing's filings state that the airline industry has traditionally been cyclical, with significant profit swings [1]. Boeing's Commercial Airplanes and Global Services businesses depend heavily on commercial airlines, which the filings identify as a source of risk [2].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:BOEING_2018_10K#p7#0001",
+          "quote": "Traditionally, the airline industry has been cyclical and very competitive and has experienced significant profit swings and constant challenges to be more cost competitive.",
+          "type": "chunk"
+        },
+        "text": "The airline industry has traditionally been cyclical and has experienced significant profit swings.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:BOEING_2018_10K#p7#0001",
+          "quote": "Our Commercial Airplanes and Global Services businesses depend heavily on commercial airlines, and are subject to unique risks.",
+          "type": "chunk"
+        },
+        "text": "Boeing's Commercial Airplanes and Global Services businesses depend heavily on commercial airlines.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "b15c3446e0a0b6dcfcdb536440c7973fcdcece399bd42ceb21e348d9158f79fa",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00064625",
+    "input_tokens": 5566,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1421
+  }
+}

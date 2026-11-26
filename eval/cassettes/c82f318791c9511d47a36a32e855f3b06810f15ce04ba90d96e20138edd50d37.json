@@ -1,0 +1,43 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The material does not support an FY2022 unadjusted EBITDA % margin for PepsiCo. The cash flow statement shows depreciation and amortization of 2,763 million for 2022 [1], but no unadjusted operating income figure from the P&L statement and no FY2022 net revenue figure is available, so neither EBITDA nor the margin can be calculated.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:PEPSICO_2022_10K#p64#0000",
+          "quote": "Depreciation and amortization | 2,763 | 2,710 | 2,548",
+          "type": "chunk"
+        },
+        "text": "Depreciation and amortization for 2022 is 2,763 million in the consolidated statement of cash flows.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Depreciation and amortization of 2,763 million for 2022 from the consolidated statement of cash flows"
+      ],
+      "missing": [
+        "FY2022 unadjusted operating income from the consolidated P&L statement",
+        "FY2022 net revenue to use as the margin denominator"
+      ],
+      "reason": "The passages give D&A from the cash flow statement but do not provide the unadjusted operating income or net revenue needed to compute the FY2022 EBITDA % margin."
+    }
+  },
+  "request_key": "c82f318791c9511d47a36a32e855f3b06810f15ce04ba90d96e20138edd50d37",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0005880",
+    "input_tokens": 4811,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1339
+  }
+}

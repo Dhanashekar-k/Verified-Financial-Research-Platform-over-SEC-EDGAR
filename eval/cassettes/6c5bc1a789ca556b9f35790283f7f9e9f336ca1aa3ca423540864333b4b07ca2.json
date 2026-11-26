@@ -1,0 +1,62 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The timing of the Mountain Valley Pipeline's in-service date, which is outside EQT's control, could affect EQT's 2024 operating results, including operating expenses, per unit metrics, average differential, and any payments required to settle the Henry Hub Cash Bonus [1]. This matters for the Equitrans Midstream agreements because their fee structure and conditions precedent, including the Consolidated GGA, are tied to that in-service date [2]. The Henry Hub Cash Bonus under the Consolidated GGA is payable starting from the quarter in which the pipeline is placed in service [3].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000033213-24-000008#7#0003",
+          "quote": "the timing of the date on which the Mountain Valley Pipeline is ultimately placed in service, which is outside of our control, could impact our operating results during 2024, including our operating expenses and per unit metrics, average differential and any payments required to settle the Henry Hub Cash Bonus",
+          "type": "chunk"
+        },
+        "text": "The timing of the date on which the Mountain Valley Pipeline is ultimately placed in service, which is outside of our control, could impact our operating results during 2024, including our operating expenses and per unit metrics, average differential and any payments required to settle the Henry Hub Cash Bonus",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000033213-24-000008#7#0003",
+          "quote": "The fee structure and various conditions precedent specified in certain of our agreements with Equitrans Midstream, including but not limited to the Consolidated GGA, are tied to the date on which the Mountain Valley Pipeline is placed in service.",
+          "type": "chunk"
+        },
+        "text": "The fee structure and various conditions precedent specified in certain of our agreements with Equitrans Midstream, including but not limited to the Consolidated GGA, are tied to the date on which the Mountain Valley Pipeline is placed in service.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000033213-24-000008#8#0054",
+          "quote": "payable by the Company during the period beginning on the first day of the quarter in which the Mountain Valley Pipeline is placed in service",
+          "type": "chunk"
+        },
+        "text": "The Henry Hub Cash Bonus under the Consolidated GGA is payable by the Company during the period beginning on the first day of the quarter in which the Mountain Valley Pipeline is placed in service.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "6c5bc1a789ca556b9f35790283f7f9e9f336ca1aa3ca423540864333b4b07ca2",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00098895",
+    "input_tokens": 5180,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 2869
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "contradiction": false,
+    "points": [
+      {
+        "covered": false,
+        "index": 0
+      },
+      {
+        "covered": true,
+        "index": 1
+      },
+      {
+        "covered": false,
+        "index": 2
+      },
+      {
+        "covered": true,
+        "index": 3
+      }
+    ],
+    "reason": "The answer covers the 25% levy beginning May 26, 2022 and the IRA 15% AMT on AFSI above $1.0 billion; it omits the U.S. depletion and IDC deduction repeal proposals and the through-March 31, 2028 end date, though the increase to 35% is mentioned without contradicting the gold point."
+  },
+  "request_key": "dff8a6e6d2b33be19f73e75179b79284a10b44134e180ad7f66f4317a7e4fc4d",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 683,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00146515",
+    "input_tokens": 536,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 179
+  }
+}

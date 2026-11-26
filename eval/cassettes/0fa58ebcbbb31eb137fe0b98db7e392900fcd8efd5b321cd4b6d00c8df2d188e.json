@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "MONOLITHIC POWER SYSTEMS, INC."
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "total_liabilities"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "value",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "Q3",
+        "fiscal_year": 2025
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "0fa58ebcbbb31eb137fe0b98db7e392900fcd8efd5b321cd4b6d00c8df2d188e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000050405",
+    "input_tokens": 61,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 100
+  }
+}

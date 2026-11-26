@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The material does not report wages expense, so the change in wages expense as a percent of net sales for FY2023 cannot be determined.[1]",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001558370-24-003941#7#0002",
+          "quote": "could negatively impact our ability to maintain current levels of gross margin and selling, general and administrative expenses as a percentage of net sales if the selling prices of our products do not increase with higher costs",
+          "type": "chunk"
+        },
+        "text": "Inflationary pressures could negatively impact the company's ability to maintain current levels of selling, general and administrative expenses as a percentage of net sales.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Passages discuss selling, general and administrative expenses as a percentage of net sales only in the context of inflation risk."
+      ],
+      "missing": [
+        "Wages expense figures for fiscal 2023 and fiscal 2022, and net sales for the same periods, as a computed numeric result showing the change in wages as a percent of net sales."
+      ],
+      "reason": "The passages do not report wages expense or its ratio to net sales for either fiscal 2023 or fiscal 2022."
+    }
+  },
+  "request_key": "3b1f0993c1dc3b8470ade9390f99575375af0ab6aec40231491714e72aac2981",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00058330",
+    "input_tokens": 4782,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1326
+  }
+}

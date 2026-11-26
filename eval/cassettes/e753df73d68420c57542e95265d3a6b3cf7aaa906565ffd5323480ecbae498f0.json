@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Iron Mountain"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "factors board considers when setting quarterly cash distributions",
+      "risks to public dividend growth commitment"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2022
+      }
+    ],
+    "section_hints": [
+      "1A",
+      "7"
+    ]
+  },
+  "request_key": "e753df73d68420c57542e95265d3a6b3cf7aaa906565ffd5323480ecbae498f0",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000119305",
+    "input_tokens": 69,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 374
+  }
+}

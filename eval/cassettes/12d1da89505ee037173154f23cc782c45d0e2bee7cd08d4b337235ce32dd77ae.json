@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Corning"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "days payable outstanding",
+      "accounts payable",
+      "cost of goods sold",
+      "inventory change"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2020
+      }
+    ],
+    "section_hints": [
+      "8"
+    ]
+  },
+  "request_key": "12d1da89505ee037173154f23cc782c45d0e2bee7cd08d4b337235ce32dd77ae",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000155605",
+    "input_tokens": 125,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 508
+  }
+}

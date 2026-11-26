@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Coca-Cola"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "synergies from acquisition",
+      "PepsiCo acquisition"
+    ],
+    "needs_clarification": "Coca-Cola did not acquire PepsiCo in 2021, so there are no such synergies to report. Did you mean a different acquisition or a different company?",
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2021
+      }
+    ],
+    "section_hints": [
+      "7",
+      "8"
+    ]
+  },
+  "request_key": "69f4991df2a2f9a019215aa9e7bfd40624d21ce6e8274b2e25e57d4ce8ad245f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000137705",
+    "input_tokens": 37,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 454
+  }
+}

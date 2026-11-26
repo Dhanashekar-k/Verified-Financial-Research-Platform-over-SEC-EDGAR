@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Target Corp's selling, general and administrative expense grew 4.6% from fiscal 2021 to fiscal 2022, as originally reported [1]. This figure was restated later, but the figure used here is the one as originally filed; the restated value is not given here.",
+    "claims": [
+      {
+        "display": "4.6%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:-7954720657002271045 - f:-3000230291785143347) / f:-3000230291785143347",
+          "fact_ids": [
+            -7954720657002271045,
+            -3000230291785143347
+          ],
+          "type": "expr"
+        },
+        "text": "Target Corp's SG&A expense grew 4.6% from FY2021 to FY2022 as originally reported.",
+        "unit": "ratio",
+        "value": "0.04586877278250304"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "1db332fdb1c635aee808ae12c84a83bff7d7dad9c305c8132b4b5a9791cb706f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00010270",
+    "input_tokens": 380,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 284
+  }
+}

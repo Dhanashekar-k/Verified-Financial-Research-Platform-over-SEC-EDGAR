@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Dollar Tree's net income rose 10.0% from Q3 FY2023 to Q3 FY2024 [1]. The growth is measured from Q3 FY2023.",
+    "claims": [
+      {
+        "display": "10.0%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:6835513323461587055 - f:5262145309124984790) / f:5262145309124984790",
+          "fact_ids": [
+            6835513323461587055,
+            5262145309124984790
+          ],
+          "type": "expr"
+        },
+        "text": "Dollar Tree's net income rose 10.0% from Q3 FY2023 to Q3 FY2024.",
+        "unit": "ratio",
+        "value": "0.1004716981132075471698113208"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "f90eb14314aa898f913da3015caf834a2a83e82c9476b1ba9bc58aab00b36c39",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00014155",
+    "input_tokens": 302,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 455
+  }
+}

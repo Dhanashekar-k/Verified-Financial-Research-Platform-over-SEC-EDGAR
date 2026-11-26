@@ -1,0 +1,69 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Jacobs Solutions spent $10.0 million more on capital expenditures than Comfort Systems USA in fiscal 2024 [1]. Jacobs Solutions' fiscal 2024 capex was $121.1 million [2], and Comfort Systems USA's was $111.1 million [3].",
+    "claims": [
+      {
+        "display": "$10.0 million",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "f:2251478662326680671 - f:3223293961572012005",
+          "fact_ids": [
+            2251478662326680671,
+            3223293961572012005
+          ],
+          "type": "expr"
+        },
+        "text": "Jacobs Solutions spent $10.0 million more on capital expenditures than Comfort Systems USA in fiscal 2024.",
+        "unit": "USD",
+        "value": "10043000.0000"
+      },
+      {
+        "display": "$121.1 million",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:2251478662326680671",
+          "fact_ids": [
+            2251478662326680671
+          ],
+          "type": "expr"
+        },
+        "text": "Jacobs Solutions' fiscal 2024 capital expenditures were $121.1 million.",
+        "unit": "USD",
+        "value": "121114000.0000"
+      },
+      {
+        "display": "$111.1 million",
+        "id": "c3",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:3223293961572012005",
+          "fact_ids": [
+            3223293961572012005
+          ],
+          "type": "expr"
+        },
+        "text": "Comfort Systems USA's fiscal 2024 capital expenditures were $111.1 million.",
+        "unit": "USD",
+        "value": "111071000.0000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "19a308412ee16a37d796e20c36cb9af0ebd554f22b788174e14e37b6d7c7a65e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00029645",
+    "input_tokens": 645,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1006
+  }
+}

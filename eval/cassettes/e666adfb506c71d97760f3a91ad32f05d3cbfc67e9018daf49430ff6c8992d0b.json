@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Expand Energy's capital spending rose by 172.5% in FY2022 compared with FY2021 [1].",
+    "claims": [
+      {
+        "display": "172.5%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:-4905616868333662382 - f:-2929952376262900891) / f:-2929952376262900891",
+          "fact_ids": [
+            -4905616868333662382,
+            -2929952376262900891
+          ],
+          "type": "expr"
+        },
+        "text": "Expand Energy's capex grew 172.5% in FY2022, measured from FY2021.",
+        "unit": "ratio",
+        "value": "1.724962630792227204783258595"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "e666adfb506c71d97760f3a91ad32f05d3cbfc67e9018daf49430ff6c8992d0b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00015520",
+    "input_tokens": 295,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 511
+  }
+}

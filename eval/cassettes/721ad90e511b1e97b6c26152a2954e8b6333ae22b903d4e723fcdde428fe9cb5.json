@@ -1,0 +1,36 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "contradiction": false,
+    "points": [
+      {
+        "covered": true,
+        "index": 0
+      },
+      {
+        "covered": true,
+        "index": 1
+      },
+      {
+        "covered": false,
+        "index": 2
+      },
+      {
+        "covered": false,
+        "index": 3
+      }
+    ],
+    "reason": "The answer covers the local-currency debt natural hedge and IMI/IMIM foreign currency borrowing, but omits the specific GBP Notes and AUD Term Loan examples and does not describe Euro net investment hedges via cross-currency swaps marked to market through accumulated other comprehensive items (only generic mention of swaps for dollar-euro variability)."
+  },
+  "request_key": "721ad90e511b1e97b6c26152a2954e8b6333ae22b903d4e723fcdde428fe9cb5",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 683,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00139915",
+    "input_tokens": 420,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 189
+  }
+}

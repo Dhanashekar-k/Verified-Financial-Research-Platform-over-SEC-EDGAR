@@ -1,0 +1,93 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Gross margin as originally filed was 4.8% for FY2021 [1] and 5.3% for FY2022 [2]. Both gross profit figures were later restated, and the restated values are not given here. Boeing recognizes cost of sales under program accounting [4], and the 767, 777X and 787 programs had near break-even or single digit margins at December 31, 2022 [3], so gross margin is a program-driven and thin measure for this company. The material does not establish an improving trend on restated figures, so an improvement cannot be confirmed.",
+    "claims": [
+      {
+        "display": "4.8%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": false,
+        "provenance": {
+          "expr": "f:-8398802121685501796 / f:-1054219834606735206",
+          "fact_ids": [
+            -8398802121685501796,
+            -1054219834606735206
+          ],
+          "type": "expr"
+        },
+        "text": "Gross margin for FY2021 as originally filed was 4.8% (gross profit was later restated; the restated value is not given).",
+        "unit": "ratio",
+        "value": "0.04843785120251741964486401439"
+      },
+      {
+        "display": "5.3%",
+        "id": "c2",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "f:-6297619435898317707 / f:3374129454924479496",
+          "fact_ids": [
+            -6297619435898317707,
+            3374129454924479496
+          ],
+          "type": "expr"
+        },
+        "text": "Gross margin for FY2022 as originally filed was 5.3% (gross profit was later restated; the restated value is not given).",
+        "unit": "ratio",
+        "value": "0.05257626711506125390343502282"
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:BOEING_2022_10K#p51#0001",
+          "quote": "The 767, 777X, and 787 programs had near break-even or single digit margins at December 31, 2022.",
+          "type": "chunk"
+        },
+        "text": "The 767, 777X, and 787 programs had near break-even or single digit margins at December 31, 2022.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c4",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:BOEING_2022_10K#p63#0000",
+          "quote": "We use program accounting to determine the amount reported as cost of sales.",
+          "type": "chunk"
+        },
+        "text": "Boeing uses program accounting to determine the amount reported as cost of sales.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "FY2021 gross margin of 4.8% as originally filed",
+        "FY2022 gross margin of 5.3% as originally filed",
+        "Program margins were near break-even or single digit at December 31, 2022"
+      ],
+      "missing": [
+        "Restated FY2021 and FY2022 gross profit figures",
+        "A growth comparison that states the period it is measured from"
+      ],
+      "reason": "The material gives only the FY2021 and FY2022 gross margins as originally filed, both later restated, so an improving trend on restated figures cannot be confirmed."
+    }
+  },
+  "request_key": "520d5fe517de7d33fd5bfc4825f1d238d917651affe7ccdd0bcbf145bd92655e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00104905",
+    "input_tokens": 6022,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 2941
+  }
+}

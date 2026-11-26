@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Dollar Tree"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "net_income"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "growth",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "Q3",
+        "fiscal_year": 2023
+      },
+      {
+        "fiscal_period": "Q3",
+        "fiscal_year": 2024
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "8de3254e3c530b055ffd451b14fb1309e40eb28028c501c9bb0e5cd67dd64cca",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000071755",
+    "input_tokens": 43,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 189
+  }
+}

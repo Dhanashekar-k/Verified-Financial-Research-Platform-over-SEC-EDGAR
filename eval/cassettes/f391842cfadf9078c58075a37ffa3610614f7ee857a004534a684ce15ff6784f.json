@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The system answer identifies corporate bonds as the largest short-term investment, matching the gold answer's key fact; the extra dollar figure and date do not contradict it."
+  },
+  "request_key": "f391842cfadf9078c58075a37ffa3610614f7ee857a004534a684ce15ff6784f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 631,
+    "cost_usd": "0.00127975",
+    "input_tokens": 156,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 67
+  }
+}

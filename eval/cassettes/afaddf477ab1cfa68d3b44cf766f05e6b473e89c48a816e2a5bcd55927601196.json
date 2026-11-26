@@ -1,0 +1,69 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Vulcan Materials paid $61,000 more in dividends than EQT in FY2023 [1]. Vulcan's dividends paid were $228.4 million [2], and EQT's were $228.3 million [3].",
+    "claims": [
+      {
+        "display": "$61,000",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "f:25681001643150144 - f:-4772640604009300780",
+          "fact_ids": [
+            25681001643150144,
+            -4772640604009300780
+          ],
+          "type": "expr"
+        },
+        "text": "Vulcan Materials paid $61,000 more in dividends than EQT in FY2023.",
+        "unit": "USD",
+        "value": "61000"
+      },
+      {
+        "display": "$228.4 million",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:25681001643150144",
+          "fact_ids": [
+            25681001643150144
+          ],
+          "type": "expr"
+        },
+        "text": "Vulcan Materials dividends paid in FY2023 were $228.4 million.",
+        "unit": "USD",
+        "value": "228400000"
+      },
+      {
+        "display": "$228.3 million",
+        "id": "c3",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:-4772640604009300780",
+          "fact_ids": [
+            -4772640604009300780
+          ],
+          "type": "expr"
+        },
+        "text": "EQT dividends paid in FY2023 were $228.3 million.",
+        "unit": "USD",
+        "value": "228339000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "afaddf477ab1cfa68d3b44cf766f05e6b473e89c48a816e2a5bcd55927601196",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00016255",
+    "input_tokens": 617,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 476
+  }
+}

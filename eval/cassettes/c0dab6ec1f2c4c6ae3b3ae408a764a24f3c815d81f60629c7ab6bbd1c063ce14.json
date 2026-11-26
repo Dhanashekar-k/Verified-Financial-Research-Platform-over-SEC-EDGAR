@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "incorrect",
+    "reason": "The answer gives FY2022 as (0.6)%, a negative sign where the gold is +0.62%, and FY2021 as +14.8% where the gold is -14.76%, so both signs are wrong and the direction of change (\"down\") contradicts the gold, where the rate rose."
+  },
+  "request_key": "c0dab6ec1f2c4c6ae3b3ae408a764a24f3c815d81f60629c7ab6bbd1c063ce14",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00072655",
+    "input_tokens": 150,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 109
+  }
+}

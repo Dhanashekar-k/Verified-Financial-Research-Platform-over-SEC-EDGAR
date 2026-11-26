@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Verisk Analytics' income tax expense grew 115.8% from Q1 FY2021 to Q1 FY2022, as originally reported [1]. The Q1 FY2022 figure was later restated; this growth uses the originally filed figure, and the restated value is not given here [1].",
+    "claims": [
+      {
+        "display": "115.8%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:-8411914856185792011 - f:-6647635489954773339) / f:-6647635489954773339",
+          "fact_ids": [
+            -8411914856185792011,
+            -6647635489954773339
+          ],
+          "type": "expr"
+        },
+        "text": "Income tax expense growth, Q1 FY2021 to Q1 FY2022, as originally reported: 115.8%",
+        "unit": "ratio",
+        "value": "1.158110882956878850102669405"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "51aef766ed04cecc32d9cd4f36510960153f3cbf548b858a12739c170c9ac541",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00024085",
+    "input_tokens": 388,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 835
+  }
+}

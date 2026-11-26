@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Target Corp"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "sga"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "growth",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2021
+      },
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2022
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "297a14fe3f1a89e5b48117fc1eea1c172ace5e7d7215062bf74ab1f6112f0109",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000044905",
+    "input_tokens": 56,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 79
+  }
+}

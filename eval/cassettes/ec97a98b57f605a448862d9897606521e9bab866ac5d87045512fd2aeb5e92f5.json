@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Fidelity National Information Services (FIS)"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "income_tax"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "value",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "Q3",
+        "fiscal_year": 2022
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "ec97a98b57f605a448862d9897606521e9bab866ac5d87045512fd2aeb5e92f5",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000112255",
+    "input_tokens": 63,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 347
+  }
+}

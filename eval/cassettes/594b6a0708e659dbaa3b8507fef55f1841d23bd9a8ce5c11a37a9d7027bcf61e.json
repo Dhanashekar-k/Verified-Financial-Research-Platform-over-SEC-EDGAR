@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Henry Schein's interest expense fell 39.2% from Q2 FY2020 to Q2 FY2021, using the figures as originally filed. The Q2 FY2021 figure was later restated, and the latest restated value is not given here [1].",
+    "claims": [
+      {
+        "display": "-39.2%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:4418439372295142192 - f:8177878582582543612) / f:8177878582582543612",
+          "fact_ids": [
+            4418439372295142192,
+            8177878582582543612
+          ],
+          "type": "expr"
+        },
+        "text": "Interest expense growth from Q2 FY2020 to Q2 FY2021 (as originally filed) is -39.2%; Q2 FY2021 interest expense was later restated, and the figure used is as originally filed.",
+        "unit": "ratio",
+        "value": "-0.3919511729925615105855426283"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "594b6a0708e659dbaa3b8507fef55f1841d23bd9a8ce5c11a37a9d7027bcf61e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00026830",
+    "input_tokens": 402,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 942
+  }
+}

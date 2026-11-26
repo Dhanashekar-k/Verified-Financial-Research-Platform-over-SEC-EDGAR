@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The answer says yes and gives 20.1% in Q2 FY2023 versus 20.0% in Q2 FY2022, which matches the gold answer; the note about later restatements is extra context."
+  },
+  "request_key": "d1496de4f90887f349fe41152cc0743d219074f8cefe92b688bb24a42ae4f150",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00065055",
+    "input_tokens": 234,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 77
+  }
+}

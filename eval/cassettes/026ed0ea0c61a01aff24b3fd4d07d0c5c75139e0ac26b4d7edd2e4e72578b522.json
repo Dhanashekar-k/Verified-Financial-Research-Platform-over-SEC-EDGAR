@@ -1,0 +1,40 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "AMD"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "depreciation and amortization",
+      "depreciation and amortization as percent of revenue"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2015
+      }
+    ],
+    "section_hints": [
+      "8"
+    ]
+  },
+  "request_key": "026ed0ea0c61a01aff24b3fd4d07d0c5c75139e0ac26b4d7edd2e4e72578b522",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000120005",
+    "input_tokens": 108,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 369
+  }
+}

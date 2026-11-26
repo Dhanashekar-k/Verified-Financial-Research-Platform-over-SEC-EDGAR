@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Ferguson Enterprises"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "sga"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "growth",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "Q2",
+        "fiscal_year": 2024
+      },
+      {
+        "fiscal_period": "Q2",
+        "fiscal_year": 2025
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "27780bda883480745536b945243cb474a70f42e45b7b0e4a828c36ba1a6fe74f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000079255",
+    "input_tokens": 68,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 214
+  }
+}

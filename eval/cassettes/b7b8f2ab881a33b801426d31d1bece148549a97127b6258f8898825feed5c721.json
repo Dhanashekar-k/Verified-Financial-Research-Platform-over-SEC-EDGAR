@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Quanta Services, Inc.'s operating income grew by 29.3% from fiscal year 2022 to fiscal year 2023 [1].",
+    "claims": [
+      {
+        "display": "29.3%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:-3267876705241723260 - f:-2599725083269901712) / f:-2599725083269901712",
+          "fact_ids": [
+            -3267876705241723260,
+            -2599725083269901712
+          ],
+          "type": "expr"
+        },
+        "text": "Quanta Services, Inc.'s operating income grew by 29.3% in fiscal year 2023 compared with fiscal year 2022.",
+        "unit": "ratio",
+        "value": "0.29346442553132934"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "b7b8f2ab881a33b801426d31d1bece148549a97127b6258f8898825feed5c721",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00009285",
+    "input_tokens": 313,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 258
+  }
+}

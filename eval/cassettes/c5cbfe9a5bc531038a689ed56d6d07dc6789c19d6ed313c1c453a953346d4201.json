@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The passages identify the Consumer Health business as the segment whose historical results are reflected as discontinued operations [1]. They tie that treatment to the August 23, 2023 exchange offer, not to August 30, 2023 onward, and they do not mention August 30, 2023.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000200406-24-000013#8#0020",
+          "quote": "The historical results of the Consumer Health business (which previously represented the Consumer Health business segment) are reflected as discontinued operations in the Company\u2019s Consolidated Financial Statements through the date of the exchange offer",
+          "type": "chunk"
+        },
+        "text": "The Consumer Health business is the segment whose historical results are reflected as discontinued operations.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "The Consumer Health business historical results are reflected as discontinued operations through the date of the exchange offer on August 23, 2023."
+      ],
+      "missing": [
+        "A passage stating that a segment is treated as discontinued operations from August 30, 2023 onward."
+      ],
+      "reason": "The passages place the Consumer Health discontinued-operations treatment only through the August 23, 2023 exchange offer date and do not state any treatment effective from August 30, 2023."
+    }
+  },
+  "request_key": "c5cbfe9a5bc531038a689ed56d6d07dc6789c19d6ed313c1c453a953346d4201",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00058340",
+    "input_tokens": 5409,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1201
+  }
+}

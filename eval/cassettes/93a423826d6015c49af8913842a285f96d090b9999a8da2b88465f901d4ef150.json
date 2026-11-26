@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "D.R. Horton"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "hedging instruments for mortgage loans held for sale",
+      "below-market financing program for homebuyers",
+      "mortgage rate buydown"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2024
+      }
+    ],
+    "section_hints": [
+      "7A",
+      "7"
+    ]
+  },
+  "request_key": "93a423826d6015c49af8913842a285f96d090b9999a8da2b88465f901d4ef150",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000097305",
+    "input_tokens": 69,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 286
+  }
+}

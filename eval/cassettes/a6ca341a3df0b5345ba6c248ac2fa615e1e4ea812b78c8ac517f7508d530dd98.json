@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The system answer says yes, VaR decreased in Q2 2023 versus Q2 2022, matching the gold answer, and adds consistent supporting detail."
+  },
+  "request_key": "a6ca341a3df0b5345ba6c248ac2fa615e1e4ea812b78c8ac517f7508d530dd98",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00054455",
+    "input_tokens": 183,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 66
+  }
+}

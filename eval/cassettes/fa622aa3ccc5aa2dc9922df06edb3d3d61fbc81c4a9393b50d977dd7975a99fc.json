@@ -1,0 +1,39 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Boeing"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "primary customers"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2022
+      }
+    ],
+    "section_hints": [
+      "1"
+    ]
+  },
+  "request_key": "fa622aa3ccc5aa2dc9922df06edb3d3d61fbc81c4a9393b50d977dd7975a99fc",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000059905",
+    "input_tokens": 26,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 145
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Intercontinental Exchange, Inc.'s capital expenditures in Q1 FY2023 changed by -41.7% from Q1 FY2022, the base period for this growth figure [1].",
+    "claims": [
+      {
+        "display": "-41.7%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:5106506160777097432 - f:639050565060870310) / f:639050565060870310",
+          "fact_ids": [
+            5106506160777097432,
+            639050565060870310
+          ],
+          "type": "expr"
+        },
+        "text": "Growth in Intercontinental Exchange, Inc. capital expenditures, Q1 FY2023 versus Q1 FY2022, was -41.7%.",
+        "unit": "ratio",
+        "value": "-0.4166666666666666666666666667"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "1e2bc6e1ce9161d44d7a7dbea9da6f25b196f451ec7ddd8c0c0d45bcce278d50",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0001740",
+    "input_tokens": 326,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 580
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Best Buy"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "net cash from operating activities",
+      "net cash from investing activities",
+      "net cash from financing activities",
+      "cash flow by activity type"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2023
+      }
+    ],
+    "section_hints": [
+      "7",
+      "8"
+    ]
+  },
+  "request_key": "08445af9d330573b72902a32248c2ac97535e665c8fe83901787f202a16da414",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000112555",
+    "input_tokens": 49,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 351
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "American Express describes investing to retain existing Card Members [1]. The material does not report whether it actually retained Card Members during 2022.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:AMERICANEXPRESS_2022_10K#p29#0001",
+          "quote": "We have been investing in a number of growth initiatives, including to attract new Card Members, retain existing Card Members",
+          "type": "chunk"
+        },
+        "text": "American Express has been investing in growth initiatives to retain existing Card Members.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "The passages describe investments in growth initiatives to attract and retain existing Card Members, and warn that Card Member attrition could increase if new offers attract short-term incentive seekers."
+      ],
+      "missing": [
+        "Reported 2022 Card Member retention or attrition figures or a statement of actual 2022 retention outcome."
+      ],
+      "reason": "The passages describe retention investments and attrition risk but report no 2022 retention or attrition result."
+    }
+  },
+  "request_key": "5064e13fc7ff01296b9e7f91920214ffe44552b6c5cfe5c042deb5ec978a02a5",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00057195",
+    "input_tokens": 5245,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1188
+  }
+}

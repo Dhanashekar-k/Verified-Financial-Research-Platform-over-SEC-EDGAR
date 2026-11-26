@@ -1,0 +1,104 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Disney's objective for interest rate exposure was to limit the impact of interest rate volatility on earnings and cash flows and to lower overall borrowing costs [1]. To do so, it primarily used interest rate swaps to manage net exposure on its borrowings [2]. For foreign currency, its objective was to reduce volatility of earnings and cash flow so management could focus on core business issues [3]. It used option strategies and forward contracts to hedge probable but not firmly committed transactions [4], and cross-currency swaps to convert foreign currency denominated borrowings to U.S. dollar denominated borrowings [5]. The company stated that these instruments were used only to the extent necessary to meet those objectives and not for speculative purposes [6].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0001744489-23-000216#7A#0000",
+          "quote": "Our objectives in managing exposure to interest rate changes are to limit the impact of interest rate volatility on earnings and cash flows and to lower overall borrowing costs.",
+          "type": "chunk"
+        },
+        "text": "Disney's objectives in managing exposure to interest rate changes were to limit the impact of interest rate volatility on earnings and cash flows and to lower overall borrowing costs.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001744489-23-000216#7A#0000",
+          "quote": "To achieve these objectives, we primarily use interest rate swaps to manage net exposure to interest rate changes related to the Company\u2019s portfolio of borrowings.",
+          "type": "chunk"
+        },
+        "text": "To achieve these objectives, Disney primarily used interest rate swaps to manage net exposure to interest rate changes related to its portfolio of borrowings.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001744489-23-000216#7A#0000",
+          "quote": "Our objective in managing exposure to foreign currency fluctuations is to reduce volatility of earnings and cash flow in order to allow management to focus on core business issues and challenges.",
+          "type": "chunk"
+        },
+        "text": "Disney's objective in managing exposure to foreign currency fluctuations was to reduce volatility of earnings and cash flow so that management could focus on core business issues and challenges.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c4",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001744489-23-000216#7A#0000",
+          "quote": "The Company utilizes option strategies and forward contracts that provide for the purchase or sale of foreign currencies to hedge probable, but not firmly committed, transactions.",
+          "type": "chunk"
+        },
+        "text": "Disney used option strategies and forward contracts to hedge probable, but not firmly committed, foreign currency transactions.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c5",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001744489-23-000216#7A#0000",
+          "quote": "Cross-currency swaps are used to effectively convert foreign currency denominated borrowings to U.S. dollar denominated borrowings.",
+          "type": "chunk"
+        },
+        "text": "Disney used cross-currency swaps to effectively convert foreign currency denominated borrowings to U.S. dollar denominated borrowings.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c6",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001744489-23-000216#7A#0001",
+          "quote": "It is the Company\u2019s policy to enter into foreign currency and interest rate derivative transactions and other financial instruments only to the extent considered necessary to meet its objectives as stated above. The Company does not enter into these transactions or any other hedging transactions for speculative purposes.",
+          "type": "chunk"
+        },
+        "text": "Disney stated that it entered into foreign currency and interest rate derivative transactions only to the extent considered necessary to meet its stated objectives and not for speculative purposes.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "dad76c542ec3dc0fca250b871a283ace4a79dbc1971908377eb2a72b8aa260ed",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00092855",
+    "input_tokens": 5167,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 2630
+  }
+}

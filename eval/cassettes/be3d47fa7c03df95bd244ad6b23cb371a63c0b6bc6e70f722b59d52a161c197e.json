@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Comcast"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "cash"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "value",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "Q3",
+        "fiscal_year": 2022
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "be3d47fa7c03df95bd244ad6b23cb371a63c0b6bc6e70f722b59d52a161c197e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000043505",
+    "input_tokens": 28,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 79
+  }
+}

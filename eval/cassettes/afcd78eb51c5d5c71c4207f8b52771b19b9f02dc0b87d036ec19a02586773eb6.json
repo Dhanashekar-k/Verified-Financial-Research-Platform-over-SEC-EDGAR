@@ -1,0 +1,52 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Monolithic Power Systems' total liabilities at the end of Q3 FY2025, as originally reported, were $638.4 million [1]. This figure was later restated, and the latest restated value is $729.9 million [2].",
+    "claims": [
+      {
+        "display": "$638.4 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:5842531248794688814",
+          "fact_ids": [
+            5842531248794688814
+          ],
+          "type": "expr"
+        },
+        "text": "Total liabilities at the end of Q3 FY2025, as originally reported: $638.4 million",
+        "unit": "USD",
+        "value": "638445000.0000"
+      },
+      {
+        "display": "$729.9 million",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:-6943458217825425100",
+          "fact_ids": [
+            -6943458217825425100
+          ],
+          "type": "expr"
+        },
+        "text": "Total liabilities at the end of Q3 FY2025, latest restated value: $729.9 million",
+        "unit": "USD",
+        "value": "729881000.0000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "afcd78eb51c5d5c71c4207f8b52771b19b9f02dc0b87d036ec19a02586773eb6",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00024115",
+    "input_tokens": 444,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 825
+  }
+}

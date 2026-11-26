@@ -1,0 +1,78 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "AMD's operating margin was 22.2% in FY2021 [1] and 5.4% in FY2022 [2]. The material does not explain what drove the change between these years. The FY2022 10-K MD&A overview notes that AMD completed its acquisition of Xilinx in February 2022 [3], but the passage does not connect that acquisition to operating margin, and the available segment discussion covers 2021 versus 2020 only.",
+    "claims": [
+      {
+        "display": "22.2%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": false,
+        "provenance": {
+          "expr": "f:-6519814778290900249 / f:7517265675616158945",
+          "fact_ids": [
+            -6519814778290900249,
+            7517265675616158945
+          ],
+          "type": "expr"
+        },
+        "text": "AMD's operating margin for FY2021 was 22.2%.",
+        "unit": "ratio",
+        "value": "0.2219788243884629426798101497"
+      },
+      {
+        "display": "5.4%",
+        "id": "c2",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "f:-963437640886496611 / f:-6726632721678166064",
+          "fact_ids": [
+            -963437640886496611,
+            -6726632721678166064
+          ],
+          "type": "expr"
+        },
+        "text": "AMD's operating margin for FY2022 was 5.4%.",
+        "unit": "ratio",
+        "value": "0.05355705266725986187025973476"
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:AMD_2022_10K#p43#0000",
+          "quote": "In February 2022, we completed our strategic acquisition of Xilinx, Inc. (Xilinx)",
+          "type": "chunk"
+        },
+        "text": "AMD completed its acquisition of Xilinx in February 2022.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Operating margin of 22.2% for FY2021 and 5.4% for FY2022",
+        "AMD completed its acquisition of Xilinx in February 2022"
+      ],
+      "missing": [
+        "An MD&A discussion of the FY2022 versus FY2021 operating income or operating expense drivers",
+        "A computed change in operating margin between FY2021 and FY2022"
+      ],
+      "reason": "The material does not explain the drivers of the FY2022 change in operating margin."
+    }
+  },
+  "request_key": "bf03813a52d69f0b2d98f419beca073b5ef436ef74ad2e675cb368d07b9aff89",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00082780",
+    "input_tokens": 5757,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 2109
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Marsh & McLennan's operating cash flow decreased 1.5% in FY2022, measured from FY2021 [1].",
+    "claims": [
+      {
+        "display": "-1.5%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:-4997307140249170794 - f:4086886864837937509) / f:4086886864837937509",
+          "fact_ids": [
+            -4997307140249170794,
+            4086886864837937509
+          ],
+          "type": "expr"
+        },
+        "text": "Marsh & McLennan's operating cash flow changed by -1.5% in FY2022, growth measured from FY2021.",
+        "unit": "ratio",
+        "value": "-0.01450511945392491467576791809"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "c8251288c102f82aa3cba876208eed78234ff706f0821c576e813f6586008429",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00017475",
+    "input_tokens": 311,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 586
+  }
+}

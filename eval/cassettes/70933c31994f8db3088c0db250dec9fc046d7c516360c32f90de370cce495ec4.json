@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "EOG Resources"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "changes in estimated proved reserves effect on depreciation, depletion and amortization",
+      "reserve bases used for capitalized costs (proved and unproved properties)"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2024
+      }
+    ],
+    "section_hints": [
+      "7",
+      "8"
+    ]
+  },
+  "request_key": "70933c31994f8db3088c0db250dec9fc046d7c516360c32f90de370cce495ec4",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000097555",
+    "input_tokens": 79,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 285
+  }
+}

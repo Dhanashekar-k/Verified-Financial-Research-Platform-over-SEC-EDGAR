@@ -1,0 +1,36 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "FedEx Corp's operating income for Q2 FY2026 was $1.4 billion [1].",
+    "claims": [
+      {
+        "display": "$1.4 billion",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:-6677160790002274726",
+          "fact_ids": [
+            -6677160790002274726
+          ],
+          "type": "expr"
+        },
+        "text": "FedEx Corp operating income for Q2 FY2026 was $1.4 billion.",
+        "unit": "USD",
+        "value": "1378000000.0000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "5da25e1e51a90045c3158c49ff3c46423fb7c40302551b9240e374ec93927e50",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00014765",
+    "input_tokens": 239,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 492
+  }
+}

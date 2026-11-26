@@ -1,0 +1,43 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Yes. The filings point to a gain on completion of the Consumer Healthcare JV transaction, which the 2021 10-K describes as a non-recurring item when comparing 2020 with 2019 [1]. The material provided does not quantify this gain or state its effect on 2019 net income.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:PFIZER_2021_10K#p79#0000",
+          "quote": "the non-recurrence of the gain on the completion of the Consumer Healthcare JV transaction",
+          "type": "chunk"
+        },
+        "text": "The gain on completion of the Consumer Healthcare JV transaction did not recur, and that non-recurrence was a driver of the 2020 domestic result compared with 2019.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "A gain on completion of the Consumer Healthcare JV transaction is referenced as a non-recurring item in the 2020 versus 2019 comparison."
+      ],
+      "missing": [
+        "The dollar amount of the Consumer Healthcare JV gain and its effect on 2019 net income.",
+        "Any other non-recurring events in 2019 net income, with their amounts."
+      ],
+      "reason": "The passages identify a non-recurring 2019 gain from the Consumer Healthcare JV but do not give its amount or its effect on 2019 net income."
+    }
+  },
+  "request_key": "b2070c64141ac7dd30274f9e833bedf4e40ff8e7d7004264fae720cd8fcf7fc3",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00084735",
+    "input_tokens": 4393,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 2460
+  }
+}

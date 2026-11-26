@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Quanta Services' capital expenditures increased by 38.9% from fiscal 2023 to fiscal 2024 [1].",
+    "claims": [
+      {
+        "display": "38.9%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:3847167040542655965 - f:-4385298720005219267) / f:-4385298720005219267",
+          "fact_ids": [
+            3847167040542655965,
+            -4385298720005219267
+          ],
+          "type": "expr"
+        },
+        "text": "Quanta Services' capital expenditures grew 38.9% in FY2024, measured from FY2023.",
+        "unit": "ratio",
+        "value": "0.3893142411620894980025436807"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "be76a938660624772f5396b137224f04600ec622ed918fa980576a3388d45927",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00014715",
+    "input_tokens": 304,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 477
+  }
+}

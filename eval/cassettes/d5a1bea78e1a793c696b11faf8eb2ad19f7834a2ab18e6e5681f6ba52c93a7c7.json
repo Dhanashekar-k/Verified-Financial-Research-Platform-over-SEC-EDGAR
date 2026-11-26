@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Raymond James Financial"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "net_income"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "growth",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "Q1",
+        "fiscal_year": 2025
+      },
+      {
+        "fiscal_period": "Q1",
+        "fiscal_year": 2026
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "d5a1bea78e1a793c696b11faf8eb2ad19f7834a2ab18e6e5681f6ba52c93a7c7",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000083405",
+    "input_tokens": 41,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 236
+  }
+}

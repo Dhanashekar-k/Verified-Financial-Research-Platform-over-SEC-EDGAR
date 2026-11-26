@@ -1,0 +1,76 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "IFF states that operating cash flow is the primary source of funds for capital investment needs, dividends paid to shareholders and debt service repayments [1], and it anticipates that cash flows from operations and availability under existing credit facilities will be sufficient to meet its investing and financing needs [2]. Following the Merger with N&B, IFF assumed the indebtedness N&B incurred in its debt financings, including the term loan facilities and a series of Senior Notes totaling $6.250 billion [3]. The N&B term loan was a senior unsecured term loan credit facility of $1.250 billion [4].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000051253-23-000009#7#0024",
+          "quote": "Operating cash flow provides the primary source of funds for capital investment needs, dividends paid to shareholders and debt service repayments.",
+          "type": "chunk"
+        },
+        "text": "Operating cash flow is the primary source of funds for capital investment needs, dividends paid to shareholders and debt service repayments.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000051253-23-000009#7#0024",
+          "quote": "We anticipate that cash flows from operations and availability under our existing credit facilities will be sufficient to meet our investing and financing needs.",
+          "type": "chunk"
+        },
+        "text": "IFF anticipates that cash flows from operations and availability under its existing credit facilities will be sufficient to meet its investing and financing needs.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000051253-23-000009#7#0024",
+          "quote": "Following the Merger, we assumed the indebtedness incurred by N&B in the debt financings, which included (i) the 2024 Term Loan Facility and 2026 Term Loan Facility and (ii) a series of Senior Notes in the aggregate amount of $6.250 billion with maturities ranging from 2 to 30 years.",
+          "type": "chunk"
+        },
+        "text": "Following the Merger, IFF assumed the indebtedness N&B incurred, including a series of Senior Notes in the aggregate amount of $6.250 billion.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c4",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000051253-23-000009#7#0024",
+          "quote": "a senior unsecured term loan credit facility in an aggregate principal amount of $1.250 billion",
+          "type": "chunk"
+        },
+        "text": "The N&B term loan was a senior unsecured term loan credit facility in an aggregate principal amount of $1.250 billion.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "81878ebe1c1b24b6ade03a477cda22434f4a746e26987e574cef1b0d22e32046",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00085005",
+    "input_tokens": 5097,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 2330
+  }
+}

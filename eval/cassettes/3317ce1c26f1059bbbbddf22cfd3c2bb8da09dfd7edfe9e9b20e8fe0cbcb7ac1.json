@@ -1,0 +1,36 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "3M's FY2018 capital expenditure was $1.6 billion [1].",
+    "claims": [
+      {
+        "display": "$1.6 billion",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:-2563878558441775137",
+          "fact_ids": [
+            -2563878558441775137
+          ],
+          "type": "expr"
+        },
+        "text": "3M's FY2018 capital expenditure was $1.6 billion.",
+        "unit": "USD",
+        "value": "1577000000.0000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "3317ce1c26f1059bbbbddf22cfd3c2bb8da09dfd7edfe9e9b20e8fe0cbcb7ac1",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00017605",
+    "input_tokens": 247,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 604
+  }
+}

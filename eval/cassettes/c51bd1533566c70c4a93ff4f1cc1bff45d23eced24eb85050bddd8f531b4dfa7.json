@@ -1,0 +1,27 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The filings provided do not contain any revenue guidance for fiscal year 2029. The passages only report historical results for fiscal years 2022 through 2026, such as the fiscal 2026 highlights that Microsoft Cloud revenue increased 27% to $214.4 billion. No forward-looking revenue guidance is given in the material.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "Fiscal year 2026 highlights: Microsoft Cloud revenue increased 27% to $214.4 billion compared with fiscal year 2025."
+      ],
+      "missing": [
+        "A management revenue guidance statement or forecast for fiscal year 2029 from an SEC filing covering fiscal year 2029."
+      ],
+      "reason": "The provided passages contain only historical fiscal year results and no forward-looking revenue guidance for fiscal year 2029."
+    }
+  },
+  "request_key": "c51bd1533566c70c4a93ff4f1cc1bff45d23eced24eb85050bddd8f531b4dfa7",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00035115",
+    "input_tokens": 5359,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 282
+  }
+}

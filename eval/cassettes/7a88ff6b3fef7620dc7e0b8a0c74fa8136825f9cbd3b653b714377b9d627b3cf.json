@@ -1,0 +1,76 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "CF Industries recorded the impairment in the third quarter of 2023 because, given the terms of the New NGC Contract, the carrying value of its PLNL equity method investment exceeded its fair value [1]. The impairment was $43 million [2]. The remaining risk is that if NGC does not make sufficient natural gas available to PLNL at prices that permit profitable operations, PLNL may cease operating its facility and CF would write off the remaining investment [3]. The carrying value of the investment at December 31, 2023 was $26 million [4].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001324404-24-000008#8#0064",
+          "quote": "due to the terms of the New NGC Contract, we assessed our investment in PLNL for impairment and determined that the carrying value of our equity method investment in PLNL exceeded its fair value.",
+          "type": "chunk"
+        },
+        "text": "In the third quarter of 2023, due to the terms of the New NGC Contract, CF assessed its PLNL investment for impairment and determined that the carrying value of its equity method investment exceeded its fair value.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001324404-24-000008#8#0064",
+          "quote": "we recorded an impairment of our equity method investment in PLNL of $43 million",
+          "type": "chunk"
+        },
+        "text": "The impairment of the equity method investment in PLNL was $43 million.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001324404-24-000008#7#0098",
+          "quote": "If NGC does not make sufficient quantities of natural gas available to PLNL at prices that permit profitable operations, PLNL may cease operating its facility and we would write off the remaining investment in PLNL.",
+          "type": "chunk"
+        },
+        "text": "If NGC does not make sufficient quantities of natural gas available to PLNL at prices that permit profitable operations, PLNL may cease operating its facility and CF would write off the remaining investment in PLNL.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c4",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001324404-24-000008#7#0098",
+          "quote": "The carrying value of our equity method investment in PLNL at December 31, 2023 was $26 million.",
+          "type": "chunk"
+        },
+        "text": "The carrying value of the equity method investment in PLNL at December 31, 2023 was $26 million.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "7a88ff6b3fef7620dc7e0b8a0c74fa8136825f9cbd3b653b714377b9d627b3cf",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00084660",
+    "input_tokens": 4523,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 2431
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Deere & Company"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "income_tax"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "growth",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "Q3",
+        "fiscal_year": 2020
+      },
+      {
+        "fiscal_period": "Q3",
+        "fiscal_year": 2021
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "9a770157355d6a336958a2529bc6d9aceaf99d92be176a5eecf5cc65ffb484ab",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000082555",
+    "input_tokens": 59,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 229
+  }
+}

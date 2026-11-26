@@ -1,0 +1,58 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Kraft Heinz's FY2019 inventory turnover ratio cannot be computed from the material provided. The passages report FY2019 cost of products sold of 16,830 million [1] and inventories of 2,721 million at December 28, 2019 and 2,667 million at December 29, 2018 [2]. No computed figure for the ratio or its average inventory is available.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:KRAFTHEINZ_2019_10K#p50#0000",
+          "quote": "Cost of products sold | 16,830 | 17,347 | 17,043",
+          "type": "chunk"
+        },
+        "text": "Cost of products sold for FY2019 was 16,830 (in millions).",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:KRAFTHEINZ_2019_10K#p52#0000",
+          "quote": "Inventories | 2,721 | 2,667",
+          "type": "chunk"
+        },
+        "text": "Inventories were 2,721 at December 28, 2019 and 2,667 at December 29, 2018 (in millions).",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "FY2019 cost of products sold of 16,830 million (passage p50)",
+        "Inventories of 2,721 million at December 28, 2019 and 2,667 million at December 29, 2018 (passage p52)"
+      ],
+      "missing": [
+        "A NUMERIC RESULTS entry giving the computed FY2019 inventory turnover ratio",
+        "A NUMERIC RESULTS entry giving average inventory between FY2018 and FY2019"
+      ],
+      "reason": "No computed NUMERIC RESULTS for FY2019 inventory turnover, average inventory, or COGS were provided, and the ratio cannot be derived from the passages without arithmetic."
+    }
+  },
+  "request_key": "ea21ba1ff152999c14fb5c0913b391907d3fc107a5b21a391ce4190b3c2995b7",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00068525",
+    "input_tokens": 4996,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1691
+  }
+}

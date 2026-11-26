@@ -1,0 +1,44 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Visa"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "pension plan market risk",
+      "hypothetical decline in pension asset values and discount rates",
+      "sensitivity of funded status and pension cost",
+      "U.S. versus non-U.S. pension plans"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2022
+      }
+    ],
+    "section_hints": [
+      "7A",
+      "7",
+      "8"
+    ]
+  },
+  "request_key": "da5f326ff1af7814deaa57c4c8b8d412aaec7bf2883a8f0064671b4a7f0328db",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000104705",
+    "input_tokens": 82,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 313
+  }
+}

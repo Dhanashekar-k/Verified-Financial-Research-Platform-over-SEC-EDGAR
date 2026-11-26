@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The provided material does not give a dollar value for an Apple supply agreement with TSMC. It states only that Apple's unconditional purchase obligations primarily consist of payments for supplier arrangements, internet services and content creation [1].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000320193-22-000108#8#0075",
+          "quote": "The Company\u2019s unconditional purchase obligations primarily consist of payments for supplier arrangements, internet services and content creation.",
+          "type": "chunk"
+        },
+        "text": "Apple's unconditional purchase obligations primarily consist of payments for supplier arrangements, internet services and content creation.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Apple's unconditional purchase obligations primarily consist of payments for supplier arrangements, internet services and content creation."
+      ],
+      "missing": [
+        "A passage or numeric result identifying the Apple-TSMC supply agreement and its dollar value."
+      ],
+      "reason": "The passages do not mention TSMC or any supply agreement with a stated dollar amount, and no numeric result was provided for it."
+    }
+  },
+  "request_key": "e48ddbac2d25cbbacd42147e7527435fa18afebe512d6f130e7c14824ad7460b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00054435",
+    "input_tokens": 5128,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1101
+  }
+}

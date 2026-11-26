@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Costco"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "total_assets"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "value",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2021
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "d31b1cd86d0e3ee363457e1841347a08fe579ca391119057a23f0aa68a2c1b9b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000064955",
+    "input_tokens": 47,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 161
+  }
+}

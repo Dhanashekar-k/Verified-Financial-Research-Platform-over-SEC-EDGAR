@@ -1,0 +1,44 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "3M maintains a strong liquidity profile [1]. The material does not contain a quick ratio for Q2 FY2023, so the question cannot be answered from it.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:3M_2023Q2_10Q#p70#0000",
+          "quote": "3M maintains a strong liquidity profile.",
+          "type": "chunk"
+        },
+        "text": "3M maintains a strong liquidity profile.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "3M maintains a strong liquidity profile."
+      ],
+      "missing": [
+        "A quick ratio for Q2 FY2023 computed from NUMERIC RESULTS (quick assets and current liabilities)",
+        "Inventory or quick-asset figures needed to compute a quick ratio for June 30, 2023",
+        "A passage stating whether the quick ratio is a relevant liquidity measure for 3M"
+      ],
+      "reason": "The supplied material contains no quick ratio for Q2 FY2023 and no passage that discusses the quick ratio or its relevance to 3M's liquidity."
+    }
+  },
+  "request_key": "e7c08b3cb04e1fd379f936fd98c736324f6bef8bc576b1d4494cd214bd1266b7",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00060755",
+    "input_tokens": 4422,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1495
+  }
+}

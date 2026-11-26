@@ -1,0 +1,36 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "AIG's net cash from operating activities for fiscal year 2024 was $3.3 billion [1].",
+    "claims": [
+      {
+        "display": "$3.3 billion",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:-6906720750787959233",
+          "fact_ids": [
+            -6906720750787959233
+          ],
+          "type": "expr"
+        },
+        "text": "AIG's net cash from operating activities for fiscal year 2024 was $3.3 billion.",
+        "unit": "USD",
+        "value": "3273000000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "03969f4c51217e81e04f8c1e3215eb9644ad8502459ce460d2936571b72aa1b4",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00007220",
+    "input_tokens": 250,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 188
+  }
+}

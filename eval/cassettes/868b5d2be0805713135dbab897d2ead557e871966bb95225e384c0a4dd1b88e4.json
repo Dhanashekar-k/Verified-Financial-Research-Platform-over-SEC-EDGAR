@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Ford"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "segment reporting changes",
+      "segment reporting",
+      "merger with General Motors"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2023
+      }
+    ],
+    "section_hints": [
+      "8",
+      "7"
+    ]
+  },
+  "request_key": "868b5d2be0805713135dbab897d2ead557e871966bb95225e384c0a4dd1b88e4",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000150905",
+    "input_tokens": 31,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 508
+  }
+}

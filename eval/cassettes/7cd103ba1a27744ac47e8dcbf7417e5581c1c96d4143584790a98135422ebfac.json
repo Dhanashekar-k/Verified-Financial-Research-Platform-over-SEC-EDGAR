@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The material does not give a gross margin figure for Kirkland Signature products alone. The filings only say that these products generally earn higher margins than national brands [1].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000909832-22-000021#1#0010",
+          "quote": "generally earn higher margins",
+          "type": "chunk"
+        },
+        "text": "Costco states that Kirkland Signature products generally earn higher margins.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Costco states that Kirkland Signature products generally earn higher margins."
+      ],
+      "missing": [
+        "A gross margin figure for Kirkland Signature products alone, from NUMERIC RESULTS or a filing passage that reports the number."
+      ],
+      "reason": "The provided material contains no numeric gross margin for Kirkland Signature products alone, only a qualitative statement that they generally earn higher margins."
+    }
+  },
+  "request_key": "7cd103ba1a27744ac47e8dcbf7417e5581c1c96d4143584790a98135422ebfac",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00049810",
+    "input_tokens": 4998,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 942
+  }
+}

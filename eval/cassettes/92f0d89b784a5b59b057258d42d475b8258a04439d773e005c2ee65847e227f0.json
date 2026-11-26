@@ -1,0 +1,36 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "contradiction": false,
+    "points": [
+      {
+        "covered": true,
+        "index": 0
+      },
+      {
+        "covered": false,
+        "index": 1
+      },
+      {
+        "covered": true,
+        "index": 2
+      },
+      {
+        "covered": false,
+        "index": 3
+      }
+    ],
+    "reason": "The answer covers the ABCP rate plus 0.75% pricing (5.33% combined) and the $0.4 million sensitivity to a 25 bp increase, but it gives only the ~$166 million average balance without the $330 million year-end balance and says nothing about the revolving credit facility."
+  },
+  "request_key": "92f0d89b784a5b59b057258d42d475b8258a04439d773e005c2ee65847e227f0",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 683,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00125815",
+    "input_tokens": 404,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 164
+  }
+}

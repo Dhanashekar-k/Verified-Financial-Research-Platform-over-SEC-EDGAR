@@ -1,0 +1,43 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "CVS Health"
+      }
+    ],
+    "intent": "hybrid",
+    "metrics": [
+      "capex",
+      "revenue"
+    ],
+    "narrative_topics": [
+      "capital intensity",
+      "capital expenditure requirements"
+    ],
+    "needs_clarification": null,
+    "operation": "value",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2022
+      }
+    ],
+    "section_hints": [
+      "7"
+    ]
+  },
+  "request_key": "ddd06901e05d00f50dc45a34c94f8955fbad57b7fda2b2332940b80cbf5b3b77",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000132355",
+    "input_tokens": 30,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 434
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "EQT Corp's capex went up by 69.3% from Q1 FY2022 to Q1 FY2023 [1].",
+    "claims": [
+      {
+        "display": "69.3%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:-8761075957363552642 - f:-2078592421155970099) / f:-2078592421155970099",
+          "fact_ids": [
+            -8761075957363552642,
+            -2078592421155970099
+          ],
+          "type": "expr"
+        },
+        "text": "EQT Corp's capex rose 69.3% from Q1 FY2022 to Q1 FY2023.",
+        "unit": "ratio",
+        "value": "0.6928366879817709669804058423"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "ce658cc24b116fc71cfe46497fb30a773f6ddd95f4929ff0e0d7e35918ae8e15",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0001825",
+    "input_tokens": 301,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 619
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The answer identifies operating activities as the largest source of cash flow in FY2023 at $1,824 million, which matches the gold answer's $1.8 billion."
+  },
+  "request_key": "4c83c99ff154f8c6cae818939ac5c5039ca635edabd927c08c02492f692ae422",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00055955",
+    "input_tokens": 198,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 66
+  }
+}

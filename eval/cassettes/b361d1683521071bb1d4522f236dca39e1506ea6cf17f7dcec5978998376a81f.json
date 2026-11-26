@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Exelon"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "operating_income"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "value",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2023
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "b361d1683521071bb1d4522f236dca39e1506ea6cf17f7dcec5978998376a81f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000040155",
+    "input_tokens": 21,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 67
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Brown & Brown's Q1 FY2023 capital expenditures, as originally filed, were $11.8 million [1]. This figure was later restated, and the latest restated value is $12.0 million [2].",
+    "claims": [
+      {
+        "display": "$11.8 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:-6651281536542086215",
+          "fact_ids": [
+            -6651281536542086215
+          ],
+          "type": "expr"
+        },
+        "text": "Brown & Brown's Q1 FY2023 capital expenditures, as originally filed, were $11.8 million.",
+        "unit": "USD",
+        "value": "11800000.0000"
+      },
+      {
+        "display": "$12.0 million",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:-5036836219313018436",
+          "fact_ids": [
+            -5036836219313018436
+          ],
+          "type": "expr"
+        },
+        "text": "Brown & Brown's Q1 FY2023 capital expenditures were later restated to $12.0 million.",
+        "unit": "USD",
+        "value": "12000000.0000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "01ec83443db9a5731cf83745a6a39689abed64d703a11bd180aeaf3760ec7daa",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00028160",
+    "input_tokens": 403,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 995
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "3M"
+      }
+    ],
+    "intent": "hybrid",
+    "metrics": [
+      "operating_margin"
+    ],
+    "narrative_topics": [
+      "drivers of operating margin change"
+    ],
+    "needs_clarification": null,
+    "operation": "trend",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2021
+      },
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2022
+      }
+    ],
+    "section_hints": [
+      "7"
+    ]
+  },
+  "request_key": "059adcb582454d348374a991fc8e57cfa7003cb1b60efbfaa49396aae450774d",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000133755",
+    "input_tokens": 53,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 435
+  }
+}

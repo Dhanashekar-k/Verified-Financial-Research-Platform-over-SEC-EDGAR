@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The filings report that Comirnaty-related manufacturing activities performed for BioNTech totaled $320 million in 2021 [1], but the material gives no internal manufacturing cost per dose.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000078003-22-000027#7#0040",
+          "quote": "Revenues related to these manufacturing activities totaled $320 million for 2021 and $0 million in 2020.",
+          "type": "chunk"
+        },
+        "text": "Revenues related to these manufacturing activities totaled $320 million for 2021 and $0 million in 2020.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Revenues related to Comirnaty-related manufacturing activities performed on behalf of BioNTech totaled $320 million for 2021 and $0 million in 2020."
+      ],
+      "missing": [
+        "Internal manufacturing cost of Pfizer's COVID-19 vaccine per dose, which would require a cost figure from the filings or XBRL results and a dose count."
+      ],
+      "reason": "The passages do not state Pfizer's internal manufacturing cost for one dose of its COVID-19 vaccine."
+    }
+  },
+  "request_key": "3a0cac754ce0711e1ac5cce403787be75d19c7f3282a40f72f6db95095d1888e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00055640",
+    "input_tokens": 4964,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1182
+  }
+}

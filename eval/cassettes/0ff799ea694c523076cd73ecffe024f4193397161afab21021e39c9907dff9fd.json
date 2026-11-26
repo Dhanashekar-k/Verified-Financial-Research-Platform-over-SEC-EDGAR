@@ -1,0 +1,36 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "MGM"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "short-term investments by type of debt security",
+      "largest short-term investment category"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": "H1 FY2023",
+    "periods": [],
+    "section_hints": [
+      "8",
+      "7"
+    ]
+  },
+  "request_key": "0ff799ea694c523076cd73ecffe024f4193397161afab21021e39c9907dff9fd",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000120455",
+    "input_tokens": 37,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 385
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The provided material does not describe TE Connectivity's revenue recognition policy for fiscal 2024.",
+    "claims": [],
+    "refusal": {
+      "found": [
+        "The passages state that the fiscal year ends on the last Friday of September and describe the fiscal 2024 change in place of incorporation and segment sales trends."
+      ],
+      "missing": [
+        "A passage from the revenue recognition or significant accounting policies note describing when revenue for product sales is recognized and how variable consideration such as rebates and return allowances is treated."
+      ],
+      "reason": "The passages cover the change in place of incorporation, segment sales trends, debt, dividends and share repurchases, but none describe when product sales revenue is recognized or how rebates and return allowances are handled."
+    }
+  },
+  "request_key": "c18c1da4f6c2dfedbaaffd921672e2d1acc72e4d5240463b34b38ff8842f26f5",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00049415",
+    "input_tokens": 4819,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 962
+  }
+}

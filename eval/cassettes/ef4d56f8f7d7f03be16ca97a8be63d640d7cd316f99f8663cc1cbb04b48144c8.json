@@ -1,0 +1,25 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The provided material does not describe any Microsoft acquisition of Tesla.",
+    "claims": [],
+    "refusal": {
+      "found": [],
+      "missing": [
+        "Passages from a Microsoft SEC filing describing an acquisition of Tesla, or numeric results for such a transaction."
+      ],
+      "reason": "None of the supplied passages or numeric results mention an acquisition of Tesla by Microsoft; the passages cover other transactions such as LinkedIn, ZeniMax and Activision Blizzard."
+    }
+  },
+  "request_key": "ef4d56f8f7d7f03be16ca97a8be63d640d7cd316f99f8663cc1cbb04b48144c8",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00035060",
+    "input_tokens": 4283,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 495
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The risk factors say inflation is one of the conditions whose adverse changes could reduce demand and pricing for new homes, and so hurt revenues and earnings [1]. The supplied material does not say what drove higher labor and materials costs in 2021.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000822416-22-000007#1A#0000",
+          "quote": "availability of financing, inflation, and interest rate levels. Adverse changes in any of these conditions generally, or in the markets where we operate, could decrease demand and pricing for new homes in these areas",
+          "type": "chunk"
+        },
+        "text": "PulteGroup says inflation is one of the conditions whose adverse changes could decrease demand and pricing for new homes and reduce the prices it can charge for homes.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Risk factors name inflation as one of the conditions whose adverse changes could decrease demand and pricing for new homes and reduce home prices."
+      ],
+      "missing": [
+        "Passages from the fiscal 2021 10-K discussing the drivers of higher labor and materials costs."
+      ],
+      "reason": "The passages describe how inflation could hurt the business but do not explain the factors behind higher labor and materials costs in fiscal 2021."
+    }
+  },
+  "request_key": "505116c72d8e00fb5b59ed0073f3355fc57d8e8534cdc9780c93962217cdd37a",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00048710",
+    "input_tokens": 3073,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1283
+  }
+}

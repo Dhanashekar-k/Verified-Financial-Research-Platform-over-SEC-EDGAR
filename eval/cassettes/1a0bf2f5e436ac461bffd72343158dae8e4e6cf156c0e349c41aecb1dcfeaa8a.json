@@ -1,0 +1,36 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Diamondback Energy had total assets of $29.0 billion at the end of fiscal 2023 [1].",
+    "claims": [
+      {
+        "display": "$29.0 billion",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:-8601785512929598637",
+          "fact_ids": [
+            -8601785512929598637
+          ],
+          "type": "expr"
+        },
+        "text": "Diamondback Energy's total assets for FY2023 were $29.0 billion.",
+        "unit": "USD",
+        "value": "29001000000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "1a0bf2f5e436ac461bffd72343158dae8e4e6cf156c0e349c41aecb1dcfeaa8a",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00007090",
+    "input_tokens": 234,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 186
+  }
+}

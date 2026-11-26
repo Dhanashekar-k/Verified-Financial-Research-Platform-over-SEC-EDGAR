@@ -1,0 +1,45 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The filings state that Data Center net revenue increased by 64% in 2022 compared with 2021 [1]. The material gives no growth figures for the Client or Gaming segments, so segments cannot be ranked by proportional increase.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:AMD_2022_10K#p48#0000",
+          "quote": "Data Center net revenue of $6 billion in 2022 increased by 64%, compared to net revenue of $3.7 billion in 2021.",
+          "type": "chunk"
+        },
+        "text": "Data Center net revenue increased by 64% in 2022 compared with 2021.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Data Center net revenue increased by 64% from 2021 to 2022.",
+        "Segment net revenue for 2022 and 2021 appears in a summary table: Data Center, Client, and Gaming figures for both years."
+      ],
+      "missing": [
+        "Numeric results computing year-over-year growth for the Client segment net revenue.",
+        "Numeric results computing year-over-year growth for the Gaming segment net revenue.",
+        "A comparison of the growth rates of Data Center, Client, and Gaming to identify the largest proportional increase."
+      ],
+      "reason": "The material does not provide computed growth figures for each segment, so it cannot determine which non-Embedded segment's sales increased proportionally the most."
+    }
+  },
+  "request_key": "427300984d77938101d14af9c8a9b5878696dc90257ad90466a1417bd6ef6e43",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00066785",
+    "input_tokens": 4983,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1624
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The material does not allow the FY2018 fixed asset turnover ratio to be calculated. The balance sheet gives net property and equipment of 11,349 at December 31, 2018 and 10,292 at December 31, 2017 [1][2], but no FY2018 revenue figure or computed ratio is available.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:CVSHEALTH_2018_10K#p304#0000",
+          "quote": "Property and equipment, net | 11,349 | 10,292",
+          "type": "chunk"
+        },
+        "text": "Property and equipment, net was 11,349 at December 31, 2018.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:CVSHEALTH_2018_10K#p304#0000",
+          "quote": "Property and equipment, net | 11,349 | 10,292",
+          "type": "chunk"
+        },
+        "text": "Property and equipment, net was 10,292 at December 31, 2017.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Property and equipment, net of 11,349 at December 31, 2018 and 10,292 at December 31, 2017 (consolidated balance sheet).",
+        "Total revenues of 184,786 for fiscal 2017 (quarterly data), which is not the FY2018 revenue needed."
+      ],
+      "missing": [
+        "FY2018 total revenues from the consolidated statement of operations, as a numeric result.",
+        "A numeric result for the fixed asset turnover ratio computed as FY2018 revenue divided by average property and equipment for FY2017 and FY2018."
+      ],
+      "reason": "The provided material contains no computed FY2018 revenue figure or fixed asset turnover result, so the ratio cannot be calculated without arithmetic outside the supplied figures."
+    }
+  },
+  "request_key": "2790db65a19df0e24e8949b50e7f908b253858a7bc9acf1b078b04799ab708af",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00057870",
+    "input_tokens": 4070,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1450
+  }
+}

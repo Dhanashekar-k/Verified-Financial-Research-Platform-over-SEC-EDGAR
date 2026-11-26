@@ -1,0 +1,39 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Boeing"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "net property, plant, and equipment"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2018
+      }
+    ],
+    "section_hints": [
+      "8"
+    ]
+  },
+  "request_key": "0f958f49bc9d0c4a7bc1cf85a62f492577e21e8cb494600fa2f2737587dcdd15",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000089405",
+    "input_tokens": 71,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 254
+  }
+}

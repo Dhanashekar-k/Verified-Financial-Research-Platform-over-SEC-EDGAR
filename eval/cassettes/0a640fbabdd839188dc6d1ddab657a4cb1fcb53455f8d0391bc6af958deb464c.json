@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The filings provided do not list the ingredients of Coca-Cola's secret formula. They only define \"concentrates\" as flavorings and other ingredients that, combined with water and sweeteners, are used to prepare syrups or finished beverages [1].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000021344-21-000008#1#0002",
+          "quote": "means flavorings and other ingredients which, when combined with water and, depending on the product, sweeteners (nutritive or non-nutritive) are used to prepare syrups or finished beverages",
+          "type": "chunk"
+        },
+        "text": "The filings define concentrates as flavorings and other ingredients that, combined with water and sweeteners, are used to prepare syrups or finished beverages.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "The filings define concentrates as flavorings and other ingredients that, combined with water and sweeteners, are used to prepare syrups or finished beverages."
+      ],
+      "missing": [
+        "A disclosed list of the specific ingredients in Coca-Cola's secret formula, which the filings do not provide."
+      ],
+      "reason": "The passages do not disclose the ingredients of Coca-Cola's secret formula."
+    }
+  },
+  "request_key": "0a640fbabdd839188dc6d1ddab657a4cb1fcb53455f8d0391bc6af958deb464c",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00060995",
+    "input_tokens": 5565,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1276
+  }
+}

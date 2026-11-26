@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "EchoStar Corporation"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "r_and_d"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "value",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "Q3",
+        "fiscal_year": 2022
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "f2d4a7e2baa56f8a65f6564aa593cfcc2f08604544c527f12fbcb81a77e33ecb",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000046305",
+    "input_tokens": 44,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 87
+  }
+}

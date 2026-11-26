@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Walt Disney Co"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "interest rate risk management objectives and instruments",
+      "foreign currency exposure management objectives and instruments",
+      "market risk disclosures"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2023
+      }
+    ],
+    "section_hints": [
+      "7A",
+      "7"
+    ]
+  },
+  "request_key": "6a8d6a94563b88ad1494f86039408d09a6578123f3cc8cda4c6834ca5ec3e54a",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000083605",
+    "input_tokens": 60,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 233
+  }
+}

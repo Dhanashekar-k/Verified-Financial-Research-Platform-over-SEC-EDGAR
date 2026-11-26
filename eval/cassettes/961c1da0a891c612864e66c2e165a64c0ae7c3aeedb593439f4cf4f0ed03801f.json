@@ -1,0 +1,58 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Boeing's Commercial Airplanes segment sells principally to the commercial airline industry worldwide [1]. Its Global Services segment also provides services to commercial and defense customers worldwide [2]. The passages do not give a revenue breakdown by customer type, so the relative weight of these customers is not established.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000012927-23-000007#1#0000",
+          "quote": "principally to the commercial airline industry worldwide",
+          "type": "chunk"
+        },
+        "text": "The Commercial Airplanes segment develops, produces and markets commercial jet aircraft principally to the commercial airline industry worldwide.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000012927-23-000007#1#0001",
+          "quote": "provides services to our commercial and defense customers worldwide",
+          "type": "chunk"
+        },
+        "text": "The Global Services segment provides services to commercial and defense customers worldwide.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Commercial Airplanes sells principally to the commercial airline industry worldwide.",
+        "Global Services provides services to commercial and defense customers worldwide."
+      ],
+      "missing": [
+        "Revenue or sales breakdown by customer type for FY2022",
+        "Identification of the principal defense customers for Defense, Space & Security"
+      ],
+      "reason": "The passages name customer categories by segment but do not quantify which customers are primary by revenue for FY2022."
+    }
+  },
+  "request_key": "961c1da0a891c612864e66c2e165a64c0ae7c3aeedb593439f4cf4f0ed03801f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00060120",
+    "input_tokens": 4940,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1366
+  }
+}

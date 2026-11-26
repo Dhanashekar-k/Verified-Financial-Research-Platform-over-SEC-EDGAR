@@ -1,0 +1,76 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Williams expects to have sufficient liquidity to manage its businesses in 2022, based on forecasted cash flow from operations and other sources of liquidity [1]. Its listed sources include cash and cash equivalents on hand [4], and for its long-term debt maturities the potential sources are cash generated from operations, refinancing at attractive long-term rates or from the credit facility, and asset monetizations [2]. A later passage adds cash on hand to the maturity sources and notes that it retired $1.25 billion of notes in January 2022 with cash on hand [3].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000107263-22-000007#7#0040",
+          "quote": "Based on our forecasted levels of cash flow from operations and other sources of liquidity, we expect to have sufficient liquidity to manage our businesses in 2022.",
+          "type": "chunk"
+        },
+        "text": "Williams expects to have sufficient liquidity to manage its businesses in 2022, based on forecasted cash flow from operations and other sources of liquidity.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000107263-22-000007#7#0040",
+          "quote": "Our potential sources of liquidity available to address these maturities include cash generated from operations, proceeds from refinancing at attractive long-term rates or from our credit facility, as well as proceeds from asset monetizations.",
+          "type": "chunk"
+        },
+        "text": "Potential sources of liquidity to address long-term debt maturities include cash generated from operations, proceeds from refinancing at attractive long-term rates or from the credit facility, and proceeds from asset monetizations.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000107263-22-000007#7#0039",
+          "quote": "Our potential sources of liquidity available to address these maturities include cash on hand, proceeds from refinancing at attractive long-term rates or from our credit facility, as well as proceeds from asset monetizations.",
+          "type": "chunk"
+        },
+        "text": "A passage on debt due within one year lists cash on hand, refinancing at attractive long-term rates or from the credit facility, and asset monetizations as potential sources to address those maturities.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c4",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000107263-22-000007#7#0040",
+          "quote": "Cash and cash equivalents on hand",
+          "type": "chunk"
+        },
+        "text": "Cash and cash equivalents on hand is among the listed sources of liquidity for 2022.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "cc3ae371bdc44595183e86918e0b381a964dd457a6bfea234283aa0ac2672533",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00094755",
+    "input_tokens": 5087,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 2722
+  }
+}

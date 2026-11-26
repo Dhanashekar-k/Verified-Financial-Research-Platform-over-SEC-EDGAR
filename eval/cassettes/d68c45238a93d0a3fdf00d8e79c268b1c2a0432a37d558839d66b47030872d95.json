@@ -1,0 +1,50 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Walmart"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "unadjusted EBITDA margin",
+      "unadjusted operating income",
+      "depreciation and amortization"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2018
+      },
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2019
+      },
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2020
+      }
+    ],
+    "section_hints": [
+      "7",
+      "8"
+    ]
+  },
+  "request_key": "d68c45238a93d0a3fdf00d8e79c268b1c2a0432a37d558839d66b47030872d95",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000114655",
+    "input_tokens": 136,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 342
+  }
+}

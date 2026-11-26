@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Fastenal"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "foreign currency exchange rate risk",
+      "concentration of foreign currency exposure",
+      "hedging of foreign currency"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2024
+      }
+    ],
+    "section_hints": [
+      "7A",
+      "7"
+    ]
+  },
+  "request_key": "a0f22e3f60bc31d758dde3f838772bb9e07b7f32f589982b9805e6d8045763d7",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000080755",
+    "input_tokens": 68,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 220
+  }
+}

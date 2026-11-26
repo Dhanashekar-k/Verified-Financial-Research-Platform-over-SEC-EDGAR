@@ -1,0 +1,73 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The material does not contain a computed FY2015 unadjusted EBITDA margin, and I cannot calculate one without arithmetic. The filings show FY2015 revenues of 6,779,511 thousand [1], FY2015 operating income of 305,826 thousand [2], and FY2015 depreciation and amortization of property, equipment and intangibles of 62,283 thousand [3]. The EBITDA margin itself is therefore not stated.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:NETFLIX_2015_10K#p40#0000",
+          "quote": "Revenues | $ | 6,779,511 | $ | 5,504,656 | $ | 4,374,562",
+          "type": "chunk"
+        },
+        "text": "Revenues for 2015 were 6,779,511 (in thousands).",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:NETFLIX_2015_10K#p40#0000",
+          "quote": "Operating income | 305,826 | 402,648 | 228,347",
+          "type": "chunk"
+        },
+        "text": "Operating income for 2015 was 305,826 (in thousands).",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:NETFLIX_2015_10K#p42#0000",
+          "quote": "Depreciation and amortization of property, equipment and intangibles | 62,283 | 54,028 | 48,374",
+          "type": "chunk"
+        },
+        "text": "Depreciation and amortization of property, equipment and intangibles for 2015 was 62,283 (in thousands).",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "FY2015 revenues of 6,779,511 (in thousands)",
+        "FY2015 operating income of 305,826 (in thousands)",
+        "FY2015 depreciation and amortization of property, equipment and intangibles of 62,283 (in thousands)"
+      ],
+      "missing": [
+        "A computed FY2015 unadjusted EBITDA figure from unadjusted operating income plus cash flow statement D&A",
+        "A computed FY2015 unadjusted EBITDA margin result based on revenues"
+      ],
+      "reason": "No NUMERIC RESULTS were supplied, so no computed FY2015 unadjusted EBITDA or EBITDA margin figure is available, and the passages alone do not provide one without arithmetic."
+    }
+  },
+  "request_key": "2b78b107cf73906a773eae35c4713d76d86bd6eb1aa824b0db3b9c9e8b76fd53",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00085490",
+    "input_tokens": 4574,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 2454
+  }
+}

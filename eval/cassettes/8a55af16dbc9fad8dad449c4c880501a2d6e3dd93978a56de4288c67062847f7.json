@@ -1,0 +1,49 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "CVS Health"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "material ongoing legal proceedings",
+      "litigation"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2022
+      },
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2021
+      },
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2020
+      }
+    ],
+    "section_hints": [
+      "8",
+      "1A"
+    ]
+  },
+  "request_key": "8a55af16dbc9fad8dad449c4c880501a2d6e3dd93978a56de4288c67062847f7",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000098155",
+    "input_tokens": 41,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 295
+  }
+}

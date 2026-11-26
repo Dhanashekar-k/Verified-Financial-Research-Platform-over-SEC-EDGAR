@@ -1,0 +1,30 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "JPM"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [],
+    "narrative_topics": [],
+    "needs_clarification": "Gross margin is not a meaningful metric for JPMorgan. As a bank it reports no cost of goods sold, and its income comes mainly from net interest income and fees rather than product sales, so the filings do not report a gross margin. Would you like JPM's net margin (net income as a share of revenue) or its bank net revenue (net of interest expense) over a set of fiscal years instead, and which years should I use?",
+    "operation": null,
+    "period_text": null,
+    "periods": [],
+    "section_hints": []
+  },
+  "request_key": "9a9bc6f86641fa1d5f160ca2c5b1c801dc0374f574d299d6b2ece3057d17db81",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000215255",
+    "input_tokens": 68,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 758
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Nike's total current assets at May 31, 2019 were 16,525 USD millions, as stated in the consolidated balance sheet [1].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:NIKE_2019_10K#p54#0000",
+          "quote": "Total current assets | 16,525 | 15,134",
+          "type": "chunk"
+        },
+        "text": "Nike's total current assets at May 31, 2019 were 16,525 (dollars in millions).",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "53b508ac71cf42dbfc904decf4c9a8704ee8881288839dfb917f68fb63cf4ba0",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00041620",
+    "input_tokens": 4965,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 621
+  }
+}

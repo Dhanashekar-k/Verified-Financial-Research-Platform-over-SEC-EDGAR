@@ -1,0 +1,90 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "AMD is a global semiconductor company. Its FY2022 10-K describes its main offerings as server CPUs and GPUs, DPUs, FPGAs and Adaptive SoC products for data centers [1]. It also offers CPUs, APUs and chipsets for desktop and notebook personal computers [2], discrete GPUs, semi-custom SoC products and development services [3], and embedded CPUs, GPUs, APUs, FPGAs and Adaptive SoC products [4]. Its consumer graphics products are marketed under the AMD Radeon graphics brand [5].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000002488-23-000047#1#0002",
+          "quote": "server microprocessors (CPUs) and graphics processing units (GPUs), data processing units (DPUs), Field Programmable Gate Arrays (FPGAs), and Adaptive System-on-Chip (SoC) products for data centers;",
+          "type": "chunk"
+        },
+        "text": "AMD primarily offers server CPUs and GPUs, DPUs, FPGAs, and Adaptive SoC products for data centers.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000002488-23-000047#1#0002",
+          "quote": "CPUs, accelerated processing units (APUs) that integrate CPUs and GPUs, and chipsets for desktop and notebook personal computers;",
+          "type": "chunk"
+        },
+        "text": "AMD offers CPUs, APUs that integrate CPUs and GPUs, and chipsets for desktop and notebook personal computers.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000002488-23-000047#1#0002",
+          "quote": "discrete GPUs, and semi-custom SoC products and development services",
+          "type": "chunk"
+        },
+        "text": "AMD offers discrete GPUs, and semi-custom SoC products and development services.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c4",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000002488-23-000047#1#0002",
+          "quote": "embedded CPUs, GPUs, APUs, FPGAs, and Adaptive SoC products.",
+          "type": "chunk"
+        },
+        "text": "AMD offers embedded CPUs, GPUs, APUs, FPGAs, and Adaptive SoC products.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c5",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000002488-23-000047#1#0019",
+          "quote": "Our product brand for the consumer graphics market is AMD Radeon graphics",
+          "type": "chunk"
+        },
+        "text": "AMD markets its consumer graphics products under the AMD Radeon graphics brand.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "bfbc640b9b824cd5dc518aa04b5e6a4590ae4f4b789e8571620a521404de79fc",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00094735",
+    "input_tokens": 5303,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 2678
+  }
+}

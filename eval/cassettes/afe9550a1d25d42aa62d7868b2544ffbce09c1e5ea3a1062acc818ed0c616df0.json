@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Jacobs Solutions Inc."
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "eps_basic"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "value",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2023
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "afe9550a1d25d42aa62d7868b2544ffbce09c1e5ea3a1062acc818ed0c616df0",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000043605",
+    "input_tokens": 45,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 76
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Freeport-McMoRan Inc"
+      },
+      {
+        "cik": null,
+        "mention": "Vulcan Materials Co"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "operating_cash_flow"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "compare",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2021
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "5a18e10f5db52eb7a754e07ccb0f33a0b0606c87fbf9cfbf8e77c22547099116",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000081005",
+    "input_tokens": 63,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 222
+  }
+}

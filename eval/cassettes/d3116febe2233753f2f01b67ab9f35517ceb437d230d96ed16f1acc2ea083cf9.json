@@ -1,0 +1,57 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Operating income for 2021 was 1,196 million [1]. Depreciation and amortization on the cash flow statement for 2021 was 636 million [2].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:AMERICANWATERWORKS_2021_10K#p86#0000",
+          "quote": "Operating income | 1,196 | 1,248 | 1,214",
+          "type": "chunk"
+        },
+        "text": "Operating income for 2021 was 1,196 million.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:AMERICANWATERWORKS_2021_10K#p88#0000",
+          "quote": "Depreciation and amortization | 636 | 604 | 582",
+          "type": "chunk"
+        },
+        "text": "Depreciation and amortization on the cash flow statement for 2021 was 636 million.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "FY2021 operating income of 1,196 million from the income statement",
+        "FY2021 depreciation and amortization of 636 million from the cash flow statement"
+      ],
+      "missing": [
+        "A NUMERIC RESULTS figure giving FY2021 unadjusted operating income plus depreciation and amortization in USD millions"
+      ],
+      "reason": "The material provides the two components of unadjusted EBITDA but no computed FY2021 EBITDA figure, and I may not add them myself."
+    }
+  },
+  "request_key": "d3116febe2233753f2f01b67ab9f35517ceb437d230d96ed16f1acc2ea083cf9",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00062115",
+    "input_tokens": 5229,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1388
+  }
+}

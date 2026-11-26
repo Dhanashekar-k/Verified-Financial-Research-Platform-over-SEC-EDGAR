@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Dollar General"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "COVID-19 pandemic operational effects",
+      "COVID-19 cost impacts essential business",
+      "store operations pandemic"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2020
+      }
+    ],
+    "section_hints": [
+      "7",
+      "1A"
+    ]
+  },
+  "request_key": "3749381037faab37616b77f4c804d41abd35d37dfa3565670bf21dbfb9158f79",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000053405",
+    "input_tokens": 71,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 110
+  }
+}

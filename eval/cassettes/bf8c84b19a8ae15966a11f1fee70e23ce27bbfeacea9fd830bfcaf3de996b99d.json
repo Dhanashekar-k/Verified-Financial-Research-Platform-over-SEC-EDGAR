@@ -1,0 +1,118 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Yes. The filings describe ongoing matters tied to each year. For 2022, a federal court in Ohio issued a $651 million judgment against three defendants, including the Company, which the Company is appealing [1]. The Company also agreed in principle to a national opioid settlement with a maximum payable of about $4.3 billion in remediation [2], and settled Florida opioid claims for $484 million in March 2022 [3]. The Delaware Attorney General moved for partial intervention in the Gill qui tam case in July 2022 [5]. For 2021, the consolidated ERISA case was dismissed without prejudice in October 2021 [6], and the Company received a books-and-records demand in December 2021 [7]. For 2020, the DOJ served a DEA administrative subpoena in January 2020 concerning opioid and controlled substance practices [4].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:CVSHEALTH_2022_10K#p174#0000",
+          "quote": "In November 2021, the Company was among the chain pharmacies found liable by a jury in a trial in federal court in Ohio; in August 2022, the court issued a judgment jointly against the three defendants in the amount of $651 million to be paid over 15 years",
+          "type": "chunk"
+        },
+        "text": "In August 2022, a federal court in Ohio issued a judgment jointly against three defendants, including the Company, in the amount of $651 million to be paid over 15 years.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:CVSHEALTH_2022_10K#p174#0001",
+          "quote": "The maximum amount payable by the Company under the settlement would be approximately $4.3 billion in opioid remediation and $625 million in attorneys\u2019 fees and costs and additional remediation.",
+          "type": "chunk"
+        },
+        "text": "In December 2022, the Company agreed to a national opioid settlement with a maximum payable of approximately $4.3 billion in opioid remediation and $625 million in attorneys' fees and costs and additional remediation.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:CVSHEALTH_2022_10K#p174#0000",
+          "quote": "In March 2022, CVS Health Corporation and CVS Pharmacy, Inc. entered into a settlement agreement with the State of Florida to resolve claims related to opioid medications dating back more than a decade.",
+          "type": "chunk"
+        },
+        "text": "In March 2022, CVS Health Corporation and CVS Pharmacy, Inc. entered into a settlement agreement with the State of Florida to resolve claims related to opioid medications.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c4",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000064803-23-000009#8#0234",
+          "quote": "In January 2020, the DOJ served the Company with a DEA administrative subpoena.",
+          "type": "chunk"
+        },
+        "text": "In January 2020, the DOJ served the Company with a DEA administrative subpoena.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c5",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000064803-23-000009#8#0234",
+          "quote": "In July 2022, the Delaware Attorney General\u2019s Office moved for partial intervention as to allegations under the Delaware false claims act related to not escheating alleged overpayments in this previously sealed qui tam case.",
+          "type": "chunk"
+        },
+        "text": "In July 2022, the Delaware Attorney General\u2019s Office moved for partial intervention in the Gill qui tam case.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c6",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000064803-22-000008#8#0231",
+          "quote": "In October 2021, the consolidated case was dismissed without prejudice.",
+          "type": "chunk"
+        },
+        "text": "In October 2021, the consolidated ERISA case was dismissed without prejudice.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c7",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000064803-22-000008#8#0231",
+          "quote": "In December 2021, the Company received a demand for inspection of books and records pursuant to Delaware Corporation Law Section 220 (the \u201cDemand\u201d).",
+          "type": "chunk"
+        },
+        "text": "In December 2021, the Company received a demand for inspection of books and records under Delaware Corporation Law Section 220.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "bf8c84b19a8ae15966a11f1fee70e23ce27bbfeacea9fd830bfcaf3de996b99d",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00124925",
+    "input_tokens": 5201,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 3906
+  }
+}

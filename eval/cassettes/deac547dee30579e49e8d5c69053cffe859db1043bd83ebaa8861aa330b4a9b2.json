@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Apple"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "total_assets"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "value",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2031
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "deac547dee30579e49e8d5c69053cffe859db1043bd83ebaa8861aa330b4a9b2",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000089005",
+    "input_tokens": 28,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 261
+  }
+}

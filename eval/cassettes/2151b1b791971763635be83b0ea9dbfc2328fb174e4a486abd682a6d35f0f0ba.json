@@ -1,0 +1,43 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Nike's FY2021 cost of sales was 24,576 million [1], but the material does not include the inventory balances needed for average inventory, so the FY2021 inventory turnover ratio cannot be computed.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:NIKE_2021_10K#p59#0000",
+          "quote": "Cost of sales | 24,576 | 21,162 | 21,643",
+          "type": "chunk"
+        },
+        "text": "Nike's cost of sales for fiscal 2021 was 24,576 million.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "FY2021 cost of sales of 24,576 million (year ended May 31, 2021) from the consolidated statements of income"
+      ],
+      "missing": [
+        "Inventories balances as of May 31, 2021 and May 31, 2020 from the consolidated balance sheet",
+        "NUMERIC RESULTS computing average inventory and the FY2021 inventory turnover ratio"
+      ],
+      "reason": "The material gives FY2021 cost of sales but no inventory balances from the statement of financial position, so average inventory and the turnover ratio cannot be calculated."
+    }
+  },
+  "request_key": "2151b1b791971763635be83b0ea9dbfc2328fb174e4a486abd682a6d35f0f0ba",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00058865",
+    "input_tokens": 5059,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1292
+  }
+}

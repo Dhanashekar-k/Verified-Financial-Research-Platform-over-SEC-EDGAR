@@ -1,0 +1,76 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Management cites the quantity and diverse nature of its vendor agreements, which requires estimates of how much vendor funding to recognize in earnings versus defer as an offset to inventory [1]. These estimates depend on a detailed analysis of the classification of the funding type and the methodology for recognizing purchases-based funding in cost of sales, which considers inventory turn and actual sell-through [2]. The overall level of vendor funding deferral has remained relatively stable over the last three fiscal years [3], and a 10% change in it would have affected fiscal 2022 net earnings by approximately $35 million [4].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000764478-22-000008#7#0041",
+          "quote": "Due to the quantity and diverse nature of our vendor agreements, estimates are made to determine the amount of funding to be recognized in earnings or deferred as an offset to inventory.",
+          "type": "chunk"
+        },
+        "text": "Management cites the quantity and diverse nature of its vendor agreements as a judgment in estimating vendor allowances.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000764478-22-000008#7#0041",
+          "quote": "These estimates require a detailed analysis of complex factors, including (1) proper classification of the type of funding received; and (2) the methodology to estimate the portion of purchases-based funding that should be recognized in cost of sales in each period, which considers factors such as inventory turn by product category and actual sell-through of inventory.",
+          "type": "chunk"
+        },
+        "text": "The estimates require a detailed analysis of complex factors, including proper classification of the type of funding received and the methodology to estimate the portion of purchases-based funding recognized in cost of sales in each period.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000764478-22-000008#7#0041",
+          "quote": "The overall level of vendor funding deferral has remained relatively stable over the last three fiscal years.",
+          "type": "chunk"
+        },
+        "text": "The overall level of vendor funding deferral has remained relatively stable over the last three fiscal years.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c4",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000764478-22-000008#7#0041",
+          "quote": "A 10% change in our vendor funding deferral as of January 29, 2022, would have affected net earnings by approximately $35 million in fiscal 2022.",
+          "type": "chunk"
+        },
+        "text": "A 10% change in our vendor funding deferral as of January 29, 2022, would have affected net earnings by approximately $35 million in fiscal 2022.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "6d5522910d655178a5336ca505ee10fae52d18be3606d2536d72de8793121c41",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0008880",
+    "input_tokens": 5436,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 2414
+  }
+}

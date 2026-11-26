@@ -1,0 +1,36 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "contradiction": false,
+    "points": [
+      {
+        "covered": true,
+        "index": 0
+      },
+      {
+        "covered": false,
+        "index": 1
+      },
+      {
+        "covered": false,
+        "index": 2
+      },
+      {
+        "covered": true,
+        "index": 3
+      }
+    ],
+    "reason": "The answer covers the 2022 liquidity expectation and the debt maturity sources (operations, refinancing, credit facility, asset monetizations), but it lists only cash on hand among general sources (omitting equity-method distributions, commercial paper) and never gives the $21.650 billion long-term debt figure."
+  },
+  "request_key": "a0173d826da257f074f54f7ea0a4dd6f4a81f7af875ca22bbe8ca65865bdffaf",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 683,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00129815",
+    "input_tokens": 419,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 169
+  }
+}

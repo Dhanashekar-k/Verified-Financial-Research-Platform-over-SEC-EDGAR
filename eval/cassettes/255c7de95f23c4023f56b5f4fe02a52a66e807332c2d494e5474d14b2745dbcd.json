@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Corning's passages describe contract liabilities as including customer deposits, deferred revenue and other advanced payments [1].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:CORNING_2022_10K#p64#0001",
+          "quote": "Contract liabilities include customer deposits, deferred revenue and other advanced payments.",
+          "type": "chunk"
+        },
+        "text": "Corning's contract liabilities include customer deposits, deferred revenue and other advanced payments.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Corning's contract liabilities include customer deposits, deferred revenue and other advanced payments."
+      ],
+      "missing": [
+        "Corning's FY2022 total current assets and total current liabilities from the consolidated balance sheet, as NUMERIC RESULTS, to compute working capital."
+      ],
+      "reason": "The provided material contains no FY2022 current assets or current liabilities figures, so Corning's working capital and its sign cannot be determined from it."
+    }
+  },
+  "request_key": "255c7de95f23c4023f56b5f4fe02a52a66e807332c2d494e5474d14b2745dbcd",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00057440",
+    "input_tokens": 5119,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1223
+  }
+}

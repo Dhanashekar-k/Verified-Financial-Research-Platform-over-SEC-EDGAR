@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "incorrect",
+    "reason": "The system answer lists Array, Therachon, and Seagen, but the gold answer is Trillium, Array, and Therachon; it omits Trillium and substitutes Seagen, so it does not match the gold's three companies."
+  },
+  "request_key": "dc51fd1d5a7c3d1becf86da5795b83206c883fa0245fb7f02cb69233a92a835d",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00061755",
+    "input_tokens": 146,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 88
+  }
+}

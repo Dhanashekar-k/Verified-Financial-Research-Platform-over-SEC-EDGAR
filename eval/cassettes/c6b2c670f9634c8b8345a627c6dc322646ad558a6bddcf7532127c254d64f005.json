@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The filings provided do not address a Chapter 11 bankruptcy filing by Walmart in fiscal 2022. The only related fiscal 2022 item is a loss on extinguishment of debt from early retirement of higher-rate debt [1].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000104169-23-000020#7#0023",
+          "quote": "Loss on extinguishment of debt was $2.4 billion in fiscal 2022 due to the early retirement of certain higher rate long-term debt to reduce interest expense in future periods.",
+          "type": "chunk"
+        },
+        "text": "Loss on extinguishment of debt was $2.4 billion in fiscal 2022 due to the early retirement of certain higher rate long-term debt to reduce interest expense in future periods.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Walmart recorded a loss on extinguishment of debt of $2.4 billion in fiscal 2022 from the early retirement of certain higher rate long-term debt."
+      ],
+      "missing": [
+        "A passage stating that Walmart filed for Chapter 11 bankruptcy in fiscal 2022 and the reasons given for that filing."
+      ],
+      "reason": "The passages do not mention any Chapter 11 bankruptcy filing or its reasons, so the question cannot be answered from the material."
+    }
+  },
+  "request_key": "c6b2c670f9634c8b8345a627c6dc322646ad558a6bddcf7532127c254d64f005",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00058865",
+    "input_tokens": 5044,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1295
+  }
+}

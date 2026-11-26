@@ -1,0 +1,36 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Apple"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "supply agreement with TSMC",
+      "dollar value of TSMC supply agreement"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [],
+    "section_hints": [
+      "1A",
+      "8"
+    ]
+  },
+  "request_key": "cfbf9c212b8d160dd838e8d0fc15158828243e0332b31c77d883af303948cca5",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000069055",
+    "input_tokens": 29,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 181
+  }
+}

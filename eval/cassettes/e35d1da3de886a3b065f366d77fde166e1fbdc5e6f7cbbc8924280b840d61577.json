@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Jacobs Solutions' interest expense increased by 106.3% from Q1 FY2022 to Q1 FY2023 [1].",
+    "claims": [
+      {
+        "display": "106.3%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:9045167778687894014 - f:-4308394484281524527) / f:-4308394484281524527",
+          "fact_ids": [
+            9045167778687894014,
+            -4308394484281524527
+          ],
+          "type": "expr"
+        },
+        "text": "Growth in Jacobs Solutions Inc. interest expense in Q1 FY2023, measured from Q1 FY2022, was 106.3%.",
+        "unit": "ratio",
+        "value": "1.063059816740450942036446000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "e35d1da3de886a3b065f366d77fde166e1fbdc5e6f7cbbc8924280b840d61577",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00016420",
+    "input_tokens": 315,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 543
+  }
+}

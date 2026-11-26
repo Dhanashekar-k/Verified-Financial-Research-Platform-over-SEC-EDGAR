@@ -1,0 +1,76 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Fastenal says its primary foreign currency exposures are the Canadian dollar and the Mexican peso against the U.S. dollar [1]. Changes in foreign currency rates have not historically had a material effect on its results [2]. The company has not historically hedged its foreign currency risk [3]. The dollar strengthened in 2024 against other currencies in which Fastenal operates, but the effect on net income was immaterial in 2024 [4].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000815556-25-000065#7A#0002",
+          "quote": "Our primary currency exposures are the Canadian dollar and the Mexican peso against the U.S. dollar, reflecting the scale of those operations relative to the size of our business.",
+          "type": "chunk"
+        },
+        "text": "Fastenal's primary currency exposures are the Canadian dollar and the Mexican peso against the U.S. dollar.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000815556-25-000065#7A#0002",
+          "quote": "Changes in foreign currency rates have not historically had a material effect on our results due to certain jurisdictions conducting some portion of their transactions in U.S. dollars and our foreign operations typically having sales and expenses denominated in the applicable local currency.",
+          "type": "chunk"
+        },
+        "text": "Changes in foreign currency rates have not historically had a material effect on Fastenal's results.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000815556-25-000065#7A#0002",
+          "quote": "As a result, we have not historically hedged our foreign currency risk.",
+          "type": "chunk"
+        },
+        "text": "Fastenal has not historically hedged its foreign currency risk.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c4",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000815556-25-000065#7A#0002",
+          "quote": "The dollar strengthened in 2024 relative to other foreign currencies in which we operate. However, the effect of these changes in foreign currencies to our net income was immaterial in 2024.",
+          "type": "chunk"
+        },
+        "text": "The dollar strengthened in 2024 relative to other foreign currencies in which Fastenal operates, but the effect on net income was immaterial in 2024.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "7b79d7be99b4f5327f276038e39878c12a86d289c35c7c075a64091cc63f614b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00068025",
+    "input_tokens": 4776,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1715
+  }
+}

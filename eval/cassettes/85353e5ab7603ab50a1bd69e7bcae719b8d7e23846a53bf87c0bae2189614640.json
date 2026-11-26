@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "W.W. Grainger, Inc."
+      },
+      {
+        "cik": null,
+        "mention": "Sysco Corp"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "income_tax"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "compare",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2023
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "85353e5ab7603ab50a1bd69e7bcae719b8d7e23846a53bf87c0bae2189614640",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000086205",
+    "input_tokens": 62,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 243
+  }
+}

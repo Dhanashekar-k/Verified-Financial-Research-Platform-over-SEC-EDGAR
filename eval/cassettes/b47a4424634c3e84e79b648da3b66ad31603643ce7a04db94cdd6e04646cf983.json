@@ -1,0 +1,36 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Vertiv Holdings reported interest expense of $86.1 million for fiscal 2025 [1].",
+    "claims": [
+      {
+        "display": "$86.1 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:6415461262997554585",
+          "fact_ids": [
+            6415461262997554585
+          ],
+          "type": "expr"
+        },
+        "text": "Vertiv Holdings interest expense for FY2025 was $86.1 million.",
+        "unit": "USD",
+        "value": "86100000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "b47a4424634c3e84e79b648da3b66ad31603643ce7a04db94cdd6e04646cf983",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00006930",
+    "input_tokens": 227,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 181
+  }
+}

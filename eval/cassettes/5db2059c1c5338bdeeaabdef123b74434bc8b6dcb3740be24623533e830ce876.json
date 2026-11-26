@@ -1,0 +1,72 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The passages do not show any debt securities registered on a national securities exchange under American Express' name for 2022. The only security listed under Section 12(b) on the 2022 Form 10-K cover page is common shares, listed on the New York Stock Exchange [1]. The cover page also states that no securities are registered under Section 12(g) [2]. Exhibit 4.2 refers to a description of the company's securities registered under Section 12, but that description is incorporated by reference from the 2020 10-K and is not included in the passages [3].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:AMERICANEXPRESS_2022_10K#p1#0000",
+          "quote": "Common Shares (par value $0.20 per Share) | AXP | New York Stock Exchange",
+          "type": "chunk"
+        },
+        "text": "The only security listed under Section 12(b) on the 2022 Form 10-K cover page is common shares (par value $0.20 per Share, trading symbol AXP) on the New York Stock Exchange.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "fb:AMERICANEXPRESS_2022_10K#p1#0000",
+          "quote": "Securities registered pursuant to section 12(g) of the Act: None",
+          "type": "chunk"
+        },
+        "text": "The cover page states that no securities are registered pursuant to section 12(g) of the Act.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000004962-23-000006#15#0001",
+          "quote": "Description of American Express Company\u2019s securities registered pursuant to Section 12 of the Securities Exchange Act of 1934, as amended",
+          "type": "chunk"
+        },
+        "text": "Exhibit 4.2 refers to a description of the company's securities registered under Section 12, which is incorporated by reference from a prior annual report.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Common shares (AXP) are registered under Section 12(b) on the New York Stock Exchange.",
+        "No securities are registered under Section 12(g)."
+      ],
+      "missing": [
+        "A list of debt securities registered under Section 12(b) of the Exchange Act on a national securities exchange as of 2022.",
+        "The content of the Exhibit 4.2 description of registered securities, which is incorporated by reference and not included in the passages."
+      ],
+      "reason": "The passages list only common shares as registered under Section 12(b) and do not identify any debt securities registered on an exchange under American Express' name for 2022."
+    }
+  },
+  "request_key": "5db2059c1c5338bdeeaabdef123b74434bc8b6dcb3740be24623533e830ce876",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00071745",
+    "input_tokens": 5465,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1726
+  }
+}

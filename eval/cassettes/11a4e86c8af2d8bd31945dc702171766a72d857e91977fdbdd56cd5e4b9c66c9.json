@@ -1,0 +1,40 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Nike"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "total current assets",
+      "balance sheet"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2019
+      }
+    ],
+    "section_hints": [
+      "8"
+    ]
+  },
+  "request_key": "11a4e86c8af2d8bd31945dc702171766a72d857e91977fdbdd56cd5e4b9c66c9",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000072255",
+    "input_tokens": 53,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 189
+  }
+}

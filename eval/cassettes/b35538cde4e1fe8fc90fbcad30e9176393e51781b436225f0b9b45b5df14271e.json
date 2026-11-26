@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Principal Financial Group"
+      },
+      {
+        "cik": null,
+        "mention": "BXP"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "total_liabilities"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "compare",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2024
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "b35538cde4e1fe8fc90fbcad30e9176393e51781b436225f0b9b45b5df14271e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000084705",
+    "input_tokens": 67,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 236
+  }
+}

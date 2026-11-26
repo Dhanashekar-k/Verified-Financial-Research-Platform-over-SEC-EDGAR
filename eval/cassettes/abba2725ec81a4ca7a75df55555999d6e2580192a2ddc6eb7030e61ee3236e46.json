@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Quanta Services, Inc."
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "operating_income"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "growth",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2022
+      },
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2023
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "abba2725ec81a4ca7a75df55555999d6e2580192a2ddc6eb7030e61ee3236e46",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000046605",
+    "input_tokens": 55,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 86
+  }
+}

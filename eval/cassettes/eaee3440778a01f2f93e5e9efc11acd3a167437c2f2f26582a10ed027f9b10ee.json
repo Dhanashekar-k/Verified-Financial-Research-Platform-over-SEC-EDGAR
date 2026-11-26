@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The system answer states the proposal was defeated, which matches the gold answer's key fact."
+  },
+  "request_key": "eaee3440778a01f2f93e5e9efc11acd3a167437c2f2f26582a10ed027f9b10ee",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00045155",
+    "input_tokens": 210,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 42
+  }
+}

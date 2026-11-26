@@ -1,0 +1,73 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The passages describe general competition in the pizza sector, but they do not describe a competitive threat specific to the U.S. supply chain segment or the consequences of failing to keep its position. The filings say the global pizza delivery and carryout segments are highly competitive [1]. They also say Domino's competes with food delivery and aggregation companies [2]. The passages note that supply chain operations experienced higher volumes in 2020 [3].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001193125-21-055734#1#0004",
+          "quote": "The global pizza delivery and carryout segments, as well as the broader QSR sector, are highly competitive.",
+          "type": "chunk"
+        },
+        "text": "The global pizza delivery and carryout segments, as well as the broader QSR sector, are highly competitive.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001193125-21-055734#1#0004",
+          "quote": "We also compete with other food, food delivery and order and delivery aggregation companies, which have continued to grow in size and scale in recent years.",
+          "type": "chunk"
+        },
+        "text": "The company also competes with other food, food delivery and order and delivery aggregation companies, which have grown in size and scale in recent years.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001193125-21-055734#1#0001",
+          "quote": "our supply chain operations experienced higher volumes as a result of the increase in U.S. retail sales.",
+          "type": "chunk"
+        },
+        "text": "The U.S. supply chain operations experienced higher volumes as a result of the increase in U.S. retail sales during 2020.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "The pizza delivery and carryout segments are described as highly competitive.",
+        "Food delivery and order and delivery aggregation companies compete with the company.",
+        "Supply chain operations experienced higher volumes in 2020 due to increased U.S. retail sales."
+      ],
+      "missing": [
+        "A risk factor or MD&A passage describing competitive pressure on the U.S. supply chain segment specifically.",
+        "Any statement of consequences, such as lost sales or margin, if the company fails to maintain its competitive position in that segment."
+      ],
+      "reason": "The passages do not describe a competitive threat to the U.S. supply chain segment or any consequences that could follow if the company fails to maintain its competitive position."
+    }
+  },
+  "request_key": "9c05e51686d7fe314bc577b0a562e0af7ac21e4d5d1d3e58b8564aae236f74a1",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00071675",
+    "input_tokens": 5301,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1756
+  }
+}

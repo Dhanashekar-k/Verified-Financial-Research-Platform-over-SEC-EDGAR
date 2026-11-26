@@ -1,0 +1,34 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Amcor primarily operates in the packaging industry. The filings describe it as a global leader in developing and producing responsible packaging for food, beverage, pharmaceutical, medical, home and personal-care, and other consumer goods end markets [1].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:AMCOR_2023_10K#p55#0000",
+          "quote": "Amcor is a global leader in developing and producing responsible packaging for food, beverage, pharmaceutical, medical, home and personal-care, and other consumer goods end markets",
+          "type": "chunk"
+        },
+        "text": "Amcor is a global leader in developing and producing responsible packaging for food, beverage, pharmaceutical, medical, home and personal-care, and other consumer goods end markets.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "5f43e8838d30cd39f98f5b6f0df3345ea094738483d263ce411996824729df29",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 2540,
+    "cost_usd": "0.00063605",
+    "input_tokens": 5096,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 890
+  }
+}

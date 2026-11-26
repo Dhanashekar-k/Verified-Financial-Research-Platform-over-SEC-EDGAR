@@ -1,0 +1,36 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "FactSet Research Systems had 37.9 million common shares outstanding at the end of Q1 FY2020, as originally filed [1]. This figure was later restated, and the answer uses the original filed figure [1].",
+    "claims": [
+      {
+        "display": "37.9 million shares",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:-2458872966546961542",
+          "fact_ids": [
+            -2458872966546961542
+          ],
+          "type": "expr"
+        },
+        "text": "FactSet Research common shares outstanding at end of Q1 FY2020, as originally filed: 37.9 million shares",
+        "unit": "shares",
+        "value": "37904178.0000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "a4b4f5aca489e114cc0e4c789fbf043cef7bd826eff472e0daa8a009acedaa54",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00022580",
+    "input_tokens": 422,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 768
+  }
+}

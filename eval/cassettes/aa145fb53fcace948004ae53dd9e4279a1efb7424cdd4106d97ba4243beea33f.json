@@ -1,0 +1,36 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Microsoft"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "U.S. Army HoloLens headset contract",
+      "profit margin on Army contract"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [],
+    "section_hints": [
+      "7",
+      "8"
+    ]
+  },
+  "request_key": "aa145fb53fcace948004ae53dd9e4279a1efb7424cdd4106d97ba4243beea33f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000084155",
+    "input_tokens": 41,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 239
+  }
+}

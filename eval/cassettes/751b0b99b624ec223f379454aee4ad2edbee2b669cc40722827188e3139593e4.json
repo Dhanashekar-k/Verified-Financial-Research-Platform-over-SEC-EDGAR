@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The provided material does not show whether Microsoft's debt on the balance sheet increased from FY2022 to FY2023 [1].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000950170-23-035122#8#0140",
+          "quote": "consolidated balance sheets of Microsoft Corporation and subsidiaries",
+          "type": "chunk"
+        },
+        "text": "The FY2023 audit report refers to consolidated balance sheets of Microsoft Corporation and subsidiaries, but the passages give no debt figures.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Passages refer to Microsoft's consolidated balance sheets for FY2023 and FY2022 without stating any debt amounts."
+      ],
+      "missing": [
+        "Debt line items from the consolidated balance sheets (such as long-term debt and current portion of debt) for both fiscal year-end dates, supplied as NUMERIC RESULTS."
+      ],
+      "reason": "The material contains no debt balance figures for FY2023 or FY2022, only audit report language referring to the balance sheets."
+    }
+  },
+  "request_key": "751b0b99b624ec223f379454aee4ad2edbee2b669cc40722827188e3139593e4",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00069875",
+    "input_tokens": 5571,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1630
+  }
+}

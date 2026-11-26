@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Coca-Cola"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "secret formula",
+      "trade secret protection",
+      "concentrate formula confidentiality"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [],
+    "section_hints": [
+      "1",
+      "1A"
+    ]
+  },
+  "request_key": "3efad9b06a3ca791726fc01f68159703aa0ee16e2bdaed2f8c5d9c40ce7af1de",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000113305",
+    "input_tokens": 29,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 358
+  }
+}

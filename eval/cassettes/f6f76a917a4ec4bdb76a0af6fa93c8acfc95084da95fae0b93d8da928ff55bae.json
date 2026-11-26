@@ -1,0 +1,69 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Realty Income Corp's net cash provided by operating activities exceeded Humana Inc.'s by $607.3 million in fiscal year 2024 [1]. Realty Income reported $3.6 billion [2] and Humana reported $3.0 billion [3].",
+    "claims": [
+      {
+        "display": "$607.3 million",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "f:8621914723524498461 - f:8013483707867175009",
+          "fact_ids": [
+            8621914723524498461,
+            8013483707867175009
+          ],
+          "type": "expr"
+        },
+        "text": "Realty Income Corp's FY2024 net cash provided by operating activities exceeded Humana Inc.'s by $607.3 million.",
+        "unit": "USD",
+        "value": "607276000.0000"
+      },
+      {
+        "display": "$3.6 billion",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:8621914723524498461",
+          "fact_ids": [
+            8621914723524498461
+          ],
+          "type": "expr"
+        },
+        "text": "Realty Income Corp's FY2024 net cash provided by operating activities was $3.6 billion.",
+        "unit": "USD",
+        "value": "3573276000.0000"
+      },
+      {
+        "display": "$3.0 billion",
+        "id": "c3",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:8013483707867175009",
+          "fact_ids": [
+            8013483707867175009
+          ],
+          "type": "expr"
+        },
+        "text": "Humana Inc.'s FY2024 net cash provided by operating activities was $3.0 billion.",
+        "unit": "USD",
+        "value": "2966000000.0000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "f6f76a917a4ec4bdb76a0af6fa93c8acfc95084da95fae0b93d8da928ff55bae",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00029315",
+    "input_tokens": 644,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 993
+  }
+}

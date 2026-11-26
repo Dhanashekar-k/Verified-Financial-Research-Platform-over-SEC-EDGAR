@@ -1,0 +1,48 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Boeing's effective income tax rate was (0.6)% in 2022 [1], down from 14.8% in 2021 [2].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000012927-23-000007#7#0004",
+          "quote": "Effective income tax rate | (0.6)% | 14.8% | 17.5%",
+          "type": "chunk"
+        },
+        "text": "Boeing's effective income tax rate was (0.6)% in 2022.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000012927-23-000007#7#0004",
+          "quote": "Effective income tax rate | (0.6)% | 14.8% | 17.5%",
+          "type": "chunk"
+        },
+        "text": "The effective income tax rate was 14.8% in 2021.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "13e5e375f51313fc73f844334eca08db267f6f8662dc91cae4b5c075e5e7be7c",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00058395",
+    "input_tokens": 4430,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1399
+  }
+}

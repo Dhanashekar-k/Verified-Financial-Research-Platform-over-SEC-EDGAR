@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Atmos Energy's operating income rose 12.0% from Q1 FY2025 to Q1 FY2026 [1].",
+    "claims": [
+      {
+        "display": "12.0%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:1998448042033562801 - f:2078874824634987623) / f:2078874824634987623",
+          "fact_ids": [
+            1998448042033562801,
+            2078874824634987623
+          ],
+          "type": "expr"
+        },
+        "text": "Operating income grew 12.0% in Q1 FY2026, measured from Q1 FY2025.",
+        "unit": "ratio",
+        "value": "0.1203186210498824758422564638"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "467020bf33f77a31ad05c7c7e0ac791a5e489c533b0c3fcbcf9c2534d4bacc56",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00016230",
+    "input_tokens": 307,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 537
+  }
+}

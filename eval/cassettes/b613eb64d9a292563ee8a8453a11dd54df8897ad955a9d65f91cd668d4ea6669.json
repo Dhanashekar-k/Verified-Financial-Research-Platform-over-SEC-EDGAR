@@ -1,0 +1,36 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Best Buy Co., Inc.'s capital expenditures for fiscal year 2021 were $737.0 million [1].",
+    "claims": [
+      {
+        "display": "$737.0 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:2566208593475434047",
+          "fact_ids": [
+            2566208593475434047
+          ],
+          "type": "expr"
+        },
+        "text": "Best Buy Co., Inc.'s capital expenditures for fiscal year 2021 were $737.0 million.",
+        "unit": "USD",
+        "value": "737000000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "b613eb64d9a292563ee8a8453a11dd54df8897ad955a9d65f91cd668d4ea6669",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00007365",
+    "input_tokens": 229,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 198
+  }
+}

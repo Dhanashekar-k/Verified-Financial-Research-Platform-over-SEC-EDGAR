@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "APA Corp"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "U.S. tax law changes affecting business",
+      "U.K. tax law changes affecting business",
+      "U.K. Energy Profits Levy change during 2022"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2022
+      }
+    ],
+    "section_hints": [
+      "1A",
+      "7"
+    ]
+  },
+  "request_key": "4cd4e9a02810cc88f0907b1d99667df544d94bad56b5a07fa36b0d4a554beec4",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000100805",
+    "input_tokens": 84,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 297
+  }
+}

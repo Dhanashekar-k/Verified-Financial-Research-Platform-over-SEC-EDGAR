@@ -1,0 +1,39 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "3M"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "capex"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "value",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2018
+      }
+    ],
+    "section_hints": [
+      "8"
+    ]
+  },
+  "request_key": "c18b5900b249dbeb7f4e64693546cf8cfb414038edd3d160c2f8ac3b76db13d6",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000043255",
+    "input_tokens": 58,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 72
+  }
+}

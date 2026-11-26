@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "Jacobs Solutions Inc."
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "long_term_debt"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "value",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "Q2",
+        "fiscal_year": 2020
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "bb3e246a15adcbce50e75952650050f12b7035292bfc3377de1225ad676540d8",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000047955",
+    "input_tokens": 57,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 91
+  }
+}

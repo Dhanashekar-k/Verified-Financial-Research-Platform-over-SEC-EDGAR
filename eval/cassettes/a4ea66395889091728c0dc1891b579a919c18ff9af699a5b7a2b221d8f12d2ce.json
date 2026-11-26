@@ -1,0 +1,43 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The passages do not state why Berkshire split its Class A shares ten-for-one in 2022. They describe the share classes only: Class B shares are economically equivalent to one-fifteen-hundredth of a Class A share [1].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000950170-23-004451#8#0016",
+          "quote": "Class B shares are economically equivalent to one-fifteen-hundredth of a Class A share.",
+          "type": "chunk"
+        },
+        "text": "Class B shares are economically equivalent to one-fifteen-hundredth (1/1,500) of a Class A share.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Each share of Class A common stock is convertible, at the option of the holder, into 1,500 shares of Class B common stock.",
+        "Class B shares are economically equivalent to one-fifteen-hundredth of a Class A share."
+      ],
+      "missing": [
+        "A statement from Berkshire's filings or management explaining the reason for a 2022 ten-for-one split of Class A shares."
+      ],
+      "reason": "The passages do not give any reason for a ten-for-one split of Class A shares in 2022."
+    }
+  },
+  "request_key": "a4ea66395889091728c0dc1891b579a919c18ff9af699a5b7a2b221d8f12d2ce",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00052255",
+    "input_tokens": 4387,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1162
+  }
+}

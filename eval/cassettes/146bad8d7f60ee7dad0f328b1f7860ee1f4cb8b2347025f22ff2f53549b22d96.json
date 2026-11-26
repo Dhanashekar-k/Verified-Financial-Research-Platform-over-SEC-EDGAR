@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The answer states the 8-K figure of approximately $20 billion, matching the gold answer; the additional later $21.0 billion figure is attributed to a different filing as extra context, not a hedge."
+  },
+  "request_key": "146bad8d7f60ee7dad0f328b1f7860ee1f4cb8b2347025f22ff2f53549b22d96",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00065255",
+    "input_tokens": 236,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 77
+  }
+}

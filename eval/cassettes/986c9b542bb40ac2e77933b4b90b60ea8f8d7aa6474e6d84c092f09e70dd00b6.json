@@ -1,0 +1,76 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Changes in estimated proved reserves affect EOG's DD&A expense because reserve quantities are a significant component of that calculation and revisions may alter the rate of future expense [1]. Holding other factors constant, upward revisions increase earnings and downward revisions decrease earnings [2]. Leasehold acquisition costs and the cost to acquire proved properties use the sum of proved developed and proved undeveloped reserves as the reserve base [3]. Lease and well equipment costs, which include development costs and successful exploration drilling costs, use only proved developed reserves as the base [4].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000821189-25-000011#7#0037",
+          "quote": "The quantities of estimated proved oil and gas reserves are a significant component of EOG's calculation of depreciation, depletion and amortization expense, and revisions in such estimates may alter the rate of future expense.",
+          "type": "chunk"
+        },
+        "text": "Quantities of estimated proved oil and gas reserves are a significant component of EOG's DD&A expense calculation, and revisions in those estimates may alter the rate of future expense.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000821189-25-000011#7#0037",
+          "quote": "Holding all other factors constant, if reserves are revised upward or downward, earnings will increase or decrease, respectively.",
+          "type": "chunk"
+        },
+        "text": "Holding all other factors constant, if reserves are revised upward or downward, earnings will increase or decrease, respectively.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000821189-25-000011#7#0037",
+          "quote": "The reserve base used to calculate depreciation, depletion and amortization for leasehold acquisition costs and the cost to acquire proved properties is the sum of proved developed reserves and proved undeveloped reserves.",
+          "type": "chunk"
+        },
+        "text": "The reserve base used to calculate DD&A for leasehold acquisition costs and the cost to acquire proved properties is the sum of proved developed reserves and proved undeveloped reserves.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c4",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000821189-25-000011#7#0037",
+          "quote": "With respect to lease and well equipment costs, which include development costs and successful exploration drilling costs, the reserve base used includes only proved developed reserves.",
+          "type": "chunk"
+        },
+        "text": "For lease and well equipment costs, which include development costs and successful exploration drilling costs, the reserve base used includes only proved developed reserves.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "986c9b542bb40ac2e77933b4b90b60ea8f8d7aa6474e6d84c092f09e70dd00b6",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00081670",
+    "input_tokens": 5270,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 2162
+  }
+}

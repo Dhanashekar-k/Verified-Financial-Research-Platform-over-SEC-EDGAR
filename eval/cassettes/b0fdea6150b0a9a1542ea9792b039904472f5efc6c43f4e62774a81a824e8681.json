@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The answer lists all the same product categories as the gold answer (data center server CPUs/GPUs/DPUs/FPGAs/Adaptive SoCs; CPUs/APUs/chipsets for PCs; discrete GPUs and semi-custom SoCs with development services; embedded products), with only extra correct context about the Radeon brand."
+  },
+  "request_key": "b0fdea6150b0a9a1542ea9792b039904472f5efc6c43f4e62774a81a824e8681",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00111355",
+    "input_tokens": 447,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 127
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Cencora's capital expenditures for FY2020 were $369.7 million [1].",
+    "claims": [
+      {
+        "display": "$369.7 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:-6469282713250524353",
+          "fact_ids": [
+            -6469282713250524353
+          ],
+          "type": "expr"
+        },
+        "text": "Cencora capital expenditures for FY2020 were $369.7 million.",
+        "unit": "USD",
+        "value": "369677000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "7e4b027f07378b10ea72b166f2cf98003ff4aeb9626e54814ffcc1f5805e7b75",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00006640",
+    "input_tokens": 209,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 173
+  }
+}

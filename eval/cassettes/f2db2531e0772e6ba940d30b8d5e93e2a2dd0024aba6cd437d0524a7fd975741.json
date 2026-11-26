@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "incorrect",
+    "reason": "The answer says yes but cites a different key fact (about 18% of accounts receivable) rather than the gold's 16% of consolidated net revenue, so the figure and the metric do not match."
+  },
+  "request_key": "f2db2531e0772e6ba940d30b8d5e93e2a2dd0024aba6cd437d0524a7fd975741",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00056255",
+    "input_tokens": 151,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 76
+  }
+}

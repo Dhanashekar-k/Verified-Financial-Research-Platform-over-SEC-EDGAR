@@ -1,0 +1,43 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "3M manages its operations in four business segments [1].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000066740-23-000014#7#0029",
+          "quote": "3M manages its operations in four business segments. The reportable segments are Safety and Industrial; Transportation and Electronics; Health Care; and Consumer.",
+          "type": "chunk"
+        },
+        "text": "3M manages its operations in four business segments. The reportable segments are Safety and Industrial; Transportation and Electronics; Health Care; and Consumer.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "3M manages its operations in four business segments: Safety and Industrial; Transportation and Electronics; Health Care; and Consumer."
+      ],
+      "missing": [
+        "2022 segment sales growth figures, with M&A impact excluded (organic growth by segment) for each of the four business segments",
+        "A statement in the filings identifying the segment that reduced 2022 overall growth"
+      ],
+      "reason": "The material does not give 2022 segment growth figures or organic growth by segment, so it cannot identify which segment dragged down 2022 growth excluding M&A."
+    }
+  },
+  "request_key": "c455f42dee9f1429f5fde2b535f41d4c9513f82cc3f0906eefee13ac42bccf9b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00055840",
+    "input_tokens": 4969,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1189
+  }
+}

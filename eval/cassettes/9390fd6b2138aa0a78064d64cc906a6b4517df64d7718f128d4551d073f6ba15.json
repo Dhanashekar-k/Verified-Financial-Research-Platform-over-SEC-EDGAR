@@ -1,0 +1,36 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "TE Connectivity's SG&A expenses in Q3 FY2025 were $491.0 million [1].",
+    "claims": [
+      {
+        "display": "$491.0 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:8068600142156450733",
+          "fact_ids": [
+            8068600142156450733
+          ],
+          "type": "expr"
+        },
+        "text": "TE Connectivity's SG&A expenses in Q3 FY2025 were $491.0 million.",
+        "unit": "USD",
+        "value": "491000000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "9390fd6b2138aa0a78064d64cc906a6b4517df64d7718f128d4551d073f6ba15",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00007095",
+    "input_tokens": 225,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 188
+  }
+}

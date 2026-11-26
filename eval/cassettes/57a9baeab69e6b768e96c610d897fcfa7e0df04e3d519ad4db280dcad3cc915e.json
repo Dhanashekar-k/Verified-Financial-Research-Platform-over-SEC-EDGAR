@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "correct",
+    "reason": "The answer states guidance was raised from 8% to 9%, which is a 1 percentage point increase matching the gold answer, even though it declined to state the difference explicitly."
+  },
+  "request_key": "57a9baeab69e6b768e96c610d897fcfa7e0df04e3d519ad4db280dcad3cc915e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 631,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00057855",
+    "input_tokens": 202,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 69
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Verisk Analytics, Inc.'s selling, general and administrative expense grew by 17.2% from Q1 of fiscal year 2024 to Q1 of fiscal year 2025 [1].",
+    "claims": [
+      {
+        "display": "17.2%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:-6268552044065251208 - f:-8941904599807607010) / f:-8941904599807607010",
+          "fact_ids": [
+            -6268552044065251208,
+            -8941904599807607010
+          ],
+          "type": "expr"
+        },
+        "text": "Verisk Analytics' SG&A expense grew 17.2% from Q1 FY2024 to Q1 FY2025.",
+        "unit": "ratio",
+        "value": "0.1722282023681378"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "a4e8d5c1dc294747c3ddc75cd015b46ddb673d059b1c6e268aff521931dedf5a",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0000975",
+    "input_tokens": 331,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 273
+  }
+}

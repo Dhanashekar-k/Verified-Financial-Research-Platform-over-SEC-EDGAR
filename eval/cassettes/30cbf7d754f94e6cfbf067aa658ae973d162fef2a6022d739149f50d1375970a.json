@@ -1,0 +1,36 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "contradiction": false,
+    "points": [
+      {
+        "covered": true,
+        "index": 0
+      },
+      {
+        "covered": false,
+        "index": 1
+      },
+      {
+        "covered": false,
+        "index": 2
+      },
+      {
+        "covered": true,
+        "index": 3
+      }
+    ],
+    "reason": "The answer covers the $3.8 billion notional amount and the below-market financing program, but it omits that the net change in fair value was not significant, and it gives the $637.9 million MBS figure without the $1.1 billion 2023 comparison. Point 1 is only partly covered, since the offset is stated without the insignificance of the net change, and point 2 is incomplete without the comparison. Nothing in the answer contradicts the gold points."
+  },
+  "request_key": "30cbf7d754f94e6cfbf067aa658ae973d162fef2a6022d739149f50d1375970a",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 683,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00157215",
+    "input_tokens": 493,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 209
+  }
+}

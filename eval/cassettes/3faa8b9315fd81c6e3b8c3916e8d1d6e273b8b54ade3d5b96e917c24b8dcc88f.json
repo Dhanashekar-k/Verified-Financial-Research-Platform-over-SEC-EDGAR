@@ -1,0 +1,44 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The passages describe the sources AMD's management expects to fund operations [1].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "fb:AMD_2022_10K#p4#0001",
+          "quote": "AMD\u2019s cash, cash equivalents and short-term investment balances together with the availability under that certain revolving credit facility",
+          "type": "chunk"
+        },
+        "text": "Management's expectation of funding draws on AMD's cash, cash equivalents and short-term investment balances together with the revolving credit facility.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Management states that AMD's cash, cash equivalents and short-term investment balances, the revolving credit facility, the commercial paper program and cash flows from operations will be sufficient to fund operations."
+      ],
+      "missing": [
+        "FY22 quick ratio, or the current assets, inventories and current liabilities needed to compute it",
+        "FY22 year-end balance sheet figures for current assets, inventories and current liabilities",
+        "Discussion of whether the quick ratio is a relevant liquidity measure for AMD"
+      ],
+      "reason": "The material contains no FY22 quick ratio and none of the balance sheet inputs needed to compute one, so AMD's liquidity cannot be assessed on that measure."
+    }
+  },
+  "request_key": "3faa8b9315fd81c6e3b8c3916e8d1d6e273b8b54ade3d5b96e917c24b8dcc88f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00081245",
+    "input_tokens": 5140,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 2171
+  }
+}

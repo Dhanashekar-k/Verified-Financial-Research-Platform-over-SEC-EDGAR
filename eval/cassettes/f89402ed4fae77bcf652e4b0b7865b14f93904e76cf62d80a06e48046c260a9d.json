@@ -1,0 +1,44 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "The provided material references General Mills' consolidated balance sheets as of May 31, 2020 [1], but it contains no current assets or current liabilities totals, so the FY2020 working capital ratio cannot be computed from it.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001193125-20-186469#8#0001",
+          "quote": "We have audited the accompanying consolidated balance sheets of General Mills, Inc. and subsidiaries",
+          "type": "chunk"
+        },
+        "text": "The auditor's report refers to General Mills' consolidated balance sheets as of May 31, 2020.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "The auditor's report refers to General Mills' consolidated balance sheets as of May 31, 2020."
+      ],
+      "missing": [
+        "Total current assets as of May 31, 2020 from the consolidated balance sheet",
+        "Total current liabilities as of May 31, 2020 from the consolidated balance sheet",
+        "A computed working capital ratio (total current assets divided by total current liabilities) in NUMERIC RESULTS"
+      ],
+      "reason": "The material does not include the statement of financial position line items needed to compute the working capital ratio."
+    }
+  },
+  "request_key": "f89402ed4fae77bcf652e4b0b7865b14f93904e76cf62d80a06e48046c260a9d",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00057370",
+    "input_tokens": 5400,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 1164
+  }
+}

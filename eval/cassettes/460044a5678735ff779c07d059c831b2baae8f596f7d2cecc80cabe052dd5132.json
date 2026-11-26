@@ -1,0 +1,36 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "McKesson Corporation reported interest expense of $45.0 million for the second quarter of fiscal year 2021 [1].",
+    "claims": [
+      {
+        "display": "$45.0 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:-3491350511232567495",
+          "fact_ids": [
+            -3491350511232567495
+          ],
+          "type": "expr"
+        },
+        "text": "McKesson Corporation's interest expense for Q2 FY2021 was $45.0 million.",
+        "unit": "USD",
+        "value": "45000000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "460044a5678735ff779c07d059c831b2baae8f596f7d2cecc80cabe052dd5132",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00007315",
+    "input_tokens": 244,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 193
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "A default by BCOP or its subsidiary guarantors in respect of certain provisions may result in a cross default under the BCOP Credit Agreement, which lets the lenders accelerate the maturity of outstanding balances [1]. The interest rate swaps secured pari passu with that facility contain cross-default provisions, so an acceleration of that debt lets the swap counterparty terminate and require all outstanding obligations to be settled [2]. Under the Nuveen UPA, a qualifying cross default makes the payment obligations of Vistra Vision Holdings and/or any guarantor immediately due and payable [3]. The material does not describe how a Nuveen UPA default affects any related interest rate swap agreements.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001692819-25-000013#7#0076",
+          "quote": "Such a default would allow the lenders under such facility to accelerate the maturity of outstanding balances under such facility.",
+          "type": "chunk"
+        },
+        "text": "A default by BCOP or its subsidiary guarantors may result in a cross default under the BCOP Credit Agreement, allowing the lenders to accelerate the maturity of outstanding balances.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001692819-25-000013#7#0076",
+          "quote": "the interest rate swap agreements that are secured with a lien on BCOP and its subsidiary guarantors' assets on a pari passu basis with the BCOP Credit Agreement contain cross-default provisions, where an event of a default by BCOP or any of its subsidiary guarantors that results in the acceleration of such debt, would give such counterparty under these hedging agreements the right to terminate its hedge or interest rate swap agreement with BCOP and require all outstanding obligations under such agreement to be settled.",
+          "type": "chunk"
+        },
+        "text": "The BCOP-secured interest rate swap agreements contain cross-default provisions that give the counterparty the right to terminate and require all outstanding obligations to be settled.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001692819-25-000013#7#0076",
+          "quote": "Such a default would result in the payment obligations under the Nuveen UPA of Vistra Vision Holdings and/or any guarantor thereunder becoming immediately due and payable.",
+          "type": "chunk"
+        },
+        "text": "A cross default under the Nuveen UPA would make the payment obligations of Vistra Vision Holdings and/or any guarantor immediately due and payable.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "BCOP Credit Agreement cross default allows lenders to accelerate outstanding balances",
+        "BCOP-secured interest rate swaps contain cross-default provisions allowing the counterparty to terminate and require settlement",
+        "Nuveen UPA cross default makes payment obligations of Vistra Vision Holdings and/or any guarantor immediately due and payable"
+      ],
+      "missing": [
+        "Whether and how a default under the Nuveen UPA affects related interest rate swap agreements"
+      ],
+      "reason": "The passages describe swap cross-default effects only for the BCOP Credit Agreement and do not address the effect of a Nuveen UPA default on related interest rate swap agreements."
+    }
+  },
+  "request_key": "900bd6ee04322f28ec6345ea8021fb1093f175ce707475acfc7152fad8af7794",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.0011655",
+    "input_tokens": 4981,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 3615
+  }
+}

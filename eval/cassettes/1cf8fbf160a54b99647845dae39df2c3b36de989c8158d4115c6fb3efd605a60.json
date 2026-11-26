@@ -1,0 +1,90 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "D.R. Horton said its hedging instruments for funded, uncommitted loans are accounted for at fair value, with changes recognized in revenues [1]. The fair value change on those hedges generally offsets the fair value change in the uncommitted loans [2]. At September 30, 2024, hedging instruments used for uncommitted mortgage loans held for sale and uncommitted IRLCs totaled a notional amount of $3.8 billion [3]. The company also said it uses hedging instruments as part of a program to offer below market interest rate financing to its homebuyers [4]. For that program, it reported MBS totaling $637.9 million at September 30, 2024 that did not yet have IRLCs or closed loans created or assigned [5].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000882184-24-000057#7A#0001",
+          "quote": "Hedging instruments related to funded, uncommitted loans are accounted for at fair value, with changes recognized in revenues in the consolidated statements of operations",
+          "type": "chunk"
+        },
+        "text": "Hedging instruments related to funded, uncommitted loans are accounted for at fair value, with changes recognized in revenues.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000882184-24-000057#7A#0001",
+          "quote": "The fair value change related to the hedging instruments generally offsets the fair value change in the uncommitted loans.",
+          "type": "chunk"
+        },
+        "text": "The fair value change related to the hedging instruments generally offsets the fair value change in the uncommitted loans.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000882184-24-000057#7A#0001",
+          "quote": "At September 30, 2024, hedging instruments used to mitigate interest rate risk related to uncommitted mortgage loans held for sale and uncommitted IRLCs totaled a notional amount of $3.8 billion.",
+          "type": "chunk"
+        },
+        "text": "At September 30, 2024, hedging instruments used to mitigate interest rate risk related to uncommitted mortgage loans held for sale and uncommitted IRLCs totaled a notional amount of $3.8 billion.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c4",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000882184-24-000057#7A#0001",
+          "quote": "We also use hedging instruments as part of a program to offer below market interest rate financing to our homebuyers.",
+          "type": "chunk"
+        },
+        "text": "The company uses hedging instruments as part of a program to offer below market interest rate financing to its homebuyers.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c5",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000882184-24-000057#7A#0001",
+          "quote": "At September 30, 2024 and 2023, we had MBS totaling $637.9 million and $1.1 billion, respectively, that did not yet have IRLCs or closed loans created or assigned",
+          "type": "chunk"
+        },
+        "text": "At September 30, 2024, MBS totaling $637.9 million did not yet have IRLCs or closed loans created or assigned under that program.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "1cf8fbf160a54b99647845dae39df2c3b36de989c8158d4115c6fb3efd605a60",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00080315",
+    "input_tokens": 5359,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 2090
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "AMD"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "quick ratio",
+      "liquidity profile",
+      "short-term liquidity"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2022
+      }
+    ],
+    "section_hints": [
+      "7",
+      "8"
+    ]
+  },
+  "request_key": "a8d9e505f561c9ba937edab4f787b108cdd2c04ffae93b1440f95b103d4a8ae4",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000096455",
+    "input_tokens": 67,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 283
+  }
+}

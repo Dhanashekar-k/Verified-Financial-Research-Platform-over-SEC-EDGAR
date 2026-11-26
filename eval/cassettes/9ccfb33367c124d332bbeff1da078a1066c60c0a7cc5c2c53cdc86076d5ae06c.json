@@ -1,0 +1,42 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "IFF"
+      }
+    ],
+    "intent": "narrative",
+    "metrics": [],
+    "narrative_topics": [
+      "sources of funds for capital needs",
+      "debt financing assumed in Nutrition & Biosciences transaction",
+      "liquidity"
+    ],
+    "needs_clarification": null,
+    "operation": null,
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2022
+      }
+    ],
+    "section_hints": [
+      "7",
+      "8"
+    ]
+  },
+  "request_key": "9ccfb33367c124d332bbeff1da078a1066c60c0a7cc5c2c53cdc86076d5ae06c",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000078955",
+    "input_tokens": 67,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 213
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Home Depot, Inc.'s total liabilities at the end of Q2 of fiscal year 2025 were $89.4 billion [1].",
+    "claims": [
+      {
+        "display": "$89.4 billion",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:1088537750008660793",
+          "fact_ids": [
+            1088537750008660793
+          ],
+          "type": "expr"
+        },
+        "text": "Total liabilities at the end of Q2 FY2025 were $89.4 billion.",
+        "unit": "USD",
+        "value": "89384000000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "c1290e26041d05499716b77ac38f670946e6ab188a66e2c0e6a23d973a27309c",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00007485",
+    "input_tokens": 248,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 199
+  }
+}

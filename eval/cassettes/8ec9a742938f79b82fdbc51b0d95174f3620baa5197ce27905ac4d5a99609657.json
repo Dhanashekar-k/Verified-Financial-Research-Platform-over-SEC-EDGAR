@@ -1,0 +1,74 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Targa describes its customer credit risk approach as establishing procedures to manage credit exposure, including credit analyses, maximum credit limits and terms, and credit enhancements when necessary [1]. Its allowance for doubtful accounts was $0.1 million and $0.0 million as of December 31, 2020 and December 31, 2019, and changes in it were not material for 2020 [2]. Sales and midstream service fees to Petredec (Europe) Limited comprised approximately 11% and 12% of consolidated revenues in 2020 and 2019, which is its disclosed customer concentration [3].",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001564590-21-006640#7A#0008",
+          "quote": "We have established various procedures to manage our credit exposure, including performing initial and subsequent credit risk analyses, setting maximum credit limits and terms and requiring credit enhancements when necessary.",
+          "type": "chunk"
+        },
+        "text": "Targa manages customer credit exposure by performing initial and subsequent credit risk analyses, setting maximum credit limits and terms, and requiring credit enhancements when necessary.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001564590-21-006640#7A#0008",
+          "quote": "Our allowance for doubtful accounts was $0.1 million and $0.0 million as of December 31, 2020 and December 31, 2019.",
+          "type": "chunk"
+        },
+        "text": "The allowance for doubtful accounts was $0.1 million and $0.0 million as of December 31, 2020 and December 31, 2019.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0001564590-21-006640#7A#0008",
+          "quote": "During the years ended December 31, 2020 and 2019, sales of commodities and fees from midstream services provided to Petredec (Europe) Limited comprised approximately 11% and 12% of our consolidated revenues.",
+          "type": "chunk"
+        },
+        "text": "Sales of commodities and fees from midstream services provided to Petredec (Europe) Limited comprised approximately 11% and 12% of consolidated revenues during 2020 and 2019.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "Targa's credit risk procedures and credit enhancements",
+        "Allowance for doubtful accounts of $0.1 million and $0.0 million at December 31, 2020 and 2019",
+        "Petredec (Europe) Limited at approximately 11% and 12% of consolidated revenues in 2020 and 2019"
+      ],
+      "missing": [
+        "Credit loss expense or provision for the period",
+        "Write-offs or recoveries of customer receivables",
+        "Amounts of actual credit losses recognized in 2020"
+      ],
+      "reason": "The passages describe the credit risk approach and allowance balances but do not disclose credit loss expense, write-offs, or the amount of credit losses actually recognized."
+    }
+  },
+  "request_key": "8ec9a742938f79b82fdbc51b0d95174f3620baa5197ce27905ac4d5a99609657",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00076765",
+    "input_tokens": 4649,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 2090
+  }
+}

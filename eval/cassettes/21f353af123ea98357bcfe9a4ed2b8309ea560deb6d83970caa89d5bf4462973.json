@@ -1,0 +1,52 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "TJX Companies Inc /DE/ reported capital expenditures of $314.4 million for Q1 FY2022 as originally filed [1]. This figure was later restated; the latest restated value of $314.0 million is shown through its own provenance [2] and is not the originally reported figure.",
+    "claims": [
+      {
+        "display": "$314.4 million",
+        "id": "c1",
+        "kind": "numeric",
+        "primary": true,
+        "provenance": {
+          "expr": "f:8610664366010049780",
+          "fact_ids": [
+            8610664366010049780
+          ],
+          "type": "expr"
+        },
+        "text": "TJX Companies Inc /DE/ capital expenditures in Q1 FY2022, as originally reported, were $314.4 million.",
+        "unit": "USD",
+        "value": "314351000"
+      },
+      {
+        "display": "$314.0 million",
+        "id": "c2",
+        "kind": "numeric",
+        "primary": false,
+        "provenance": {
+          "expr": "f:6309232080257173664",
+          "fact_ids": [
+            6309232080257173664
+          ],
+          "type": "expr"
+        },
+        "text": "The Q1 FY2022 capital expenditures figure was later restated to $314.0 million.",
+        "unit": "USD",
+        "value": "314000000"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "21f353af123ea98357bcfe9a4ed2b8309ea560deb6d83970caa89d5bf4462973",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00012935",
+    "input_tokens": 428,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 381
+  }
+}

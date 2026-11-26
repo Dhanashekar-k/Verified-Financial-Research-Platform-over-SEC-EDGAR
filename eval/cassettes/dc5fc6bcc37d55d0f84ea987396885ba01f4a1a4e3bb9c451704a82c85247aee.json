@@ -1,0 +1,88 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "PepsiCo's segment descriptions in the passages cover the United States and Canada [1], Latin America [2], Europe [3], and Africa, the Middle East and South Asia [4]. The passage cuts off before the full segment list, so any further geography is not confirmed.",
+    "claims": [
+      {
+        "display": null,
+        "id": "c1",
+        "kind": "text",
+        "primary": true,
+        "provenance": {
+          "chunk_id": "0000077476-23-000007#1#0000",
+          "quote": "which includes our beverage businesses in the United States and Canada",
+          "type": "chunk"
+        },
+        "text": "PepsiCo Beverages North America includes beverage businesses in the United States and Canada.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c2",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000077476-23-000007#1#0000",
+          "quote": "which includes all of our beverage and convenient food businesses in Latin America",
+          "type": "chunk"
+        },
+        "text": "Latin America includes all of PepsiCo's beverage and convenient food businesses in Latin America.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c3",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000077476-23-000007#1#0000",
+          "quote": "which includes all of our beverage and convenient food businesses in Europe",
+          "type": "chunk"
+        },
+        "text": "Europe includes all of PepsiCo's beverage and convenient food businesses in Europe.",
+        "unit": null,
+        "value": null
+      },
+      {
+        "display": null,
+        "id": "c4",
+        "kind": "text",
+        "primary": false,
+        "provenance": {
+          "chunk_id": "0000077476-23-000007#1#0000",
+          "quote": "which includes all of our beverage and convenient food businesses in Africa, the Middle East and South Asia",
+          "type": "chunk"
+        },
+        "text": "Africa, Middle East and South Asia includes all of PepsiCo's beverage and convenient food businesses in Africa, the Middle East and South Asia.",
+        "unit": null,
+        "value": null
+      }
+    ],
+    "refusal": {
+      "found": [
+        "PepsiCo Beverages North America covers the United States and Canada.",
+        "Latin America covers all beverage and convenient food businesses in Latin America.",
+        "Europe covers all beverage and convenient food businesses in Europe.",
+        "Africa, Middle East and South Asia covers all beverage and convenient food businesses in Africa, the Middle East and South Asia."
+      ],
+      "missing": [
+        "The remainder of the reportable segment list, including any segment after Africa, Middle East and South Asia.",
+        "The complete list of geographies from the FY2022 Item 1 segment description."
+      ],
+      "reason": "The passages give the geographic scope of only some of PepsiCo's reportable segments and do not include the complete segment list as of FY2022."
+    }
+  },
+  "request_key": "dc5fc6bcc37d55d0f84ea987396885ba01f4a1a4e3bb9c451704a82c85247aee",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00088385",
+    "input_tokens": 6228,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 2239
+  }
+}

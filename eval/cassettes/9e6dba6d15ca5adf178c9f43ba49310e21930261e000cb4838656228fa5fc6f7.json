@@ -1,0 +1,41 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "companies": [
+      {
+        "cik": null,
+        "mention": "EOG Resources"
+      },
+      {
+        "cik": null,
+        "mention": "Halliburton"
+      }
+    ],
+    "intent": "numeric",
+    "metrics": [
+      "total_assets"
+    ],
+    "narrative_topics": [],
+    "needs_clarification": null,
+    "operation": "compare",
+    "period_text": null,
+    "periods": [
+      {
+        "fiscal_period": "FY",
+        "fiscal_year": 2023
+      }
+    ],
+    "section_hints": []
+  },
+  "request_key": "9e6dba6d15ca5adf178c9f43ba49310e21930261e000cb4838656228fa5fc6f7",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 4471,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.000058055",
+    "input_tokens": 44,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 134
+  }
+}

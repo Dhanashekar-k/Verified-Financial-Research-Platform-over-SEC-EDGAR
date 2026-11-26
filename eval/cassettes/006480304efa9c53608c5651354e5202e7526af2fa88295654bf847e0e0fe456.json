@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "output": {
+    "answer_markdown": "Sysco Corp's dividends paid changed by -0.8% from fiscal year 2024 to fiscal year 2025 [1].",
+    "claims": [
+      {
+        "display": "-0.8%",
+        "id": "c1",
+        "kind": "numeric_derived",
+        "primary": true,
+        "provenance": {
+          "expr": "(f:7567688918479124695 - f:6115759817718622592) / f:6115759817718622592",
+          "fact_ids": [
+            7567688918479124695,
+            6115759817718622592
+          ],
+          "type": "expr"
+        },
+        "text": "Sysco Corp's dividends paid changed by -0.8% from FY2024 to FY2025.",
+        "unit": "ratio",
+        "value": "-0.007936507936507936507936507937"
+      }
+    ],
+    "refusal": null
+  },
+  "request_key": "006480304efa9c53608c5651354e5202e7526af2fa88295654bf847e0e0fe456",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 2540,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00016060",
+    "input_tokens": 298,
+    "latency_ms": 0,
+    "model": "claude-haiku-5-5",
+    "output_tokens": 532
+  }
+}
