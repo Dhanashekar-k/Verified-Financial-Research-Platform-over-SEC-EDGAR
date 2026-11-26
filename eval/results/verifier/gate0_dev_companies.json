@@ -1,0 +1,4282 @@
+[
+{
+"cik": 1800,
+"name": "ABBOTT LABORATORIES",
+"ticker": "ABT",
+"sic": 2834,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 2488,
+"name": "ADVANCED MICRO DEVICES INC",
+"ticker": "AMD",
+"sic": 3674,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 2969,
+"name": "Air Products & Chemicals, Inc.",
+"ticker": "APD",
+"sic": 2810,
+"fye_mmdd": "0930",
+"aliases": []
+},
+{
+"cik": 4127,
+"name": "SKYWORKS SOLUTIONS, INC.",
+"ticker": "SWKS",
+"sic": 3674,
+"fye_mmdd": "0930",
+"aliases": []
+},
+{
+"cik": 4281,
+"name": "Howmet Aerospace Inc.",
+"ticker": "HWM",
+"sic": 3350,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 4904,
+"name": "AMERICAN ELECTRIC POWER CO INC",
+"ticker": "AEP",
+"sic": 4911,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 4962,
+"name": "AMERICAN EXPRESS CO",
+"ticker": "AXP",
+"sic": 6199,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 4977,
+"name": "AFLAC INC",
+"ticker": "AFL",
+"sic": 6321,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 5272,
+"name": "AMERICAN INTERNATIONAL GROUP, INC.",
+"ticker": "AIG",
+"sic": 6331,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 6281,
+"name": "ANALOG DEVICES INC",
+"ticker": "ADI",
+"sic": 3674,
+"fye_mmdd": "1031",
+"aliases": []
+},
+{
+"cik": 6951,
+"name": "APPLIED MATERIALS INC /DE",
+"ticker": "AMAT",
+"sic": 3674,
+"fye_mmdd": "1031",
+"aliases": []
+},
+{
+"cik": 7084,
+"name": "Archer-Daniels-Midland Co",
+"ticker": "ADM",
+"sic": 2070,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 8670,
+"name": "AUTOMATIC DATA PROCESSING INC",
+"ticker": "ADP",
+"sic": 7374,
+"fye_mmdd": "0630",
+"aliases": []
+},
+{
+"cik": 8818,
+"name": "Avery Dennison Corp",
+"ticker": "AVY",
+"sic": 2670,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 9389,
+"name": "BALL Corp",
+"ticker": "BALL",
+"sic": 3411,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 10456,
+"name": "BAXTER INTERNATIONAL INC",
+"ticker": "BAX",
+"sic": 3841,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 10795,
+"name": "BECTON DICKINSON & CO",
+"ticker": "BDX",
+"sic": 3841,
+"fye_mmdd": "0930",
+"aliases": []
+},
+{
+"cik": 11544,
+"name": "BERKLEY W R CORP",
+"ticker": "WRB",
+"sic": 6331,
+"fye_mmdd": "1231",
+"aliases": [
+"WRB-PE",
+"WRB-PF",
+"WRB-PG",
+"WRB-PH"
+]
+},
+{
+"cik": 12927,
+"name": "BOEING CO",
+"ticker": "BA",
+"sic": 3721,
+"fye_mmdd": "1231",
+"aliases": [
+"BA-PA"
+]
+},
+{
+"cik": 14272,
+"name": "BRISTOL MYERS SQUIBB CO",
+"ticker": "BMY",
+"sic": 2834,
+"fye_mmdd": "1231",
+"aliases": [
+"CELG-RI"
+]
+},
+{
+"cik": 14693,
+"name": "BROWN FORMAN CORP",
+"ticker": "BF-B",
+"sic": 2080,
+"fye_mmdd": "0430",
+"aliases": [
+"BF-A"
+]
+},
+{
+"cik": 16918,
+"name": "CONSTELLATION BRANDS, INC.",
+"ticker": "STZ",
+"sic": 2080,
+"fye_mmdd": "0228",
+"aliases": []
+},
+{
+"cik": 18230,
+"name": "CATERPILLAR INC",
+"ticker": "CAT",
+"sic": 3531,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 19617,
+"name": "JPMORGAN CHASE & CO",
+"ticker": "JPM",
+"sic": 6021,
+"fye_mmdd": "1231",
+"aliases": [
+"JPM-PC",
+"VYLD",
+"AMJB",
+"JPM-PD",
+"JPM-PJ",
+"JPM-PK",
+"JPM-PL",
+"JPM-PM"
+]
+},
+{
+"cik": 20286,
+"name": "CINCINNATI FINANCIAL CORP",
+"ticker": "CINF",
+"sic": 6331,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 21076,
+"name": "CLOROX CO /DE/",
+"ticker": "CLX",
+"sic": 2842,
+"fye_mmdd": "0630",
+"aliases": []
+},
+{
+"cik": 21344,
+"name": "COCA COLA CO",
+"ticker": "KO",
+"sic": 2080,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 21665,
+"name": "COLGATE PALMOLIVE CO",
+"ticker": "CL",
+"sic": 2844,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 24741,
+"name": "CORNING INC /NY",
+"ticker": "GLW",
+"sic": 3357,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 26172,
+"name": "CUMMINS INC",
+"ticker": "CMI",
+"sic": 3510,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 27419,
+"name": "TARGET CORP",
+"ticker": "TGT",
+"sic": 5331,
+"fye_mmdd": "0131",
+"aliases": []
+},
+{
+"cik": 27904,
+"name": "DELTA AIR LINES, INC.",
+"ticker": "DAL",
+"sic": 4512,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 29534,
+"name": "DOLLAR GENERAL CORP",
+"ticker": "DG",
+"sic": 5331,
+"fye_mmdd": "0131",
+"aliases": []
+},
+{
+"cik": 29905,
+"name": "DOVER Corp",
+"ticker": "DOV",
+"sic": 3530,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 29989,
+"name": "OMNICOM GROUP INC.",
+"ticker": "OMC",
+"sic": 7311,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 31462,
+"name": "ECOLAB INC.",
+"ticker": "ECL",
+"sic": 2840,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 31791,
+"name": "REVVITY, INC.",
+"ticker": "RVTY",
+"sic": 3826,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 32604,
+"name": "EMERSON ELECTRIC CO",
+"ticker": "EMR",
+"sic": 3600,
+"fye_mmdd": "0930",
+"aliases": []
+},
+{
+"cik": 33185,
+"name": "EQUIFAX INC",
+"ticker": "EFX",
+"sic": 7320,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 33213,
+"name": "EQT Corp",
+"ticker": "EQT",
+"sic": 1311,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 34903,
+"name": "FEDERAL REALTY INVESTMENT TRUST",
+"ticker": "FRT",
+"sic": 6798,
+"fye_mmdd": "1231",
+"aliases": [
+"FRT-PC"
+]
+},
+{
+"cik": 35527,
+"name": "FIFTH THIRD BANCORP",
+"ticker": "FITB",
+"sic": 6022,
+"fye_mmdd": "1231",
+"aliases": [
+"FITB-PI",
+"FITB-PM",
+"FITB-PK",
+"FITB-PA"
+]
+},
+{
+"cik": 36104,
+"name": "US BANCORP DE",
+"ticker": "USB",
+"sic": 6021,
+"fye_mmdd": "1231",
+"aliases": [
+"USB-PA",
+"USB-PH",
+"USB-PP",
+"USB-PQ",
+"USB-PR",
+"USB-PS"
+]
+},
+{
+"cik": 36270,
+"name": "M&T BANK CORP",
+"ticker": "MTB",
+"sic": 6022,
+"fye_mmdd": "1231",
+"aliases": [
+"MTB-PK",
+"MTB-PJ",
+"MTB-PL",
+"MTB-PH"
+]
+},
+{
+"cik": 37996,
+"name": "FORD MOTOR CO",
+"ticker": "F",
+"sic": 3711,
+"fye_mmdd": "1231",
+"aliases": [
+"F-PB",
+"F-PC",
+"F-PD"
+]
+},
+{
+"cik": 38777,
+"name": "FRANKLIN TEMPLETON INC",
+"ticker": "BEN",
+"sic": 6282,
+"fye_mmdd": "0930",
+"aliases": []
+},
+{
+"cik": 40533,
+"name": "GENERAL DYNAMICS CORP",
+"ticker": "GD",
+"sic": 3730,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 40545,
+"name": "GENERAL ELECTRIC CO",
+"ticker": "GE",
+"sic": 3600,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 40704,
+"name": "GENERAL MILLS INC",
+"ticker": "GIS",
+"sic": 2040,
+"fye_mmdd": "0531",
+"aliases": []
+},
+{
+"cik": 40987,
+"name": "GENUINE PARTS CO",
+"ticker": "GPC",
+"sic": 5013,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 45012,
+"name": "HALLIBURTON CO",
+"ticker": "HAL",
+"sic": 1389,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 46080,
+"name": "HASBRO, INC.",
+"ticker": "HAS",
+"sic": 3944,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 47111,
+"name": "HERSHEY CO",
+"ticker": "HSY",
+"sic": 2060,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 47217,
+"name": "HP INC",
+"ticker": "HPQ",
+"sic": 3570,
+"fye_mmdd": "1031",
+"aliases": []
+},
+{
+"cik": 48465,
+"name": "HORMEL FOODS CORP /DE/",
+"ticker": "HRL",
+"sic": 2011,
+"fye_mmdd": "1031",
+"aliases": []
+},
+{
+"cik": 48898,
+"name": "HUBBELL INC",
+"ticker": "HUBB",
+"sic": 3670,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 49071,
+"name": "HUMANA INC",
+"ticker": "HUM",
+"sic": 6324,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 49196,
+"name": "HUNTINGTON BANCSHARES INC /MD/",
+"ticker": "HBAN",
+"sic": 6021,
+"fye_mmdd": "1231",
+"aliases": [
+"HBANZ",
+"HBANL",
+"HBANM",
+"HBANP"
+]
+},
+{
+"cik": 49826,
+"name": "ILLINOIS TOOL WORKS INC",
+"ticker": "ITW",
+"sic": 3560,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 50863,
+"name": "INTEL CORP",
+"ticker": "INTC",
+"sic": 3674,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 51143,
+"name": "INTERNATIONAL BUSINESS MACHINES CORP",
+"ticker": "IBM",
+"sic": 3570,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 51253,
+"name": "INTERNATIONAL FLAVORS & FRAGRANCES INC",
+"ticker": "IFF",
+"sic": 2860,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 51434,
+"name": "INTERNATIONAL PAPER CO /NEW/",
+"ticker": "IP",
+"sic": 2621,
+"fye_mmdd": "1231",
+"aliases": [
+"INPAP"
+]
+},
+{
+"cik": 52988,
+"name": "JACOBS SOLUTIONS INC.",
+"ticker": "J",
+"sic": 1600,
+"fye_mmdd": "0930",
+"aliases": []
+},
+{
+"cik": 55785,
+"name": "KIMBERLY CLARK CORP",
+"ticker": "KMB",
+"sic": 2670,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 56873,
+"name": "KROGER CO",
+"ticker": "KR",
+"sic": 5411,
+"fye_mmdd": "0131",
+"aliases": []
+},
+{
+"cik": 59478,
+"name": "ELI LILLY & Co",
+"ticker": "LLY",
+"sic": 2834,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 60086,
+"name": "LOEWS CORP",
+"ticker": "L",
+"sic": 6331,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 60667,
+"name": "LOWES COMPANIES INC",
+"ticker": "LOW",
+"sic": 5211,
+"fye_mmdd": "0131",
+"aliases": []
+},
+{
+"cik": 62709,
+"name": "MARSH & MCLENNAN COMPANIES, INC.",
+"ticker": "MRSH",
+"sic": 6411,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 62996,
+"name": "MASCO CORP /DE/",
+"ticker": "MAS",
+"sic": 3430,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 63754,
+"name": "MCCORMICK & CO INC",
+"ticker": "MKC",
+"sic": 2090,
+"fye_mmdd": "1130",
+"aliases": [
+"MKC-V"
+]
+},
+{
+"cik": 63908,
+"name": "MCDONALDS CORP",
+"ticker": "MCD",
+"sic": 5812,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 64040,
+"name": "S&P Global Inc.",
+"ticker": "SPGI",
+"sic": 7320,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 64803,
+"name": "CVS HEALTH Corp",
+"ticker": "CVS",
+"sic": 5912,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 65984,
+"name": "ENTERGY CORP /DE/",
+"ticker": "ETR",
+"sic": 4911,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 66740,
+"name": "3M CO",
+"ticker": "MMM",
+"sic": 3841,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 68505,
+"name": "Motorola Solutions, Inc.",
+"ticker": "MSI",
+"sic": 3663,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 70858,
+"name": "BANK OF AMERICA CORP /DE/",
+"ticker": "BAC",
+"sic": 6021,
+"fye_mmdd": "1231",
+"aliases": [
+"BML-PG",
+"BML-PL",
+"BAC-PB",
+"BAC-PK",
+"BAC-PL",
+"MER-PK",
+"BACRP",
+"BAC-PE",
+"BML-PH",
+"BML-PJ",
+"BAC-PM",
+"BAC-PN",
+"BAC-PO",
+"BAC-PP",
+"BAC-PQ",
+"BAC-PS"
+]
+},
+{
+"cik": 72331,
+"name": "NORDSON CORP",
+"ticker": "NDSN",
+"sic": 3569,
+"fye_mmdd": "1031",
+"aliases": []
+},
+{
+"cik": 72741,
+"name": "EVERSOURCE ENERGY",
+"ticker": "ES",
+"sic": 4911,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 72903,
+"name": "XCEL ENERGY INC",
+"ticker": "XEL",
+"sic": 4931,
+"fye_mmdd": "1231",
+"aliases": [
+"XELLL"
+]
+},
+{
+"cik": 72971,
+"name": "WELLS FARGO & COMPANY/MN",
+"ticker": "WFC",
+"sic": 6021,
+"fye_mmdd": "1231",
+"aliases": [
+"WFC-PY",
+"WFC-PL",
+"WFC-PC",
+"WFC-PD",
+"WFC-PZ",
+"WFCNP",
+"WFC-PA"
+]
+},
+{
+"cik": 73124,
+"name": "NORTHERN TRUST CORP",
+"ticker": "NTRS",
+"sic": 6022,
+"fye_mmdd": "1231",
+"aliases": [
+"NTRSO"
+]
+},
+{
+"cik": 73309,
+"name": "NUCOR CORP",
+"ticker": "NUE",
+"sic": 3312,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 74208,
+"name": "UDR, Inc.",
+"ticker": "UDR",
+"sic": 6798,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 75362,
+"name": "PACCAR INC",
+"ticker": "PCAR",
+"sic": 3711,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 75677,
+"name": "PACKAGING CORP OF AMERICA",
+"ticker": "PKG",
+"sic": 2650,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 76334,
+"name": "Parker-Hannifin Corp",
+"ticker": "PH",
+"sic": 3490,
+"fye_mmdd": "0630",
+"aliases": []
+},
+{
+"cik": 77360,
+"name": "PENTAIR plc",
+"ticker": "PNR",
+"sic": 3550,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 77476,
+"name": "PEPSICO INC",
+"ticker": "PEP",
+"sic": 2080,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 78003,
+"name": "PFIZER INC",
+"ticker": "PFE",
+"sic": 2834,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 79282,
+"name": "BROWN & BROWN, INC.",
+"ticker": "BRO",
+"sic": 6411,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 79879,
+"name": "PPG INDUSTRIES INC",
+"ticker": "PPG",
+"sic": 2851,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 80424,
+"name": "PROCTER & GAMBLE Co",
+"ticker": "PG",
+"sic": 2840,
+"fye_mmdd": "0630",
+"aliases": []
+},
+{
+"cik": 80661,
+"name": "PROGRESSIVE CORP/OH/",
+"ticker": "PGR",
+"sic": 6331,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 84839,
+"name": "ROLLINS INC",
+"ticker": "ROL",
+"sic": 7340,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 86312,
+"name": "TRAVELERS COMPANIES, INC.",
+"ticker": "TRV",
+"sic": 6331,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 87347,
+"name": "SLB LIMITED/NV",
+"ticker": "SLB",
+"sic": 1389,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 89800,
+"name": "SHERWIN WILLIAMS CO",
+"ticker": "SHW",
+"sic": 5200,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 91142,
+"name": "SMITH A O CORP",
+"ticker": "AOS",
+"sic": 3630,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 91419,
+"name": "J M SMUCKER Co",
+"ticker": "SJM",
+"sic": 2033,
+"fye_mmdd": "0430",
+"aliases": []
+},
+{
+"cik": 91440,
+"name": "Snap-on Inc",
+"ticker": "SNA",
+"sic": 3420,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 91576,
+"name": "KEYCORP /NEW/",
+"ticker": "KEY",
+"sic": 6021,
+"fye_mmdd": "1231",
+"aliases": [
+"KEY-PK",
+"KEY-PI",
+"KEY-PJ",
+"KEY-PL"
+]
+},
+{
+"cik": 92122,
+"name": "SOUTHERN CO",
+"ticker": "SO",
+"sic": 4911,
+"fye_mmdd": "1231",
+"aliases": [
+"SOJC",
+"SOJD",
+"SOMN",
+"SOJF",
+"SOJE"
+]
+},
+{
+"cik": 92230,
+"name": "TRUIST FINANCIAL CORP",
+"ticker": "TFC",
+"sic": 6021,
+"fye_mmdd": "1231",
+"aliases": [
+"TFC-PI",
+"TFC-PO",
+"TFC-PR"
+]
+},
+{
+"cik": 92380,
+"name": "SOUTHWEST AIRLINES CO",
+"ticker": "LUV",
+"sic": 4512,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 93410,
+"name": "CHEVRON CORP",
+"ticker": "CVX",
+"sic": 2911,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 93556,
+"name": "STANLEY BLACK & DECKER, INC.",
+"ticker": "SWK",
+"sic": 3420,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 93751,
+"name": "STATE STREET CORP",
+"ticker": "STT",
+"sic": 6022,
+"fye_mmdd": "1231",
+"aliases": [
+"STT-PG"
+]
+},
+{
+"cik": 96021,
+"name": "SYSCO CORP",
+"ticker": "SYY",
+"sic": 5140,
+"fye_mmdd": "0630",
+"aliases": []
+},
+{
+"cik": 97210,
+"name": "TERADYNE, INC",
+"ticker": "TER",
+"sic": 3825,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 97476,
+"name": "TEXAS INSTRUMENTS INC",
+"ticker": "TXN",
+"sic": 3674,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 97745,
+"name": "THERMO FISHER SCIENTIFIC INC.",
+"ticker": "TMO",
+"sic": 3829,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 100493,
+"name": "TYSON FOODS, INC.",
+"ticker": "TSN",
+"sic": 2015,
+"fye_mmdd": "0930",
+"aliases": []
+},
+{
+"cik": 100517,
+"name": "United Airlines Holdings, Inc.",
+"ticker": "UAL",
+"sic": 4512,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 100885,
+"name": "UNION PACIFIC CORP",
+"ticker": "UNP",
+"sic": 4011,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 101829,
+"name": "RTX Corp",
+"ticker": "RTX",
+"sic": 3724,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 104169,
+"name": "Walmart Inc.",
+"ticker": "WMT",
+"sic": 5331,
+"fye_mmdd": "0131",
+"aliases": []
+},
+{
+"cik": 105634,
+"name": "EMCOR Group, Inc.",
+"ticker": "EME",
+"sic": 1731,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 105770,
+"name": "WEST PHARMACEUTICAL SERVICES INC",
+"ticker": "WST",
+"sic": 3841,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 106040,
+"name": "WESTERN DIGITAL CORP",
+"ticker": "WDC",
+"sic": 3572,
+"fye_mmdd": "0630",
+"aliases": []
+},
+{
+"cik": 106535,
+"name": "WEYERHAEUSER CO",
+"ticker": "WY",
+"sic": 6798,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 107263,
+"name": "WILLIAMS COMPANIES, INC.",
+"ticker": "WMB",
+"sic": 4922,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 109198,
+"name": "TJX COMPANIES INC /DE/",
+"ticker": "TJX",
+"sic": 5651,
+"fye_mmdd": "0131",
+"aliases": []
+},
+{
+"cik": 200406,
+"name": "JOHNSON & JOHNSON",
+"ticker": "JNJ",
+"sic": 2834,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 202058,
+"name": "L3HARRIS TECHNOLOGIES, INC. /DE/",
+"ticker": "LHX",
+"sic": 3812,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 217346,
+"name": "TEXTRON INC",
+"ticker": "TXT",
+"sic": 3720,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 277135,
+"name": "W.W. GRAINGER, INC.",
+"ticker": "GWW",
+"sic": 5000,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 277948,
+"name": "CSX CORP",
+"ticker": "CSX",
+"sic": 4011,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 310158,
+"name": "Merck & Co., Inc.",
+"ticker": "MRK",
+"sic": 2834,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 310764,
+"name": "STRYKER CORP",
+"ticker": "SYK",
+"sic": 3841,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 313616,
+"name": "DANAHER CORP /DE/",
+"ticker": "DHR",
+"sic": 3823,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 313927,
+"name": "CHURCH & DWIGHT CO INC /DE/",
+"ticker": "CHD",
+"sic": 2840,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 315189,
+"name": "DEERE & CO",
+"ticker": "DE",
+"sic": 3523,
+"fye_mmdd": "1031",
+"aliases": []
+},
+{
+"cik": 315293,
+"name": "Aon plc",
+"ticker": "AON",
+"sic": 6411,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 316709,
+"name": "SCHWAB CHARLES CORP",
+"ticker": "SCHW",
+"sic": 6211,
+"fye_mmdd": "1231",
+"aliases": [
+"SCHW-PD",
+"SCHW-PJ"
+]
+},
+{
+"cik": 318154,
+"name": "AMGEN INC",
+"ticker": "AMGN",
+"sic": 2836,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 319201,
+"name": "KLA CORP",
+"ticker": "KLAC",
+"sic": 3827,
+"fye_mmdd": "0630",
+"aliases": []
+},
+{
+"cik": 320187,
+"name": "NIKE, Inc.",
+"ticker": "NKE",
+"sic": 3021,
+"fye_mmdd": "0531",
+"aliases": []
+},
+{
+"cik": 320193,
+"name": "Apple Inc.",
+"ticker": "AAPL",
+"sic": 3571,
+"fye_mmdd": "0930",
+"aliases": []
+},
+{
+"cik": 320335,
+"name": "GLOBE LIFE INC.",
+"ticker": "GL",
+"sic": 6311,
+"fye_mmdd": "1231",
+"aliases": [
+"GL-PD"
+]
+},
+{
+"cik": 352541,
+"name": "ALLIANT ENERGY CORP",
+"ticker": "LNT",
+"sic": 4931,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 352915,
+"name": "UNIVERSAL HEALTH SERVICES INC",
+"ticker": "UHS",
+"sic": 8062,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 354190,
+"name": "Arthur J. Gallagher & Co.",
+"ticker": "AJG",
+"sic": 6411,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 354950,
+"name": "HOME DEPOT, INC.",
+"ticker": "HD",
+"sic": 5211,
+"fye_mmdd": "0131",
+"aliases": []
+},
+{
+"cik": 702165,
+"name": "NORFOLK SOUTHERN CORP",
+"ticker": "NSC",
+"sic": 4011,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 707549,
+"name": "LAM RESEARCH CORP",
+"ticker": "LRCX",
+"sic": 3559,
+"fye_mmdd": "0630",
+"aliases": []
+},
+{
+"cik": 711404,
+"name": "COOPER COMPANIES, INC.",
+"ticker": "COO",
+"sic": 3851,
+"fye_mmdd": "1031",
+"aliases": []
+},
+{
+"cik": 713676,
+"name": "PNC FINANCIAL SERVICES GROUP, INC.",
+"ticker": "PNC",
+"sic": 6021,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 715957,
+"name": "DOMINION ENERGY, INC",
+"ticker": "D",
+"sic": 4911,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 719955,
+"name": "WILLIAMS SONOMA INC",
+"ticker": "WSM",
+"sic": 5700,
+"fye_mmdd": "0131",
+"aliases": []
+},
+{
+"cik": 720005,
+"name": "RAYMOND JAMES FINANCIAL INC",
+"ticker": "RJF",
+"sic": 6211,
+"fye_mmdd": "0930",
+"aliases": []
+},
+{
+"cik": 721371,
+"name": "CARDINAL HEALTH INC",
+"ticker": "CAH",
+"sic": 5122,
+"fye_mmdd": "0630",
+"aliases": []
+},
+{
+"cik": 723125,
+"name": "MICRON TECHNOLOGY INC",
+"ticker": "MU",
+"sic": 3674,
+"fye_mmdd": "0831",
+"aliases": []
+},
+{
+"cik": 723254,
+"name": "CINTAS CORP",
+"ticker": "CTAS",
+"sic": 2320,
+"fye_mmdd": "0531",
+"aliases": []
+},
+{
+"cik": 723531,
+"name": "PAYCHEX INC",
+"ticker": "PAYX",
+"sic": 8700,
+"fye_mmdd": "0531",
+"aliases": []
+},
+{
+"cik": 726728,
+"name": "REALTY INCOME CORP",
+"ticker": "O",
+"sic": 6798,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 726958,
+"name": "CASEYS GENERAL STORES INC",
+"ticker": "CASY",
+"sic": 5500,
+"fye_mmdd": "0430",
+"aliases": []
+},
+{
+"cik": 728535,
+"name": "HUNT J B TRANSPORT SERVICES INC",
+"ticker": "JBHT",
+"sic": 4213,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 731766,
+"name": "UNITEDHEALTH GROUP INC",
+"ticker": "UNH",
+"sic": 6324,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 731802,
+"name": "ATMOS ENERGY CORP",
+"ticker": "ATO",
+"sic": 4924,
+"fye_mmdd": "0930",
+"aliases": []
+},
+{
+"cik": 732712,
+"name": "VERIZON COMMUNICATIONS INC",
+"ticker": "VZ",
+"sic": 4813,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 732717,
+"name": "AT&T INC.",
+"ticker": "T",
+"sic": 4813,
+"fye_mmdd": "1231",
+"aliases": [
+"TBB",
+"T-PA",
+"T-PC"
+]
+},
+{
+"cik": 740260,
+"name": "Ventas, Inc.",
+"ticker": "VTR",
+"sic": 6798,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 745732,
+"name": "ROSS STORES, INC.",
+"ticker": "ROST",
+"sic": 5651,
+"fye_mmdd": "0131",
+"aliases": []
+},
+{
+"cik": 746515,
+"name": "EXPEDITORS INTERNATIONAL OF WASHINGTON INC",
+"ticker": "EXPD",
+"sic": 4731,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 749251,
+"name": "GARTNER INC",
+"ticker": "IT",
+"sic": 8741,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 753308,
+"name": "NEXTERA ENERGY INC",
+"ticker": "NEE",
+"sic": 4911,
+"fye_mmdd": "1231",
+"aliases": [
+"NEE-PN",
+"NEE-PW",
+"NEE-PT",
+"NEE-PU",
+"NEE-PV",
+"NEE-PS"
+]
+},
+{
+"cik": 759944,
+"name": "CITIZENS FINANCIAL GROUP INC/RI",
+"ticker": "CFG",
+"sic": 6022,
+"fye_mmdd": "1231",
+"aliases": [
+"CFG-PE",
+"CFG-PH",
+"CFG-PI"
+]
+},
+{
+"cik": 764180,
+"name": "ALTRIA GROUP, INC.",
+"ticker": "MO",
+"sic": 2111,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 764478,
+"name": "BEST BUY CO INC",
+"ticker": "BBY",
+"sic": 5731,
+"fye_mmdd": "0131",
+"aliases": []
+},
+{
+"cik": 764622,
+"name": "PINNACLE WEST CAPITAL CORP",
+"ticker": "PNW",
+"sic": 4911,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 765880,
+"name": "HEALTHPEAK PROPERTIES, INC.",
+"ticker": "DOC",
+"sic": 6798,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 766704,
+"name": "WELLTOWER INC.",
+"ticker": "WELL",
+"sic": 6798,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 769397,
+"name": "Autodesk, Inc.",
+"ticker": "ADSK",
+"sic": 7372,
+"fye_mmdd": "0131",
+"aliases": []
+},
+{
+"cik": 773840,
+"name": "HONEYWELL INTERNATIONAL INC",
+"ticker": "HON",
+"sic": 3724,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 779152,
+"name": "JACK HENRY & ASSOCIATES INC",
+"ticker": "JKHY",
+"sic": 7373,
+"fye_mmdd": "0630",
+"aliases": []
+},
+{
+"cik": 783325,
+"name": "WEC ENERGY GROUP, INC.",
+"ticker": "WEC",
+"sic": 4931,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 788784,
+"name": "PUBLIC SERVICE ENTERPRISE GROUP INC",
+"ticker": "PEG",
+"sic": 4931,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 789019,
+"name": "MICROSOFT CORP",
+"ticker": "MSFT",
+"sic": 7372,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 789570,
+"name": "MGM Resorts International",
+"ticker": "MGM",
+"sic": 7011,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 796343,
+"name": "ADOBE INC.",
+"ticker": "ADBE",
+"sic": 7372,
+"fye_mmdd": "1130",
+"aliases": []
+},
+{
+"cik": 797468,
+"name": "OCCIDENTAL PETROLEUM CORP /DE/",
+"ticker": "OXY",
+"sic": 1311,
+"fye_mmdd": "1231",
+"aliases": [
+"OXY-WT"
+]
+},
+{
+"cik": 798354,
+"name": "FISERV INC",
+"ticker": "FISV",
+"sic": 7389,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 804328,
+"name": "QUALCOMM INC/DE",
+"ticker": "QCOM",
+"sic": 3663,
+"fye_mmdd": "0930",
+"aliases": []
+},
+{
+"cik": 811156,
+"name": "CMS ENERGY CORP",
+"ticker": "CMS",
+"sic": 4931,
+"fye_mmdd": "1231",
+"aliases": [
+"CMSA",
+"CMSC",
+"CMSD",
+"CMS-PC"
+]
+},
+{
+"cik": 813672,
+"name": "CADENCE DESIGN SYSTEMS INC",
+"ticker": "CDNS",
+"sic": 7372,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 814547,
+"name": "FAIR ISAAC CORP",
+"ticker": "FICO",
+"sic": 7389,
+"fye_mmdd": "0930",
+"aliases": []
+},
+{
+"cik": 815097,
+"name": "Carnival Corp Ltd.",
+"ticker": "CCL",
+"sic": 4400,
+"fye_mmdd": "1130",
+"aliases": []
+},
+{
+"cik": 815556,
+"name": "FASTENAL CO",
+"ticker": "FAST",
+"sic": 5200,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 820027,
+"name": "AMERIPRISE FINANCIAL INC",
+"ticker": "AMP",
+"sic": 6282,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 820313,
+"name": "AMPHENOL CORP /DE/",
+"ticker": "APH",
+"sic": 3678,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 820318,
+"name": "COHERENT CORP.",
+"ticker": "COHR",
+"sic": 3827,
+"fye_mmdd": "0630",
+"aliases": []
+},
+{
+"cik": 821189,
+"name": "EOG RESOURCES INC",
+"ticker": "EOG",
+"sic": 1311,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 822416,
+"name": "PULTEGROUP INC/MI/",
+"ticker": "PHM",
+"sic": 1531,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 823768,
+"name": "WASTE MANAGEMENT INC",
+"ticker": "WM",
+"sic": 4953,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 827052,
+"name": "EDISON INTERNATIONAL",
+"ticker": "EIX",
+"sic": 4911,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 827054,
+"name": "MICROCHIP TECHNOLOGY INC",
+"ticker": "MCHP",
+"sic": 3674,
+"fye_mmdd": "0331",
+"aliases": [
+"MCHPP"
+]
+},
+{
+"cik": 829224,
+"name": "STARBUCKS CORP",
+"ticker": "SBUX",
+"sic": 5810,
+"fye_mmdd": "0930",
+"aliases": []
+},
+{
+"cik": 831001,
+"name": "CITIGROUP INC",
+"ticker": "C",
+"sic": 6021,
+"fye_mmdd": "1231",
+"aliases": [
+"C-PN",
+"C-PR"
+]
+},
+{
+"cik": 831259,
+"name": "FREEPORT-MCMORAN INC",
+"ticker": "FCX",
+"sic": 1000,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 832101,
+"name": "IDEX CORP /DE/",
+"ticker": "IEX",
+"sic": 3561,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 833444,
+"name": "Johnson Controls International plc",
+"ticker": "JCI",
+"sic": 3585,
+"fye_mmdd": "0930",
+"aliases": []
+},
+{
+"cik": 842023,
+"name": "BIO-TECHNE Corp",
+"ticker": "TECH",
+"sic": 2836,
+"fye_mmdd": "0630",
+"aliases": []
+},
+{
+"cik": 849395,
+"name": "CRH PUBLIC LTD CO",
+"ticker": "CRH",
+"sic": 3241,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 849399,
+"name": "Gen Digital Inc.",
+"ticker": "GEN",
+"sic": 7372,
+"fye_mmdd": "0331",
+"aliases": [
+"GENVR"
+]
+},
+{
+"cik": 857005,
+"name": "PTC INC.",
+"ticker": "PTC",
+"sic": 7372,
+"fye_mmdd": "0930",
+"aliases": []
+},
+{
+"cik": 858877,
+"name": "CISCO SYSTEMS, INC.",
+"ticker": "CSCO",
+"sic": 3576,
+"fye_mmdd": "0731",
+"aliases": []
+},
+{
+"cik": 860730,
+"name": "HCA Healthcare, Inc.",
+"ticker": "HCA",
+"sic": 8062,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 860731,
+"name": "TYLER TECHNOLOGIES INC",
+"ticker": "TYL",
+"sic": 7372,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 864749,
+"name": "TRIMBLE INC.",
+"ticker": "TRMB",
+"sic": 3829,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 865752,
+"name": "Monster Beverage Corp",
+"ticker": "MNST",
+"sic": 2086,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 866374,
+"name": "FLEX LTD.",
+"ticker": "FLEX",
+"sic": 3672,
+"fye_mmdd": "0331",
+"aliases": []
+},
+{
+"cik": 866787,
+"name": "AUTOZONE INC",
+"ticker": "AZO",
+"sic": 5531,
+"fye_mmdd": "0831",
+"aliases": []
+},
+{
+"cik": 872589,
+"name": "REGENERON PHARMACEUTICALS, INC.",
+"ticker": "REGN",
+"sic": 2834,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 874716,
+"name": "IDEXX LABORATORIES INC /DE",
+"ticker": "IDXX",
+"sic": 2835,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 874761,
+"name": "AES CORP",
+"ticker": "AES",
+"sic": 4991,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 874766,
+"name": "HARTFORD INSURANCE GROUP, INC.",
+"ticker": "HIG",
+"sic": 6331,
+"fye_mmdd": "1231",
+"aliases": [
+"HIG-PG"
+]
+},
+{
+"cik": 875045,
+"name": "BIOGEN INC.",
+"ticker": "BIIB",
+"sic": 2836,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 875320,
+"name": "VERTEX PHARMACEUTICALS INC / MA",
+"ticker": "VRTX",
+"sic": 2834,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 877212,
+"name": "ZEBRA TECHNOLOGIES CORP",
+"ticker": "ZBRA",
+"sic": 3560,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 878927,
+"name": "OLD DOMINION FREIGHT LINE, INC.",
+"ticker": "ODFL",
+"sic": 4213,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 879101,
+"name": "KIMCO REALTY CORP",
+"ticker": "KIM",
+"sic": 6798,
+"fye_mmdd": "1231",
+"aliases": [
+"KIM-PN",
+"KIM-PL",
+"KIM-PM"
+]
+},
+{
+"cik": 879169,
+"name": "INCYTE CORP",
+"ticker": "INCY",
+"sic": 8731,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 882095,
+"name": "GILEAD SCIENCES, INC.",
+"ticker": "GILD",
+"sic": 2836,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 882184,
+"name": "HORTON D R INC /DE/",
+"ticker": "DHI",
+"sic": 1531,
+"fye_mmdd": "0930",
+"aliases": []
+},
+{
+"cik": 882835,
+"name": "ROPER TECHNOLOGIES INC",
+"ticker": "ROP",
+"sic": 3823,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 883241,
+"name": "SYNOPSYS INC",
+"ticker": "SNPS",
+"sic": 7372,
+"fye_mmdd": "1031",
+"aliases": []
+},
+{
+"cik": 884887,
+"name": "ROYAL CARIBBEAN CRUISES LTD",
+"ticker": "RCL",
+"sic": 4400,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 885725,
+"name": "BOSTON SCIENTIFIC CORP",
+"ticker": "BSX",
+"sic": 3841,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 886982,
+"name": "GOLDMAN SACHS GROUP INC",
+"ticker": "GS",
+"sic": 6211,
+"fye_mmdd": "1231",
+"aliases": [
+"GSCE",
+"GS-PA",
+"GS-PC",
+"GS-PD"
+]
+},
+{
+"cik": 895126,
+"name": "EXPAND ENERGY Corp",
+"ticker": "EXE",
+"sic": 1311,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 895421,
+"name": "MORGAN STANLEY",
+"ticker": "MS",
+"sic": 6211,
+"fye_mmdd": "1231",
+"aliases": [
+"MS-PK",
+"MS-PE",
+"MS-PF",
+"MS-PI",
+"MS-PA",
+"MS-PL",
+"MS-PO",
+"MS-PP",
+"MS-PQ"
+]
+},
+{
+"cik": 896159,
+"name": "Chubb Ltd",
+"ticker": "CB",
+"sic": 6331,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 896878,
+"name": "INTUIT INC.",
+"ticker": "INTU",
+"sic": 7372,
+"fye_mmdd": "0731",
+"aliases": []
+},
+{
+"cik": 898173,
+"name": "O REILLY AUTOMOTIVE INC",
+"ticker": "ORLY",
+"sic": 5531,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 898293,
+"name": "JABIL INC",
+"ticker": "JBL",
+"sic": 3672,
+"fye_mmdd": "0831",
+"aliases": []
+},
+{
+"cik": 899051,
+"name": "ALLSTATE CORP",
+"ticker": "ALL",
+"sic": 6331,
+"fye_mmdd": "1231",
+"aliases": [
+"ALL-PH",
+"ALL-PI",
+"ALL-PJ",
+"ALL-PB"
+]
+},
+{
+"cik": 900075,
+"name": "COPART INC",
+"ticker": "CPRT",
+"sic": 5500,
+"fye_mmdd": "0731",
+"aliases": []
+},
+{
+"cik": 906107,
+"name": "VIVMARK RESIDENTIAL",
+"ticker": "VMRK",
+"sic": 6798,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 906163,
+"name": "NVR INC",
+"ticker": "NVR",
+"sic": 1531,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 906345,
+"name": "CAMDEN PROPERTY TRUST",
+"ticker": "CPT",
+"sic": 6798,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 909832,
+"name": "COSTCO WHOLESALE CORP /NEW",
+"ticker": "COST",
+"sic": 5331,
+"fye_mmdd": "0831",
+"aliases": []
+},
+{
+"cik": 910521,
+"name": "DECKERS OUTDOOR CORP",
+"ticker": "DECK",
+"sic": 3021,
+"fye_mmdd": "0331",
+"aliases": []
+},
+{
+"cik": 910606,
+"name": "REGENCY CENTERS CORP",
+"ticker": "REG",
+"sic": 6798,
+"fye_mmdd": "1231",
+"aliases": [
+"REGCP",
+"REGCO"
+]
+},
+{
+"cik": 912595,
+"name": "MID AMERICA APARTMENT COMMUNITIES INC.",
+"ticker": "MAA",
+"sic": 6798,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 914208,
+"name": "Invesco Ltd.",
+"ticker": "IVZ",
+"sic": 6282,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 915913,
+"name": "ALBEMARLE CORP",
+"ticker": "ALB",
+"sic": 2821,
+"fye_mmdd": "1231",
+"aliases": [
+"ALB-PA"
+]
+},
+{
+"cik": 916076,
+"name": "MARTIN MARIETTA MATERIALS INC",
+"ticker": "MLM",
+"sic": 1400,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 916365,
+"name": "TRACTOR SUPPLY CO /DE/",
+"ticker": "TSCO",
+"sic": 5200,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 920148,
+"name": "LABCORP HOLDINGS INC.",
+"ticker": "LH",
+"sic": 8071,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 920522,
+"name": "ESSEX PROPERTY TRUST, INC.",
+"ticker": "ESS",
+"sic": 6798,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 920760,
+"name": "LENNAR CORP /NEW/",
+"ticker": "LEN",
+"sic": 1520,
+"fye_mmdd": "1130",
+"aliases": [
+"LEN-B"
+]
+},
+{
+"cik": 922224,
+"name": "PPL Corp",
+"ticker": "PPL",
+"sic": 4911,
+"fye_mmdd": "1231",
+"aliases": [
+"PPLC"
+]
+},
+{
+"cik": 922621,
+"name": "ERIE INDEMNITY CO",
+"ticker": "ERIE",
+"sic": 6411,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 927066,
+"name": "DAVITA INC.",
+"ticker": "DVA",
+"sic": 8090,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 927628,
+"name": "CAPITAL ONE FINANCIAL CORP",
+"ticker": "COF",
+"sic": 6021,
+"fye_mmdd": "1231",
+"aliases": [
+"COF-PI",
+"COF-PJ",
+"COF-PK",
+"COF-PL",
+"COF-PN"
+]
+},
+{
+"cik": 927653,
+"name": "MCKESSON CORP",
+"ticker": "MCK",
+"sic": 5122,
+"fye_mmdd": "0331",
+"aliases": []
+},
+{
+"cik": 935703,
+"name": "DOLLAR TREE, INC.",
+"ticker": "DLTR",
+"sic": 5331,
+"fye_mmdd": "0131",
+"aliases": []
+},
+{
+"cik": 936340,
+"name": "DTE ENERGY CO",
+"ticker": "DTE",
+"sic": 4911,
+"fye_mmdd": "1231",
+"aliases": [
+"DTW",
+"DTG",
+"DTB",
+"DTK"
+]
+},
+{
+"cik": 936395,
+"name": "CIENA CORP",
+"ticker": "CIEN",
+"sic": 3661,
+"fye_mmdd": "1031",
+"aliases": []
+},
+{
+"cik": 936468,
+"name": "LOCKHEED MARTIN CORP",
+"ticker": "LMT",
+"sic": 3760,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 940944,
+"name": "DARDEN RESTAURANTS INC",
+"ticker": "DRI",
+"sic": 5812,
+"fye_mmdd": "0531",
+"aliases": []
+},
+{
+"cik": 943452,
+"name": "WESTINGHOUSE AIR BRAKE TECHNOLOGIES CORP",
+"ticker": "WAB",
+"sic": 3743,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 943819,
+"name": "RESMED INC",
+"ticker": "RMD",
+"sic": 3841,
+"fye_mmdd": "0630",
+"aliases": [
+"RSMDF"
+]
+},
+{
+"cik": 946581,
+"name": "TAKE TWO INTERACTIVE SOFTWARE INC",
+"ticker": "TTWO",
+"sic": 7372,
+"fye_mmdd": "0331",
+"aliases": []
+},
+{
+"cik": 947484,
+"name": "ARCH CAPITAL GROUP LTD.",
+"ticker": "ACGL",
+"sic": 6331,
+"fye_mmdd": "1231",
+"aliases": [
+"ACGLN",
+"ACGLO"
+]
+},
+{
+"cik": 1000228,
+"name": "HENRY SCHEIN INC",
+"ticker": "HSIC",
+"sic": 5047,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1000697,
+"name": "WATERS CORP /DE/",
+"ticker": "WAT",
+"sic": 3826,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1001250,
+"name": "ESTEE LAUDER COMPANIES INC",
+"ticker": "EL",
+"sic": 2844,
+"fye_mmdd": "0630",
+"aliases": []
+},
+{
+"cik": 1002047,
+"name": "NetApp, Inc.",
+"ticker": "NTAP",
+"sic": 3572,
+"fye_mmdd": "0430",
+"aliases": []
+},
+{
+"cik": 1002910,
+"name": "AMEREN CORP",
+"ticker": "AEE",
+"sic": 4931,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1004980,
+"name": "PG&E Corp",
+"ticker": "PCG",
+"sic": 4931,
+"fye_mmdd": "1231",
+"aliases": [
+"PCG-PX"
+]
+},
+{
+"cik": 1013237,
+"name": "FACTSET RESEARCH SYSTEMS INC",
+"ticker": "FDS",
+"sic": 7370,
+"fye_mmdd": "0831",
+"aliases": []
+},
+{
+"cik": 1013871,
+"name": "NRG ENERGY, INC.",
+"ticker": "NRG",
+"sic": 4911,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1014473,
+"name": "VERISIGN INC/CA",
+"ticker": "VRSN",
+"sic": 7371,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1018724,
+"name": "AMAZON COM INC",
+"ticker": "AMZN",
+"sic": 5961,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1020569,
+"name": "IRON MOUNTAIN INC",
+"ticker": "IRM",
+"sic": 6798,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1022079,
+"name": "QUEST DIAGNOSTICS INC",
+"ticker": "DGX",
+"sic": 8071,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1022671,
+"name": "STEEL DYNAMICS INC",
+"ticker": "STLD",
+"sic": 3312,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1024478,
+"name": "ROCKWELL AUTOMATION, INC",
+"ticker": "ROK",
+"sic": 3829,
+"fye_mmdd": "0930",
+"aliases": []
+},
+{
+"cik": 1031296,
+"name": "FIRSTENERGY CORP",
+"ticker": "FE",
+"sic": 4911,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1032208,
+"name": "SEMPRA",
+"ticker": "SRE",
+"sic": 4932,
+"fye_mmdd": "1231",
+"aliases": [
+"SREA"
+]
+},
+{
+"cik": 1034054,
+"name": "SBA COMMUNICATIONS CORP",
+"ticker": "SBAC",
+"sic": 6798,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1035002,
+"name": "VALERO ENERGY CORP/TX",
+"ticker": "VLO",
+"sic": 2911,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1035267,
+"name": "INTUITIVE SURGICAL INC",
+"ticker": "ISRG",
+"sic": 3842,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1035443,
+"name": "ALEXANDRIA REAL ESTATE EQUITIES, INC.",
+"ticker": "ARE",
+"sic": 6798,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1035983,
+"name": "COMFORT SYSTEMS USA INC",
+"ticker": "FIX",
+"sic": 1731,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1037038,
+"name": "RALPH LAUREN CORP",
+"ticker": "RL",
+"sic": 2320,
+"fye_mmdd": "0331",
+"aliases": []
+},
+{
+"cik": 1037540,
+"name": "BXP, Inc.",
+"ticker": "BXP",
+"sic": 6798,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1037646,
+"name": "METTLER TOLEDO INTERNATIONAL INC/",
+"ticker": "MTD",
+"sic": 3826,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1037868,
+"name": "AMETEK INC/",
+"ticker": "AME",
+"sic": 3823,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1039684,
+"name": "ONEOK INC /NEW/",
+"ticker": "OKE",
+"sic": 4923,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1041061,
+"name": "YUM BRANDS INC",
+"ticker": "YUM",
+"sic": 5812,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1043277,
+"name": "C. H. ROBINSON WORLDWIDE, INC.",
+"ticker": "CHRW",
+"sic": 4731,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1045609,
+"name": "Prologis, Inc.",
+"ticker": "PLD",
+"sic": 6798,
+"fye_mmdd": "1231",
+"aliases": [
+"PLDGP"
+]
+},
+{
+"cik": 1045810,
+"name": "NVIDIA CORP",
+"ticker": "NVDA",
+"sic": 3674,
+"fye_mmdd": "0131",
+"aliases": []
+},
+{
+"cik": 1047862,
+"name": "CONSOLIDATED EDISON INC",
+"ticker": "ED",
+"sic": 4931,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1048286,
+"name": "MARRIOTT INTERNATIONAL INC /MD/",
+"ticker": "MAR",
+"sic": 7011,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1048695,
+"name": "F5, INC.",
+"ticker": "FFIV",
+"sic": 3576,
+"fye_mmdd": "0930",
+"aliases": []
+},
+{
+"cik": 1048911,
+"name": "FEDEX CORP",
+"ticker": "FDX",
+"sic": 4513,
+"fye_mmdd": "0531",
+"aliases": []
+},
+{
+"cik": 1050915,
+"name": "QUANTA SERVICES, INC.",
+"ticker": "PWR",
+"sic": 1731,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1051470,
+"name": "CROWN CASTLE INC.",
+"ticker": "CCI",
+"sic": 6798,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1053507,
+"name": "AMERICAN TOWER CORP /MA/",
+"ticker": "AMT",
+"sic": 6798,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1057352,
+"name": "COSTAR GROUP, INC.",
+"ticker": "CSGP",
+"sic": 7389,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1058090,
+"name": "CHIPOTLE MEXICAN GRILL INC",
+"ticker": "CMG",
+"sic": 5812,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1058290,
+"name": "COGNIZANT TECHNOLOGY SOLUTIONS CORP",
+"ticker": "CTSH",
+"sic": 7371,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1059556,
+"name": "MOODYS CORP /DE/",
+"ticker": "MCO",
+"sic": 7320,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1060391,
+"name": "REPUBLIC SERVICES, INC.",
+"ticker": "RSG",
+"sic": 4953,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1063761,
+"name": "SIMON PROPERTY GROUP INC.",
+"ticker": "SPG",
+"sic": 6798,
+"fye_mmdd": "1231",
+"aliases": [
+"SPG-PJ"
+]
+},
+{
+"cik": 1065088,
+"name": "EBAY INC",
+"ticker": "EBAY",
+"sic": 7389,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1065280,
+"name": "NETFLIX INC",
+"ticker": "NFLX",
+"sic": 7841,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1067701,
+"name": "UNITED RENTALS, INC.",
+"ticker": "URI",
+"sic": 7359,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1067983,
+"name": "BERKSHIRE HATHAWAY INC",
+"ticker": "BRK-B",
+"sic": 6331,
+"fye_mmdd": "1231",
+"aliases": [
+"BRK-A"
+]
+},
+{
+"cik": 1069183,
+"name": "AXON ENTERPRISE, INC.",
+"ticker": "AXON",
+"sic": 3480,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1069202,
+"name": "LENNOX INTERNATIONAL INC",
+"ticker": "LII",
+"sic": 3585,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1070750,
+"name": "HOST HOTELS & RESORTS, INC.",
+"ticker": "HST",
+"sic": 6798,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1071739,
+"name": "CENTENE CORP",
+"ticker": "CNC",
+"sic": 6324,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1075531,
+"name": "Booking Holdings Inc.",
+"ticker": "BKNG",
+"sic": 4700,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1086222,
+"name": "AKAMAI TECHNOLOGIES INC",
+"ticker": "AKAM",
+"sic": 7389,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1090012,
+"name": "DEVON ENERGY CORP/DE",
+"ticker": "DVN",
+"sic": 1311,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1090727,
+"name": "UNITED PARCEL SERVICE INC",
+"ticker": "UPS",
+"sic": 4210,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1090872,
+"name": "AGILENT TECHNOLOGIES, INC.",
+"ticker": "A",
+"sic": 3826,
+"fye_mmdd": "1031",
+"aliases": []
+},
+{
+"cik": 1091667,
+"name": "CHARTER COMMUNICATIONS, INC. /MO/",
+"ticker": "CHTR",
+"sic": 4841,
+"fye_mmdd": "1231",
+"aliases": [
+"CHTRP"
+]
+},
+{
+"cik": 1093557,
+"name": "DEXCOM INC",
+"ticker": "DXCM",
+"sic": 3841,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1094285,
+"name": "TELEDYNE TECHNOLOGIES INC",
+"ticker": "TDY",
+"sic": 3812,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1095073,
+"name": "EVEREST GROUP, LTD.",
+"ticker": "EG",
+"sic": 6331,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1097149,
+"name": "ALIGN TECHNOLOGY INC",
+"ticker": "ALGN",
+"sic": 3842,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1097864,
+"name": "ON SEMICONDUCTOR CORP",
+"ticker": "ON",
+"sic": 3674,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1099219,
+"name": "METLIFE INC",
+"ticker": "MET",
+"sic": 6311,
+"fye_mmdd": "1231",
+"aliases": [
+"MET-PA",
+"MET-PE",
+"MET-PF"
+]
+},
+{
+"cik": 1099800,
+"name": "Edwards Lifesciences Corp",
+"ticker": "EW",
+"sic": 3842,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1100682,
+"name": "CHARLES RIVER LABORATORIES INTERNATIONAL, INC.",
+"ticker": "CRL",
+"sic": 8731,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1101239,
+"name": "EQUINIX INC",
+"ticker": "EQIX",
+"sic": 6798,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1103982,
+"name": "Mondelez International, Inc.",
+"ticker": "MDLZ",
+"sic": 2000,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1108524,
+"name": "Salesforce, Inc.",
+"ticker": "CRM",
+"sic": 7372,
+"fye_mmdd": "0131",
+"aliases": []
+},
+{
+"cik": 1109357,
+"name": "EXELON CORP",
+"ticker": "EXC",
+"sic": 4931,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1110803,
+"name": "ILLUMINA, INC.",
+"ticker": "ILMN",
+"sic": 3826,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1111711,
+"name": "NISOURCE INC.",
+"ticker": "NI",
+"sic": 4931,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1113169,
+"name": "PRICE T ROWE GROUP INC",
+"ticker": "TROW",
+"sic": 6282,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1116132,
+"name": "TAPESTRY, INC.",
+"ticker": "TPR",
+"sic": 3100,
+"fye_mmdd": "0630",
+"aliases": []
+},
+{
+"cik": 1120193,
+"name": "NASDAQ, INC.",
+"ticker": "NDAQ",
+"sic": 6200,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1121788,
+"name": "GARMIN LTD",
+"ticker": "GRMN",
+"sic": 3812,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1123360,
+"name": "GLOBAL PAYMENTS INC",
+"ticker": "GPN",
+"sic": 7389,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1126328,
+"name": "PRINCIPAL FINANCIAL GROUP INC",
+"ticker": "PFG",
+"sic": 6321,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1130310,
+"name": "CENTERPOINT ENERGY INC",
+"ticker": "CNP",
+"sic": 4911,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1133421,
+"name": "NORTHROP GRUMMAN CORP /DE/",
+"ticker": "NOC",
+"sic": 3812,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1136869,
+"name": "ZIMMER BIOMET HOLDINGS, INC.",
+"ticker": "ZBH",
+"sic": 3842,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1136893,
+"name": "Fidelity National Information Services, Inc.",
+"ticker": "FIS",
+"sic": 7389,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1137774,
+"name": "PRUDENTIAL FINANCIAL INC",
+"ticker": "PRU",
+"sic": 6311,
+"fye_mmdd": "1231",
+"aliases": [
+"PFH",
+"PRH",
+"PRS"
+]
+},
+{
+"cik": 1137789,
+"name": "Seagate Technology Holdings plc",
+"ticker": "STX",
+"sic": 3572,
+"fye_mmdd": "0630",
+"aliases": []
+},
+{
+"cik": 1138118,
+"name": "CBRE GROUP, INC.",
+"ticker": "CBRE",
+"sic": 6500,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1140536,
+"name": "WILLIS TOWERS WATSON PLC",
+"ticker": "WTW",
+"sic": 6411,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1140859,
+"name": "Cencora, Inc.",
+"ticker": "COR",
+"sic": 5122,
+"fye_mmdd": "0930",
+"aliases": []
+},
+{
+"cik": 1141391,
+"name": "Mastercard Inc",
+"ticker": "MA",
+"sic": 7389,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1145197,
+"name": "INSULET CORP",
+"ticker": "PODD",
+"sic": 3841,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1156039,
+"name": "Elevance Health, Inc.",
+"ticker": "ELV",
+"sic": 6324,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1156375,
+"name": "CME GROUP INC.",
+"ticker": "CME",
+"sic": 6200,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1163165,
+"name": "CONOCOPHILLIPS",
+"ticker": "COP",
+"sic": 2911,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1164727,
+"name": "NEWMONT Corp /DE/",
+"ticker": "NEM",
+"sic": 1040,
+"fye_mmdd": "1231",
+"aliases": [
+"NEMCL"
+]
+},
+{
+"cik": 1166691,
+"name": "COMCAST CORP",
+"ticker": "CMCSA",
+"sic": 4841,
+"fye_mmdd": "1231",
+"aliases": [
+"CCZ"
+]
+},
+{
+"cik": 1174922,
+"name": "WYNN RESORTS LTD",
+"ticker": "WYNN",
+"sic": 7011,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1175454,
+"name": "CORPAY, INC.",
+"ticker": "CPAY",
+"sic": 7389,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1176948,
+"name": "Ares Management Corp",
+"ticker": "ARES",
+"sic": 6282,
+"fye_mmdd": "1231",
+"aliases": [
+"ARES-PB"
+]
+},
+{
+"cik": 1260221,
+"name": "TransDigm Group INC",
+"ticker": "TDG",
+"sic": 3728,
+"fye_mmdd": "0930",
+"aliases": []
+},
+{
+"cik": 1262039,
+"name": "Fortinet, Inc.",
+"ticker": "FTNT",
+"sic": 3577,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1267238,
+"name": "ASSURANT, INC.",
+"ticker": "AIZ",
+"sic": 6399,
+"fye_mmdd": "1231",
+"aliases": [
+"AIZN"
+]
+},
+{
+"cik": 1274494,
+"name": "FIRST SOLAR, INC.",
+"ticker": "FSLR",
+"sic": 3674,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1280452,
+"name": "MONOLITHIC POWER SYSTEMS, INC.",
+"ticker": "MPWR",
+"sic": 3674,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1281761,
+"name": "REGIONS FINANCIAL CORP",
+"ticker": "RF",
+"sic": 6021,
+"fye_mmdd": "1231",
+"aliases": [
+"RF-PC",
+"RF-PE",
+"RF-PF"
+]
+},
+{
+"cik": 1283699,
+"name": "T-Mobile US, Inc.",
+"ticker": "TMUS",
+"sic": 4812,
+"fye_mmdd": "1231",
+"aliases": [
+"TMUSZ",
+"TMUSI",
+"TMUSL"
+]
+},
+{
+"cik": 1285785,
+"name": "MOSAIC CO",
+"ticker": "MOS",
+"sic": 2870,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1286681,
+"name": "DOMINOS PIZZA INC",
+"ticker": "DPZ",
+"sic": 5140,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1289490,
+"name": "Extra Space Storage Inc.",
+"ticker": "EXR",
+"sic": 6798,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1297996,
+"name": "DIGITAL REALTY TRUST, INC.",
+"ticker": "DLR",
+"sic": 6798,
+"fye_mmdd": "1231",
+"aliases": [
+"DLR-PK",
+"DLR-PL",
+"DLR-PJ"
+]
+},
+{
+"cik": 1300514,
+"name": "LAS VEGAS SANDS CORP",
+"ticker": "LVS",
+"sic": 7011,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1318605,
+"name": "Tesla, Inc.",
+"ticker": "TSLA",
+"sic": 3711,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1321655,
+"name": "Palantir Technologies Inc.",
+"ticker": "PLTR",
+"sic": 7372,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1324404,
+"name": "CF Industries Holdings, Inc.",
+"ticker": "CF",
+"sic": 2870,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1324424,
+"name": "Expedia Group, Inc.",
+"ticker": "EXPE",
+"sic": 4700,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1326160,
+"name": "Duke Energy CORP",
+"ticker": "DUK",
+"sic": 4931,
+"fye_mmdd": "1231",
+"aliases": [
+"DUKB",
+"DUK-PA",
+"DUKU"
+]
+},
+{
+"cik": 1326801,
+"name": "Meta Platforms, Inc.",
+"ticker": "META",
+"sic": 7370,
+"fye_mmdd": "1231",
+"aliases": [
+"METAM"
+]
+},
+{
+"cik": 1327567,
+"name": "Palo Alto Networks Inc",
+"ticker": "PANW",
+"sic": 3577,
+"fye_mmdd": "0731",
+"aliases": []
+},
+{
+"cik": 1327811,
+"name": "Workday, Inc.",
+"ticker": "WDAY",
+"sic": 7374,
+"fye_mmdd": "0131",
+"aliases": []
+},
+{
+"cik": 1335258,
+"name": "Live Nation Entertainment, Inc.",
+"ticker": "LYV",
+"sic": 7900,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1336920,
+"name": "Leidos Holdings, Inc.",
+"ticker": "LDOS",
+"sic": 7373,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1341439,
+"name": "ORACLE CORP",
+"ticker": "ORCL",
+"sic": 7372,
+"fye_mmdd": "0531",
+"aliases": [
+"ORCL-PD"
+]
+},
+{
+"cik": 1373715,
+"name": "ServiceNow, Inc.",
+"ticker": "NOW",
+"sic": 7372,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1374310,
+"name": "Cboe Global Markets, Inc.",
+"ticker": "CBOE",
+"sic": 6200,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1375365,
+"name": "Super Micro Computer, Inc.",
+"ticker": "SMCI",
+"sic": 3571,
+"fye_mmdd": "0630",
+"aliases": [
+"SMCIP"
+]
+},
+{
+"cik": 1381197,
+"name": "Interactive Brokers Group, Inc.",
+"ticker": "IBKR",
+"sic": 6211,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1383312,
+"name": "BROADRIDGE FINANCIAL SOLUTIONS, INC.",
+"ticker": "BR",
+"sic": 7389,
+"fye_mmdd": "0630",
+"aliases": []
+},
+{
+"cik": 1385157,
+"name": "TE Connectivity plc",
+"ticker": "TEL",
+"sic": 5065,
+"fye_mmdd": "0930",
+"aliases": []
+},
+{
+"cik": 1389170,
+"name": "Targa Resources Corp.",
+"ticker": "TRGP",
+"sic": 4922,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1390777,
+"name": "Bank of New York Mellon Corp",
+"ticker": "BNY",
+"sic": 6022,
+"fye_mmdd": "1231",
+"aliases": [
+"BNY-PK"
+]
+},
+{
+"cik": 1393052,
+"name": "VEEVA SYSTEMS INC",
+"ticker": "VEEV",
+"sic": 7372,
+"fye_mmdd": "0131",
+"aliases": []
+},
+{
+"cik": 1393311,
+"name": "Public Storage",
+"ticker": "PSA",
+"sic": 6798,
+"fye_mmdd": "1231",
+"aliases": [
+"PSA-PH",
+"PSA-PU",
+"PSA-PS",
+"PSA-PF",
+"PSA-PT",
+"PSA-PM",
+"PSA-PN",
+"PSA-PO",
+"PSA-PP",
+"PSA-PQ",
+"PSA-PR",
+"PSA-PG",
+"PSA-PI",
+"PSA-PJ",
+"PSA-PK",
+"PSA-PL"
+]
+},
+{
+"cik": 1393818,
+"name": "Blackstone Inc.",
+"ticker": "BX",
+"sic": 6282,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1396009,
+"name": "Vulcan Materials CO",
+"ticker": "VMC",
+"sic": 1400,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1397187,
+"name": "lululemon athletica inc.",
+"ticker": "LULU",
+"sic": 2300,
+"fye_mmdd": "0131",
+"aliases": []
+},
+{
+"cik": 1402057,
+"name": "CDW Corp",
+"ticker": "CDW",
+"sic": 5961,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1403161,
+"name": "VISA INC.",
+"ticker": "V",
+"sic": 7389,
+"fye_mmdd": "0930",
+"aliases": []
+},
+{
+"cik": 1403568,
+"name": "Ulta Beauty, Inc.",
+"ticker": "ULTA",
+"sic": 5990,
+"fye_mmdd": "0131",
+"aliases": []
+},
+{
+"cik": 1404912,
+"name": "KKR & Co. Inc.",
+"ticker": "KKR",
+"sic": 6282,
+"fye_mmdd": "1231",
+"aliases": [
+"KKRS",
+"KKR-PD",
+"KKRT"
+]
+},
+{
+"cik": 1408198,
+"name": "MSCI Inc.",
+"ticker": "MSCI",
+"sic": 7389,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1410636,
+"name": "American Water Works Company, Inc.",
+"ticker": "AWK",
+"sic": 4941,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1413329,
+"name": "Philip Morris International Inc.",
+"ticker": "PM",
+"sic": 2111,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1413447,
+"name": "NXP Semiconductors N.V.",
+"ticker": "NXPI",
+"sic": 3674,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1415404,
+"name": "EchoStar CORP",
+"ticker": "ECHO",
+"sic": 4899,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1418135,
+"name": "Keurig Dr Pepper Inc.",
+"ticker": "KDP",
+"sic": 2080,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1442145,
+"name": "Verisk Analytics, Inc.",
+"ticker": "VRSK",
+"sic": 7374,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1447669,
+"name": "TWILIO INC",
+"ticker": "TWLO",
+"sic": 7372,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1466258,
+"name": "Trane Technologies plc",
+"ticker": "TT",
+"sic": 3822,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1467373,
+"name": "Accenture plc",
+"ticker": "ACN",
+"sic": 7389,
+"fye_mmdd": "0831",
+"aliases": []
+},
+{
+"cik": 1467858,
+"name": "General Motors Co",
+"ticker": "GM",
+"sic": 3711,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1474432,
+"name": "Everpure, Inc.",
+"ticker": "P",
+"sic": 3572,
+"fye_mmdd": "0131",
+"aliases": []
+},
+{
+"cik": 1474735,
+"name": "GENERAC HOLDINGS INC.",
+"ticker": "GNRC",
+"sic": 3621,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1478242,
+"name": "IQVIA HOLDINGS INC.",
+"ticker": "IQV",
+"sic": 8731,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1489393,
+"name": "LyondellBasell Industries N.V.",
+"ticker": "LYB",
+"sic": 2860,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1501585,
+"name": "HUNTINGTON INGALLS INDUSTRIES, INC.",
+"ticker": "HII",
+"sic": 3730,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1506307,
+"name": "KINDER MORGAN, INC.",
+"ticker": "KMI",
+"sic": 4922,
+"fye_mmdd": "1231",
+"aliases": [
+"EP-PC"
+]
+},
+{
+"cik": 1510295,
+"name": "Marathon Petroleum Corp",
+"ticker": "MPC",
+"sic": 2911,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1512673,
+"name": "Block, Inc.",
+"ticker": "XYZ",
+"sic": 7372,
+"fye_mmdd": "1231",
+"aliases": [
+"BSQKZ"
+]
+},
+{
+"cik": 1513761,
+"name": "Norwegian Cruise Line Holdings Ltd.",
+"ticker": "NCLH",
+"sic": 4400,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1521332,
+"name": "Aptiv PLC",
+"ticker": "APTV",
+"sic": 3714,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1524472,
+"name": "Xylem Inc.",
+"ticker": "XYL",
+"sic": 3561,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1534701,
+"name": "Phillips 66",
+"ticker": "PSX",
+"sic": 2911,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1535527,
+"name": "CrowdStrike Holdings, Inc.",
+"ticker": "CRWD",
+"sic": 7372,
+"fye_mmdd": "0131",
+"aliases": []
+},
+{
+"cik": 1539838,
+"name": "Diamondback Energy, Inc.",
+"ticker": "FANG",
+"sic": 1311,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1543151,
+"name": "Uber Technologies, Inc",
+"ticker": "UBER",
+"sic": 7389,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1551152,
+"name": "AbbVie Inc.",
+"ticker": "ABBV",
+"sic": 2834,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1551182,
+"name": "Eaton Corp plc",
+"ticker": "ETN",
+"sic": 3590,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1555280,
+"name": "Zoetis Inc.",
+"ticker": "ZTS",
+"sic": 2834,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1559720,
+"name": "Airbnb, Inc.",
+"ticker": "ABNB",
+"sic": 7340,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1561550,
+"name": "Datadog, Inc.",
+"ticker": "DDOG",
+"sic": 7372,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1564708,
+"name": "NEWS CORP",
+"ticker": "NWSA",
+"sic": 2711,
+"fye_mmdd": "0630",
+"aliases": [
+"NWS",
+"NWSLL"
+]
+},
+{
+"cik": 1571949,
+"name": "Intercontinental Exchange, Inc.",
+"ticker": "ICE",
+"sic": 6200,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1571996,
+"name": "Dell Technologies Inc.",
+"ticker": "DELL",
+"sic": 3571,
+"fye_mmdd": "0131",
+"aliases": []
+},
+{
+"cik": 1579241,
+"name": "Allegion plc",
+"ticker": "ALLE",
+"sic": 7381,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1585689,
+"name": "Hilton Worldwide Holdings Inc.",
+"ticker": "HLT",
+"sic": 7011,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1596532,
+"name": "Arista Networks, Inc.",
+"ticker": "ANET",
+"sic": 3576,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1601046,
+"name": "Keysight Technologies, Inc.",
+"ticker": "KEYS",
+"sic": 3823,
+"fye_mmdd": "1031",
+"aliases": []
+},
+{
+"cik": 1601712,
+"name": "Synchrony Financial",
+"ticker": "SYF",
+"sic": 6199,
+"fye_mmdd": "1231",
+"aliases": [
+"SYF-PA",
+"SYF-PB"
+]
+},
+{
+"cik": 1609711,
+"name": "GoDaddy Inc.",
+"ticker": "GDDY",
+"sic": 7373,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1613103,
+"name": "Medtronic plc",
+"ticker": "MDT",
+"sic": 3845,
+"fye_mmdd": "0430",
+"aliases": []
+},
+{
+"cik": 1633917,
+"name": "PayPal Holdings, Inc.",
+"ticker": "PYPL",
+"sic": 7389,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1633978,
+"name": "Lumentum Holdings Inc.",
+"ticker": "LITE",
+"sic": 3669,
+"fye_mmdd": "0630",
+"aliases": []
+},
+{
+"cik": 1637459,
+"name": "Kraft Heinz Co",
+"ticker": "KHC",
+"sic": 2030,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1645590,
+"name": "Hewlett Packard Enterprise Co",
+"ticker": "HPE",
+"sic": 3570,
+"fye_mmdd": "1031",
+"aliases": [
+"HPE-PC"
+]
+},
+{
+"cik": 1652044,
+"name": "Alphabet Inc.",
+"ticker": "GOOGL",
+"sic": 7370,
+"fye_mmdd": "1231",
+"aliases": [
+"GOOG",
+"GOOGN",
+"GOOGM"
+]
+},
+{
+"cik": 1659166,
+"name": "Fortive Corp",
+"ticker": "FTV",
+"sic": 3823,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1660134,
+"name": "Okta, Inc.",
+"ticker": "OKTA",
+"sic": 7372,
+"fye_mmdd": "0131",
+"aliases": []
+},
+{
+"cik": 1664703,
+"name": "Bloom Energy Corp",
+"ticker": "BE",
+"sic": 3620,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1666700,
+"name": "DuPont de Nemours, Inc.",
+"ticker": "DD",
+"sic": 2821,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1674101,
+"name": "Vertiv Holdings Co",
+"ticker": "VRT",
+"sic": 3679,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1679788,
+"name": "Coinbase Global, Inc.",
+"ticker": "COIN",
+"sic": 6199,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1682852,
+"name": "Moderna, Inc.",
+"ticker": "MRNA",
+"sic": 2836,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1687229,
+"name": "Invitation Homes Inc.",
+"ticker": "INVH",
+"sic": 6510,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1690820,
+"name": "CARVANA CO.",
+"ticker": "CVNA",
+"sic": 5500,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1692819,
+"name": "Vistra Corp.",
+"ticker": "VST",
+"sic": 4911,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1699150,
+"name": "Ingersoll Rand Inc.",
+"ticker": "IR",
+"sic": 3560,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1701605,
+"name": "Baker Hughes Co",
+"ticker": "BKR",
+"sic": 3533,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1705696,
+"name": "VICI PROPERTIES INC.",
+"ticker": "VICI",
+"sic": 6798,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1707925,
+"name": "LINDE PLC",
+"ticker": "LIN",
+"sic": 2810,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1711269,
+"name": "Evergy, Inc.",
+"ticker": "EVRG",
+"sic": 4931,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1713445,
+"name": "Reddit, Inc.",
+"ticker": "RDDT",
+"sic": 7374,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1730168,
+"name": "Broadcom Inc.",
+"ticker": "AVGO",
+"sic": 3674,
+"fye_mmdd": "1031",
+"aliases": []
+},
+{
+"cik": 1739940,
+"name": "Cigna Group",
+"ticker": "CI",
+"sic": 6324,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1744489,
+"name": "Walt Disney Co",
+"ticker": "DIS",
+"sic": 7990,
+"fye_mmdd": "0930",
+"aliases": []
+},
+{
+"cik": 1748790,
+"name": "Amcor plc",
+"ticker": "AMCR",
+"sic": 3990,
+"fye_mmdd": "0630",
+"aliases": [
+"AMCCF"
+]
+},
+{
+"cik": 1751008,
+"name": "AppLovin Corp",
+"ticker": "APP",
+"sic": 7370,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1751788,
+"name": "DOW INC.",
+"ticker": "DOW",
+"sic": 2821,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1754301,
+"name": "Fox Corp",
+"ticker": "FOXA",
+"sic": 4833,
+"fye_mmdd": "0630",
+"aliases": [
+"FOX"
+]
+},
+{
+"cik": 1757898,
+"name": "STERIS plc",
+"ticker": "STE",
+"sic": 3842,
+"fye_mmdd": "0331",
+"aliases": []
+},
+{
+"cik": 1781335,
+"name": "Otis Worldwide Corp",
+"ticker": "OTIS",
+"sic": 3600,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1783180,
+"name": "CARRIER GLOBAL Corp",
+"ticker": "CARR",
+"sic": 3585,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1783879,
+"name": "Robinhood Markets, Inc.",
+"ticker": "HOOD",
+"sic": 6211,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1792044,
+"name": "Viatris Inc",
+"ticker": "VTRS",
+"sic": 2834,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1792789,
+"name": "DoorDash, Inc.",
+"ticker": "DASH",
+"sic": 7389,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1811074,
+"name": "Texas Pacific Land Corp",
+"ticker": "TPL",
+"sic": 6792,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1835632,
+"name": "Marvell Technology, Inc.",
+"ticker": "MRVL",
+"sic": 3674,
+"fye_mmdd": "0131",
+"aliases": []
+},
+{
+"cik": 1841666,
+"name": "APA Corp",
+"ticker": "APA",
+"sic": 1311,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1858681,
+"name": "Apollo Global Management, Inc.",
+"ticker": "APO",
+"sic": 6282,
+"fye_mmdd": "1231",
+"aliases": [
+"APOS"
+]
+},
+{
+"cik": 1868275,
+"name": "Constellation Energy Corp",
+"ticker": "CEG",
+"sic": 4911,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1932393,
+"name": "GE HealthCare Technologies Inc.",
+"ticker": "GEHC",
+"sic": 3844,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1964738,
+"name": "Solventum Corp",
+"ticker": "SOLV",
+"sic": 3841,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1967680,
+"name": "Veralto Corp",
+"ticker": "VLTO",
+"sic": 3825,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1973266,
+"name": "TKO Group Holdings, Inc.",
+"ticker": "TKO",
+"sic": 7900,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1996810,
+"name": "GE Vernova Inc.",
+"ticker": "GEV",
+"sic": 3600,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 1996862,
+"name": "Bunge Global SA",
+"ticker": "BG",
+"sic": 2070,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 2005951,
+"name": "Smurfit Westrock plc",
+"ticker": "SW",
+"sic": 2650,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 2011641,
+"name": "Ferguson Enterprises Inc. /DE/",
+"ticker": "FERG",
+"sic": 5070,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 2012383,
+"name": "BlackRock, Inc.",
+"ticker": "BLK",
+"sic": 6211,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 2023554,
+"name": "Sandisk Corp",
+"ticker": "SNDK",
+"sic": 3572,
+"fye_mmdd": "0630",
+"aliases": []
+},
+{
+"cik": 2041610,
+"name": "Skydance Corp",
+"ticker": "SKYD",
+"sic": 4833,
+"fye_mmdd": "1231",
+"aliases": [
+"SKYD-WT"
+]
+},
+{
+"cik": 2058873,
+"name": "Qnity Electronics, Inc.",
+"ticker": "Q",
+"sic": 3674,
+"fye_mmdd": "1231",
+"aliases": []
+},
+{
+"cik": 2082247,
+"name": "FedEx Freight Holding Company, Inc.",
+"ticker": "FDXF",
+"sic": null,
+"fye_mmdd": null,
+"aliases": []
+},
+{
+"cik": 2089271,
+"name": "Honeywell Aerospace Inc.",
+"ticker": "HONA",
+"sic": null,
+"fye_mmdd": null,
+"aliases": []
+},
+{
+"cik": 2115436,
+"name": "ExxonMobil Holdings Corp",
+"ticker": "XOM",
+"sic": null,
+"fye_mmdd": null,
+"aliases": []
+},
+{
+"cik": 2128626,
+"name": "Vylor Inc.",
+"ticker": "VYLR",
+"sic": null,
+"fye_mmdd": null,
+"aliases": []
+}
+]

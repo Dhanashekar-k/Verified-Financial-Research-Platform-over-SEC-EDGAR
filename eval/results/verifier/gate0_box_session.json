@@ -1,0 +1,8 @@
+{
+  "note": "Timestamps printed by the shell around AWS CLI calls in the Gate 0 session. Instance i-03c13a20998728a50, us-east-2. Dollars NOT MEASURED.",
+  "start_requested": "2026-11-26T06:05:39Z",
+  "capture_start": "2026-11-26T06:06:19Z",
+  "capture_end": "2026-11-26T06:08:31Z",
+  "stop_requested": "2026-11-26T06:09:15Z",
+  "confirmed_stopped": "2026-11-26T06:09:48Z"
+}
