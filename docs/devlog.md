@@ -163,3 +163,12 @@ the day-to-day calls and progress. Append one dated entry at the end of each wor
 - **Review caught, fixed before commit:** a check returning all `n/a` counted as a pass (now a kept claim needs `pass` on all three checks of its kind); an adversarial row citing a passage the trace had not saved would have scored as a catch (now rejected); a dropped boundary row could read as catching a semantic error.
 - **Open:** `docs/m6/spec-questions.md` (A-G, H0, H1 first; H0: a composer's refusal reason can still reach the user under D6). D4's scale rule would drop six judge-supported dev claims. `numbers.py` is not yet in the hook's protected list (needs approval).
 - **Next (Shekar):** implement `numbers.py` first, then the other three; write `eval/sets/adversarial_claims.jsonl`, `make gold-checksums`; then `make verify-adversarial` and `make verify-ablation` ($0).
+
+## 2026-11-26: M6 spec decisions pinned (no core edits)
+- Added `numbers.py` to the hook's protected list and the owned lists.
+- Shekar decided the open spec questions; the core suites now pin them (ADR-049, "Spec decisions"). Several earlier tests changed with them: relational direction wording is kept, text numbers match by digit sequence plus a declared scale, and a composer's refusal text is never shown.
+- Five readings where decisions collided are recorded in ADR-049 (ratio units, swapped compare names, an exchange name in a must-keep claim, J against H0, G against two older tests).
+- ADR-010 marked not needed. `docs/m6/adversarial-plan.md` suggests bases; the gold file is Shekar's to write.
+- Review (by reading and dev-data checks, no tests run) found no two pinned tests that one implementation could not both satisfy, and added pins: "3M" is not three million, possessive company names, K's missing direction rule, G binding inside a quote, C before M.
+- Not executed: the code in the new tests that runs after the first stub call. A dry run with dummy returns was denied and not retried.
+- **Next (Shekar):** the open items in `docs/m6/spec-questions.md`, the adversarial rows, then `numbers.py` first.
