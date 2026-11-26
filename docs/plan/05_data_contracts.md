@@ -470,6 +470,10 @@ A refused answer may keep `claims` (partial answer) or leave it empty. Eval trea
  "action": "keep|drop|rewrite", "reason": "..."}
 ```
 
+**Values and rules (M6, ADR-049).** `status`: `supported | unsupported | partial | error`. `action`: `keep | drop | rewrite`. The four deterministic checks are `pass | fail | n/a`; `entailment` is `supported | partial | not_supported | error | n/a`. The deterministic verifier (ADR-049) never emits `partial`, `error` or `rewrite`, and `entailment` is always `n/a`. For a numeric claim: `provenance_exec`, `metadata_match` (company, tag, unit, period, and the wording checks: years, quarter, company named, direction) and `number_in_text`; `quote_substring` is `n/a`. For a text claim: `quote_substring`, `metadata_match` (the cited chunk's company) and `number_in_text` (value-bearing numbers of the claim against the quote); `provenance_exec` is `n/a`. A claim is kept only with `pass` on all three checks of its kind (a check with nothing to object to, such as no company restriction or no number, is `pass`, not `n/a`); the pipeline raises otherwise.
+
+**Verification report.** It sits beside the `Answer`, never inside it (the `Answer` JSON schema is unchanged): `{status: verified|partially_verified|refused, claims_total, claims_verified, claims_dropped, results: [VerifierResult], dropped_by_check: {<first failing check, or "policy">: n}}`. A run with `--verifier on` records `config.verifier: "on"` and this object in `per_question[].verification` for each composed answer (templated refusals are not verified). Models: `app/engine/verify/models.py`.
+
 ### 4.5 Plan compiler contract (M5, ADR-046; models in `app/engine/plan/schema.py`)
 
 ```python
@@ -628,6 +632,19 @@ Other endpoints: `POST /v1/feedback {request_id, rating, comment}`, `POST /v1/ke
   - Defaults: `tolerance_rel` 0.01 and `tolerance_abs` 0, the old flat rule. They apply only to rows written before ADR-044.
 - **Versions.** `value_basis` is `as_filed` (gold = the originally filed value, ADR-017) or `latest_restated`. One policy holds per set. `latest_value` is the latest restated value on a `single_value` row whose reported fact was restated (null on derived rows, even when `is_restated` is true because an input was restated); a restated row's question says "as originally reported" (or "as most recently restated").
 - **Provenance.** `value_kind` is `reported` (one reported fact) or `derived` (growth, ratio, compare, or a `fallback_formula` such as gross profit = revenue - cost of revenue). `source_tags` are the tags of `gold_fact_ids` in the same order. `resolution` says how a multi-tag metric was resolved (ADR-043). `compare_cik` is the second company of a `compare` row; `compare` gold is the first company's value minus the second's. `period_end` is the primary fact's period end.
+
+**`adversarial_claims.jsonl` (M6, ADR-049; written by hand, gold-protected).** Each row changes one real claim of the Gate 0 dev trace, so the row carries no evidence of its own:
+
+```jsonc
+{"id": "adv-001", "category": "wrong_year",
+ "base": {"question_id": "<id in gate0_dev_trace.json>", "claim_id": "c1"},
+ "change": {"text": "..."},      // any of text, value, display, unit, provenance (replaced whole)
+ "expected": "drop", "note": "FY2023 figure stated as FY2022", "authored_by": "shekar"}
+```
+- A changed `provenance` may cite only passages and facts saved in the trace.
+- `category` fixes `expected`. **drop:** `wrong_year`, `wrong_company`, `scale_million_billion`, `sign_flip`, `absent_quote`, `changed_number`, `formula_not_built`. **keep, the documented boundary** (a bad claim the deterministic verifier is expected to miss): `added_cause`, `invalid_inference`. **keep, a control** (a true claim): `correct`. Only `correct` and the boundary categories may have an empty `change` (a real over-claim, such as `fb-01328 c2`, is itself a boundary case).
+- A non-empty `change` must produce a valid `Claim` that differs from the base claim.
+- The harness (`eval/verifier_adversarial.py`) verifies each **claim** (not the answer's sufficiency) twice, unchanged and changed, with no LLM. An expected-drop row is `caught` only if the unchanged claim is kept and the changed one dropped; `missed` if the changed one is kept; `vacuous` if the unchanged one is already dropped (the drop proves nothing about the change); a changed keep row on a dropped base is `vacuous` too. Recall is caught over all expected-drop rows, so vacuous rows count as not caught. A boundary row that is dropped failed a deterministic check; that is not detection of the semantic error. Output: `eval/results/verifier/adversarial.json`, with counts per category and the sha256 of the set and the trace.
 
 ### Results file (`eval/results/<run_id>.json`, the only source for `docs/results.md`)
 
