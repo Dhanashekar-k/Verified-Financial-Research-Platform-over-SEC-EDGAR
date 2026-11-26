@@ -66,6 +66,15 @@ from eval.systems import (
 )
 
 COMPOSERS = {"sonnet": "claude-sonnet-5-5", "haiku": "claude-haiku-5-5"}
+# The engine's default writer was picked from the dev Pareto (ADR-012). Other systems stay on
+# sonnet, which their recorded runs and cassettes used.
+SYSTEM_DEFAULT_COMPOSER = {"engine": "haiku"}
+
+
+def default_composer(system: str) -> str:
+    return SYSTEM_DEFAULT_COMPOSER.get(system, "sonnet")
+
+
 RECALL_KS = (5, 10, 20)
 MAX_BATCH_ROUNDS = 6
 ANSWERABLE = ("numeric", "financebench", "narrative")
@@ -543,7 +552,12 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--sets", default=",".join(SET_FILES))
     ap.add_argument("--split", default="dev", choices=["dev", "test", "all"])
     ap.add_argument("--mode", default="replay", choices=[m.value for m in LLMMode])
-    ap.add_argument("--composer", default="sonnet", choices=sorted(COMPOSERS))
+    ap.add_argument(
+        "--composer",
+        default=None,
+        choices=sorted(COMPOSERS),
+        help="default: haiku for the engine (ADR-012), sonnet for every other system",
+    )
     ap.add_argument("--out", type=Path, default=Path("eval/results"))
     ap.add_argument("--sets-dir", type=Path, default=Path("eval/sets"))
     ap.add_argument("--splits", type=Path, default=Path("eval/sets/splits.json"))
@@ -597,7 +611,7 @@ def main(argv: list[str] | None = None) -> int:
     if args.split == "test":
         print("NOTE: test split. Iterate on dev; run test only at milestones (rules/eval.md).")
     set_names = [s.strip() for s in args.sets.split(",") if s.strip()]
-    composer = COMPOSERS[args.composer]
+    composer = COMPOSERS[args.composer or default_composer(args.system)]
     timeout = {} if args.request_timeout is None else {"request_timeout_s": args.request_timeout}
     client = LLMClient(
         mode=LLMMode(args.mode),

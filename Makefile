@@ -9,7 +9,7 @@ SYSTEM ?= engine
 SPLIT ?= dev
 MODE ?= replay
 SETS ?= numeric,financebench,narrative,unanswerable
-COMPOSER ?= sonnet
+COMPOSER ?=
 EF_SEARCH ?= 800
 TF_DIR := infra/terraform/envs/dev
 
@@ -119,7 +119,7 @@ remote-load: ## Load a snapshot on the EC2 box via SSM (M9; asks first)
 
 # ---------- eval (M4+) ----------
 bench: ## Eval harness, e.g. make bench SYSTEM=baseline SPLIT=dev MODE=replay (DSN from $$EDGARQA_SERVING_DSN)
-	$(PY) python -m eval.run --system $(SYSTEM) --sets $(SETS) --split $(SPLIT) --mode $(MODE) --composer $(COMPOSER) --ef-search $(EF_SEARCH) --out eval/results/ $(if $(CORPUS_VERSION),--corpus-version $(CORPUS_VERSION),)
+	$(PY) python -m eval.run --system $(SYSTEM) --sets $(SETS) --split $(SPLIT) --mode $(MODE) $(if $(COMPOSER),--composer $(COMPOSER),) --ef-search $(EF_SEARCH) --out eval/results/ $(if $(CORPUS_VERSION),--corpus-version $(CORPUS_VERSION),)
 splits: ## Stratified dev/test splits -> eval/sets/drafts/splits.json (M4; Shekar promotes)
 	$(PY) python -m eval.splits
 report: ## Regenerate docs/results.md auto tables
