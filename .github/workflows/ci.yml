@@ -15,8 +15,11 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Sync dependencies (project + dev group)
-        run: uv sync
+      # `uv sync` alone installs the dev group only. The unit tests also import the spark
+      # (pyspark, pyarrow) and api (psycopg) groups, and sqlalchemy (pyiceberg's test catalog),
+      # which today arrives only with the ml group. The runner's default JDK serves Spark.
+      - name: Sync dependencies (project and every group)
+        run: uv sync --all-groups
 
       - name: Gold files match CHECKSUMS
         run: make check-gold
