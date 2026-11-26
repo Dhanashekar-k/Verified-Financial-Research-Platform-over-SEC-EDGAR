@@ -400,3 +400,19 @@ Contract 05 §6 gains `tolerance_abs`, `tolerance_basis`, `value_basis`, `latest
 > **TODO(Shekar): write the consequences in my own words.**
 
 **How to revisit:** a calibrated narrative judge or a larger narrative set that separates the two; or after the verifier (M6) if unsupported-claim rates differ by writer.
+
+## ADR-049: M6 starts with a measurement; the verifier's shape is pre-registered (2026-11-26)
+**Status:** accepted (Shekar, 2026-11-26, approving the M6 plan). Drafted by Claude; Consequences are Shekar's to write.
+**Context:** M06 asks for deterministic checks, an LLM entailment check, a strictness sweep, an adversarial set, an ablation and a 50-claim audit. How often the engine's claims are unsupported before any verifier was `NOT MEASURED`, so the headroom was unknown.
+**Decision:**
+1. **Gate 0.** Judge every claim of the M5 dev run (Haiku writer) once with the independent support judge (`eval/judges/support.py`, `support-v1`, Sonnet 5.5), before any verifier code.
+2. **Pre-registered rule**, committed before the first judge call. The deciding number is the **text-claim** unsupported point estimate on that run: `unsupported` / all judged text claims, including claims inside refused answers and claims citing a chunk that does not exist (counted unsupported); `partial` stays in the denominator only. **At or below 5.0%:** no `entail.py`; the verifier is fully deterministic (numeric re-execution and the quote checks, with their number and wording rules, plus policy and render). **Above 5.0%:** keep one strict entailment pass. The confidence interval is reported and does not change the branch.
+3. **Numeric claims do not decide.** Judging them needs the judge to do arithmetic, and the verifier re-checks them deterministically.
+4. **Fixed evidence.** What the judge sees is `eval/judges/evidence.py` (`evidence-v1`), committed before the first call and not changed after verdicts are seen: the whole cited chunk with company, form, fiscal year and section; or each cited fact with company, tag, unit, period, form and value, plus the expression, which is not evaluated for the judge. The one change to the judge is `max_tokens` 1024 to 8192 (thinking counts toward the limit); the prompt and rubric version are unchanged.
+5. **Thin scope.** Cut: the strictness sweep, the adversarial set, the 50-claim audit, the render-only ablation arm and any test-split run. One dev ablation remains, reporting unsupported rate and answerable false refusal per arm. `PARTIAL` is always dropped.
+6. **Ownership.** Shekar writes `verify/numeric.py`, `quotes.py` and `policy.py`; the core-edit hook stays on. Who writes the number parsing and tolerance code is decided before the build.
+**Consequences (documented gaps):** verifier precision and recall, a human-checked unsupported rate, judge-vs-human agreement, the strictness curve and the test-split T5 and T6 with a verifier are `NOT MEASURED`. The judge is uncalibrated. ADR-010 (operating point) has no sweep behind it.
+
+> **TODO(Shekar): add the consequences in my own words.**
+
+**How to revisit:** after a calibrated judge or a hand audit; or if the dev ablation shows the verifier adds false refusals out of proportion to what it removes.
