@@ -39,6 +39,30 @@ uncalibrated and labelled as such.
 | `2026-11-25T05-48-47Z_baseline-0.2.0_sonnet` | test | financebench | 105 | 105 | 0 sys / 0 judge | recall@5 (eval/metrics.py) | 17.1% | [10.5, 24.8] | - |
 | `2026-11-25T05-48-47Z_baseline-0.2.0_sonnet` | test | financebench | 105 | 105 | 0 sys / 0 judge | recall@10 (eval/metrics.py) | 21.0% | [13.3, 28.6] | - |
 | `2026-11-25T05-48-47Z_baseline-0.2.0_sonnet` | test | financebench | 105 | 105 | 0 sys / 0 judge | recall@20 (eval/metrics.py) | 21.0% | [13.3, 28.6] | - |
+| `2026-11-26T00-27-09Z_engine-0.6.1_haiku` | dev | numeric | 72 | 72 | 0 sys / 0 judge | accuracy | 100.0% | [100.0, 100.0] | - |
+| `2026-11-26T00-27-09Z_engine-0.6.1_haiku` | dev | financebench | 45 | 45 | 0 sys / 0 judge | accuracy | 13.3% | [4.4, 24.4] | kappa 0.65 (answered rows only) |
+| `2026-11-26T00-27-09Z_engine-0.6.1_haiku` | dev | financebench | 45 | 45 | 0 sys / 0 judge | refusal rate | 84.4% | [73.3, 93.3] | - |
+| `2026-11-26T00-27-09Z_engine-0.6.1_haiku` | dev | financebench | 45 | 45 | 0 sys / 0 judge | recall@5 (eval/metrics.py) | 17.8% | [6.7, 28.9] | - |
+| `2026-11-26T00-27-09Z_engine-0.6.1_haiku` | dev | financebench | 45 | 45 | 0 sys / 0 judge | recall@10 (eval/metrics.py) | 17.8% | [6.7, 28.9] | - |
+| `2026-11-26T00-27-09Z_engine-0.6.1_haiku` | dev | financebench | 45 | 45 | 0 sys / 0 judge | recall@20 (eval/metrics.py) | 17.8% | [6.7, 28.9] | - |
+| `2026-11-26T00-27-09Z_engine-0.6.1_haiku` | dev | narrative | 15 | 15 | 0 sys / 0 judge | gold-point coverage | 50.0% | [28.3, 71.7] | uncalibrated |
+| `2026-11-26T00-27-09Z_engine-0.6.1_haiku` | dev | narrative | 15 | 15 | 0 sys / 0 judge | contradiction rate | 0.0% | [0.0, 0.0] | uncalibrated |
+| `2026-11-26T00-27-09Z_engine-0.6.1_haiku` | dev | narrative | 15 | 15 | 0 sys / 0 judge | recall@5 (eval/metrics.py) | 60.0% | [33.3, 86.7] | - |
+| `2026-11-26T00-27-09Z_engine-0.6.1_haiku` | dev | narrative | 15 | 15 | 0 sys / 0 judge | recall@10 (eval/metrics.py) | 66.7% | [40.0, 86.7] | - |
+| `2026-11-26T00-27-09Z_engine-0.6.1_haiku` | dev | narrative | 15 | 15 | 0 sys / 0 judge | recall@20 (eval/metrics.py) | 66.7% | [40.0, 86.7] | - |
+| `2026-11-26T00-27-09Z_engine-0.6.1_haiku` | dev | unanswerable | 15 | 15 | 0 sys / 0 judge | refusal rate | 100.0% | [100.0, 100.0] | - |
+| `2026-11-26T00-51-47Z_engine-0.6.1_sonnet` | dev | numeric | 72 | 72 | 0 sys / 0 judge | accuracy | 100.0% | [100.0, 100.0] | - |
+| `2026-11-26T00-51-47Z_engine-0.6.1_sonnet` | dev | financebench | 45 | 45 | 0 sys / 0 judge | accuracy | 11.1% | [2.2, 20.0] | kappa 0.65 (answered rows only) |
+| `2026-11-26T00-51-47Z_engine-0.6.1_sonnet` | dev | financebench | 45 | 45 | 0 sys / 0 judge | refusal rate | 86.7% | [75.6, 95.6] | - |
+| `2026-11-26T00-51-47Z_engine-0.6.1_sonnet` | dev | financebench | 45 | 45 | 0 sys / 0 judge | recall@5 (eval/metrics.py) | 17.8% | [6.7, 28.9] | - |
+| `2026-11-26T00-51-47Z_engine-0.6.1_sonnet` | dev | financebench | 45 | 45 | 0 sys / 0 judge | recall@10 (eval/metrics.py) | 17.8% | [6.7, 28.9] | - |
+| `2026-11-26T00-51-47Z_engine-0.6.1_sonnet` | dev | financebench | 45 | 45 | 0 sys / 0 judge | recall@20 (eval/metrics.py) | 17.8% | [6.7, 28.9] | - |
+| `2026-11-26T00-51-47Z_engine-0.6.1_sonnet` | dev | narrative | 15 | 15 | 0 sys / 0 judge | gold-point coverage | 61.7% | [40.0, 81.7] | uncalibrated |
+| `2026-11-26T00-51-47Z_engine-0.6.1_sonnet` | dev | narrative | 15 | 15 | 0 sys / 0 judge | contradiction rate | 0.0% | [0.0, 0.0] | uncalibrated |
+| `2026-11-26T00-51-47Z_engine-0.6.1_sonnet` | dev | narrative | 15 | 15 | 0 sys / 0 judge | recall@5 (eval/metrics.py) | 60.0% | [33.3, 86.7] | - |
+| `2026-11-26T00-51-47Z_engine-0.6.1_sonnet` | dev | narrative | 15 | 15 | 0 sys / 0 judge | recall@10 (eval/metrics.py) | 66.7% | [40.0, 86.7] | - |
+| `2026-11-26T00-51-47Z_engine-0.6.1_sonnet` | dev | narrative | 15 | 15 | 0 sys / 0 judge | recall@20 (eval/metrics.py) | 66.7% | [40.0, 86.7] | - |
+| `2026-11-26T00-51-47Z_engine-0.6.1_sonnet` | dev | unanswerable | 15 | 15 | 0 sys / 0 judge | refusal rate | 100.0% | [100.0, 100.0] | - |
 
 ### Judge calibration (FinanceBench correctness judge vs human labels)
 
@@ -47,6 +71,8 @@ uncalibrated and labelled as such.
 | `2026-11-25T00-43-10Z_baseline-0.2.0_sonnet` | 0.646 | 46 | below target | correctness-v2 | claude-sonnet-5-5 | `494b5d395281` | eval/judges/kappa.json |
 | `2026-11-25T05-47-32Z_baseline-0.2.0_sonnet` | 0.646 | 46 | below target | correctness-v2 | claude-sonnet-5-5 | `494b5d395281` | eval/judges/kappa.json; labels measured on run 2026-11-25T00-43-10Z_baseline-0.2.0_sonnet, not on this run's rows (same judge and rubric; answer identity not checked by report.py) |
 | `2026-11-25T05-48-47Z_baseline-0.2.0_sonnet` | 0.646 | 46 | below target | correctness-v2 | claude-sonnet-5-5 | `494b5d395281` | eval/judges/kappa.json; labels measured on run 2026-11-25T00-43-10Z_baseline-0.2.0_sonnet, not on this run's rows (same judge and rubric; answer identity not checked by report.py) |
+| `2026-11-26T00-27-09Z_engine-0.6.1_haiku` | 0.646 | 46 | below target | correctness-v2 | claude-sonnet-5-5 | `494b5d395281` | eval/judges/kappa.json; labels measured on run 2026-11-25T00-43-10Z_baseline-0.2.0_sonnet, not on this run's rows (same judge and rubric; answer identity not checked by report.py) |
+| `2026-11-26T00-51-47Z_engine-0.6.1_sonnet` | 0.646 | 46 | below target | correctness-v2 | claude-sonnet-5-5 | `494b5d395281` | eval/judges/kappa.json; labels measured on run 2026-11-25T00-43-10Z_baseline-0.2.0_sonnet, not on this run's rows (same judge and rubric; answer identity not checked by report.py) |
 
 ### Cost and latency
 
@@ -56,6 +82,8 @@ uncalibrated and labelled as such.
 | `2026-11-25T05-46-32Z_baseline-0.2.0_sonnet` | batch | claude-sonnet-5-5 | 100 | 0.0009 | 0.00001 | NOT MEASURED | NOT MEASURED | 800 |
 | `2026-11-25T05-47-32Z_baseline-0.2.0_sonnet` | replay | claude-sonnet-5-5 | 117 | 0.0000 | 0.00000 | NOT MEASURED | NOT MEASURED | 800 |
 | `2026-11-25T05-48-47Z_baseline-0.2.0_sonnet` | replay | claude-sonnet-5-5 | 273 | 0.0000 | 0.00000 | NOT MEASURED | NOT MEASURED | 800 |
+| `2026-11-26T00-27-09Z_engine-0.6.1_haiku` | batch | claude-haiku-5-5 | 147 | 0.0718 | 0.00049 | NOT MEASURED | NOT MEASURED | 800 |
+| `2026-11-26T00-51-47Z_engine-0.6.1_sonnet` | batch | claude-sonnet-5-5 | 147 | 0.6951 | 0.00473 | NOT MEASURED | NOT MEASURED | 800 |
 
 ### False refusal on answerable sets
 
@@ -65,20 +93,91 @@ uncalibrated and labelled as such.
 | `2026-11-25T05-46-32Z_baseline-0.2.0_sonnet` | 52.0% |
 | `2026-11-25T05-47-32Z_baseline-0.2.0_sonnet` | 83.8% |
 | `2026-11-25T05-48-47Z_baseline-0.2.0_sonnet` | 83.5% |
+| `2026-11-26T00-27-09Z_engine-0.6.1_haiku` | 33.3% |
+| `2026-11-26T00-51-47Z_engine-0.6.1_sonnet` | 32.6% |
 
 Source: `eval/results/<run_id>.json`. Claims / unsupported-claim rate: NOT MEASURED until the support judge has chunk text to read (M6).
 
 ### Engine vs baseline (paired bootstrap)
 
-NOT MEASURED: no engine run with a baseline run on the same split yet.
+| engine run | baseline run | split | set | paired n | engine | baseline | difference | 95% CI | p | reading |
+|---|---|---|---|---:|---:|---:|---:|---|---:|---|
+| `2026-11-26T00-27-09Z_engine-0.6.1_haiku` | `2026-11-25T05-47-32Z_baseline-0.2.0_sonnet` | dev | numeric | 72 | 100.0% | 2.8% | +97.2 pp | [93.1, 100.0] | 0.0002 | engine higher |
+| `2026-11-26T00-27-09Z_engine-0.6.1_haiku` | `2026-11-25T05-47-32Z_baseline-0.2.0_sonnet` | dev | financebench | 45 | 13.3% | 24.4% | -11.1 pp | [-24.4, 2.2] | 0.1546 | no difference shown |
+| `2026-11-26T00-51-47Z_engine-0.6.1_sonnet` | `2026-11-25T05-47-32Z_baseline-0.2.0_sonnet` | dev | numeric | 72 | 100.0% | 2.8% | +97.2 pp | [93.1, 100.0] | 0.0002 | engine higher |
+| `2026-11-26T00-51-47Z_engine-0.6.1_sonnet` | `2026-11-25T05-47-32Z_baseline-0.2.0_sonnet` | dev | financebench | 45 | 11.1% | 24.4% | -13.3 pp | [-28.9, 0.0] | 0.0954 | no difference shown |
 
-### Composer Pareto
+The difference is engine minus baseline on the questions both runs scored; the CI is a paired bootstrap (10,000 resamples) and `reading` only says whether it excludes 0.
 
-NOT MEASURED: no engine run yet.
+### Composer Pareto (accuracy, cost, latency per composer)
 
-### Retrieval ablation
+| run | split | composer | numeric accuracy | FinanceBench accuracy | narrative coverage | system $ / question (no judge) | p95 ms |
+|---|---|---|---:|---:|---:|---:|---:|
+| `2026-11-26T00-27-09Z_engine-0.6.1_haiku` | dev | claude-haiku-5-5 | 100.0% | 13.3% | 50.0% | 0.00033 | 14100 (dev live sample, n=32) |
+| `2026-11-26T00-51-47Z_engine-0.6.1_sonnet` | dev | claude-sonnet-5-5 | 100.0% | 11.1% | 61.7% | 0.00457 | 15350 (dev live sample, n=32) |
 
-NOT MEASURED: no ablation run yet.
+Latency sample `2026-11-26T00-59-58Z_engine-0.6.1_haiku` (engine, claude-haiku-5-5, dev split, sets numeric, financebench, narrative, unanswerable, n=32 answered, refusals included): p50 5736 ms, p95 14100 ms. Live calls from a laptop that runs the whole engine (embedding and reranking included) against the box's database, so it includes the laptop-to-box network delay and is not a server-side number.
+
+Latency sample `2026-11-26T00-56-19Z_engine-0.6.1_sonnet` (engine, claude-sonnet-5-5, dev split, sets numeric, financebench, narrative, unanswerable, n=32 answered, refusals included): p50 5905 ms, p95 15350 ms. Live calls from a laptop that runs the whole engine (embedding and reranking included) against the box's database, so it includes the laptop-to-box network delay and is not a server-side number.
+
+The cost column is the system's own spend (judges excluded) on calls the run paid for: planner replies already recorded are served from cassettes at no cost.
+The planner cost $0.00008 per question in `2026-11-25T11-00-52Z_intent_planner-claude-haiku-5-5` (batch, dev).
+
+### Retrieval ablation (dev split)
+
+Run `2026-11-25T12-38-14Z_retrieval-ablation`, corpus version 1, 60 questions, plan: oracle: the gold company and fiscal year, not the planner; narrative rows also get their gold chunk's section as the hint (a best case for the boost; FinanceBench PDFs have no section, so that row repeats the one before); reranker `Xenova/ms-marco-MiniLM-L-6-v2`. Latency is client-side wall time per call, including the tunnel and the query embedding; not the serving box's own speed.
+
+
+**financebench** (hit@k, 95% CI)
+
+| component | n | @1 | @3 | @5 | @8 | vs row above (@8, paired) | p50 ms | p95 ms |
+|---|---:|---|---|---|---|---|---:|---:|
+| lexical only | 45 | 0.0% [0.0, 0.0] | 0.0% [0.0, 0.0] | 0.0% [0.0, 0.0] | 0.0% [0.0, 0.0] | - | 19844 | 33756 |
+| dense only | 45 | 11.1% [2.2, 20.0] | 15.6% [4.4, 26.7] | 15.6% [4.4, 26.7] | 20.0% [8.9, 33.3] | +20.0 pp [8.9, 33.3] | 572 | 6633 |
+| hybrid (RRF) | 45 | 0.0% [0.0, 0.0] | 8.9% [2.2, 17.8] | 15.6% [4.4, 26.7] | 15.6% [4.4, 26.7] | -4.4 pp [-11.1, 0.0] | 21464 | 34267 |
+| hybrid + rerank | 45 | 8.9% [2.2, 17.8] | 15.6% [6.7, 26.7] | 15.6% [6.7, 26.7] | 17.8% [6.7, 28.9] | +2.2 pp [-4.4, 11.1] | 19265 | 34973 |
+| hybrid + rerank + filters | 45 | 20.0% [8.9, 31.1] | 37.8% [24.4, 51.1] | 44.4% [28.9, 57.8] | 46.7% [31.1, 60.0] | +28.9 pp [15.6, 42.2] | 1192 | 1574 |
+| hybrid + rerank + filters + section boost (oracle hint) | 45 | 20.0% [8.9, 31.1] | 37.8% [24.4, 51.1] | 44.4% [28.9, 57.8] | 46.7% [31.1, 60.0] | +0.0 pp [0.0, 0.0] | 1270 | 1565 |
+
+**narrative** (hit@k, 95% CI)
+
+| component | n | @1 | @3 | @5 | @8 | vs row above (@8, paired) | p50 ms | p95 ms |
+|---|---:|---|---|---|---|---|---:|---:|
+| lexical only | 15 | 0.0% [0.0, 0.0] | 0.0% [0.0, 0.0] | 0.0% [0.0, 0.0] | 0.0% [0.0, 0.0] | - | 19844 | 33756 |
+| dense only | 15 | 20.0% [0.0, 40.0] | 26.7% [6.7, 46.7] | 26.7% [6.7, 46.7] | 33.3% [13.3, 60.0] | +33.3 pp [13.3, 60.0] | 572 | 6633 |
+| hybrid (RRF) | 15 | 0.0% [0.0, 0.0] | 13.3% [0.0, 33.3] | 13.3% [0.0, 33.3] | 13.3% [0.0, 33.3] | -20.0 pp [-40.0, 0.0] | 21464 | 34267 |
+| hybrid + rerank | 15 | 13.3% [0.0, 33.3] | 20.0% [0.0, 40.0] | 20.0% [0.0, 40.0] | 33.3% [13.3, 60.0] | +20.0 pp [0.0, 40.0] | 19265 | 34973 |
+| hybrid + rerank + filters | 15 | 40.0% [13.3, 66.7] | 53.3% [26.7, 80.0] | 60.0% [33.3, 86.7] | 66.7% [40.0, 86.7] | +33.3 pp [13.3, 60.0] | 1192 | 1574 |
+| hybrid + rerank + filters + section boost (oracle hint) | 15 | 40.0% [13.3, 66.7] | 53.3% [26.7, 80.0] | 60.0% [33.3, 86.7] | 66.7% [40.0, 86.7] | +0.0 pp [0.0, 0.0] | 1270 | 1565 |
+
+Read with care. FinanceBench hit@k counts only the chunks of the FinanceBench PDF copy: the same passage retrieved from the EDGAR copy of that filing counts as a miss, so these understate evidence retrieval. Each row searches one query (the question); the engine adds a company-and-topics query when its planner returns topics. Rows run in a fixed order with no warm-up, so latency differences between rows do not isolate a component's cost. 'vs row above' compares neighbouring rows, which are not each one added component (dense only does not add to lexical only).
+
+### Retrieval components with the company and year filter on (dev split)
+
+Run `2026-11-25T12-43-19Z_retrieval-ablation-filtered`, corpus version 1, 60 questions, plan: oracle: the gold company and fiscal year, not the planner; narrative rows also get their gold chunk's section as the hint (a best case for the boost; FinanceBench PDFs have no section, so that row repeats the one before); reranker `Xenova/ms-marco-MiniLM-L-6-v2`. Latency is client-side wall time per call, including the tunnel and the query embedding; not the serving box's own speed.
+
+
+**financebench** (hit@k, 95% CI)
+
+| component | n | @1 | @3 | @5 | @8 | vs row above (@8, paired) | p50 ms | p95 ms |
+|---|---:|---|---|---|---|---|---:|---:|
+| lexical + filters | 45 | 4.4% [0.0, 11.1] | 8.9% [2.2, 17.8] | 13.3% [4.4, 24.4] | 22.2% [11.1, 35.6] | - | 371 | 614 |
+| dense + filters | 45 | 28.9% [15.6, 42.2] | 35.6% [22.2, 51.1] | 37.8% [24.4, 53.3] | 46.7% [31.1, 62.2] | +24.4 pp [11.1, 37.8] | 347 | 387 |
+| hybrid + filters | 45 | 11.1% [2.2, 22.2] | 17.8% [6.7, 28.9] | 24.4% [13.3, 37.8] | 26.7% [13.3, 40.0] | -20.0 pp [-35.6, -4.4] | 696 | 926 |
+| lexical + filters + rerank | 45 | 17.8% [6.7, 28.9] | 22.2% [11.1, 35.6] | 22.2% [11.1, 35.6] | 24.4% [13.3, 37.8] | -2.2 pp [-6.7, 0.0] | 1072 | 1328 |
+| hybrid + filters + rerank | 45 | 20.0% [8.9, 31.1] | 37.8% [24.4, 51.1] | 44.4% [28.9, 57.8] | 46.7% [31.1, 60.0] | +22.2 pp [8.9, 35.6] | 1349 | 1627 |
+
+**narrative** (hit@k, 95% CI)
+
+| component | n | @1 | @3 | @5 | @8 | vs row above (@8, paired) | p50 ms | p95 ms |
+|---|---:|---|---|---|---|---|---:|---:|
+| lexical + filters | 15 | 40.0% [13.3, 66.7] | 80.0% [60.0, 100.0] | 86.7% [66.7, 100.0] | 86.7% [66.7, 100.0] | - | 371 | 614 |
+| dense + filters | 15 | 46.7% [20.0, 73.3] | 46.7% [20.0, 73.3] | 66.7% [40.0, 86.7] | 66.7% [40.0, 86.7] | -20.0 pp [-46.7, 6.7] | 347 | 387 |
+| hybrid + filters | 15 | 46.7% [20.0, 73.3] | 66.7% [40.0, 86.7] | 73.3% [53.3, 93.3] | 80.0% [60.0, 100.0] | +13.3 pp [0.0, 33.3] | 696 | 926 |
+| lexical + filters + rerank | 15 | 46.7% [20.0, 73.3] | 46.7% [20.0, 73.3] | 60.0% [33.3, 86.7] | 66.7% [40.0, 86.7] | -13.3 pp [-46.7, 20.0] | 1072 | 1328 |
+| hybrid + filters + rerank | 15 | 40.0% [13.3, 66.7] | 53.3% [26.7, 80.0] | 60.0% [33.3, 86.7] | 66.7% [40.0, 86.7] | +0.0 pp [-20.0, 20.0] | 1349 | 1627 |
+
+Read with care. FinanceBench hit@k counts only the chunks of the FinanceBench PDF copy: the same passage retrieved from the EDGAR copy of that filing counts as a miss, so these understate evidence retrieval. Each row searches one query (the question); the engine adds a company-and-topics query when its planner returns topics. Rows run in a fixed order with no warm-up, so latency differences between rows do not isolate a component's cost. 'vs row above' compares neighbouring rows, which are not each one added component (dense only does not add to lexical only).
 <!-- AUTO:END -->
 
 ## Reading the baseline numbers (hand-written; the numbers above are generated)
