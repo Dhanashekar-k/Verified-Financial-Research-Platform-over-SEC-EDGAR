@@ -23,7 +23,7 @@ Plans and contracts live in `docs/plan/`:
 ## Shekar-owned modules (create the stub once if missing; otherwise read/test/review only)
 - `pipelines/common/fiscal_ref.py`
 - `app/engine/plan/compiler.py`, `app/engine/plan/periods.py`, `app/engine/plan/metric_catalog.yaml`
-- `app/engine/verify/numeric.py`, `app/engine/verify/quotes.py`, `app/engine/verify/policy.py`
+- `app/engine/verify/numbers.py`, `app/engine/verify/numeric.py`, `app/engine/verify/quotes.py`, `app/engine/verify/policy.py`
 - `app/engine/sql_guard/guard.py`, `app/engine/router/cascade.py`
 - `ml/router/model_fns.py`, `eval/metrics.py`
 

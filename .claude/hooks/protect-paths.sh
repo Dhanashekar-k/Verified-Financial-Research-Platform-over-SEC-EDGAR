@@ -35,6 +35,7 @@ OWNED=(
   "app/engine/plan/compiler.py"
   "app/engine/plan/periods.py"
   "app/engine/plan/metric_catalog.yaml"
+  "app/engine/verify/numbers.py"
   "app/engine/verify/numeric.py"
   "app/engine/verify/quotes.py"
   "app/engine/verify/policy.py"
