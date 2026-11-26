@@ -154,3 +154,12 @@ the day-to-day calls and progress. Append one dated entry at the end of each wor
 - Cost: judge $0.2277 (cap $2), harness accounting. Box about four minutes, confirmed stopped 06:09:48Z; dollars NOT MEASURED.
 - Open: the judge never said "unsupported" and had no known-wrong control. Post-M6 retrieval/routing item filed in `docs/backlog/`.
 - **Next (Shekar):** review Gate 0; choose `numbers.py` ownership (A all, or B split precision/tolerance) at the Build gate; ADR-049 consequences.
+
+## 2026-11-26: M6 build, deterministic verifier around Shekar's four modules
+- **Build-gate decisions (Shekar):** Shekar owns all of `numbers.py`; no `entail.py`; a small hand-written adversarial set returns (ADR-049 amendment, with the semantic over-claiming limitation).
+- **Built:** `verify/{models,evidence,render,pipeline}.py`, the `verify` stage (`--verifier`, default off; engine 0.7.0), the adversarial harness and the one dev ablation, both offline from the Gate 0 trace. `numbers`, `numeric`, `quotes`, `policy` are stubs with the spec in their docstrings and strict-xfail tests.
+- **Adversarial rows reference a real dev claim** and state only the change, so no evidence is hand-written. A catch counts only if the unchanged claim passes, so dropping everything scores nothing.
+- **Pipeline holds the policy to its contract:** a failed check cannot be kept, kept claims cannot be rewritten, a composer refusal stays one.
+- **Review caught, fixed before commit:** a check returning all `n/a` counted as a pass (now a kept claim needs `pass` on all three checks of its kind); an adversarial row citing a passage the trace had not saved would have scored as a catch (now rejected); a dropped boundary row could read as catching a semantic error.
+- **Open:** `docs/m6/spec-questions.md` (A-G, H0, H1 first; H0: a composer's refusal reason can still reach the user under D6). D4's scale rule would drop six judge-supported dev claims. `numbers.py` is not yet in the hook's protected list (needs approval).
+- **Next (Shekar):** implement `numbers.py` first, then the other three; write `eval/sets/adversarial_claims.jsonl`, `make gold-checksums`; then `make verify-adversarial` and `make verify-ablation` ($0).
