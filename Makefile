@@ -118,6 +118,10 @@ remote-load: ## Load a snapshot on the EC2 box via SSM (M9; asks first)
 	@echo "TODO(M9): implement"
 
 # ---------- eval (M4+) ----------
+verify-adversarial: ## M6: run the deterministic verifier over eval/sets/adversarial_claims.jsonl ($$0)
+	$(PY) python -m eval.verifier_adversarial
+verify-ablation: ## M6: dev ablation, engine with and without the verifier, from the saved trace ($$0)
+	$(PY) python -m eval.verifier_ablation
 bench: ## Eval harness, e.g. make bench SYSTEM=baseline SPLIT=dev MODE=replay (DSN from $$EDGARQA_SERVING_DSN)
 	$(PY) python -m eval.run --system $(SYSTEM) --sets $(SETS) --split $(SPLIT) --mode $(MODE) $(if $(COMPOSER),--composer $(COMPOSER),) --ef-search $(EF_SEARCH) --out eval/results/ $(if $(CORPUS_VERSION),--corpus-version $(CORPUS_VERSION),)
 splits: ## Stratified dev/test splits -> eval/sets/drafts/splits.json (M4; Shekar promotes)

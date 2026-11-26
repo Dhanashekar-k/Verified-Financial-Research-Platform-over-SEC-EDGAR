@@ -293,5 +293,35 @@
       "supported": 6,
       "partial": 1
     }
+  },
+  "d4_scale_conflict": {
+    "definition": "text claims whose text has a number followed by thousand/million/billion/trillion while the quote has no such word anywhere; a regex count over gate0_dev_trace.json, not a verifier result",
+    "n": 6,
+    "claims": [
+      {
+        "id": "fb-00438/c2",
+        "judge_label": "supported"
+      },
+      {
+        "id": "fb-00517/c1",
+        "judge_label": "supported"
+      },
+      {
+        "id": "fb-00517/c2",
+        "judge_label": "supported"
+      },
+      {
+        "id": "fb-00517/c3",
+        "judge_label": "supported"
+      },
+      {
+        "id": "fb-00711/c1",
+        "judge_label": "supported"
+      },
+      {
+        "id": "fb-04171/c1",
+        "judge_label": "supported"
+      }
+    ]
   }
 }
