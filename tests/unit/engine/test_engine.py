@@ -255,7 +255,7 @@ def test_numeric_question_compiles_composes_and_grounds() -> None:
 
 
 def test_a_composer_that_computes_its_own_number_is_flagged_not_hidden() -> None:
-    """The M05 pitfall: a 'helpful' ratio. Before M6 it is reported, not silently dropped."""
+    """The M05 pitfall: a 'helpful' ratio. With the verifier off it is reported, not dropped."""
     bad = Answer(
         answer_markdown="Margin was 29.8%.",
         claims=[
@@ -433,7 +433,7 @@ def test_batch_pending_at_the_composer_propagates_after_the_lookups() -> None:
 def test_the_engine_is_registered_with_the_harness() -> None:
     system = SYSTEMS["engine"]()
     assert system.name == "engine" and getattr(system, "reads_corpus", False) is True
-    assert system.version == "0.6.1"  # type: ignore[attr-defined]
+    assert system.version == "0.7.0"  # type: ignore[attr-defined]
 
 
 def test_connections_are_opened_lazily_reused_and_closed() -> None:

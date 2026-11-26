@@ -98,6 +98,27 @@ def reset_compiled_facts(token: contextvars.Token[set[int] | None]) -> None:
     _COMPILED.reset(token)
 
 
+_VERIFICATION: contextvars.ContextVar[dict[str, Any] | None] = contextvars.ContextVar(
+    "eval_verification", default=None
+)
+
+
+def record_verification(report: dict[str, Any]) -> None:
+    """Called by a system whose verifier ran on this answer, with its report (05 4.4)."""
+    sink = _VERIFICATION.get()
+    if sink is not None:
+        sink.update(report)
+
+
+def verification_sink() -> tuple[dict[str, Any], contextvars.Token[dict[str, Any] | None]]:
+    sink: dict[str, Any] = {}
+    return sink, _VERIFICATION.set(sink)
+
+
+def reset_verification(token: contextvars.Token[dict[str, Any] | None]) -> None:
+    _VERIFICATION.reset(token)
+
+
 _ROUTE: contextvars.ContextVar[dict[str, str] | None] = contextvars.ContextVar(
     "eval_route", default=None
 )
@@ -130,6 +151,7 @@ class EvalCfg:
     embedder: str | None = None
     corpus_version: int | None = None
     dsn: str | None = None
+    verifier: str = "off"  # "on" | "off" (engine only, ADR-049)
     extra: dict[str, Any] = field(default_factory=dict)
 
 

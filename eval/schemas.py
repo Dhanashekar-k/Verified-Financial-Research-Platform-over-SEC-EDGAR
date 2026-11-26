@@ -193,6 +193,7 @@ class RunConfig(BaseModel):
     sample: int | None = None  # --sample N: a seeded sample of N questions per set (None: all)
     sample_seed: int | None = None
     request_timeout_s: float | None = None  # raised from the 120 s default for long prompts
+    verifier: str | None = None  # engine runs from M6: "on" | "off"
 
 
 class ResultsFile(BaseModel):

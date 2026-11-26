@@ -22,6 +22,13 @@ START, END = "<!-- AUTO:START -->", "<!-- AUTO:END -->"
 PAID_MODES = ("batch", "live", "record")
 # A latency sample stands for a run only when these match.
 SAMPLE_MUST_MATCH = ("composer", "system_version", "ef_search", "top_k")
+
+
+def _verifier(config: dict[str, Any]) -> str:
+    """Runs from before M6 have no ``verifier`` key: it was off."""
+    return str(config.get("verifier") or "off")
+
+
 NM = "NOT MEASURED"
 
 
@@ -56,6 +63,7 @@ def select_runs(results_dir: Path, explicit: list[str] | None = None) -> list[di
             tuple(sorted(c.get("sets", []))),
             c.get("judge") is not None,
             c.get("sample"),
+            _verifier(c),
         )
         held = latest.get(key)
         if held and held["config"].get("mode") in PAID_MODES and c.get("mode") == "replay":
@@ -135,7 +143,8 @@ def _correct_by_id(run: dict[str, Any], set_name: str) -> dict[str, float]:
 def render_comparison(runs: list[dict[str, Any]]) -> list[str]:
     """Engine vs baseline on the same questions: a paired bootstrap of the per-question
     difference in correctness (never two independent CIs compared by eye)."""
-    full = [r for r in runs if not r["config"].get("sample")]
+    # The verifier's effect is its own ablation: these tables compare runs without it.
+    full = [r for r in runs if not r["config"].get("sample") and _verifier(r["config"]) == "off"]
     engines = [r for r in full if r["config"].get("system") == "engine"]
     baselines = [r for r in full if r["config"].get("system") == "baseline"]
     rows: list[str] = []
@@ -187,6 +196,7 @@ def _sample_for(run: dict[str, Any], samples: list[dict[str, Any]]) -> dict[str,
         and d["config"].get("mode") in ("live", "record")
         and d["latency_ms"].get("p95")
         and all(d["config"].get(k) == run["config"].get(k) for k in SAMPLE_MUST_MATCH)
+        and _verifier(d["config"]) == _verifier(run["config"])
         and d.get("corpus_version") == run.get("corpus_version")
     ]
     return max(matching, key=lambda d: d["run_id"]) if matching else None
@@ -219,7 +229,9 @@ def render_pareto(
         (
             r
             for r in runs
-            if r["config"].get("system") == "engine" and not r["config"].get("sample")
+            if r["config"].get("system") == "engine"
+            and not r["config"].get("sample")
+            and _verifier(r["config"]) == "off"
         ),
         key=lambda r: (str(r["config"].get("split")), r["run_id"]),
     )

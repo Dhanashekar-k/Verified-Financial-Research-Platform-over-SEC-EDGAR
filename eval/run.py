@@ -61,8 +61,10 @@ from eval.systems import (
     reset_compiled_facts,
     reset_retrieval,
     reset_route,
+    reset_verification,
     retrieval_sink,
     route_sink_set,
+    verification_sink,
 )
 
 COMPOSERS = {"sonnet": "claude-sonnet-5-5", "haiku": "claude-haiku-5-5"}
@@ -97,6 +99,7 @@ class Outcome:
     route: str = "n/a"
     # fact ids the system's compiler returned for this answer; checked, never written out
     compiled_facts: set[int] = field(default_factory=set)
+    verification: dict[str, Any] = field(default_factory=dict)  # empty: the verifier didn't run
 
 
 def _unimplemented(fn: Callable[..., Any], *args: Any) -> Any:
@@ -366,6 +369,7 @@ def run_questions(
                 sink, token = retrieval_sink()
                 route_sink, route_token = route_sink_set()
                 compiled, compiled_token = compiled_facts_sink()
+                verified, verified_token = verification_sink()
                 mark = len(cfg.llm.ledger)
                 start = time.monotonic()
                 try:
@@ -373,6 +377,7 @@ def run_questions(
                     o.latency_ms = int((time.monotonic() - start) * 1000)
                     o.retrieved = list(sink) if getattr(system, "retrieves", True) else None
                     o.compiled_facts = set(compiled)
+                    o.verification = dict(verified)
                 except BatchPending:
                     pending.append(qid)
                 except Exception as err:  # noqa: BLE001
@@ -383,6 +388,7 @@ def run_questions(
                     o.system_usage += cfg.llm.ledger[mark:]
                     reset_retrieval(token)
                     reset_compiled_facts(compiled_token)
+                    reset_verification(verified_token)
                     o.route = route_sink.get("route", "n/a")
                     reset_route(route_token)
                 if qid in pending:
@@ -449,6 +455,8 @@ def build_results(
             "error": o.error,
             **{k: v for k, v in o.scores.items() if k != "correct"},
         }
+        if o.verification:
+            extra["verification"] = o.verification
         if isinstance(o.row, FinanceBenchRow):
             extra["gold_answer"] = o.row.gold_answer
         if ans is not None:
@@ -471,7 +479,8 @@ def build_results(
     utc = datetime.now(UTC).strftime("%Y-%m-%dT%H-%M-%SZ")
     short = {v: k for k, v in COMPOSERS.items()}.get(config.composer, config.composer)
     return ResultsFile(
-        run_id=f"{utc}_{config.system}-{config.system_version}_{short}",
+        run_id=f"{utc}_{config.system}-{config.system_version}_{short}"
+        + ("_verifier" if config.verifier == "on" else ""),
         git_sha=_git_sha(),
         corpus_version=corpus_version,
         config=config,
@@ -569,6 +578,12 @@ def main(argv: list[str] | None = None) -> int:
     )
     ap.add_argument("--ef-search", type=int, default=800, help="HNSW ef_search, pinned (ADR-040)")
     ap.add_argument("--top-k", type=int, default=8)
+    ap.add_argument(
+        "--verifier",
+        default="off",
+        choices=["on", "off"],
+        help="the deterministic claim verifier (engine only, ADR-049); default off",
+    )
     ap.add_argument("--corpus-version", type=int, default=None)
     ap.add_argument(
         "--dsn",
@@ -606,6 +621,18 @@ def main(argv: list[str] | None = None) -> int:
     if args.request_timeout is not None and args.request_timeout <= 0:
         ap.error("--request-timeout must be positive")
 
+    if args.verifier == "on":
+        if args.system != "engine":
+            ap.error("--verifier on applies to --system engine only")
+        # Per-question errors are recorded, not raised: a stubbed core must stop the run here,
+        # before the first model call.
+        from app.engine.verify.pipeline import VerifierNotImplemented, require_implemented
+
+        try:
+            require_implemented()
+        except VerifierNotImplemented as err:
+            raise SystemExit(str(err)) from err
+
     if args.mode == "stub" and not args.allow_stub_results:
         raise SystemExit("--mode stub produces fake answers; no results file is written")
     if args.split == "test":
@@ -627,6 +654,7 @@ def main(argv: list[str] | None = None) -> int:
         top_k=args.top_k,
         corpus_version=args.corpus_version,
         dsn=args.dsn,
+        verifier=args.verifier,
     )
     system = SYSTEMS[args.system]()
     gold_chunks: dict[str, list[str]] = {}
@@ -655,6 +683,7 @@ def main(argv: list[str] | None = None) -> int:
         embedder=getattr(system, "embedder_name", None),
         ef_search=args.ef_search,
         top_k=args.top_k,
+        verifier=args.verifier if args.system == "engine" else None,
         judge=None if args.no_judge else client.resolve("judge"),
         judge_rubrics=_rubric_versions(),
         batches=batch_info["batches"],
@@ -677,10 +706,18 @@ def main(argv: list[str] | None = None) -> int:
         ),
         client.failed_usage_usd,
     )
-    args.out.mkdir(parents=True, exist_ok=True)
-    path = args.out / f"{results.run_id}.json"
+    # With the verifier on, a question that errored may have errored in a check: its numbers
+    # are not publishable. Kept (the calls were paid for), where report.py never reads.
+    unpublishable = args.verifier == "on" and any(o.error for o in outcomes)
+    out_dir = args.out / "unpublishable" if unpublishable else args.out
+    out_dir.mkdir(parents=True, exist_ok=True)
+    path = out_dir / f"{results.run_id}.json"
     path.write_text(results.model_dump_json(indent=2) + "\n")
     print(f"wrote {path} ({len(outcomes)} questions, ${results.cost.total_usd:.4f})")
+    if unpublishable:
+        bad = [o.row.id for o in outcomes if o.error]  # type: ignore[attr-defined]
+        print(f"FAIL: {len(bad)} questions errored with the verifier on: {bad[:10]}")
+        return 2
     drifted = corpus_version_drifted(system, args.dsn, corpus_version)
     if drifted is not None:  # the file is written first: cost and answers are not lost
         print(

@@ -6,7 +6,8 @@
       numeric / hybrid  : compile_plan over `facts`   \\ run in parallel (asyncio.gather)
       narrative / hybrid: retrieve over `chunks`      /
       numeric / hybrid with no catalog metric: nothing to compile, so search the text (ADR-048)
-    -> compose (Sonnet or Haiku) -> grounding check -> verify (pass-through until M6)
+    -> compose (Sonnet or Haiku) -> grounding check
+    -> verify (deterministic, no LLM; only with ``cfg.verifier == "on"``, ADR-049)
 
 The LLM never writes SQL here and never does arithmetic: numbers come from the compiler with
 provenance, text from retrieval. Every collaborator is injectable, so the orchestration is tested
@@ -31,7 +32,8 @@ from app.engine.answer import Answer, Refusal
 from app.engine.baseline import DEFAULT_MODEL_DIR, MODEL_DIR_ENV
 from app.engine.compose.composer import citable_fact_ids, compose
 from app.engine.compose.grounding import Violation, check_grounding, check_markdown
-from app.engine.entities.resolve_company import CompanyIndex
+from app.engine.entities.resolve_company import CompanyIndex, load_aliases
+from app.engine.plan.catalog import load_catalog
 from app.engine.plan.compiler import compile_plan
 from app.engine.plan.periods import ASK_NO_QUARTER, LatestFiled, resolve_period
 from app.engine.plan.planner import attach_ciks, build_system_prompt, plan_question
@@ -46,8 +48,16 @@ from app.engine.plan.schema import (
 from app.engine.retrieval.query import RetrievalConfig, RetrievalResult, retrieve
 from app.engine.retrieval.rerank import CrossEncoderReranker, Reranker
 from app.engine.telemetry import record_usage, stage
+from app.engine.verify.evidence import load_evidence
+from app.engine.verify.models import (
+    VerificationReport,
+    VerifyContext,
+    allowed_ciks,
+    company_names,
+)
+from app.engine.verify.pipeline import DEFAULT_VERIFIER, Verifier, verify_answer
 
-VERSION = "0.6.1"
+VERSION = "0.7.0"
 SQL_FALLBACK_ENV = "ENGINE_SQL_FALLBACK"
 MIN_COMPANIES_FOR_A_FISCAL_YEAR = 100
 TRACKED_CIKS_PATH = Path("data/targets/tracked_ciks.csv")
@@ -91,6 +101,7 @@ class Diagnostics:
     text_only_fallback: bool = False  # no catalog metric: answered from filing text (ADR-048)
     retrieval: RetrievalResult | None = None
     violations: list[Violation] = field(default_factory=list)
+    verification: VerificationReport | None = None  # set only when the verifier ran
     composed: bool = False
     timings_ms: dict[str, float] = field(default_factory=dict)
 
@@ -177,6 +188,7 @@ class EngineSystem:
         connect: Callable[[str], Any] | None = None,
         tracked_ciks: Collection[int] | None = None,
         model_dir: Path | None = None,
+        verifier: Verifier = DEFAULT_VERIFIER,
     ) -> None:
         self._index = index
         self._embedder = embedder
@@ -187,6 +199,7 @@ class EngineSystem:
         self._connect = connect or _default_connect
         self._tracked = tracked_ciks
         self._model_dir = model_dir
+        self._verifier = verifier
         self._conns: dict[str, Any] = {}
         self._system: str | None = None
         self.diagnostics: dict[str, Diagnostics] = {}
@@ -245,7 +258,12 @@ class EngineSystem:
         return asyncio.run(self.aanswer(question, cfg))
 
     async def aanswer(self, question: str, cfg: Any) -> Answer:
-        from eval.systems import record_compiled_facts, record_retrieval, record_route
+        from eval.systems import (
+            record_compiled_facts,
+            record_retrieval,
+            record_route,
+            record_verification,
+        )
 
         diag = Diagnostics()
         self.diagnostics[question] = diag
@@ -361,10 +379,43 @@ class EngineSystem:
         diag.violations = check_grounding(answer, diag.results, by_id, years) + check_markdown(
             answer, diag.results, by_id, years
         )
-        with stage("verify") as span:  # pass-through until M6 (the verifier fills this slot)
-            span.set_attribute("verifier", "off")
+        with stage("verify") as span:  # no model call: nothing to account as LLM usage
+            span.set_attribute("verifier", cfg.verifier)
+            if cfg.verifier == "on":
+                t0 = time.perf_counter()
+                answer, report = self._verify(answer, plan, diag, [c.chunk_id for c in chunks], cfg)
+                diag.verification = report
+                record_verification(report.model_dump(mode="json"))
+                span.set_attribute("status", report.status)
+                span.set_attribute("claims_total", report.claims_total)
+                span.set_attribute("claims_dropped", report.claims_dropped)
+                diag.timings_ms["verify"] = (time.perf_counter() - t0) * 1000
         diag.timings_ms["total"] = (time.perf_counter() - t_all) * 1000
         return answer
+
+    def _verify(
+        self,
+        answer: Answer,
+        plan: QueryPlan,
+        diag: Diagnostics,
+        shown_chunk_ids: list[str],
+        cfg: Any,
+    ) -> tuple[Answer, VerificationReport]:
+        """Check the composed claims against live rows (``app/engine/verify``)."""
+        records = self._company_index(cfg.dsn).records
+        ctx = VerifyContext(
+            plan=plan,
+            results=diag.results,
+            not_found=diag.not_found,
+            unsupported=diag.unsupported,
+            text_only=diag.text_only_fallback,
+            assumed_period=diag.assumed_period is not None,
+            allowed_ciks=allowed_ciks(plan, self._universe_for(plan)),
+            companies=company_names(records.values(), load_aliases()),
+            catalog=load_catalog(),
+        )
+        evidence = load_evidence(self._conn("meta", cfg.dsn), answer, diag.results, shown_chunk_ids)
+        return verify_answer(answer, evidence, ctx, verifier=self._verifier)
 
     def _universe_for(self, plan: QueryPlan) -> list[int] | None:
         """The tracked CIKs a ``rank`` ranges over (read once from the tracked-CIK file); every
