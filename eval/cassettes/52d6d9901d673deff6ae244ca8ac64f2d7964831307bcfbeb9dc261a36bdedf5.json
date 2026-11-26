@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The difference 8,657M - 4,834M = 3,823M, which rounds to $3.8 billion, and both facts are SG&A as originally filed; the 'FY2023' label matches each company's fiscal-year tagging, though McKesson's period (Apr 2023-Mar 2024) differs from Cardinal's (Jul 2022-Jun 2023)."
+  },
+  "request_key": "52d6d9901d673deff6ae244ca8ac64f2d7964831307bcfbeb9dc261a36bdedf5",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00115685",
+    "input_tokens": 456,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 135
+  }
+}

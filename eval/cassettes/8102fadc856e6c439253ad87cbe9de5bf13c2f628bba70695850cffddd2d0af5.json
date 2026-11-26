@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The XBRL fact shows PaymentsToAcquirePropertyPlantAndEquipment of $6.27 billion for FY2023 in the original 10-K filed 2024-02-14, which rounds to $6.3 billion and is flagged as originally filed, matching the claim."
+  },
+  "request_key": "8102fadc856e6c439253ad87cbe9de5bf13c2f628bba70695850cffddd2d0af5",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00085985",
+    "input_tokens": 299,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 107
+  }
+}

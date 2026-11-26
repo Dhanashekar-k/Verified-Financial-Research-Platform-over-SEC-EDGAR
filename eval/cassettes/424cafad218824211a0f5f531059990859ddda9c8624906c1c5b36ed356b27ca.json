@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage states verbatim that Las Vegas Strip Resorts Adjusted Property EBITDAR was $3.1 billion in 2022, matching the claim."
+  },
+  "request_key": "424cafad218824211a0f5f531059990859ddda9c8624906c1c5b36ed356b27ca",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00113285",
+    "input_tokens": 762,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 69
+  }
+}

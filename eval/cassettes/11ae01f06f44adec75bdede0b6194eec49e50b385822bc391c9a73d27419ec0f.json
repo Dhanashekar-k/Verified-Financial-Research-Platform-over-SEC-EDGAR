@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage states verbatim that 'Our cash and cash equivalents balance is $2.6 billion as of December 31, 2022,' matching the claim's amount and date."
+  },
+  "request_key": "11ae01f06f44adec75bdede0b6194eec49e50b385822bc391c9a73d27419ec0f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00117985",
+    "input_tokens": 809,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 69
+  }
+}

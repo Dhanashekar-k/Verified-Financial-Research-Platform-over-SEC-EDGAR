@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "Jacobs' originally filed FY2023 operating income of $1,075,237,000 minus Comfort Systems' $418,388,000 equals $656,849,000, which matches the claimed $656.8 million difference, and the Jacobs fact is marked as originally filed."
+  },
+  "request_key": "880d8405104dbb9da437752ca5254af0a6350e1f5050e24baffff314b9d27d78",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00101285",
+    "input_tokens": 472,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 103
+  }
+}

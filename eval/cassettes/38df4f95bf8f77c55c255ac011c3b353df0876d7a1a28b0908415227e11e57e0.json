@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "partial",
+    "reason": "The evidence says 2023 Adjusted Reported EPS guidance reflects increased growth of 12.5% at the mid-point, but the claim omits that this refers to EPS and not overall growth; the Adjusted Operational EPS figure is 11.5%, so the unqualified claim is imprecise about what grew 12.5%."
+  },
+  "request_key": "38df4f95bf8f77c55c255ac011c3b353df0876d7a1a28b0908415227e11e57e0",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00145885",
+    "input_tokens": 818,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 123
+  }
+}

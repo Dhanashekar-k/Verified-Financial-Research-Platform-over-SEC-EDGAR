@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage states verbatim that the Company expects 2023 capital spending to be approximately $1.5 billion to $1.8 billion, matching the claim exactly."
+  },
+  "request_key": "1b9e4686c05b88e99164ee81be306cc4358e018824dadcb4fcb3750543602d36",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00111685",
+    "input_tokens": 756,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 67
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage states that at January 29, 2021 the primary interest rate exposure was from changes in rates on variable rate investment holdings classified as cash and cash equivalents, which matches the claim exactly."
+  },
+  "request_key": "0fed847d94f073a32169e549066e8d86ef58df73bb226a2b2902e19510a831f8",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00107385",
+    "input_tokens": 653,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 79
+  }
+}

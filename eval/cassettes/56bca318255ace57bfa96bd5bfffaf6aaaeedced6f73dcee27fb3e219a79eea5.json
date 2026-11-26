@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage states nearly verbatim that the company determines derivative fair value using established index prices, volatility curves and discount factors, and compares these estimates to counterparty valuations for reasonableness; the filer (Expand Energy, formerly Chesapeake) matches the claim's subject."
+  },
+  "request_key": "56bca318255ace57bfa96bd5bfffaf6aaaeedced6f73dcee27fb3e219a79eea5",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00132685",
+    "input_tokens": 771,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 106
+  }
+}

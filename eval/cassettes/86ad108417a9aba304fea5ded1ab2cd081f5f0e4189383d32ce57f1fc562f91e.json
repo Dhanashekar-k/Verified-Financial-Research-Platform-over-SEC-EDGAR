@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The balance sheet lists Total current liabilities of 5,466,312 (in thousands) as of December 31, 2017, matching the claim exactly."
+  },
+  "request_key": "86ad108417a9aba304fea5ded1ab2cd081f5f0e4189383d32ce57f1fc562f91e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00104385",
+    "input_tokens": 703,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 63
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The cited XBRL fact reports IncomeTaxExpenseBenefit of $597,000,000 for W.W. Grainger's fiscal year 2023 (10-K filed 2024-02-22), which matches the claimed $597.0 million."
+  },
+  "request_key": "389213516ca3f696c918afe041acf9016f8f057a4214eefd7f5a5285b6d9a83f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00078585",
+    "input_tokens": 280,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 96
+  }
+}

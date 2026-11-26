@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage states verbatim that failure to achieve the anticipated benefits of the Slack acquisition could, among other effects, negatively impact the price of the company's common stock."
+  },
+  "request_key": "a3fb9abf5bb9b6878127788250072ae621260c7a9e4572056638a8a4a91cd07b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00108885",
+    "input_tokens": 718,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 69
+  }
+}

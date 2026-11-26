@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The evidence contains this sentence verbatim: challenges in the R&D Solutions segment in the latter half of 2024, some expected to persist into 2025, and considered more short-term in nature."
+  },
+  "request_key": "231ce3f4e7f140f995122ded1a34232cfab04cea84a10fc2e59a66ef0cd8f3c8",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00122685",
+    "input_tokens": 821,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 76
+  }
+}

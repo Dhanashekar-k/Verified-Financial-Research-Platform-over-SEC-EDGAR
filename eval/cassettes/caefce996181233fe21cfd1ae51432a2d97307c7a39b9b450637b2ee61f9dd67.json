@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The cited XBRL fact reports NetCashProvidedByUsedInOperatingActivities of 448,300,000 USD for NiSource's Q1 FY2021 (2021-01-01 to 2021-03-31), matching the claimed $448.3 million."
+  },
+  "request_key": "caefce996181233fe21cfd1ae51432a2d97307c7a39b9b450637b2ee61f9dd67",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00080385",
+    "input_tokens": 273,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 101
+  }
+}

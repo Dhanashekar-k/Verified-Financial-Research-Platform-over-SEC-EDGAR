@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The evidence's fiscal 2023 highlights state net sales of $14,694 million, in line with the prior year on a comparable constant currency basis, which matches the claim exactly."
+  },
+  "request_key": "459982389ddfac6e46a8689d82f257c6f718622354011860f6b5757a1344705f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00119385",
+    "input_tokens": 808,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 72
+  }
+}

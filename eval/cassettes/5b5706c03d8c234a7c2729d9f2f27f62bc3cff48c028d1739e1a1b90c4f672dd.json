@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "Gross profit of $63,854M divided by revenue of $94,943M is about 67.25%, which rounds to 67.3%, and both facts are labeled as originally filed in the 10-K filed 2023-02-16 and later restated."
+  },
+  "request_key": "5b5706c03d8c234a7c2729d9f2f27f62bc3cff48c028d1739e1a1b90c4f672dd",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00157385",
+    "input_tokens": 483,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 213
+  }
+}

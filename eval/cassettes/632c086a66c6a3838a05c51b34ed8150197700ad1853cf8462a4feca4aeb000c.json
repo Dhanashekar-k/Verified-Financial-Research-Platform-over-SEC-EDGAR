@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The XBRL fact shows Cardinal Health's PaymentsToAcquirePropertyPlantAndEquipment was $78,000,000 for the quarter 2020-07-01 to 2020-09-30 (fiscal Q1 2021), matching the claimed $78.0 million in capital expenditures."
+  },
+  "request_key": "632c086a66c6a3838a05c51b34ed8150197700ad1853cf8462a4feca4aeb000c",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00089285",
+    "input_tokens": 282,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 117
+  }
+}

@@ -145,3 +145,12 @@ the day-to-day calls and progress. Append one dated entry at the end of each wor
 - API spend $1.5870 by the harness's accounting ($1.3882 dev, $0.1988 test); box dollars NOT MEASURED. Details: `docs/milestones/M05-report.md`.
 - Next: Shekar decides whether to close M5 with the shortfall or open a FinanceBench dev round; reviews ADR-012; runs `/interview-me`. Follow-ups: retrieval setup with filters on (dev), a Haiku baseline for a like-for-like comparison, wire or drop the SQL fallback.
 - **2026-11-26, M5 closed** under the completeness bar (Shekar): numeric passes (agreement with source, not independent accuracy), FinanceBench fails (17.1% vs 23.8%, over-refusal); this test result is the first and only look (`docs/milestones/M05-report.md`).
+
+## 2026-11-26: M6 Gate 0, measured before building
+- **Re-scoped before any build (Shekar):** measure first; then a thin verifier. Cut the sweep, adversarial set, 50-claim audit and extra ablation arms. Shekar writes `numeric.py`, `quotes.py` and `policy.py` (ADR-049).
+- **Gate 0 result:** text claims 0/118 unsupported (Wilson [0.0, 3.2]%), 4/118 partial; numeric 0/102 unsupported. The pre-registered rule picks the **deterministic** verifier (no `entail.py`). Report: `docs/milestones/M06-gate0.md`.
+- M5's grounding check on the same claims: every quote is in its passage; 25 text claims have a "number not in quote", 18 of them years only. A naive number rule in `quotes.py` would drop claims the (uncalibrated) judge supports.
+- **Review before spending** found two ways to pay past the cap (a retried batch create; resume after a crash) and an acceptance check that could pass different claims. All fixed first.
+- Cost: judge $0.2277 (cap $2), harness accounting. Box about four minutes, confirmed stopped 06:09:48Z; dollars NOT MEASURED.
+- Open: the judge never said "unsupported" and had no known-wrong control. Post-M6 retrieval/routing item filed in `docs/backlog/`.
+- **Next (Shekar):** review Gate 0; choose `numbers.py` ownership (A all, or B split precision/tolerance) at the Build gate; ADR-049 consequences.

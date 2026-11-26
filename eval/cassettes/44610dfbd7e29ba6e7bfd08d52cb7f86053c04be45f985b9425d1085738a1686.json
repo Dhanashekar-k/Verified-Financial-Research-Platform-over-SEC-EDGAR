@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "partial",
+    "reason": "The income statement shows no separate restructuring line item (only SG&A, Juice Transaction gain, and impairment), which backs the first half, but concluding that restructuring costs are 0 does not follow, since such costs could be included within other lines like cost of sales or SG&A."
+  },
+  "request_key": "44610dfbd7e29ba6e7bfd08d52cb7f86053c04be45f985b9425d1085738a1686",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00130185",
+    "input_tokens": 766,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 102
+  }
+}

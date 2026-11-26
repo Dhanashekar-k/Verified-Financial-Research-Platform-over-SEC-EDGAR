@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The expression (1415M - 1746M) / 1746M = -331/1746 \u2248 -18.96%, which rounds to a 19.0% decrease in dividends paid from FY2022 to FY2023, matching the claim."
+  },
+  "request_key": "0a94130cc9f44bcf59013e83a5e637c97a946e6cfe5b2f96616314fcaa24ed63",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00092785",
+    "input_tokens": 462,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 88
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The XBRL fact shows Visa's IncomeTaxExpenseBenefit was 938,000,000 USD for the quarter 2021-10-01 to 2021-12-31 (FY2022 Q1), matching the claimed $938.0 million."
+  },
+  "request_key": "9ce65144d9f946eba4fa3cad5f6408a61fb171c85e1a121eb5679f18edb4f891",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00077985",
+    "input_tokens": 264,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 98
+  }
+}

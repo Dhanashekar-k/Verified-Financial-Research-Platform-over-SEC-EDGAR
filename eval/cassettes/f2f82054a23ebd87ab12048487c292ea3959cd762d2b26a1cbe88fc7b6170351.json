@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The XBRL fact shows PaymentsToAcquirePropertyPlantAndEquipment of $173,900,000 for Martin Marietta in Q1 FY2023 (2023-01-01 to 2023-03-31), from the original 10-Q filed 2023-05-04, matching the claimed $173.9 million as originally reported."
+  },
+  "request_key": "f2f82054a23ebd87ab12048487c292ea3959cd762d2b26a1cbe88fc7b6170351",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00095685",
+    "input_tokens": 301,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 126
+  }
+}

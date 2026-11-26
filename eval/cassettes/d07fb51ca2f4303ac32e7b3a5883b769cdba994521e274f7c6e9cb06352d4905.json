@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "partial",
+    "reason": "The evidence confirms the 24 percent year-over-year increase and net losses on Amex Ventures equity investments (versus prior-year gains) as a primary driver, but it also attributes the increase to higher compensation costs from a larger colleague base, which the claim omits, so the claim overstates the single cause."
+  },
+  "request_key": "d07fb51ca2f4303ac32e7b3a5883b769cdba994521e274f7c6e9cb06352d4905",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00140185",
+    "input_tokens": 811,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 113
+  }
+}

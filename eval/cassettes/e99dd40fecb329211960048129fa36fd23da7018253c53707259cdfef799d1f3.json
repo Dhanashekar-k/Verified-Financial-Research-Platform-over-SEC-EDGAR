@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The cited XBRL fact reports PNC's Assets as $560,038,000,000 as of 2024-12-31 (FY2024 10-K), which matches the claimed $560.0 billion up to rounding."
+  },
+  "request_key": "e99dd40fecb329211960048129fa36fd23da7018253c53707259cdfef799d1f3",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00068185",
+    "input_tokens": 241,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 83
+  }
+}

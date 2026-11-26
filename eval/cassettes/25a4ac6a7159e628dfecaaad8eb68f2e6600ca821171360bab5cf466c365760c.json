@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The evidence gives InterestExpense of $376M for FY2023 and $344M for FY2022, and the cited expression (376-344)/344 computes the FY2023 growth from FY2022 (about 9.3%), which is exactly what the claim describes."
+  },
+  "request_key": "25a4ac6a7159e628dfecaaad8eb68f2e6600ca821171360bab5cf466c365760c",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00094085",
+    "input_tokens": 430,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 97
+  }
+}

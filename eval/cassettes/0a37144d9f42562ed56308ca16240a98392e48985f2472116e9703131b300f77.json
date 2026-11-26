@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The Inlyta commentary says the quarter-to-date decline was primarily driven by lower net price and lower volumes in certain European markets, which matches the claim; the claim's omission of 'European' only narrows 'certain markets' without contradiction."
+  },
+  "request_key": "0a37144d9f42562ed56308ca16240a98392e48985f2472116e9703131b300f77",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00126985",
+    "input_tokens": 774,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 94
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The XBRL fact reports NetIncomeLoss of 377,000,000 USD for Ameriprise Financial for the quarter 2023-10-01 to 2023-12-31 (fiscal 2023 Q4), matching the claimed $377.0 million."
+  },
+  "request_key": "c53c38c5eceabebbf1ea59781aa34f52a680326110817e0d42eeca4cf0c5340e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00080085",
+    "input_tokens": 270,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 101
+  }
+}

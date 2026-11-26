@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage states verbatim that 'our current hedging activities would qualify for the non-financial end user exemption from the margin requirements,' which directly backs the claim."
+  },
+  "request_key": "18cc1b2d7f7c36843dd9cde51061332fc57067380f09496fae1e817bfd13e8d0",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00107785",
+    "input_tokens": 722,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 66
+  }
+}

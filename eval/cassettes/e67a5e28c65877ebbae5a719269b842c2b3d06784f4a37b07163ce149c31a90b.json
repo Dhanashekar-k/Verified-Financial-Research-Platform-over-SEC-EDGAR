@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage states almost verbatim that exposure to such risks may increase if a greater percentage of Occidental's future oil and gas production or revenue comes from international sources, which matches the claim."
+  },
+  "request_key": "e67a5e28c65877ebbae5a719269b842c2b3d06784f4a37b07163ce149c31a90b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00118785",
+    "input_tokens": 792,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 74
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The cited fact reports NetCashProvidedByUsedInOperatingActivities of $2,868,000,000 for Sysco's fiscal 2023, labeled as the latest restated value, which rounds to $2.9 billion."
+  },
+  "request_key": "d48535990b0b700e4cc0155e64ddc9e4b1ce422d1e9a667ee7ec16c350b6571e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00074785",
+    "input_tokens": 272,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 90
+  }
+}

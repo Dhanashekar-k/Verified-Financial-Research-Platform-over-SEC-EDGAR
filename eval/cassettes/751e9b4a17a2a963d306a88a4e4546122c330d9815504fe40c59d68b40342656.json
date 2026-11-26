@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage says the FTC and attorneys general complaints sought equitable relief including divestiture or reconstruction of Instagram and WhatsApp, which directly backs the claim that plaintiffs sought divestiture of Instagram."
+  },
+  "request_key": "751e9b4a17a2a963d306a88a4e4546122c330d9815504fe40c59d68b40342656",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00119285",
+    "input_tokens": 717,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 90
+  }
+}

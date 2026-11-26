@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The XBRL fact shows InterestExpense of 57,000,000 USD for Hartford (CIK 874766) for the quarter 2020-04-01 to 2020-06-30 (FY2020 Q2), matching the claimed $57.0 million."
+  },
+  "request_key": "805c5b8e2f78006957cbe561687aa0e01f060ace1de57ca1221a9e5942db9f96",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00078785",
+    "input_tokens": 272,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 98
+  }
+}

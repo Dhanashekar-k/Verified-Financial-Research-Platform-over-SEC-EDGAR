@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage states almost verbatim that the increase in cash and cash equivalents was driven primarily by the issuance of $1.5 billion of senior unsecured notes in Q1 2020 to strengthen liquidity amid COVID-19 uncertainty."
+  },
+  "request_key": "12148cc25b64b6180f006e03fde7ff3f5eaacd02812dd6f6254ed89416b39437",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00119285",
+    "input_tokens": 677,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 98
+  }
+}

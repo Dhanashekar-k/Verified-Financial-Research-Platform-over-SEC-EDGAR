@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage lists the same factors (political instability, nationalizations, corruption, armed conflict, terrorism, insurgency, civil unrest, security problems, labor unrest, OPEC production restrictions, equipment import restrictions, sanctions) as affecting certain international operations and causing risk of loss or production limitations."
+  },
+  "request_key": "2304f25429de7a1959e1d7e704cda61f4497138e7b3bc2726486bbcfc3c1ca36",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00146885",
+    "input_tokens": 853,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 118
+  }
+}

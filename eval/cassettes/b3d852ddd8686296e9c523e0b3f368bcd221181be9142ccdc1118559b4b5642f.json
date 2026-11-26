@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage states that as of December 31, 2020, the oil, natural gas and NGL derivative instruments were spread among 7 counterparties, and the notes are headed Chesapeake Energy Corporation, matching the claim."
+  },
+  "request_key": "b3d852ddd8686296e9c523e0b3f368bcd221181be9142ccdc1118559b4b5642f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00126085",
+    "input_tokens": 800,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 87
+  }
+}

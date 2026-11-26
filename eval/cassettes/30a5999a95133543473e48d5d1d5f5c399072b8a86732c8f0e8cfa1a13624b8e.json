@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The cited XBRL fact reports EarningsPerShareBasic of -1.17 USD for Robinhood's FY2022 (2022-01-01 to 2022-12-31) in the 10-K filed 2023-02-27, matching the claim exactly."
+  },
+  "request_key": "30a5999a95133543473e48d5d1d5f5c399072b8a86732c8f0e8cfa1a13624b8e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00079285",
+    "input_tokens": 272,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 99
+  }
+}

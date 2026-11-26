@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The evidence gives Q1 2022 operating cash flow of $1,782M and Q1 2021 of $1,463M; (1782-1463)/1463 = 319/1463 \u2248 21.8%, matching the claim."
+  },
+  "request_key": "3b4b7fb11292607b7ffe8681d26d784a6a3de249dabe056491f25b9445db9423",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00095085",
+    "input_tokens": 480,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 89
+  }
+}

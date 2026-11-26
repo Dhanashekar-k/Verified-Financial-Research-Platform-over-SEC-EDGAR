@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The cited XBRL fact reports Carvana's Liabilities as $9,751,000,000 as of 2022-12-31 (FY2022), which rounds to the claimed $9.8 billion."
+  },
+  "request_key": "e064e43bbce193c27b40fef41b2a3da4547a69779ced5e627d96dc301fc4fd93",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00065985",
+    "input_tokens": 239,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 79
+  }
+}

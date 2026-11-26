@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The Moderna FY2022 10-K Business section says 'Since our founding in 2010,' which directly states the company was founded in 2010."
+  },
+  "request_key": "960314c54b8d21016200d021ad41f59871bee46c8ac226f745304ffe0f21b024",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00103885",
+    "input_tokens": 718,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 59
+  }
+}

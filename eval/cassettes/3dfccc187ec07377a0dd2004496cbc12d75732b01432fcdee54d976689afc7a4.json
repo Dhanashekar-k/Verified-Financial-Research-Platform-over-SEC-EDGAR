@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage states that the expanding global scope of the business and the heightened volatility of global markets expose the company to the risk of fluctuations in foreign currency markets, which matches the claim (the passage also names the expanding global scope, but the claim's statement follows from it)."
+  },
+  "request_key": "3dfccc187ec07377a0dd2004496cbc12d75732b01432fcdee54d976689afc7a4",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00138085",
+    "input_tokens": 865,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 98
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage states almost verbatim that environmental remediation and indemnification obligations have not had, and are not expected to have, a material impact on capital expenditures, earnings or competitive position."
+  },
+  "request_key": "cf0036ef043a197732de61a4aff88ef5d5d67692eb33bd90e9094e2c7ed48b81",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00115585",
+    "input_tokens": 765,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 73
+  }
+}

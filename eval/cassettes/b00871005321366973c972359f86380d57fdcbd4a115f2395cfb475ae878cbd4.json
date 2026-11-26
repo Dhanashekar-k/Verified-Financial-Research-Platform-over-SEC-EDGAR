@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The evidence gives Q1 FY2023 interest expense of $26.4M and Q1 FY2022 of $21.6M for ON Semiconductor, and the cited expression (26.4-21.6)/21.6 yields about 22.2% growth, matching the claim's subject and period comparison."
+  },
+  "request_key": "b00871005321366973c972359f86380d57fdcbd4a115f2395cfb475ae878cbd4",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00103085",
+    "input_tokens": 450,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 111
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The XBRL fact PaymentsToAcquirePropertyPlantAndEquipment for Genuine Parts Co for FY2022 is 339,632,000 USD, which rounds to $339.6 million and matches the claimed capital expenditures."
+  },
+  "request_key": "7f26d46c03e1c788f1ce5d4c893d19e192427bbd7647b54154c14844731dda90",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00078985",
+    "input_tokens": 279,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 97
+  }
+}

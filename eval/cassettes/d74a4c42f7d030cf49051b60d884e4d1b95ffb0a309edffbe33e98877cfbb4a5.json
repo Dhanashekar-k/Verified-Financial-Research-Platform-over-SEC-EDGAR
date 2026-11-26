@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The cited facts give operating income of $1,908.0M for FY2023 and $1,924.2M for FY2022, so (1908.0 - 1924.2) / 1924.2 = -0.84%, which matches the claimed -0.8% after rounding."
+  },
+  "request_key": "d74a4c42f7d030cf49051b60d884e4d1b95ffb0a309edffbe33e98877cfbb4a5",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00096585",
+    "input_tokens": 455,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 97
+  }
+}

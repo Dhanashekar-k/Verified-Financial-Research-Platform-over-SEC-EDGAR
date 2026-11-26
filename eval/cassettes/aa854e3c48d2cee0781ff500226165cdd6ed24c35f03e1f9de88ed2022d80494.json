@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The evidence's financing activities paragraph states verbatim that 2020 net cash used in financing resulted primarily from repurchasing 4.5 million shares for $170.7 million, debt repayments of $65.3 million, and cash dividends of $130.2 million."
+  },
+  "request_key": "aa854e3c48d2cee0781ff500226165cdd6ed24c35f03e1f9de88ed2022d80494",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00138385",
+    "input_tokens": 858,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 100
+  }
+}

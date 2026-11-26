@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The XBRL fact PaymentsToAcquirePropertyPlantAndEquipment for W.W. Grainger's FY2020 (2020-01-01 to 2020-12-31) is 197,000,000 USD, matching the claimed $197.0 million in capital expenditures."
+  },
+  "request_key": "7167ff65af2a4b7a1cdfa794704a583481c4cd5d3028c5b3b92aeaebab00e095",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00084785",
+    "input_tokens": 282,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 108
+  }
+}

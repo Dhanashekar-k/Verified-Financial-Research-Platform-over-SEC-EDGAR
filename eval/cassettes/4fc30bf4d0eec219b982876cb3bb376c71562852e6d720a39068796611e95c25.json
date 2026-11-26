@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage contains the verbatim sentence \"Any such risk may result in one or more costly disputes or litigation,\" in the context of risks from dispositions of businesses or assets."
+  },
+  "request_key": "4fc30bf4d0eec219b982876cb3bb376c71562852e6d720a39068796611e95c25",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00113085",
+    "input_tokens": 745,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 72
+  }
+}

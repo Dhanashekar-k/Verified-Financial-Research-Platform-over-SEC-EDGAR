@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage states that in fiscal 2022 the Company recorded $57 million in expenses within Other Restructuring Plans triggered by the Russia-Ukraine conflict to help mitigate the impact of disposed earnings from the Russian sale, which matches the claim."
+  },
+  "request_key": "bfab112299bfd05e8a6a416f8b7d8c1cb63e6154894dec25f56fd487e45e39da",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00103585",
+    "input_tokens": 500,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 102
+  }
+}

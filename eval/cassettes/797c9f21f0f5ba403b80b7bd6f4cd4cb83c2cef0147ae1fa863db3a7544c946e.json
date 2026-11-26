@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "(195,870,000 - 196,475,000) / 196,475,000 = -605,000/196,475,000 \u2248 -0.31%, which matches the claimed -0.3% change in interest expense from FY2023 to FY2024."
+  },
+  "request_key": "797c9f21f0f5ba403b80b7bd6f4cd4cb83c2cef0147ae1fa863db3a7544c946e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00090385",
+    "input_tokens": 428,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 90
+  }
+}

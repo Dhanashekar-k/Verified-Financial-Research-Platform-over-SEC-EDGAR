@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The StockholdersEquity fact for Sempra as of 2021-12-31 is $25,981,000,000, which rounds to the claimed $26.0 billion."
+  },
+  "request_key": "9a143e68896f92ba1af2d9672056a9771c3028e511b0e464898fe4399d2372de",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00061285",
+    "input_tokens": 247,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 68
+  }
+}

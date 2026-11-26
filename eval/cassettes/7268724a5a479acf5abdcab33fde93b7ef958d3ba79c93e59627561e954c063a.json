@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The expression (65,984M - 65,398M) / 65,398M = 586/65,398 \u2248 0.896%, which rounds to 0.9%, matching the claimed FY2020 to FY2022 revenue growth."
+  },
+  "request_key": "7268724a5a479acf5abdcab33fde93b7ef958d3ba79c93e59627561e954c063a",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00090585",
+    "input_tokens": 440,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 88
+  }
+}

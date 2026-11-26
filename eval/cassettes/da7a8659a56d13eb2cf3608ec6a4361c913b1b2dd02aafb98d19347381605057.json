@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The fact is Henry Schein's InterestExpense of 7,000,000 USD (i.e., $7.0 million) for the Q2 FY2021 quarter (2021-04-01 to 2021-06-30), sourced from a 10-Q marked as the latest restated value, which matches the claim."
+  },
+  "request_key": "da7a8659a56d13eb2cf3608ec6a4361c913b1b2dd02aafb98d19347381605057",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00084585",
+    "input_tokens": 260,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 112
+  }
+}

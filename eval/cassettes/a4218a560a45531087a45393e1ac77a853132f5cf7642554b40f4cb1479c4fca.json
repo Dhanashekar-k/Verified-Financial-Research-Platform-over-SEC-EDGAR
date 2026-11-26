@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage states that other (income) expense, net includes changes in fair value on beneficial interests in securitizations, purchase price adjustment receivables, and fair value adjustments related to Root Warrants, matching the claim exactly (the claim omits additional items but asserts nothing contradictory)."
+  },
+  "request_key": "a4218a560a45531087a45393e1ac77a853132f5cf7642554b40f4cb1479c4fca",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00136985",
+    "input_tokens": 804,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 108
+  }
+}

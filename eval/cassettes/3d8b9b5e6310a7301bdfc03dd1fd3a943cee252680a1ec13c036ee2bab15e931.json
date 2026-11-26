@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage states that as of December 31, 2020, none of 'our' open derivative instruments were designated as cash flow hedges, and the notes are headed Chesapeake Energy Corporation, so the claim matches the evidence."
+  },
+  "request_key": "3d8b9b5e6310a7301bdfc03dd1fd3a943cee252680a1ec13c036ee2bab15e931",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00130085",
+    "input_tokens": 840,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 87
+  }
+}

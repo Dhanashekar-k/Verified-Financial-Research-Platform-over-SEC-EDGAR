@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The cited XBRL fact reports PaymentsToAcquirePropertyPlantAndEquipment of $434,803,000 for Quanta's FY2023 (2023-01-01 to 2023-12-31), which matches the claimed $434.8 million in capital expenditures."
+  },
+  "request_key": "95a938a4e60e98795861089814e4af14d9d9c642985759de2d360657f7b6bc37",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00084185",
+    "input_tokens": 286,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 106
+  }
+}

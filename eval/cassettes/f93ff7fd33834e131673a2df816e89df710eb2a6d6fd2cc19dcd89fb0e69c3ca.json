@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage states verbatim that 'These effects would negatively impact our income tax expense, net earnings, and balance sheet,' referring to valuation allowances against deferred tax assets from COVID-related operating losses."
+  },
+  "request_key": "f93ff7fd33834e131673a2df816e89df710eb2a6d6fd2cc19dcd89fb0e69c3ca",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00126585",
+    "input_tokens": 825,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 83
+  }
+}

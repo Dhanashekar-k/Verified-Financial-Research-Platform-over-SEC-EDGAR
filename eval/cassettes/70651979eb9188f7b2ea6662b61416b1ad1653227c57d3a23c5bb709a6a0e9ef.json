@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The expression (1024M - 743M) / 743M = 281/743 \u2248 0.3782, i.e. 37.8% growth, using FY2022 and FY2021 PaymentsOfDividendsCommonStock values, which matches the claim."
+  },
+  "request_key": "70651979eb9188f7b2ea6662b61416b1ad1653227c57d3a23c5bb709a6a0e9ef",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00095685",
+    "input_tokens": 451,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 96
+  }
+}

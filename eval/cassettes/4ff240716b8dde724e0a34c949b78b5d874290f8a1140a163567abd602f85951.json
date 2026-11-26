@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "NextEra's FY2022 total liabilities were $109.499B and Kinder Morgan's were $37.964B, so the difference is $71.535B, which matches the claimed ~$71.5B."
+  },
+  "request_key": "4ff240716b8dde724e0a34c949b78b5d874290f8a1140a163567abd602f85951",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00082185",
+    "input_tokens": 401,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 79
+  }
+}

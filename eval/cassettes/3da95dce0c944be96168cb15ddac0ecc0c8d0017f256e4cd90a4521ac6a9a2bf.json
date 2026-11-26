@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage states verbatim that Amazon has organized its operations into three segments: North America, International, and AWS."
+  },
+  "request_key": "3da95dce0c944be96168cb15ddac0ecc0c8d0017f256e4cd90a4521ac6a9a2bf",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00104985",
+    "input_tokens": 779,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 49
+  }
+}

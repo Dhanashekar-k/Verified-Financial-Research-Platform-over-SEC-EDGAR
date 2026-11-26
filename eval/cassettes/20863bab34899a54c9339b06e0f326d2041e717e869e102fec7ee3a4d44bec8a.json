@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The 787 Program section states that during 2023 Boeing 'increased the production rate to 5 per month beginning in October 2023,' which matches the claim exactly."
+  },
+  "request_key": "20863bab34899a54c9339b06e0f326d2041e717e869e102fec7ee3a4d44bec8a",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00115985",
+    "input_tokens": 799,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 67
+  }
+}

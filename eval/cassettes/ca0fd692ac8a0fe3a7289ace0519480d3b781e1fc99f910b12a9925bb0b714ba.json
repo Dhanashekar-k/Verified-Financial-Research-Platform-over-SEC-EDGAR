@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The cited XBRL fact reports NextEra Energy's Liabilities as $109,499,000,000 as of 2022-12-31 (FY2022 10-K), which rounds to the claimed $109.5 billion."
+  },
+  "request_key": "ca0fd692ac8a0fe3a7289ace0519480d3b781e1fc99f910b12a9925bb0b714ba",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00069985",
+    "input_tokens": 244,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 86
+  }
+}

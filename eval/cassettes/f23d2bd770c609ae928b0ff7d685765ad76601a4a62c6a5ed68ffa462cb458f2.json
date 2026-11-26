@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The expression (105,000,000 - 95,000,000) / 95,000,000 = 10.53%, which matches the claimed 10.5% growth in interest expense from FY2024 to FY2025."
+  },
+  "request_key": "f23d2bd770c609ae928b0ff7d685765ad76601a4a62c6a5ed68ffa462cb458f2",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00087585",
+    "input_tokens": 455,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 79
+  }
+}

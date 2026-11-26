@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "PNC's total assets of $560,038,000,000 minus VICI's $45,368,940,000 equal $514,669,060,000, which rounds to $514.7 billion, and both facts are for FY2024 as of 2024-12-31."
+  },
+  "request_key": "0033a9da9e338961dec420db6223db4499bcd2b955838cc4df20180cbd39eba1",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00087985",
+    "input_tokens": 394,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 92
+  }
+}

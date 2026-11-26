@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage states verbatim that during the year ended December 31, 2023, other (income) expense, net also includes expense related to the recognition of the Tax Receivable Agreement reserve."
+  },
+  "request_key": "a9e852ba7f23a5271f296265584c100ae9455fceaad4de116fad81ceb003ce26",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00118485",
+    "input_tokens": 794,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 73
+  }
+}

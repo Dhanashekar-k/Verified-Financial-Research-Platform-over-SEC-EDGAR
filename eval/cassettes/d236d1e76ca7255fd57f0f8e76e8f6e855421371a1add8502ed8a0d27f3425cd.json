@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage states that in November 2020 Pfizer and Mylan completed the transaction to spin off the Upjohn Business and combine it with Mylan to form Viatris, which matches every part of the claim."
+  },
+  "request_key": "d236d1e76ca7255fd57f0f8e76e8f6e855421371a1add8502ed8a0d27f3425cd",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00117885",
+    "input_tokens": 753,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 80
+  }
+}

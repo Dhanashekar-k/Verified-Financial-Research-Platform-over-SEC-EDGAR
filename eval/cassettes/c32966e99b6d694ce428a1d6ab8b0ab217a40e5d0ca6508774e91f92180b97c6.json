@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage opens with the identical statement that the Company has exposure to two types of market risk: changes in interest rates and stock prices."
+  },
+  "request_key": "c32966e99b6d694ce428a1d6ab8b0ab217a40e5d0ca6508774e91f92180b97c6",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00088485",
+    "input_tokens": 584,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 55
+  }
+}

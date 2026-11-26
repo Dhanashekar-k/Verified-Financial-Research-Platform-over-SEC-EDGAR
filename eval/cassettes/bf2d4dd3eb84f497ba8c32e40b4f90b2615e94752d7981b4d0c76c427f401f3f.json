@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage says directly that \"ultimately, the Company's acquisitions may not be successfully integrated,\" which is what the claim states."
+  },
+  "request_key": "bf2d4dd3eb84f497ba8c32e40b4f90b2615e94752d7981b4d0c76c427f401f3f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00106485",
+    "input_tokens": 749,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 58
+  }
+}

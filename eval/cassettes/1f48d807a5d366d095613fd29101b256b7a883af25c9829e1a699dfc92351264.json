@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage states that under the 2022 share repurchase program, authorized March 7, 2022, the amount remaining available as of February 3, 2024 was $99.9 million, which matches the claim exactly."
+  },
+  "request_key": "1f48d807a5d366d095613fd29101b256b7a883af25c9829e1a699dfc92351264",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00094385",
+    "input_tokens": 523,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 79
+  }
+}

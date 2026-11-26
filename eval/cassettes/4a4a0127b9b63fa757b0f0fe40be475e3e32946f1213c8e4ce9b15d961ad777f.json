@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage states that at January 31, 2020, the primary interest rate exposure was from changes in interest rates on variable interest rate debt, which matches the claim exactly."
+  },
+  "request_key": "4a4a0127b9b63fa757b0f0fe40be475e3e32946f1213c8e4ce9b15d961ad777f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00100585",
+    "input_tokens": 640,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 68
+  }
+}

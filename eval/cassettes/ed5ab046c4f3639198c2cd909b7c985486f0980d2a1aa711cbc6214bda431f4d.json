@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The evidence states verbatim that membership fee revenue increased 8% to $4,580 in 2023 versus 2022, matching the claim."
+  },
+  "request_key": "ed5ab046c4f3639198c2cd909b7c985486f0980d2a1aa711cbc6214bda431f4d",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00105485",
+    "input_tokens": 729,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 60
+  }
+}

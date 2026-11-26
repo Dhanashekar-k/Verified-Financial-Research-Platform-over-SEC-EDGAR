@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The XBRL fact shows CommonStockSharesOutstanding of 125,154,194 shares for Henry Schein as of 2024-09-30 (Q3 FY2024), which rounds to 125.2 million."
+  },
+  "request_key": "59dda204d4930ecd23f5ee39dbe0717761e9e22855bb2d4075618a5c8497f8a9",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00071685",
+    "input_tokens": 261,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 86
+  }
+}

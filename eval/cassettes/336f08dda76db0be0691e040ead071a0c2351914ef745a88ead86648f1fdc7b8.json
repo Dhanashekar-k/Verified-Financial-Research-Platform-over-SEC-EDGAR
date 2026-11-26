@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage states verbatim that the Research & Development Solutions segment \"also produced revenues and segment profit growth in 2024,\" which matches the claim."
+  },
+  "request_key": "336f08dda76db0be0691e040ead071a0c2351914ef745a88ead86648f1fdc7b8",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00113585",
+    "input_tokens": 785,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 65
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The XBRL fact shows Starbucks' PaymentsToAcquirePropertyPlantAndEquipment (capital expenditures) of $416,800,000 for the quarter 2021-10-01 to 2021-12-31 (Q1 FY2022), matching the claim's $416.8 million."
+  },
+  "request_key": "5c8bdbd07c9a3dd0d7a4cad69beb75f39fe7124c7662d1f19d5afe7fca2787e7",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00087085",
+    "input_tokens": 275,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 114
+  }
+}

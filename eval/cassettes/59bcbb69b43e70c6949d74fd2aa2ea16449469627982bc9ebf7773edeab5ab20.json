@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The FY2023 10-K passage states 3M's ticker is MMM and that it is listed on the NYSE, the Chicago Stock Exchange, and the SIX Swiss Exchange, matching the claim, and 'later annual filing' is consistent with a FY2023 10-K."
+  },
+  "request_key": "59bcbb69b43e70c6949d74fd2aa2ea16449469627982bc9ebf7773edeab5ab20",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00119885",
+    "input_tokens": 633,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 108
+  }
+}

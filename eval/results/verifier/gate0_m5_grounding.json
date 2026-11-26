@@ -1,0 +1,297 @@
+{
+  "git_sha": "dee07c1",
+  "method": "check_grounding per trace row, with that row's results, its shown cited passages and its plan years; one-off script, not in the repo",
+  "note": "M5's existing structural check (app/engine/compose/grounding.py: whitespace-only quote normalization, string number matching), run offline on gate0_dev_trace.json. It is NOT the M6 verifier, whose D1-D4 rules differ in both directions.",
+  "trace_file": "eval/results/verifier/gate0_dev_trace.json",
+  "n_claims": 220,
+  "claims_flagged": 26,
+  "text_claims_flagged": 25,
+  "numeric_claims_flagged": 1,
+  "by_rule": {
+    "number_not_in_result": 1,
+    "number_not_in_quote": 25
+  },
+  "flagged_by_judge_label": {
+    "supported": 22,
+    "partial": 4
+  },
+  "answered_answerable_questions_with_a_flag": 4,
+  "flagged": [
+    {
+      "question_id": "num-0043",
+      "claim_id": "c1",
+      "kind": "numeric",
+      "rule": "number_not_in_result",
+      "detail": "3",
+      "judge_label": "supported",
+      "primary": true,
+      "claim_text": "3M Co's total liabilities at the end of Q1 FY2025 were $35.4 billion."
+    },
+    {
+      "question_id": "fb-00438",
+      "claim_id": "c2",
+      "kind": "text",
+      "rule": "number_not_in_quote",
+      "detail": "2021,2022",
+      "judge_label": "supported",
+      "primary": false,
+      "claim_text": "Operating income was 6,098 million in fiscal 2022 and 5,802 million in fiscal 2021."
+    },
+    {
+      "question_id": "fb-00494",
+      "claim_id": "c2",
+      "kind": "text",
+      "rule": "number_not_in_quote",
+      "detail": "787",
+      "judge_label": "supported",
+      "primary": false,
+      "claim_text": "The 787 program increased the production rate to 5 per month beginning in October 2023."
+    },
+    {
+      "question_id": "fb-00517",
+      "claim_id": "c1",
+      "kind": "text",
+      "rule": "number_not_in_quote",
+      "detail": "2022",
+      "judge_label": "supported",
+      "primary": false,
+      "claim_text": "Sales of products were $55,893 million in 2022."
+    },
+    {
+      "question_id": "fb-00517",
+      "claim_id": "c2",
+      "kind": "text",
+      "rule": "number_not_in_quote",
+      "detail": "2022",
+      "judge_label": "supported",
+      "primary": false,
+      "claim_text": "Sales of services were 10,715 million in 2022."
+    },
+    {
+      "question_id": "fb-00517",
+      "claim_id": "c3",
+      "kind": "text",
+      "rule": "number_not_in_quote",
+      "detail": "2022",
+      "judge_label": "supported",
+      "primary": true,
+      "claim_text": "Total revenues were 66,608 million in 2022."
+    },
+    {
+      "question_id": "fb-00605",
+      "claim_id": "c1",
+      "kind": "text",
+      "rule": "number_not_in_quote",
+      "detail": "2022",
+      "judge_label": "supported",
+      "primary": false,
+      "claim_text": "The 2022 share repurchase program had $99.9 million remaining available as of February 3, 2024."
+    },
+    {
+      "question_id": "fb-00651",
+      "claim_id": "c1",
+      "kind": "text",
+      "rule": "number_not_in_quote",
+      "detail": "2023",
+      "judge_label": "partial",
+      "primary": false,
+      "claim_text": "The 2023 guidance reflects increased growth of 12.5% at the mid-point."
+    },
+    {
+      "question_id": "fb-00651",
+      "claim_id": "c2",
+      "kind": "text",
+      "rule": "number_not_in_quote",
+      "detail": "2,2023",
+      "judge_label": "supported",
+      "primary": false,
+      "claim_text": "Q2 2023 adjusted EPS of $2.80 increased by 8.1%."
+    },
+    {
+      "question_id": "fb-00711",
+      "claim_id": "c1",
+      "kind": "text",
+      "rule": "number_not_in_quote",
+      "detail": "2022",
+      "judge_label": "supported",
+      "primary": false,
+      "claim_text": "Full-year 2022 cost of products sold was $31,089 million."
+    },
+    {
+      "question_id": "fb-00723",
+      "claim_id": "c1",
+      "kind": "text",
+      "rule": "number_not_in_quote",
+      "detail": "2022",
+      "judge_label": "partial",
+      "primary": false,
+      "claim_text": "Operating expenses increased 24 percent year-over-year in 2022, driven by net losses on Amex Ventures equity investments."
+    },
+    {
+      "question_id": "fb-00724",
+      "claim_id": "c1",
+      "kind": "text",
+      "rule": "number_not_in_quote",
+      "detail": "2,2023",
+      "judge_label": "supported",
+      "primary": false,
+      "claim_text": "The Q2 2023 quarter-to-date decline was primarily driven by lower net price and lower volumes in certain markets."
+    },
+    {
+      "question_id": "fb-00746",
+      "claim_id": "c1",
+      "kind": "text",
+      "rule": "number_not_in_quote",
+      "detail": "12",
+      "judge_label": "supported",
+      "primary": false,
+      "claim_text": "The only security registered under Section 12(b) is common stock, trading on The NASDAQ Global Select Market."
+    },
+    {
+      "question_id": "fb-01328",
+      "claim_id": "c1",
+      "kind": "text",
+      "rule": "number_not_in_quote",
+      "detail": "0,2022",
+      "judge_label": "partial",
+      "primary": false,
+      "claim_text": "The FY2022 Consolidated Statement of Income has no separate restructuring line item, so restructuring costs directly outlined there are 0."
+    },
+    {
+      "question_id": "fb-01328",
+      "claim_id": "c2",
+      "kind": "text",
+      "rule": "number_not_in_quote",
+      "detail": "2022",
+      "judge_label": "partial",
+      "primary": false,
+      "claim_text": "Restructuring and impairment charges of 411 for 2022 appear in the Consolidated Statement of Cash Flows, not in the income statement."
+    },
+    {
+      "question_id": "fb-01346",
+      "claim_id": "c1",
+      "kind": "text",
+      "rule": "number_not_in_quote",
+      "detail": "2021",
+      "judge_label": "supported",
+      "primary": false,
+      "claim_text": "The FY2021 filing reports an effective tax rate of 20.5% for 2021."
+    },
+    {
+      "question_id": "fb-01346",
+      "claim_id": "c2",
+      "kind": "text",
+      "rule": "number_not_in_quote",
+      "detail": "2022",
+      "judge_label": "supported",
+      "primary": false,
+      "claim_text": "The FY2022 filing reports an effective tax rate of 22.9% for 2022."
+    },
+    {
+      "question_id": "fb-01346",
+      "claim_id": "c3",
+      "kind": "text",
+      "rule": "number_not_in_quote",
+      "detail": "2021,2022",
+      "judge_label": "supported",
+      "primary": false,
+      "claim_text": "The FY2022 filing lists 20.2% as the 2021 effective tax rate."
+    },
+    {
+      "question_id": "fb-01474",
+      "claim_id": "c1",
+      "kind": "text",
+      "rule": "number_not_in_quote",
+      "detail": "2023",
+      "judge_label": "supported",
+      "primary": true,
+      "claim_text": "PepsiCo's CEO tied the raised full-year 2023 outlook to a strong start to the year."
+    },
+    {
+      "question_id": "fb-01930",
+      "claim_id": "c1",
+      "kind": "text",
+      "rule": "number_not_in_quote",
+      "detail": "2023",
+      "judge_label": "supported",
+      "primary": false,
+      "claim_text": "Net sales of $14,694 million for fiscal 2023 were in line with the prior year on a comparable constant currency basis."
+    },
+    {
+      "question_id": "fb-01936",
+      "claim_id": "c2",
+      "kind": "text",
+      "rule": "number_not_in_quote",
+      "detail": "2023",
+      "judge_label": "supported",
+      "primary": false,
+      "claim_text": "The fiscal 2023 Other Restructuring Plans charges comprised employee related expenses of $3 million, fixed asset related expenses of $5 million, other restructuring expenses of $5 million and restructuring related expenses of $4 million."
+    },
+    {
+      "question_id": "fb-03282",
+      "claim_id": "c1",
+      "kind": "text",
+      "rule": "number_not_in_quote",
+      "detail": "2017,31",
+      "judge_label": "supported",
+      "primary": true,
+      "claim_text": "Netflix total current liabilities as of December 31, 2017 were 5,466,312 (in thousands)."
+    },
+    {
+      "question_id": "fb-04171",
+      "claim_id": "c1",
+      "kind": "text",
+      "rule": "number_not_in_quote",
+      "detail": "2018,31",
+      "judge_label": "supported",
+      "primary": true,
+      "claim_text": "Accounts payable at December 31, 2018 was $302,578 thousand."
+    },
+    {
+      "question_id": "un-032",
+      "claim_id": "c2",
+      "kind": "text",
+      "rule": "number_not_in_quote",
+      "detail": "2021,2022",
+      "judge_label": "supported",
+      "primary": false,
+      "claim_text": "Consolidated net sales were $469,822 in 2021 and $513,983 in 2022."
+    },
+    {
+      "question_id": "un-032",
+      "claim_id": "c3",
+      "kind": "text",
+      "rule": "number_not_in_quote",
+      "detail": "2021,2022",
+      "judge_label": "supported",
+      "primary": false,
+      "claim_text": "AWS net sales were $62,202 in 2021 and $80,096 in 2022."
+    },
+    {
+      "question_id": "un-039",
+      "claim_id": "c1",
+      "kind": "text",
+      "rule": "number_not_in_quote",
+      "detail": "2023",
+      "judge_label": "supported",
+      "primary": true,
+      "claim_text": "Membership fee revenue increased 8% to $4,580 in 2023."
+    }
+  ],
+  "number_not_in_quote_year_only": {
+    "n": 18,
+    "of": 25,
+    "definition": "every stray token is a 4-digit 19xx or 20xx number",
+    "judge_labels": {
+      "supported": 15,
+      "partial": 3
+    }
+  },
+  "number_not_in_quote_other": {
+    "n": 7,
+    "judge_labels": {
+      "supported": 6,
+      "partial": 1
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage states verbatim that as of June 30, 2022, no variable-rate debt was outstanding, and notes the Company's debt was $7.25 billion of fixed-rate debt."
+  },
+  "request_key": "8d24df5d085c56e2dc013987ca14dc53c2c87c0e41ff6ba4ab6ef99dfafe197b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00097685",
+    "input_tokens": 576,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 75
+  }
+}

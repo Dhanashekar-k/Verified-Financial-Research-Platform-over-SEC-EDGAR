@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The cited XBRL fact reports Costco's Liabilities as $43,519,000,000 as of 2022-08-31 (FY2022 year-end), which matches the claimed $43.5 billion."
+  },
+  "request_key": "2939a3655168a88ee6faf008fe184e657d944e04c9d26c2ffa271a3817733384",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00067885",
+    "input_tokens": 253,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 80
+  }
+}

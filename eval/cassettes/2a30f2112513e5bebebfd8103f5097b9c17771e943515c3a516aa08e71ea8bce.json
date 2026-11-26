@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage states almost verbatim that interest expense excludes interest incurred during construction projects to build, upgrade, or remodel certain facilities, which is capitalized to property and equipment."
+  },
+  "request_key": "2a30f2112513e5bebebfd8103f5097b9c17771e943515c3a516aa08e71ea8bce",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00118985",
+    "input_tokens": 794,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 74
+  }
+}

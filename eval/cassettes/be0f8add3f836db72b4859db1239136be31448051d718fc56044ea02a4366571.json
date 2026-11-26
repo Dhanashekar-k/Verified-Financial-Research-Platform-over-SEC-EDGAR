@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The fact shows PaymentsToAcquirePropertyPlantAndEquipment of $5,696,000,000 (~$5.7 billion) for FY2023, sourced from a 10-K filed 2026-02-18 and labeled the latest restated value, which matches the claim's amount and its description as a later restatement."
+  },
+  "request_key": "be0f8add3f836db72b4859db1239136be31448051d718fc56044ea02a4366571",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00091185",
+    "input_tokens": 296,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 118
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The cover page lists only one class under Section 12(b), common stock (par value $0.01, symbol ULTA), registered on The NASDAQ Global Select Market, and no other 12(b) securities appear."
+  },
+  "request_key": "e1beede086503259cb2086d9e828ea6dd2cbfa927eed86750f36243c39a73a24",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00113785",
+    "input_tokens": 707,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 81
+  }
+}

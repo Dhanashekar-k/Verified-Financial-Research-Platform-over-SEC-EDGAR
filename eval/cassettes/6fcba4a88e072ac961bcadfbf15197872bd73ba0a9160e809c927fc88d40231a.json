@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage's first sentence matches the claim nearly word for word, stating that increased industry production capacity or cement imports tend to create oversupply and a supply-demand imbalance that can hurt product prices."
+  },
+  "request_key": "6fcba4a88e072ac961bcadfbf15197872bd73ba0a9160e809c927fc88d40231a",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00102285",
+    "input_tokens": 602,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 79
+  }
+}

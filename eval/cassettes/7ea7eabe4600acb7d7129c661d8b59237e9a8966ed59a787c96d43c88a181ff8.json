@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage states verbatim that as of December 31, 2024, cash and cash equivalents were $1,702 million and $825 million was drawn under the $2,000 million revolving credit facility."
+  },
+  "request_key": "7ea7eabe4600acb7d7129c661d8b59237e9a8966ed59a787c96d43c88a181ff8",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00120685",
+    "input_tokens": 806,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 75
+  }
+}

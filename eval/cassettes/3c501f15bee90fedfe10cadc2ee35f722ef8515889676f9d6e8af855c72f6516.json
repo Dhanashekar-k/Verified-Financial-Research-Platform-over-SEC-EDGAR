@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The XBRL fact shows Diamondback's FY2021 diluted EPS (EarningsPerShareDiluted) as $12.24, labeled as the latest restated value from a 10-K filed 2024-02-22, which matches the claim's value and its 'later restated' framing."
+  },
+  "request_key": "3c501f15bee90fedfe10cadc2ee35f722ef8515889676f9d6e8af855c72f6516",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 0,
+    "cache_write_tokens": 517,
+    "cost_usd": "0.00144725",
+    "input_tokens": 271,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 106
+  }
+}

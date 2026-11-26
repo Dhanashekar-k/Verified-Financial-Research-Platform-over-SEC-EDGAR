@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "CEO Ramon Laguarta is quoted saying 'Given our strong start to the year, we now expect our full-year 2023 organic revenue to increase 8 percent (previously 6 percent)' and core constant currency EPS growth of 9 percent (previously 8 percent), directly linking the raised outlook to a strong start."
+  },
+  "request_key": "05e322e72ced093ae3b47968372e3fd51727a1160f70aa2aef61c1ad23cda71a",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00143985",
+    "input_tokens": 804,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 122
+  }
+}

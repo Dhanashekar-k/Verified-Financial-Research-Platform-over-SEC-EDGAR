@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The difference 4,314,000,000 - 3,132,000,000 = 1,182,000,000, which rounds to about $1.2 billion, and both facts are net operating cash flow tagged FY2023 for the named companies (though fiscal periods differ in dates, each is labeled FY2023)."
+  },
+  "request_key": "7d9d7f1e6301bec29247de1d88f597376f86387abff443d2c2ee5366cdbfd2a6",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00103585",
+    "input_tokens": 455,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 111
+  }
+}

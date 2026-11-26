@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage states that the COVID-19 pandemic \"may change our mix of earnings by jurisdiction and has increased the risk that operating losses may occur within certain of our jurisdictions,\" which matches the claim."
+  },
+  "request_key": "131bff938774e7feb33b49884d72ab8eddd3c6efe33ddfa64fe86826bdefd297",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00129385",
+    "input_tokens": 843,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 85
+  }
+}

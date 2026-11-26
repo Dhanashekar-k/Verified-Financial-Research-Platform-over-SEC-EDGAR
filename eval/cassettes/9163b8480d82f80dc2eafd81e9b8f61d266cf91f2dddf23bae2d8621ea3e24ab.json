@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage states verbatim that \"As of December 31, 2022, no impairment of goodwill has been identified,\" which matches the claim exactly."
+  },
+  "request_key": "9163b8480d82f80dc2eafd81e9b8f61d266cf91f2dddf23bae2d8621ea3e24ab",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00106985",
+    "input_tokens": 734,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 62
+  }
+}

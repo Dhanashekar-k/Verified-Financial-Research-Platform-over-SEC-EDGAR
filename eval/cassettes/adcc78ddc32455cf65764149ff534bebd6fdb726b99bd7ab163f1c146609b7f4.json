@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The evidence gives Q1 FY2024 net income of -$4.17B and Q1 FY2023 net income of $1.01B, so (-4170-1010)/1010 = -5.129, or -512.9%, which matches the claim."
+  },
+  "request_key": "adcc78ddc32455cf65764149ff534bebd6fdb726b99bd7ab163f1c146609b7f4",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00119485",
+    "input_tokens": 464,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 141
+  }
+}

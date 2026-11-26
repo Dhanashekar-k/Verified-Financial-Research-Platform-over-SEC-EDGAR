@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The cited XBRL fact reports Kinder Morgan's Liabilities at 2022-12-31 as $37,964,000,000, which rounds to $38.0 billion, matching the claim."
+  },
+  "request_key": "6efb321318e6be98513d928267c8b8bf81ebc0d4c58d66734a91431dbed85b20",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00066185",
+    "input_tokens": 246,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 78
+  }
+}

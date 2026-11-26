@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage states that operating losses in certain jurisdictions could lead to recognition of valuation allowances against certain deferred tax assets in the future if the losses are prolonged beyond current expectations, which matches the claim."
+  },
+  "request_key": "8af7fa7e9dde16072b2fa3931b836fe6587b1394e591441d9193a3a42eee2977",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00127285",
+    "input_tokens": 827,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 84
+  }
+}

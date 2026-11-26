@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The cited expression divides FY2022 operating income ($6,098M) by FY2022 revenue ($17,606M), giving about 34.64%, which matches the claimed 34.6% operating margin."
+  },
+  "request_key": "a08f3dc5c218300329172239e9f86967dbbd2238986d27eeb2f5c49dc5dbaf42",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00082785",
+    "input_tokens": 407,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 79
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage states nearly verbatim that cement is a key raw material in ready mixed concrete and that the Company may be unable to pass along increases in cement and raw material costs to customers through price increases."
+  },
+  "request_key": "48e3498503dbf17dcc36c3251ac781fcc5a14f3f4b05473ac49e496474fdacfb",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00101185",
+    "input_tokens": 606,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 76
+  }
+}

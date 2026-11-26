@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The cited XBRL fact reports 3M's Liabilities as $35,428,000,000 as of 2025-03-31 (FY2025 Q1, 10-Q), which rounds to the claimed $35.4 billion."
+  },
+  "request_key": "63d3c2496433bac747b8adb21f1aed69cd0847c4ac01fbade6fef4cbacd6802a",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00070685",
+    "input_tokens": 241,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 88
+  }
+}

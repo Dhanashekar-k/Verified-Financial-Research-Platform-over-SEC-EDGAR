@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The XBRL fact shows SellingGeneralAndAdministrativeExpense of $1,024,011,000 (about $1.0 billion) for Global Payments' Q1 FY2025 (Jan 1-Mar 31, 2025), as originally filed in the 10-Q of 2025-05-06, matching the claim."
+  },
+  "request_key": "8fedc5e76f297c96f82eb4bc835aba6505db6c42a12795de7bd989a20788c735",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00092785",
+    "input_tokens": 292,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 122
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The commodity price risk paragraph states nearly verbatim that this price volatility (commodity and fuel prices) could potentially have a material impact on financial condition and/or results of operations."
+  },
+  "request_key": "0ae04aa33ba5f445020761c08e5afef5e45737825ea889ac49f8b811874fedd1",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00115085",
+    "input_tokens": 760,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 73
+  }
+}

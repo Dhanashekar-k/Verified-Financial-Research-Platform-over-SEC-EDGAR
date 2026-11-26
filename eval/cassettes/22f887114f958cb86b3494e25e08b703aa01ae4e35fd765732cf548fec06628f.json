@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The evidence states verbatim that on January 24, 2024 the FAA said it will not approve production rate increases or additional production lines for the 737 MAX until it is satisfied that Boeing is in full compliance with required quality control procedures."
+  },
+  "request_key": "22f887114f958cb86b3494e25e08b703aa01ae4e35fd765732cf548fec06628f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00126985",
+    "input_tokens": 794,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 90
+  }
+}

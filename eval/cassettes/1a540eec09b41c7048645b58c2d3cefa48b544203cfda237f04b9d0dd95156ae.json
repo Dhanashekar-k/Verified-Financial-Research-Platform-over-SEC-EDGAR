@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The XBRL fact reports EarningsPerShareBasic of 106.31 USD for NVR Inc. for the quarter 2023-01-01 to 2023-03-31 (fiscal 2023 Q1), matching the claim exactly."
+  },
+  "request_key": "1a540eec09b41c7048645b58c2d3cefa48b544203cfda237f04b9d0dd95156ae",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00076785",
+    "input_tokens": 267,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 95
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The expression (88M - 35M) / 35M = 1.514, i.e. 151.4% growth, using Q2 FY2026 interest expense of $88M and Q2 FY2025 of $35M, which matches the claim."
+  },
+  "request_key": "263e5a5abc43a4bc6712ae29d8002efa12a8f10ef669a4bc3c12e6765e697619",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00091685",
+    "input_tokens": 451,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 88
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage's final sentence states nearly verbatim that failure to realize anticipated returns or benefits from an acquisition or disposition could adversely affect NRG's results of operations, cash flows and financial condition."
+  },
+  "request_key": "bb67b52275d1af119b50d67f29f3bf82871afd5dd9c5197e90c42f994244ae14",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00121185",
+    "input_tokens": 776,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 82
+  }
+}

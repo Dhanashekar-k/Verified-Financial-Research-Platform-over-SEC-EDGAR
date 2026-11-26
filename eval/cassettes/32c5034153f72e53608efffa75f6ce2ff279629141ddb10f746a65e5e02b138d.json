@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The final sentence of the evidence passage matches the claim nearly verbatim, stating that higher cement prices may hurt ready mixed concrete profitability while benefiting the cement business, without a direct correlation."
+  },
+  "request_key": "32c5034153f72e53608efffa75f6ce2ff279629141ddb10f746a65e5e02b138d",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00104985",
+    "input_tokens": 614,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 82
+  }
+}

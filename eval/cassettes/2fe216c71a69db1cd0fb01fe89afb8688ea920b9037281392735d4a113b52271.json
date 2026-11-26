@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage states that interest expense includes amortization of capitalized debt issuance costs, offset by amortization of debt premium and interest income earned on cash and cash equivalents, which matches the claim."
+  },
+  "request_key": "2fe216c71a69db1cd0fb01fe89afb8688ea920b9037281392735d4a113b52271",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00120485",
+    "input_tokens": 794,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 77
+  }
+}

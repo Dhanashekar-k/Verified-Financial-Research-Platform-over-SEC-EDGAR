@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage states that failure to achieve the anticipated benefits of the Direct Energy acquisition could result in increased costs, lower-than-expected revenues or income, and diversion of management's time and energy, matching the claim."
+  },
+  "request_key": "1c3c9023c0fe026a040a9021f24279e15baed9a65399f6b8cdfb42bee9c16f63",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00126085",
+    "input_tokens": 810,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 85
+  }
+}

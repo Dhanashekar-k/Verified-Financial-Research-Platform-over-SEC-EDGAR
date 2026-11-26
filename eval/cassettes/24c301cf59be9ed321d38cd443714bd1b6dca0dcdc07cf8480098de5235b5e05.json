@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage states that future counterparty non-performance risk has been partially mitigated under commodity hedging arrangements requiring counterparties to post collateral when obligations to the company exceed defined thresholds, matching the claim."
+  },
+  "request_key": "24c301cf59be9ed321d38cd443714bd1b6dca0dcdc07cf8480098de5235b5e05",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00121785",
+    "input_tokens": 767,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 85
+  }
+}

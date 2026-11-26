@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage states that for dispositions, such risks may relate to employment matters, counterparties, regulators and other stakeholders in the disposed business, which matches the claim."
+  },
+  "request_key": "9b66c3704d3dd5b4692373f54e868363561c44431463c1e78144aec48153e094",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00112385",
+    "input_tokens": 763,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 67
+  }
+}

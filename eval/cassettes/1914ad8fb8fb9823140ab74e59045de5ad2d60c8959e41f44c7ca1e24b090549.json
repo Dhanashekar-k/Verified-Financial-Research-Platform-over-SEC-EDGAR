@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The cited fact reports InterestExpense of $6,376,000 (about $6.4 million) for the quarter 2021-04-01 to 2021-06-30 (FY2021 Q2), from the 10-Q filed 2021-08-03 as originally filed, which matches the claim."
+  },
+  "request_key": "1914ad8fb8fb9823140ab74e59045de5ad2d60c8959e41f44c7ca1e24b090549",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00082485",
+    "input_tokens": 264,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 107
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "Using the cited facts, (78,714 - 41,224) / 41,224 = 37,490 / 41,224 \u2248 0.9094, i.e. about 90.9% growth in operating income from FY2020 to FY2021, matching the claim."
+  },
+  "request_key": "f7f81d25d21bd3fce9504b0f6fb147d9f4cf1dda6395ced81bc6e4681e140f94",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00094785",
+    "input_tokens": 442,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 96
+  }
+}

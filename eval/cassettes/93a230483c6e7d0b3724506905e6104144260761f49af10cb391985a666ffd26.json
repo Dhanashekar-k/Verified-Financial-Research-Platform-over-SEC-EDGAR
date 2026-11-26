@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The commodity price risk section states verbatim that the Company is also exposed to fluctuations in the price of fuel, which could affect transportation costs."
+  },
+  "request_key": "93a230483c6e7d0b3724506905e6104144260761f49af10cb391985a666ffd26",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00109285",
+    "input_tokens": 762,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 61
+  }
+}

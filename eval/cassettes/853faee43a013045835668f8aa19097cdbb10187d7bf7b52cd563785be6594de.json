@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage states nearly verbatim that if Targa reduces its use of derivatives due to the Dodd-Frank Act, its results may become more volatile, cash flows less predictable, and its ability to plan for and fund capital expenditures could be adversely affected."
+  },
+  "request_key": "853faee43a013045835668f8aa19097cdbb10187d7bf7b52cd563785be6594de",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00128285",
+    "input_tokens": 767,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 98
+  }
+}

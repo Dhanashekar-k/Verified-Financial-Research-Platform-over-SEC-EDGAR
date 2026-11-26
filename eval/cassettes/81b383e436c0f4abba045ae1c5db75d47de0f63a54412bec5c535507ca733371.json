@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The expression (499M - 525M)/525M = -26/525 \u2248 -4.95%, which rounds to -5.0%, and the facts are the FY2024 and FY2023 dividend payments for Cardinal Health."
+  },
+  "request_key": "81b383e436c0f4abba045ae1c5db75d47de0f63a54412bec5c535507ca733371",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00092185",
+    "input_tokens": 461,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 87
+  }
+}

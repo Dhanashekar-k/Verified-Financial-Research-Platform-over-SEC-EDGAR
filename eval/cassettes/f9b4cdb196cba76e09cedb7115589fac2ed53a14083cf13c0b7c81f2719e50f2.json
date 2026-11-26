@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The Commodity Risk paragraph in the passage states verbatim that cement is a commodity and competition is based principally on price, which is highly sensitive to changes in supply and demand."
+  },
+  "request_key": "f9b4cdb196cba76e09cedb7115589fac2ed53a14083cf13c0b7c81f2719e50f2",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00121785",
+    "input_tokens": 832,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 72
+  }
+}

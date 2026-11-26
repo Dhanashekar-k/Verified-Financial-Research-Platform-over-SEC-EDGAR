@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The XBRL fact reports NetCashProvidedByUsedInOperatingActivities of $3,132,000,000 for TE Connectivity's fiscal 2023 (Oct 2022 to Sep 2023), which rounds to $3.1 billion and matches the claim."
+  },
+  "request_key": "82fa06cae57dbc2668605b72de70237f4b290b963d88651e8dc9e6e523e7d7a3",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00082985",
+    "input_tokens": 274,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 106
+  }
+}

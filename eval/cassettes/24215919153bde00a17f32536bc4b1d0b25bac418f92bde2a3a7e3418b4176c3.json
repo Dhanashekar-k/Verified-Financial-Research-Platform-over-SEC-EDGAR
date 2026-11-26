@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The reconciliation table in the FY2022 10-K shows an effective tax rate of 20.2% in the 2021 column, which matches the claim."
+  },
+  "request_key": "24215919153bde00a17f32536bc4b1d0b25bac418f92bde2a3a7e3418b4176c3",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00100585",
+    "input_tokens": 670,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 62
+  }
+}

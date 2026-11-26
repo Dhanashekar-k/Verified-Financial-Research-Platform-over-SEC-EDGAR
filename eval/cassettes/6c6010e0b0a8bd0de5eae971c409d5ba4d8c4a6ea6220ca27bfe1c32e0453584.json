@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The evidence gives TE Connectivity FY2020 capex of $560M and Grainger's of $197M, and 560 - 197 = $363M, matching the claim."
+  },
+  "request_key": "6c6010e0b0a8bd0de5eae971c409d5ba4d8c4a6ea6220ca27bfe1c32e0453584",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00083985",
+    "input_tokens": 469,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 69
+  }
+}

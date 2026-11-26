@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The cited fact is SellingGeneralAndAdministrativeExpense of $8,657,000,000 for McKesson, labeled fiscal year 2023, which rounds to $8.7 billion."
+  },
+  "request_key": "364dadbb0e45b7dd75217a61dd74f5ee65ab27118e9320bdad3cf44885da1893",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00176785",
+    "input_tokens": 262,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 296
+  }
+}

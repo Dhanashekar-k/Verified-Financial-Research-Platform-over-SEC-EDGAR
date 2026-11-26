@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The expression computes (1569 - 1444) / 1444 = 125/1444 \u2248 8.66%, which rounds to 8.7%, and both facts are PaymentsToAcquirePropertyPlantAndEquipment for FY2025 and FY2024, matching the claim's capital expenditures and period."
+  },
+  "request_key": "8a4c137fde66590c4defc5f8093c3f5384cb42799d286855dc47d8683b2a748b",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00107585",
+    "input_tokens": 465,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 117
+  }
+}

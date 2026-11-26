@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "Operating cash flow was $412.773M in FY2022 and $361.851M in FY2021, so (412,773 - 361,851) / 361,851 \u2248 14.07%, which rounds to the claimed 14.1%."
+  },
+  "request_key": "9a6770e1ff8a98c15bf5fe49de4d52eb12077a3b2721b7f0aab6af468df59a21",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00137785",
+    "input_tokens": 452,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 180
+  }
+}

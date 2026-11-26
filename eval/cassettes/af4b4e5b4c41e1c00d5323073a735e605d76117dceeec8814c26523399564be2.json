@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The cited XBRL fact reports InterestExpense of 612,000,000 USD for ADM's FY2025 (2025-01-01 to 2025-12-31) in the 10-K filed 2026-02-17, which matches the claimed $612.0 million."
+  },
+  "request_key": "af4b4e5b4c41e1c00d5323073a735e605d76117dceeec8814c26523399564be2",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00078285",
+    "input_tokens": 262,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 99
+  }
+}

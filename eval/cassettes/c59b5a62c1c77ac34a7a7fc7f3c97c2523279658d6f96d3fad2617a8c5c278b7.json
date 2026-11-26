@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage states verbatim that as of December 31, 2018, net property, plant and equipment totaled $8.7 billion, matching the claim's amount and date."
+  },
+  "request_key": "c59b5a62c1c77ac34a7a7fc7f3c97c2523279658d6f96d3fad2617a8c5c278b7",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00111185",
+    "input_tokens": 761,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 65
+  }
+}

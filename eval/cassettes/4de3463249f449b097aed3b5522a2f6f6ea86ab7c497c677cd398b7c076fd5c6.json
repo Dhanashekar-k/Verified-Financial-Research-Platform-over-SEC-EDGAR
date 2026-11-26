@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The evidence states that Business Innovation is an operating segment established in the first quarter of 2023 that includes PC1, matching the claim (it also includes Pfizer Ignite, but the claim does not say otherwise)."
+  },
+  "request_key": "4de3463249f449b097aed3b5522a2f6f6ea86ab7c497c677cd398b7c076fd5c6",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00120185",
+    "input_tokens": 751,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 85
+  }
+}

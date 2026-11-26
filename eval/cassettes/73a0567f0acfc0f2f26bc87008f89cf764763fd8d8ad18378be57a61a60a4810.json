@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The XBRL Liabilities fact for Vulcan Materials as of 2024-12-31 is $8,962,300,000, which rounds to $9.0 billion, matching the claim."
+  },
+  "request_key": "73a0567f0acfc0f2f26bc87008f89cf764763fd8d8ad18378be57a61a60a4810",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00065085",
+    "input_tokens": 250,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 75
+  }
+}

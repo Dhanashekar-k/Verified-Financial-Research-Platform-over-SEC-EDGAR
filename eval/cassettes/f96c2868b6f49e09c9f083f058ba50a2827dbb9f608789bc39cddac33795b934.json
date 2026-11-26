@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The XBRL fact shows Sysco's NetCashProvidedByUsedInOperatingActivities for FY2023 (2022-07-01 to 2023-06-30) as $2,867,602,000, about $2.9 billion, and it is marked as originally filed in the 10-K of 2023-08-25, matching the claim."
+  },
+  "request_key": "f96c2868b6f49e09c9f083f058ba50a2827dbb9f608789bc39cddac33795b934",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00091585",
+    "input_tokens": 280,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 122
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "10,729,000,000 minus 5,062,981,000 equals 5,666,019,000, about $5.7 billion, and both facts are total Liabilities for FY2025 from each company's 10-K, so the claimed difference follows directly from the evidence."
+  },
+  "request_key": "8f09773c65e7c02dae547ec34ec0af9b58f84ef08199e1849285b9dc2a2d9898",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00090985",
+    "input_tokens": 399,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 97
+  }
+}

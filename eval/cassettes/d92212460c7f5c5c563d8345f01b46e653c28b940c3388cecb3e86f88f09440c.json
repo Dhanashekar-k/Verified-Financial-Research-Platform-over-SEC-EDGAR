@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The XBRL fact shows PaymentsToAcquirePropertyPlantAndEquipment of 174,000,000 USD for Q1 FY2023 (2023-01-01 to 2023-03-31), labeled as the latest restated value, which matches the claimed $174.0 million."
+  },
+  "request_key": "d92212460c7f5c5c563d8345f01b46e653c28b940c3388cecb3e86f88f09440c",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00086785",
+    "input_tokens": 297,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 109
+  }
+}

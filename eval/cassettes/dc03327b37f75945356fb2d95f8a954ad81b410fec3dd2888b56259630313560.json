@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage states almost verbatim that a change in the interest rate or yield of fixed-rate debt only impacts its fair market value, while a change in variable-rate debt's interest rate impacts interest expense and the cash required to service it."
+  },
+  "request_key": "dc03327b37f75945356fb2d95f8a954ad81b410fec3dd2888b56259630313560",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00108785",
+    "input_tokens": 622,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 88
+  }
+}

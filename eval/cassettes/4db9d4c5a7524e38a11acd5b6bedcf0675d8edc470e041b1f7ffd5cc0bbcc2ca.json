@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage contains this sentence verbatim: the Dodd-Frank Act and any new regulations could increase the cost of derivative contracts or potentially reduce the availability of derivatives to protect against risks the company encounters."
+  },
+  "request_key": "4db9d4c5a7524e38a11acd5b6bedcf0675d8edc470e041b1f7ffd5cc0bbcc2ca",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00120085",
+    "input_tokens": 745,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 86
+  }
+}

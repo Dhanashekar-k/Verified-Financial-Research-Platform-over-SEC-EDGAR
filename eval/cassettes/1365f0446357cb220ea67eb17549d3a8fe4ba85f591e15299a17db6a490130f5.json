@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "434,803,000 - 148,600,000 = 286,203,000, so Quanta's FY2023 PP&E payments exceed D.R. Horton's by about $286.2 million, matching the claim (capex proxied by PaymentsToAcquirePropertyPlantAndEquipment, with differing fiscal year-ends)."
+  },
+  "request_key": "1365f0446357cb220ea67eb17549d3a8fe4ba85f591e15299a17db6a490130f5",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00110885",
+    "input_tokens": 468,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 123
+  }
+}

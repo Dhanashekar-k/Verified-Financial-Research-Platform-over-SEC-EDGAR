@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage contains the claim's sentence verbatim, stating 2024 income from operations rose over 11 percent and operating cash flow rose over 26 percent from 2023."
+  },
+  "request_key": "4f26b1ff13b39b1e48994af55a4508f7771f0b0b58bab663704331ea42ccf0b9",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00118685",
+    "input_tokens": 811,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 70
+  }
+}

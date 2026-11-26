@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The evidence contains a sentence matching the claim verbatim: 2019 net cash used in financing resulted primarily from repurchasing 8.4 million shares for $274.3 million, debt repayments of $310.0 million, and dividends of $122.4 million."
+  },
+  "request_key": "076aa30dfd9d344eb0cdab842db0926a233508f6c52356c6159b4a0f50228b26",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00137885",
+    "input_tokens": 858,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 99
+  }
+}

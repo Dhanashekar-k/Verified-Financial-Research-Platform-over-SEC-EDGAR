@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The expression (9,497,578,000 - 4,713,500,000) / 4,713,500,000 = 4,784,078,000 / 4,713,500,000 \u2248 1.0150, i.e. about 101.5% growth, which matches the claim using Revenues for FY2020 and FY2019."
+  },
+  "request_key": "a78a094ebe2832468dae5fa0adcc824f54ec302a3960e916e5a1ad5c0174863d",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00101885",
+    "input_tokens": 428,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 113
+  }
+}

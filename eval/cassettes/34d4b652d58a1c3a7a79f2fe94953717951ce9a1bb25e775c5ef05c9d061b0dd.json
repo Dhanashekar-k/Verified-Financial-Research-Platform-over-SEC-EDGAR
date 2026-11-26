@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage's Liquidity and Capital Resources section states almost verbatim that sources of funds, primarily from operations and, to the extent necessary, from external financing arrangements, are sufficient to meet ongoing operating and investing requirements over the next 12 months and beyond."
+  },
+  "request_key": "34d4b652d58a1c3a7a79f2fe94953717951ce9a1bb25e775c5ef05c9d061b0dd",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00138285",
+    "input_tokens": 842,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 103
+  }
+}

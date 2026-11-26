@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "partial",
+    "reason": "The evidence confirms that Restructuring and impairment charges of 411 for 2022 appear in the Cash Flow Statement, but it says nothing about the income statement, so the claim that they are absent there is not backed."
+  },
+  "request_key": "d4a5f662c4573735077ad82e3883c7f0bfba1ceb5d15a90e9e00918055e6c1f0",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00120985",
+    "input_tokens": 764,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 84
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The MGM China passage states verbatim that Adjusted Property EBITDAR was a loss of $203 million in 2022, matching the claim."
+  },
+  "request_key": "052235c743d34e1f39ce6fab56c0eaf6177595b8459bd95583e4496564d941ac",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00108685",
+    "input_tokens": 756,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 61
+  }
+}

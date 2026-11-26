@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The cited XBRL fact reports PaymentsToAcquirePropertyPlantAndEquipment of $560,000,000 for TE Connectivity's FY2020 (Oct 1, 2019 to Sep 30, 2020), which matches the claimed $560.0 million in capital expenditures."
+  },
+  "request_key": "31a33903a9a7bda99629360b4320fb48fcdd6eb1ba74bb578e019bddedbd7150",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00086885",
+    "input_tokens": 273,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 114
+  }
+}

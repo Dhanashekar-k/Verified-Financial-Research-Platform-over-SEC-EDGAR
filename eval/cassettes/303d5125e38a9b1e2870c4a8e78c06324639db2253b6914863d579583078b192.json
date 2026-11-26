@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage states that counterparty non-performance risk is considered in the valuation of the company's derivative instruments but to date has not had a material impact on their values, which matches the claim."
+  },
+  "request_key": "303d5125e38a9b1e2870c4a8e78c06324639db2253b6914863d579583078b192",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00112385",
+    "input_tokens": 753,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 69
+  }
+}

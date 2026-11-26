@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The expression (9,181,000 - 7,974,000) / 7,974,000 = 1,207,000 / 7,974,000 \u2248 0.1514, i.e. 15.1% growth in R&D expense from Q3 2021 to Q3 2022, matching the claim."
+  },
+  "request_key": "ea6cdfc89e3cc6e14be3a634c5e108347426da948c90e298e0c2864b659a7e6a",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00100685",
+    "input_tokens": 451,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 106
+  }
+}

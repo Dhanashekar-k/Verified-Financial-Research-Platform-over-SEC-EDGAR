@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The XBRL fact shows PaymentsToAcquirePropertyPlantAndEquipment of $650,300,000 for Martin Marietta's FY2023, from the 10-K filed 2024-02-23 as originally filed, matching the claimed $650.3 million capital expenditures."
+  },
+  "request_key": "133570204a31a8657f59e4f44622e232d42016246f134b89fa838ecce27be418",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00087185",
+    "input_tokens": 296,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 110
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The expression (69M - 71M)/71M = -2.82%, which matches the claimed -2.8% growth in Yum's Q1 income tax expense from Q1 2023 to Q1 2024, and both facts are the correct tag and periods."
+  },
+  "request_key": "bd83ca4ca61c94e6055f8ad920fdaa83db3293bbbf23e0128585d8b1e88b1c7a",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00095985",
+    "input_tokens": 464,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 94
+  }
+}

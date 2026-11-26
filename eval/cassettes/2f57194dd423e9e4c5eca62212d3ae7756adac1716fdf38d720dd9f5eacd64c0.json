@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The XBRL fact reports CommonStockSharesOutstanding of 193,747,509 shares for DTE Energy as of 2021-12-31 (FY2021 10-K), which rounds to 193.7 million, matching the claim."
+  },
+  "request_key": "2f57194dd423e9e4c5eca62212d3ae7756adac1716fdf38d720dd9f5eacd64c0",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00074185",
+    "input_tokens": 256,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 92
+  }
+}

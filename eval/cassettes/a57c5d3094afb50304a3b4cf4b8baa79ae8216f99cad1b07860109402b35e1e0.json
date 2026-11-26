@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The Consolidated Statements of Operations list Sales of services as $10,715 million for the year ended December 31, 2022, in a table stated in millions of dollars, matching the claim."
+  },
+  "request_key": "a57c5d3094afb50304a3b4cf4b8baa79ae8216f99cad1b07860109402b35e1e0",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00101185",
+    "input_tokens": 621,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 73
+  }
+}

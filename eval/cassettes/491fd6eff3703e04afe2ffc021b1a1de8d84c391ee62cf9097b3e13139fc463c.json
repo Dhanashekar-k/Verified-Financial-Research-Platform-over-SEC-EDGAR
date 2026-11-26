@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The cover page of the filing explicitly states \"Securities registered pursuant to Section 12(g) of the Act: None.\""
+  },
+  "request_key": "491fd6eff3703e04afe2ffc021b1a1de8d84c391ee62cf9097b3e13139fc463c",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00100085",
+    "input_tokens": 695,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 56
+  }
+}

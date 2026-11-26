@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage states the company enters derivative contracts only with counterparties that are highly rated or deemed to have acceptable credit strength and attempts to limit exposure to non-performance by any single counterparty; the notes are headed Chesapeake Energy Corporation, matching the claim's entity."
+  },
+  "request_key": "87e21471768c4782f0a77590f160ecf6c2bd67f5e6538ebe8115dfe0a8a9dbaa",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00138885",
+    "input_tokens": 828,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 107
+  }
+}

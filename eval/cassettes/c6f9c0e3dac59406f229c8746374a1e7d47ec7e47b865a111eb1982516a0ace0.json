@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The XBRL fact PaymentsToAcquirePropertyPlantAndEquipment for SLB's FY2023 is $1,939,000,000, which rounds to $1.9 billion and matches the claim's period and company."
+  },
+  "request_key": "c6f9c0e3dac59406f229c8746374a1e7d47ec7e47b865a111eb1982516a0ace0",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00074185",
+    "input_tokens": 276,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 88
+  }
+}

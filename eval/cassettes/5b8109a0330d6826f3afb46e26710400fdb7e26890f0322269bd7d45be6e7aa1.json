@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The evidence states verbatim that net cash used in financing activities was $295.6 million in 2020 compared with $733.6 million during 2019, matching both figures and periods in the claim."
+  },
+  "request_key": "5b8109a0330d6826f3afb46e26710400fdb7e26890f0322269bd7d45be6e7aa1",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00120285",
+    "input_tokens": 812,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 73
+  }
+}

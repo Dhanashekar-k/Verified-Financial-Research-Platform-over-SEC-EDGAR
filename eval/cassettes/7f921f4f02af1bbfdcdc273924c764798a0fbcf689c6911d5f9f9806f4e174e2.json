@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage states that, as a result of the Upjohn separation, Pfizer incurred separation-related costs of $434 million in 2020 (and $83 million in 2019), matching the claim exactly."
+  },
+  "request_key": "7f921f4f02af1bbfdcdc273924c764798a0fbcf689c6911d5f9f9806f4e174e2",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00118485",
+    "input_tokens": 769,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 78
+  }
+}

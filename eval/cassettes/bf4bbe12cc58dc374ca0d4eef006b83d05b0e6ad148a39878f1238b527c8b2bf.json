@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The XBRL fact shows D.R. Horton's Liabilities of $10,729,000,000 as of 2025-09-30 (FY2025 10-K), which rounds to the claimed $10.7 billion."
+  },
+  "request_key": "bf4bbe12cc58dc374ca0d4eef006b83d05b0e6ad148a39878f1238b527c8b2bf",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00068585",
+    "input_tokens": 240,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 84
+  }
+}

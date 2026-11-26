@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The income statement lists operating income of $6,098 million for the year ended December 2, 2022 (fiscal 2022) and $5,802 million for the year ended December 3, 2021 (fiscal 2021), matching the claim."
+  },
+  "request_key": "efe40dc9c2f5910d9e66049b2da86d331d50671c1dfe4d9b1a29972c9f3a52f3",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00120585",
+    "input_tokens": 740,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 88
+  }
+}

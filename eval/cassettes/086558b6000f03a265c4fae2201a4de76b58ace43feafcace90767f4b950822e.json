@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The twelve-months 2022 column of the statement of earnings lists Cost of products sold as $31,089 million, matching the claim."
+  },
+  "request_key": "086558b6000f03a265c4fae2201a4de76b58ace43feafcace90767f4b950822e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00105885",
+    "input_tokens": 748,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 57
+  }
+}

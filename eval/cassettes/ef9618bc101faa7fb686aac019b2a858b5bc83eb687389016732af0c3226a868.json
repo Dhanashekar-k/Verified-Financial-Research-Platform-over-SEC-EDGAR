@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The cited XBRL fact reports Cisco's PaymentsToAcquirePropertyPlantAndEquipment (capital expenditures) as $905,000,000 for fiscal 2025 (Aug 1, 2024 to Jul 31, 2025), matching the claimed $905.0 million."
+  },
+  "request_key": "ef9618bc101faa7fb686aac019b2a858b5bc83eb687389016732af0c3226a868",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00087385",
+    "input_tokens": 278,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 114
+  }
+}

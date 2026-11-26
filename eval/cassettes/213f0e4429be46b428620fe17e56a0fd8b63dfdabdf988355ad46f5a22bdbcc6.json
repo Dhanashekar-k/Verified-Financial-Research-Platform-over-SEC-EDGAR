@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The XBRL fact PaymentsOfDividendsCommonStock for Halliburton for FY2023 (2023-01-01 to 2023-12-31) is 576,000,000 USD, matching the claimed $576.0 million."
+  },
+  "request_key": "213f0e4429be46b428620fe17e56a0fd8b63dfdabdf988355ad46f5a22bdbcc6",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00074285",
+    "input_tokens": 262,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 91
+  }
+}

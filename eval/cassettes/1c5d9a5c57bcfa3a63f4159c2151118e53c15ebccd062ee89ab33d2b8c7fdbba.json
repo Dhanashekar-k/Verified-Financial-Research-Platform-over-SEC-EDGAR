@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The expression (128M - 131M) / 131M = -3/131 \u2248 -2.29%, which rounds to -2.3%, and the two facts are Q1 FY2025 and Q1 FY2024 dividends paid as the claim describes."
+  },
+  "request_key": "1c5d9a5c57bcfa3a63f4159c2151118e53c15ebccd062ee89ab33d2b8c7fdbba",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00096185",
+    "input_tokens": 466,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 94
+  }
+}

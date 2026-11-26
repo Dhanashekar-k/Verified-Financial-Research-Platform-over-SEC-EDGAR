@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage states verbatim that, in the face of increasing costs, the Company strives to maintain its profit margins through cost reduction programs, productivity improvements and periodic price increases."
+  },
+  "request_key": "dbcf8335a3e0efe0893e81f5fd0074b11f1d7f0d491acac03c8b9717b050368c",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00118385",
+    "input_tokens": 798,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 72
+  }
+}

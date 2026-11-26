@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The cited XBRL fact reports Cardinal Health's InterestExpense as 51,000,000 USD for fiscal year 2024 (2023-07-01 to 2024-06-30), matching the claim's $51.0 million."
+  },
+  "request_key": "5a99039f41b80796310b5865e43d642dbf036e062fb042f4ef424bf51b0722f6",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00073485",
+    "input_tokens": 259,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 90
+  }
+}

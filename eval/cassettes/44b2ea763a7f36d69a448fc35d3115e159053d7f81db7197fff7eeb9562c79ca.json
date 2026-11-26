@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The XBRL fact shows IncomeTaxExpenseBenefit of $57,000,000 for Brown-Forman's fiscal Q3 2024 (Nov 1, 2023 to Jan 31, 2024), matching the claimed $57.0 million."
+  },
+  "request_key": "44b2ea763a7f36d69a448fc35d3115e159053d7f81db7197fff7eeb9562c79ca",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00080885",
+    "input_tokens": 273,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 102
+  }
+}

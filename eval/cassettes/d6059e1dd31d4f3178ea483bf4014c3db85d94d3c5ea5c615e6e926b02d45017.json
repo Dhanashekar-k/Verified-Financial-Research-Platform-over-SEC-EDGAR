@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage states 'To mitigate a portion of our exposure to adverse price changes, we enter into various derivative instruments' in the commodity price risk section, matching the claim; the company is the same entity (Chesapeake, now Expand Energy, CIK 895126)."
+  },
+  "request_key": "d6059e1dd31d4f3178ea483bf4014c3db85d94d3c5ea5c615e6e926b02d45017",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00128285",
+    "input_tokens": 752,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 101
+  }
+}

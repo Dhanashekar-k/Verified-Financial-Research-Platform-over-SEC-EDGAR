@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage states verbatim that \"NRG may be subject to material trailing liabilities from disposed businesses,\" which matches the claim exactly."
+  },
+  "request_key": "b18212d86a67afbf9cab391567dfad740e5466cb13936db1da7144d144a0c245",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00108385",
+    "input_tokens": 748,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 62
+  }
+}

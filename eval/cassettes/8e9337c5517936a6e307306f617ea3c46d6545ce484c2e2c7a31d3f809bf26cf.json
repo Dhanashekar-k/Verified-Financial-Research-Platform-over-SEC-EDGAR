@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The fact shows Cardinal Health's SellingGeneralAndAdministrativeExpense for FY2023 (2022-07-01 to 2023-06-30) as $4,834,000,000, which rounds to $4.8 billion, and it is from the original 10-K filed 2023-08-15, marked as originally filed."
+  },
+  "request_key": "8e9337c5517936a6e307306f617ea3c46d6545ce484c2e2c7a31d3f809bf26cf",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00090485",
+    "input_tokens": 279,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 120
+  }
+}

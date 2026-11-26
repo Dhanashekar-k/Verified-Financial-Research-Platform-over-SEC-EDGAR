@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The evidence contains the identical sentence: net sales on a comparable constant currency basis were in line with the prior year, largely reflecting price/mix benefits of approximately 3%."
+  },
+  "request_key": "d3770db3087c7efff43b3d5bf8fef99e85cd950c34cffab6d6dd9cdd9a1f5627",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00116085",
+    "input_tokens": 775,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 72
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The cited fact is NetCashProvidedByUsedInOperatingActivities of $7,111,000,000 for Salesforce, labeled fiscal year 2022, which rounds to the claimed $7.1 billion."
+  },
+  "request_key": "85bb1b384c3a648d1291412e66b96b18df942b35385e6a55265c2d0cfb90341c",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00172585",
+    "input_tokens": 280,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 284
+  }
+}

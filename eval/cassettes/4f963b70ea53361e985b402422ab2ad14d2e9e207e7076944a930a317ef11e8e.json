@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The XBRL fact shows EarningsPerShareDiluted of 12.3 USD for Diamondback Energy's FY2021 (2021-01-01 to 2021-12-31), from the 10-K filed 2022-02-24 as originally filed, matching the claim's $12.30 and its 'as originally filed' qualifier."
+  },
+  "request_key": "4f963b70ea53361e985b402422ab2ad14d2e9e207e7076944a930a317ef11e8e",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00092385",
+    "input_tokens": 278,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 124
+  }
+}

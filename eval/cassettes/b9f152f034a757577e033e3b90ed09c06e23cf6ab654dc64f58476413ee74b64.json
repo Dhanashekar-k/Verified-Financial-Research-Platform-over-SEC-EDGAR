@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage lists the same substantial acquisition risks: failure to identify material problems in due diligence, over-paying for assets or customers, the ability to retain customers, and inability to arrange financing; 'inability to retain customers' is a fair reading of 'the ability to retain customers' as a risk."
+  },
+  "request_key": "b9f152f034a757577e033e3b90ed09c06e23cf6ab654dc64f58476413ee74b64",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00135485",
+    "input_tokens": 784,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 109
+  }
+}

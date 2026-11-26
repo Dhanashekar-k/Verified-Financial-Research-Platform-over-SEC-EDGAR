@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The cited XBRL fact reports InterestExpense of 326,781,000 USD for Dollar General's fiscal year 2023 (2023-02-01 to 2024-01-31), which rounds to the claimed $326.8 million."
+  },
+  "request_key": "af9b58c5fe711c6b01abd0f841dd83cfd44527072b4a08c222120a86e8bcbea6",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00074085",
+    "input_tokens": 260,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 91
+  }
+}

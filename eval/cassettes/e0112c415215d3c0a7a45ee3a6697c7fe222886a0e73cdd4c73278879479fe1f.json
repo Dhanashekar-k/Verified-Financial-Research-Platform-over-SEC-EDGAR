@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "Q1 2021 operating cash flow of $116,887,000 versus Q1 2020 of $71,295,000 gives (116,887-71,295)/71,295 \u2248 63.9% growth, matching the claim."
+  },
+  "request_key": "e0112c415215d3c0a7a45ee3a6697c7fe222886a0e73cdd4c73278879479fe1f",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00134485",
+    "input_tokens": 469,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 170
+  }
+}

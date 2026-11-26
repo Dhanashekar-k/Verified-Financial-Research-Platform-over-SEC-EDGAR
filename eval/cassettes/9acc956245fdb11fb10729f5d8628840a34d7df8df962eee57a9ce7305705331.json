@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage states verbatim that P&PS solutions are delivered as standalone professional service engagements, comprehensive program management partnerships, and selective progressive design-build and construction management at-risk delivery services."
+  },
+  "request_key": "9acc956245fdb11fb10729f5d8628840a34d7df8df962eee57a9ce7305705331",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00121485",
+    "input_tokens": 789,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 80
+  }
+}

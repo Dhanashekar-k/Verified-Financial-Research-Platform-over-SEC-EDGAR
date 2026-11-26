@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The expression gives 612,000,000 - 471,300,000 = 140,700,000, so ADM's FY2025 interest expense ($612.0M) exceeds Viatris's ($471.3M) by $140.7M, matching the claim for the same fiscal-year period."
+  },
+  "request_key": "fa81677368baac49e9a359411a1bf8764bff70d24eebe0b077e6828d4dbb25c4",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00095485",
+    "input_tokens": 414,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 103
+  }
+}

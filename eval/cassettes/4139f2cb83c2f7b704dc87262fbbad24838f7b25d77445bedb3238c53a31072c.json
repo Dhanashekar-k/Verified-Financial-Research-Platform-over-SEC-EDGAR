@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage says other (income) expense, net includes 'other general expenses such as gains or losses from disposals of long-lived assets,' which matches the claim directly."
+  },
+  "request_key": "4139f2cb83c2f7b704dc87262fbbad24838f7b25d77445bedb3238c53a31072c",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00113185",
+    "input_tokens": 781,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 65
+  }
+}

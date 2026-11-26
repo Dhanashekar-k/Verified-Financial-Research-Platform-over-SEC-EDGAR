@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The Customers section of the Salesforce 10-K states verbatim, \"We sell to businesses of all sizes and in almost every industry worldwide,\" which matches the claim exactly."
+  },
+  "request_key": "2bcdda8ead9d1a47cbfc8caa2e093e2544b566a627e96f4bbab59456e78186c3",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00112785",
+    "input_tokens": 727,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 75
+  }
+}

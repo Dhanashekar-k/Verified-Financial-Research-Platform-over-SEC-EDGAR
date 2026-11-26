@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The filing states 'We also manufacture and sell electronic devices, including Kindle, Fire tablet, Fire TV, Echo, Ring, and other devices,' which directly backs the claim that Amazon manufactures and sells Echo devices."
+  },
+  "request_key": "8185e1dc1489d25d6ffe0518440f957a0f9841d99ed839bb9bcd0e49f65b4447",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00127285",
+    "input_tokens": 772,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 95
+  }
+}

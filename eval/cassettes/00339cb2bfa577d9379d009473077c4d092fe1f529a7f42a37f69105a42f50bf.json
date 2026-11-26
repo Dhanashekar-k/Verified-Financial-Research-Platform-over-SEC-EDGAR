@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The evidence gives Cardinal Health's FY2025 dividends paid as $494M and Grainger's as $467M, and 494 - 467 = $27M, matching the claim; the fiscal-year periods differ in dates but each is labeled FY2025."
+  },
+  "request_key": "00339cb2bfa577d9379d009473077c4d092fe1f529a7f42a37f69105a42f50bf",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00096385",
+    "input_tokens": 448,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 98
+  }
+}

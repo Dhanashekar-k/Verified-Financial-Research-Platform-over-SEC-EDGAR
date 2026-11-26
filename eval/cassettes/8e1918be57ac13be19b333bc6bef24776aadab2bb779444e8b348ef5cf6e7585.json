@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The XBRL fact reports CashAndCashEquivalentsAtCarryingValue of $761,075,000 as of 2021-03-31 (FY2021 Q1), which rounds to $761.1 million and matches the claim."
+  },
+  "request_key": "8e1918be57ac13be19b333bc6bef24776aadab2bb779444e8b348ef5cf6e7585",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00073685",
+    "input_tokens": 261,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 90
+  }
+}

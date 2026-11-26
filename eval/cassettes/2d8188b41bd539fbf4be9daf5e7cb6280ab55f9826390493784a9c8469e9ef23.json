@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage states verbatim that an analysis of the Company's restructuring plan liability, not including restructuring related liabilities, follows, which matches the claim."
+  },
+  "request_key": "2d8188b41bd539fbf4be9daf5e7cb6280ab55f9826390493784a9c8469e9ef23",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00052885",
+    "input_tokens": 183,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 64
+  }
+}

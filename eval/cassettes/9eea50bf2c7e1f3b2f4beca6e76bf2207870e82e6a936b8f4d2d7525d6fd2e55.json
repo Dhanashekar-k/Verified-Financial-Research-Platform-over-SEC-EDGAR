@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The evidence contains the identical sentence stating that as of December 31, 2024, the company was in compliance with its financial covenants in all material respects and has no material uncertainty about meeting its credit covenants."
+  },
+  "request_key": "9eea50bf2c7e1f3b2f4beca6e76bf2207870e82e6a936b8f4d2d7525d6fd2e55",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00124285",
+    "input_tokens": 822,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 79
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage states that for 2022 American Express reported net income of $7.5 billion compared with $8.1 billion a year ago, which matches both figures in the claim."
+  },
+  "request_key": "be5aee6284481ec6b8d8ad2972271b76268f8e0a8b873305a860ad2222250f81",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00110785",
+    "input_tokens": 752,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 66
+  }
+}

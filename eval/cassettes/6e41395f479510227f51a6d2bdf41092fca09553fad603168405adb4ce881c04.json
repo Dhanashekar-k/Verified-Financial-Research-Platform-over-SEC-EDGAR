@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The cited XBRL fact reports NetCashProvidedByUsedInOperatingActivities of $1,435,610,000 for Genuine Parts Co for FY2023, which rounds to $1.4 billion."
+  },
+  "request_key": "6e41395f479510227f51a6d2bdf41092fca09553fad603168405adb4ce881c04",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00072385",
+    "input_tokens": 273,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 85
+  }
+}

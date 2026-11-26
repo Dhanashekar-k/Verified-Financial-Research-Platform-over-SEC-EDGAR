@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The cited XBRL fact reports NetCashProvidedByUsedInOperatingActivities of $134,228,000 for PulteGroup's Q1 FY2025 (2025-01-01 to 2025-03-31), which rounds to the claimed $134.2 million."
+  },
+  "request_key": "82074cc6123c348e3893c2b51200109c3b63bff49ef62545e642ea751c0d1db2",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00082485",
+    "input_tokens": 279,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 104
+  }
+}

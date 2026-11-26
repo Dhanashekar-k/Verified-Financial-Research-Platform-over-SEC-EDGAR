@@ -1,0 +1,18 @@
+{
+  "model": "claude-sonnet-5-5",
+  "output": {
+    "label": "supported",
+    "reason": "The passage states nearly verbatim that the Company regularly monitors commodity trends and has alternative sourcing plans to mitigate supplier concentration risk, passes commodity-related inflation to customers or suppliers, and continues to scale its distribution networks including transportation infrastructure."
+  },
+  "request_key": "696ae556af86ddfecc953746e666945b1b500ebb66df2d9a19a2fbbaaa629363",
+  "usage": {
+    "batch": true,
+    "cache_read_tokens": 517,
+    "cache_write_tokens": 0,
+    "cost_usd": "0.00107485",
+    "input_tokens": 514,
+    "latency_ms": 0,
+    "model": "claude-sonnet-5-5",
+    "output_tokens": 107
+  }
+}
