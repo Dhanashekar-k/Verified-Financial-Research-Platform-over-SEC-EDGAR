@@ -1,0 +1,7 @@
+# Test-split run, session log (warnings removed). eval.run exits 2 on a provenance breach.
+NOTE: test split. Iterate on dev; run test only at milestones (rules/eval.md).
+round 1: 343 questions waiting on 343 requests
+round 2: 301 questions waiting on 301 requests
+round 3: 55 questions waiting on 55 requests
+wrote eval/results/2026-11-26T01-30-25Z_engine-0.6.1_haiku.json (343 questions, $0.1988)
+exit 0 (shell status of the eval.run command, 2026-11-26T01:30:26Z)

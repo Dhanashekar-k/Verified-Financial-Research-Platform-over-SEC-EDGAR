@@ -1,0 +1,39 @@
+# M5 /dod checks. Quick checks rerun on the final code tree, 2026-11-26T02:50:06Z, HEAD 7f2e6dc.
+
+$ make test
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+2992 passed, 5 warnings in 62.38s (0:01:02)
+exit 0
+
+$ make lint
+332 files already formatted
+Success: no issues found in 32 source files
+exit 0
+
+$ uv run mypy --strict app/engine
+Success: no issues found in 27 source files
+exit 0
+
+$ make check-gold
+uv run python -m eval.check_gold
+check-gold: 6 gold file(s) match CHECKSUMS
+exit 0
+
+$ uv run pytest -q tests/unit/engine/test_sql_guard.py -k corpus
+...............................                                          [100%]
+31 passed, 128 deselected in 0.13s
+exit 0
+
+$ uv run pytest -q tests/unit/engine/test_sql_guard.py
+...............                                                          [100%]
+159 passed in 0.95s
+exit 0
+
+$ uv run pytest -q tests/unit/eval -k provenance
+........................                                                 [100%]
+24 passed, 354 deselected in 0.67s
+exit 0
+
+# make test-integration: from the earlier run in this session (before a two-blank-line format fix to eval/run.py); not rerun.
+748 passed, 809 warnings in 391.28s (0:06:31)
+exit 0

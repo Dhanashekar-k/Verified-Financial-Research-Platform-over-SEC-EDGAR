@@ -135,3 +135,12 @@ the day-to-day calls and progress. Append one dated entry at the end of each wor
 - A new reviewer pass found nothing in those three, and found two more guard routes to unbounded output plus gaps in the dropped-year check. Fixed with tests; those last fixes were not re-reviewed. Treat the guard's output size as unbounded.
 - Incident: a reviewer's SQL stress probe in an uncapped throwaway Postgres probably got another project's container (`stream-aml-flink-taskmanager-1`) killed at 09:49 UTC (inferred from timing). Docker restarted it and it reports healthy; its Flink job was not checked. Throwaway containers need memory limits.
 - No spend, no box, no reranker download.
+
+## 2026-11-25 to 26: M5 measured runs
+- On the serving box: gold 10-Q check (341/341 found, none affected), retrieval ablations, the engine on dev with both writers, a latency sample, the test split once, and metric coverage. Box stopped, confirmed 2026-11-26T02:25:57Z.
+- Test: numeric 96.4% vs baseline 5.4%; FinanceBench 17.1% vs 23.8% (paired −6.7 pp, CI [−15.2, 1.9]). The FinanceBench half of the core DoD **fails**. On dev (Sonnet on both sides), 6 of 9 lost questions needed a calculation or unit conversion the writer may not do; test refusals were not analysed.
+- At a 2048-token reply limit the Haiku writer was cut off (12 questions failed). Raised to 8192 (engine 0.6.1) and reran; the old file is in `superseded/`.
+- Haiku is the engine's default writer (ADR-012, proposed): no accuracy gain shown for Sonnet at many times the cost.
+- Found while checking the DoD: the SQL fallback was never connected; `ENGINE_SQL_FALLBACK` does nothing.
+- API spend $1.5870 by the harness's accounting ($1.3882 dev, $0.1988 test); box dollars NOT MEASURED. Details: `docs/milestones/M05-report.md`.
+- Next: Shekar decides whether to close M5 with the shortfall or open a FinanceBench dev round; reviews ADR-012; runs `/interview-me`. Follow-ups: retrieval setup with filters on (dev), a Haiku baseline for a like-for-like comparison, wire or drop the SQL fallback.

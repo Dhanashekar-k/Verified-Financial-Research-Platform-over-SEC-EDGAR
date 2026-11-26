@@ -1,0 +1,7 @@
+{
+  "note": "Hand-recorded from AWS CLI and keepalive output in the session. Instance i-03c13a20998728a50, us-east-2. Dollars NOT MEASURED.",
+  "sessions": [
+    {"launched": "2026-11-25T11:32:07Z", "auto_stop_scheduled": "2026-11-25T17:32:35Z", "last_successful_db_check": "2026-11-25T17:31:52Z", "found_stopped": "2026-11-25T22:20:04Z", "stop_time_observed": null},
+    {"start_requested": "2026-11-25T22:21:26Z", "launched": "2026-11-25T22:21:27Z", "stop_requested": "2026-11-26T02:25:24Z", "confirmed_stopped": "2026-11-26T02:25:57Z"}
+  ]
+}
