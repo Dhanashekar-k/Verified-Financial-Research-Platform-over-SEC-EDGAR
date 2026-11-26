@@ -63,6 +63,18 @@ uncalibrated and labelled as such.
 | `2026-11-26T00-51-47Z_engine-0.6.1_sonnet` | dev | narrative | 15 | 15 | 0 sys / 0 judge | recall@10 (eval/metrics.py) | 66.7% | [40.0, 86.7] | - |
 | `2026-11-26T00-51-47Z_engine-0.6.1_sonnet` | dev | narrative | 15 | 15 | 0 sys / 0 judge | recall@20 (eval/metrics.py) | 66.7% | [40.0, 86.7] | - |
 | `2026-11-26T00-51-47Z_engine-0.6.1_sonnet` | dev | unanswerable | 15 | 15 | 0 sys / 0 judge | refusal rate | 100.0% | [100.0, 100.0] | - |
+| `2026-11-26T01-30-25Z_engine-0.6.1_haiku` | test | numeric | 168 | 168 | 0 sys / 0 judge | accuracy | 96.4% | [93.5, 98.8] | - |
+| `2026-11-26T01-30-25Z_engine-0.6.1_haiku` | test | financebench | 105 | 105 | 0 sys / 0 judge | accuracy | 17.1% | [10.5, 24.8] | kappa 0.65 (answered rows only) |
+| `2026-11-26T01-30-25Z_engine-0.6.1_haiku` | test | financebench | 105 | 105 | 0 sys / 0 judge | refusal rate | 79.0% | [71.4, 86.7] | - |
+| `2026-11-26T01-30-25Z_engine-0.6.1_haiku` | test | financebench | 105 | 105 | 0 sys / 0 judge | recall@5 (eval/metrics.py) | 34.3% | [25.7, 43.8] | - |
+| `2026-11-26T01-30-25Z_engine-0.6.1_haiku` | test | financebench | 105 | 105 | 0 sys / 0 judge | recall@10 (eval/metrics.py) | 38.1% | [28.6, 47.6] | - |
+| `2026-11-26T01-30-25Z_engine-0.6.1_haiku` | test | financebench | 105 | 105 | 0 sys / 0 judge | recall@20 (eval/metrics.py) | 38.1% | [28.6, 47.6] | - |
+| `2026-11-26T01-30-25Z_engine-0.6.1_haiku` | test | narrative | 35 | 35 | 0 sys / 0 judge | gold-point coverage | 40.7% | [27.9, 54.3] | uncalibrated |
+| `2026-11-26T01-30-25Z_engine-0.6.1_haiku` | test | narrative | 35 | 35 | 0 sys / 0 judge | contradiction rate | 2.9% | [0.0, 8.6] | uncalibrated |
+| `2026-11-26T01-30-25Z_engine-0.6.1_haiku` | test | narrative | 35 | 35 | 0 sys / 0 judge | recall@5 (eval/metrics.py) | 54.3% | [37.1, 71.4] | - |
+| `2026-11-26T01-30-25Z_engine-0.6.1_haiku` | test | narrative | 35 | 35 | 0 sys / 0 judge | recall@10 (eval/metrics.py) | 65.7% | [48.6, 80.0] | - |
+| `2026-11-26T01-30-25Z_engine-0.6.1_haiku` | test | narrative | 35 | 35 | 0 sys / 0 judge | recall@20 (eval/metrics.py) | 65.7% | [48.6, 80.0] | - |
+| `2026-11-26T01-30-25Z_engine-0.6.1_haiku` | test | unanswerable | 35 | 35 | 0 sys / 0 judge | refusal rate | 100.0% | [100.0, 100.0] | - |
 
 ### Judge calibration (FinanceBench correctness judge vs human labels)
 
@@ -73,6 +85,7 @@ uncalibrated and labelled as such.
 | `2026-11-25T05-48-47Z_baseline-0.2.0_sonnet` | 0.646 | 46 | below target | correctness-v2 | claude-sonnet-5-5 | `494b5d395281` | eval/judges/kappa.json; labels measured on run 2026-11-25T00-43-10Z_baseline-0.2.0_sonnet, not on this run's rows (same judge and rubric; answer identity not checked by report.py) |
 | `2026-11-26T00-27-09Z_engine-0.6.1_haiku` | 0.646 | 46 | below target | correctness-v2 | claude-sonnet-5-5 | `494b5d395281` | eval/judges/kappa.json; labels measured on run 2026-11-25T00-43-10Z_baseline-0.2.0_sonnet, not on this run's rows (same judge and rubric; answer identity not checked by report.py) |
 | `2026-11-26T00-51-47Z_engine-0.6.1_sonnet` | 0.646 | 46 | below target | correctness-v2 | claude-sonnet-5-5 | `494b5d395281` | eval/judges/kappa.json; labels measured on run 2026-11-25T00-43-10Z_baseline-0.2.0_sonnet, not on this run's rows (same judge and rubric; answer identity not checked by report.py) |
+| `2026-11-26T01-30-25Z_engine-0.6.1_haiku` | 0.646 | 46 | below target | correctness-v2 | claude-sonnet-5-5 | `494b5d395281` | eval/judges/kappa.json; labels measured on run 2026-11-25T00-43-10Z_baseline-0.2.0_sonnet, not on this run's rows (same judge and rubric; answer identity not checked by report.py) |
 
 ### Cost and latency
 
@@ -84,6 +97,7 @@ uncalibrated and labelled as such.
 | `2026-11-25T05-48-47Z_baseline-0.2.0_sonnet` | replay | claude-sonnet-5-5 | 273 | 0.0000 | 0.00000 | NOT MEASURED | NOT MEASURED | 800 |
 | `2026-11-26T00-27-09Z_engine-0.6.1_haiku` | batch | claude-haiku-5-5 | 147 | 0.0718 | 0.00049 | NOT MEASURED | NOT MEASURED | 800 |
 | `2026-11-26T00-51-47Z_engine-0.6.1_sonnet` | batch | claude-sonnet-5-5 | 147 | 0.6951 | 0.00473 | NOT MEASURED | NOT MEASURED | 800 |
+| `2026-11-26T01-30-25Z_engine-0.6.1_haiku` | batch | claude-haiku-5-5 | 343 | 0.1988 | 0.00058 | NOT MEASURED | NOT MEASURED | 800 |
 
 ### False refusal on answerable sets
 
@@ -95,6 +109,7 @@ uncalibrated and labelled as such.
 | `2026-11-25T05-48-47Z_baseline-0.2.0_sonnet` | 83.5% |
 | `2026-11-26T00-27-09Z_engine-0.6.1_haiku` | 33.3% |
 | `2026-11-26T00-51-47Z_engine-0.6.1_sonnet` | 32.6% |
+| `2026-11-26T01-30-25Z_engine-0.6.1_haiku` | 33.4% |
 
 Source: `eval/results/<run_id>.json`. Claims / unsupported-claim rate: NOT MEASURED until the support judge has chunk text to read (M6).
 
@@ -106,6 +121,8 @@ Source: `eval/results/<run_id>.json`. Claims / unsupported-claim rate: NOT MEASU
 | `2026-11-26T00-27-09Z_engine-0.6.1_haiku` | `2026-11-25T05-47-32Z_baseline-0.2.0_sonnet` | dev | financebench | 45 | 13.3% | 24.4% | -11.1 pp | [-24.4, 2.2] | 0.1546 | no difference shown |
 | `2026-11-26T00-51-47Z_engine-0.6.1_sonnet` | `2026-11-25T05-47-32Z_baseline-0.2.0_sonnet` | dev | numeric | 72 | 100.0% | 2.8% | +97.2 pp | [93.1, 100.0] | 0.0002 | engine higher |
 | `2026-11-26T00-51-47Z_engine-0.6.1_sonnet` | `2026-11-25T05-47-32Z_baseline-0.2.0_sonnet` | dev | financebench | 45 | 11.1% | 24.4% | -13.3 pp | [-28.9, 0.0] | 0.0954 | no difference shown |
+| `2026-11-26T01-30-25Z_engine-0.6.1_haiku` | `2026-11-25T05-48-47Z_baseline-0.2.0_sonnet` | test | numeric | 168 | 96.4% | 5.4% | +91.1 pp | [86.3, 95.2] | 0.0002 | engine higher |
+| `2026-11-26T01-30-25Z_engine-0.6.1_haiku` | `2026-11-25T05-48-47Z_baseline-0.2.0_sonnet` | test | financebench | 105 | 17.1% | 23.8% | -6.7 pp | [-15.2, 1.9] | 0.1658 | no difference shown |
 
 The difference is engine minus baseline on the questions both runs scored; the CI is a paired bootstrap (10,000 resamples) and `reading` only says whether it excludes 0.
 
@@ -115,6 +132,7 @@ The difference is engine minus baseline on the questions both runs scored; the C
 |---|---|---|---:|---:|---:|---:|---:|
 | `2026-11-26T00-27-09Z_engine-0.6.1_haiku` | dev | claude-haiku-5-5 | 100.0% | 13.3% | 50.0% | 0.00033 | 14100 (dev live sample, n=32) |
 | `2026-11-26T00-51-47Z_engine-0.6.1_sonnet` | dev | claude-sonnet-5-5 | 100.0% | 11.1% | 61.7% | 0.00457 | 15350 (dev live sample, n=32) |
+| `2026-11-26T01-30-25Z_engine-0.6.1_haiku` | test | claude-haiku-5-5 | 96.4% | 17.1% | 40.7% | 0.00042 | 14100 (dev live sample, n=32) |
 
 Latency sample `2026-11-26T00-59-58Z_engine-0.6.1_haiku` (engine, claude-haiku-5-5, dev split, sets numeric, financebench, narrative, unanswerable, n=32 answered, refusals included): p50 5736 ms, p95 14100 ms. Live calls from a laptop that runs the whole engine (embedding and reranking included) against the box's database, so it includes the laptop-to-box network delay and is not a server-side number.
 
