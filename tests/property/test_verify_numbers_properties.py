@@ -6,7 +6,7 @@ from __future__ import annotations
 from decimal import Decimal
 
 import pytest
-from hypothesis import assume, given
+from hypothesis import example, given
 from hypothesis import strategies as st
 
 from app.engine.compose.format import format_value
@@ -151,10 +151,10 @@ def test_parenthesized_amount_is_negative(amount: int) -> None:
 
 
 @given(st.integers(-100_000, 100_000))
+@example(2000)  # in the year range: a unit word follows, so it is a value (decision M)
 def test_bps_and_percent_of_the_same_rate_are_the_same_fraction(bps: int) -> None:
     """N bps and N/100 percent are one number in base units, at the same precision, and 100
     times smaller than N percent."""
-    assume(not 1990 <= bps <= 2099)  # "2000 bps" collides with the bare-year rule as written
     [as_bps] = parse_numbers(f"The change was {bps} bps.")
     [as_pct] = parse_numbers(f"The change was {D(bps).scaleb(-2):.2f}%.")
     [bare_pct] = parse_numbers(f"The change was {bps}%.")
@@ -215,10 +215,10 @@ def test_labels_are_never_values_or_years(text: str) -> None:
 
 @given(st.sampled_from(MONTHS), st.integers(1, 28), st.integers(1990, 2099))
 def test_a_date_holds_no_value(month: str, day: int, year: int) -> None:
-    """In "<month> <day>, <year>" the day is a label and the year a year, for every date."""
+    """In "<month> <day>, <year>" the day and the year are labels, for every date (decision
+    C)."""
     found = parse_numbers(f"As of {month} {day}, {year}, nothing changed.")
-    assert [n.kind for n in found] == ["label", "year"]
-    assert found[1].value == D(year)
+    assert [n.kind for n in found] == ["label", "label"]
 
 
 @given(decimals(10**12, 4), decimals(10**6, 4), decimals(10**12, 4))

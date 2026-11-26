@@ -6,6 +6,7 @@ honest, so that a "must pass" or "must fail" case really is what its docstring s
 
 from __future__ import annotations
 
+import re
 from decimal import Decimal
 
 import pytest
@@ -120,3 +121,40 @@ def test_dev_claim_has_the_token_its_test_is_about(
     assert isinstance(claim.provenance, ChunkProvenance)
     assert in_claim in claim.text
     assert absent_from_quote not in claim.provenance.quote
+
+
+SCALED = [
+    ("fb-00438", "c2", "million"),
+    ("fb-00517", "c1", "million"),
+    ("fb-00517", "c2", "million"),
+    ("fb-00517", "c3", "million"),
+    ("fb-00711", "c1", "million"),
+    ("fb-04171", "c1", "thousand"),
+]
+
+
+@pytest.mark.parametrize(("question_id", "claim_id", "scale"), SCALED)
+def test_dev_scaled_claim_cites_a_passage_that_declares_its_scale(
+    question_id: str, claim_id: str, scale: str
+) -> None:
+    """The six accept cases of decision E rest on real facts: the claim writes the scale, the
+    quote does not, the shown passage declares it, and the company is allowed."""
+    case = vc.dev_case(question_id, claim_id)
+    provenance = case.claim.provenance
+    assert isinstance(provenance, ChunkProvenance)
+    passage = case.evidence.chunks[provenance.chunk_id]
+    assert " ".join(provenance.quote.split()) in " ".join(passage.text.split())
+    assert scale in case.claim.text and scale not in provenance.quote.lower()
+    assert re.search(rf"\bin\s+{scale}s\b", passage.text, re.IGNORECASE)
+    assert not case.ctx.allowed_ciks or passage.cik in case.ctx.allowed_ciks
+
+
+def test_real_records_are_the_hard_case_for_company_names() -> None:
+    """Decision A's premises: Microsoft's record has its filed name and no alias, tickers that
+    are words are tracked, and NASDAQ is a tracked company."""
+    companies = vc.dev_reference().companies
+    microsoft = companies[vc.MICROSOFT]
+    assert (microsoft.name, microsoft.aliases) == ("MICROSOFT CORP", [])
+    tickers = {t for c in companies.values() for t in [c.ticker, *c.tickers] if t}
+    assert {"A", "C", "ALL", "IT", "ON", "NOW", "MSFT"} <= tickers
+    assert any(c.name == "NASDAQ, INC." for c in companies.values())

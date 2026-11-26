@@ -1,5 +1,6 @@
-"""``verify/policy.py``: keep or drop, sufficiency (D5), refusals (D6, ADR-041) and status.
-Written before the implementation."""
+"""``verify/policy.py``: keep or drop, sufficiency (D5), refusals (ADR-041; ADR-049 decisions
+H0, H, I and J, which replace D6's "keep a clean composer reason") and status. Written before
+the implementation."""
 
 from __future__ import annotations
 
@@ -489,7 +490,7 @@ def test_every_claim_dropped_is_refused_even_with_no_slots() -> None:
     assert_refused(run([claim], vc.context([]), drop={0}))
 
 
-# --- composer refusals (D6) ---------------------------------------------------------------------
+# --- composer refusals (H0: none of the composer's words survive) -------------------------------
 
 GUIDANCE = Refusal(
     reason="No FY2027 guidance appears in Apple's filings.",
@@ -499,33 +500,52 @@ GUIDANCE = Refusal(
 
 
 def test_composer_refusal_stays_a_refusal_when_every_claim_passes() -> None:
-    """Passing claims do not turn the composer's refusal into an answer. A clean reason and
-    missing list stay; ``found`` is rebuilt from the kept claims, never copied."""
+    """Passing claims do not turn the composer's refusal into an answer. None of the composer's
+    own words survive (decision H0): the reason is a template, ``missing`` comes from slots and
+    ``found`` is rebuilt from the kept claims."""
     claim = value_claim()
     decision = run([claim], value_ctx(), refusal=GUIDANCE)
     refusal = assert_refused(decision)
     assert decision.kept == [claim]
     assert refusal.found == [claim.text]
-    assert refusal.reason == GUIDANCE.reason
-    assert refusal.missing == GUIDANCE.missing
-    assert "500" not in refusal.model_dump_json()
+    assert refusal.reason != GUIDANCE.reason
+    dumped = refusal.model_dump_json()
+    for composer_text in (GUIDANCE.reason, *GUIDANCE.missing, *GUIDANCE.found, "500"):
+        assert composer_text not in dumped
 
 
-def test_composer_refusal_without_claims_keeps_its_clean_reason() -> None:
-    """The ordinary refusal of an unanswerable question passes through, with years in it (a
-    year is not a value-bearing number) and an empty ``found``."""
+def test_composer_refusal_without_claims_is_templated_too() -> None:
+    """Even a clean refusal of an unanswerable question is rewritten: the unmet text need is
+    what is missing."""
     decision = run([], narrative_ctx(), refusal=GUIDANCE)
     refusal = assert_refused(decision)
     assert refusal.found == []
-    assert refusal.reason == GUIDANCE.reason
-    assert set(GUIDANCE.missing) <= set(refusal.missing)
+    assert refusal.reason != GUIDANCE.reason
+    assert refusal.missing and not set(GUIDANCE.missing) & set(refusal.missing)
 
 
-def test_composer_reason_with_a_number_a_kept_claim_states_stays() -> None:
-    """A figure backed by a verified claim is not new."""
-    reason = "The filings report revenue of $383.3 billion but give no guidance."
-    decision = run([value_claim()], value_ctx(), refusal=Refusal(reason=reason))
-    assert assert_refused(decision).reason == reason
+def test_the_reason_does_not_depend_on_what_the_composer_said() -> None:
+    """The template is a function of what is unmet, never of composer prose: two different
+    composer refusals over the same claims give the same refusal."""
+    first = Refusal(reason="Alpha wording about the question.", missing=["alpha detail"])
+    second = Refusal(reason="Entirely different beta wording.", missing=["beta detail"])
+    one = run([value_claim()], value_ctx(), refusal=first).refusal
+    two = run([value_claim()], value_ctx(), refusal=second).refusal
+    assert one is not None and one == two
+
+
+def test_a_composer_reason_paraphrasing_a_dropped_claim_does_not_reach_the_output() -> None:
+    """Required by H0: no number and no copied sentence, so only "never surface the composer's
+    reason" stops the dropped claim's content."""
+    bad = vc.text_claim("Margins fell because China demand collapsed.", "a quote of words",
+                        claim_id="t9")  # fmt: skip
+    composer = Refusal(
+        reason="Weak Chinese demand hurt margins, but the forecast is not disclosed.",
+        missing=["why softness in China persisted"],
+    )
+    decision = run([narrative_claims()[0], bad], narrative_ctx(), drop={1}, refusal=composer)
+    dumped = assert_refused(decision).model_dump_json()
+    assert "Chin" not in dumped and "demand" not in dumped.lower()
 
 
 def test_composer_reason_with_an_unsupported_number_is_replaced() -> None:
@@ -615,3 +635,36 @@ def test_status_kept_and_refusal_stay_consistent(
         assert_refused(decision)
     else:
         assert_answered(decision, "verified")
+
+
+# --- decision I: a numeric question with nothing computed ----------------------------------------
+
+
+def test_numeric_plan_with_no_results_is_refused_despite_a_kept_text_claim() -> None:
+    """Decision I: no compiled result, no NotFound, not a text-only fallback: nothing answers
+    the numeric question, so a surviving passage does not make it verified."""
+    claim = vc.text_claim("A supported aside.", "a quote of words")
+    ctx = vc.context([], vc.plan(), text_only=False)
+    decision = run([claim], ctx)
+    refusal = assert_refused(decision)
+    assert decision.kept == [claim] and refusal.missing
+
+
+# --- decisions H and J ----------------------------------------------------------------------------
+
+
+def test_a_dropped_claim_with_the_same_text_as_a_kept_one_leaves_found_intact() -> None:
+    """Decision H: "no dropped text" means no text that only a dropped claim has."""
+    kept = value_claim()
+    twin = vc.expr_claim(kept.text, "f:999", [999], "383285000000", claim_id="c2")
+    decision = run([kept, twin], value_ctx(not_found=[not_found()]), drop={1})
+    assert assert_refused(decision).found == [kept.text]
+
+
+def test_a_refusal_for_the_primary_claim_alone_names_its_metric_and_period() -> None:
+    """Decision J: every slot is met (both values), but the dropped primary was the
+    difference."""
+    decision = run(compare_claims(primary=2), vc.compare_context(), drop={2})
+    refusal = assert_refused(decision)
+    entries = " | ".join(refusal.missing).lower()
+    assert refusal.missing and "revenue" in entries and "2023" in entries

@@ -601,3 +601,29 @@ def dev_case(question_id: str, claim_id: str) -> Case:
         evidence_for(dev_trace(), row),
         context_for(row, dev_reference()),
     )
+
+
+# --- real company records (ADR-049, decision A) ---------------------------------------------------
+
+
+def with_real_companies(case: Case) -> Case:
+    """``case`` with the tracked companies as the engine knows them: filed names such as
+    "MICROSOFT CORP", no hand-made short aliases, and tickers that are also words."""
+    return case._replace(ctx=case.ctx.model_copy(update={"companies": dev_reference().companies}))
+
+
+def restated_difference_case(text: str) -> Case:
+    """Apple's latest restated value cited under a compare: the note sits on the difference."""
+    apple, msft, diff = compare_results()
+    diff = diff.model_copy(update={"notes": [restated_note()]})
+    claim = expr_claim(
+        text,
+        f"f:{REV23_LATEST}",
+        [REV23_LATEST],
+        "390000000000",
+        claim_id="c9",
+        display="$390.0 billion",
+    )
+    facts = [*compare_evidence().facts.values(), restated_evidence().facts[REV23_LATEST]]
+    ctx = context([apple, msft, diff], plan(ciks=[APPLE, MICROSOFT], operation="compare"))
+    return Case(claim, evidence(*facts), ctx)

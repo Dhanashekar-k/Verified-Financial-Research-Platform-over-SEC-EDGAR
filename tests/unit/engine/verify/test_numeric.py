@@ -1,5 +1,6 @@
 """``verify/numeric.py``: provenance re-execution, number-in-text, metadata and wording checks
-(M06 3.2, 4.1; ADR-049 D1-D3, D7). Written before the implementation."""
+(M06 3.2, 4.1; ADR-049 D1-D3, D7 and the spec decisions A to O, which win where the stub's
+docstring disagrees). Written before the implementation."""
 
 from __future__ import annotations
 
@@ -324,14 +325,6 @@ def test_upward_word_over_a_negative_growth_fails(word: str) -> None:
     assert_fails(outcome, "metadata_match", others_pass=("provenance_exec",))
 
 
-def test_higher_over_a_negative_difference_fails() -> None:
-    """For a difference, "higher" requires v* > 0 (a false keep to close)."""
-    case = vc.reverse_compare_case(
-        "Microsoft's FY2023 revenue was $171.4 billion higher than Apple's."
-    )
-    assert_fails(run(case), "metadata_match", others_pass=("provenance_exec",))
-
-
 def test_lower_over_a_negative_difference_passes() -> None:
     """ "lower" with an unsigned magnitude states the negative difference."""
     case = vc.reverse_compare_case(
@@ -340,10 +333,37 @@ def test_lower_over_a_negative_difference_passes() -> None:
     assert_passes(run(case))
 
 
-def test_lower_over_a_positive_difference_fails() -> None:
-    """The mirror case: "lower" requires v* < 0."""
-    case = vc.compare_case(2, "Apple's FY2023 revenue was $171.4 billion lower than Microsoft's.")
+@pytest.mark.parametrize(
+    ("build", "text"),
+    [
+        (
+            "reverse",
+            "Microsoft's FY2023 revenue was $171.4 billion higher than Apple's.",
+        ),
+        ("compare", "Apple's FY2023 revenue was $171.4 billion lower than Microsoft's."),
+        ("compare", "Microsoft's FY2023 revenue was $171.4 billion lower than Apple's."),
+    ],
+)
+def test_relational_phrasing_over_a_difference_is_kept(build: str, text: str) -> None:
+    """Decision G: drop only on a clear contradiction; keep relational phrasing, where which
+    side is "lower" depends on the sentence. DOCUMENTS A LIMIT: the first two rows are false
+    and are kept. The unsigned magnitude states the difference in either direction."""
+    case = vc.reverse_compare_case(text) if build == "reverse" else vc.compare_case(2, text)
+    assert_passes(run(case))
+
+
+def test_a_claimed_decrease_over_a_positive_growth_fails() -> None:
+    """Decision G, the mirror contradiction: "decreased" over a positive growth rate."""
+    case = vc.two_year_growth_case(
+        "Apple's revenue decreased 4.8% from fiscal 2021 to fiscal 2023."
+    )
     assert_fails(run(case), "metadata_match", others_pass=("provenance_exec",))
+
+
+def test_a_direction_word_binds_to_its_number_only() -> None:
+    """Decision G: "higher" describes the prices, "decreased" the figure. Keep."""
+    case = vc.growth_case("Apple's revenue on higher prices decreased 36.7% in fiscal 2023.")
+    assert_passes(run(case))
 
 
 @pytest.mark.parametrize("wrong", ["2022", "FY2022", "FY22", "fiscal 2024"])
@@ -424,7 +444,9 @@ def test_naming_another_company_fails_metadata(text: str) -> None:
 )
 def test_compare_claims_with_swapped_names_both_fail(which: int, text: str) -> None:
     """Both halves of a swapped comparison fail, although each company is in the plan and each
-    number is real (a required false-keep case)."""
+    number is real (a required false-keep case). This is D3 (the named company is the matched
+    result's), which decision A adds to and does not replace: "an allowed company" alone would
+    keep both."""
     outcome = run(vc.compare_case(which, text))
     assert_fails(outcome, "metadata_match", others_pass=("provenance_exec", "number_in_text"))
 
@@ -540,7 +562,7 @@ def test_derived_q4_in_words_passes() -> None:
 
 
 def test_december_31_date_passes() -> None:
-    """ "December 31, 2021" is a day label plus an allowed year."""
+    """ "December 31, 2021" is a date: its day and its year are labels (decision C)."""
     assert_passes(run(vc.instant_assets_case()))
 
 
@@ -551,10 +573,26 @@ def test_december_31_date_passes() -> None:
         "Walmart's fiscal 2023 revenue was $648.1 billion.",
     ],
 )
-def test_january_fiscal_year_end_accepts_both_years(text: str) -> None:
-    """Fiscal 2023 may end in January 2024: the calendar year of a cited period_end is as
-    legitimate as the fiscal year."""
+def test_january_fiscal_year_end_accepts_its_date_and_fiscal_year(text: str) -> None:
+    """Fiscal 2023 may end in January 2024: a year inside a date is a label, and "fiscal 2023"
+    is the fact's own fiscal year."""
     assert_passes(run(vc.january_fye_case(text)))
+
+
+@pytest.mark.parametrize(
+    "text",
+    [
+        "Walmart's fiscal 2024 revenue was $648.1 billion.",
+        "Walmart's FY2024 revenue was $648.1 billion.",
+        "Walmart's FY24 revenue was $648.1 billion.",
+        "In fiscal 2024, ended January 31, 2024, Walmart's revenue was $648.1 billion.",
+    ],
+)
+def test_a_fiscal_year_must_equal_the_facts_fiscal_year(text: str) -> None:
+    """Decision C: "fiscal YYYY" / "FYYYYY" equals fact.fiscal_year exactly. The period_end of
+    this fiscal 2023 is 2024-01-31, which no longer licenses "fiscal 2024"."""
+    outcome = run(vc.january_fye_case(text))
+    assert_fails(outcome, "metadata_match", others_pass=("provenance_exec", "number_in_text"))
 
 
 def test_january_fiscal_year_end_still_rejects_other_years() -> None:
@@ -765,3 +803,190 @@ def test_share_count_metric_requires_shares() -> None:
     assert_passes(run(vc.Case(claim, vc.evidence(good), ctx)))
     bad = good.model_copy(update={"uom": "USD"})
     assert_fails(run(vc.Case(claim, vc.evidence(bad), ctx)), "metadata_match")
+
+
+# --- A: company, with real company records ------------------------------------------------------
+
+
+@pytest.mark.parametrize(
+    "text",
+    [
+        "Microsoft's FY2023 revenue was $383.3 billion.",
+        "MICROSOFT CORP reported FY2023 revenue of $383.3 billion.",
+        "Microsoft Corporation reported FY2023 revenue of $383.3 billion.",
+        "MSFT reported FY2023 revenue of $383.3 billion.",
+    ],
+)
+def test_another_company_over_an_apple_fact_is_dropped_with_real_records(text: str) -> None:
+    """Decision A: a mention normalizes through ``resolve_company.normalize_name`` (suffixes
+    stripped) to a company that is not allowed, or is such a company's ALL-CAPS ticker. The
+    real record is "MICROSOFT CORP" with no short alias."""
+    outcome = run(vc.with_real_companies(vc.revenue_case(text)))
+    assert_fails(outcome, "metadata_match", others_pass=("provenance_exec", "number_in_text"))
+
+
+@pytest.mark.parametrize(
+    "text",
+    [
+        "Apple's FY2023 revenue was $383.3 billion.",
+        "Apple Inc. reported FY2023 revenue of $383.3 billion.",
+        "AAPL reported FY2023 revenue of $383.3 billion.",
+    ],
+)
+def test_the_allowed_company_passes_with_real_records(text: str) -> None:
+    assert_passes(run(vc.with_real_companies(vc.revenue_case(text))))
+
+
+@pytest.mark.parametrize(
+    "text",
+    [
+        "A figure of $383.3 billion was Apple's FY2023 revenue.",
+        "Across ALL segments, Apple's FY2023 revenue was $383.3 billion.",
+        "Apple's FY2023 revenue, IT services included, was $383.3 billion.",
+        "Apple's FY2023 revenue was $383.3 billion ON a consolidated basis.",
+        "Apple's FY2023 revenue is NOW reported as $383.3 billion.",
+        "Apple's FY2023 revenue was $383.3 billion (see note C).",
+    ],
+)
+def test_a_ticker_that_is_a_word_or_one_letter_names_no_company(text: str) -> None:
+    """Decision A: A, ALL, IT, ON, NOW and C are all real tracked tickers; none of them may
+    drop a true claim."""
+    assert_passes(run(vc.with_real_companies(vc.revenue_case(text))))
+
+
+# --- D: the claim's unit -------------------------------------------------------------------------
+
+
+@pytest.mark.parametrize(
+    ("build", "unit"),
+    [
+        (vc.revenue_case, "shares"),
+        (vc.revenue_case, "ratio"),
+        (vc.revenue_case, "USD/shares"),  # the per-share alias is for per-share metrics only
+        (vc.eps_case, "shares"),
+        (vc.margin_case, "USD"),
+        (vc.growth_case, "USD"),
+    ],
+    ids=["usd_as_shares", "usd_as_ratio", "usd_as_per_share", "eps_as_shares",
+         "ratio_as_usd", "growth_as_usd"],
+)  # fmt: skip
+def test_a_flipped_unit_fails_metadata(build, unit: str) -> None:
+    """Decision D: a numeric claim's unit is checked against the fact's uom (EPS alias
+    allowed). A ratio or growth result's unit is "ratio" while its facts are USD, so there the
+    claim is held to the compiled result's unit."""
+    case = with_claim(build(), unit=unit)
+    assert_fails(run(case), "metadata_match", others_pass=("provenance_exec", "number_in_text"))
+
+
+# --- F: which other numbers a numeric claim may state --------------------------------------------
+
+
+@pytest.mark.parametrize(
+    "text",
+    [
+        "Apple's revenue decreased 36.7% to $633.0 million in fiscal 2023.",
+        "Apple's revenue decreased 36.7%, from $1.0 billion in fiscal 2022 to $633.0 million "
+        "in fiscal 2023.",
+    ],
+)
+def test_each_cited_fact_value_is_supported(text: str) -> None:
+    """Decision F: supported numbers are v*, each cited fact's value and the restated
+    latest_value."""
+    assert_passes(run(vc.growth_case(text)))
+
+
+def restated_mention(text: str) -> vc.Case:
+    res = vc.restated_result()
+    return vc.Case(vc.numeric_claim(text, res), vc.restated_evidence(), vc.context([res]))
+
+
+def test_the_restated_latest_value_is_supported() -> None:
+    """Composer rule 5 requires the restatement to be mentioned."""
+    case = restated_mention(
+        "Apple's FY2023 revenue was $383.3 billion, later restated to $390.0 billion."
+    )
+    assert_passes(run(case))
+
+
+def test_a_wrong_restated_value_is_not_supported() -> None:
+    case = restated_mention(
+        "Apple's FY2023 revenue was $383.3 billion, later restated to $391.0 billion."
+    )
+    assert_fails(run(case), "number_in_text", others_pass=("provenance_exec",))
+
+
+def test_a_wrong_input_value_is_not_supported() -> None:
+    case = vc.growth_case("Apple's revenue decreased 36.7% to $634.0 million in fiscal 2023.")
+    assert_fails(run(case), "number_in_text")
+
+
+def test_a_cited_input_alone_does_not_state_the_result() -> None:
+    """At least one number must still state v*: an input is not the answer."""
+    case = vc.growth_case("Apple's revenue was $633.0 million in fiscal 2023.")
+    assert_fails(run(case), "number_in_text")
+
+
+@pytest.mark.parametrize(
+    "text",
+    [
+        "Apple ranked 2nd with FY2023 revenue of $383.3 billion.",
+        "Apple's FY2023 revenue was $383.3 billion, near its 52-week average.",
+    ],
+)
+def test_ordinals_and_52_week_are_labels(text: str) -> None:
+    assert_passes(run(vc.revenue_case(text)))
+
+
+# --- K: a restated value cited under a difference ------------------------------------------------
+
+
+@pytest.mark.parametrize(
+    "text",
+    [
+        "Apple's FY2023 revenue was later restated to $390.0 billion.",
+        "Apple's FY2023 revenue was later restated lower, to $390.0 billion.",
+    ],
+)
+def test_a_restated_value_under_a_difference_needs_its_own_company_only(text: str) -> None:
+    """Decision K: the claim states one company's raw figure, so it is held to that company and
+    the direction rule is skipped."""
+    assert_passes(run(vc.restated_difference_case(text)))
+
+
+def test_a_restated_value_under_a_difference_cannot_name_the_other_company() -> None:
+    case = vc.restated_difference_case(
+        "Microsoft's FY2023 revenue was later restated to $390.0 billion."
+    )
+    assert_fails(run(case), "metadata_match", others_pass=("provenance_exec", "number_in_text"))
+
+
+@pytest.mark.parametrize(
+    "text",
+    [
+        "McDonald's FY2023 revenue was $383.3 billion.",
+        "Lowe's FY2023 revenue was $383.3 billion.",
+    ],
+)
+def test_a_possessive_company_name_is_still_recognised(text: str) -> None:
+    """Decision A on real records: ``normalize_name("McDonald's")`` gives "mcdonald" while the
+    record is "MCDONALDS CORP"; ``resolve_company.name_variants`` also tries "mcdonalds". A
+    name that is not recognised would be a false keep."""
+    outcome = run(vc.with_real_companies(vc.revenue_case(text)))
+    assert_fails(outcome, "metadata_match", others_pass=("provenance_exec", "number_in_text"))
+
+
+def test_without_a_company_restriction_the_fact_still_binds_the_name() -> None:
+    """An empty ``allowed_ciks`` lifts the plan restriction, not D3: a numeric claim still
+    names its own fact's company."""
+    case = vc.with_real_companies(vc.revenue_case("Microsoft's FY2023 revenue was $383.3 billion."))
+    case = case._replace(ctx=case.ctx.model_copy(update={"allowed_ciks": frozenset()}))
+    assert_fails(run(case), "metadata_match", others_pass=("provenance_exec",))
+
+
+def test_a_restated_value_under_a_difference_has_no_direction_rule() -> None:
+    """Decision K: "fell" would contradict the positive difference, but the claim cites one
+    raw restated figure, so no direction is checked."""
+    case = vc.restated_difference_case(
+        "Apple's FY2023 revenue was restated and fell to $390.0 billion."
+    )
+    assert_passes(run(case))

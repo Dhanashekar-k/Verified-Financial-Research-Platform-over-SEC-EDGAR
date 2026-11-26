@@ -1,5 +1,6 @@
 """``verify/numbers.py``: parsing, classification, precision, matching and D1 tolerance
-(M06 3.1, ADR-049). Written before the implementation."""
+(M06 3.1; ADR-049 and its spec decisions C, F and M, which win where the stub's docstring
+disagrees). Written before the implementation."""
 
 from __future__ import annotations
 
@@ -176,12 +177,11 @@ def test_digits_that_name_something_are_labels(text: str) -> None:
         ("For the year ended September 30, 2023.", 2023),
     ],
 )
-def test_day_of_month_is_a_label_and_the_year_is_a_year(text: str, year: int) -> None:
-    """A date holds a label (the day) and a year, neither a value: balance-sheet claims name
-    their date and must not be dropped for it."""
-    found = parse_numbers(text)
-    assert [n.kind for n in found] == ["label", "year"]
-    assert found[1].value == D(year)
+def test_a_date_is_all_labels(text: str, year: int) -> None:
+    """Decision C: the day and the year inside a date are labels. Neither is a value, and a
+    date's year is not held to a fiscal year (a fiscal 2023 may end in January 2024)."""
+    assert str(year) in text
+    assert kinds(text) == ["label", "label"]
 
 
 def test_asserted_zero_is_a_value_not_a_label() -> None:
@@ -209,12 +209,13 @@ def test_small_count_asserted_by_the_sentence_is_a_value() -> None:
 @pytest.mark.parametrize(
     ("question_id", "claim_id", "expected"),
     [
-        ("fb-00494", "c2", ["label", "value", "year"]),  # 787, 5 per month, 2023
+        # 787, 5 per month, "October 2023" (month and year: either kind, not pinned)
+        ("fb-00494", "c2", ["label", "value", None]),
         ("fb-00746", "c1", ["label"]),  # 12(b)
         ("fb-00651", "c1", ["year", "value"]),  # 2023, 12.5%
         ("fb-00651", "c2", ["label", "year", "value", "value"]),  # Q2 2023, $2.80, 8.1%
         ("fb-00724", "c1", ["label", "year"]),  # Q2 2023
-        ("fb-03282", "c1", ["label", "year", "value"]),  # December 31, 2017, 5,466,312
+        ("fb-03282", "c1", ["label", "label", "value"]),  # December 31, 2017, 5,466,312
         ("fb-00723", "c1", ["value", "year"]),  # 24 percent, 2022
         ("fb-01328", "c1", ["year", "value"]),  # FY2022, the asserted 0
         ("fb-01328", "c2", ["value", "year"]),  # 411, 2022
@@ -224,8 +225,11 @@ def test_dev_claim_tokens_are_classified(
     question_id: str, claim_id: str, expected: list[str]
 ) -> None:
     """The numbers of real dev claims get the kinds the number-in-quote rule depends on: only
-    the values need support in the quote."""
-    assert kinds(vc.dev_claim(question_id, claim_id).text) == expected
+    the values need support in the quote. ``None``: "year" or "label", never "value"."""
+    got = kinds(vc.dev_claim(question_id, claim_id).text)
+    assert len(got) == len(expected), got
+    for have, want in zip(got, expected, strict=True):
+        assert have == want if want is not None else have in ("year", "label"), got
 
 
 # --- matches ------------------------------------------------------------------------------------
@@ -310,3 +314,86 @@ def test_value_tolerance_takes_rel_from_the_caller() -> None:
     """``rel`` comes from ``VerifyConfig``, not a constant inside the function."""
     assert value_tolerance(D(1000), None, rel=D("0.1")) == D(100)
     assert value_tolerance(D(1000), None, rel=D(0)) == D(0)
+
+
+# --- C: fiscal years and dates -------------------------------------------------------------------
+
+
+@pytest.mark.parametrize("text", ["It ended on 2024-01-31.", "It ended on 31 January 2024."])
+def test_other_date_forms_hold_no_value_or_year(text: str) -> None:
+    found = parse_numbers(text)
+    assert found and all(n.kind == "label" for n in found), found
+
+
+@pytest.mark.parametrize("text", ["fiscal 2024 sales", "FY2024 sales", "FY24 sales"])
+def test_a_fiscal_year_is_a_year_even_beside_a_date(text: str) -> None:
+    """ "fiscal YYYY" / "FYYYYY" is what numeric.py holds to fact.fiscal_year."""
+    found = parse_numbers(f"In {text} through January 31, 2024, nothing changed.")
+    assert (found[0].kind, found[0].value) == ("year", D(2024))
+    assert [n.kind for n in found[1:]] == ["label", "label"]
+
+
+# --- F: ordinals and "52-week" -------------------------------------------------------------------
+
+
+@pytest.mark.parametrize(
+    "text",
+    [
+        "It ranked 1st among peers.",
+        "It ranked 2nd among peers.",
+        "It ranked 23rd among peers.",
+        "It ranked 4th among peers.",
+        "The shares sit near a 52-week high.",
+    ],
+)
+def test_ordinals_and_52_week_assert_no_quantity(text: str) -> None:
+    assert kinds(text) == ["label"]
+
+
+# --- M: a unit word means it is not a year -------------------------------------------------------
+
+
+@pytest.mark.parametrize(
+    "written",
+    ["2000 bps", "2050 basis points", "2050 shares", "1999 bps", "2023 shares"],
+)
+def test_a_number_followed_by_a_unit_word_is_not_a_year(written: str) -> None:
+    """Decision M: read as a year it would never be checked."""
+    [n] = parse_numbers(f"The change was {written} in total.")
+    assert n.kind == "value"
+
+
+# --- digits inside a company's name ---------------------------------------------------------------
+
+
+@pytest.mark.parametrize(
+    "text",
+    ["3M Co reported higher liabilities.", "In its filing, 3M described the plan."],
+)
+def test_3m_is_a_name_not_three_million(text: str) -> None:
+    """ "3M" is the company. Read with the letter scale M it would be an unsupported value and
+    drop true claims (dev: num-0043 c1, fb-00499 c1)."""
+    assert not [n for n in parse_numbers(text) if n.kind in ("value", "year")]
+
+
+def test_dev_3m_claim_holds_one_value() -> None:
+    """num-0043 c1: only "$35.4 billion" asserts a quantity."""
+    found = parse_numbers(vc.dev_claim("num-0043", "c1").text)
+    assert [n.value for n in found if n.kind == "value"] == [D("35400000000")]
+
+
+# --- C before M ----------------------------------------------------------------------------------
+
+
+@pytest.mark.parametrize(
+    "text",
+    [
+        "In fiscal 2023 shares outstanding rose.",
+        "FY2023 shares outstanding rose.",
+    ],
+)
+def test_a_fiscal_year_stays_a_year_before_a_unit_word(text: str) -> None:
+    """ "fiscal YYYY" is a fiscal year (decision C) even when the next word is a unit word
+    (decision M is about a bare number)."""
+    [n] = parse_numbers(text)
+    assert (n.kind, n.value) == ("year", D(2023))

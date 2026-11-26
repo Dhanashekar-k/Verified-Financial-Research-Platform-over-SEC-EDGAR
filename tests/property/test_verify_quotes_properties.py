@@ -91,6 +91,8 @@ def test_dirtied_quote_is_located_in_dirtied_passage(case: tuple[str, str, str])
     assert span is not None
     start, end = span
     assert 0 <= start < end <= len(passage)
+    for edge in (passage[start], passage[end - 1]):  # the smallest span (decision O)
+        assert not edge.isspace() and edge != ZERO_WIDTH
     assert normalize(passage[start:end]) == normalize(clean)
 
 

@@ -1,5 +1,6 @@
 """``verify/quotes.py``: normalization, quote location, and the text-claim checks (M06 3.3, 4.1;
-ADR-049 D4, D7). The verifier has no entailment stage. Written before the implementation."""
+ADR-049 D4, D7 and the spec decisions A to O, which win where the stub's docstring
+disagrees). The verifier has no entailment stage. Written before the implementation."""
 
 from __future__ import annotations
 
@@ -21,6 +22,7 @@ pytestmark = pytest.mark.xfail(
 CFG = VerifyConfig()
 DECIDED = ("quote_substring", "metadata_match", "number_in_text")
 SALES_QUOTE = "Net sales decreased 3% during 2023 compared to 2022."
+APPLE_ONLY = frozenset({vc.APPLE})
 
 
 def run(case: vc.Case, cfg: VerifyConfig = CFG) -> CheckOutcome:
@@ -90,9 +92,9 @@ def located(quote: str, text: str) -> str:
 
 def test_locate_returns_offsets_into_the_original_text() -> None:
     """The span indexes the original passage, not its normalized form, so the UI can highlight
-    it. Surrounding whitespace is not pinned (it normalizes away)."""
+    it, and it is the smallest one: no surrounding space (decision O)."""
     text = "Intro.\n\n  NET\u00a0\u00a0Sales   rose \u2014 sharply. End."
-    assert located("net sales rose - sharply", text).strip() == (
+    assert located("  net sales rose - sharply ", text) == (
         "NET\u00a0\u00a0Sales   rose \u2014 sharply"
     )
 
@@ -101,7 +103,7 @@ def test_locate_offsets_survive_case_folding_that_changes_length() -> None:
     """Case folding lengthens some characters (sharp s, ligatures); offsets taken from the
     folded string would drift."""
     text = "Die Stra\u00dfe und das \ufb01le: net sales rose sharply here."
-    assert located("net sales rose sharply", text).strip() == "net sales rose sharply"
+    assert located("net sales rose sharply", text) == "net sales rose sharply"
 
 
 def test_locate_returns_the_first_occurrence() -> None:
@@ -109,7 +111,7 @@ def test_locate_returns_the_first_occurrence() -> None:
     text = "Sales rose fast. Later, sales rose fast again."
     span = locate_quote("sales rose fast", text)
     assert span is not None and span[0] < 5
-    assert text[span[0] : span[1]].strip() == "Sales rose fast"
+    assert text[span[0] : span[1]] == "Sales rose fast"
 
 
 @pytest.mark.parametrize("quote", ["sales fell fast", "", "   ", "\u200b"])
@@ -275,8 +277,6 @@ def test_any_allowed_company_may_be_cited() -> None:
         "Net sales decreased 30% during 2023.",
         "Net sales decreased 3.4% during 2023.",
         "Net sales decreased 3% to $383.3 billion.",  # a second, unquoted figure
-        "Net sales changed by -3% during 2023.",  # sign flip
-        "Net sales decreased 3 during 2023.",  # a percentage turned into a count
     ],
 )
 def test_number_changed_in_claim_text_fails(claim_text: str) -> None:
@@ -295,16 +295,15 @@ def test_number_elsewhere_in_the_chunk_does_not_count() -> None:
     ("claim_text", "expected"),
     [
         ("Product sales were $55,893 million.", "pass"),
-        ("Product sales were $55.9 billion.", "pass"),
-        ("Product sales were $56 billion.", "pass"),
-        ("Product sales were $56.0 billion.", "fail"),  # close but wrong
-        ("Product sales were $55.8 billion.", "fail"),
+        ("Product sales were $55.9 billion.", "fail"),  # a rounding: other digits
+        ("Product sales were $56 billion.", "fail"),
         ("Product sales were $55,894 million.", "fail"),
         ("Product sales were $55,893 billion.", "fail"),  # million vs billion
     ],
 )
-def test_claim_number_is_matched_at_its_own_precision(claim_text: str, expected: str) -> None:
-    """A claim may round the quoted figure only as far as its own digits allow."""
+def test_a_value_needs_the_same_significant_digits(claim_text: str, expected: str) -> None:
+    """Decision E: number-in-quote is a match of the significant-digit sequence, plus the
+    scale. A rounded restatement of a quoted figure is no longer supported."""
     case = vc.text_case(
         claim_text,
         "sales of products were $55,893 million",
@@ -331,8 +330,8 @@ def test_claim_cannot_be_more_precise_than_its_quote() -> None:
     ],
 )
 def test_bare_table_number_cannot_support_a_scaled_claim(passage: str) -> None:
-    """D4: "32,502" does not state "$32.5 billion", even when a header outside the quote
-    gives the unit: fail closed."""
+    """ "32,502" does not state "$32.5 billion", with or without a header: the digits differ
+    (decision E)."""
     case = vc.text_case(
         "Total net sales were $32.5 billion.", "Total net sales 32,502 31,000", passage=passage
     )
@@ -342,8 +341,8 @@ def test_bare_table_number_cannot_support_a_scaled_claim(passage: str) -> None:
 
 @pytest.mark.parametrize("scaled", ["6,098 million", "6,098 billion", "$6,098 million"])
 def test_unscaled_source_supports_no_scale_word(scaled: str) -> None:
-    """D4: with no scale in the quote or the passage, matching digits are not enough for either
-    million or billion."""
+    """D4 and E: with no scale declared in the passage, matching digits are not enough for
+    either million or billion."""
     case = vc.text_case(
         f"Total inventories were {scaled}.",
         "Total inventories 6,098 5,500",
@@ -433,7 +432,9 @@ def test_wrong_year_in_a_text_claim_passes_documented_limit() -> None:
 )
 def test_dev_claim_missing_only_exempt_tokens_is_kept(question_id: str, claim_id: str) -> None:
     """Real dev claims whose quotes omit only exempt tokens must be kept; dropping them would
-    be a measured false drop."""
+    be a measured false drop. ``fb-00746 c1`` also names "The NASDAQ Global Select Market"
+    over another company's filing, and NASDAQ, INC. is a tracked company: under decision A an
+    exchange's name must therefore not count as a company mention."""
     assert_passes(run(vc.dev_case(question_id, claim_id)))
 
 
@@ -453,3 +454,208 @@ def test_dev_semantic_over_claim_passes_documented_limit(question_id: str, claim
     over-claiming). Their quotes and numbers check out, so the deterministic verifier keeps
     them (ADR-049, recorded consequences)."""
     assert_passes(run(vc.dev_case(question_id, claim_id)))
+
+
+# --- B: a quote may not cut through a number -----------------------------------------------------
+
+CUT_PASSAGE = "Total net sales were $298,085 million in 2023. Margins grew 16% during 2023."
+
+
+@pytest.mark.parametrize(
+    ("claim_text", "quote"),
+    [
+        ("Net sales were $298.", "net sales were $298"),  # from $298,085
+        ("Margins grew 6% during 2023.", "6% during 2023"),  # from 16%
+        ("Net sales were 85 million.", "085 million in 2023"),  # starts inside 298,085
+    ],
+    ids=["ends_inside_a_grouped_number", "starts_inside_a_percentage", "starts_inside_group"],
+)
+def test_a_quote_that_cuts_a_number_fails(claim_text: str, quote: str) -> None:
+    """Decision B: a quote span may not begin or end inside a numeric token."""
+    assert quote in CUT_PASSAGE  # a plain substring: only the token boundary can reject it
+    case = vc.text_case(claim_text, quote, passage=CUT_PASSAGE)
+    assert_fails(run(case), "quote_substring")
+
+
+def test_a_quote_may_not_stop_before_a_decimal_part() -> None:
+    case = vc.text_case(
+        "Gross margin was 44.", "gross margin was 44", passage="Our gross margin was 44.1%."
+    )
+    assert_fails(run(case), "quote_substring")
+
+
+@pytest.mark.parametrize(
+    ("quote", "passage"),
+    [
+        ("net sales were 298", "In total net sales were 298."),  # a sentence's full stop
+        ("net sales were 298", "In total net sales were 298, up from 250."),
+        ("net sales were $298,085 million", "Total net sales were $298,085 million in 2023."),
+    ],
+)
+def test_punctuation_after_a_whole_number_is_not_part_of_it(quote: str, passage: str) -> None:
+    case = vc.text_case("Net sales were reported.", quote, passage=passage)
+    assert run(case).checks.quote_substring == "pass"
+
+
+def test_a_later_whole_occurrence_is_still_found() -> None:
+    """The first match sits inside "16%"; the second one is a real occurrence."""
+    passage = "Up 16% during 2023 abroad, and up only 6% during 2023 at home."
+    case = vc.text_case("Sales rose 6% at home.", "6% during 2023", passage=passage)
+    assert run(case).checks.quote_substring == "pass"
+    span = locate_quote("6% during 2023", passage)
+    assert span is not None and span[0] == passage.index("only ") + len("only ")
+
+
+def test_locate_does_not_find_a_cut_number() -> None:
+    assert locate_quote("net sales were $298", CUT_PASSAGE) is None
+
+
+# --- E: the scale must be declared in the same passage --------------------------------------------
+
+
+@pytest.mark.parametrize(
+    ("question_id", "claim_id"),
+    [
+        ("fb-00438", "c2"),  # "(In millions, except per share data)"
+        ("fb-00517", "c1"),  # "(Dollars in millions, ...)"
+        ("fb-00517", "c2"),
+        ("fb-00517", "c3"),
+        ("fb-00711", "c1"),  # "in Millions Except Per Share"
+        ("fb-04171", "c1"),  # "(In thousands, ...)" with non-breaking spaces
+    ],
+)
+def test_dev_claim_scaled_by_its_passages_declaration_is_kept(
+    question_id: str, claim_id: str
+) -> None:
+    """Decision E on the six real dev claims that write a scale word over a bare table cell."""
+    assert_passes(run(vc.dev_case(question_id, claim_id)))
+
+
+MILLIONS_TABLE = "Statement of Earnings (in millions) Net sales | 32,502 | 31,000"
+TABLE_QUOTE = "Net sales | 32,502 | 31,000"
+
+
+@pytest.mark.parametrize(
+    "header",
+    [
+        "(in millions)",
+        "(Dollars in millions, except per share data)",
+        "(Unaudited; in Millions Except Per Share Figures)",
+        "(In\u00a0millions)",
+    ],
+)
+def test_a_declared_scale_supports_the_same_scale_word(header: str) -> None:
+    passage = f"Statement of Earnings {header} {TABLE_QUOTE}"
+    case = vc.text_case("Net sales were $32,502 million.", TABLE_QUOTE, passage=passage)
+    assert_passes(run(case))
+
+
+@pytest.mark.parametrize("scale", ["billion", "thousand", "trillion"])
+def test_a_scale_the_passage_does_not_declare_fails(scale: str) -> None:
+    """Required: a "billion" claim over a cell declared "in millions" is dropped."""
+    case = vc.text_case(f"Net sales were $32,502 {scale}.", TABLE_QUOTE, passage=MILLIONS_TABLE)
+    assert_fails(run(case), "number_in_text", others_pass=("quote_substring", "metadata_match"))
+
+
+def test_a_header_inside_the_quote_declares_the_scale_too() -> None:
+    """Decisions E and N."""
+    quote = "(in millions) Net sales | 32,502"
+    passage = f"Segment results {quote} | 31,000"
+    assert_passes(run(vc.text_case("Net sales were $32,502 million.", quote, passage=passage)))
+    wrong = vc.text_case("Net sales were $32.5 billion.", quote, passage=passage)
+    assert_fails(run(wrong), "number_in_text")
+
+
+# --- G: the sign a quote's wording carries -------------------------------------------------------
+
+
+@pytest.mark.parametrize(
+    ("claim_text", "quote"),
+    [
+        ("Net sales changed by -3% during 2023.", SALES_QUOTE),  # "decreased 3%"
+        ("Sales showed a 6% decrease.", "Sales change versus prior year (6)%"),
+        ("Sales decreased 6%.", "Sales change versus prior year (6)%"),
+        ("Sales changed by -3% this year.", "Sales were down 3% this year"),
+    ],
+)
+def test_decline_wording_and_parentheses_read_as_negative(claim_text: str, quote: str) -> None:
+    passage = f"Overview. {quote}. End."
+    assert_passes(run(vc.text_case(claim_text, quote, passage=passage)))
+
+
+@pytest.mark.parametrize(
+    ("claim_text", "quote"),
+    [
+        ("Net sales increased 3% during 2023.", SALES_QUOTE),
+        ("Sales increased 6%.", "Sales change versus prior year (6)%"),
+        ("Sales changed by -3% this year.", "Sales increased 3% this year"),
+    ],
+)
+def test_a_clear_sign_contradiction_with_the_quote_fails(claim_text: str, quote: str) -> None:
+    passage = f"Overview. {quote}. End."
+    assert_fails(run(vc.text_case(claim_text, quote, passage=passage)), "number_in_text")
+
+
+# --- H1: a text claim states no value of its own -------------------------------------------------
+
+
+@pytest.mark.parametrize(
+    "extra",
+    [{"value": "999000000000"}, {"display": "$999 billion"}, {"value": "3", "display": "3%"}],
+    ids=["value", "display", "both"],
+)
+def test_a_text_claim_carrying_a_value_or_display_fails(extra: dict[str, str]) -> None:
+    """Decision H1: nothing checks those fields against the quote, so a text claim may not
+    carry them, even one that happens to agree."""
+    case = vc.text_case("Net sales decreased 3% during 2023.", SALES_QUOTE)
+    case = case._replace(claim=vc.edit(case.claim, **extra))
+    assert_fails(run(case), "number_in_text", others_pass=("quote_substring", "metadata_match"))
+
+
+# --- A: a company named in a text claim ----------------------------------------------------------
+
+
+@pytest.mark.parametrize(
+    "claim_text",
+    [
+        "Microsoft's net sales decreased 3% during 2023.",
+        "MSFT net sales decreased 3% during 2023.",
+    ],
+)
+def test_a_text_claim_naming_a_company_that_is_not_allowed_fails(claim_text: str) -> None:
+    """Decision A on text claims: the passage is Apple's and the plan is Apple's, so a claim
+    about Microsoft is about the wrong company."""
+    case = vc.with_real_companies(vc.text_case(claim_text, SALES_QUOTE, allowed=APPLE_ONLY))
+    assert_fails(run(case), "metadata_match", others_pass=("quote_substring", "number_in_text"))
+
+
+@pytest.mark.parametrize(
+    "claim_text",
+    [
+        "Apple's net sales decreased 3% during 2023.",
+        "ALL of the decrease in net sales, 3%, came during 2023.",
+        "IT is one reason net sales decreased 3% during 2023.",
+    ],
+)
+def test_a_text_claim_naming_only_allowed_companies_or_word_tickers_passes(
+    claim_text: str,
+) -> None:
+    case = vc.with_real_companies(vc.text_case(claim_text, SALES_QUOTE, allowed=APPLE_ONLY))
+    assert_passes(run(case))
+
+
+def test_with_no_company_restriction_any_company_may_be_named() -> None:
+    case = vc.text_case("Microsoft's net sales decreased 3% during 2023.", SALES_QUOTE)
+    case = vc.with_real_companies(case._replace(ctx=case.ctx.model_copy(
+        update={"allowed_ciks": frozenset()})))  # fmt: skip
+    assert_passes(run(case))
+
+
+@pytest.mark.parametrize(
+    "claim_text",
+    ["Sales increased 5% this year.", "Costs decreased 3% this year."],
+)
+def test_a_direction_word_in_a_quote_binds_to_its_own_number(claim_text: str) -> None:
+    """Decision G: one decline word does not make every number in the quote negative."""
+    quote = "Sales increased 5% while costs decreased 3% this year"
+    assert_passes(run(vc.text_case(claim_text, quote, passage=f"Overview. {quote}.")))
