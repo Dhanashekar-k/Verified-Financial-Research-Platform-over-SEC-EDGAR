@@ -1,0 +1,1785 @@
+{
+  "run_id": "2026-11-26T02-19-54Z_coverage",
+  "git_sha": "e69b3b0",
+  "corpus_version": 1,
+  "config": {
+    "tracked_companies": 500,
+    "denominator": "tracked companies with a full-year 10-K fact in that fiscal year",
+    "min_companies_per_year": 100,
+    "min_fiscal_year": 2020
+  },
+  "filers_per_year": {
+    "2020": 482,
+    "2021": 487,
+    "2022": 493,
+    "2023": 496,
+    "2024": 496,
+    "2025": 486
+  },
+  "by_metric": [
+    {
+      "metric": "revenue",
+      "pairs": 2940,
+      "found": 2546,
+      "coverage": 0.8659863945578231,
+      "not_found_reasons": {
+        "no_fact": 294,
+        "conflicting_candidates": 100
+      }
+    },
+    {
+      "metric": "revenue_including_assessed_tax",
+      "pairs": 2940,
+      "found": 187,
+      "coverage": 0.06360544217687075,
+      "not_found_reasons": {
+        "no_fact": 2753
+      }
+    },
+    {
+      "metric": "bank_revenue_net_of_interest_expense",
+      "pairs": 2940,
+      "found": 48,
+      "coverage": 0.0163265306122449,
+      "not_found_reasons": {
+        "no_fact": 2892
+      }
+    },
+    {
+      "metric": "cost_of_revenue",
+      "pairs": 2940,
+      "found": 1721,
+      "coverage": 0.5853741496598639,
+      "not_found_reasons": {
+        "no_fact": 1219
+      }
+    },
+    {
+      "metric": "gross_profit",
+      "pairs": 2940,
+      "found": 1038,
+      "coverage": 0.35306122448979593,
+      "not_found_reasons": {
+        "fallback_not_allowed": 601,
+        "missing_input": 1301
+      }
+    },
+    {
+      "metric": "operating_income",
+      "pairs": 2940,
+      "found": 2208,
+      "coverage": 0.7510204081632653,
+      "not_found_reasons": {
+        "no_fact": 732
+      }
+    },
+    {
+      "metric": "net_income",
+      "pairs": 2940,
+      "found": 2659,
+      "coverage": 0.904421768707483,
+      "not_found_reasons": {
+        "no_fact": 281
+      }
+    },
+    {
+      "metric": "eps_basic",
+      "pairs": 2940,
+      "found": 2826,
+      "coverage": 0.9612244897959183,
+      "not_found_reasons": {
+        "no_fact": 114
+      }
+    },
+    {
+      "metric": "eps_diluted",
+      "pairs": 2940,
+      "found": 2836,
+      "coverage": 0.964625850340136,
+      "not_found_reasons": {
+        "no_fact": 104
+      }
+    },
+    {
+      "metric": "r_and_d",
+      "pairs": 2940,
+      "found": 816,
+      "coverage": 0.27755102040816326,
+      "not_found_reasons": {
+        "no_fact": 2124
+      }
+    },
+    {
+      "metric": "sga",
+      "pairs": 2940,
+      "found": 1593,
+      "coverage": 0.5418367346938775,
+      "not_found_reasons": {
+        "no_fact": 1347
+      }
+    },
+    {
+      "metric": "interest_expense",
+      "pairs": 2940,
+      "found": 1401,
+      "coverage": 0.47653061224489796,
+      "not_found_reasons": {
+        "no_fact": 1539
+      }
+    },
+    {
+      "metric": "income_tax",
+      "pairs": 2940,
+      "found": 2873,
+      "coverage": 0.9772108843537415,
+      "not_found_reasons": {
+        "no_fact": 67
+      }
+    },
+    {
+      "metric": "total_assets",
+      "pairs": 2940,
+      "found": 2922,
+      "coverage": 0.9938775510204082,
+      "not_found_reasons": {
+        "conflicting_candidates": 5,
+        "no_fact": 13
+      }
+    },
+    {
+      "metric": "total_liabilities",
+      "pairs": 2940,
+      "found": 2096,
+      "coverage": 0.7129251700680272,
+      "not_found_reasons": {
+        "no_fact": 839,
+        "conflicting_candidates": 5
+      }
+    },
+    {
+      "metric": "stockholders_equity",
+      "pairs": 2940,
+      "found": 2767,
+      "coverage": 0.941156462585034,
+      "not_found_reasons": {
+        "no_fact": 167,
+        "conflicting_candidates": 6
+      }
+    },
+    {
+      "metric": "cash",
+      "pairs": 2940,
+      "found": 2515,
+      "coverage": 0.8554421768707483,
+      "not_found_reasons": {
+        "no_fact": 422,
+        "conflicting_candidates": 3
+      }
+    },
+    {
+      "metric": "long_term_debt",
+      "pairs": 2940,
+      "found": 1387,
+      "coverage": 0.4717687074829932,
+      "not_found_reasons": {
+        "no_fact": 1550,
+        "conflicting_candidates": 3
+      }
+    },
+    {
+      "metric": "shares_outstanding",
+      "pairs": 2940,
+      "found": 1757,
+      "coverage": 0.5976190476190476,
+      "not_found_reasons": {
+        "no_fact": 1178,
+        "conflicting_candidates": 5
+      }
+    },
+    {
+      "metric": "operating_cash_flow",
+      "pairs": 2940,
+      "found": 2882,
+      "coverage": 0.9802721088435374,
+      "not_found_reasons": {
+        "no_fact": 58
+      }
+    },
+    {
+      "metric": "capex",
+      "pairs": 2940,
+      "found": 1974,
+      "coverage": 0.6714285714285714,
+      "not_found_reasons": {
+        "no_fact": 966
+      }
+    },
+    {
+      "metric": "dividends_paid",
+      "pairs": 2940,
+      "found": 1411,
+      "coverage": 0.47993197278911565,
+      "not_found_reasons": {
+        "no_fact": 1529
+      }
+    },
+    {
+      "metric": "gross_margin",
+      "pairs": 2940,
+      "found": 982,
+      "coverage": 0.3340136054421769,
+      "not_found_reasons": {
+        "missing_input": 1958
+      }
+    },
+    {
+      "metric": "operating_margin",
+      "pairs": 2940,
+      "found": 1985,
+      "coverage": 0.6751700680272109,
+      "not_found_reasons": {
+        "missing_input": 955
+      }
+    },
+    {
+      "metric": "net_margin",
+      "pairs": 2940,
+      "found": 2334,
+      "coverage": 0.7938775510204081,
+      "not_found_reasons": {
+        "missing_input": 606
+      }
+    }
+  ],
+  "by_metric_year": [
+    {
+      "metric": "revenue",
+      "fiscal_year": 2020,
+      "companies": 482,
+      "found": 408,
+      "coverage": 0.8464730290456431,
+      "not_found_reasons": {
+        "no_fact": 53,
+        "conflicting_candidates": 21
+      }
+    },
+    {
+      "metric": "revenue",
+      "fiscal_year": 2021,
+      "companies": 487,
+      "found": 420,
+      "coverage": 0.8624229979466119,
+      "not_found_reasons": {
+        "no_fact": 49,
+        "conflicting_candidates": 18
+      }
+    },
+    {
+      "metric": "revenue",
+      "fiscal_year": 2022,
+      "companies": 493,
+      "found": 428,
+      "coverage": 0.8681541582150102,
+      "not_found_reasons": {
+        "no_fact": 48,
+        "conflicting_candidates": 17
+      }
+    },
+    {
+      "metric": "revenue",
+      "fiscal_year": 2023,
+      "companies": 496,
+      "found": 432,
+      "coverage": 0.8709677419354839,
+      "not_found_reasons": {
+        "no_fact": 48,
+        "conflicting_candidates": 16
+      }
+    },
+    {
+      "metric": "revenue",
+      "fiscal_year": 2024,
+      "companies": 496,
+      "found": 436,
+      "coverage": 0.8790322580645161,
+      "not_found_reasons": {
+        "no_fact": 46,
+        "conflicting_candidates": 14
+      }
+    },
+    {
+      "metric": "revenue",
+      "fiscal_year": 2025,
+      "companies": 486,
+      "found": 422,
+      "coverage": 0.8683127572016461,
+      "not_found_reasons": {
+        "no_fact": 50,
+        "conflicting_candidates": 14
+      }
+    },
+    {
+      "metric": "revenue_including_assessed_tax",
+      "fiscal_year": 2020,
+      "companies": 482,
+      "found": 37,
+      "coverage": 0.07676348547717843,
+      "not_found_reasons": {
+        "no_fact": 445
+      }
+    },
+    {
+      "metric": "revenue_including_assessed_tax",
+      "fiscal_year": 2021,
+      "companies": 487,
+      "found": 34,
+      "coverage": 0.06981519507186858,
+      "not_found_reasons": {
+        "no_fact": 453
+      }
+    },
+    {
+      "metric": "revenue_including_assessed_tax",
+      "fiscal_year": 2022,
+      "companies": 493,
+      "found": 34,
+      "coverage": 0.06896551724137931,
+      "not_found_reasons": {
+        "no_fact": 459
+      }
+    },
+    {
+      "metric": "revenue_including_assessed_tax",
+      "fiscal_year": 2023,
+      "companies": 496,
+      "found": 31,
+      "coverage": 0.0625,
+      "not_found_reasons": {
+        "no_fact": 465
+      }
+    },
+    {
+      "metric": "revenue_including_assessed_tax",
+      "fiscal_year": 2024,
+      "companies": 496,
+      "found": 26,
+      "coverage": 0.05241935483870968,
+      "not_found_reasons": {
+        "no_fact": 470
+      }
+    },
+    {
+      "metric": "revenue_including_assessed_tax",
+      "fiscal_year": 2025,
+      "companies": 486,
+      "found": 25,
+      "coverage": 0.051440329218107,
+      "not_found_reasons": {
+        "no_fact": 461
+      }
+    },
+    {
+      "metric": "bank_revenue_net_of_interest_expense",
+      "fiscal_year": 2020,
+      "companies": 482,
+      "found": 8,
+      "coverage": 0.016597510373443983,
+      "not_found_reasons": {
+        "no_fact": 474
+      }
+    },
+    {
+      "metric": "bank_revenue_net_of_interest_expense",
+      "fiscal_year": 2021,
+      "companies": 487,
+      "found": 8,
+      "coverage": 0.01642710472279261,
+      "not_found_reasons": {
+        "no_fact": 479
+      }
+    },
+    {
+      "metric": "bank_revenue_net_of_interest_expense",
+      "fiscal_year": 2022,
+      "companies": 493,
+      "found": 8,
+      "coverage": 0.016227180527383367,
+      "not_found_reasons": {
+        "no_fact": 485
+      }
+    },
+    {
+      "metric": "bank_revenue_net_of_interest_expense",
+      "fiscal_year": 2023,
+      "companies": 496,
+      "found": 8,
+      "coverage": 0.016129032258064516,
+      "not_found_reasons": {
+        "no_fact": 488
+      }
+    },
+    {
+      "metric": "bank_revenue_net_of_interest_expense",
+      "fiscal_year": 2024,
+      "companies": 496,
+      "found": 8,
+      "coverage": 0.016129032258064516,
+      "not_found_reasons": {
+        "no_fact": 488
+      }
+    },
+    {
+      "metric": "bank_revenue_net_of_interest_expense",
+      "fiscal_year": 2025,
+      "companies": 486,
+      "found": 8,
+      "coverage": 0.01646090534979424,
+      "not_found_reasons": {
+        "no_fact": 478
+      }
+    },
+    {
+      "metric": "cost_of_revenue",
+      "fiscal_year": 2020,
+      "companies": 482,
+      "found": 288,
+      "coverage": 0.5975103734439834,
+      "not_found_reasons": {
+        "no_fact": 194
+      }
+    },
+    {
+      "metric": "cost_of_revenue",
+      "fiscal_year": 2021,
+      "companies": 487,
+      "found": 285,
+      "coverage": 0.5852156057494866,
+      "not_found_reasons": {
+        "no_fact": 202
+      }
+    },
+    {
+      "metric": "cost_of_revenue",
+      "fiscal_year": 2022,
+      "companies": 493,
+      "found": 289,
+      "coverage": 0.5862068965517241,
+      "not_found_reasons": {
+        "no_fact": 204
+      }
+    },
+    {
+      "metric": "cost_of_revenue",
+      "fiscal_year": 2023,
+      "companies": 496,
+      "found": 291,
+      "coverage": 0.5866935483870968,
+      "not_found_reasons": {
+        "no_fact": 205
+      }
+    },
+    {
+      "metric": "cost_of_revenue",
+      "fiscal_year": 2024,
+      "companies": 496,
+      "found": 291,
+      "coverage": 0.5866935483870968,
+      "not_found_reasons": {
+        "no_fact": 205
+      }
+    },
+    {
+      "metric": "cost_of_revenue",
+      "fiscal_year": 2025,
+      "companies": 486,
+      "found": 277,
+      "coverage": 0.5699588477366255,
+      "not_found_reasons": {
+        "no_fact": 209
+      }
+    },
+    {
+      "metric": "gross_profit",
+      "fiscal_year": 2020,
+      "companies": 482,
+      "found": 169,
+      "coverage": 0.3506224066390041,
+      "not_found_reasons": {
+        "fallback_not_allowed": 101,
+        "missing_input": 212
+      }
+    },
+    {
+      "metric": "gross_profit",
+      "fiscal_year": 2021,
+      "companies": 487,
+      "found": 171,
+      "coverage": 0.351129363449692,
+      "not_found_reasons": {
+        "fallback_not_allowed": 97,
+        "missing_input": 219
+      }
+    },
+    {
+      "metric": "gross_profit",
+      "fiscal_year": 2022,
+      "companies": 493,
+      "found": 175,
+      "coverage": 0.35496957403651114,
+      "not_found_reasons": {
+        "fallback_not_allowed": 101,
+        "missing_input": 217
+      }
+    },
+    {
+      "metric": "gross_profit",
+      "fiscal_year": 2023,
+      "companies": 496,
+      "found": 177,
+      "coverage": 0.35685483870967744,
+      "not_found_reasons": {
+        "fallback_not_allowed": 101,
+        "missing_input": 218
+      }
+    },
+    {
+      "metric": "gross_profit",
+      "fiscal_year": 2024,
+      "companies": 496,
+      "found": 178,
+      "coverage": 0.3588709677419355,
+      "not_found_reasons": {
+        "fallback_not_allowed": 102,
+        "missing_input": 216
+      }
+    },
+    {
+      "metric": "gross_profit",
+      "fiscal_year": 2025,
+      "companies": 486,
+      "found": 168,
+      "coverage": 0.345679012345679,
+      "not_found_reasons": {
+        "fallback_not_allowed": 99,
+        "missing_input": 219
+      }
+    },
+    {
+      "metric": "operating_income",
+      "fiscal_year": 2020,
+      "companies": 482,
+      "found": 361,
+      "coverage": 0.7489626556016598,
+      "not_found_reasons": {
+        "no_fact": 121
+      }
+    },
+    {
+      "metric": "operating_income",
+      "fiscal_year": 2021,
+      "companies": 487,
+      "found": 366,
+      "coverage": 0.7515400410677618,
+      "not_found_reasons": {
+        "no_fact": 121
+      }
+    },
+    {
+      "metric": "operating_income",
+      "fiscal_year": 2022,
+      "companies": 493,
+      "found": 371,
+      "coverage": 0.7525354969574036,
+      "not_found_reasons": {
+        "no_fact": 122
+      }
+    },
+    {
+      "metric": "operating_income",
+      "fiscal_year": 2023,
+      "companies": 496,
+      "found": 374,
+      "coverage": 0.7540322580645161,
+      "not_found_reasons": {
+        "no_fact": 122
+      }
+    },
+    {
+      "metric": "operating_income",
+      "fiscal_year": 2024,
+      "companies": 496,
+      "found": 374,
+      "coverage": 0.7540322580645161,
+      "not_found_reasons": {
+        "no_fact": 122
+      }
+    },
+    {
+      "metric": "operating_income",
+      "fiscal_year": 2025,
+      "companies": 486,
+      "found": 362,
+      "coverage": 0.7448559670781894,
+      "not_found_reasons": {
+        "no_fact": 124
+      }
+    },
+    {
+      "metric": "net_income",
+      "fiscal_year": 2020,
+      "companies": 482,
+      "found": 429,
+      "coverage": 0.8900414937759336,
+      "not_found_reasons": {
+        "no_fact": 53
+      }
+    },
+    {
+      "metric": "net_income",
+      "fiscal_year": 2021,
+      "companies": 487,
+      "found": 437,
+      "coverage": 0.8973305954825462,
+      "not_found_reasons": {
+        "no_fact": 50
+      }
+    },
+    {
+      "metric": "net_income",
+      "fiscal_year": 2022,
+      "companies": 493,
+      "found": 442,
+      "coverage": 0.896551724137931,
+      "not_found_reasons": {
+        "no_fact": 51
+      }
+    },
+    {
+      "metric": "net_income",
+      "fiscal_year": 2023,
+      "companies": 496,
+      "found": 455,
+      "coverage": 0.9173387096774194,
+      "not_found_reasons": {
+        "no_fact": 41
+      }
+    },
+    {
+      "metric": "net_income",
+      "fiscal_year": 2024,
+      "companies": 496,
+      "found": 455,
+      "coverage": 0.9173387096774194,
+      "not_found_reasons": {
+        "no_fact": 41
+      }
+    },
+    {
+      "metric": "net_income",
+      "fiscal_year": 2025,
+      "companies": 486,
+      "found": 441,
+      "coverage": 0.9074074074074074,
+      "not_found_reasons": {
+        "no_fact": 45
+      }
+    },
+    {
+      "metric": "eps_basic",
+      "fiscal_year": 2020,
+      "companies": 482,
+      "found": 462,
+      "coverage": 0.9585062240663901,
+      "not_found_reasons": {
+        "no_fact": 20
+      }
+    },
+    {
+      "metric": "eps_basic",
+      "fiscal_year": 2021,
+      "companies": 487,
+      "found": 470,
+      "coverage": 0.9650924024640657,
+      "not_found_reasons": {
+        "no_fact": 17
+      }
+    },
+    {
+      "metric": "eps_basic",
+      "fiscal_year": 2022,
+      "companies": 493,
+      "found": 475,
+      "coverage": 0.9634888438133874,
+      "not_found_reasons": {
+        "no_fact": 18
+      }
+    },
+    {
+      "metric": "eps_basic",
+      "fiscal_year": 2023,
+      "companies": 496,
+      "found": 477,
+      "coverage": 0.9616935483870968,
+      "not_found_reasons": {
+        "no_fact": 19
+      }
+    },
+    {
+      "metric": "eps_basic",
+      "fiscal_year": 2024,
+      "companies": 496,
+      "found": 477,
+      "coverage": 0.9616935483870968,
+      "not_found_reasons": {
+        "no_fact": 19
+      }
+    },
+    {
+      "metric": "eps_basic",
+      "fiscal_year": 2025,
+      "companies": 486,
+      "found": 465,
+      "coverage": 0.9567901234567902,
+      "not_found_reasons": {
+        "no_fact": 21
+      }
+    },
+    {
+      "metric": "eps_diluted",
+      "fiscal_year": 2020,
+      "companies": 482,
+      "found": 463,
+      "coverage": 0.9605809128630706,
+      "not_found_reasons": {
+        "no_fact": 19
+      }
+    },
+    {
+      "metric": "eps_diluted",
+      "fiscal_year": 2021,
+      "companies": 487,
+      "found": 472,
+      "coverage": 0.9691991786447639,
+      "not_found_reasons": {
+        "no_fact": 15
+      }
+    },
+    {
+      "metric": "eps_diluted",
+      "fiscal_year": 2022,
+      "companies": 493,
+      "found": 477,
+      "coverage": 0.9675456389452333,
+      "not_found_reasons": {
+        "no_fact": 16
+      }
+    },
+    {
+      "metric": "eps_diluted",
+      "fiscal_year": 2023,
+      "companies": 496,
+      "found": 479,
+      "coverage": 0.9657258064516129,
+      "not_found_reasons": {
+        "no_fact": 17
+      }
+    },
+    {
+      "metric": "eps_diluted",
+      "fiscal_year": 2024,
+      "companies": 496,
+      "found": 479,
+      "coverage": 0.9657258064516129,
+      "not_found_reasons": {
+        "no_fact": 17
+      }
+    },
+    {
+      "metric": "eps_diluted",
+      "fiscal_year": 2025,
+      "companies": 486,
+      "found": 466,
+      "coverage": 0.9588477366255144,
+      "not_found_reasons": {
+        "no_fact": 20
+      }
+    },
+    {
+      "metric": "r_and_d",
+      "fiscal_year": 2020,
+      "companies": 482,
+      "found": 129,
+      "coverage": 0.2676348547717842,
+      "not_found_reasons": {
+        "no_fact": 353
+      }
+    },
+    {
+      "metric": "r_and_d",
+      "fiscal_year": 2021,
+      "companies": 487,
+      "found": 133,
+      "coverage": 0.2731006160164271,
+      "not_found_reasons": {
+        "no_fact": 354
+      }
+    },
+    {
+      "metric": "r_and_d",
+      "fiscal_year": 2022,
+      "companies": 493,
+      "found": 136,
+      "coverage": 0.27586206896551724,
+      "not_found_reasons": {
+        "no_fact": 357
+      }
+    },
+    {
+      "metric": "r_and_d",
+      "fiscal_year": 2023,
+      "companies": 496,
+      "found": 139,
+      "coverage": 0.28024193548387094,
+      "not_found_reasons": {
+        "no_fact": 357
+      }
+    },
+    {
+      "metric": "r_and_d",
+      "fiscal_year": 2024,
+      "companies": 496,
+      "found": 141,
+      "coverage": 0.2842741935483871,
+      "not_found_reasons": {
+        "no_fact": 355
+      }
+    },
+    {
+      "metric": "r_and_d",
+      "fiscal_year": 2025,
+      "companies": 486,
+      "found": 138,
+      "coverage": 0.2839506172839506,
+      "not_found_reasons": {
+        "no_fact": 348
+      }
+    },
+    {
+      "metric": "sga",
+      "fiscal_year": 2020,
+      "companies": 482,
+      "found": 258,
+      "coverage": 0.5352697095435685,
+      "not_found_reasons": {
+        "no_fact": 224
+      }
+    },
+    {
+      "metric": "sga",
+      "fiscal_year": 2021,
+      "companies": 487,
+      "found": 265,
+      "coverage": 0.5441478439425051,
+      "not_found_reasons": {
+        "no_fact": 222
+      }
+    },
+    {
+      "metric": "sga",
+      "fiscal_year": 2022,
+      "companies": 493,
+      "found": 266,
+      "coverage": 0.539553752535497,
+      "not_found_reasons": {
+        "no_fact": 227
+      }
+    },
+    {
+      "metric": "sga",
+      "fiscal_year": 2023,
+      "companies": 496,
+      "found": 270,
+      "coverage": 0.5443548387096774,
+      "not_found_reasons": {
+        "no_fact": 226
+      }
+    },
+    {
+      "metric": "sga",
+      "fiscal_year": 2024,
+      "companies": 496,
+      "found": 272,
+      "coverage": 0.5483870967741935,
+      "not_found_reasons": {
+        "no_fact": 224
+      }
+    },
+    {
+      "metric": "sga",
+      "fiscal_year": 2025,
+      "companies": 486,
+      "found": 262,
+      "coverage": 0.5390946502057613,
+      "not_found_reasons": {
+        "no_fact": 224
+      }
+    },
+    {
+      "metric": "interest_expense",
+      "fiscal_year": 2020,
+      "companies": 482,
+      "found": 302,
+      "coverage": 0.6265560165975104,
+      "not_found_reasons": {
+        "no_fact": 180
+      }
+    },
+    {
+      "metric": "interest_expense",
+      "fiscal_year": 2021,
+      "companies": 487,
+      "found": 303,
+      "coverage": 0.62217659137577,
+      "not_found_reasons": {
+        "no_fact": 184
+      }
+    },
+    {
+      "metric": "interest_expense",
+      "fiscal_year": 2022,
+      "companies": 493,
+      "found": 299,
+      "coverage": 0.6064908722109533,
+      "not_found_reasons": {
+        "no_fact": 194
+      }
+    },
+    {
+      "metric": "interest_expense",
+      "fiscal_year": 2023,
+      "companies": 496,
+      "found": 293,
+      "coverage": 0.5907258064516129,
+      "not_found_reasons": {
+        "no_fact": 203
+      }
+    },
+    {
+      "metric": "interest_expense",
+      "fiscal_year": 2024,
+      "companies": 496,
+      "found": 109,
+      "coverage": 0.21975806451612903,
+      "not_found_reasons": {
+        "no_fact": 387
+      }
+    },
+    {
+      "metric": "interest_expense",
+      "fiscal_year": 2025,
+      "companies": 486,
+      "found": 95,
+      "coverage": 0.19547325102880658,
+      "not_found_reasons": {
+        "no_fact": 391
+      }
+    },
+    {
+      "metric": "income_tax",
+      "fiscal_year": 2020,
+      "companies": 482,
+      "found": 469,
+      "coverage": 0.9730290456431535,
+      "not_found_reasons": {
+        "no_fact": 13
+      }
+    },
+    {
+      "metric": "income_tax",
+      "fiscal_year": 2021,
+      "companies": 487,
+      "found": 476,
+      "coverage": 0.9774127310061602,
+      "not_found_reasons": {
+        "no_fact": 11
+      }
+    },
+    {
+      "metric": "income_tax",
+      "fiscal_year": 2022,
+      "companies": 493,
+      "found": 480,
+      "coverage": 0.973630831643002,
+      "not_found_reasons": {
+        "no_fact": 13
+      }
+    },
+    {
+      "metric": "income_tax",
+      "fiscal_year": 2023,
+      "companies": 496,
+      "found": 485,
+      "coverage": 0.9778225806451613,
+      "not_found_reasons": {
+        "no_fact": 11
+      }
+    },
+    {
+      "metric": "income_tax",
+      "fiscal_year": 2024,
+      "companies": 496,
+      "found": 487,
+      "coverage": 0.9818548387096774,
+      "not_found_reasons": {
+        "no_fact": 9
+      }
+    },
+    {
+      "metric": "income_tax",
+      "fiscal_year": 2025,
+      "companies": 486,
+      "found": 476,
+      "coverage": 0.9794238683127572,
+      "not_found_reasons": {
+        "no_fact": 10
+      }
+    },
+    {
+      "metric": "total_assets",
+      "fiscal_year": 2020,
+      "companies": 482,
+      "found": 479,
+      "coverage": 0.9937759336099585,
+      "not_found_reasons": {
+        "conflicting_candidates": 1,
+        "no_fact": 2
+      }
+    },
+    {
+      "metric": "total_assets",
+      "fiscal_year": 2021,
+      "companies": 487,
+      "found": 483,
+      "coverage": 0.9917864476386037,
+      "not_found_reasons": {
+        "no_fact": 3,
+        "conflicting_candidates": 1
+      }
+    },
+    {
+      "metric": "total_assets",
+      "fiscal_year": 2022,
+      "companies": 493,
+      "found": 488,
+      "coverage": 0.9898580121703854,
+      "not_found_reasons": {
+        "conflicting_candidates": 1,
+        "no_fact": 4
+      }
+    },
+    {
+      "metric": "total_assets",
+      "fiscal_year": 2023,
+      "companies": 496,
+      "found": 493,
+      "coverage": 0.9939516129032258,
+      "not_found_reasons": {
+        "no_fact": 3
+      }
+    },
+    {
+      "metric": "total_assets",
+      "fiscal_year": 2024,
+      "companies": 496,
+      "found": 496,
+      "coverage": 1.0,
+      "not_found_reasons": {}
+    },
+    {
+      "metric": "total_assets",
+      "fiscal_year": 2025,
+      "companies": 486,
+      "found": 483,
+      "coverage": 0.9938271604938271,
+      "not_found_reasons": {
+        "conflicting_candidates": 2,
+        "no_fact": 1
+      }
+    },
+    {
+      "metric": "total_liabilities",
+      "fiscal_year": 2020,
+      "companies": 482,
+      "found": 340,
+      "coverage": 0.7053941908713693,
+      "not_found_reasons": {
+        "no_fact": 141,
+        "conflicting_candidates": 1
+      }
+    },
+    {
+      "metric": "total_liabilities",
+      "fiscal_year": 2021,
+      "companies": 487,
+      "found": 342,
+      "coverage": 0.702258726899384,
+      "not_found_reasons": {
+        "no_fact": 144,
+        "conflicting_candidates": 1
+      }
+    },
+    {
+      "metric": "total_liabilities",
+      "fiscal_year": 2022,
+      "companies": 493,
+      "found": 350,
+      "coverage": 0.7099391480730223,
+      "not_found_reasons": {
+        "no_fact": 142,
+        "conflicting_candidates": 1
+      }
+    },
+    {
+      "metric": "total_liabilities",
+      "fiscal_year": 2023,
+      "companies": 496,
+      "found": 356,
+      "coverage": 0.717741935483871,
+      "not_found_reasons": {
+        "no_fact": 140
+      }
+    },
+    {
+      "metric": "total_liabilities",
+      "fiscal_year": 2024,
+      "companies": 496,
+      "found": 359,
+      "coverage": 0.7237903225806451,
+      "not_found_reasons": {
+        "no_fact": 137
+      }
+    },
+    {
+      "metric": "total_liabilities",
+      "fiscal_year": 2025,
+      "companies": 486,
+      "found": 349,
+      "coverage": 0.7181069958847737,
+      "not_found_reasons": {
+        "no_fact": 135,
+        "conflicting_candidates": 2
+      }
+    },
+    {
+      "metric": "stockholders_equity",
+      "fiscal_year": 2020,
+      "companies": 482,
+      "found": 452,
+      "coverage": 0.9377593360995851,
+      "not_found_reasons": {
+        "no_fact": 28,
+        "conflicting_candidates": 2
+      }
+    },
+    {
+      "metric": "stockholders_equity",
+      "fiscal_year": 2021,
+      "companies": 487,
+      "found": 457,
+      "coverage": 0.9383983572895277,
+      "not_found_reasons": {
+        "no_fact": 29,
+        "conflicting_candidates": 1
+      }
+    },
+    {
+      "metric": "stockholders_equity",
+      "fiscal_year": 2022,
+      "companies": 493,
+      "found": 467,
+      "coverage": 0.947261663286004,
+      "not_found_reasons": {
+        "no_fact": 25,
+        "conflicting_candidates": 1
+      }
+    },
+    {
+      "metric": "stockholders_equity",
+      "fiscal_year": 2023,
+      "companies": 496,
+      "found": 471,
+      "coverage": 0.9495967741935484,
+      "not_found_reasons": {
+        "no_fact": 25
+      }
+    },
+    {
+      "metric": "stockholders_equity",
+      "fiscal_year": 2024,
+      "companies": 496,
+      "found": 468,
+      "coverage": 0.9435483870967742,
+      "not_found_reasons": {
+        "no_fact": 28
+      }
+    },
+    {
+      "metric": "stockholders_equity",
+      "fiscal_year": 2025,
+      "companies": 486,
+      "found": 452,
+      "coverage": 0.9300411522633745,
+      "not_found_reasons": {
+        "no_fact": 32,
+        "conflicting_candidates": 2
+      }
+    },
+    {
+      "metric": "cash",
+      "fiscal_year": 2020,
+      "companies": 482,
+      "found": 430,
+      "coverage": 0.8921161825726142,
+      "not_found_reasons": {
+        "no_fact": 52
+      }
+    },
+    {
+      "metric": "cash",
+      "fiscal_year": 2021,
+      "companies": 487,
+      "found": 424,
+      "coverage": 0.8706365503080082,
+      "not_found_reasons": {
+        "no_fact": 63
+      }
+    },
+    {
+      "metric": "cash",
+      "fiscal_year": 2022,
+      "companies": 493,
+      "found": 422,
+      "coverage": 0.8559837728194726,
+      "not_found_reasons": {
+        "no_fact": 70,
+        "conflicting_candidates": 1
+      }
+    },
+    {
+      "metric": "cash",
+      "fiscal_year": 2023,
+      "companies": 496,
+      "found": 418,
+      "coverage": 0.842741935483871,
+      "not_found_reasons": {
+        "no_fact": 78
+      }
+    },
+    {
+      "metric": "cash",
+      "fiscal_year": 2024,
+      "companies": 496,
+      "found": 422,
+      "coverage": 0.8508064516129032,
+      "not_found_reasons": {
+        "no_fact": 74
+      }
+    },
+    {
+      "metric": "cash",
+      "fiscal_year": 2025,
+      "companies": 486,
+      "found": 399,
+      "coverage": 0.8209876543209876,
+      "not_found_reasons": {
+        "no_fact": 85,
+        "conflicting_candidates": 2
+      }
+    },
+    {
+      "metric": "long_term_debt",
+      "fiscal_year": 2020,
+      "companies": 482,
+      "found": 237,
+      "coverage": 0.491701244813278,
+      "not_found_reasons": {
+        "no_fact": 245
+      }
+    },
+    {
+      "metric": "long_term_debt",
+      "fiscal_year": 2021,
+      "companies": 487,
+      "found": 235,
+      "coverage": 0.48254620123203285,
+      "not_found_reasons": {
+        "no_fact": 251,
+        "conflicting_candidates": 1
+      }
+    },
+    {
+      "metric": "long_term_debt",
+      "fiscal_year": 2022,
+      "companies": 493,
+      "found": 237,
+      "coverage": 0.48073022312373226,
+      "not_found_reasons": {
+        "no_fact": 256
+      }
+    },
+    {
+      "metric": "long_term_debt",
+      "fiscal_year": 2023,
+      "companies": 496,
+      "found": 230,
+      "coverage": 0.4637096774193548,
+      "not_found_reasons": {
+        "no_fact": 266
+      }
+    },
+    {
+      "metric": "long_term_debt",
+      "fiscal_year": 2024,
+      "companies": 496,
+      "found": 231,
+      "coverage": 0.4657258064516129,
+      "not_found_reasons": {
+        "no_fact": 265
+      }
+    },
+    {
+      "metric": "long_term_debt",
+      "fiscal_year": 2025,
+      "companies": 486,
+      "found": 217,
+      "coverage": 0.44650205761316875,
+      "not_found_reasons": {
+        "no_fact": 267,
+        "conflicting_candidates": 2
+      }
+    },
+    {
+      "metric": "shares_outstanding",
+      "fiscal_year": 2020,
+      "companies": 482,
+      "found": 287,
+      "coverage": 0.5954356846473029,
+      "not_found_reasons": {
+        "no_fact": 195
+      }
+    },
+    {
+      "metric": "shares_outstanding",
+      "fiscal_year": 2021,
+      "companies": 487,
+      "found": 285,
+      "coverage": 0.5852156057494866,
+      "not_found_reasons": {
+        "no_fact": 200,
+        "conflicting_candidates": 2
+      }
+    },
+    {
+      "metric": "shares_outstanding",
+      "fiscal_year": 2022,
+      "companies": 493,
+      "found": 292,
+      "coverage": 0.592292089249493,
+      "not_found_reasons": {
+        "no_fact": 199,
+        "conflicting_candidates": 2
+      }
+    },
+    {
+      "metric": "shares_outstanding",
+      "fiscal_year": 2023,
+      "companies": 496,
+      "found": 301,
+      "coverage": 0.6068548387096774,
+      "not_found_reasons": {
+        "no_fact": 195
+      }
+    },
+    {
+      "metric": "shares_outstanding",
+      "fiscal_year": 2024,
+      "companies": 496,
+      "found": 303,
+      "coverage": 0.6108870967741935,
+      "not_found_reasons": {
+        "no_fact": 193
+      }
+    },
+    {
+      "metric": "shares_outstanding",
+      "fiscal_year": 2025,
+      "companies": 486,
+      "found": 289,
+      "coverage": 0.5946502057613169,
+      "not_found_reasons": {
+        "no_fact": 196,
+        "conflicting_candidates": 1
+      }
+    },
+    {
+      "metric": "operating_cash_flow",
+      "fiscal_year": 2020,
+      "companies": 482,
+      "found": 474,
+      "coverage": 0.983402489626556,
+      "not_found_reasons": {
+        "no_fact": 8
+      }
+    },
+    {
+      "metric": "operating_cash_flow",
+      "fiscal_year": 2021,
+      "companies": 487,
+      "found": 478,
+      "coverage": 0.9815195071868583,
+      "not_found_reasons": {
+        "no_fact": 9
+      }
+    },
+    {
+      "metric": "operating_cash_flow",
+      "fiscal_year": 2022,
+      "companies": 493,
+      "found": 480,
+      "coverage": 0.973630831643002,
+      "not_found_reasons": {
+        "no_fact": 13
+      }
+    },
+    {
+      "metric": "operating_cash_flow",
+      "fiscal_year": 2023,
+      "companies": 496,
+      "found": 488,
+      "coverage": 0.9838709677419355,
+      "not_found_reasons": {
+        "no_fact": 8
+      }
+    },
+    {
+      "metric": "operating_cash_flow",
+      "fiscal_year": 2024,
+      "companies": 496,
+      "found": 487,
+      "coverage": 0.9818548387096774,
+      "not_found_reasons": {
+        "no_fact": 9
+      }
+    },
+    {
+      "metric": "operating_cash_flow",
+      "fiscal_year": 2025,
+      "companies": 486,
+      "found": 475,
+      "coverage": 0.977366255144033,
+      "not_found_reasons": {
+        "no_fact": 11
+      }
+    },
+    {
+      "metric": "capex",
+      "fiscal_year": 2020,
+      "companies": 482,
+      "found": 329,
+      "coverage": 0.6825726141078838,
+      "not_found_reasons": {
+        "no_fact": 153
+      }
+    },
+    {
+      "metric": "capex",
+      "fiscal_year": 2021,
+      "companies": 487,
+      "found": 332,
+      "coverage": 0.6817248459958932,
+      "not_found_reasons": {
+        "no_fact": 155
+      }
+    },
+    {
+      "metric": "capex",
+      "fiscal_year": 2022,
+      "companies": 493,
+      "found": 334,
+      "coverage": 0.6774847870182555,
+      "not_found_reasons": {
+        "no_fact": 159
+      }
+    },
+    {
+      "metric": "capex",
+      "fiscal_year": 2023,
+      "companies": 496,
+      "found": 330,
+      "coverage": 0.6653225806451613,
+      "not_found_reasons": {
+        "no_fact": 166
+      }
+    },
+    {
+      "metric": "capex",
+      "fiscal_year": 2024,
+      "companies": 496,
+      "found": 330,
+      "coverage": 0.6653225806451613,
+      "not_found_reasons": {
+        "no_fact": 166
+      }
+    },
+    {
+      "metric": "capex",
+      "fiscal_year": 2025,
+      "companies": 486,
+      "found": 319,
+      "coverage": 0.6563786008230452,
+      "not_found_reasons": {
+        "no_fact": 167
+      }
+    },
+    {
+      "metric": "dividends_paid",
+      "fiscal_year": 2020,
+      "companies": 482,
+      "found": 237,
+      "coverage": 0.491701244813278,
+      "not_found_reasons": {
+        "no_fact": 245
+      }
+    },
+    {
+      "metric": "dividends_paid",
+      "fiscal_year": 2021,
+      "companies": 487,
+      "found": 234,
+      "coverage": 0.4804928131416838,
+      "not_found_reasons": {
+        "no_fact": 253
+      }
+    },
+    {
+      "metric": "dividends_paid",
+      "fiscal_year": 2022,
+      "companies": 493,
+      "found": 236,
+      "coverage": 0.4787018255578093,
+      "not_found_reasons": {
+        "no_fact": 257
+      }
+    },
+    {
+      "metric": "dividends_paid",
+      "fiscal_year": 2023,
+      "companies": 496,
+      "found": 238,
+      "coverage": 0.4798387096774194,
+      "not_found_reasons": {
+        "no_fact": 258
+      }
+    },
+    {
+      "metric": "dividends_paid",
+      "fiscal_year": 2024,
+      "companies": 496,
+      "found": 236,
+      "coverage": 0.47580645161290325,
+      "not_found_reasons": {
+        "no_fact": 260
+      }
+    },
+    {
+      "metric": "dividends_paid",
+      "fiscal_year": 2025,
+      "companies": 486,
+      "found": 230,
+      "coverage": 0.4732510288065844,
+      "not_found_reasons": {
+        "no_fact": 256
+      }
+    },
+    {
+      "metric": "gross_margin",
+      "fiscal_year": 2020,
+      "companies": 482,
+      "found": 160,
+      "coverage": 0.33195020746887965,
+      "not_found_reasons": {
+        "missing_input": 322
+      }
+    },
+    {
+      "metric": "gross_margin",
+      "fiscal_year": 2021,
+      "companies": 487,
+      "found": 162,
+      "coverage": 0.3326488706365503,
+      "not_found_reasons": {
+        "missing_input": 325
+      }
+    },
+    {
+      "metric": "gross_margin",
+      "fiscal_year": 2022,
+      "companies": 493,
+      "found": 165,
+      "coverage": 0.33468559837728196,
+      "not_found_reasons": {
+        "missing_input": 328
+      }
+    },
+    {
+      "metric": "gross_margin",
+      "fiscal_year": 2023,
+      "companies": 496,
+      "found": 167,
+      "coverage": 0.33669354838709675,
+      "not_found_reasons": {
+        "missing_input": 329
+      }
+    },
+    {
+      "metric": "gross_margin",
+      "fiscal_year": 2024,
+      "companies": 496,
+      "found": 169,
+      "coverage": 0.3407258064516129,
+      "not_found_reasons": {
+        "missing_input": 327
+      }
+    },
+    {
+      "metric": "gross_margin",
+      "fiscal_year": 2025,
+      "companies": 486,
+      "found": 159,
+      "coverage": 0.3271604938271605,
+      "not_found_reasons": {
+        "missing_input": 327
+      }
+    },
+    {
+      "metric": "operating_margin",
+      "fiscal_year": 2020,
+      "companies": 482,
+      "found": 320,
+      "coverage": 0.6639004149377593,
+      "not_found_reasons": {
+        "missing_input": 162
+      }
+    },
+    {
+      "metric": "operating_margin",
+      "fiscal_year": 2021,
+      "companies": 487,
+      "found": 325,
+      "coverage": 0.6673511293634496,
+      "not_found_reasons": {
+        "missing_input": 162
+      }
+    },
+    {
+      "metric": "operating_margin",
+      "fiscal_year": 2022,
+      "companies": 493,
+      "found": 334,
+      "coverage": 0.6774847870182555,
+      "not_found_reasons": {
+        "missing_input": 159
+      }
+    },
+    {
+      "metric": "operating_margin",
+      "fiscal_year": 2023,
+      "companies": 496,
+      "found": 338,
+      "coverage": 0.6814516129032258,
+      "not_found_reasons": {
+        "missing_input": 158
+      }
+    },
+    {
+      "metric": "operating_margin",
+      "fiscal_year": 2024,
+      "companies": 496,
+      "found": 341,
+      "coverage": 0.6875,
+      "not_found_reasons": {
+        "missing_input": 155
+      }
+    },
+    {
+      "metric": "operating_margin",
+      "fiscal_year": 2025,
+      "companies": 486,
+      "found": 327,
+      "coverage": 0.6728395061728395,
+      "not_found_reasons": {
+        "missing_input": 159
+      }
+    },
+    {
+      "metric": "net_margin",
+      "fiscal_year": 2020,
+      "companies": 482,
+      "found": 370,
+      "coverage": 0.7676348547717843,
+      "not_found_reasons": {
+        "missing_input": 112
+      }
+    },
+    {
+      "metric": "net_margin",
+      "fiscal_year": 2021,
+      "companies": 487,
+      "found": 383,
+      "coverage": 0.7864476386036962,
+      "not_found_reasons": {
+        "missing_input": 104
+      }
+    },
+    {
+      "metric": "net_margin",
+      "fiscal_year": 2022,
+      "companies": 493,
+      "found": 391,
+      "coverage": 0.7931034482758621,
+      "not_found_reasons": {
+        "missing_input": 102
+      }
+    },
+    {
+      "metric": "net_margin",
+      "fiscal_year": 2023,
+      "companies": 496,
+      "found": 401,
+      "coverage": 0.8084677419354839,
+      "not_found_reasons": {
+        "missing_input": 95
+      }
+    },
+    {
+      "metric": "net_margin",
+      "fiscal_year": 2024,
+      "companies": 496,
+      "found": 403,
+      "coverage": 0.8125,
+      "not_found_reasons": {
+        "missing_input": 93
+      }
+    },
+    {
+      "metric": "net_margin",
+      "fiscal_year": 2025,
+      "companies": 486,
+      "found": 386,
+      "coverage": 0.7942386831275721,
+      "not_found_reasons": {
+        "missing_input": 100
+      }
+    }
+  ]
+}
